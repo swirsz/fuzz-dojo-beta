@@ -1,16 +1,75 @@
-id: example
+id: fuzz
 
-name: Example Dojo
+name: Fuzzing Dojo
 
 description: |
-  This is an [example dojo](https://github.com/pwncollege/example-dojo).
-  Fork this repository, and create your own dojo!
+  This is an [example dojo](https://fuzz.wirsz.com/).
 
 modules:
 
-  - id: hello
-    name: Hello
-    description: The first module in this example dojo.
+  - id: training
+    name: Training courses for fuzz harness improvements
+    description: Learn techniques to improve the code coverage of fuzz driver harnesses
+
+    challenges:
+
+      - id: locate
+        name: Locate Harnesses
+        description: Locate the fuzz harnesses in a project
+
+      - id: broken
+        name: Fix Broken Fuzzing Harness
+        description: Repair a broken fuzzing harness
+
+      - id: parameters
+        name: Initial Parameters
+        description: Increase code coverage by selecting better initial parameters
+
+      - id: calltree
+        name: Improve Coverage Using the Call Tree
+        description: Find a function higher in the call tree that calls this function and fuzz it instead.
+
+      - id: split
+        name: Split Into Multiple Harnesses
+        description: 
+
+      - id: malformed
+        name: Correct Malformed Input
+        description: 
+
+      - id: speedup
+        name: Speed up a Fuzzing Harness
+        description: 
+
+      - id: sanitizer
+        name: Correct Sanitizer Specific Problems
+        description: 
+
+      - id: seedcorpus
+        name: Implement Seed Corpus
+        description: 
+
+      - id: dictionary
+        name: Implement a Dictionary
+        description: 
+
+      - id: blockers
+        name: Repair Fuzz Blockers 
+        description: 
+
+  - id: projects
+    name: OSS-Fuzz Projects
+    description: Improve OSS-Fuzz training harnesses
+
+    challenges:
+
+      - id: bzip2
+        name: BZIP2
+        description: 
+
+  - id: samples
+    name: Sample Challenges
+    description: Example Challenges
 
     challenges:
 
@@ -21,12 +80,6 @@ modules:
       - id: banana
         name: Banana
         description: This is banana.
-
-  - id: world
-    name: World
-    description: The second module in this example dojo.
-
-    challenges:
 
       - id: earth
         name: Earth
