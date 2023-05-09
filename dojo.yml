@@ -65,7 +65,7 @@ modules:
 
       - id: bzip2
         name: BZIP2
-        description: 
+        description: Make improvements to OSS-Fuzz
 
   - id: samples
     name: Sample Challenges
