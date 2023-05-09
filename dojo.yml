@@ -31,31 +31,31 @@ modules:
 
       - id: split
         name: Split Into Multiple Harnesses
-        description: 
+        description: Since the harness is capable of parsing 2 different data formats, write short fuzz harness for each format
 
       - id: malformed
         name: Correct Malformed Input
-        description: 
+        description: This fuzz driver crashes with certain input. Figure out why.
 
       - id: speedup
         name: Speed up a Fuzzing Harness
-        description: 
+        description: Figure out how to increase this fuzz harness speed by at minimum a factor of 10
 
       - id: sanitizer
         name: Correct Sanitizer Specific Problems
-        description: 
+        description: Identify the sanitizer that is crashing and how to fix it
 
       - id: seedcorpus
         name: Implement Seed Corpus
-        description: 
+        description: Implement a seed corpus
 
       - id: dictionary
         name: Implement a Dictionary
-        description: 
+        description: Implement a dictionary
 
       - id: blockers
         name: Repair Fuzz Blockers 
-        description: 
+        description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it
 
   - id: projects
     name: OSS-Fuzz Projects
