@@ -3,7 +3,7 @@ id: fuzz
 name: Fuzzing Dojo
 
 description: |
-  This is an [example dojo](https://fuzz.wirsz.com/).
+  This is an [Fuzzing Dojo](https://fuzz.wirsz.com/).
 
 modules:
 
@@ -67,28 +67,23 @@ modules:
         name: BZIP2
         description: Make improvements to OSS-Fuzz
 
-  - id: samples
-    name: Sample Challenges
-    description: Example Challenges
+      - id: openjpeg
+        name: OPENJPEG
+        description: Make improvements to OSS-Fuzz
 
-    challenges:
+      - id: openssl
+        name: OPENSSL
+        description: Make improvements to OSS-Fuzz
 
-      - id: apple
-        name: Apple
-        description: This is apple.
+      - id: php
+        name: PHP
+        description: Make improvements to OSS-Fuzz
 
-      - id: banana
-        name: Banana
-        description: This is banana.
+      - id: wget
+        name: WGET
+        description: Make improvements to OSS-Fuzz
 
-      - id: earth
-        name: Earth
-        description: This is earth.
+      - id: xz
+        name: XZ
+        description: Make improvements to OSS-Fuzz
 
-      - id: mars
-        name: Mars
-        description: This is mars.
-
-      - id: venus
-        name: Venus
-        description: This is venus.

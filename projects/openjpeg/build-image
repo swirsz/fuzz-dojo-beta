@@ -1,0 +1,46 @@
+#!/bin/sh
+
+export DEBIAN_FRONTEND=noninteractive
+export RUN_FUZZER_MODE=interactive
+export FUZZING_LANGUAGE=c++
+export OUT=/out
+export SRC=/src
+export WORK=/work
+export PATH="$PATH:/out"
+export HWASAN_OPTIONS=random_tags=0
+export arch=x86_64
+export FUZZINTRO_OUTDIR=$SRC
+export CMAKE_VERSION=3.24.2
+export CC="clang"
+export CXX="clang++"
+export CCC="clang++"
+export CFLAGS="-O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION"
+export CXXFLAGS_EXTRA="-stdlib=libc++"
+export CXXFLAGS="$CFLAGS $CXXFLAGS_EXTRA"
+export PYTHON_VERSION=3.8.3
+export PYTHON_DEPS="zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev  libreadline-dev libffi-dev libbz2-dev liblzma-dev"
+export BAZELISK_VERSION=1.9.0
+export SANITIZER_FLAGS_address="-fsanitize=address -fsanitize-address-use-after-scope"
+export SANITIZER_FLAGS_hwaddress="-fsanitize=hwaddress -fuse-ld=lld -Wno-unused-command-line-argument"
+export SANITIZER_FLAGS_undefined="-fsanitize=array-bounds,bool,builtin,enum,float-divide-by-zero,function,integer-divide-by-zero,null,object-size,return,returns-nonnull-attribute,shift,signed-integer-overflow,unsigned-integer-overflow,unreachable,vla-bound,vptr -fno-sanitize-recover=array-bounds,bool,builtin,enum,float-divide-by-zero,function,integer-divide-by-zero,null,object-size,return,returns-nonnull-attribute,shift,signed-integer-overflow,unreachable,vla-bound,vptr"
+export SANITIZER_FLAGS_undefined_aarch64="-fsanitize=array-bounds,bool,builtin,enum,float-divide-by-zero,integer-divide-by-zero,null,object-size,return,returns-nonnull-attribute,shift,signed-integer-overflow,unsigned-integer-overflow,unreachable,vla-bound,vptr -fno-sanitize-recover=array-bounds,bool,builtin,enum,float-divide-by-zero,integer-divide-by-zero,null,object-size,return,returns-nonnull-attribute,shift,signed-integer-overflow,unreachable,vla-bound,vptr"
+export SANITIZER_FLAGS_memory="-fsanitize=memory -fsanitize-memory-track-origins"
+export SANITIZER_FLAGS_thread="-fsanitize=thread"
+export SANITIZER_FLAGS_introspector="-O0 -flto -fno-inline-functions -fuse-ld=gold -Wno-unused-command-line-argument"
+export SANITIZER_FLAGS_coverage=""
+export UBSAN_OPTIONS="silence_unsigned_overflow=1"
+export DFSAN_OPTIONS='warn_unimplemented=0'
+export COVERAGE_FLAGS="-fsanitize=fuzzer-no-link"
+export COVERAGE_FLAGS_coverage="-fprofile-instr-generate -fcoverage-mapping -pthread -Wl,--no-as-needed -Wl,-ldl -Wl,-lm -Wno-unused-command-line-argument"
+export FUZZING_ENGINE="libfuzzer"
+export ARCHITECTURE="x86_64"
+export LIB_FUZZING_ENGINE_DEPRECATED="/usr/lib/libFuzzingEngine.a"
+export LIB_FUZZING_ENGINE="/usr/lib/libFuzzingEngine.a"
+export FUZZER_LDFLAGS=""
+
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+apt-get update && apt-get install -y make cmake g++
+git clone --depth 1 https://github.com/uclouvain/openjpeg $SRC/openjpeg
+cp /opt/oss-fuzz/projects/openjpeg/build.sh $SRC/
+cd $SRC/openjpeg
+compile
