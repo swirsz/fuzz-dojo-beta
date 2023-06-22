@@ -1,6 +1,7 @@
 #!/bin/sh
 export DEBIAN_FRONTEND=noninteractive
 export RUN_FUZZER_MODE=interactive
+export FUZZING_ENGINE=libfuzzer
 export FUZZING_LANGUAGE=c++
 export OUT=/out
 export SRC=/src
@@ -37,9 +38,66 @@ export LIB_FUZZING_ENGINE_DEPRECATED="/usr/lib/libFuzzingEngine.a"
 export LIB_FUZZING_ENGINE="/usr/lib/libFuzzingEngine.a"
 export FUZZER_LDFLAGS=""
 
-[ -z "$SANITIZER" ] && export SANITIZER='address'
-apt-get update && apt-get install -y make autoconf automake libtool wget
+export CODE_COVERAGE_SRC=/opt/code_coverage
+export ASAN_OPTIONS="alloc_dealloc_mismatch=0:allocator_may_return_null=1:allocator_release_to_os_interval_ms=500:check_malloc_usable_size=0:detect_container_overflow=1:detect_odr_violation=0:detect_leaks=1:detect_stack_use_after_return=1:fast_unwind_on_fatal=0:handle_abort=1:handle_segv=1:handle_sigill=1:max_uar_stack_size_log=16:print_scariness=1:quarantine_size_mb=10:strict_memcmp=1:strip_path_prefix=/workspace/:symbolize=1:use_sigaltstack=1:dedup_token_length=3"
+export MSAN_OPTIONS="print_stats=1:strip_path_prefix=/workspace/:symbolize=1:dedup_token_length=3"
+export UBSAN_OPTIONS="print_stacktrace=1:print_summary=1:silence_unsigned_overflow=1:strip_path_prefix=/workspace/:symbolize=1:dedup_token_length=3"
+export FUZZER_ARGS="-rss_limit_mb=2560 -timeout=25"
+export AFL_FUZZER_ARGS="-m none"
+export PATH=$PATH:$GOPATH/bin
+export JAVA_HOME=/usr/lib/jvm/java-15-openjdk-amd64
+export JVM_LD_LIBRARY_PATH=$JAVA_HOME/lib/server
+export PATH=$PATH:$JAVA_HOME/bin
+export GOPATH=/root/go
+export HELPER=True
+export PROJECT=bzip2
+export HTTP_PORT=""
+export COVERAGE_EXTRA_ARGS=""
+
+export SANITIZER='address'
+
+#apt-get update && apt-get install -y make autoconf automake libtool wget
 git clone git://sourceware.org/git/bzip2.git $SRC/bzip2
 cp /opt/oss-fuzz/projects/bzip2/build.sh /opt/oss-fuzz/projects/bzip2/*.c $SRC/
 cd $SRC
 compile
+
+run_fuzzer bzip2_fd -max_total_time=5
+run_fuzzer bzip2_decompress_target -max_total_time=5
+run_fuzzer bzip2_compress_target -max_total_time=5
+run_fuzzer bzip2_filename -max_total_time=5
+
+export SANITIZER='coverage'
+
+#apt-get update && apt-get install -y make autoconf automake libtool wget
+git clone git://sourceware.org/git/bzip2.git $SRC/bzip2
+cp /opt/oss-fuzz/projects/bzip2/build.sh /opt/oss-fuzz/projects/bzip2/*.c $SRC/
+cd $SRC
+compile
+
+mkdir -p /corpus
+mv /tmp/bzip2_compress_target_corpus /corpus/bzip2_compress_target
+mv /tmp/bzip2_decompress_target_corpus /corpus/bzip2_decompress_target
+mv /tmp/bzip2_filename_corpus /corpus/bzip2_filename
+mv /tmp/bzip2_fd_corpus /corpus/bzip2_fd
+pip3 install Jinja2
+coverage
+
+export FUZZING_ENGINE='libfuzzer'
+export ARCHITECTURE='x86_64'
+export PROJECT_NAME='bzip2'
+export HELPER='True'
+export FUZZING_LANGUAGE='c++'
+export SANITIZER='introspector'
+compile
+
+mkdir -p /out/introspector-report
+mv /out/inspector /out/introspector-report/inspector
+mv /out/report /out/introspector-report/inspector/covreport
+
+mv /out/report_target/bzip2_compress_target /out/introspector-report/inspector/covreport/bzip2_compress_target
+mv /out/report_target/bzip2_decompress_target /out/introspector-report/inspector/covreport/bzip2_decompress_target
+mv /out/report_target/bzip2_fd /out/introspector-report/inspector/covreport/bzip2_fd
+mv /out/report_target/bzip2_filename /out/introspector-report/inspector/covreport/bzip2_filename
+
+python3 -m http.server 8008 --directory /out/introspector-report/inspector/

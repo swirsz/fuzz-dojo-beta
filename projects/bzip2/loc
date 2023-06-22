@@ -54,9 +54,9 @@ export PROJECT=bzip2
 export HTTP_PORT=""
 export COVERAGE_EXTRA_ARGS=""
 
-export SANITIZER='none'
+export SANITIZER='address'
 
-apt-get update && apt-get install -y make autoconf automake libtool wget
+#apt-get update && apt-get install -y make autoconf automake libtool wget
 git clone git://sourceware.org/git/bzip2.git $SRC/bzip2
 cp /opt/oss-fuzz/projects/bzip2/build.sh /opt/oss-fuzz/projects/bzip2/*.c $SRC/
 cd $SRC
@@ -67,15 +67,20 @@ run_fuzzer bzip2_decompress_target -max_total_time=5
 run_fuzzer bzip2_compress_target -max_total_time=5
 run_fuzzer bzip2_filename -max_total_time=5
 
-
 export SANITIZER='coverage'
 
-apt-get update && apt-get install -y make autoconf automake libtool wget
+#apt-get update && apt-get install -y make autoconf automake libtool wget
 git clone git://sourceware.org/git/bzip2.git $SRC/bzip2
 cp /opt/oss-fuzz/projects/bzip2/build.sh /opt/oss-fuzz/projects/bzip2/*.c $SRC/
 cd $SRC
 compile
 
+mkdir -p /corpus
+mv /tmp/bzip2_compress_target_corpus /corpus/bzip2_compress_target
+mv /tmp/bzip2_decompress_target_corpus /corpus/bzip2_decompress_target
+mv /tmp/bzip2_filename_corpus /corpus/bzip2_filename
+mv /tmp/bzip2_fd_corpus /corpus/bzip2_fd
+#pip3 install Jinja2
 coverage
 
 loc.py bzip2 bzip2_decompress_target
