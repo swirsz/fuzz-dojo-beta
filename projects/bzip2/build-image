@@ -6,3 +6,4 @@ git clone git://sourceware.org/git/bzip2.git $SRC/bzip2
 cp /opt/oss-fuzz/projects/bzip2/build.sh /opt/oss-fuzz/projects/bzip2/*.c $SRC/
 cd $SRC
 compile
+find-drv.sh
