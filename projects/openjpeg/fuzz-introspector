@@ -24,10 +24,18 @@ do
 done
 
 coverage
-echo
+
+export SANITIZER='introspector'
+compile
+
+rm -rf /out/introspector-report
+mkdir -p /out/introspector-report
+mv /out/inspector /out/introspector-report/inspector
+mv /out/report /out/introspector-report/inspector/covreport
+
 for driver in "${DRIVERS[@]}"
 do
-    echo $driver
-    /usr/local/sbin/loc.py $PROJECT_NAME $driver
-    echo
+    mv /out/report_target/$driver /out/introspector-report/inspector/covreport/$driver
 done
+
+python3 -m http.server 8008 --directory /out/introspector-report/inspector/

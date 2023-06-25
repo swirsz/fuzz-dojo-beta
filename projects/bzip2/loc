@@ -1,5 +1,6 @@
 #!/bin/bash
 DRIVERS=('bzip2_fd' 'bzip2_decompress_target' 'bzip2_compress_target' 'bzip2_filename')
+export PROJECT_NAME='bzip2' 
 
 . /usr/local/sbin/e.sh
 export SANITIZER='none'
@@ -26,7 +27,7 @@ echo
 for driver in "${DRIVERS[@]}"
 do
     echo $driver
-    /usr/local/sbin/loc.py bzip2 $driver
+    /usr/local/sbin/loc.py $PROJECT_NAME $driver
     echo
 done
 
