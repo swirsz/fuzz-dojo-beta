@@ -4,11 +4,7 @@ export PROJECT_NAME='bzip2'
 
 . /usr/local/sbin/e.sh
 export SANITIZER='none'
-#apt-get update && apt-get install -y make autoconf automake libtool wget
-git clone git://sourceware.org/git/bzip2.git $SRC/bzip2
-cp -f /opt/oss-fuzz/projects/bzip2/build.sh /opt/oss-fuzz/projects/bzip2/*.c $SRC/
-cd $SRC
-compile
+/challenge/build-image
 
 parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=5
 
