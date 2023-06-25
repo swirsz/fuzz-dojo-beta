@@ -4,6 +4,7 @@ export PROJECT_NAME='bzip2'
 
 . /usr/local/sbin/e.sh
 export SANITIZER='none'
+cd $SRC
 /challenge/build-image
 
 parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=5
