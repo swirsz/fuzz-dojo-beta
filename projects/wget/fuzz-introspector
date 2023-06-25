@@ -1,0 +1,23 @@
+#!/bin/bash
+DRIVERS=('wget_cookie_fuzzer' 'wget_css_fuzzer' 'wget_ftpls_fuzzer' 'wget_html_fuzzer' 'wget_netrc_fuzzer' 'wget_ntlm_fuzzer' 'wget_options_fuzzer' 'wget_progress_fuzzer' 'wget_read_hunk_fuzzer' 'wget_robots_fuzzer' 'wget_url_fuzzer')
+export PROJECT_NAME='wget' 
+
+. /usr/local/sbin/e.sh
+cd $SRC
+/challenge/loc
+
+cd $SRC/$PROJECT_NAME
+export SANITIZER='introspector'
+compile
+
+rm -rf /out/introspector-report
+mkdir -p /out/introspector-report
+mv /out/inspector /out/introspector-report/inspector
+mv /out/report /out/introspector-report/inspector/covreport
+
+for driver in "${DRIVERS[@]}"
+do
+    mv /out/report_target/$driver /out/introspector-report/inspector/covreport/$driver
+done
+
+python3 -m http.server 8008 --directory /out/introspector-report/inspector/

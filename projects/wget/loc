@@ -1,6 +1,6 @@
 #!/bin/bash
-DRIVERS=('opj_decompress_fuzzer_J2K' 'opj_decompress_fuzzer_JP2')
-export PROJECT_NAME='openjpeg' 
+DRIVERS=('wget_cookie_fuzzer' 'wget_css_fuzzer' 'wget_ftpls_fuzzer' 'wget_html_fuzzer' 'wget_netrc_fuzzer' 'wget_ntlm_fuzzer' 'wget_options_fuzzer' 'wget_progress_fuzzer' 'wget_read_hunk_fuzzer' 'wget_robots_fuzzer' 'wget_url_fuzzer')
+export PROJECT_NAME='wget' 
 
 . /usr/local/sbin/e.sh
 export SANITIZER='none'
@@ -8,10 +8,6 @@ export SANITIZER='none'
 
 parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=10
 
-cd $SRC
-rm -rf /src/$PROJECT_NAME
-git clone --depth 1 https://github.com/uclouvain/openjpeg $SRC/openjpeg
-cp /opt/oss-fuzz/projects/openjpeg/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 export SANITIZER='coverage'
 compile
