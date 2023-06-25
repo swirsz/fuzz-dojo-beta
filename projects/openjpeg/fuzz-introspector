@@ -3,20 +3,8 @@ DRIVERS=('opj_decompress_fuzzer_J2K' 'opj_decompress_fuzzer_JP2')
 export PROJECT_NAME='openjpeg' 
 
 . /usr/local/sbin/e.sh
-export SANITIZER='none'
-
-parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=5
-
-export SANITIZER='coverage'
-compile
-
-for driver in "${DRIVERS[@]}"
-do
-    rm -rf /corpus/$driver
-    mv /tmp/${driver}_corpus /corpus/$driver
-done
-
-coverage
+cd $SRC
+/challenge/loc
 
 export SANITIZER='introspector'
 compile
