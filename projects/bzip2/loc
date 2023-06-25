@@ -4,8 +4,9 @@ DRIVERS=('bzip2_fd' 'bzip2_decompress_target' 'bzip2_compress_target' 'bzip2_fil
 . /usr/local/sbin/e.sh
 export SANITIZER='none'
 #apt-get update && apt-get install -y make autoconf automake libtool wget
+rm -rf $SRC/bzip2
 git clone git://sourceware.org/git/bzip2.git $SRC/bzip2
-cp /opt/oss-fuzz/projects/bzip2/build.sh /opt/oss-fuzz/projects/bzip2/*.c $SRC/
+cp -f /opt/oss-fuzz/projects/bzip2/build.sh /opt/oss-fuzz/projects/bzip2/*.c $SRC/
 cd $SRC
 compile
 
@@ -16,14 +17,16 @@ compile
 
 for driver in "${DRIVERS[@]}"
 do
+    rm -rf /corpus/$driver
     mv /tmp/${driver}_corpus /corpus/$driver
 done
 
-#pip3 install Jinja2
 coverage
-
+echo
 for driver in "${DRIVERS[@]}"
 do
+    echo $driver
     /usr/local/sbin/loc.py bzip2 $driver
+    echo
 done
 
