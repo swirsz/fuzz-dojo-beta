@@ -2,7 +2,6 @@
 . /usr/local/sbin/e.sh
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 #apt-get update && apt-get install -y make autoconf automake libtool wget
-rm -rf $SRC/bzip2
 git clone git://sourceware.org/git/bzip2.git $SRC/bzip2
 cp /opt/oss-fuzz/projects/bzip2/build.sh /opt/oss-fuzz/projects/bzip2/*.c $SRC/
 cd $SRC

@@ -5,13 +5,6 @@ export PROJECT_NAME='openjpeg'
 . /usr/local/sbin/e.sh
 export SANITIZER='none'
 
-apt-get update && apt-get install -y make cmake g++
-rm -rf /src/openjpeg
-git clone --depth 1 https://github.com/uclouvain/openjpeg $SRC/openjpeg
-cp /opt/oss-fuzz/projects/openjpeg/build.sh $SRC/
-cd $SRC/openjpeg
-compile
-
 parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=5
 
 export SANITIZER='coverage'
