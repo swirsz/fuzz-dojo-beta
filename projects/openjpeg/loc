@@ -4,11 +4,15 @@ export PROJECT_NAME='openjpeg'
 
 . /usr/local/sbin/e.sh
 export SANITIZER='none'
-cd $SRC
 /challenge/build-image
 
-parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=5
+parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=10
 
+cd $SRC
+rm -rf /src/openjpeg
+git clone --depth 1 https://github.com/uclouvain/openjpeg $SRC/openjpeg
+cp /opt/oss-fuzz/projects/openjpeg/build.sh $SRC/
+cd $SRC/openjpeg
 export SANITIZER='coverage'
 compile
 

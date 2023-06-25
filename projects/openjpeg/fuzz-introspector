@@ -6,6 +6,11 @@ export PROJECT_NAME='openjpeg'
 cd $SRC
 /challenge/loc
 
+cd $SRC
+rm -rf /src/openjpeg
+git clone --depth 1 https://github.com/uclouvain/openjpeg $SRC/openjpeg
+cp /opt/oss-fuzz/projects/openjpeg/build.sh $SRC/
+cd $SRC/openjpeg
 export SANITIZER='introspector'
 compile
 
