@@ -16,7 +16,7 @@ compile
 
 for driver in "${DRIVERS[@]}"
 do
-    mv /tmp/$driver /corpus/$driver
+    mv /tmp/${driver}_corpus /corpus/$driver
 done
 
 #pip3 install Jinja2
