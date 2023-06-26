@@ -1,29 +1,4 @@
 #!/bin/bash
-DRIVERS=('bzip2_fd' 'bzip2_decompress_target' 'bzip2_compress_target' 'bzip2_filename')
-export PROJECT_NAME='bzip2' 
-
-. /usr/local/sbin/e.sh
-export SANITIZER='none'
-cd $SRC
-/challenge/build-image
-
-parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=5
-
-export SANITIZER='coverage'
-compile
-
-for driver in "${DRIVERS[@]}"
-do
-    rm -rf /corpus/$driver
-    mv /tmp/${driver}_corpus /corpus/$driver
-done
-
-coverage
-echo
-for driver in "${DRIVERS[@]}"
-do
-    echo $driver
-    /usr/local/sbin/loc.py $PROJECT_NAME $driver
-    echo
-done
-
+export DRIVERS=('bzip2_fd' 'bzip2_decompress_target' 'bzip2_compress_target' 'bzip2_filename')
+export PROJECT_NAME=bzip2
+/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"

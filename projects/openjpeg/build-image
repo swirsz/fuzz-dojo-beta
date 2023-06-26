@@ -1,11 +1,11 @@
 #!/bin/sh
 . /usr/local/sbin/e.sh
 [ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
 
 apt-get update && apt-get install -y make cmake g++
-rm -rf /src/openjpeg
+rm -rf $SRC/openjpeg
 git clone --depth 1 https://github.com/uclouvain/openjpeg $SRC/openjpeg
 cp /opt/oss-fuzz/projects/openjpeg/build.sh $SRC/
 cd $SRC/openjpeg
 compile
-find-drv.sh

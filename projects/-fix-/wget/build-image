@@ -30,19 +30,18 @@ apt-get update && apt-get install -y \
 export GNULIB_TOOL=$SRC/gnulib/gnulib-tool
 export GNULIB_SRCDIR=$SRC/gnulib
 cd $SRC
-git clone git://git.savannah.gnu.org/gnulib.git 
-wget https://ftp.gnu.org/gnu/libunistring/libunistring-latest.tar.gz
-tar -xzvf libunistring-latest.tar.gz
+git clone git://git.savannah.gnu.org/gnulib.git
+rm -rf /src/libunistring
+git clone git://git.savannah.gnu.org/gnulib.git
+wget -qO- https://ftp.gnu.org/gnu/libunistring/libunistring-latest.tar.gz | tar -xz -C /src
 mv /src/libunistring-* /src/libunistring
-wget https://ftp.gnu.org/gnu/libidn/libidn2-latest.tar.gz /src
-tar -xzvf libidn2-latest.tar.gz 
+wget -qO- https://ftp.gnu.org/gnu/libidn/libidn2-latest.tar.gz | tar -xz -C /src 
 mv /src/libidn2-* /src/libidn2
-mv /src/libidn2/unistring/.libs/libunistring.lax/libunistring.a/ /src/libidn2/unistring/.libs/libunistring.a
-git clone --depth=1 --recursive https://github.com/rockdaboot/libpsl.git 
+git clone --depth=1 --recursive https://github.com/rockdaboot/libpsl.git
 git clone --depth=1 https://git.lysator.liu.se/nettle/nettle.git
 git clone --depth=1 https://gitlab.com/gnutls/gnutls.git
 git clone https://git.savannah.gnu.org/git/wget.git
 cp /opt/oss-fuzz/projects/wget/build.sh $SRC/
 cd $SRC/wget
 compile
-find-drv.sh
+#find-drv.sh

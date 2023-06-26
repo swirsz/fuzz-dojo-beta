@@ -1,27 +1,4 @@
 #!/bin/bash
-DRIVERS=('opj_decompress_fuzzer_J2K' 'opj_decompress_fuzzer_JP2')
-export PROJECT_NAME='openjpeg' 
-
-. /usr/local/sbin/e.sh
-cd $SRC
-/challenge/loc
-
-cd $SRC
-rm -rf /src/openjpeg
-git clone --depth 1 https://github.com/uclouvain/openjpeg $SRC/openjpeg
-cp /opt/oss-fuzz/projects/openjpeg/build.sh $SRC/
-cd $SRC/openjpeg
-export SANITIZER='introspector'
-compile
-
-rm -rf /out/introspector-report
-mkdir -p /out/introspector-report
-mv /out/inspector /out/introspector-report/inspector
-mv /out/report /out/introspector-report/inspector/covreport
-
-for driver in "${DRIVERS[@]}"
-do
-    mv /out/report_target/$driver /out/introspector-report/inspector/covreport/$driver
-done
-
-python3 -m http.server 8008 --directory /out/introspector-report/inspector/
+export DRIVERS=('opj_decompress_fuzzer_J2K' 'opj_decompress_fuzzer_JP2')
+export PROJECT_NAME=openjpeg
+/usr/local/sbin/fi.sh $PROJECT_NAME "${DRIVERS[@]}"
