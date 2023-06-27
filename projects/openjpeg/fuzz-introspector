@@ -2,6 +2,6 @@
 export DRIVERS=('opj_decompress_fuzzer_J2K' 'opj_decompress_fuzzer_JP2')
 export PROJECT_NAME=openjpeg
 /usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
-cd $SRC/$PROJECT_NAME
+cd /src/$PROJECT_NAME
 rm -rf data build
 /usr/local/sbin/fi.sh $PROJECT_NAME "${DRIVERS[@]}"
