@@ -1,0 +1,15 @@
+#!/bin/sh
+. /usr/local/sbin/e.sh
+export PROJECT_NAME=avahi
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+apt-get update && \
+    apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
+git clone --depth 1 https://github.com/lathiat/avahi
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/avahi_packet_consume_record_fuzzer.cc $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/avahi_packet_consume_key_fuzzer.cc $SRC/
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/$PROJECT_NAME
+compile
