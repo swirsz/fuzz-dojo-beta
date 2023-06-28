@@ -1,12 +1,13 @@
 #!/bin/sh
 . /usr/local/sbin/e.sh
+export PROJECT_NAME=c-ares
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 apt-get update && apt-get install -y make autoconf automake libtool
-RUN git clone --depth 1 https://github.com/c-ares/c-ares.git
-
-cp /opt/oss-fuzz/projects/c-ares/build.sh $SRC/
-cd $SRC/c-ares
+git clone --depth 1 https://github.com/c-ares/c-ares.git
 export OLD_LLVMPASS=1
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/$PROJECT_NAME
 compile

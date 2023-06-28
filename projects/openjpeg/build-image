@@ -1,11 +1,13 @@
 #!/bin/sh
 . /usr/local/sbin/e.sh
+export PROJECT_NAME=openjpeg
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 apt-get update && apt-get install -y make cmake g++
 rm -rf $SRC/openjpeg
-git clone --depth 1 https://github.com/uclouvain/openjpeg $SRC/openjpeg
-cp /opt/oss-fuzz/projects/openjpeg/build.sh $SRC/
-cd $SRC/openjpeg
+git clone --depth 1 https://github.com/uclouvain/openjpeg
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/$PROJECT_NAME
 compile
