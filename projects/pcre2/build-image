@@ -1,0 +1,10 @@
+#!/bin/sh
+. /usr/local/sbin/e.sh
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+apt-get update && apt-get install -y make autoconf automake libtool subversion
+git clone https://github.com/PCRE2Project/pcre2 pcre2
+cp /opt/oss-fuzz/projects/openjpeg/build.sh $SRC/
+cd $SRC/openjpeg
+compile

@@ -71,12 +71,8 @@ modules:
         name: OPENJPEG
         description: Make improvements to OSS-Fuzz
 
-      - id: openssl
-        name: OPENSSL
-        description: Make improvements to OSS-Fuzz
-
-      - id: php
-        name: PHP
+      - id: pcre2
+        name: PCRE2
         description: Make improvements to OSS-Fuzz
 
       - id: xz
