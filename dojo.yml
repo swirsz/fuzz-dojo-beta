@@ -64,7 +64,7 @@ modules:
     challenges:
 
       - id: bzip2
-        name: BZIP2
+        name: BZIP2 (100%) 2661 loc
         description: Make improvements to OSS-Fuzz
 
       - id: c-ares
