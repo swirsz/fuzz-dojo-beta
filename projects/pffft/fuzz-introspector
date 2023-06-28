@@ -1,0 +1,6 @@
+#!/bin/bash
+export DRIVERS=('pffft_complex_fuzzer' 'pffft_real_fuzzer')
+export PROJECT_NAME=pffft
+/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
+cd /src/$PROJECT_NAME
+/usr/local/sbin/fi.sh $PROJECT_NAME "${DRIVERS[@]}"

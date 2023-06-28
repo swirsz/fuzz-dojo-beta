@@ -1,0 +1,14 @@
+#!/bin/sh
+. /usr/local/sbin/e.sh
+export PROJECT_NAME=pffft
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+apt-get update && apt-get install -y mercurial python-numpy python
+git clone https://bitbucket.org/jpommier/pffft
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/generate_seed_corpus.py $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/pffft_fuzzer.cc $SRC/
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/$PROJECT_NAME
+compile
