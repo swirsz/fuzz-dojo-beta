@@ -67,6 +67,10 @@ modules:
         name: BZIP2
         description: Make improvements to OSS-Fuzz
 
+      - id: c-ares
+        name: C-ARES
+        description: Make improvements to OSS-Fuzz
+
       - id: openjpeg
         name: OPENJPEG
         description: Make improvements to OSS-Fuzz
