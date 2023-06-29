@@ -64,7 +64,7 @@ modules:
     challenges:
 
       - id: avahi
-        name: AVAHI - (32.89%) 2566 loc
+        name: AVAHI (32.89%) 2566 loc
         description: Make improvements to OSS-Fuzz
 
       - id: bzip2
@@ -77,6 +77,10 @@ modules:
 
       - id: openjpeg
         name: OPENJPEG (51.03%) 22939 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: opensips
+        name: OPENSIPS (13.37%) 62114 loc
         description: Make improvements to OSS-Fuzz
 
       - id: pcre2
