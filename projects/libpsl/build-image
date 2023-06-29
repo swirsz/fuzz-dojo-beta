@@ -4,7 +4,7 @@ export PROJECT_NAME=libpsl
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-RUN apt-get update && apt-get install -y \
+apt-get update && apt-get install -y \
  make \
  pkg-config \
  autogen \

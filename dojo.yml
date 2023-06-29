@@ -100,7 +100,7 @@ modules:
         description: Make improvements to OSS-Fuzz
 
       - id: pycryptodome
-        name: PYCRYPTODOME (80.26%) 1398 loc
+        name: PYCRYPTODOME (80.26%) 1398 loc (no then yes)
         description: Make improvements to OSS-Fuzz
 
       - id: xz
