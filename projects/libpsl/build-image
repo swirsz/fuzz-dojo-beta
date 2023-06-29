@@ -22,6 +22,7 @@ apt-get update && apt-get install -y \
  wget \
  python
 
+rm -rf /usr/include/xlocale.h
 git clone git://git.savannah.gnu.org/gnulib.git
 git clone --depth=1 https://git.savannah.gnu.org/git/libunistring.git
 git clone --depth=1 https://gitlab.com/libidn/libidn2.git
