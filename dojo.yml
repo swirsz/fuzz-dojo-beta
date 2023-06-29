@@ -103,6 +103,10 @@ modules:
         name: POSTFIX (8.54%) 10919 loc
         description: Make improvements to OSS-Fuzz
 
+      - id: pycryptodome
+        name: PYCRYPTODOME (80.26%) 1398 loc
+        description: Make improvements to OSS-Fuzz
+
       - id: xz
         name: XZ (67.87%) 3414 loc
         description: Make improvements to OSS-Fuzz
