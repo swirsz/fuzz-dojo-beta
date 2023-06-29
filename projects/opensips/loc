@@ -1,4 +1,4 @@
 #!/bin/bash
-export DRIVERS=('fuzz-consume-record' 'fuzz-consume-key')
-export PROJECT_NAME=avahi
+export DRIVERS=('fuzz_core_funcs' 'fuzz_csv_parser' 'fuzz_msg_parser' 'fuzz_uri_parser')
+export PROJECT_NAME=opensips
 /usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
