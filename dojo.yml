@@ -79,10 +79,6 @@ modules:
         name: JANUS-GATEWAY (37.48%) 6131 loc
         description: Make improvements to OSS-Fuzz
 
-      - id: libpsl
-        name: LIBPSL (19.17%) 55943 loc
-        description: Make improvements to OSS-Fuzz
-
       - id: openjpeg
         name: OPENJPEG (51.03%) 22939 loc
         description: Make improvements to OSS-Fuzz
