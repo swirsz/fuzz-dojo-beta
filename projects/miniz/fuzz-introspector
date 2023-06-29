@@ -3,4 +3,5 @@ export DRIVERS=('uncompress_fuzzer' 'uncompress2_fuzzer' 'flush_fuzzer' 'checksu
 export PROJECT_NAME=miniz
 /usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
 cd /src/$PROJECT_NAME
+rm -rf /src/$PROJECT_NAME/build
 /usr/local/sbin/fi.sh $PROJECT_NAME "${DRIVERS[@]}"
