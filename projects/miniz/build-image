@@ -1,0 +1,11 @@
+#!/bin/sh
+. /usr/local/sbin/e.sh
+export PROJECT_NAME=miniz
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+git clone --depth 1 https://github.com/richgel999/miniz.git
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/$PROJECT_NAME
+compile
