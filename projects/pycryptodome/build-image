@@ -5,7 +5,7 @@ export PROJECT_NAME=pycryptodome
 cd $SRC
 
 apt-get update && apt-get install -y make autoconf automake libtool
-git clone --depth 1 https://github.com/Legrandin/pycryptodome.git
+git clone https://github.com/Legrandin/pycryptodome.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/block_common.patch $SRC/pycryptodome/src
