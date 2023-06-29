@@ -75,6 +75,14 @@ modules:
         name: C-ARES (33.77%) 5676 loc
         description: Make improvements to OSS-Fuzz
 
+      - id: janus-gateway
+        name: JANUS-GATEWAY (37.48%) 6131 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: libpsl
+        name: LIBPSL (19.17%) 55943 loc
+        description: Make improvements to OSS-Fuzz
+
       - id: openjpeg
         name: OPENJPEG (51.03%) 22939 loc
         description: Make improvements to OSS-Fuzz
@@ -89,6 +97,10 @@ modules:
 
       - id: pffft
         name: PFFFT (92.81%) 1279 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: postfix
+        name: POSTFIX (8.54%) 10919 loc
         description: Make improvements to OSS-Fuzz
 
       - id: xz

@@ -1,0 +1,13 @@
+#!/bin/sh
+. /usr/local/sbin/e.sh
+export PROJECT_NAME=postfix
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+apt-get update && apt-get install -y make autoconf automake libtool libdb-dev
+git clone --depth=1 https://github.com/vdukhovni/postfix
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/$PROJECT_NAME
+compile

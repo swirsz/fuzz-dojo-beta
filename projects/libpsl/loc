@@ -1,0 +1,7 @@
+#!/bin/bash
+export DRIVERS=('libpsl_load_dafsa_fuzzer' 'libpsl_load_fuzzer' 'libpsl_fuzzer' 'libpsl_idn_fuzzer' 'libpsl_idn_load_fuzzer' 'libpsl_idn_load_dafsa_fuzzer' 'libpsl_idn2_load_fuzzer' 'libpsl_idn2_fuzzer' 'libpsl_idn2_load_dafsa_fuzzer' 'libpsl_icu_load_dafsa_fuzzer' 'libpsl_icu_load_fuzzer' 'libpsl_icu_fuzzer')
+export PROJECT_NAME=libpsl
+/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
+
+
+

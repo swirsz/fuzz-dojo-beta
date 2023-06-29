@@ -1,0 +1,32 @@
+#!/bin/sh
+. /usr/local/sbin/e.sh
+export PROJECT_NAME=janus-gateway
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+apt-get update && apt-get install -y \
+	autoconf autoconf-archive \
+	automake \
+	gengetopt \
+	gtk-doc-tools \
+	libconfig-dev \
+	libglib2.0-dev \
+	libgnutls28-dev \
+	libini-config-dev \
+	libjansson-dev \
+	libnice-dev \
+	libssl-dev \
+	libtool \
+	openssl \
+	pkg-config
+
+# install libsrtp dep from source
+git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
+cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
+
+# fetch Janus code
+git clone --single-branch --branch master https://github.com/meetecho/janus-gateway.git 
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC
+compile

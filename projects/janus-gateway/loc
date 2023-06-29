@@ -1,0 +1,4 @@
+#!/bin/bash
+export DRIVERS=('rtcp_fuzzer' 'rtp_fuzzer' 'sdp_fuzzer')
+export PROJECT_NAME=janus-gateway
+/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
