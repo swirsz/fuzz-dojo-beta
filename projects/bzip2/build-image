@@ -1,6 +1,6 @@
 #!/bin/sh
 . /usr/local/sbin/e.sh
-PROJECT_NAME=bzip2
+export PROJECT_NAME=bzip2
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 

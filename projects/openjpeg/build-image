@@ -5,7 +5,8 @@ export PROJECT_NAME=openjpeg
 cd $SRC
 
 apt-get update && apt-get install -y make cmake g++
-rm -rf $SRC/openjpeg
+rm -rf $SRC/openjpeg/data
+rm -rf $SRC/openjpeg/build
 git clone --depth 1 https://github.com/uclouvain/openjpeg
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
