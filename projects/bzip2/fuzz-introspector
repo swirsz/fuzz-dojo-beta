@@ -1,6 +1,7 @@
 #!/bin/bash
-DRIVERS=('bzip2_fd' 'bzip2_decompress_target' 'bzip2_compress_target' 'bzip2_filename')
-export PROJECT_NAME=bzip2
+cd /out
+DRIVERS=(bzip2*)
+PROJECT_NAME=bzip2
 /usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
 cd /src
 /usr/local/sbin/fi.sh $PROJECT_NAME "${DRIVERS[@]}"

@@ -1,6 +1,6 @@
 #!/bin/sh
 . /usr/local/sbin/e.sh
-export PROJECT_NAME=miniz
+export PROJECT_NAME=haproxy
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
