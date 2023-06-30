@@ -1,6 +1,5 @@
 #!/bin/bash
-export DRIVERS=('ares_create_query_fuzzer' 'ares_parse_reply_fuzzer')
 export PROJECT_NAME=c-ares
-/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/loc_count.sh $PROJECT_NAME
 cd /src/$PROJECT_NAME
-/usr/local/sbin/fi.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/fi.sh $PROJECT_NAME

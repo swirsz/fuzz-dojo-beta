@@ -1,4 +1,3 @@
 #!/bin/bash
-export DRIVERS=('pcre2_fuzzer')
 export PROJECT_NAME=pcre2
-/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/loc_count.sh $PROJECT_NAME

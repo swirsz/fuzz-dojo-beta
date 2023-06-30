@@ -1,4 +1,3 @@
 #!/bin/bash
-export DRIVERS=('opj_decompress_fuzzer_J2K' 'opj_decompress_fuzzer_JP2')
 export PROJECT_NAME=openjpeg
-/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/loc_count.sh $PROJECT_NAME

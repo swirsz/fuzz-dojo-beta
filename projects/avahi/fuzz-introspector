@@ -1,6 +1,5 @@
 #!/bin/bash
-export DRIVERS=('fuzz-consume-record' 'fuzz-consume-key')
 export PROJECT_NAME=avahi
-/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/loc_count.sh $PROJECT_NAME
 cd /src/$PROJECT_NAME
-/usr/local/sbin/fi.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/fi.sh $PROJECT_NAME
