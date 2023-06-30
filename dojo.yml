@@ -75,6 +75,10 @@ modules:
         name: C-ARES (33.77%) 5676 loc
         description: Make improvements to OSS-Fuzz
 
+      - id: haproxy
+        name: HAPROXY (1.81%) 106108 loc
+        description: Make improvements to OSS-Fuzz
+
       - id: janus-gateway
         name: JANUS-GATEWAY (37.48%) 6131 loc
         description: Make improvements to OSS-Fuzz
