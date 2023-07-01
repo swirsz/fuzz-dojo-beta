@@ -99,6 +99,10 @@ modules:
         name: PFFFT (92.81%) 1279 loc
         description: Make improvements to OSS-Fuzz
 
+      - id: speex
+        name: SPEEX (35.04%) 5867 loc
+        description: Make improvements to OSS-Fuzz
+
       - id: xz
         name: XZ (67.87%) 3414 loc
         description: Make improvements to OSS-Fuzz
