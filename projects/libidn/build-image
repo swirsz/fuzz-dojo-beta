@@ -13,6 +13,8 @@ apt-get update && apt-get install -y \
  libtool \
  gettext gengetopt curl gperf wget
 
+rm -rf $SRC/$PROJECT_NAME/build-aux
+rm -rf $SRC/$PROJECT_NAME/autom4te.cache
 git clone https://git.savannah.gnu.org/git/libidn.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

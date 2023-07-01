@@ -1,5 +1,7 @@
 #!/bin/bash
-export PROJECT_NAME=janus-gateway
+export PROJECT_NAME=libgd
 /usr/local/sbin/loc_count.sh $PROJECT_NAME
-cd /src
+cd /src/$PROJECT_NAME
+export GNULIB_TOOL=$SRC/gnulib/gnulib-tool
+export GNULIB_SRCDIR=$SRC/gnulib
 /usr/local/sbin/fi.sh $PROJECT_NAME
