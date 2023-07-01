@@ -79,8 +79,40 @@ modules:
         name: JANUS-GATEWAY (37.48%) 6131 loc
         description: Make improvements to OSS-Fuzz
 
+      - id: gfwx
+        name: GFWX (84.36%) 1087 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: kamailio
+        name: KAMAILIO (9.19%) 81190 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: libgd
+        name: LIBGD (33.66%) 5368 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: libidn
+        name: LIBIDN (80.46%) 2180 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: libsodium
+        name: LIBSODIUM (20.67%) 7761 loc
+        description: Make improvements to OSS-Fuzz
+      
+      - id: libtasn1
+        name: LIBTASN1 (59.15%) 6722 loc
+        description: Make improvements to OSS-Fuzz
+      
+      - id: lzo
+        name: LZO (92.23%) 3835 loc
+        description: Make improvements to OSS-Fuzz
+
       - id: miniz
         name: MINIZ (47.67%) 5423 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: minizip
+        name: MINIZIP (58.59%) 3639 loc
         description: Make improvements to OSS-Fuzz
 
       - id: openjpeg
@@ -103,7 +135,19 @@ modules:
         name: SPEEX (35.04%) 5867 loc
         description: Make improvements to OSS-Fuzz
 
+      - id: snappy
+        name: SNAPPY (61.58%) 1502 loc
+        description: Make improvements to OSS-Fuzz
+
       - id: xz
         name: XZ (67.87%) 3414 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: zlib
+        name: ZLIB (69.77%) 5055 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: zopfli
+        name: ZOPFLI (92.75%) 2221 loc
         description: Make improvements to OSS-Fuzz
 

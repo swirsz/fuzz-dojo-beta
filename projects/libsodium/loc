@@ -1,0 +1,3 @@
+#!/bin/bash
+export PROJECT_NAME=libsodium
+/usr/local/sbin/loc_count.sh $PROJECT_NAME
