@@ -7,7 +7,7 @@ cd $SRC
 apt-get update && \
     apt-get install -y make autoconf automake libtool pkg-config libz-dev
 git clone --depth 1 https://github.com/libgd/libgd
-ADD https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz $SRC/afl_testcases.tgz
+wget https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
