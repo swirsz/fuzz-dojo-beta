@@ -1,5 +1,5 @@
 #!/bin/bash
 export PROJECT_NAME=speex
 /usr/local/sbin/loc_count.sh $PROJECT_NAME
-cd /src
+cd /src/$PROJECT_NAME
 /usr/local/sbin/fi.sh $PROJECT_NAME
