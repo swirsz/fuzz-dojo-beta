@@ -87,10 +87,6 @@ modules:
         name: KAMAILIO (9.19%) 81190 loc
         description: Make improvements to OSS-Fuzz
 
-      - id: libgd
-        name: LIBGD (33.66%) 5368 loc
-        description: Make improvements to OSS-Fuzz
-
       - id: libidn
         name: LIBIDN (80.46%) 2180 loc
         description: Make improvements to OSS-Fuzz
