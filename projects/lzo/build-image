@@ -1,6 +1,6 @@
 #!/bin/sh
 . /usr/local/sbin/e.sh
-export PROJECT_NAME=janus-gateway
+export PROJECT_NAME=lzo
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
@@ -20,12 +20,14 @@ apt-get update && apt-get install -y \
         openssl \
         pkg-config
 
-# install libsrtp dep from source
-git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
-cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
-cd $SRC/
-# fetch Janus code
-git clone --single-branch --branch master https://github.com/meetecho/janus-gateway.git
+apt-get update && apt-get install -y make autoconf automake libtool wget
+wget -O lzo.tar.gz http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
+mkdir $SRC/lzo_decompress_target_seeds
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/lzo_decompress_target_seeds $SRC/lzo_decompress_target_seeds
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
