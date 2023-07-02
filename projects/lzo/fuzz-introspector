@@ -1,5 +1,5 @@
 #!/bin/bash
 export PROJECT_NAME=lzo
-/usr/local/sbin/loc_count.sh $PROJECT_NAME
+/usr/local/sbin/loc_count $PROJECT_NAME
 cd /src
-/usr/local/sbin/fi.sh $PROJECT_NAME
+/usr/local/sbin/fi $PROJECT_NAME

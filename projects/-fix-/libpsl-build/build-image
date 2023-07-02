@@ -1,5 +1,5 @@
 #!/bin/sh
-. /usr/local/sbin/e.sh
+. /usr/local/sbin/e
 export PROJECT_NAME=libpsl
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC

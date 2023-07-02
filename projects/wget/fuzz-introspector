@@ -1,8 +1,7 @@
 #!/bin/bash
-DRIVERS=('wget_cookie_fuzzer' 'wget_css_fuzzer' 'wget_ftpls_fuzzer' 'wget_html_fuzzer' 'wget_netrc_fuzzer' 'wget_ntlm_fuzzer' 'wget_options_fuzzer' 'wget_progress_fuzzer' 'wget_read_hunk_fuzzer' 'wget_robots_fuzzer' 'wget_url_fuzzer')
 export PROJECT_NAME='wget' 
 
-. /usr/local/sbin/e.sh
+. /usr/local/sbin/e
 cd $SRC
 /challenge/loc
 

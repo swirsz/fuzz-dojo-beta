@@ -1,6 +1,5 @@
 #!/bin/bash
-export DRIVERS=('fuzz_mime' 'fuzz_tok822')
 export PROJECT_NAME=opensips
-/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/loc_count $PROJECT_NAME
 cd /src/$PROJECT_NAME
-/usr/local/sbin/fi.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/fi $PROJECT_NAME

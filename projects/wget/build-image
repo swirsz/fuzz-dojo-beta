@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. /usr/local/sbin/e.sh
+. /usr/local/sbin/e
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 apt-get update && apt-get install -y \

@@ -1,5 +1,5 @@
 #!/bin/sh
-. /usr/local/sbin/e.sh
+. /usr/local/sbin/e
 export PROJECT_NAME=c-ares
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC

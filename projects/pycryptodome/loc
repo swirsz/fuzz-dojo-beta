@@ -1,4 +1,3 @@
 #!/bin/bash
-export DRIVERS=('md2_fuzzer' 'md4_fuzzer' 'ripemd160_fuzzer' 'md5_fuzzer' 'aes_fuzzer' 'sha384_fuzzer' 'sha224_fuzzer' 'sha256_fuzzer')
 export PROJECT_NAME=pycryptodome
-/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/loc_count $PROJECT_NAME

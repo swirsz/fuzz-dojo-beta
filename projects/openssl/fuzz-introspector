@@ -1,6 +1,24 @@
 #!/bin/bash
-export DRIVERS=('asn1' 'bignum' 'client' 'cms_111' 'crl_111' 'llvm-symbolizer' 'smime' 'asn1_111' 'bignum_111' 'client_111' 'cms_30' 'crl_30' 'pem' 'v3name' 'asn1_30' 'bignum_30' 'client_30' 'conf' 'ct' 'punycode' 'x509' 'asn1parse' ' bndiv' 'cmp' 'conf_111' 'ct_111' 'server' 'x509_111' 'asn1parse_111' 'bndiv_111' 'cmp_30' 'conf_30' 'ct_30' 'server_111' 'x509_30' 'asn1parse_30' 'bndiv_30' 'cms' 'crl' 'decoder' 'server_30')
 export PROJECT_NAME=openssl
-/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/loc_count $PROJECT_NAME
+
+mkdir $SRC/fuzz
+mv $SRC/$PROJECT_NAME/fuzz/*.c $SRC/fuzz
+rm -rf $SRC/$PROJECT_NAME
+
+apt-get install -y make
+git clone --depth 1 https://github.com/openssl/openssl.git $SRC/openssl
+cd $SRC/openssl/ && git submodule update --init fuzz/corpora
+cd $SRC
+git clone --depth 1 --branch OpenSSL_1_1_1-stable https://github.com/openssl/openssl.git openssl111
+git clone --depth 1 --branch openssl-3.0 https://github.com/openssl/openssl.git openssl30
+export AFL_SKIP_OSSFUZZ=1
+export AFL_LLVM_MODE_WORKAROUND=0
+cp /opt/oss-fuzz/projects/openssl/build.sh $SRC/
+cp /opt/oss-fuzz/projects/openssl/*.options $SRC/
+
+cp -f $SRC/fuzz/* $SRC/$PROJECT_NAME/fuzz 
+rm -rf $SRC/fuzz/
 cd /src/$PROJECT_NAME
-/usr/local/sbin/fi.sh $PROJECT_NAME "${DRIVERS[@]}"
+
+/usr/local/sbin/fi $PROJECT_NAME

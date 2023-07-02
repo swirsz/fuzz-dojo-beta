@@ -1,24 +1,8 @@
 #!/bin/sh
-. /usr/local/sbin/e.sh
+. /usr/local/sbin/e
 export PROJECT_NAME=lzo
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
-
-apt-get update && apt-get install -y \
-        autoconf autoconf-archive \
-        automake \
-        gengetopt \
-        gtk-doc-tools \
-        libconfig-dev \
-        libglib2.0-dev \
-        libgnutls28-dev \
-        libini-config-dev \
-        libjansson-dev \
-        libnice-dev \
-        libssl-dev \
-        libtool \
-        openssl \
-        pkg-config
 
 apt-get update && apt-get install -y make autoconf automake libtool wget
 wget -O lzo.tar.gz http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz

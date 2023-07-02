@@ -151,10 +151,6 @@ modules:
         name: ZOPFLI (92.75%) 2221 loc
         description: Make improvements to OSS-Fuzz
 
-      - id: openssl
-        name: openssl
-        description: Make improvements to OSS-Fuzz
-
       - id: postfix
         name: postfix
         description: Make improvements to OSS-Fuzz
