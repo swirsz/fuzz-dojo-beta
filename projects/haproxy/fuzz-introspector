@@ -2,4 +2,6 @@
 export PROJECT_NAME=haproxy
 /usr/local/sbin/loc_count.sh $PROJECT_NAME
 cd /src
+rm -rf /src/$PROJECT_NAME
+git clone https://github.com/haproxy/haproxy
 /usr/local/sbin/fi.sh $PROJECT_NAME
