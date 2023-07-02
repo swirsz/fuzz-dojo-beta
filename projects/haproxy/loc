@@ -1,7 +1,6 @@
 #!/bin/bash
-export DRIVERS=('fuzz_hpack_decode' 'fuzz_cfg_parser')
 export PROJECT_NAME=haproxy
-/usr/local/sbin/loc_count.sh $PROJECT_NAME "${DRIVERS[@]}"
+/usr/local/sbin/loc_count.sh $PROJECT_NAME
 
 
 

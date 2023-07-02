@@ -83,6 +83,10 @@ modules:
         name: GFWX (84.36%) 1087 loc
         description: Make improvements to OSS-Fuzz
 
+      - id: haproxy
+        name: HAPROXY (1.81%) 106108
+        description: Make improvements to OSS-Fuzz
+        
       - id: kamailio
         name: KAMAILIO (9.19%) 81190 loc
         description: Make improvements to OSS-Fuzz
@@ -145,10 +149,6 @@ modules:
 
       - id: zopfli
         name: ZOPFLI (92.75%) 2221 loc
-        description: Make improvements to OSS-Fuzz
-
-      - id: haproxy
-        name: haproxy
         description: Make improvements to OSS-Fuzz
 
       - id: libpsl
