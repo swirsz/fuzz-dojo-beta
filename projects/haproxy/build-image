@@ -4,9 +4,13 @@ export PROJECT_NAME=haproxy
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+mkdir $SRC/tmp
+mv $SRC/$PROJECT_NAME/*.c $SRC/tmp
 rm -rf $SRC/$PROJECT_NAME
 git clone https://github.com/haproxy/haproxy
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz* $SRC/
+mv $SRC/tmp/* $SRC/$PROJECT_NAME
+rmdir $SRC/tmp
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC

@@ -2,6 +2,13 @@
 export PROJECT_NAME=haproxy
 /usr/local/sbin/loc_count.sh $PROJECT_NAME
 cd /src
+
+mkdir /src/tmp
+mv /src/$PROJECT_NAME/*.c /src/tmp
 rm -rf /src/$PROJECT_NAME
 git clone https://github.com/haproxy/haproxy
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz* /src/
+mv /src/tmp/* /src/$PROJECT_NAME
+rmdir /src/tmp
+
 /usr/local/sbin/fi.sh $PROJECT_NAME
