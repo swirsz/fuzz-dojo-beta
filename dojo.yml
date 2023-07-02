@@ -163,3 +163,7 @@ modules:
         name: wget
         description: Make improvements to OSS-Fuzz
 
+      - id: openssl
+        name: openssll
+        description: Make improvements to OSS-Fuzz
+
