@@ -4,6 +4,7 @@ export PROJECT_NAME=libgd
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+rm -rf $SRC/$PROJECT_NAME
 apt-get update && \
     apt-get install -y make autoconf automake libtool pkg-config libz-dev
 git clone --depth 1 https://github.com/libgd/libgd

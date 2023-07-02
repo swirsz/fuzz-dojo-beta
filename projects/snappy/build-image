@@ -4,6 +4,7 @@ export PROJECT_NAME=snappy
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+rm -rf $SRC/$PROJECT_NAME/build
 apt-get update && apt-get install -y make autoconf automake libtool gettext pkg-config build-essential
 git clone --recurse-submodules https://github.com/google/snappy
 
