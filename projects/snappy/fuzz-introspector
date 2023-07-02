@@ -2,5 +2,5 @@
 export PROJECT_NAME=snappy
 /usr/local/sbin/loc_count.sh $PROJECT_NAME
 cd /src
-rm -rf $SRC/$PROJECT_NAME/build
+rm -rf /src/$PROJECT_NAME/build
 /usr/local/sbin/fi.sh $PROJECT_NAME

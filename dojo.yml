@@ -87,10 +87,6 @@ modules:
         name: KAMAILIO (9.19%) 81190 loc
         description: Make improvements to OSS-Fuzz
 
-      - id: libgd
-        name: LIBGD
-        description: Make improvements to OSS-Fuzz
-
       - id: libidn
         name: LIBIDN (80.46%) 2180 loc
         description: Make improvements to OSS-Fuzz
@@ -149,5 +145,29 @@ modules:
 
       - id: zopfli
         name: ZOPFLI (92.75%) 2221 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: haproxy
+        name: haproxy
+        description: Make improvements to OSS-Fuzz
+
+      - id: libpsl
+        name: libpsl
+        description: Make improvements to OSS-Fuzz
+
+      - id: openssl
+        name: openssl
+        description: Make improvements to OSS-Fuzz
+
+      - id: postfix
+        name: postfix
+        description: Make improvements to OSS-Fuzz
+
+      - id: pycryptodome
+        name: pycryptodome
+        description: Make improvements to OSS-Fuzz
+
+      - id: wget
+        name: wget
         description: Make improvements to OSS-Fuzz
 
