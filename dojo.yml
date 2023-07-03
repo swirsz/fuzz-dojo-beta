@@ -123,12 +123,24 @@ modules:
         name: OPENSIPS (13.37%) 62114 loc
         description: Make improvements to OSS-Fuzz
 
+      - id: openssh
+        name: OPENSSH ()
+        description: Make improvements to OSS-Fuzz
+
       - id: pcre2
         name: PCRE2 (93.52%) 16077 loc
         description: Make improvements to OSS-Fuzz
 
       - id: pffft
         name: PFFFT (92.81%) 1279 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: postfix
+        name: POSTFIX ()
+        description: Make improvements to OSS-Fuzz
+
+      - id: pycryptodome
+        name: PYCRYPTODOME ()
         description: Make improvements to OSS-Fuzz
 
       - id: speex
@@ -149,16 +161,4 @@ modules:
 
       - id: zopfli
         name: ZOPFLI (92.75%) 2221 loc
-        description: Make improvements to OSS-Fuzz
-
-      - id: postfix
-        name: postfix
-        description: Make improvements to OSS-Fuzz
-
-      - id: pycryptodome
-        name: pycryptodome
-        description: Make improvements to OSS-Fuzz
-
-      - id: openssh
-        name: openssh
         description: Make improvements to OSS-Fuzz

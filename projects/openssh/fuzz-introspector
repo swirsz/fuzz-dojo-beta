@@ -2,5 +2,10 @@
 export PROJECT_NAME=openssh
 /usr/local/sbin/loc_count $PROJECT_NAME
 cd /src/$PROJECT_NAME
-rm -f $SRC/$PROJECT_NAME/*.o
+mkdir /src/tmp
+cp -f /src/openssh/regress/misc/fuzz-harness/* /src/tmp
+rm -rf /src/$PROJECT_NAME
+git clone --depth 1 https://github.com/openssh/openssh-portable openssh
+mv -f /src/tmp/* /src/openssh/regress/misc/fuzz-harness
+rmdir /src/tmp
 /usr/local/sbin/fi $PROJECT_NAME
