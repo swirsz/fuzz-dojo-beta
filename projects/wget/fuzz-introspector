@@ -1,22 +1,5 @@
 #!/bin/bash
-export PROJECT_NAME='wget' 
-
-. /usr/local/sbin/e
-cd $SRC
-/challenge/loc
-
-cd $SRC/$PROJECT_NAME
-export SANITIZER='introspector'
-compile
-
-rm -rf /out/introspector-report
-mkdir -p /out/introspector-report
-mv /out/inspector /out/introspector-report/inspector
-mv /out/report /out/introspector-report/inspector/covreport
-
-for driver in "${DRIVERS[@]}"
-do
-    mv /out/report_target/$driver /out/introspector-report/inspector/covreport/$driver
-done
-
-python3 -m http.server 8008 --directory /out/introspector-report/inspector/
+export PROJECT_NAME=wget
+/usr/local/sbin/loc_count $PROJECT_NAME
+cd /src/$PROJECT_NAME
+/usr/local/sbin/fi $PROJECT_NAME

@@ -1,27 +1,3 @@
 #!/bin/bash
-export PROJECT_NAME='wget' 
-
-. /usr/local/sbin/e
-export SANITIZER='none'
-/challenge/build-image
-
-parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=10
-
-cd $SRC/$PROJECT_NAME
-export SANITIZER='coverage'
-compile
-
-for driver in "${DRIVERS[@]}"
-do
-    rm -rf /corpus/$driver
-    mv /tmp/${driver}_corpus /corpus/$driver
-done
-
-coverage
-echo
-for driver in "${DRIVERS[@]}"
-do
-    echo $driver
-    /usr/local/sbin/loc.py $PROJECT_NAME $driver
-    echo
-done
+export PROJECT_NAME=wget
+/usr/local/sbin/loc_count $PROJECT_NAME

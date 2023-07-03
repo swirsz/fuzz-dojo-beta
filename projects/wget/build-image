@@ -1,7 +1,8 @@
 #!/bin/sh
-
 . /usr/local/sbin/e
+export PROJECT_NAME=wget
 [ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
 
 apt-get update && apt-get install -y \
  make \
@@ -41,7 +42,7 @@ git clone --depth=1 --recursive https://github.com/rockdaboot/libpsl.git
 git clone --depth=1 https://git.lysator.liu.se/nettle/nettle.git
 git clone --depth=1 https://gitlab.com/gnutls/gnutls.git
 git clone https://git.savannah.gnu.org/git/wget.git
-cp /opt/oss-fuzz/projects/wget/build.sh $SRC/
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/wget
 compile
-#find-drv.sh
