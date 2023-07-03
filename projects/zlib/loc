@@ -1,5 +1,3 @@
 #!/bin/bash
-export PROJECT_NAME=miniz
+export PROJECT_NAME=zlib
 /usr/local/sbin/loc_count $PROJECT_NAME
-
-

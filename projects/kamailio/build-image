@@ -1,12 +1,12 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=miniz
+export PROJECT_NAME=kamailio
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-rm -rf $SRC/$PROJECT_NAME/build
-git clone --depth 1 https://github.com/richgel999/miniz.git
+apt-get update && apt-get install -y bison flex
+git clone https://github.com/kamailio/kamailio
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cd $SRC/$PROJECT_NAME
+cd $SRC
 compile

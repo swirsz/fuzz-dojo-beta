@@ -1,6 +1,5 @@
 #!/bin/bash
-export PROJECT_NAME=miniz
+export PROJECT_NAME=zopfli
 /usr/local/sbin/loc_count $PROJECT_NAME
 cd /src/$PROJECT_NAME
-rm -rf /src/$PROJECT_NAME/build
 /usr/local/sbin/fi $PROJECT_NAME

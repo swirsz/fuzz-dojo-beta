@@ -1,12 +1,13 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zopfli
+export PROJECT_NAME=openssh
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 apt-get update && apt-get install -y make autoconf automake libtool
-git clone --depth 1 https://github.com/google/zopfli
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
+apt-get install -y libz-dev libssl1.1 libssl-dev libedit-dev zip
+git clone --depth 1 https://github.com/openssh/openssh-portable openssh
+git clone --depth 1 https://github.com/djmdjm/openssh-fuzz-cases
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME

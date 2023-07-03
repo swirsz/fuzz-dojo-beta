@@ -1,11 +1,13 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=miniz
+export PROJECT_NAME=zlib
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-rm -rf $SRC/$PROJECT_NAME/build
-git clone --depth 1 https://github.com/richgel999/miniz.git
+apt-get update && apt-get install -y make autoconf automake libtool
+git clone --depth 1 -b develop https://github.com/madler/zlib.git
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME

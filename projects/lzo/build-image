@@ -11,7 +11,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 mkdir $SRC/lzo_decompress_target_seeds
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/lzo_decompress_target_seeds $SRC/lzo_decompress_target_seeds
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/lzo_decompress_target_seeds/* $SRC/lzo_decompress_target_seeds
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
