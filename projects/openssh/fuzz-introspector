@@ -2,4 +2,5 @@
 export PROJECT_NAME=openssh
 /usr/local/sbin/loc_count $PROJECT_NAME
 cd /src/$PROJECT_NAME
+rm -f $SRC/$PROJECT_NAME/*.o
 /usr/local/sbin/fi $PROJECT_NAME
