@@ -135,12 +135,8 @@ modules:
         name: PFFFT (92.81%) 1279 loc
         description: Make improvements to OSS-Fuzz
 
-      - id: postfix
-        name: POSTFIX ()
-        description: Make improvements to OSS-Fuzz
-
       - id: pycryptodome
-        name: PYCRYPTODOME ()
+        name: PYCRYPTODOME (80.19%) 1398 loc
         description: Make improvements to OSS-Fuzz
 
       - id: speex

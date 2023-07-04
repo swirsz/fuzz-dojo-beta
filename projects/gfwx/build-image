@@ -4,8 +4,13 @@ export PROJECT_NAME=gfwx
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+mkdir /src/tmp
+cp -f /src/gfwx/*.src /src/tmp
+rm -rf /src/$PROJECT_NAME
 apt-get update && apt-get install -y make autoconf automake libtool
 git clone --depth 1 https://github.com/guidovranken/gfwx-fuzzers.git gfwx
+mv -f /src/tmp/* /src/gfwx
+rmdir /src/tmp
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
