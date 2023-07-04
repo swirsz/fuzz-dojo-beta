@@ -1,5 +1,10 @@
 #!/bin/bash
 export PROJECT_NAME=pycryptodome
 /usr/local/sbin/loc_count $PROJECT_NAME
+cd /src
+rm -rf /src/$PROJECT_NAME
+git clone https://github.com/Legrandin/pycryptodome.git
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/block_common.patch $SRC/pycryptodome/src
+
 cd /src/$PROJECT_NAME/src
 /usr/local/sbin/fi $PROJECT_NAME

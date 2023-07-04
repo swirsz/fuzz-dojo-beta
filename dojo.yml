@@ -124,7 +124,7 @@ modules:
         description: Make improvements to OSS-Fuzz
 
       - id: openssh
-        name: OPENSSH ()
+        name: OPENSSH (35.88%*) 27975 loc
         description: Make improvements to OSS-Fuzz
 
       - id: pcre2
