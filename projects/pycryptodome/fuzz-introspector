@@ -4,7 +4,7 @@ export PROJECT_NAME=pycryptodome
 cd /src
 rm -rf /src/$PROJECT_NAME
 git clone https://github.com/Legrandin/pycryptodome.git
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/block_common.patch $SRC/pycryptodome/src
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/block_common.patch /src/pycryptodome/src
 
 cd /src/$PROJECT_NAME/src
 /usr/local/sbin/fi $PROJECT_NAME
