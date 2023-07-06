@@ -1,3 +1,3 @@
 #!/bin/bash
-export PROJECT_NAME=argo
+export PROJECT_NAME=cel-go
 /usr/local/sbin/loc_count $PROJECT_NAME

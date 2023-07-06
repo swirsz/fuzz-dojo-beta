@@ -159,7 +159,7 @@ modules:
         name: ZOPFLI (92.75%) 2221 loc
         description: Make improvements to OSS-Fuzz
 
-      - id: argo
-        name: ARGO
+      - id: cel-go
+        name: CEL-GO
         description: Make improvements to OSS-Fuzz
 
