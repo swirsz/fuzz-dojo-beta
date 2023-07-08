@@ -4,7 +4,7 @@ export PROJECT_NAME=lzo
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make autoconf automake libtool wget
+#apt-get update && apt-get install -y make autoconf automake libtool wget
 wget -O lzo.tar.gz http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/

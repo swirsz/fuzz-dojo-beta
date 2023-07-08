@@ -4,7 +4,7 @@ export PROJECT_NAME=janus-gateway
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y \
+#apt-get update && apt-get install -y \
         autoconf autoconf-archive \
         automake \
         gengetopt \

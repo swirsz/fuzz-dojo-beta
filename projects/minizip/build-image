@@ -4,7 +4,7 @@ export PROJECT_NAME=minizip
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
+#apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
 git clone -b develop https://github.com/zlib-ng/minizip-ng minizip
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

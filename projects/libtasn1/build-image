@@ -4,7 +4,7 @@ export PROJECT_NAME=libtasn1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make autoconf automake libtool bison
+#apt-get update && apt-get install -y make autoconf automake libtool bison
 git clone git://git.savannah.gnu.org/gnulib.git
 export GNULIB_TOOL=$SRC/gnulib/gnulib-tool
 export GNULIB_SRCDIR=$SRC/gnulib

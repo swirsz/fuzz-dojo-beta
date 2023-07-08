@@ -4,7 +4,7 @@ export PROJECT_NAME=speex
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make autoconf libtool pkg-config wget
+#apt-get update && apt-get install -y make autoconf libtool pkg-config wget
 git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
 git clone --depth 1 https://gitlab.xiph.org/xiph/speex.git speex
 

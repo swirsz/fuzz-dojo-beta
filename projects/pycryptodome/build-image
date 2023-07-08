@@ -4,7 +4,7 @@ export PROJECT_NAME=pycryptodome
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make autoconf automake libtool
+#apt-get update && apt-get install -y make autoconf automake libtool
 rm -rf /src/$PROJECT_NAME
 git clone https://github.com/Legrandin/pycryptodome.git
 

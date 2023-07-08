@@ -7,8 +7,8 @@ cd $SRC
 mkdir /src/tmp
 cp -f /src/openssh/regress/misc/fuzz-harness/* /src/tmp
 rm -rf /src/$PROJECT_NAME
-apt-get update && apt-get install -y make autoconf automake libtool
-apt-get install -y libz-dev libssl1.1 libssl-dev libedit-dev zip
+#apt-get update && apt-get install -y make autoconf automake libtool
+#apt-get install -y libz-dev libssl1.1 libssl-dev libedit-dev zip
 git clone --depth 1 https://github.com/openssh/openssh-portable openssh
 git clone --depth 1 https://github.com/djmdjm/openssh-fuzz-cases
 mv -f /src/tmp/* /src/openssh/regress/misc/fuzz-harness

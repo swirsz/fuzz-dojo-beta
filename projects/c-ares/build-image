@@ -4,7 +4,7 @@ export PROJECT_NAME=c-ares
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make autoconf automake libtool
+#apt-get update && apt-get install -y make autoconf automake libtool
 git clone --depth 1 https://github.com/c-ares/c-ares.git
 export OLD_LLVMPASS=1
 

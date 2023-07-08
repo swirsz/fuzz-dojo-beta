@@ -4,7 +4,7 @@ export PROJECT_NAME=openjpeg
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make cmake g++
+#apt-get update && apt-get install -y make cmake g++
 rm -rf $SRC/openjpeg/data
 rm -rf $SRC/openjpeg/build
 git clone --depth 1 https://github.com/uclouvain/openjpeg
