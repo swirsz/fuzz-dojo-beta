@@ -6,7 +6,7 @@ mkdir $SRC/fuzz
 mv $SRC/$PROJECT_NAME/fuzz/*.c $SRC/fuzz
 rm -rf $SRC/$PROJECT_NAME
 
-apt-get install -y make
+#apt-get install -y make
 git clone --depth 1 https://github.com/openssl/openssl.git $SRC/openssl
 cd $SRC/openssl/ && git submodule update --init fuzz/corpora
 cd $SRC
