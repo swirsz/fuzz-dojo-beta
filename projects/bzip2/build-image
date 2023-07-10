@@ -7,6 +7,8 @@ cd $SRC
 #apt-get update && apt-get install -y make autoconf automake libtool wget
 rm -rf /src/$PROJECT_NAME
 git clone git://sourceware.org/git/bzip2.git
+git clone git://sourceware.org/git/bzip2-tests.git
+
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cd $SRC
