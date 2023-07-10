@@ -4,18 +4,15 @@ export PROJECT_NAME=libidn
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y \
- pkg-config \
- autopoint \
- autoconf \
- autoconf-archive \
- automake \
- libtool \
- gettext gengetopt curl gperf wget
+#apt-get update && apt-get install -y pkg-config autopoint autoconf autoconf-archive automake libtool gettext gengetopt curl gperf wget
 
-rm -rf $SRC/$PROJECT_NAME/build-aux
-rm -rf $SRC/$PROJECT_NAME/autom4te.cache
+mkdir /src/tmp
+cp -f /src/libidn/fuzz/*.c /src/tmp
+rm -rf /src/$PROJECT_NAME
+
 git clone https://git.savannah.gnu.org/git/libidn.git
+mv -f /src/tmp/* /src/libidn/fuzz
+rmdir /src/tmp
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
