@@ -4,6 +4,7 @@ export PROJECT_NAME=bzip2
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+rm -rf /src/$PROJECT_NAME
 #apt-get update && apt-get install -y make autoconf automake libtool wget
 git clone git://sourceware.org/git/bzip2.git
 git clone git://sourceware.org/git/bzip2-tests.git
