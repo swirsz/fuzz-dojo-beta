@@ -5,7 +5,6 @@ export PROJECT_NAME=bzip2
 cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool wget
-rm -rf /src/$PROJECT_NAME
 git clone git://sourceware.org/git/bzip2.git
 git clone git://sourceware.org/git/bzip2-tests.git
 
