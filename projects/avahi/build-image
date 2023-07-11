@@ -12,7 +12,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/avahi_packet_consume_key_fuzzer.cc $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
-if [ ! -d "~/$PROJECT_NAME" ]; then
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir ~/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
    cp $SRC/$PROJECT_NAME/fuzz/*.c ~/$PROJECT_NAME
