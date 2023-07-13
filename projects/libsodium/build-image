@@ -4,6 +4,7 @@ export PROJECT_NAME=libsodium
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+rm -rf $SRC/$PROJECT_NAME
 #apt-get update && apt-get install -y make
 git clone --depth 1 https://github.com/jedisct1/libsodium.git --branch stable libsodium
 
