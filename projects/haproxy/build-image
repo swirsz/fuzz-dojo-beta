@@ -15,8 +15,8 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/*.c ~/$PROJECT_NAME
    cp $SRC/build.sh ~/$PROJECT_NAME
 else
-   cp ~/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME
-   cp ~/$PROJECT_NAME/build.sh $SRC/$PROJECT_NAME
+   cp ~/$PROJECT_NAME/*.c $SRC
+   cp ~/$PROJECT_NAME/build.sh $SRC
 fi
 patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
