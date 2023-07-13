@@ -1,7 +1,7 @@
 #!/bin/bash
 export PROJECT_NAME=avahi
-INITIAL=31
-TARGET=36
+INITIAL=33
+TARGET=38
 /usr/local/sbin/loc_count $PROJECT_NAME
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then

@@ -1,7 +1,7 @@
 #!/bin/bash
 export PROJECT_NAME=janus-gateway
-INITIAL=35
-TARGET=40
+INITIAL=36
+TARGET=41
 /usr/local/sbin/loc_count $PROJECT_NAME
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
