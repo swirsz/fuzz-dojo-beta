@@ -14,10 +14,10 @@ rmdir /src/tmp
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
+patch -tuN $SRC/$PROJECT_NAME/Makefile -i /challenge/Makefile.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/build.patch -r -
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir ~/$PROJECT_NAME
-   patch -tuN $SRC/$PROJECT_NAME/Makefile -i /challenge/Makefile.patch -r -
-   patch -tuN $SRC/build.sh -i /challenge/build.patch -r -
    cp $SRC/$PROJECT_NAME/decoder.cpp $SRC/$PROJECT_NAME/newfuzzer.cpp
    cp $SRC/$PROJECT_NAME/*.cpp ~/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/Makefile ~/$PROJECT_NAME
