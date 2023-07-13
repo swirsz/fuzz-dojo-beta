@@ -18,10 +18,12 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir ~/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/zzzzzzzzzzzzzzzzz.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy/newfuzzer.c
-   cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/*.c ~/$PROJECT_NAME
+   cp $SRC/all_lzo_compress.cc $SRC/newfuzzer.cc
+   cp $SRC/*.c ~/$PROJECT_NAME
+   cp $SRC/*.cc ~/$PROJECT_NAME
 else
-   cp ~/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy
+   cp ~/$PROJECT_NAME/*.c $SRC
+   cp ~/$PROJECT_NAME/*.cc $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
