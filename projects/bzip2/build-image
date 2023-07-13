@@ -14,7 +14,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 if [ ! -d "~/$PROJECT_NAME" ]; then
    mkdir ~/$PROJECT_NAME
-   cp $SRC/bzip2_fd.c $SRC/newfuzzer.c
+   cp $SRC/bzip2_filename.c $SRC/newfuzzer.c
    cp $SRC/*.c ~/$PROJECT_NAME
 else
    cp ~/$PROJECT_NAME/*.c $SRC

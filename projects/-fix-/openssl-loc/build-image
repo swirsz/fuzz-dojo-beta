@@ -21,4 +21,12 @@ cp -f $SRC/fuzz/* $SRC/$PROJECT_NAME/fuzz
 rm -rf $SRC/fuzz/
 
 cd $SRC/openssl
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir ~/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/zzzzzzzzzzzzzzzzz.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy/newfuzzer.c
+   cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/*.c ~/$PROJECT_NAME
+else
+   cp ~/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy
+fi
+#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

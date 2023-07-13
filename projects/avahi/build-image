@@ -17,6 +17,6 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
    cp $SRC/$PROJECT_NAME/fuzz/*.c ~/$PROJECT_NAME
 else
-   cp ~/$PROJECT_NAME/*.c $SRC/fuzz
+   cp ~/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
 fi
 compile
