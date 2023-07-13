@@ -4,7 +4,7 @@ export PROJECT_NAME=gfwx
 
 cd /src
 mkdir /src/tmp
-cp -f /src/gfwx/*.src /src/tmp
+cp -f /src/gfwx/* /src/tmp
 rm -rf /src/$PROJECT_NAME
 #apt-get update && apt-get install -y make autoconf automake libtool
 git clone --depth 1 https://github.com/guidovranken/gfwx-fuzzers.git gfwx
