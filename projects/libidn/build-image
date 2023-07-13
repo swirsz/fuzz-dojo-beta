@@ -14,7 +14,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir ~/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/fuzz/libidn_tounicode_fuzzer.c  $SRC/$PROJECT_NAME/fuzz/newfuzzer.c
+   cp $SRC/$PROJECT_NAME/fuzz/libidn_tounicode_fuzzer.c  $SRC/$PROJECT_NAME/fuzz/new_fuzzer.c
    cp $SRC/$PROJECT_NAME/fuzz/*.c ~/$PROJECT_NAME
 else
    cp ~/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
