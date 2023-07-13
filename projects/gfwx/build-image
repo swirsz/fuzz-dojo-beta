@@ -20,10 +20,8 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir ~/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/decoder.cpp $SRC/$PROJECT_NAME/newfuzzer.cpp
    cp $SRC/$PROJECT_NAME/fuzzer-decoder_seed_corpus.zip $SRC/$PROJECT_NAME/newfuzzer_seed_corpus.zip
-   cp $SRC/$PROJECT_NAME/*.cpp ~/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/Makefile ~/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/* ~/$PROJECT_NAME
 else
-   cp ~/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME
-   cp ~/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME
+   cp ~/$PROJECT_NAME/* $SRC/$PROJECT_NAME
 fi
 compile
