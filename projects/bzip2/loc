@@ -1,8 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=bzip2
-INITIAL=74
-TARGET=79
-/usr/local/sbin/loc_count $PROJECT_NAME
+INITIAL=70
+TARGET=75
+/usr/local/sbin/loc_count2 $PROJECT_NAME
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
     echo
