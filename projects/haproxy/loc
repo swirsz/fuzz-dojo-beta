@@ -1,7 +1,7 @@
 #!/bin/bash
 export PROJECT_NAME=haproxy
-INITIAL=78
-TARGET=83
+INITIAL=1
+TARGET=6
 /usr/local/sbin/loc_count2 $PROJECT_NAME
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
