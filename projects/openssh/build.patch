@@ -3,7 +3,7 @@
         $STATIC_CRYPTO $LIB_FUZZING_ENGINE
 
 +$CXX $CXXFLAGS -std=c++11 $EXTRA_CFLAGS -I. -L. -Lopenbsd-compat -g \
-+        regress/misc/fuzz-harness/newfuzzer.cc -o $OUT/agent_fuzz \
++        regress/misc/fuzz-harness/newfuzzer.cc -o $OUT/newfuzzer \
 +        $SK_DUMMY agent_fuzz_helper.o ssh-sk.o -lssh -lopenbsd-compat -lz \
 +        $STATIC_CRYPTO $LIB_FUZZING_ENGINE
  # Prepare seed corpora
