@@ -127,14 +127,6 @@ modules:
         name: OPENSSH (35.88%) 27975 loc
         description: Make improvements to OSS-Fuzz
 
-      - id: pcre2
-        name: PCRE2 (93.52%) 16077 loc
-        description: Make improvements to OSS-Fuzz
-
-      - id: pffft
-        name: PFFFT (92.81%) 1279 loc
-        description: Make improvements to OSS-Fuzz
-
       - id: pycryptodome
         name: PYCRYPTODOME (80.19%) 1398 loc
         description: Make improvements to OSS-Fuzz
