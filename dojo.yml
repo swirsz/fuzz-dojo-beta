@@ -131,12 +131,12 @@ modules:
         name: PYCRYPTODOME (80.19%) 1398 loc
         description: Make improvements to OSS-Fuzz
 
-      - id: speex
-        name: SPEEX (35.04%) 5867 loc
-        description: Make improvements to OSS-Fuzz
-
       - id: snappy
         name: SNAPPY (61.58%) 1502 loc
+        description: Make improvements to OSS-Fuzz
+
+      - id: speex
+        name: SPEEX (35.04%) 5867 loc
         description: Make improvements to OSS-Fuzz
 
       - id: xz
@@ -150,8 +150,3 @@ modules:
       - id: zopfli
         name: ZOPFLI (92.75%) 2221 loc
         description: Make improvements to OSS-Fuzz
-
-      - id: cel-go
-        name: CEL-GO
-        description: Make improvements to OSS-Fuzz
-
