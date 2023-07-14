@@ -1,0 +1,11 @@
+@@ -83,6 +83,10 @@
+        $SK_DUMMY agent_fuzz_helper.o ssh-sk.o -lssh -lopenbsd-compat -lz \
+        $STATIC_CRYPTO $LIB_FUZZING_ENGINE
+
++$CXX $CXXFLAGS -std=c++11 $EXTRA_CFLAGS -I. -L. -Lopenbsd-compat -g \
++        regress/misc/fuzz-harness/newfuzzer.cc -o $OUT/agent_fuzz \
++        $SK_DUMMY agent_fuzz_helper.o ssh-sk.o -lssh -lopenbsd-compat -lz \
++        $STATIC_CRYPTO $LIB_FUZZING_ENGINE
+ # Prepare seed corpora
+ CASES="$SRC/openssh-fuzz-cases"
+ (set -e ; cd ${CASES}/key ; zip -r $OUT/pubkey_fuzz_seed_corpus.zip .)

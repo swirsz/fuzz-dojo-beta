@@ -19,5 +19,6 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
 else
    cp ~/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/regress/misc/fuzz-harness
 fi
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/build.patch -r -
+patch -tuN $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/Makefile -i /challenge/Makefile.patch -r -
 compile
