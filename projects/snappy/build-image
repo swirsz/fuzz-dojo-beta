@@ -18,5 +18,5 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
 else
    cp ~/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
 fi
-patch -tuN /src/snappy/build/Makefile -i /challenge/Makefile.patch -r -
+patch -tuN /src/snappy/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 compile
