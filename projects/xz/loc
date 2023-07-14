@@ -1,7 +1,7 @@
 #!/bin/bash
 export PROJECT_NAME=xz
-INITIAL=64
-TARGET=69
+INITIAL=65
+TARGET=70
 /usr/local/sbin/loc_count $PROJECT_NAME
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
