@@ -3,8 +3,8 @@
  	      ../../src/liblzma/.libs/liblzma.a
  
 +newfuzzer: newfuzzer.c
-+        $(CC) $(CFLAGS) -c newfuzzer.c -I ../../src/liblzma/api/
-+        $(CXX) $(CXXFLAGS) $(LIB_FUZZING_ENGINE) newfuzzer.o -o $(OUT)/newfuzzer \
++	$(CC) $(CFLAGS) -c newfuzzer.c -I ../../src/liblzma/api/
++	$(CXX) $(CXXFLAGS) $(LIB_FUZZING_ENGINE) newfuzzer.o -o $(OUT)/newfuzzer \
 +              ../../src/liblzma/.libs/liblzma.a
 +
  clean:
