@@ -13,7 +13,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir ~/$PROJECT_NAME
-   cp $SRC/checksum_fuzzer.c $SRC/new_fuzzer.c
+   cp $SRC/minigzip_fuzzer.c $SRC/new_fuzzer.c
    cp $SRC/*.c* ~/$PROJECT_NAME
 else
    cp ~/$PROJECT_NAME/*.c* $SRC
