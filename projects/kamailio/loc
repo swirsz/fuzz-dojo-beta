@@ -1,7 +1,7 @@
 #!/bin/bash
 export PROJECT_NAME=kamailio
-INITIAL=999
-TARGET=999
+INITIAL=40
+TARGET=45
 /usr/local/sbin/loc_count $PROJECT_NAME
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
