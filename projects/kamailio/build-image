@@ -4,6 +4,7 @@ export PROJECT_NAME=kamailio
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+rm -rf $SRC/$PROJECT_NAME
 #apt-get update && apt-get install -y bison flex
 git clone https://github.com/kamailio/kamailio
 
