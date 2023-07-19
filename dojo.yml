@@ -3,12 +3,12 @@ id: fuzz
 name: Fuzzing Dojo
 
 description: |
-  This is an [Fuzzing Dojo](https://fuzz.wirsz.com/).
+  This is an [Fuzzing Dojo](https://pwnfuzz.wirsz.com/).
 
 modules:
 
   - id: training
-    name: Training courses for fuzz harness improvements
+    name: TRAINING
     description: Learn techniques to improve the code coverage of fuzz driver harnesses
 
     challenges:
@@ -58,7 +58,7 @@ modules:
         description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it
 
   - id: projects
-    name: OSS-Fuzz Projects
+    name: OSS-FUZZ PROJECTS
     description: Improve OSS-Fuzz training harnesses
 
     challenges:
