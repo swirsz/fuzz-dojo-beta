@@ -1,6 +1,6 @@
 id: fuzz
 
-name: Fuzzing Dojo
+name: FUZZING
 
 description: |
   This is an [Fuzzing Dojo](https://pwnfuzz.wirsz.com/).
