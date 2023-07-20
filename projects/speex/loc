@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/pwn.college/bash 
 export PROJECT_NAME=speex
 INITIAL=35
 TARGET=50

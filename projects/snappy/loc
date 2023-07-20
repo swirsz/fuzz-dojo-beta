@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/pwn.college/bash 
 export PROJECT_NAME=snappy
 INITIAL=61
 TARGET=66

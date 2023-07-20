@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/pwn.college/bash 
 export PROJECT_NAME=pcre2
 INITIAL=71
 TARGET=76

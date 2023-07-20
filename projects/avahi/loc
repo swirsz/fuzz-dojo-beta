@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/pwn.college/bash 
 export PROJECT_NAME=avahi
 INITIAL=33
 TARGET=38

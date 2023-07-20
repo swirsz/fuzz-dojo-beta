@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/pwn.college/bash 
 export PROJECT_NAME=libtasn1
 INITIAL=56
 TARGET=61

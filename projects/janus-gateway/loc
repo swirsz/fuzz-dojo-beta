@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/pwn.college/bash 
 export PROJECT_NAME=janus-gateway
 INITIAL=36
 TARGET=41
