@@ -59,7 +59,7 @@ modules:
 
   - id: projects
     name: OSS-FUZZ PROJECTS
-    description: Improve OSS-Fuzz training harnesses
+    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
 
     challenges:
 
