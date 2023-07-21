@@ -1,0 +1,5 @@
+#!/bin/bash
+export PROJECT_NAME=minizip
+/usr/local/sbin/loc_count $PROJECT_NAME
+cd /src/$PROJECT_NAME
+/usr/local/sbin/fi $PROJECT_NAME
