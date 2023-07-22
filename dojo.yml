@@ -17,6 +17,10 @@ modules:
         name: Locate Harnesses
         description: Locate the fuzz harnesses in a project
 
+      - id: change
+        name: Modify a Fuzzing Harness
+        description: Make a change to a fuzzing harness
+
       - id: broken
         name: Fix Broken Fuzzing Harness
         description: Repair a broken fuzzing harness
