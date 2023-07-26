@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash 
 export PROJECT_NAME=example
 INITIAL=100
-TARGET=105
+TARGET=100
 /usr/local/sbin/loc_count $PROJECT_NAME
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
