@@ -80,7 +80,7 @@ modules:
         description: Make improvements to OSS-Fuzz
 
       - id: example
-        name: example (my-api-repo) (100.00%) 20 loc
+        name: EXAMPLE (my-api-repo) (100.00%) 20 loc
         description: Make improvements to OSS-Fuzz
 
       - id: gfwx
