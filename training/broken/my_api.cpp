@@ -8,18 +8,22 @@
 
 // Do some computations with 'str', return the result.
 // This function contains a bug. Can you spot it?
+int hashFunction(string key) {
+    size_t hashCode = 0;
+    for (int i = 0; i < key.length(); i++) {
+        hashCode += key[i] * pow(3, i);
+    }
+    return hashCode;
+}
+
 size_t DoStuff(const std::string &str) {
   std::vector<int> Vec({0, 1, 2, 3, 4});
-  size_t Idx = 0;
-  if (str.size() > 5)
-    Idx++;
-  if (str.find("foo") != std::string::npos)
-    Idx++;
-  if (str.find("bar") != std::string::npos)
-    Idx++;
-  if (str.find("ouch") != std::string::npos)
-    Idx++;
-  if (str.find("omg") != std::string::npos)
-    Idx++;
+  size_t Idx = hashFunction("str")
+  if (Idx == 0)
+    return Vec[Idx];
+  if (Idx == 1)
+    return Vec[Idx];
+  if (Idx == 2)
+    return Vec[Idx];
   return Vec[Idx];
 }

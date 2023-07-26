@@ -19,6 +19,6 @@
 // See https://llvm.org/docs/LibFuzzer.html for details.
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   std::string str(reinterpret_cast<const char *>(data), size);
-  DoStuff(str);  // Disregard the output.
+  DoStuff(size);  // Disregard the output.
   return 0;
 }
