@@ -1,0 +1,20 @@
+#!/bin/sh
+. /usr/local/sbin/e
+export PROJECT_NAME=example
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
+git clone https://github.com/google/oss-fuzz.git example
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir ~/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.* $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.*
+   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.* ~/$PROJECT_NAME
+else
+   cp ~/$PROJECT_NAME/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
+fi
+#patch -tuN /src/minizip/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+compile

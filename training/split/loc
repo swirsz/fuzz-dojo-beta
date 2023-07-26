@@ -1,0 +1,11 @@
+#!/opt/pwn.college/bash 
+export PROJECT_NAME=example
+INITIAL=100
+TARGET=100
+/usr/local/sbin/loc_count $PROJECT_NAME
+/usr/local/sbin/announce $INITIAL $? 
+if [ "$?" -gt "$TARGET" ]; then
+    echo
+    echo Congratulations!  But make sure you also submit your improvements to Google!
+    cat /flag
+fi
