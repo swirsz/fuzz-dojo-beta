@@ -8,7 +8,7 @@
 
 // Do some computations with 'str', return the result.
 // This function contains a bug. Can you spot it?
-int hashFunction(string key) {
+int hashFunction(std::string key) {
     size_t hashCode = 0;
     for (int i = 0; i < key.length(); i++) {
         hashCode += key[i] * pow(3, i);
@@ -18,7 +18,7 @@ int hashFunction(string key) {
 
 size_t DoStuff(const std::string &str) {
   std::vector<int> Vec({0, 1, 2, 3, 4});
-  size_t Idx = hashFunction("str")
+  size_t Idx = hashFunction("str");
   if (Idx == 0)
     return Vec[Idx];
   if (Idx == 1)
