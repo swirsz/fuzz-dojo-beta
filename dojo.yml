@@ -73,88 +73,88 @@ modules:
 
       - id: bzip2
         name: BZIP2 (92.97%) 2661 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bzip2
 
       - id: c-ares
         name: C-ARES (33.77%) 5676 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=c-ares
 
       - id: example
         name: EXAMPLE (my-api-repo) (100.00%) 20 loc
-        description: Make improvements to OSS-Fuzz
+        description: Sample OSS-Fuzz project
 
       - id: gfwx
         name: GFWX (84.36%) 1087 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
 
       - id: haproxy
         name: HAPROXY (1.81%) 106108 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=haproxy
 
       - id: janus-gateway
         name: JANUS-GATEWAY (37.48%) 6131 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=janus-gateway
         
       - id: kamailio
         name: KAMAILIO (9.19%) 81190 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
 
       - id: libidn
         name: LIBIDN (80.46%) 2180 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libidn
 
       - id: libsodium
         name: LIBSODIUM (20.67%) 7761 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
       
       - id: libtasn1
         name: LIBTASN1 (59.15%) 6722 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtasn1
       
       - id: lzo
         name: LZO (92.23%) 3835 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lzo
 
       - id: miniz
         name: MINIZ (47.67%) 5423 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=miniz
 
       - id: minizip
         name: MINIZIP (58.59%) 3639 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
 
       - id: openjpeg
         name: OPENJPEG (51.03%) 22939 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
 
       - id: opensips
         name: OPENSIPS (13.37%) 62114 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
 
       - id: openssh
         name: OPENSSH (35.88%) 27975 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
 
       - id: pycryptodome
         name: PYCRYPTODOME (80.19%) 1398 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pycryptodome
 
       - id: snappy
         name: SNAPPY (61.58%) 1502 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=snappy
 
       - id: speex
         name: SPEEX (35.04%) 5867 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=speex
 
       - id: xz
         name: XZ (67.87%) 3414 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xz
 
       - id: zlib
         name: ZLIB (69.77%) 5055 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
 
       - id: zopfli
         name: ZOPFLI (92.75%) 2221 loc
-        description: Make improvements to OSS-Fuzz
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zopfli
