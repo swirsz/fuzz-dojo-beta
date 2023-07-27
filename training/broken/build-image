@@ -15,11 +15,11 @@ cp /challenge/my_api.cpp /src/example/projects/example/my-api-repo
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir ~/$PROJECT_NAME
+   mkdir ~/training-broken
    cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.* $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.*
-   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.* ~/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.* ~/training-broken
 else
-   cp ~/$PROJECT_NAME/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
+   cp ~/training-broken/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
 fi
 #patch -tuN /src/minizip/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 compile
