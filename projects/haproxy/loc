@@ -1,8 +1,7 @@
 #!/opt/pwn.college/bash 
-export PROJECT_NAME=haproxy
 INITIAL=1
 TARGET=6
-/usr/local/sbin/loc_count2 $PROJECT_NAME
+sudo -H -u hacker bash -c /usr/local/sbin/loc_count
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
     echo
