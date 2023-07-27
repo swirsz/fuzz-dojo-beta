@@ -15,7 +15,7 @@ modules:
 
       - id: locate
         name: Locate Harnesses
-        description: Locate the fuzz harnesses in a project
+        description: Locate the fuzz harnesses in a project.  Run /challenge/training to start.
 
       - id: change
         name: Modify a Fuzzing Harness
