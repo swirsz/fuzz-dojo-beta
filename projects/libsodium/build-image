@@ -17,8 +17,10 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir ~/$PROJECT_NAME
    cp $SRC/secret_key_auth_fuzzer.cc $SRC/new_fuzzer.cc
    cp $SRC/*.cc ~/$PROJECT_NAME
+   cp $SRC/*.h ~/$PROJECT_NAME
 else
    cp ~/$PROJECT_NAME/*.cc $SRC
+   cp ~/$PROJECT_NAME/*.h $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

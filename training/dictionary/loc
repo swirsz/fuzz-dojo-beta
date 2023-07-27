@@ -1,10 +1,9 @@
 #!/opt/pwn.college/bash 
-export PROJECT_NAME=example
 INITIAL=100
 TARGET=100
-/usr/local/sbin/loc_count $PROJECT_NAME
+sudo -H -u hacker bash -c /usr/local/sbin/loc_count
 /usr/local/sbin/announce $INITIAL $? 
-if [ "$?" -gt "$TARGET" ]; then
+if [ "$?" -ge "$TARGET" ]; then
     echo
     echo Congratulations!  But make sure you also submit your improvements to Google!
     cat /flag
