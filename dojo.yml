@@ -15,51 +15,51 @@ modules:
 
       - id: locate
         name: Locate Harnesses
-        description: Locate the fuzz harnesses in a project.  Run /challenge/training to start.
+        description: Locate the fuzz harnesses in a project.  Run /challenge/training in in Terminal to start.
 
       - id: change
         name: Modify a Fuzzing Harness
-        description: Make a change to a fuzzing harness
+        description: Make a change to a fuzzing harness.  Run /challenge/training in in Terminal to start.
 
       - id: broken
         name: Fix Broken Fuzzing Harness
-        description: Repair a broken fuzzing harness
+        description: Repair a broken fuzzing harness.  Run /challenge/training in in Terminal to start.
 
       - id: parameters
         name: Initial Parameters
-        description: Increase code coverage by selecting better initial parameters
+        description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in in Terminal to start.
 
       - id: calltree
         name: Improve Coverage Using the Call Tree
-        description: Find a function higher in the call tree that calls this function and fuzz it instead.
+        description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in in Terminal to start.
 
       - id: split
         name: Split Into Multiple Harnesses
-        description: Since the harness is capable of parsing 2 different data formats, write short fuzz harness for each format
+        description: Since the harness is capable of parsing 2 different data formats, write short fuzz harness for each format.  Run /challenge/training in in Terminal to start.
 
       - id: malformed
         name: Correct Malformed Input
-        description: This fuzz driver crashes with certain input. Figure out why.
+        description: This fuzz driver crashes with certain input. Figure out why.  Run /challenge/training in in Terminal to start.
 
       - id: speedup
         name: Speed up a Fuzzing Harness
-        description: Figure out how to increase this fuzz harness speed by at minimum a factor of 10
+        description: Figure out how to increase this fuzz harness speed by at minimum a factor of 10.  Run /challenge/training in in Terminal to start.
 
       - id: sanitizer
         name: Correct Sanitizer Specific Problems
-        description: Identify the sanitizer that is crashing and how to fix it
+        description: Identify the sanitizer that is crashing and how to fix it.  Run /challenge/training in in Terminal to start.
 
       - id: seedcorpus
         name: Implement Seed Corpus
-        description: Implement a seed corpus
+        description: Implement a seed corpus.  Run /challenge/training in in Terminal to start.
 
       - id: dictionary
         name: Implement a Dictionary
-        description: Implement a dictionary
+        description: Implement a dictionary.  Run /challenge/training in in Terminal to start.
 
       - id: blockers
         name: Repair Fuzz Blockers 
-        description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it
+        description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it.  Run /challenge/training in in Terminal to start.
 
   - id: projects
     name: OSS-FUZZ PROJECTS
