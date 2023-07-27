@@ -69,7 +69,7 @@ modules:
 
       - id: avahi
         name: AVAHI (32.89%) 2566 loc
-        description: Browse code and fuzz introspector report: https://introspector.oss-fuzz.com/project-profile?project=avahi
+        description: Browse code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=avahi
 
       - id: bzip2
         name: BZIP2 (92.97%) 2661 loc
