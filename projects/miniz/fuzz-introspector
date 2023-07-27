@@ -1,6 +1,6 @@
 #!/bin/bash
 export PROJECT_NAME=miniz
-/usr/local/sbin/loc_count $PROJECT_NAME
+/usr/local/sbin/loc_count
 cd /src/$PROJECT_NAME
 rm -rf /src/$PROJECT_NAME/build
 /usr/local/sbin/fi $PROJECT_NAME

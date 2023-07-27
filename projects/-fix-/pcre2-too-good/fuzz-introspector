@@ -1,5 +1,5 @@
 #!/bin/bash
 export PROJECT_NAME=pcre2
-/usr/local/sbin/loc_count $PROJECT_NAME
+/usr/local/sbin/loc_count
 cd /src/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME

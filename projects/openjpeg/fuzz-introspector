@@ -1,6 +1,6 @@
 #!/bin/bash
 export PROJECT_NAME=openjpeg
-/usr/local/sbin/loc_count $PROJECT_NAME
+/usr/local/sbin/loc_count
 cd /src/$PROJECT_NAME
 rm -rf $SRC/openjpeg/data
 rm -rf $SRC/openjpeg/build

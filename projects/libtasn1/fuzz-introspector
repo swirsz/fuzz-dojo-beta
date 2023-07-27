@@ -1,6 +1,6 @@
 #!/bin/bash
 export PROJECT_NAME=libtasn1
-/usr/local/sbin/loc_count $PROJECT_NAME
+/usr/local/sbin/loc_count
 cd /src/$PROJECT_NAME
 export GNULIB_TOOL=/src/gnulib/gnulib-tool
 export GNULIB_SRCDIR=/src/gnulib

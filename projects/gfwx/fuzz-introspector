@@ -1,6 +1,6 @@
 #!/bin/bash
 export PROJECT_NAME=gfwx
-/usr/local/sbin/loc_count $PROJECT_NAME
+/usr/local/sbin/loc_count
 
 cd /src
 mkdir /src/tmp

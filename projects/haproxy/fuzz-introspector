@@ -1,6 +1,6 @@
 #!/bin/bash
 export PROJECT_NAME=haproxy
-/usr/local/sbin/loc_count $PROJECT_NAME
+/usr/local/sbin/loc_count
 cd /src
 
 rm -rf /src/$PROJECT_NAME

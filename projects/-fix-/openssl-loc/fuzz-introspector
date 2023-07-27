@@ -1,6 +1,6 @@
 #!/bin/bash
 export PROJECT_NAME=openssl
-/usr/local/sbin/loc_count $PROJECT_NAME
+/usr/local/sbin/loc_count
 
 mkdir $SRC/fuzz
 mv $SRC/$PROJECT_NAME/fuzz/*.c $SRC/fuzz
