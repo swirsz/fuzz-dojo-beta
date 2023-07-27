@@ -7,5 +7,5 @@ TARGET=100
 if [ "$?" -ge "$TARGET" ]; then
     echo
     echo Congratulations!  But make sure you also submit your improvements to Google!
-    cat /flag
+    /opt/pwn.college/bash cat /flag
 fi
