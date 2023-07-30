@@ -13,51 +13,51 @@ modules:
 
     challenges:
 
-      - id: locate
+      - id: 1-locate
         name: Locate Harnesses
         description: Locate the fuzz harnesses in a project.  Run /challenge/training in Terminal to start.
 
-      - id: change
+      - id: 2-change
         name: Modify a Fuzzing Harness
         description: Make a change to a fuzzing harness.  Run /challenge/training in Terminal to start.
 
-      - id: broken
+      - id: 3-broken
         name: Fix Broken Fuzzing Harness
         description: Repair a broken fuzzing harness.  Run /challenge/training in Terminal to start.
 
-      - id: parameters
+      - id: 4-parameters
         name: Initial Parameters
         description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in Terminal to start.
 
-      - id: calltree
+      - id: 5-calltree
         name: Improve Coverage Using the Call Tree
         description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
 
-      - id: split
+      - id: 6-split
         name: Split Into Multiple Harnesses
         description: Since the harness is capable of parsing 2 different data formats, write short fuzz harness for each format.  Run /challenge/training in Terminal to start.
 
-      - id: malformed
+      - id: 7-malformed
         name: Correct Malformed Input
         description: This fuzz driver crashes with certainput. Figure out why.  Run /challenge/training in Terminal to start.
 
-      - id: speedup
+      - id: 8-speedup
         name: Speed up a Fuzzing Harness
         description: Figure out how to increase this fuzz harness speed by at minimum a factor of 10.  Run /challenge/training in Terminal to start.
 
-      - id: sanitizer
+      - id: 9-sanitizer
         name: Correct Sanitizer Specific Problems
         description: Identify the sanitizer that is crashing and how to fix it.  Run /challenge/training in Terminal to start.
 
-      - id: seedcorpus
+      - id: 10-seedcorpus
         name: Implement Seed Corpus
         description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
 
-      - id: dictionary
+      - id: 11-dictionary
         name: Implement a Dictionary
         description: Implement a dictionary.  Run /challenge/training in Terminal to start.
 
-      - id: blockers
+      - id: 12-blockers
         name: Repair Fuzz Blockers 
         description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it.  Run /challenge/training in Terminal to start.
 
