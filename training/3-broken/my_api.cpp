@@ -6,8 +6,6 @@
 
 #include <vector>
 
-// Do some computations with 'str', return the result.
-// This function contains a bug. Can you spot it?
 int hashFunction(std::string key) {
       std::vector<int> Vec({0, 1, 2});
     size_t hashCode = 0;
@@ -18,13 +16,6 @@ int hashFunction(std::string key) {
 }
 
 size_t DoStuff(const std::string &str) {
-  std::vector<int> Vec({0, 1, 2, 3, 4});
   size_t Idx = hashFunction("str");
-  if (Idx == 0)
-    return Vec[Idx];
-  if (Idx == 1)
-    return Vec[Idx];
-  if (Idx == 2)
-    return Vec[Idx];
-  return Vec[Idx];
+  return Idx;
 }
