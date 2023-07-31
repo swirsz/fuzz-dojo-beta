@@ -7,19 +7,17 @@ cd $SRC
 #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
 git clone https://github.com/google/oss-fuzz.git example
 
+cp /challenge/do_stuff_unittest.cpp /src/example/projects/example/my-api-repo
 cp /challenge/do_stuff_fuzzer.cpp /src/example/projects/example/my-api-repo
 cp /challenge/my_api.cpp /src/example/projects/example/my-api-repo
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
-if [ ! -d "/home/hacker/training-speedup" ]; then
-   mkdir ~/training-speedup
-   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.cpp $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.cpp
-   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.dict $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.dict
-   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer_seed_corpus.zip $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer_seed_corpus.zip
-   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/* ~/training-speedup
+if [ ! -d "/home/hacker/training-broken" ]; then
+   mkdir ~/training-broken
+   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/* ~/training-broken
 else
-   cp ~/training-speedup/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
+   cp ~/training-broken/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
 fi
-patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/Makefile.patch -r -
+#patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/Makefile.patch -r -
 compile
