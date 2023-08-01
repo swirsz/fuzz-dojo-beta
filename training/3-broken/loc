@@ -5,6 +5,6 @@ sudo -H -u hacker bash -c /usr/local/sbin/loc_count
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -eq "$TARGET" ]; then
     echo
-    echo Congratulations!  But make sure you also submit your improvements to Google!
+    echo Congratulations!
     cat /flag
 fi
