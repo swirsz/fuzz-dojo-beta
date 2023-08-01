@@ -4,18 +4,26 @@
 // Implementation of "my_api".
 #include "my_api.h"
 
-#include <vector>
-
-int hashFunction(std::string key) {
-      std::vector<int> Vec({0, 1, 2});
-    size_t hashCode = 0;
-    for (int i = 0; i < key.length(); i++) {
-        hashCode += key[i] * pow(3, i);
+unsigned int hashFunction(const std::string& str)
+{
+    unsigned int b    = 378551;
+    unsigned int a    = 63689;
+    unsigned int hash = 0;
+    for(std::size_t i = 0; i < str.length(); i++)
+    {
+        hash = hash * a + str[i];
+        a    = a * b;
     }
-    return hashCode;
-}
+    return hash;
+ }
 
 size_t DoStuff(const std::string &str) {
-  size_t Idx = hashFunction("str");
+  int Idx = hashFunction("str") % 3;
+  if (Idx == 0)
+      return 0;
+    if (Idx == 1)
+      return 1;
+    if (Idx == 2)
+      return 2;
   return Idx;
 }

@@ -1,9 +1,9 @@
 #!/opt/pwn.college/bash 
-INITIAL=100
-TARGET=105
+INITIAL=76
+TARGET=96
 sudo -H -u hacker bash -c /usr/local/sbin/loc_count
 /usr/local/sbin/announce $INITIAL $? 
-if [ "$?" -ge "$TARGET" ]; then
+if [ "$?" -eq "$TARGET" ]; then
     echo
     echo Congratulations!  But make sure you also submit your improvements to Google!
     cat /flag
