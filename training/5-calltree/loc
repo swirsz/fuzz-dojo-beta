@@ -2,9 +2,9 @@
 INITIAL=35
 TARGET=75
 sudo -H -u hacker bash -c /usr/local/sbin/loc_count
-/usr/local/sbin/loc newfuzzer
 echo
 echo Checking newfuzzer coverage:
+/usr/local/sbin/loc newfuzzer
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
     echo
