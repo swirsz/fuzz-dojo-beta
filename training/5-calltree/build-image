@@ -20,7 +20,7 @@ if [ ! -d "~/training-calltree" ]; then
    echo 11111111111111
 else
    cp ~/training-calltree/*.c $SRC
-   echo 11111111111111
+   echo 2222222222222222
 fi
 
 cd $SRC
