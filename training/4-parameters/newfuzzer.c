@@ -52,9 +52,10 @@ LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
     abort();
     }
 
-    BZ2_bzWrite (&bzerr, bzf, (void*)data, size);
+    BZ2_bzWrite (&bzerr, file, (void*)data, size);
 
     BZ2_bzflush(file);
+    
     fclose(file);
 
     if (unlink(filename) != 0) {
