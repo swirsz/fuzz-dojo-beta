@@ -14,8 +14,8 @@ cp /challenge/newfuzzer.c $SRC/newfuzzer.c
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-if [ ! -d "~/training-parameters" ]; then
-   mkdir ~/training-parameters
+if [ ! -d "~/training-calltree" ]; then
+   mkdir ~/training-calltree
    cp $SRC/*.c ~/training-calltree
 else
    cp ~/training-calltree/*.c $SRC
