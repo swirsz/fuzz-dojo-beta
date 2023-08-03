@@ -14,8 +14,7 @@ cp /challenge/newfuzzer.c $SRC/newfuzzer.c
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-if [ ! -d "/home/hacker/training-calltree" ]
-then
+if [ ! -d "/home/hacker/training-calltree" ]; then
    mkdir /home/hacker/training-calltree
    cp $SRC/*.c /home/hacker/training-calltree
    echo 11111111111111
