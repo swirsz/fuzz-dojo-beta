@@ -33,9 +33,9 @@ int
 LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
 {
     int    bzerr         = 0;
-    int    mode          = 0;
+    const char *mode     = 'w';
     
-    char* filename = strdup("/tmp/generate_temporary_file.XXXXXX");
+    const char* filename = strdup("/tmp/generate_temporary_file.XXXXXX");
     if (!filename) {
     perror("Failed to allocate file name buffer.");
     abort();
@@ -46,7 +46,7 @@ LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
     abort();
     }
   
-    BZFILE* file = bzopen_or_bzdopen(filename,-1,"w",0);
+    BZFILE* file = bzopen_or_bzdopen(filename,-1,mode,0);
     if (!file) {
     perror("Failed to open file");
     abort();
