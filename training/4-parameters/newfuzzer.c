@@ -26,71 +26,40 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-static void fuzzer_write_data(FILE *file, const uint8_t *data, size_t size) {
-  int    bzerr         = 0;
-  int    blockSize100k = 9;
-  int    verbosity     = 0;
-  int    workFactor    = 30;
-  uint   nbytes_in_lo32, nbytes_in_hi32;
-  uint   nbytes_out_lo32, nbytes_out_hi32;
-
-  BZFILE* bzf = BZ2_bzWriteOpen ( &bzerr, file,
-                           blockSize100k, verbosity, workFactor );
-
-  BZ2_bzWrite (&bzerr, bzf, (void*)data, size);
-
-  BZ2_bzWriteClose64 ( &bzerr, bzf, 0,
-                        &nbytes_in_lo32, &nbytes_in_hi32,
-                        &nbytes_out_lo32, &nbytes_out_hi32 );
-  return;
-}
-
-static void fuzzer_read_data(char *filename) {
-  int    bzerr          = 0;
-  char   obuf[BZ_MAX_UNUSED];
- 
-  BZFILE* bzf2 = BZ2_bzopen(filename,"rb");
-
-  while (bzerr == BZ_OK) {
-      BZ2_bzRead ( &bzerr, bzf2, obuf, BZ_MAX_UNUSED);
-  }
-
-  BZ2_bzReadClose ( &bzerr, bzf2);
-  return;
-}
+// return bzopen_or_bzdopen(path,-1,mode,/*bzopen*/0);
+// return bzopen_or_bzdopen(NULL,fd,mode,/*bzdopen*/1);
 
 int
 LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
 {
-  char* filename = strdup("/tmp/generate_temporary_file.XXXXXX");
-  if (!filename) {
+    int    bzerr         = 0;
+    int    mode          = 0;
+    
+    char* filename = strdup("/tmp/generate_temporary_file.XXXXXX");
+    if (!filename) {
     perror("Failed to allocate file name buffer.");
     abort();
-  }
-  const int file_descriptor = mkstemp(filename);
-  if (file_descriptor < 0) {
+    }
+    const int file_descriptor = mkstemp(filename);
+    if (file_descriptor < 0) {
     perror("Failed to make temporary file.");
     abort();
-  }
-  FILE* file = fdopen(file_descriptor, "wb");
-  if (!file) {
-    perror("Failed to open file descriptor.");
-    close(file_descriptor);
+    }
+  
+    BZFILE* file = bzopen_or_bzdopen(filename,-1,"w",0);
+    if (!file) {
+    perror("Failed to open file");
     abort();
-  }
+    }
 
-  fuzzer_write_data(file, data, size);
+    BZ2_bzWrite (&bzerr, bzf, (void*)data, size);
 
-  fuzzer_read_data(filename);
+    BZ2_bzflush(file);
+    fclose(file);
 
-  BZ2_bzlibVersion();
-
-  BZ2_bzflush(file);
-  fclose(file);
-
-  if (unlink(filename) != 0) {
+    if (unlink(filename) != 0) {
     perror("WARNING: Failed to delete temporary file.");
-  }
-  free(filename);
-  return 0;
+    }
+    free(filename);
+    return 0;
 }
