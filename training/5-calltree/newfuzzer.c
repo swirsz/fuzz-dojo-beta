@@ -44,19 +44,8 @@ LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
     perror("Failed to allocate file name buffer.");
     abort();
     }
-    const int file_descriptor = mkstemp(filename);
-    if (file_descriptor < 0) {
-    perror("Failed to make temporary file.");
-    abort();
-    }
-    FILE* file = fdopen(file_descriptor, "wb");
-    if (!file) {
-    perror("Failed to open file descriptor.");
-    close(file_descriptor);
-    abort();
-    }
 
-    BZFILE* bzf = BZ2_bzWriteOpen ( &bzerr, filefile,
+    BZFILE* bzf = BZ2_bzWriteOpen ( &bzerr, filename,
                            blockSize100k, verbosity, workFactor );
 
     BZ2_bzWrite (&bzerr, bzf, (void*)data, size);
