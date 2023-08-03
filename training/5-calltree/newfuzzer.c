@@ -26,9 +26,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// return bzopen_or_bzdopen(path,-1,mode,/*bzopen*/0);
-// return bzopen_or_bzdopen(NULL,fd,mode,/*bzdopen*/1);
-
 int
 LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
 {
@@ -40,10 +37,6 @@ LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
     uint   nbytes_out_lo32, nbytes_out_hi32;
 
     char* filename = strdup("/tmp/generate_temporary_file.XXXXXX");
-    if (!filename) {
-    perror("Failed to allocate file name buffer.");
-    abort();
-    }
     const int file_descriptor = mkstemp(filename);
     if (file_descriptor < 0) {
     perror("Failed to make temporary file.");
@@ -56,12 +49,12 @@ LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
     abort();
     }
 
-    BZFILE* bzf = BZ2_bzWriteOpen ( &bzerr, file,
+    BZFILE* bzfile = BZ2_bzWriteOpen (&bzerr, file,
                            blockSize100k, verbosity, workFactor );
 
-    BZ2_bzWrite (&bzerr, bzf, (void*)data, size);
+    BZ2_bzWrite (&bzerr, bzfile, (void*)data, size);
 
-    BZ2_bzWriteClose64 ( &bzerr, bzf, 0,
+    BZ2_bzWriteClose64 (&bzerr, bzfile, 0,
                         &nbytes_in_lo32, &nbytes_in_hi32,
                         &nbytes_out_lo32, &nbytes_out_hi32 );
 
