@@ -56,7 +56,7 @@ LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
     abort();
     }
 
-    BZFILE* bzf = BZ2_bzWriteOpen ( &bzerr, file,
+    BZFILE* bzf = BZ2_bzWriteOpen ( &bzerr, filefile,
                            blockSize100k, verbosity, workFactor );
 
     BZ2_bzWrite (&bzerr, bzf, (void*)data, size);

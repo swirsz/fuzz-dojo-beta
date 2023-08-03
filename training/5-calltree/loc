@@ -1,5 +1,5 @@
 #!/opt/pwn.college/bash 
-INITIAL=74
+INITIAL=35
 TARGET=75
 sudo -H -u hacker bash -c /usr/local/sbin/loc_count
 /usr/local/sbin/loc newfuzzer
