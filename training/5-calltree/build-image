@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 . /usr/local/sbin/e
 export PROJECT_NAME=bzip2
 [ -z "$SANITIZER" ] && export SANITIZER='none'
