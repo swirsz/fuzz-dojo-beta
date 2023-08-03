@@ -17,8 +17,10 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 if [ ! -d "~/training-calltree" ]; then
    mkdir ~/training-calltree
    cp $SRC/*.c ~/training-calltree
+   echo 11111111111111
 else
    cp ~/training-calltree/*.c $SRC
+   echo 11111111111111
 fi
 
 cd $SRC
