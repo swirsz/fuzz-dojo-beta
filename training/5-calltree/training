@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/opt/pwn.college/python
 import json
 import sys
 
@@ -10,7 +10,6 @@ print("function that can be swapped for similar functions.\n")
 print("Note: Fuzzing is non-deterministic. You may need to run /challenge/loc again.\n")
 
 summary_file = "/out/fuzzer_stats/newfuzzer.json"
-f = open("/flag", "r")
 try:
     with open(summary_file, "r") as fj:
         content = json.load(fj)
@@ -24,7 +23,8 @@ try:
                         print("Additional functions could be called higher in the calltree.\n")
                     else:
                         print("Congratulations")
-                        print(f.read())
+                        with open("/flag") as f:
+                            print(f.read())
 except:
     print("Missing "+summary_file)
     print("\nPlease run /challenge/loc first\n")
