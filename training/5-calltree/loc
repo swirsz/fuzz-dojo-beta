@@ -1,13 +1,10 @@
 #!/opt/pwn.college/bash 
-INITIAL=35
+INITIAL=70
 TARGET=75
 sudo -H -u hacker bash -c /usr/local/sbin/loc_count
-echo
-echo Checking newfuzzer coverage: /out/fuzzer_stats/newfuzzer.json 
-/usr/local/sbin/loc newfuzzer
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
     echo
-    echo Congratulations!
+    echo Congratulations!  But make sure you also submit your improvements to Google!
     cat /flag
 fi
