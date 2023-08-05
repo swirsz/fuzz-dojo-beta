@@ -20,11 +20,7 @@ try:
                 if files.get('filename') == "/src/bzip2/bzlib.c":
                     func = files['summary']['branches']['covered']
                     print("{0} functions reached. ".format(str(func)))
-                    if func < 144:
-                        print("Additional functions could be called higher in the calltree.\n")
-                    else:
-                        print("Congratulations")
-                        returncode = int(func)
+                    returncode = int(func)
 except:
     print("Missing "+summary_file)
     print("\nPlease run /challenge/loc first\n")
