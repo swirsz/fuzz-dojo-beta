@@ -12,11 +12,11 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir ~/$PROJECT_NAME
+   mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/snappy_compress_fuzzer.cc $SRC/$PROJECT_NAME/new_fuzzer.cc
-   cp $SRC/$PROJECT_NAME/*.cc ~/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/*.cc /home/hacker/$PROJECT_NAME
 else
-   cp ~/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
 fi
 patch -tuN /src/snappy/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 compile

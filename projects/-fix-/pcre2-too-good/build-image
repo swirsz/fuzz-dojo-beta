@@ -10,11 +10,11 @@ git clone https://github.com/PCRE2Project/pcre2 pcre2
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir ~/$PROJECT_NAME
+   mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/zzzzzzzzzzzzzzzzz.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy/newfuzzer.c
-   cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/*.c ~/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/*.c /home/hacker/$PROJECT_NAME
 else
-   cp ~/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy
 fi
 patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

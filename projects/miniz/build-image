@@ -10,11 +10,11 @@ git clone --depth 1 https://github.com/richgel999/miniz.git
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir ~/$PROJECT_NAME
+   mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/compress_fuzzer.c $SRC/$PROJECT_NAME/tests/new_fuzzer.c
-   cp $SRC/$PROJECT_NAME/tests/*.c ~/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/*.c /home/hacker/$PROJECT_NAME
 else
-   cp ~/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

@@ -11,11 +11,11 @@ export OLD_LLVMPASS=1
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir ~/$PROJECT_NAME
+   mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/test/ares-test-fuzz.c $SRC/$PROJECT_NAME/test/newfuzzer.c
-   cp $SRC/$PROJECT_NAME/test/*.c ~/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/test/*.c /home/hacker/$PROJECT_NAME
 else
-   cp ~/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/test
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/test
 fi
 patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

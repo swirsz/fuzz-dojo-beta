@@ -10,11 +10,11 @@ git clone https://git.tukaani.org/xz.git $SRC/xz
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir ~/$PROJECT_NAME
+   mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/ossfuzz/fuzz.c $SRC/$PROJECT_NAME/tests/ossfuzz/newfuzzer.c
-   cp $SRC/$PROJECT_NAME/tests/ossfuzz/*.c ~/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/ossfuzz/*.c /home/hacker/$PROJECT_NAME
 else
-   cp ~/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/ossfuzz
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/ossfuzz
 fi
 patch -tuN /src/xz/tests/ossfuzz/Makefile -i /challenge/Makefile.patch -r -
 compile

@@ -14,11 +14,11 @@ cp /challenge/newfuzzer.c $SRC/newfuzzer.c
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-if [ ! -d "~/training-parameters" ]; then
-   mkdir ~/training-parameters
-   cp $SRC/*.c ~/training-parameters
+if [ ! -d "/home/hacker/training-parameters" ]; then
+   mkdir /home/hacker/training-parameters
+   cp $SRC/*.c /home/hacker/training-parameters
 else
-   cp ~/training-parameters/*.c $SRC
+   cp /home/hacker/training-parameters/*.c $SRC
 fi
 
 cd $SRC
