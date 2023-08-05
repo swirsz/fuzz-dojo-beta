@@ -7,7 +7,7 @@ print("In this challenge, you have a working fuzz driver that improve code cover
 print("by calling functions higher in the call tree. Examine the source code of the")
 print("current fuzz driver and the source code of the project to find 2 different")
 print("function that can be swapped for similar functions.\n")
-print("Note: Fuzzing is non-deterministic. You may need to run /challenge/loc twice.\n")
+print("Note: Fuzzing is non-deterministic. You may need to run /challenge/loc again.\n")
 
 summary_file = "/out/fuzzer_stats/newfuzzer.json"
 try:
