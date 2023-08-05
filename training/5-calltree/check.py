@@ -10,6 +10,7 @@ print("function that can be swapped for similar functions.\n")
 print("Note: Fuzzing is non-deterministic. You may need to run /challenge/loc again.\n")
 
 summary_file = "/out/fuzzer_stats/newfuzzer.json"
+returncode = 0
 try:
     with open(summary_file, "r") as fj:
         content = json.load(fj)
@@ -23,8 +24,9 @@ try:
                         print("Additional functions could be called higher in the calltree.\n")
                     else:
                         print("Congratulations")
-                        exit(int(func))
+                        returncode = int(func)
 except:
     print("Missing "+summary_file)
     print("\nPlease run /challenge/loc first\n")
-    exit(0)
+
+exit(returncode)
