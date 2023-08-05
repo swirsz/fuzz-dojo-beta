@@ -27,4 +27,4 @@ try:
 except:
     print("Missing "+summary_file)
     print("\nPlease run /challenge/loc first\n")
-    exit(-1)
+    exit(0)

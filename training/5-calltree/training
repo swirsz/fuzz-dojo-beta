@@ -2,7 +2,7 @@
 TARGET=144
 echo
 /challenge/check.py
-if [ "$?" -gt "$TARGET" ]; then
+if [ "$?" -ge "$TARGET" ]; then
     echo Additional functions could be called higher in the calltree.
 else
     echo Congratulations
