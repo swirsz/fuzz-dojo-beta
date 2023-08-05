@@ -17,9 +17,9 @@ try:
             filenames = dd.get('files')
             for files in filenames:
                 if files.get('filename') == "/src/bzip2/bzlib.c":
-                    if files['summary']['branches']['covered'] <= 143:
+                    if files['summary']['branches']['covered'] < 144:
                         print("Additional functions could be called higher in the calltree.")
-                    if files['summary']['branches']['covered'] > 143:
+                    else:
                         print("Congratulations")
                         with open("/flag") as f:
                             print(f.read())
