@@ -2,11 +2,12 @@
 import json
 import sys
 
-print("###\n### Welcome to /challenge/"+sys.argv[0]+"!\n###\n")
+print("###\n### Welcome to "+sys.argv[0]+"!\n###\n")
 print("In this challenge, you have a working fuzz driver that improve code coverage")
 print("by calling functions higher in the call tree. Examine the source code of the")
 print("current fuzz driver and the source code of the project to find 2 different")
-print("function that can be swapped for similar functions.\n\n")
+print("function that can be swapped for similar functions.\n")
+print("Note: Fuzzing is non-deterministic. You may need to run /challenge/loc twice.\n")
 
 summary_file = "/out/fuzzer_stats/newfuzzer.json"
 try:
@@ -17,9 +18,9 @@ try:
             for files in filenames:
                 if files.get('filename') == "/src/bzip2/bzlib.c":
                     if files['summary']['branches']['covered'] == 143:
-                        print("2 functions can be called higher in the calltree")
+                        print("2 more functions could be called higher in the calltree.")
                     if files['summary']['branches']['covered'] == 144:
-                        print("1 more function can be called higher in the calltree")
+                        print("1 more function could be called higher in the calltree.")
                     if files['summary']['branches']['covered'] == 145:
                         print("Congratulations")
                         with open("/flag") as f:
