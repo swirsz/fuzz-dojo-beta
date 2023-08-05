@@ -1,5 +1,5 @@
 #!/opt/pwn.college/bash 
-TARGET=144
+TARGET=19
 /challenge/check.py
 if [ "$?" -gt "$TARGET" ]; then
     echo Additional functions could be called higher in the calltree.

@@ -18,7 +18,7 @@ try:
             filenames = dd.get('files')
             for files in filenames:
                 if files.get('filename') == "/src/bzip2/bzlib.c":
-                    func = files['summary']['branches']['covered']
+                    func = files['summary']['functions']['covered']
                     print("{0} functions reached. ".format(str(func)))
                     returncode = int(func)
 except:
