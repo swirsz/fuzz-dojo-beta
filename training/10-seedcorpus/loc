@@ -1,10 +1,13 @@
 #!/opt/pwn.college/bash 
-INITIAL=100
-TARGET=105
+INITIAL=27
+TARGET=31
 sudo -H -u hacker bash -c /usr/local/sbin/loc_count
+echo
+echo Checking bzip2_decompress_target coverage: 
+/usr/local/sbin/loc bzip2_decompress_target
 /usr/local/sbin/announce $INITIAL $? 
-if [ "$?" -ge "$TARGET" ]; then
+if [ "$?" -gt "$TARGET" ]; then
     echo
-    echo Congratulations!  But make sure you also submit your improvements to Google!
+    echo Congratulations!
     cat /flag
 fi

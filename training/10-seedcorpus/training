@@ -1,0 +1,9 @@
+#!/opt/pwn.college/bash 
+TARGET=19
+/challenge/check.py
+if [ "$?" -gt "$TARGET" ]; then
+    echo Congratulations
+    cat /flag
+else
+    echo Additional functions could be called higher in the calltree.  Try again.
+fi
