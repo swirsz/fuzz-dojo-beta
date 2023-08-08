@@ -10,8 +10,6 @@ rm -rf /src/$PROJECT_NAME-tests
 git clone git://sourceware.org/git/bzip2.git
 git clone git://sourceware.org/git/bzip2-tests.git
 
-cp /challenge/newfuzzer.c $SRC/newfuzzer.c
-
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 if [ ! -d "/home/hacker/training-seedcorpus" ]; then
