@@ -8,7 +8,7 @@ print("by calling functions higher in the call tree. Examine the source code of 
 print("current fuzz driver and the source code of the project to find 2 different")
 print("functions that can be swapped for similar functions.\n")
 
-summary_file = "/out/fuzzer_stats/newfuzzer.json"
+summary_file = "/out/fuzzer_stats/bzip2_decompress_target.json"
 returncode = 0
 try:
     with open(summary_file, "r") as fj:
