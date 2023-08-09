@@ -18,7 +18,7 @@ try:
             for files in filenames:
                 if files.get('filename') == "/src/bzip2_decompress_target.c":
                     func = files['summary']['branches']['covered']
-                    print("{0} branches reached. ".format(str(func)))
+                    print("{0} of 2 branches reached. ".format(str(func)))
                     returncode = int(func)
 except:
     print("Missing "+summary_file)
