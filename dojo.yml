@@ -14,11 +14,7 @@ modules:
 
   - id: training
     name: TRAINING
-    description:  |
-    In the vast expanse of the digital realm, HTTP (Hypertext Transfer Protocol) stands as the lingua franca, the common tongue through which web applications, servers, and clients converse.
-    This module, **Talking Web**, delves deep into the intricate dance of crafting, decoding, and manipulating HTTP requests and responses.
-    
-
+    description: |
     Yet, as with any craft, your tools are only as effective as your knowledge of them.
     Should you ever find yourself at a crossroads, uncertain of how to harness these tools, remember that knowledge is just a click away
     
