@@ -3,8 +3,8 @@ id: fuzz
 name: FUZZING
 
 description: |
-  Important resources: |
-  [OSS-Fuzz projects statistics and Fuzzing Introspection reports](https://introspector.oss-fuzz.com/projects-overview) |
+  Important Resources
+  [OSS-Fuzz projects statistics and Fuzzing Introspection reports](https://introspector.oss-fuzz.com/projects-overview)
   abc
 
 modules:
