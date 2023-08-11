@@ -13,8 +13,10 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/test/fuzz/fuzz_core_funcs.c $SRC/$PROJECT_NAME/test/fuzz/fuzz_newfuzzer.c
    cp $SRC/$PROJECT_NAME/test/fuzz/*.c /home/hacker/$PROJECT_NAME
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/test/fuzz
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 patch -tuN $SRC/$PROJECT_NAME/test/fuzz/oss-fuzz-build.sh -i /challenge/oss-fuzz-build.patch -r -
 compile

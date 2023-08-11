@@ -20,7 +20,9 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
    cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/$PROJECT_NAME
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzzers
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile

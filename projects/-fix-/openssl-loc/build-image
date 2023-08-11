@@ -25,8 +25,10 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/zzzzzzzzzzzzzzzzz.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy/newfuzzer.c
    cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/*.c /home/hacker/$PROJECT_NAME
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

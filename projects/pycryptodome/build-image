@@ -17,8 +17,10 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/pcd_aes_fuzzer.cc $SRC/newfuzzer.cc
    cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

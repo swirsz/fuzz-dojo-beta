@@ -23,7 +23,9 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/decoder.cpp $SRC/$PROJECT_NAME/newfuzzer.cpp
    cp $SRC/$PROJECT_NAME/fuzzer-decoder_seed_corpus.zip $SRC/$PROJECT_NAME/newfuzzer_seed_corpus.zip
    cp $SRC/$PROJECT_NAME/* /home/hacker/$PROJECT_NAME
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile

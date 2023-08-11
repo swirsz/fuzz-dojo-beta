@@ -3,7 +3,9 @@ id: fuzz
 name: FUZZING
 
 description: |
-  This is an [Fuzzing Dojo](https://pwnfuzz.wirsz.com/).
+  Important resources:
+  [OSS-Fuzz projects statistics and Fuzzing Introspection reports](https://introspector.oss-fuzz.com/projects-overview)
+  abc
 
 modules:
 

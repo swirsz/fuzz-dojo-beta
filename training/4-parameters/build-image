@@ -17,8 +17,10 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 if [ ! -d "/home/hacker/training-parameters" ]; then
    mkdir /home/hacker/training-parameters
    cp $SRC/*.c /home/hacker/training-parameters
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/training-parameters/*.c $SRC
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 
 cd $SRC

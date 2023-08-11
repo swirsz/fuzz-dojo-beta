@@ -15,8 +15,10 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/fuzzers/opj_decompress_fuzzer_J2K.cpp $SRC/$PROJECT_NAME/tests/fuzzers/newfuzzer.cpp
    cp $SRC/$PROJECT_NAME/tests/fuzzers/*.cpp /home/hacker/$PROJECT_NAME
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/tests/fuzzers
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

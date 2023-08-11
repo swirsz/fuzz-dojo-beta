@@ -17,8 +17,10 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 if [ ! -d "/home/hacker/training-calltree" ]; then
    mkdir /home/hacker/training-calltree
    cp $SRC/*.c /home/hacker/training-calltree
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/training-calltree/*.c $SRC
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 
 cd $SRC
