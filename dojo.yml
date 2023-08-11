@@ -2,7 +2,7 @@ id: fuzz
 
 name: FUZZING
 
-description: |
+description: >
   Important Resources
   [OSS-Fuzz projects statistics and Fuzzing Introspection reports](https://introspector.oss-fuzz.com/projects-overview)
   abc
