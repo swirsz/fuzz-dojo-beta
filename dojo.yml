@@ -20,12 +20,8 @@ modules:
     
 
     Yet, as with any craft, your tools are only as effective as your knowledge of them.
-    Should you ever find yourself at a crossroads, uncertain of how to harness these tools, remember that knowledge is just a click away:
-    - For `curl`, should its versatility bewilder you, the [man page for curl](https://linux.die.net/man/1/curl) is a treasure trove of wisdom.
-    - If `netcat` seems enigmatic, allow [netcat's documentation](https://linux.die.net/man/1/nc) to shed light on its mysteries.
-    - And, when the intricacies of the `python requests` library beckon, dive into its [comprehensive guide](https://requests.readthedocs.io/en/latest/).
+    Should you ever find yourself at a crossroads, uncertain of how to harness these tools, remember that knowledge is just a click away
     
-    To truly initiate this journey, why not start by reaching out to the server in its native tongue? Let's put theory into practice. Go on, and use `curl` to speak with `localhost`.
     challenges:
 
       - id: 1-locate
