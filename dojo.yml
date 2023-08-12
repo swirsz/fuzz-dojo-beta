@@ -5,7 +5,9 @@ name: FUZZING
 description: |
   Important Resources:
   - [OSS-Fuzz Statistics and Fuzzing Introspection reports](https://introspector.oss-fuzz.com/projects-overview)
-  - abc
+  - [Refreshed OSS-Fuzz rewards](https://security.googleblog.com/2023/02/taking-next-step-oss-fuzz-in-2023.html)
+  - [**OSS-Fuzz** Setting up a new project](https://google.github.io/oss-fuzz/getting-started/new-project-guide/)
+  - [Ideal integration](https://google.github.io/oss-fuzz/advanced-topics/ideal-integration/)
 
 modules:
 
