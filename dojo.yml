@@ -4,10 +4,12 @@ name: FUZZING
 
 description: |
   Important Resources:
-  - [OSS-Fuzz Statistics and Fuzzing Introspection reports](https://introspector.oss-fuzz.com/projects-overview)
-  - [Refreshed OSS-Fuzz rewards](https://security.googleblog.com/2023/02/taking-next-step-oss-fuzz-in-2023.html)
-  - [`OSS-Fuzz` Setting up a new project](https://google.github.io/oss-fuzz/getting-started/new-project-guide/)
-  - [Ideal integration](https://google.github.io/oss-fuzz/advanced-topics/ideal-integration/)
+  - [**OSS-Fuzz** Statistics and Fuzzing Introspection reports](https://introspector.oss-fuzz.com/projects-overview)
+  - [Blog: Refreshed OSS-Fuzz rewards](https://security.googleblog.com/2023/02/taking-next-step-oss-fuzz-in-2023.html)
+  - [**OSS-Fuzz** Setting up a new project](https://google.github.io/oss-fuzz/getting-started/new-project-guide/)
+  - [**OSS-Fuzz** Ideal integration](https://google.github.io/oss-fuzz/advanced-topics/ideal-integration/)
+  - [Efficient Fuzzing Guide](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/efficient_fuzzing.md)
+  - [**GITHUB** How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
 
 modules:
 
