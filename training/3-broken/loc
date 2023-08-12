@@ -3,11 +3,12 @@ INITIAL=76
 TARGET=95
 sudo -H -u hacker bash -c /usr/local/sbin/loc_count
 /usr/local/sbin/announce $INITIAL $? 
-    echo
 if [ "$?" -gt "$TARGET" ]; then
+    echo
     echo Congratulations!
     cat /flag
 else
+    echo
     echo Need greater code coverage to pass this challenge!
     echo Run /challenge/fuzz-introspector to see what lines of code are not being executed.
 fi
