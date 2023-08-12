@@ -9,7 +9,7 @@ description: |
   - [**OSS-Fuzz** Ideal integration](https://google.github.io/oss-fuzz/advanced-topics/ideal-integration/)
   - [**GITHUB** How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
   - [Efficient Fuzzing Guide](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/efficient_fuzzing.md)
-  - [Blog: Refreshed OSS-Fuzz rewards](https://security.googleblog.com/2023/02/taking-next-step-oss-fuzz-in-2023.html)
+  - [**Google Blog** Refreshed OSS-Fuzz rewards](https://security.googleblog.com/2023/02/taking-next-step-oss-fuzz-in-2023.html)
 
 modules:
 
