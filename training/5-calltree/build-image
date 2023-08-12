@@ -7,7 +7,7 @@ cd $SRC
 rm -rf /src/$PROJECT_NAME
 rm -rf /src/$PROJECT_NAME-tests
 #apt-get update && apt-get install -y make autoconf automake libtool wget
-git clone git://sourceware.org/git/bzip2.git
+git clone https://github.com/swirsz/bzip2
 git clone git://sourceware.org/git/bzip2-tests.git
 
 cp /challenge/newfuzzer.c $SRC/newfuzzer.c

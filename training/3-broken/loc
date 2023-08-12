@@ -7,8 +7,10 @@ if [ "$?" -gt "$TARGET" ]; then
     echo
     echo Congratulations!
     cat /flag
+    echo
 else
     echo
     echo Need greater code coverage to pass this challenge!
     echo Run /challenge/fuzz-introspector to see what lines of code are not being executed.
+    echo
 fi
