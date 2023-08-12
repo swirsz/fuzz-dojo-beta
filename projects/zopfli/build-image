@@ -5,7 +5,7 @@ export PROJECT_NAME=zopfli
 cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool
-git clone --depth 1 https://github.com/google/zopfli
+git clone --depth 1 https://github.com/swirsz/zopfli
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
