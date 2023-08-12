@@ -8,6 +8,6 @@ if [ "$?" -gt "$TARGET" ]; then
     echo Congratulations!  But make sure you also submit your improvements to Google!
     cat /flag
 fi
-if [ -f "/out/crash*" ]; then
+if compgen -G "/out/crash*" > /dev/null; then
     echo "crashes exists."
 fi
