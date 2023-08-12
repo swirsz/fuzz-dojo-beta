@@ -67,6 +67,10 @@ modules:
         name: Repair Fuzz Blockers 
         description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it.  Run /challenge/training in Terminal to start.
 
+      - id: 13-crash
+        name: Diagnose crash files
+        description: Run /challenge/training in Terminal to start.
+
   - id: projects
     name: OSS-FUZZ PROJECTS
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
