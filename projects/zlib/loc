@@ -9,5 +9,7 @@ if [ "$?" -gt "$TARGET" ]; then
     cat /flag
 fi
 if compgen -G "/out/crash*" > /dev/null; then
-    echo "crashes exists."
+    echo
+    echo "Crashes detected within the /out directory!"
+    echo
 fi
