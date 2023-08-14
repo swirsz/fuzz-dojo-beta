@@ -5,7 +5,7 @@ export PROJECT_NAME=zlib
 cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool
-git clone https://github.com/swirsz/zlib
+git clone --depth 1 -b develop https://github.com/madler/zlib.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
 

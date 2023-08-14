@@ -68,8 +68,8 @@ modules:
         description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it.  Run /challenge/training in Terminal to start.
 
       - id: 13-crash
-        name: Diagnose crash files.  
-        description: Run /challenge/training in Terminal to start.
+        name: Diagnose Crash Files
+        description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
   - id: projects
     name: OSS-FUZZ PROJECTS
