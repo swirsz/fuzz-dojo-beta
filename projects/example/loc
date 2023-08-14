@@ -8,3 +8,8 @@ if [ "$?" -ge "$TARGET" ]; then
     echo Congratulations!  But make sure you also submit your improvements to Google!
     cat /flag
 fi
+if compgen -G "/out/crash*" > /dev/null; then
+    echo
+    echo "Crashes detected within the /out directory!"
+    echo
+fi

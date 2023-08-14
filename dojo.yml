@@ -68,7 +68,7 @@ modules:
         description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it.  Run /challenge/training in Terminal to start.
 
       - id: 13-crash
-        name: Diagnose crash files
+        name: Diagnose crash files.  
         description: Run /challenge/training in Terminal to start.
 
   - id: projects

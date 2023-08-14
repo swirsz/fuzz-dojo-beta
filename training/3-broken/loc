@@ -14,3 +14,8 @@ else
     echo Run /challenge/fuzz-introspector to see what lines of code are not being executed.
     echo
 fi
+if compgen -G "/out/crash*" > /dev/null; then
+    echo
+    echo "Crashes detected within the /out directory!"
+    echo
+fi
