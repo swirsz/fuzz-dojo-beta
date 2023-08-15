@@ -1,4 +1,6 @@
-#!/opt/pwn.college/bash 
+#!/opt/pwn.college/bash
+rm /out/crash-*
+rm /out/timeout-*
 sudo -H -u hacker bash -c /usr/local/sbin/loc_count
 if compgen -G "/out/crash-*" > /dev/null; then
     echo
