@@ -1,11 +1,10 @@
 #!/opt/pwn.college/bash 
 sudo -H -u hacker bash -c /usr/local/sbin/loc_count
-/usr/local/sbin/announce $INITIAL $? 
-if compgen -G "/out/crash*" > /dev/null; then
+if compgen -G "/out/crash-*" > /dev/null; then
     echo
     echo "Crashes detected within the /out directory!"
     echo
-elif compgen -G "/out/timeout*" > /dev/null; then
+elif compgen -G "/out/timeout-*" > /dev/null; then
     echo
     echo "Timeouts detected within the /out directory!"
     echo
