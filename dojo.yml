@@ -59,15 +59,11 @@ modules:
         name: Implement Seed Corpus
         description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
 
-      - id: 11-dictionary
-        name: Implement a Dictionary
-        description: Implement a dictionary.  Run /challenge/training in Terminal to start.
-
-      - id: 12-blockers
+      - id: 11-blockers
         name: Repair Fuzz Blockers 
         description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it.  Run /challenge/training in Terminal to start.
 
-      - id: 13-crash
+      - id: 12-crash
         name: Diagnose Crash Files
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
