@@ -1,27 +1,28 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=bzip2
+export PROJECT_NAME=janus-gateway
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-rm -rf /src/$PROJECT_NAME
-rm -rf /src/$PROJECT_NAME-tests
-#apt-get update && apt-get install -y make autoconf automake libtool wget
-git clone git://sourceware.org/git/bzip2.git
-git clone git://sourceware.org/git/bzip2-tests.git
+#apt-get update && apt-get install -y autoconf autoconf-archive automake gengetopt gtk-doc-tools libconfig-dev libglib2.0-dev libgnutls28-dev libini-config-dev libjansson-dev libnice-dev libssl-dev libtool openssl pkg-config
 
-cp /challenge/newfuzzer.c $SRC/newfuzzer.c
+# install libsrtp dep from source
+git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
+cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
+cd $SRC/
+# fetch Janus code
+git clone --single-branch https://github.com/swirsz/janus-gateway.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-if [ ! -d "/home/hacker/training-split" ]; then
-   mkdir /home/hacker/training-split
-   cp $SRC/*.c /home/hacker/training-split
+
+cd $SRC/
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
+   cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/training-split/*.c $SRC
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzzers
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-
-cd $SRC
 compile

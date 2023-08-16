@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash 
-INITIAL=36
-TARGET=41
+INITIAL=35
+TARGET=40
 sudo -H -u hacker bash -c /usr/local/sbin/loc_count
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
