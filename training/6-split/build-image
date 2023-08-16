@@ -16,13 +16,13 @@ git clone --single-branch https://github.com/swirsz/janus-gateway.git
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
+if [ ! -d "/home/hacker/training-split" ]; then
+   mkdir /home/hacker/training-split
    cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
-   cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/training-split
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-split
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzzers
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/training-split/*.c $SRC/$PROJECT_NAME/fuzzers
+   cp /home/hacker/training-split/build.sh $SRC
 fi
 compile

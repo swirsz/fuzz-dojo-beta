@@ -11,14 +11,14 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
+if [ ! -d "/home/hacker/training-crashes" ]; then
+   mkdir /home/hacker/training-crashes
    cp $SRC/minigzip_fuzzer.c $SRC/new_fuzzer.c
-   cp $SRC/*.c* /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/*.c* /home/hacker/training-crashes
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-crashes
 else
-   cp /home/hacker/$PROJECT_NAME/*.c* $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/training-crashes/*.c* $SRC
+   cp /home/hacker/training-crashes/build.sh $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
