@@ -1,6 +1,7 @@
 #!/opt/pwn.college/bash 
 INITIAL=1
 TARGET=45
+export SANITIZER='undefined'
 sudo -H -u hacker bash -c /usr/local/sbin/loc_count2
 echo
 echo newfuzzer
