@@ -1,7 +1,9 @@
 #!/opt/pwn.college/bash 
-INITIAL=74
-TARGET=75
-sudo -H -u hacker bash -c /usr/local/sbin/loc_count
+INITIAL=1
+TARGET=45
+sudo -H -u hacker bash -c /usr/local/sbin/loc_count2
+echo
+echo newfuzzer
 /usr/local/sbin/loc newfuzzer
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
