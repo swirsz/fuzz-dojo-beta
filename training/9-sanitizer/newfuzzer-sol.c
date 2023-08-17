@@ -19,12 +19,12 @@
 /*
 #52  BZFILE* bzf = BZ2_bzWriteOpen ( &bzerr, file,
 #55  BZ2_bzWrite (&bzerr, bzf, (void*)data, size);
-#62 static void fuzzer_read_data(FILE *file) {
-#65  char   obuf[BZ_MAX_UNUSED];
+-#62 static void fuzzer_read_data(FILE *file) {
+-#65  char   obuf[BZ_MAX_UNUSED];
 #67  int    nUnused = 0;
 #68  bool   smallMode = 0;
 #73      BZ2_bzRead ( &bzerr, bzf2, obuf, BZ_MAX_UNUSED);
-#101  fuzzer_read_data(file);
+-#101  fuzzer_read_data(file);
 */
 
 #include "bzlib.h"

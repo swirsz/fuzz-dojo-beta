@@ -49,10 +49,10 @@ static void fuzzer_write_data(FILE *file, const uint8_t *data, size_t size) {
   uint   nbytes_in_lo32, nbytes_in_hi32;
   uint   nbytes_out_lo32, nbytes_out_hi32;
 
-  BZFILE* bzf =   bzf = BZ2_bzWriteOpen ( &bzerr, file,
+  BZFILE* bzf = BZ2_bzWriteOpen ( &bzerr, file,
                            blockSize100k, verbosity, workFactor );
 
-  BZ2_bzWrite (&bzerr, bzf, (void*)data, sizeof(uint8_t));
+  BZ2_bzWrite (&bzerr, bzf, (void*)data, size);
 
   BZ2_bzWriteClose64 ( &bzerr, bzf, 0,
                         &nbytes_in_lo32, &nbytes_in_hi32,
@@ -64,13 +64,13 @@ static void fuzzer_read_data(FILE *file, size_t size) {
   int    verbosity = 0;
   char   obuf[size];
   char   unused[BZ_MAX_UNUSED];
-  int    nUnused;
-  bool   smallMode;
+  int    nUnused = 0;
+  bool   smallMode = 0;
 
   BZFILE* bzf2 = BZ2_bzReadOpen (&bzerr, file, verbosity, (int)smallMode, unused, nUnused);
 
   while (bzerr == BZ_OK) {
-      BZ2_bzRead ( &bzerr, bzf2, obuf, size );
+      BZ2_bzRead ( &bzerr, bzf2, obuf, BZ_MAX_UNUSED);
   }
 
   BZ2_bzReadClose ( &bzerr, bzf2);
@@ -107,4 +107,4 @@ LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
   }
   free(filename);
   return 0;
-} 
+}
