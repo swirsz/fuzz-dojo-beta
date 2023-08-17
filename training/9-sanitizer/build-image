@@ -1,25 +1,27 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=example
+export PROJECT_NAME=bzip2
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
-git clone https://github.com/google/oss-fuzz.git example
+rm -rf /src/$PROJECT_NAME
+rm -rf /src/$PROJECT_NAME-tests
+#apt-get update && apt-get install -y make autoconf automake libtool wget
+git clone git://sourceware.org/git/bzip2.git
+git clone git://sourceware.org/git/bzip2-tests.git
 
-cp /challenge/do_stuff_unittest.cpp /src/example/projects/example/my-api-repo
-cp /challenge/do_stuff_fuzzer.cpp /src/example/projects/example/my-api-repo
-cp /challenge/my_api.cpp /src/example/projects/example/my-api-repo
+cp /challenge/newfuzzer.c $SRC/newfuzzer.c
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cd $SRC/$PROJECT_NAME
-if [ ! -d "/home/hacker/training-broken" ]; then
-   mkdir /home/hacker/training-broken
-   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/* /home/hacker/training-broken
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-broken
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+if [ ! -d "/home/hacker/training-sanitizer" ]; then
+   mkdir /home/hacker/training-sanitizer
+   cp $SRC/*.c /home/hacker/training-sanitizer
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-sanitizer
 else
-   cp /home/hacker/training-broken/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
-   cp /home/hacker/training-broken/build.sh $SRC
+   cp /home/hacker/training-sanitizer/*.c $SRC
+   cp /home/hacker/training-sanitizer/build.sh $SRC
 fi
-#patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/Makefile.patch -r -
+
+cd $SRC
 compile
