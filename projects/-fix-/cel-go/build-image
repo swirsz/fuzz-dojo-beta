@@ -1,6 +1,7 @@
 #!/bin/sh
 . /usr/local/sbin/e
 export PROJECT_NAME=cel-go
+export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 

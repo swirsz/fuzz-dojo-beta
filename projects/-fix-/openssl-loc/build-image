@@ -1,5 +1,6 @@
 #!/bin/sh
 . /usr/local/sbin/e
+export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 mkdir $SRC/fuzz
