@@ -6,7 +6,7 @@ echo
 echo newfuzzer
 /usr/local/sbin/loc newfuzzer
 /usr/local/sbin/announce $INITIAL $? 
-if [ "$?" -gt "$TARGET" ]; then
+if [ "$?" -ge "$TARGET" ]; then
     echo
     echo Congratulations! But you will need to run /challenge/loc2 to win.
 fi
