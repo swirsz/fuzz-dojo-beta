@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash 
 INITIAL=89
 TARGET=94
-sudo -H -u hacker bash -c /usr/local/sbin/loc_count $1
+sudo -H -u hacker bash -c "/usr/local/sbin/loc_count $1"
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
     echo
