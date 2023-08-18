@@ -17,6 +17,7 @@
 */
 
 #include "bzlib.h"
+#include "bzlib.c"
 #include <stdint.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -33,52 +34,21 @@ extern BZFILE* BZ2_bzWriteOpen(
   int   verbosity,
   int   workFactor );
 
-extern BZFILE* BZ2_bzReadOpen(
-  int*  bzerror,
-  FILE* f,
-  int   verbosity,
-  int   small,
-  void* unused,
-  int   nUnused );
+extern BZFILE * bzopen_or_bzdopen
+               ( const char *path,   /* no use when bzdopen */
+                 int fd,             /* no use when bzdopen */
+                 const char *mode,
+                 int open_mode);      /* bzopen: 0, bzdopen:1 */
 
-static void fuzzer_write_data(FILE *file, const uint8_t *data, size_t size) {
+int
+LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
+{
   int    bzerr;
   int    blockSize100k = 9;
   int    verbosity     = 0;
   int    workFactor    = 30;
   uint   nbytes_in_lo32, nbytes_in_hi32;
   uint   nbytes_out_lo32, nbytes_out_hi32;
-
-  BZFILE* bzf = BZ2_bzWriteOpen ( &bzerr, file,
-                           blockSize100k, verbosity, workFactor );
-
-  BZ2_bzWrite (&bzerr, bzf, (void*)data, size);
-
-  BZ2_bzWriteClose64 ( &bzerr, bzf, 0,
-                        &nbytes_in_lo32, &nbytes_in_hi32,
-                        &nbytes_out_lo32, &nbytes_out_hi32 );
-}
-
-static void fuzzer_read_data(FILE *file) {
-  int    bzerr;
-  int    verbosity = 0;
-  char   obuf[BZ_MAX_UNUSED];
-  char   unused[BZ_MAX_UNUSED];
-  int    nUnused = 0;
-  bool   smallMode = 0;
-
-  BZFILE* bzf2 = BZ2_bzReadOpen (&bzerr, file, verbosity, (int)smallMode, unused, nUnused);
-
-  while (bzerr == BZ_OK) {
-      BZ2_bzRead ( &bzerr, bzf2, obuf, BZ_MAX_UNUSED);
-  }
-
-  BZ2_bzReadClose ( &bzerr, bzf2);
-}
-
-int
-LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
-{
   char* filename = strdup("/tmp/generate_temporary_file.XXXXXX");
   if (!filename) {
     perror("Failed to allocate file name buffer.");
@@ -95,10 +65,15 @@ LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
     close(file_descriptor);
     abort();
   }
+  
+  BZFILE* bzf = bzopen_or_bzdopen (file, -1, 0, 0)
 
-  fuzzer_write_data(file, data, size);
+  /* BZFILE* bzf = BZ2_bzWriteOpen ( &bzerr, file, blockSize100k, verbosity, workFactor );
+   https://github.com/libarchive/bzip2/blob/master/bzlib.c#L1385  */
 
-  fuzzer_read_data(file);
+  BZ2_bzWriteClose64 ( &bzerr, bzf, 0,
+                        &nbytes_in_lo32, &nbytes_in_hi32,
+                        &nbytes_out_lo32, &nbytes_out_hi32 );
 
   fclose(file);
 
