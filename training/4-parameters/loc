@@ -6,7 +6,7 @@ echo
 echo fuzz-newfuzzer coverage:
 /usr/local/sbin/loc-calc fuzz-newfuzzer
 /usr/local/sbin/announce $INITIAL $? 
-if [ "$?" -gt "$TARGET" ]; then
+if [ "$?" -ge "$TARGET" ]; then
     echo
     echo Congratulations!
     cat /flag
