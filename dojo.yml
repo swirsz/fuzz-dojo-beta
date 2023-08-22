@@ -10,6 +10,7 @@ description: |
   - [**GITHUB**: How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
   - [**Google Blog**: Refreshed OSS-Fuzz rewards](https://security.googleblog.com/2023/02/taking-next-step-oss-fuzz-in-2023.html)
   - [Efficient Fuzzing Guide](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/efficient_fuzzing.md)
+  - [Search OSS-Fuzz fuzz drivers](https://github.com/google/oss-fuzz/tree/master/projects)
 
 modules:
 

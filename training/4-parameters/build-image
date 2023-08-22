@@ -1,28 +1,23 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=bzip2
+export PROJECT_NAME=avahi
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-rm -rf /src/$PROJECT_NAME
-rm -rf /src/$PROJECT_NAME-tests
-#apt-get update && apt-get install -y make autoconf automake libtool wget
-git clone https://github.com/swirsz/bzip2
-git clone git://sourceware.org/git/bzip2-tests.git
-
-cp /challenge/newfuzzer.c $SRC/newfuzzer.c
+#apt-get update && \
+#   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
+git clone --depth 1 https://github.com/lathiat/avahi
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/training-parameters" ]; then
    mkdir /home/hacker/training-parameters
-   cp $SRC/*.c /home/hacker/training-parameters
+   cp /challenge/fuzz-newfuzzer.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
+   cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/training-parameters
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-parameters
 else
-   cp /home/hacker/training-parameters/*.c $SRC
+   cp /home/hacker/training-parameters/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/training-parameters/build.sh $SRC
 fi
-
-cd $SRC
 compile
