@@ -4,7 +4,7 @@ TARGET=45
 time sudo -H -u hacker bash -c "/usr/local/sbin/loc_count $*"
 echo
 echo newfuzzer
-/usr/local/sbin/loc newfuzzer
+/usr/local/sbin/loc-calc newfuzzer
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -ge "$TARGET" ]; then
     echo
