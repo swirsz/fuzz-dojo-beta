@@ -44,10 +44,6 @@ modules:
         name: Split Into Multiple Harnesses
         description: Since the harness is capable of parsing 2 different data formats, write short fuzz harness for each format.  Run /challenge/training in Terminal to start.
 
-      - id: 7-malformed
-        name: Correct Malformed Input
-        description: This fuzz driver crashes with certainput. Figure out why.  Run /challenge/training in Terminal to start.
-
       - id: 8-speedup
         name: Speed up a Fuzzing Harness
         description: Figure out how to increase this fuzz harness speed by at minimum a factor of 10.  Run /challenge/training in Terminal to start.
