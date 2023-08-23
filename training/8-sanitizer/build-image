@@ -1,0 +1,28 @@
+#!/bin/sh
+. /usr/local/sbin/e
+export PROJECT_NAME=bzip2
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf /src/$PROJECT_NAME
+rm -rf /src/$PROJECT_NAME-tests
+#apt-get update && apt-get install -y make autoconf automake libtool wget
+git clone https://github.com/swirsz/bzip2
+git clone git://sourceware.org/git/bzip2-tests.git
+
+cp /challenge/newfuzzer.c $SRC/newfuzzer.c
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+if [ ! -d "/home/hacker/training-sanitizer" ]; then
+   mkdir /home/hacker/training-sanitizer
+   cp $SRC/*.c /home/hacker/training-sanitizer
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-sanitizer
+else
+   cp /home/hacker/training-sanitizer/*.c $SRC
+   cp /home/hacker/training-sanitizer/build.sh $SRC
+fi
+
+cd $SRC
+compile
