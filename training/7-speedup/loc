@@ -3,8 +3,7 @@ INITIAL=58
 TARGET=63
 time sudo -H -u hacker bash -c "/usr/local/sbin/loc_count $*"
 echo
-echo bzip2_compress_target
-/usr/local/sbin/loc-calc bzip2_compress_target
+echo bzip2_compress_targe Checking bzip2_compress_target for improvements:
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -ge "$TARGET" ]; then
     echo

@@ -15,13 +15,13 @@ cp /challenge/newfuzzer.c $SRC/newfuzzer.c
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-if [ ! -d "/home/hacker/training-sanitizer" ]; then
-   mkdir /home/hacker/training-sanitizer
-   cp $SRC/*.c /home/hacker/training-sanitizer
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-sanitizer
+if [ ! -d "/home/hacker/training-speedup" ]; then
+   mkdir /home/hacker/training-speedup
+   cp $SRC/*.c /home/hacker/training-speedup
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-speedup
 else
-   cp /home/hacker/training-sanitizer/*.c $SRC
-   cp /home/hacker/training-sanitizer/build.sh $SRC
+   cp /home/hacker/training-speedup/*.c $SRC
+   cp /home/hacker/training-speedup/build.sh $SRC
 fi
 
 cd $SRC
