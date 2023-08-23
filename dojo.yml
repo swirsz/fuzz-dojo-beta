@@ -44,23 +44,19 @@ modules:
         name: Split Into Multiple Harnesses
         description: Since the harness is capable of parsing 2 different data formats, write short fuzz harness for each format.  Run /challenge/training in Terminal to start.
 
-      - id: 7-speedup
-        name: Speed up a Fuzzing Harness
-        description: Figure out how to increase this fuzz harness speed by at minimum a factor of 10.  Run /challenge/training in Terminal to start.
-
-      - id: 8-sanitizer
+      - id: 7-sanitizer
         name: Correct Sanitizer Specific Problems
         description: Identify the sanitizer that is crashing and how to fix it.  Run /challenge/training in Terminal to start.
 
-      - id: 9-seedcorpus
+      - id: 8-seedcorpus
         name: Implement Seed Corpus
         description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
 
-      - id: 10-blockers
+      - id: 9-blockers
         name: Repair Fuzz Blockers 
         description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it.  Run /challenge/training in Terminal to start.
 
-      - id: 11-crash
+      - id: 10-crash
         name: Diagnose Crash Files
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
