@@ -1,5 +1,7 @@
 #!/bin/bash
-export PROJECT_NAME=bzip2
+export PROJECT_NAME=libtasn1
 /usr/local/sbin/loc_count
-cd /src
+cd /src/$PROJECT_NAME
+export GNULIB_TOOL=/src/gnulib/gnulib-tool
+export GNULIB_SRCDIR=/src/gnulib
 /usr/local/sbin/fi $PROJECT_NAME
