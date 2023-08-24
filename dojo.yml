@@ -4,14 +4,14 @@ name: FUZZING
 
 description: |
   Important Resources:
+  - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
   - [**OSS-Fuzz**: Statistics and Fuzzing Introspection reports](https://introspector.oss-fuzz.com/projects-overview)
   - [**OSS-Fuzz**: Setting up a new project](https://google.github.io/oss-fuzz/getting-started/new-project-guide/)
   - [**OSS-Fuzz**: Ideal integration](https://google.github.io/oss-fuzz/advanced-topics/ideal-integration/)
   - [**GITHUB**: How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
   - [**Google Blog**: Refreshed OSS-Fuzz rewards](https://security.googleblog.com/2023/02/taking-next-step-oss-fuzz-in-2023.html)
   - [Efficient Fuzzing Guide](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/efficient_fuzzing.md)
-  - [Search OSS-Fuzz fuzz drivers](https://github.com/google/oss-fuzz/tree/master/projects)
-  - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
+  - [Search OSS-Fuzz fuzz drivers](https://github.com/search?q=repo%3Agoogle%2Foss-fuzz+path%3A%2F%5Eprojects%5C%2F%2F++AND+%28language%3AC%2B%2B+OR+language%3AC%29&type=code)
 modules:
 
   - id: training
