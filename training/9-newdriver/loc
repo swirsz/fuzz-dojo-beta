@@ -1,11 +1,11 @@
 #!/opt/pwn.college/bash 
 INITIAL=33
-TARGET=38
+TARGET=39
 time sudo -H -u hacker bash -c "/usr/local/sbin/loc_count $*"
 /usr/local/sbin/announce $INITIAL $? 
-if [ "$?" -gt "$TARGET" ]; then
+if [ "$?" -ge "$TARGET" ]; then
     echo
-    echo Congratulations!  But make sure you also submit your improvements to Google!
+    echo Congratulations!
     cat /flag
 fi
 if compgen -G "/out/crash*" > /dev/null; then
