@@ -41,12 +41,12 @@ modules:
         description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
 
       - id: 6-split
-        name: Split Into Multiple Harnesses
-        description: Since the harness is capable of parsing 2 different data formats, write short fuzz harness for each format.  Run /challenge/training in Terminal to start.
+        name: Split Into Multiple Harness
+        description: Break large complicated fuzz drivers into multiple individual drivers.  Run /challenge/training in Terminal to start.
 
       - id: 7-sanitizer
         name: Correct Sanitizer Specific Problems
-        description: Identify the sanitizer that is crashing and how to fix it.  Run /challenge/training in Terminal to start.
+        description: Identify the sanitizer that is crashing and repair it.  Run /challenge/training in Terminal to start.
 
       - id: 8-seedcorpus
         name: Implement Seed Corpus
@@ -54,7 +54,7 @@ modules:
 
       - id: 9-newdriver
         name: Create New Fuzz Driver
-        description: Search for unreached code within a project and create a simple fuzz driver to increase the total project code coverage.  Run /challenge/training in Terminal to start.
+        description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
 
       - id: 10-crash
         name: Diagnose Crash Files
