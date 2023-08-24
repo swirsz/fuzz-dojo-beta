@@ -87,7 +87,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
 
       - id: haproxy
-        name: HAPROXY (1.81%) 106108 loc
+        name: HAPROXY (1.81%) 106108 loc (8/24/2023 - does not compile)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=haproxy
 
       - id: janus-gateway
