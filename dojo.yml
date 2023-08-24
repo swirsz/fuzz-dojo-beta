@@ -52,9 +52,9 @@ modules:
         name: Implement Seed Corpus
         description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
 
-      - id: 9-blockers
-        name: Repair Fuzz Blockers 
-        description: Utilize fuzz introspector to determine why statically reachable code is never actually executed and repair it.  Run /challenge/training in Terminal to start.
+      - id: 9-newdriver
+        name: Create New Fuzz Driver
+        description: Search for unreached code within a project and create a simple fuzz driver to increase the total project code coverage.  Run /challenge/training in Terminal to start.
 
       - id: 10-crash
         name: Diagnose Crash Files
