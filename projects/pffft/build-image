@@ -1,12 +1,18 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=pffft
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 #apt-get update && apt-get install -y zzzzzzzzzz
-zzzzzzzzzz
+RUN apt-get update && apt-get install -y mercurial python-numpy python
+RUN git clone https://bitbucket.org/jpommier/pffft $SRC/pffft
+WORKDIR pffft
+COPY build.sh $SRC
+# TODO(alessiob): Move the fuzzing source code to pffft upstream.
+COPY generate_seed_corpus.py $SRC/pffft
+COPY pffft_fuzzer.cc $SRC/pffft
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/

@@ -1,12 +1,20 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=cmake
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 #apt-get update && apt-get install -y zzzzzzzzzz
-zzzzzzzzzz
+RUN apt-get update && apt-get install -y make autoconf automake libtool \
+  pkg-config libssl-dev
+RUN git clone --depth 1 https://gitlab.kitware.com/cmake/cmake CMake
+RUN git clone --depth 1 https://github.com/strongcourage/fuzzing-corpus
+WORKDIR CMake
+COPY build.sh $SRC/
+# This is to fix Fuzz Introspector build by using LLVM old pass manager
+# re https://github.com/ossf/fuzz-introspector/issues/305
+ENV OLD_LLVMPASS 1
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/

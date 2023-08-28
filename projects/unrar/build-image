@@ -1,12 +1,18 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=unrar
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 #apt-get update && apt-get install -y zzzzzzzzzz
-zzzzzzzzzz
+RUN apt-get update && apt-get install -y make build-essential
+
+RUN git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
+WORKDIR unrar
+
+COPY build.sh $SRC/
+COPY unrar_fuzzer.cc $SRC/unrar/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/

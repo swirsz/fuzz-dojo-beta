@@ -71,7 +71,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
 
       - id: arduinojson
-        name: arduinojson
+        name: ARDUINOJSON
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=arduinojson
 
       - id: avahi
@@ -87,19 +87,19 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=c-ares
 
       - id: casync
-        name: casync
+        name: CASYNC
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
 
       - id: cmake
-        name: cmake
+        name: CMAKE
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
 
       - id: cpython3
-        name: cpython3
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cpython3
+        name: CPYTHON3
+        description: Browse source code - no fuzz introspector report (8/27/2023) https://introspector.oss-fuzz.com/project-profile?project=cpython3
 
       - id: curl
-        name: curl
+        name: CURL
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
 
       - id: example
@@ -107,11 +107,11 @@ modules:
         description: Sample OSS-Fuzz project
 
       - id: file
-        name: file
+        name: FILE
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
 
       - id: flac
-        name: flac
+        name: FLAC
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=flac
 
       - id: fmt
@@ -135,7 +135,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=janus-gateway
 
       - id: json
-        name: json
+        name: JSON
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json
 
       - id: json-c
@@ -143,7 +143,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json-c
 
       - id: jsoncpp
-        name: jsoncpp
+        name: JSONCPP
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=jsoncpp
         
       - id: kamailio
@@ -159,7 +159,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libidn
 
       - id: libpcap
-        name: libpcap
+        name: LIBPCAP
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpcap
 
       - id: libsodium
@@ -175,8 +175,8 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lzo
 
       - id: mariadb
-        name: mariadb
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mariadb
+        name: MARIADB
+        description: Browse source code - no fuzz introspector report (8/27/2023)         https://introspector.oss-fuzz.com/project-profile?project=mariadb
 
       - id: miniz
         name: MINIZ (47.67%) 5423 loc
@@ -187,15 +187,15 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
 
       - id: mruby
-        name: mruby
+        name: MRUBY
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mruby
 
       - id: nginx
-        name: nginx
+        name: NGINX
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=nginx
 
       - id: ninja
-        name: ninja
+        name: NINJA
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ninja
 
       - id: openjpeg
@@ -211,23 +211,23 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
 
       - id: pffft
-        name: pffft
+        name: PFFFT
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pffft
 
       - id: php
-        name: php
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=php
+        name: PHP
+        description: Browse source code - no fuzz introspector report (8/27/2023)    https://introspector.oss-fuzz.com/project-profile?project=php
 
       - id: pycryptodome
         name: PYCRYPTODOME (80.19%) 1398 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pycryptodome
 
       - id: python3-libraries
-        name: python3-libraries
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=python3-libraries
+        name: PYTHON3-LIBRARIES
+        description: Browse source code - no fuzz introspector report (8/27/2023)  https://introspector.oss-fuzz.com/project-profile?project=python3-libraries
 
       - id: qubes-os
-        name: qubes-os
+        name: QUBES-OS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=qubes-os
 
       - id: snappy
@@ -239,51 +239,51 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=speex
 
       - id: sqlite3
-        name: sqlite3
+        name: SQLITE3
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
 
       - id: sudoers
-        name: sudoers
+        name: SUDOERS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sudoers
 
       - id: tinyusb
-        name: tinyusb
+        name: TINYUSB
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tinyusb
 
       - id: tmux
-        name: tmux
+        name: TMUX
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tmux
 
       - id: unrar
-        name: unrar
+        name: UNRAR
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
 
       - id: uriparser
-        name: uriparser
+        name: URIPARSER
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=uriparser
 
       - id: usbguard
-        name: usbguard
+        name: USBGUARD
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=usbguard
 
       - id: valijson
-        name: valijson
+        name: VALIJSON
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=valijson
 
       - id: vlc
-        name: vlc
+        name: VLC
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vlc
 
       - id: vorbis
-        name: vorbis
+        name: VORBIS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vorbis
 
       - id: wasm3
-        name: wasm3
+        name: WASM3
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wasm3
 
       - id: xvid
-        name: xvid
+        name: XVID
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
 
       - id: xz

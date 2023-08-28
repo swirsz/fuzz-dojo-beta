@@ -1,12 +1,18 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=qubes-os
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 #apt-get update && apt-get install -y zzzzzzzzzz
-zzzzzzzzzz
+
+RUN apt-get update && apt-get -y install build-essential automake libtool git python libsystemd-dev
+WORKDIR qubes-os
+RUN git clone --single-branch https://github.com/QubesOS/qubes-app-linux-input-proxy $SRC/qubes-os/app-linux-input-proxy
+RUN git clone --single-branch https://github.com/QubesOS/qubes-core-qubesdb $SRC/qubes-os/qubes-core-qubesdb
+RUN git clone --single-branch https://github.com/QubesOS/qubes-core-qrexec $SRC/qubes-os/qubes-core-qrexec
+COPY build.sh *.options $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/

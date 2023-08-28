@@ -1,12 +1,17 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=tinyusb
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 #apt-get update && apt-get install -y zzzzzzzzzz
-zzzzzzzzzz
+RUN apt-get update && apt-get install -y make autoconf automake libtool
+
+# TODO: Update this to use hathath instead of this fork.
+RUN git clone --depth 1 https://github.com/hathach/tinyusb.git tinyusb     # or use other version control
+WORKDIR tinyusb
+COPY build.sh $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/

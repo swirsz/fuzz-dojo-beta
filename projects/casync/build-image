@@ -1,12 +1,25 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=casync
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-zzzzzzzzzz
+#apt-get update && apt-get install -y python3-pip pkg-config wget \
+        liblzma-dev \
+        libzstd-dev \
+        libcurl4-openssl-dev \
+        libssl-dev \
+        libudev-dev \
+        zlib1g-dev \
+        libacl1-dev \
+        libfuse-dev \
+        rsync \
+        udev \
+        && \
+    pip3 install meson ninja
+RUN git clone --depth 1 https://github.com/systemd/casync casync
+WORKDIR casync
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/

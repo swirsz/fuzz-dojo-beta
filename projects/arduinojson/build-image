@@ -1,12 +1,15 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=arduinojson
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 #apt-get update && apt-get install -y zzzzzzzzzz
-zzzzzzzzzz
+RUN apt-get update && apt-get install -y make zip git
+RUN git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
+WORKDIR arduinojson
+COPY build.sh $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/

@@ -1,12 +1,17 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=libpcap
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 #apt-get update && apt-get install -y zzzzzzzzzz
-zzzzzzzzzz
+RUN apt-get update && apt-get install -y make cmake flex bison
+RUN git clone --depth 1 https://github.com/the-tcpdump-group/libpcap.git libpcap
+# for corpus as wireshark
+RUN git clone --depth=1 https://github.com/the-tcpdump-group/tcpdump.git tcpdump
+WORKDIR $SRC
+COPY build.sh $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/

@@ -1,12 +1,18 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=curl
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 #apt-get update && apt-get install -y zzzzzzzzzz
-zzzzzzzzzz
+RUN git clone --depth 1 https://github.com/curl/curl.git /src/curl
+RUN git clone --depth 1 https://github.com/curl/curl-fuzzer.git /src/curl_fuzzer
+
+# Use curl-fuzzer's scripts to get latest dependencies.
+RUN $SRC/curl_fuzzer/scripts/ossfuzzdeps.sh
+
+WORKDIR $SRC/curl_fuzzer
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/

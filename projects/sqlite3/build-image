@@ -1,12 +1,25 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=sqlite3
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 #apt-get update && apt-get install -y zzzzzzzzzz
-zzzzzzzzzz
+RUN apt-get update && apt-get install -y make autoconf automake libtool curl tcl zlib1g-dev
+
+# We won't be able to poll fossil for changes, so this will build
+# only once a day.
+RUN mkdir $SRC/sqlite3 && \
+    cd $SRC/sqlite3 && \
+    curl 'https://www.sqlite.org/src/tarball?uuid=trunk' -o sqlite3.tar.gz && \
+    tar xzf sqlite3.tar.gz
+
+RUN find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip
+
+WORKDIR sqlite3
+COPY build.sh *.dict *.options $SRC/
+
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
