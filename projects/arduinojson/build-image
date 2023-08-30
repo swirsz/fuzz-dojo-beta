@@ -5,20 +5,12 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-RUN apt-get update && apt-get install -y make zip git
-RUN git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
-WORKDIR arduinojson
-COPY build.sh $SRC/
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
+#apt-get update && apt-get install -y make zip git
+git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/arduinojson
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c

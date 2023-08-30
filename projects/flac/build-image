@@ -5,18 +5,12 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-RUN apt-get update && apt-get install -y make autoconf automake libtool libtool-bin pkg-config gettext sudo default-jdk
-RUN git clone --depth 1 https://github.com/xiph/flac.git
-RUN git clone --depth 1 https://github.com/xiph/ogg.git
-RUN git clone --depth 1 https://github.com/google/ExoPlayer.git
-COPY fuzzer_exo.cpp $SRC/
-COPY build.sh $SRC/
+#apt-get update && apt-get install -y make autoconf automake libtool libtool-bin pkg-config gettext sudo default-jdk
+git clone --depth 1 https://github.com/xiph/flac.git
+git clone --depth 1 https://github.com/xiph/ogg.git
+git clone --depth 1 https://github.com/google/ExoPlayer.git
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzzer_exo.cpp $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

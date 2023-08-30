@@ -5,26 +5,24 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-RUN apt-get update -y && apt-get install -y curl wget \
-    binutils cmake ninja-build liblzma-dev libz-dev pkg-config autoconf libtool
-RUN git clone --depth 1 https://github.com/open-source-parsers/jsoncpp
-WORKDIR jsoncpp
-RUN git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
-RUN (mkdir LPM && cd LPM && cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release && ninja)
-COPY build.sh *.proto *.h *.cc $SRC/
+#apt-get update -y && apt-get install -y curl wget binutils cmake ninja-build liblzma-dev libz-dev pkg-config autoconf libtool
+git clone --depth 1 https://github.com/open-source-parsers/jsoncpp
+git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
+
+mkdir LPM && cd LPM && cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release && ninja
+
+
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
-ENV OLD_LLVMPASS 1
+export OLD_LLVMPASS 1
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.proto $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.h $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/jsoncpp
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c

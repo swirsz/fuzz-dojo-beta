@@ -7,7 +7,7 @@ cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool wget uuid-dev pkg-config libtool-bin libbsd-dev
 
-git clone https://github.com/PCRE2Project/pcre2 pcre2 && \
+#git clone https://github.com/PCRE2Project/pcre2 pcre2 && \
     cd pcre2 && \
     ./autogen.sh && \
     ./configure && \
@@ -17,7 +17,7 @@ git clone https://github.com/PCRE2Project/pcre2 pcre2 && \
 cd $SRC
 git clone https://github.com/AdaLogics/fuzz-headers
 
-wget https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.gz && \
+#wget https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.gz && \
     tar -xf expat-2.4.1.tar.gz && \
     cd expat-2.4.1 && \
     ./configure && \

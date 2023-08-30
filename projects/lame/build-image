@@ -5,25 +5,19 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-RUN apt-get update && apt-get install -y make autoconf automake libtool subversion pkg-config wget
+#apt-get update && apt-get install -y make autoconf automake libtool subversion pkg-config wget
 
 # ubuntu apt has not recent enough mpg123
-RUN wget https://www.mpg123.de/snapshot
-RUN tar -xvf snapshot
-RUN mv mpg123* mpg123
+wget https://www.mpg123.de/snapshot
+tar -xvf snapshot
+mv mpg123* mpg123
 
-RUN git clone --depth 1 https://github.com/guidovranken/LAME-fuzzers
-RUN svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame $SRC/lame
-COPY build.sh $SRC/
+git clone --depth 1 https://github.com/guidovranken/LAME-fuzzers
+svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame $SRC/lame
+
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
-ENV OLD_LLVMPASS 1
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
+export OLD_LLVMPASS 1
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

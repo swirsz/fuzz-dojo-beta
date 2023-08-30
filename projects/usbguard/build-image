@@ -5,25 +5,9 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-RUN apt-get update && apt-get install -y \
-  make \
-  autoconf \
-  automake \
-  libtool \
-  pkg-config \
-  libxml2-utils \
-  libxml2-dev \
-  xsltproc \
-  libprotobuf-dev \
-  protobuf-compiler \
-  libdbus-1-dev \
-  libdbus-glib-1-dev \
-  libgio2.0-cil-dev \
-  libgcrypt20-dev \
-  libpolkit-gobject-1-dev \
-  libseccomp-dev \
-  libcap-ng-dev
+#apt-get update && apt-get install -y make autoconf automake libtool pkg-config libxml2-utils1 libxml2-dev xsltproc \
+#  libprotobuf-dev protobuf-compiler libdbus-1-dev libdbus-glib-1-dev libgio2.0-cil-dev libgcrypt20-dev \
+#  libpolkit-gobject-1-dev libseccomp-dev libcap-ng-dev
 
 RUN git clone https://github.com/ClusterLabs/libqb && cd libqb && \
     ./autogen.sh && ./configure && make && make install

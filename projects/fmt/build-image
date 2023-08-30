@@ -5,25 +5,15 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-RUN echo "CXX=$CXX"
-RUN echo "CXXFLAGS=$CXXFLAGS"
-RUN apt-get update && apt-get install -y cmake ninja-build
+echo "CXX=$CXX"
+echo "CXXFLAGS=$CXXFLAGS"
+#apt-get update && apt-get install -y cmake ninja-build
 
-RUN git clone --depth 1 --branch master \
-  https://github.com/fmtlib/fmt.git
-
-WORKDIR fmt
-COPY build.sh $SRC/
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
+git clone --depth 1 --branch master https://github.com/fmtlib/fmt.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/fmt
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c

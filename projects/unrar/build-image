@@ -5,8 +5,7 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-RUN apt-get update && apt-get install -y make build-essential
+#apt-get update && apt-get install -y make build-essential
 
 RUN git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
 WORKDIR unrar

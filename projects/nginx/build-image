@@ -5,8 +5,7 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-RUN apt-get update && apt-get install -y libpcre3-dev zlib1g-dev mercurial ninja-build cmake liblzma-dev libz-dev binutils libtool
+#apt-get update && apt-get install -y libpcre3-dev zlib1g-dev mercurial ninja-build cmake liblzma-dev libz-dev binutils libtool
 RUN hg clone http://hg.nginx.org/nginx/
 RUN git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
 RUN git clone --depth 1 https://github.com/google/fuzzer-test-suite

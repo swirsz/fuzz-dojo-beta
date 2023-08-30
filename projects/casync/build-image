@@ -6,29 +6,15 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get update && apt-get install -y python3-pip pkg-config wget \
-        liblzma-dev \
-        libzstd-dev \
-        libcurl4-openssl-dev \
-        libssl-dev \
-        libudev-dev \
-        zlib1g-dev \
-        libacl1-dev \
-        libfuse-dev \
-        rsync \
-        udev \
-        && \
-    pip3 install meson ninja
-RUN git clone --depth 1 https://github.com/systemd/casync casync
-WORKDIR casync
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
+#        liblzma-dev libzstd-dev libcurl4-openssl-dev libssl-dev libudev-dev \
+#        zlib1g-dev libacl1-dev libfuse-dev rsync udev 
+#    pip3 install meson ninja
+git clone --depth 1 https://github.com/systemd/casync casync
 
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/casync
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
