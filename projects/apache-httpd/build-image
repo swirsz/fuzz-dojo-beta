@@ -17,6 +17,7 @@ git clone https://github.com/AdaLogics/fuzz-headers
 # tar -xf expat-2.4.1.tar.gz && cd expat-2.4.1 && ./configure && make && make install
     
 cd $SRC
+rm -rf /src/httpd
 git clone --depth=1 https://github.com/apache/httpd
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_*.c $SRC/
