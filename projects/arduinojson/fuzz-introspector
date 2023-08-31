@@ -1,6 +1,6 @@
 #!/bin/bash
 export PROJECT_NAME=arduinojson
 /usr/local/sbin/loc_count
-cd /src
 rm -rf $SRC/$PROJECT_NAME
+cd $SRC/arduinojson
 /usr/local/sbin/fi $PROJECT_NAME
