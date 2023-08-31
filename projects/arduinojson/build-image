@@ -6,6 +6,7 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get update && apt-get install -y make zip git
+rm -rf $SRC/$PROJECT_NAME/src
 git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
@@ -13,13 +14,13 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/arduinojson
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/json_fuzzer.cpp $SRC/$PROJECT_NAME/extras/fuzzing/new_fuzzer.cpp
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt /home/hacker/$PROJECT_NAME/CMakeLists.txt
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/Makefile /home/hacker/$PROJECT_NAME/Makefile
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/*.cpp /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
+   cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/extras/fuzzing
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
