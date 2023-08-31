@@ -2,4 +2,9 @@
 export PROJECT_NAME=apache-httpd
 /usr/local/sbin/loc_count
 cd /src
+rm -rf /src/$PROJECT_NAME
+git clone --depth=1 https://github.com/apache/httpd
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_*.c $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/httpd
 /usr/local/sbin/fi $PROJECT_NAME
