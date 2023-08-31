@@ -8,11 +8,7 @@ cd $SRC
 #apt-get update && apt-get install -y make autoconf automake libtool wget uuid-dev pkg-config libtool-bin libbsd-dev
 
 #git clone https://github.com/PCRE2Project/pcre2 pcre2 && \
-    cd pcre2 && \
-    ./autogen.sh && \
-    ./configure && \
-    make && \
-    make install
+    #cd pcre2 && ./autogen.sh && ./configure && make && make install
 
 cd $SRC
 git clone https://github.com/AdaLogics/fuzz-headers
