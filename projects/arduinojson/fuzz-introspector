@@ -2,5 +2,6 @@
 export PROJECT_NAME=arduinojson
 /usr/local/sbin/loc_count
 rm -rf $SRC/$PROJECT_NAME
+git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
 cd $SRC/arduinojson
 /usr/local/sbin/fi $PROJECT_NAME
