@@ -2,4 +2,8 @@
 export PROJECT_NAME=fmt
 /usr/local/sbin/loc_count
 cd /src
+#apt-get update && apt-get install -y cmake ninja-build
+rm -rf /src/$PROJECT_NAME
+git clone --depth 1 --branch master https://github.com/fmtlib/fmt.git
+cd /src/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME
