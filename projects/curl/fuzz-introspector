@@ -2,4 +2,8 @@
 export PROJECT_NAME=curl
 /usr/local/sbin/loc_count
 cd /src
+
+rm -rf $SRC/curl_fuzzer
+git clone --depth 1 https://github.com/curl/curl-fuzzer.git /src/curl_fuzzer
+cd $SRC/curl_fuzzer
 /usr/local/sbin/fi $PROJECT_NAME
