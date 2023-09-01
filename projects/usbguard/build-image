@@ -9,25 +9,20 @@ cd $SRC
 #  libprotobuf-dev protobuf-compiler libdbus-1-dev libdbus-glib-1-dev libgio2.0-cil-dev libgcrypt20-dev \
 #  libpolkit-gobject-1-dev libseccomp-dev libcap-ng-dev
 
-RUN git clone https://github.com/ClusterLabs/libqb && cd libqb && \
+git clone https://github.com/ClusterLabs/libqb && cd libqb && \
     ./autogen.sh && ./configure && make && make install
 
-RUN git clone --recurse-submodules --depth 1 \
-  https://github.com/USBGuard/usbguard usbguard
-WORKDIR usbguard
-COPY build.sh $SRC
+cd $SRC
+
+git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard usbguard
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
-ENV OLD_LLVMPASS 1
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
+export OLD_LLVMPASS=1
 
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/usbguard
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
