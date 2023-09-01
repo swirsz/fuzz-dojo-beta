@@ -5,7 +5,7 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-rm -rf $SRC/curl
+rm -rf $SRC/curl_fuzzer
 git clone --depth 1 https://github.com/curl/curl.git /src/$PROJECT_NAME
 git clone --depth 1 https://github.com/curl/curl-fuzzer.git /src/curl_fuzzer
 
