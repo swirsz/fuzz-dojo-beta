@@ -1,13 +1,13 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=$PROJECT_NAME
+export PROJECT_NAME=fmt
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 #apt-get update && apt-get install -y cmake ninja-build
 
-rm -rf $SRC/$PROJECT_NAME
+rm -rf $PROJECT_NAME
 git clone --depth 1 --branch master https://github.com/fmtlib/fmt.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
