@@ -7,19 +7,12 @@ cd $SRC
 
 #apt-get update && apt-get install -y cmake
 
-RUN git clone --depth 1 https://github.com/ninja-build/ninja
-WORKDIR ninja
-RUN mv $SRC/ninja/misc/oss-fuzz/build.sh $SRC/
-RUN mv $SRC/ninja/misc/oss-fuzz/sample_ninja_build $SRC/
+git clone --depth 1 https://github.com/ninja-build/ninja
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
+mv $SRC/ninja/misc/oss-fuzz/build.sh $SRC/
+mv $SRC/ninja/misc/oss-fuzz/sample_ninja_build $SRC/
 
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-
-cd $SRC/
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
