@@ -7,21 +7,17 @@ cd $SRC
 
 #apt-get update && apt-get install -y binutils make
 
-RUN git clone --depth 1 -b develop https://github.com/nlohmann/json.git
-WORKDIR json/
-COPY build.sh *.options parse_afl_fuzzer.dict $SRC/
+git clone --depth 1 -b develop https://github.com/nlohmann/json.git
+
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
-ENV OLD_LLVMPASS 1
+export OLD_LLVMPASS=1
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
-
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/parse_afl_fuzzer.dict $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c

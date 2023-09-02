@@ -255,7 +255,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
 
       - id: uriparser
-        name: URIPARSER
+        name: URIPARSER (78.88%) 4606 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=uriparser
 
       - id: usbguard
