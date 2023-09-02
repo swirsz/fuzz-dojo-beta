@@ -15,12 +15,10 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/uri_parse_fuzzer.cc $SRC/new_fuzzer.cc
    cp $SRC/*.cc /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
