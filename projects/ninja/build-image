@@ -15,14 +15,11 @@ mv $SRC/ninja/misc/oss-fuzz/sample_ninja_build $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/ninja/misc/manifest_fuzzer.cc $SRC/src/ninja/misc/new_fuzzer.cc
+   cp $SRC/ninja/misc/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/ninja/misc/oss-fuzz/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/$PROJECT_NAME/* $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
