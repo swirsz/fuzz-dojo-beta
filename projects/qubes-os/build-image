@@ -5,26 +5,23 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-rf -rf $PROJECT_NAME
+rm -rf $SRC/qubes-os/qubes-core-qubesdb
+rm -rf $SRC/qubes-os/qubes-core-qrexec
 #apt-get update && apt-get -y install build-essential automake libtool git python libsystemd-dev
 git clone --single-branch https://github.com/QubesOS/qubes-app-linux-input-proxy $SRC/qubes-os/app-linux-input-proxy
 git clone --single-branch https://github.com/QubesOS/qubes-core-qubesdb $SRC/qubes-os/qubes-core-qubesdb
 git clone --single-branch https://github.com/QubesOS/qubes-core-qrexec $SRC/qubes-os/qubes-core-qrexec
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/qubes-os
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/qubes-os/qubes-core-qubesdb/fuzz/db-daemon_fuzzer.c $SRC/qubes-os/qubes-core-qubesdb/fuzz/new_fuzzer.c
+   cp $SRC/qubes-os/qubes-core-qubesdb/fuzz/*.c /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/$PROJECT_NAME/* $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

@@ -3,11 +3,12 @@ export PROJECT_NAME=qubes-os
 /usr/local/sbin/loc_count
 cd /src
 
-rf -rf $PROJECT_NAME
+rm -rf $SRC/qubes-os/qubes-core-qubesdb
+rm -rf $SRC/qubes-os/qubes-core-qrexec
 #apt-get update && apt-get -y install build-essential automake libtool git python libsystemd-dev
-git clone --single-branch https://github.com/QubesOS/qubes-app-linux-input-proxy $SRC/qubes-os/app-linux-input-proxy
-git clone --single-branch https://github.com/QubesOS/qubes-core-qubesdb $SRC/qubes-os/qubes-core-qubesdb
-git clone --single-branch https://github.com/QubesOS/qubes-core-qrexec $SRC/qubes-os/qubes-core-qrexec
+git clone --single-branch https://github.com/QubesOS/qubes-app-linux-input-proxy /src/qubes-os/app-linux-input-proxy
+git clone --single-branch https://github.com/QubesOS/qubes-core-qubesdb /src/qubes-os/qubes-core-qubesdb
+git clone --single-branch https://github.com/QubesOS/qubes-core-qrexec /src/qubes-os/qubes-core-qrexec
 
-cd $SRC/qubes-os
+cd /src/qubes-os
 /usr/local/sbin/fi $PROJECT_NAME
