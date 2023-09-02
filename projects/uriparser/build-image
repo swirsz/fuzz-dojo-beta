@@ -6,18 +6,12 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake wget sudo libtool cmake
-RUN git clone --depth 1 https://github.com/uriparser/uriparser uriparser
-WORKDIR uriparser
-COPY build.sh *.cc $SRC/
+git clone --depth 1 https://github.com/uriparser/uriparser uriparser
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
-
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
