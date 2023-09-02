@@ -6,6 +6,8 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool pkg-config cmake libcurlpp-dev libcurl4-openssl-dev
+
+rm -rf valijson
 git clone --depth 1 https://github.com/tristanpenman/valijson
 
 cp $SRC/valijson/tests/fuzzing/oss-fuzz-build.sh $SRC/build.sh
@@ -13,19 +15,14 @@ cp $SRC/valijson/tests/fuzzing/oss-fuzz-build.sh $SRC/build.sh
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/valijson/tests/fuzzing/fuzzer.cpp $SRC/valijson/tests/fuzzing/newfuzzer.cpp
+   cp $SRC/valijson/tests/fuzzing/*.cpp /home/hacker/$PROJECT_NAME
+   cp $SRC/valijson/tests/fuzzing/*.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/$PROJECT_NAME/* $SRC/valijson/tests/fuzzing
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
