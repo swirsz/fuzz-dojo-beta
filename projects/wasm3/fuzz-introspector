@@ -2,4 +2,10 @@
 export PROJECT_NAME=wasm3
 /usr/local/sbin/loc_count
 cd /src
+
+rm -rf $PROJECT_NAME
+#apt-get update && apt-get install -y make
+git clone --depth 1 https://github.com/wasm3/wasm3
+
+cd $SRC/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME
