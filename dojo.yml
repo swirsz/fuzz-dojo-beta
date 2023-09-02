@@ -254,7 +254,7 @@ modules:
         name: UNRAR
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
 
-      - id: uriparser
+      - id: uriparser (78.88%) 4606 loc
         name: URIPARSER
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=uriparser
 

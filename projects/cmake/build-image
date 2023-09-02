@@ -19,7 +19,7 @@ cp /opt/oss-fuzz/projects/cmake/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/Tests/Fuzzing/xml_parser_fuzzer.cc $SRC/$PROJECT_NAME/Tests/Fuzzing/newfuzzer.c
+   cp $SRC/$PROJECT_NAME/Tests/Fuzzing/xml_parser_fuzzer.cc $SRC/$PROJECT_NAME/Tests/Fuzzing/new_fuzzer.cc
    cp $SRC/$PROJECT_NAME/Tests/Fuzzing/*.cc /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/cmake/build.sh /home/hacker/$PROJECT_NAME
 else
