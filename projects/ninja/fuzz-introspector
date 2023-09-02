@@ -2,4 +2,8 @@
 export PROJECT_NAME=ninja
 /usr/local/sbin/loc_count
 cd /src
+rm -rf ninja
+git clone --depth 1 https://github.com/ninja-build/ninja
+
+cd /src/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME
