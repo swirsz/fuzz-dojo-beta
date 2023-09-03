@@ -1,5 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=vorbis
 /usr/local/sbin/loc_count
+cd /src 
+mkdir people.xiph.org/
+touch people.xiph.org/dummy.ogg
 cd /src/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME
