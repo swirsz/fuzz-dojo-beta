@@ -7,29 +7,19 @@ cd $SRC
 
 #apt-get update && apt-get install -y make build-essential
 
-RUN git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
-WORKDIR unrar
+git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
 
-COPY build.sh $SRC/
-COPY unrar_fuzzer.cc $SRC/unrar/
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
-
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME/new_fuzzer.cc
+   cp $SRC/$PROJECT_NAME/*.cc /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
+   cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
