@@ -12,7 +12,7 @@ git clone --depth 1 https://github.com/guidovranken/oss-fuzz-fuzzers.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/$PROJECT_NAME
+cd $SRC
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
