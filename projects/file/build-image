@@ -10,7 +10,7 @@ cd $SRC
 #apt-get update && apt install -y libbz2-dev      liblzma-dev      zlib1g-dev      libzstd-dev      liblz4-dev
 #apt-get update && apt install -y libbz2-dev:i386 liblzma-dev:i386 zlib1g-dev:i386 libzstd-dev:i386 liblz4-dev:i386 
 
-rm -rf $SRC/$PROJECT_NAME
+rm -rf $PROJECT_NAME
 git clone --depth 1 https://github.com/file/file.git
 
 # Supplement file's existing test files
