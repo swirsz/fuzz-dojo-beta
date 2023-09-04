@@ -2,4 +2,10 @@
 export PROJECT_NAME=xvid
 /usr/local/sbin/loc_count
 cd /src
+rm -rf $PROJECT_NAME
+#apt-get update && apt-get install -y make autoconf automake libtool subversion
+svn checkout http://svn.xvid.org/trunk --username anonymous --password "" --non-interactive --no-auth-cache
+git clone --depth 1 https://github.com/guidovranken/fuzzing-headers.git
+git clone --depth 1 https://github.com/guidovranken/oss-fuzz-fuzzers.git
+
 /usr/local/sbin/fi $PROJECT_NAME
