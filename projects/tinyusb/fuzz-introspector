@@ -2,4 +2,8 @@
 export PROJECT_NAME=tinyusb
 /usr/local/sbin/loc_count
 cd /src
+rm -rf $PROJECT_NAME
+# TODO: Update this to use hathath instead of this fork.
+git clone --depth 1 https://github.com/hathach/tinyusb.git tinyusb     # or use other version control
+cd /src/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME
