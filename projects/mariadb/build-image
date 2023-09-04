@@ -5,6 +5,7 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+rm -rf $PROJECT_NAME
 #apt-get install -y build-essential libncurses5-dev gnutls-dev bison zlib1g-dev ccache
 git clone --depth=1 https://github.com/MariaDB/server
 
@@ -14,13 +15,11 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/server
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
+   cp $SRC/fuzz_json.c $SRC/fuzz_new.c
    cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
