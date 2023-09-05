@@ -9,8 +9,10 @@ cd $SRC
 git clone --depth 1 https://github.com/open-source-parsers/jsoncpp
 git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
 
-mkdir LPM && cd LPM && cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release && ninja
-
+mkdir LPM 
+cd LPM 
+cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release 
+export ninja=
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
@@ -22,7 +24,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/jsoncpp
+cd /src/jsoncpp
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
