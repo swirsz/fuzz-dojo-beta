@@ -3,7 +3,17 @@ export PROJECT_NAME=curl
 /usr/local/sbin/loc_count
 cd /src
 
-rm -rf $SRC/curl_fuzzer
+rm -rf /src/curl
+rm -rf /src/curl_install
+rm -rf /src/curl_fuzzer
+rm -rf /src/nghttp2
+rm -rf /src/openssl
+rm -rf /src/zlib
+git clone --depth 1 https://github.com/curl/curl.git /src/$PROJECT_NAME
 git clone --depth 1 https://github.com/curl/curl-fuzzer.git /src/curl_fuzzer
-cd $SRC/curl_fuzzer
+
+# Use curl-fuzzer's scripts to get latest dependencies.
+/src/curl_fuzzer/scripts/ossfuzzdeps.sh
+
+cd /src/curl_fuzzer
 /usr/local/sbin/fi $PROJECT_NAME
