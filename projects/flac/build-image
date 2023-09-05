@@ -8,6 +8,7 @@ cd $SRC
 #apt-get update && apt-get install -y make autoconf automake libtool libtool-bin pkg-config gettext sudo default-jdk
 rm -rf flac
 rm -rf ogg
+rm -rf libogg-install
 rm -rf ExoPlayer
 git clone --depth 1 https://github.com/xiph/flac.git
 git clone --depth 1 https://github.com/xiph/ogg.git
