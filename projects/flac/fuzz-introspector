@@ -2,4 +2,12 @@
 export PROJECT_NAME=flac
 /usr/local/sbin/loc_count
 cd /src
+rm -rf flac
+rm -rf ogg
+rm -rf libogg-install
+rm -rf ExoPlayer
+git clone --depth 1 https://github.com/xiph/flac.git
+git clone --depth 1 https://github.com/xiph/ogg.git
+git clone --depth 1 https://github.com/google/ExoPlayer.git
+
 /usr/local/sbin/fi $PROJECT_NAME

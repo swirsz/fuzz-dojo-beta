@@ -7,25 +7,20 @@ cd $SRC
 
 #apt-get update && apt-get install -y autoconf automake bison pkg-config ncurses-dev libtool
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-
-RUN git clone https://github.com/libevent/libevent.git && \
+git clone https://github.com/libevent/libevent.git && \
     cd libevent && \
     mkdir build && \
     cd build && \
     cmake -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_OPENSSL=ON -DEVENT__LIBRARY_TYPE=STATIC ../ && \
     make && make install
 
-RUN git clone --depth 1 https://github.com/tmux/tmux.git
-RUN git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
-WORKDIR tmux
-COPY build.sh $SRC/
+git clone --depth 1 https://github.com/tmux/tmux.git
+git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
 
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
