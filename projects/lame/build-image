@@ -17,7 +17,7 @@ svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame $SRC/lame
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS 1
+export OLD_LLVMPASS=1
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
