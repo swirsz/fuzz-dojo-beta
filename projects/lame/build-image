@@ -13,6 +13,7 @@ tar -xvf snapshot
 mv mpg123* mpg123
 
 git clone --depth 1 https://github.com/guidovranken/LAME-fuzzers
+rm -rf lame
 svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame $SRC/lame
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
@@ -24,13 +25,11 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/LAME-fuzzers/fuzzer-encoder.cpp $SRC/LAME-fuzzers/fuzzer-new.cpp
+   cp $SRC/LAME-fuzzers/*.cpp /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
+   cp /home/hacker/$PROJECT_NAME/LAME-fuzzers/*.cpp $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
