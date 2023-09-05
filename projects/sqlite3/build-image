@@ -9,25 +9,20 @@ cd $SRC
 
 # We won't be able to poll fossil for changes, so this will build
 # only once a day.
-RUN mkdir $SRC/sqlite3 && \
+mkdir $SRC/sqlite3 && \
     cd $SRC/sqlite3 && \
     curl 'https://www.sqlite.org/src/tarball?uuid=trunk' -o sqlite3.tar.gz && \
     tar xzf sqlite3.tar.gz
 
-RUN find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip
-
-WORKDIR sqlite3
-COPY build.sh *.dict *.options $SRC/
+cd $SRC
+find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip
 
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
-
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
