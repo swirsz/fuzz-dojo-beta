@@ -27,9 +27,9 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/tmux/fuzz/input-fuzzer.c $SRC/new-fuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.dict /home/hacker/$PROJECT_NAME
+   cp $SRC/tmux/fuzz/input-fuzzer.c $SRC/tmux/fuzz/new-fuzzer.c
+   cp $SRC/tmux/fuzz/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/tmux/fuzz/*.dict /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC/tmux/fuzz
