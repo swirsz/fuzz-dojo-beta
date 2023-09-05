@@ -8,6 +8,9 @@ cd $SRC
 rm -rf $SRC/curl
 rm -rf $SRC/curl_install
 rm -rf $SRC/curl_fuzzer
+rm -rf $SRC/nghttp2
+rm -rf $SRC/openssl
+rm -rf $SRC/zlib
 git clone --depth 1 https://github.com/curl/curl.git /src/$PROJECT_NAME
 git clone --depth 1 https://github.com/curl/curl-fuzzer.git /src/curl_fuzzer
 
