@@ -5,17 +5,17 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-rm -rf $PROJECT_NAME
+rm -rf sudo
 git clone https://github.com/sudo-project/sudo
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/$PROJECT_NAME
+cd $SRC/sudo
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/plugins/sudoers/regress/fuzz/fuzz_sudoers.c $SRC/$PROJECT_NAME/plugins/sudoers/regress/fuzz/fuzz_new.c
-   cp $SRC/$PROJECT_NAME/plugins/sudoers/regress/fuzz/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/plugins/sudoers/regress/fuzz/*.dict /home/hacker/$PROJECT_NAME
+   cp $SRC/sudo/plugins/sudoers/regress/fuzz/fuzz_sudoers.c $SRC/sudo/plugins/sudoers/regress/fuzz/fuzz_new.c
+   cp $SRC/sudo/plugins/sudoers/regress/fuzz/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/sudo/plugins/sudoers/regress/fuzz/*.dict /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC
