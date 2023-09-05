@@ -6,6 +6,7 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool libtool-bin pkg-config gettext sudo default-jdk
+rm -rf flac
 git clone --depth 1 https://github.com/xiph/flac.git
 git clone --depth 1 https://github.com/xiph/ogg.git
 git clone --depth 1 https://github.com/google/ExoPlayer.git
@@ -17,9 +18,8 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/fuzzer_exo.cpp $SRC/newfuzzer_new.cpp
+   cp $SRC/*.cpp /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC
