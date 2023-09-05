@@ -13,10 +13,10 @@ git clone https://github.com/libevent/libevent.git && \
     cd build && \
     cmake -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_OPENSSL=ON -DEVENT__LIBRARY_TYPE=STATIC ../ && \
     make && make install
-
+    
+cd $SRC
 git clone --depth 1 https://github.com/tmux/tmux.git
 git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
-
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
