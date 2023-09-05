@@ -6,6 +6,8 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get update && apt-get install -y autoconf automake bison pkg-config ncurses-dev libtool
+rm -rf libevent
+rm -rf tmux
 
 git clone https://github.com/libevent/libevent.git && \
     cd libevent && \
@@ -23,14 +25,12 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
+   cp $SRC/tmux/fuzz/input-fuzzer.c $SRC/new-fuzzer.c
    cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/*.dict /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/$PROJECT_NAME/* $SRC/tmux/fuzz
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
