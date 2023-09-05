@@ -10,7 +10,6 @@ cd $SRC
 rm -rf lame
 rm -rf LAME-fuzzers
 rm -rf mpg123
-rm -rf expat-2.4.1
 
 # ubuntu apt has not recent enough mpg123
 wget https://www.mpg123.de/snapshot
