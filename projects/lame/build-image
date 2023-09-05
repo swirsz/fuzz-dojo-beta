@@ -7,13 +7,16 @@ cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool subversion pkg-config wget
 
+rm -rf lame
+rm -rf LAME-fuzzers
+
 # ubuntu apt has not recent enough mpg123
 wget https://www.mpg123.de/snapshot
 tar -xvf snapshot
 mv mpg123* mpg123
 
 git clone --depth 1 https://github.com/guidovranken/LAME-fuzzers
-rm -rf lame
+
 svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame $SRC/lame
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
