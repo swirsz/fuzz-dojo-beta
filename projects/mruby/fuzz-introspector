@@ -2,4 +2,18 @@
 export PROJECT_NAME=mruby
 /usr/local/sbin/loc_count
 cd /src
+rm -rf /src/mruby
+rm -rf /src/mruby_seeds
+rm -rf /src/libprotobuf-mutator
+#apt-get update && apt-get install -y build-essential ruby bison ninja-build cmake zlib1g-dev libbz2-dev liblzma-dev
+git clone --depth 1 https://github.com/mruby/mruby mruby
+git clone --depth 1 https://github.com/bshastry/mruby_seeds.git mruby_seeds
+git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
+mkdir LPM; \
+  cd LPM; \
+  cmake /src/libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release; \
+  ninja
+
+
+cd /src
 /usr/local/sbin/fi $PROJECT_NAME
