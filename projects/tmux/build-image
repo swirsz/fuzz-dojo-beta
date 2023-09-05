@@ -8,6 +8,7 @@ cd $SRC
 #apt-get update && apt-get install -y autoconf automake bison pkg-config ncurses-dev libtool
 rm -rf libevent
 rm -rf tmux
+rm -rf /work
 
 git clone https://github.com/libevent/libevent.git && \
     cd libevent && \

@@ -4,6 +4,7 @@ export PROJECT_NAME=tmux
 cd /src
 rm -rf libevent
 rm -rf tmux
+rm -rf /work
 
 git clone https://github.com/libevent/libevent.git && \
     cd libevent && \
