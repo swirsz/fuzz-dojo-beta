@@ -4,7 +4,7 @@ export PROJECT_NAME=sqlite3
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
-
+rm -rf $PROJECT_NAME
 #apt-get update && apt-get install -y make autoconf automake libtool curl tcl zlib1g-dev
 
 # We won't be able to poll fossil for changes, so this will build
