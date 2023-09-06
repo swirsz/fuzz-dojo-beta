@@ -2,4 +2,11 @@
 export PROJECT_NAME=nginx
 /usr/local/sbin/loc_count
 cd /src
+rm -rf nginx
+#apt-get update && apt-get install -y libpcre3-dev zlib1g-dev mercurial ninja-build cmake liblzma-dev libz-dev binutils libtool
+hg clone http://hg.nginx.org/nginx/
+
+cp -r /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz /src/fuzz
+
+cd /src/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME
