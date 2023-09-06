@@ -12,7 +12,7 @@ git clone --depth 1 https://github.com/google/fuzzer-test-suite
 mkdir LPM && cd LPM && cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release && ninja
 cd $SRC
 
-#cp -r fuzz $SRC/fuzz
+cp -r /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz $SRC/fuzz
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/add_fuzzers.diff $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/make_fuzzers $SRC/
