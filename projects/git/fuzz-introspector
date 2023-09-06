@@ -2,6 +2,7 @@
 export PROJECT_NAME=git
 /usr/local/sbin/loc_count
 cd /src
+rm -rf $PROJECT_NAME
 git clone https://github.com/git/git git
 
 git checkout origin/next

@@ -4,7 +4,7 @@ export PROJECT_NAME=git
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
-
+rm -rf $PROJECT_NAME
 #apt-get update && apt-get install --no-install-recommends -y cvs cvsps gettext libcgi-pm-perl libcurl4-gnutls-dev \
 # libdbd-sqlite3-perl liberror-perl libexpat1-dev libhttp-date-perl libio-pty-perl libmailtools-perl libpcre2-dev \
 # libpcre3-dev libsvn-perl perl-modules libyaml-perl libz-dev python subversion tcl unzip asciidoc docbook-xsl xmlto libssl-dev zip
@@ -13,11 +13,11 @@ git clone https://github.com/git/git git
 
 git checkout origin/next
 git pull origin next
-mkdir -p $SRC/git/oss-fuzz
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz-* $SRC/git/oss-fuzz
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/Makefile.diff $SRC/git
+mkdir -p $SRC/$PROJECT_NAME/oss-fuzz
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz-* $SRC/$PROJECT_NAME/oss-fuzz
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/Makefile.diff $SRC/$PROJECT_NAME
 
-cd $SRC/git
+cd $SRC/$PROJECT_NAME
 git apply Makefile.diff
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
@@ -25,17 +25,14 @@ export OLD_LLVMPASS=1
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/git
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/oss-fuzz/fuzz-cmd-diff.c $SRC/$PROJECT_NAME/oss-fuzz/fuzz-new.c
+   cp $SRC/$PROJECT_NAME/oss-fuzz/*.c /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/oss-fuzz
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
