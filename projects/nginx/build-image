@@ -6,23 +6,19 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get update && apt-get install -y libpcre3-dev zlib1g-dev mercurial ninja-build cmake liblzma-dev libz-dev binutils libtool
-RUN hg clone http://hg.nginx.org/nginx/
-RUN git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
-RUN git clone --depth 1 https://github.com/google/fuzzer-test-suite
-RUN (mkdir LPM && cd LPM && cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release && ninja)
+hg clone http://hg.nginx.org/nginx/
+git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
+git clone --depth 1 https://github.com/google/fuzzer-test-suite
+(mkdir LPM && cd LPM && cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release && ninja)
+cd $SRC
 
-WORKDIR nginx
-COPY fuzz $SRC/fuzz
-COPY build.sh add_fuzzers.diff make_fuzzers  $SRC/
+cp -r fuzz $SRC/fuzz
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
-
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/add_fuzzers.diff $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/make_fuzzers $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
