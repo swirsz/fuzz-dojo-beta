@@ -16,9 +16,9 @@ cd $SRC/php-src
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/php-src/sapi/fuzzer/fuzzer-execute.c $SRC/php-src/sapi/fuzzer/fuzzer-new.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.php /home/hacker/$PROJECT_NAME
-   cp $SRC/*.dict /home/hacker/$PROJECT_NAME
+   cp $SRC/php-src/sapi/fuzzer/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/php-src/sapi/fuzzer/*.php /home/hacker/$PROJECT_NAME
+   cp $SRC/php-src/sapi/fuzzer/*.dict /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC
