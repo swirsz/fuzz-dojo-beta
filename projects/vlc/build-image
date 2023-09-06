@@ -5,6 +5,7 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+rm -rf vlc
 #apt-get update && apt-get install -y make autoconf automake libtool \
   pkg-config cmake flex bison gettext libglu1-mesa-dev 
 git clone --depth 1 https://github.com/videolan/vlc vlc
