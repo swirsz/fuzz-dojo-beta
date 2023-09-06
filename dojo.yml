@@ -94,10 +94,6 @@ modules:
         name: CMAKE
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
 
-      - id: cpython3
-        name: CPYTHON3
-        description: Browse source code - no fuzz introspector report (8/27/2023) https://introspector.oss-fuzz.com/project-profile?project=cpython3
-
       - id: curl
         name: CURL
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
@@ -138,14 +134,6 @@ modules:
         name: JSON
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json
 
-      - id: json-c
-        name: JSON-C
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json-c
-
-      - id: jsoncpp
-        name: JSONCPP
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=jsoncpp
-        
       - id: kamailio
         name: KAMAILIO (9.19%) 81190 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
@@ -157,10 +145,6 @@ modules:
       - id: libidn
         name: LIBIDN (80.46%) 2180 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libidn
-
-      - id: libpcap
-        name: LIBPCAP
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpcap
 
       - id: libsodium
         name: LIBSODIUM (20.67%) 7761 loc
@@ -217,10 +201,6 @@ modules:
       - id: pycryptodome
         name: PYCRYPTODOME (80.19%) 1398 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pycryptodome
-
-      - id: python3-libraries
-        name: PYTHON3-LIBRARIES
-        description: Browse source code - no fuzz introspector report (8/27/2023)  https://introspector.oss-fuzz.com/project-profile?project=python3-libraries
 
       - id: qubes-os
         name: QUBES-OS

@@ -5,5 +5,5 @@ cd /src
 rm -rf $PROJECT_NAME
 git clone --depth 1 https://github.com/file/file.git
 
-cd $SRC/$PROJECT_NAME
+cd /src/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME

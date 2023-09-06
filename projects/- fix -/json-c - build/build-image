@@ -4,6 +4,8 @@ export PROJECT_NAME=json-c
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
+rm -rf $PROJECT_NAME
+rm -rf $PROJECT_NAME-build
 
 #apt-get update && apt-get install -y make cmake
 git clone --depth 1 https://github.com/json-c/json-c.git json-c
