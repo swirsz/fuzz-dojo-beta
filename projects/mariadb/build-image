@@ -7,7 +7,7 @@ cd $SRC
 
 rm -rf server
 #apt-get install -y build-essential libncurses5-dev gnutls-dev bison zlib1g-dev ccache
-git clone --depth=1 https://github.com/MariaDB/server
+git clone  https://github.com/MariaDB/server
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
