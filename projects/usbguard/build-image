@@ -20,7 +20,6 @@ git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard us
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1
 
-
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/usbguard

@@ -5,4 +5,5 @@ cd /src
 rm -rf $PROJECT_NAME
 git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard usbguard
 cd /src/usbguard
+export OLD_LLVMPASS=1
 /usr/local/sbin/fi $PROJECT_NAME
