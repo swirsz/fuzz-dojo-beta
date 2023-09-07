@@ -9,8 +9,8 @@ cd $SRC
 #  libprotobuf-dev protobuf-compiler libdbus-1-dev libdbus-glib-1-dev libgio2.0-cil-dev libgcrypt20-dev \
 #  libpolkit-gobject-1-dev libseccomp-dev libcap-ng-dev
 
-#git clone https://github.com/ClusterLabs/libqb && cd libqb && \
-#    ./autogen.sh && ./configure && make && make install
+git clone https://github.com/ClusterLabs/libqb && cd libqb && \
+    ./autogen.sh && ./configure && make && make install
 
 cd $SRC
 rm -rf $PROJECT_NAME
