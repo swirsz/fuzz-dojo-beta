@@ -102,10 +102,6 @@ modules:
         name: EXAMPLE (my-api-repo) (100.00%) 20 loc
         description: Sample OSS-Fuzz project
 
-      - id: flac
-        name: FLAC
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=flac
-
       - id: fmt
         name: FMT
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
@@ -153,10 +149,6 @@ modules:
       - id: lzo
         name: LZO (92.23%) 3835 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lzo
-
-      - id: mariadb
-        name: MARIADB
-        description: Browse source code - no fuzz introspector report (8/27/2023)         https://introspector.oss-fuzz.com/project-profile?project=mariadb
 
       - id: miniz
         name: MINIZ (47.67%) 5423 loc
