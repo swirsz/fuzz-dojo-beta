@@ -102,10 +102,6 @@ modules:
         name: EXAMPLE (my-api-repo) (100.00%) 20 loc
         description: Sample OSS-Fuzz project
 
-      - id: file
-        name: FILE
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
-
       - id: flac
         name: FLAC
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=flac
