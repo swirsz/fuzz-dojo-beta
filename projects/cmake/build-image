@@ -7,7 +7,7 @@ cd $SRC
 
 rm -rf cmake
 #apt-get update && apt-get install -y make autoconf automake libtool pkg-config libssl-dev
-git clone --depth 1 https://gitlab.kitware.com/cmake/cmake.git cmake
+git clone --depth 1 https://gitlab.kitware.com/cmake/cmake.git $PROJECT_NAME
 git clone --depth 1 https://github.com/strongcourage/fuzzing-corpus
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
@@ -16,14 +16,14 @@ export OLD_LLVMPASS=1
 
 cp /opt/oss-fuzz/projects/cmake/build.sh $SRC/
 
-cd $SRC/cmake
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/cmake" ]; then
    mkdir /home/hacker/cmake
-   cp $SRC/cmake/Tests/Fuzzing/xml_parser_fuzzer.cc $SRC/cmake/Tests/Fuzzing/new_fuzzer.cc
-   cp $SRC/cmake/Tests/Fuzzing/*.cc /home/hacker/cmake
+   cp $SRC/$PROJECT_NAME/Tests/Fuzzing/xml_parser_fuzzer.cc $SRC/$PROJECT_NAME/Tests/Fuzzing/new_fuzzer.cc
+   cp $SRC/$PROJECT_NAME/Tests/Fuzzing/*.cc /home/hacker/cmake
    cp /opt/oss-fuzz/projects/cmake/build.sh /home/hacker/cmake
 else
-   cp /home/hacker/cmake/*.cc $SRC/cmake/Tests/Fuzzing
+   cp /home/hacker/cmake/*.cc $SRC/$PROJECT_NAME/Tests/Fuzzing
    cp /home/hacker/cmake/build.sh $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
