@@ -3,6 +3,7 @@ export PROJECT_NAME=CMake
 /usr/local/sbin/loc_count
 cd /src
 rm -rf cmake
+rm -rf inspector
 #apt-get update && apt-get install -y make autoconf automake libtool pkg-config libssl-dev
 git clone --depth 1 https://gitlab.kitware.com/cmake/cmake.git cmake
 cd /src/cmake

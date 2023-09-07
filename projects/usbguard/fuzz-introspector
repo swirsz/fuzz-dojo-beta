@@ -3,6 +3,7 @@ export PROJECT_NAME=usbguard
 /usr/local/sbin/loc_count
 cd /src
 rm -rf $PROJECT_NAME
+rm -rf inspector
 git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard usbguard
 cd /src/usbguard
 export OLD_LLVMPASS=1
