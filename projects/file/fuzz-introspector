@@ -2,8 +2,17 @@
 export PROJECT_NAME=file
 /usr/local/sbin/loc_count
 cd /src
+
 rm -rf $PROJECT_NAME
+rm -rf binary-samples
+rm -rf pocs
+
 git clone --depth 1 https://github.com/file/file.git
+
+# Supplement file's existing test files
+git clone --depth 1 https://github.com/DavidKorczynski/binary-samples.git
+git clone --depth 1 https://github.com/corkami/pocs
+
 
 cd /src/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME
