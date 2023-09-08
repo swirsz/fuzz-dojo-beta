@@ -87,7 +87,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=c-ares
 
       - id: casync
-        name: CASYNC
+        name: CASYNC (10.01%) 1678 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
 
       - id: cmake
