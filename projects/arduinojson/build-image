@@ -23,5 +23,7 @@ else
    cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/extras/fuzzing
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
+cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_corpus
+cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_seed_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_seed_corpus
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
