@@ -1,0 +1,10 @@
+--- build.sh.o	2023-09-09 03:52:17.331260321 +0000
++++ build.sh	2023-09-09 03:55:36.068313956 +0000
+@@ -27,3 +27,7 @@
+ $CXX $CXXFLAGS $LIB_FUZZING_ENGINE fuzzer.o -o $OUT/fuzzer fuzz_lib.a
+ 
+ zip $OUT/fuzzer_seed_corpus.zip $SRC/sample_ninja_build
++
++$CXX $CXXFLAGS -fdiagnostics-color -I/src/ninja/src -o new_fuzzer.o -c new_fuzzer.cc
++$CXX $CXXFLAGS $LIB_FUZZING_ENGINE new_fuzzer.o -o $OUT/new_fuzzer fuzz_lib.a
++zip $OUT/new_fuzzer_seed_corpus.zip $SRC/sample_ninja_build
