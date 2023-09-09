@@ -10,8 +10,8 @@ cd $SRC
 rm -rf $PROJECT_NAME
 git clone --depth 1 https://github.com/ninja-build/ninja
 
-mv $SRC/$PROJECT_NAME/misc/oss-fuzz/build.sh $SRC/
-mv $SRC/$PROJECT_NAME/misc/oss-fuzz/sample_ninja_build $SRC/
+cp $SRC/$PROJECT_NAME/misc/oss-fuzz/build.sh $SRC/
+cp $SRC/$PROJECT_NAME/misc/oss-fuzz/sample_ninja_build $SRC/
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
