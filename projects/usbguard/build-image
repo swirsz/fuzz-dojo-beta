@@ -26,7 +26,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/usbguard
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/fuzzer-rules.cpp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/fuzzer-new.cpp
+   cp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/fuzzer-uevent.cpp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/fuzzer-new.cpp
    cp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/*.cpp /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/Makefile /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
