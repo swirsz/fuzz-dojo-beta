@@ -167,7 +167,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=nginx
 
       - id: ninja
-        name: NINJA
+        name: NINJA (32.26%) 4005 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ninja
 
       - id: openjpeg
