@@ -17,7 +17,8 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/qubes-os/qubes-core-qubesdb/fuzz/qrexec_remote_fuzzer.c $SRC/qubes-os/qubes-core-qubesdb/fuzz/new_fuzzer.c
+   cp $SRC/qubes-os/qubes-core-qubesdb/fuzz/db-daemon_fuzzer.c $SRC/qubes-os/qubes-core-qubesdb/fuzz/new_fuzzer.c
+   cp $SRC/qubes-os/qubes-core-qubesdb/fuzz/db-daemon_fuzzer.options $SRC/qubes-os/qubes-core-qubesdb/fuzz/new_fuzzer.options
    cp $SRC/qubes-os/qubes-core-qubesdb/fuzz/*.c /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
