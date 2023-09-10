@@ -20,5 +20,5 @@ else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/wasm3/platforms/app_fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
+patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
