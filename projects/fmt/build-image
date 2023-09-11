@@ -12,6 +12,7 @@ git clone --depth 1 --branch master https://github.com/fmtlib/fmt.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+patch -tuN $SRC/$PROJECT_NAME/test/fuzzing/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
@@ -23,5 +24,4 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/test/fuzzing
 fi
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
