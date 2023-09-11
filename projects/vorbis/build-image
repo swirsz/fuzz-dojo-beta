@@ -16,15 +16,15 @@ touch people.xiph.org/dummy.ogg
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+#patch -tuN $SRC/vorbis/contrib/oss-fuzz/build.sh -i /challenge/build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/vorbis/contrib/oss-fuzz/decode_fuzzer.cc $SRC/vorbis/contrib/oss-fuzz/new_fuzzer.cc
    cp $SRC/vorbis/contrib/oss-fuzz/*.cc /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/vorbis/contrib/oss-fuzz/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC/vorbis/contrib/oss-fuzz/
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC/vorbis/contrib/oss-fuzz
 fi
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
