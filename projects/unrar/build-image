@@ -12,6 +12,7 @@ git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+patch -tuN /src/build.sh -i /challenge/build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
@@ -22,5 +23,4 @@ else
    cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

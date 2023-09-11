@@ -211,7 +211,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sudoers
 
       - id: tinyusb
-        name: TINYUSB
+        name: TINYUSB (13.55%) 11265 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tinyusb
 
       - id: tmux
