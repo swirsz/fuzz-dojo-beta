@@ -1,0 +1,11 @@
+--- Makefile.o	2023-09-11 00:49:40.442320214 +0000
++++ Makefile	2023-09-11 00:39:47.000000000 +0000
+@@ -19,7 +19,7 @@
+ _LIBQREXEC_OBJS = remote.o write-stdin.o ioall.o txrx-vchan.o buffer.o replace.o exec.o log.o unix-server.o
+ LIBQREXEC_OBJS = $(patsubst %.o,libqrexec-%.o,$(_LIBQREXEC_OBJS))
+ 
+-FUZZERS = qubesrpc_parse_fuzzer qrexec_remote_fuzzer qrexec_daemon_fuzzer
++FUZZERS = qubesrpc_parse_fuzzer qrexec_remote_fuzzer qrexec_daemon_fuzzer new_fuzzer
+ SEEDS = $(patsubst %,%_seed_corpus.zip,$(FUZZERS))
+ 
+ .PHONY: all
