@@ -19,6 +19,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp -r $SRC/tinyusb/test/fuzz /home/hacker/$PROJECT_NAME
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
 else
+   rm -rf $SRC/tinyusb/test/fuzz
    cp -r /home/hacker/$PROJECT_NAME $SRC/tinyusb/test/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
