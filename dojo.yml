@@ -103,7 +103,7 @@ modules:
         description: Sample OSS-Fuzz project
 
       - id: fmt
-        name: FMT
+        name: FMT (83.11%) 5904 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
 
       - id: gfwx
