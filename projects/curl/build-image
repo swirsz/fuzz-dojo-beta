@@ -19,6 +19,7 @@ git clone --depth 1 https://github.com/curl/curl-fuzzer.git /src/curl_fuzzer
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 cd $SRC/curl_fuzzer
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
@@ -27,10 +28,9 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/curl_fuzzer/*.sh /home/hacker/$PROJECT_NAME
    cp $SRC/curl_fuzzer/*.py /home/hacker/$PROJECT_NAME
    cp $SRC/curl_fuzzer/Makefile /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

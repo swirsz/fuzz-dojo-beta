@@ -10,16 +10,16 @@ git clone https://github.com/sudo-project/sudo
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 cd $SRC/sudo
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/sudo/plugins/sudoers/regress/fuzz/fuzz_sudoers.c $SRC/sudo/plugins/sudoers/regress/fuzz/fuzz_new.c
    cp $SRC/sudo/plugins/sudoers/regress/fuzz/*.c /home/hacker/$PROJECT_NAME
    cp $SRC/sudo/plugins/sudoers/regress/fuzz/*.dict /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

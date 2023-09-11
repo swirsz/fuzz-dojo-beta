@@ -219,7 +219,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tmux
 
       - id: unrar
-        name: UNRAR
+        name: UNRAR (15.16%) 13209 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
 
       - id: uriparser

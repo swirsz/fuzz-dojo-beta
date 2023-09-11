@@ -20,8 +20,9 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/test/fuzzing/CMakeLists.txt /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/test/fuzzing/*.h /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/test/fuzzing/*.cc /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/test/fuzzing
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile

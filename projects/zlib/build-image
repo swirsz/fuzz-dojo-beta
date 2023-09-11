@@ -11,15 +11,16 @@ git clone --depth 1 -b develop https://github.com/madler/zlib.git
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/minigzip_fuzzer.c $SRC/new_fuzzer.c
    cp $SRC/*.c* /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c* $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

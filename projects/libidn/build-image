@@ -12,15 +12,15 @@ git clone https://git.savannah.gnu.org/git/libidn.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzz/libidn_tounicode_fuzzer.c  $SRC/$PROJECT_NAME/fuzz/new_fuzzer.c
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile

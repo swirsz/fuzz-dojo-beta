@@ -21,7 +21,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/qubes-os/qubes-core-qrexec/fuzz/qrexec_daemon_fuzzer.c $SRC/qubes-os/qubes-core-qrexec/fuzz/new_fuzzer.c
    cp $SRC/qubes-os/qubes-core-qrexec/fuzz/*.c /home/hacker/$PROJECT_NAME
    cp $SRC/qubes-os/qubes-core-qrexec/fuzz/Makefile /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/qubes-os/qubes-core-qrexec/fuzz
    cp /home/hacker/$PROJECT_NAME/Makefile $SRC/qubes-os/qubes-core-qrexec/fuzz

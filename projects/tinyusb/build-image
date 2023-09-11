@@ -13,15 +13,15 @@ git clone --depth 1 https://github.com/hathach/tinyusb.git tinyusb     # or use 
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp -r $SRC/tinyusb/test/fuzz/device/cdc $SRC/tinyusb/test/fuzz/device/newfuzzer
    cp -r $SRC/tinyusb/test/fuzz /home/hacker/$PROJECT_NAME
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    rm -rf $SRC/tinyusb/test/fuzz
    cp -r /home/hacker/$PROJECT_NAME $SRC/tinyusb/test/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
 compile
