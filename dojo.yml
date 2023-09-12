@@ -67,7 +67,7 @@ modules:
     challenges:
 
       - id: apache-httpd
-        name: APACHE-HTTPD
+        name: APACHE-HTTPD (14.81%) 48312 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
 
       - id: arduinojson

@@ -23,7 +23,9 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/extras/fuzzing/*.cpp /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/extras/fuzzing
+   cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/extras/fuzzing
+   cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/extras/fuzzing
+   cp /home/hacker/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME/extras/fuzzing
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile
