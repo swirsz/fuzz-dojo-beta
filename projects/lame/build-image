@@ -36,7 +36,9 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/LAME-fuzzers/*.cpp /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/LAME-fuzzers/*.cpp $SRC
+   cp /home/hacker/$PROJECT_NAME/LAME-fuzzers/*.cpp $SRC/LAME-fuzzers
+   cp /home/hacker/$PROJECT_NAME/LAME-fuzzers/*.dict $SRC/LAME-fuzzers
+   cp /home/hacker/$PROJECT_NAME/LAME-fuzzers/*.zip $SRC/LAME-fuzzers
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile
