@@ -33,7 +33,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/LAME-fuzzers/fuzzer-encoder.cpp $SRC/LAME-fuzzers/fuzzer-new.cpp
    cp $SRC/LAME-fuzzers/fuzzer-encoder.dict $SRC/LAME-fuzzers/fuzzer-new.dict
    cp $SRC/LAME-fuzzers/fuzzer-encoder_seed_corpus.zip $SRC/LAME-fuzzers/fuzzer-new_seed_corpus.zip
-   cp $SRC/LAME-fuzzers/*.cpp /home/hacker/$PROJECT_NAME
+   cp $SRC/LAME-fuzzers/* /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/LAME-fuzzers/*.cpp $SRC/LAME-fuzzers
