@@ -25,13 +25,15 @@ patch -tuN /src/build.sh -i /challenge/build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/sqlite3/test/ossfuzz.c $SRC/newfuzzer.c
-   cp $SRC/sqlite3/test/ossfuzz.options $SRC/newfuzzer.options
-   cp $SRC/sqlite3/test/ossfuzz_seed_corpus.zip $SRC/newfuzzer_seed_corpus.zip
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/sqlite3/test/ossfuzz.c $SRC/sqlite3/test/newfuzzer.c
+   cp $SRC/sqlite3/test/ossfuzz.options $SRC/sqlite3/test/newfuzzer.options
+   cp $SRC/sqlite3/test/ossfuzz_seed_corpus.zip $SRC/sqlite3/test/newfuzzer_seed_corpus.zip
+   cp $SRC/sqlite3/test/*.c /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/* $SRC
+   cp /home/hacker/$PROJECT_NAME/*.zip $SRC/sqlite3/test
+   cp /home/hacker/$PROJECT_NAME/*.options $SRC/sqlite3/test
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/sqlite3/test
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile
