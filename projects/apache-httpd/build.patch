@@ -1,0 +1,11 @@
+--- build.sh.o	2023-09-12 17:16:43.313142441 +0000
++++ build.sh	2023-09-12 17:17:30.181365692 +0000
+@@ -31,7 +31,7 @@
+ static_pcre=($(find /src/pcre2 -name "libpcre2-8.a"))
+ 
+ # Build the fuzzers
+-for fuzzname in utils parse tokenize addr_parse uri request preq; do
++for fuzzname in utils parse tokenize addr_parse uri request preq new; do
+   $CC $CFLAGS -c \
+     -I$SRC/fuzz-headers/lang/c -I./include -I./os/unix \
+     -I./srclib/apr/include -I./srclib/apr-util/include/ \
