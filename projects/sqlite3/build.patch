@@ -1,0 +1,14 @@
+--- build.sh.o	2023-09-12 20:03:29.247484160 +0000
++++ build.sh	2023-09-12 20:07:05.956560241 +0000
+@@ -40,4 +40,11 @@
+     $SRC/sqlite3/test/ossfuzz.o -o $OUT/ossfuzz \
+     $LIB_FUZZING_ENGINE ./sqlite3.o
+ 
++$CC $CFLAGS -I. -c \
++    $SRC/sqlite3/test/newfuzzer.c -o $SRC/sqlite3/test/newfuzzer.o
++
++$CXX $CXXFLAGS \
++    $SRC/sqlite3/test/newfuzzer.o -o $OUT/ossfuzz \
++    $LIB_FUZZING_ENGINE ./sqlite3.o
++
+ cp $SRC/*.options $SRC/*.dict $SRC/*.zip $OUT/
