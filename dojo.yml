@@ -71,7 +71,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
 
       - id: arduinojson
-        name: ARDUINOJSON
+        name: ARDUINOJSON (48.24%) 3599 loc 
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=arduinojson
 
       - id: avahi
