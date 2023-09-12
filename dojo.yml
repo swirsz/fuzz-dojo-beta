@@ -91,7 +91,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
 
       - id: cmake
-        name: CMAKE
+        name: CMAKE (62.63%) 7778 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
 
       - id: curl
