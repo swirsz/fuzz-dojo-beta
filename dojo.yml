@@ -163,7 +163,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mruby
 
       - id: nginx
-        name: NGINX
+        name: NGINX (14.18%) 86550 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=nginx
 
       - id: ninja
@@ -227,7 +227,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=uriparser
 
       - id: usbguard
-        name: USBGUARD
+        name: USBGUARD (39.91%) 3525 loc (no fuzz introspector)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=usbguard
 
       - id: valijson
