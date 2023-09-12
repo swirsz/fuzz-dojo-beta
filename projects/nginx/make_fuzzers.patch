@@ -13,7 +13,7 @@
 +objs/new_fuzzer: $ngx_deps_fuzz
 +		\$(CXX) \$(CXXFLAGS) -DNDEBUG src/fuzz/new_fuzzer.cc \
 +		src/fuzz/genfiles/http_request_proto.pb.cc \
-+		-o objs/http_request_fuzzer \
++		-o objs/new_fuzzer \
 +		\$(CORE_INCS) \$(HTTP_INCS) \
 +		-I src/fuzz/genfiles/ -I \$(SRC)/ \
 +		-I \$(SRC)/libprotobuf-mutator/ \
