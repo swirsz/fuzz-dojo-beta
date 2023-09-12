@@ -247,7 +247,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wasm3
 
       - id: xvid
-        name: XVID
+        name: XVID (33.47%) 13782 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
 
       - id: xz
