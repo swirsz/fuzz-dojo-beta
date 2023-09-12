@@ -29,6 +29,8 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/sqlite3/test/ossfuzz.options $SRC/sqlite3/test/newfuzzer.options
    cp $SRC/sqlite3/test/ossfuzz_seed_corpus.zip $SRC/sqlite3/test/newfuzzer_seed_corpus.zip
    cp $SRC/sqlite3/test/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/sqlite3/test/*.options /home/hacker/$PROJECT_NAME
+   cp $SRC/sqlite3/test/*.zip /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.zip $SRC/sqlite3/test
