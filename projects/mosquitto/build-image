@@ -6,13 +6,18 @@ export SANITIZER=$1
 cd $SRC
 
 rm -rf $SRC/$PROJECT_NAME
-#apt-get update && apt-get install -y make autoconf automake libtool gettext pkg-config build-essential
-git clone --recurse-submodules https://github.com/google/snappy
+git clone --depth 1 -b develop https://github.com/eclipse/mosquitto $SRC/mosquitto
+
+# Get dependencies
+#$SRC/mosquitto/fuzzing/scripts/oss-fuzz-dependencies.sh
+#apt-get update && apt-get install -y libtool-bin make libsqlite3-dev
+git clone https://github.com/DaveGamble/cJSON $SRC/cJSON
+
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN /src/snappy/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
-cd $SRC/
+#patch -tuN /src/snappy/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/snappy_compress_fuzzer.cc $SRC/$PROJECT_NAME/new_fuzzer.cc
