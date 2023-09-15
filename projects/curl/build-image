@@ -23,7 +23,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/curl_fuzzer
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/curl_fuzzer/curl_fuzzer.cc $SRC/new_fuzzer.cc
+   cp $SRC/curl_fuzzer/curl_fuzzer.cc $SRC/curl_fuzzer/new_fuzzer.cc
    cp $SRC/curl_fuzzer/*.cc /home/hacker/$PROJECT_NAME
    cp $SRC/curl_fuzzer/*.sh /home/hacker/$PROJECT_NAME
    cp $SRC/curl_fuzzer/*.py /home/hacker/$PROJECT_NAME
