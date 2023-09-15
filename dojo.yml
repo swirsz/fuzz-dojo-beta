@@ -137,10 +137,26 @@ modules:
       - id: libsodium
         name: LIBSODIUM (20.67%) 7761 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
+        
+      - id: libssh
+        name: LIBSSH
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh
+        
+      - id: libssh2
+        name: LIBSSH2
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh2
       
       - id: libtasn1
         name: LIBTASN1 (59.15%) 6722 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtasn1
+      
+      - id: libvnc
+        name: LIBVNC
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
+      
+      - id: lighttpd
+        name: LIGHTTPD
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
       
       - id: lzo
         name: LZO (92.23%) 3835 loc
@@ -153,6 +169,10 @@ modules:
       - id: minizip
         name: MINIZIP (58.59%) 3639 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
+        
+      - id: mosquitto
+        name: MOSQUITTO
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mosquitto
 
       - id: mruby
         name: MRUBY

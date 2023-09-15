@@ -1,9 +1,10 @@
---- build.sh	2023-09-12 17:35:40.302225161 +0000
-+++ build.sh	2023-09-12 17:47:53.750044606 +0000
-@@ -32,6 +32,16 @@
+--- /opt/oss-fuzz/projects/mruby/build.sh	2023-09-14 02:02:08.824337207 +0000
++++ build.sh	2023-09-15 22:19:26.757556712 +0000
+@@ -30,6 +30,15 @@
+ $CXX $CXXFLAGS $OUT/${name}.o $LIB_FUZZING_ENGINE -lm \
+     $SRC/mruby/build/host/lib/libmruby.a -o $OUT/${name}
  rm -f $OUT/${name}.o
- )
- 
++
 +# build fuzzers
 +FUZZ_TARGET=$SRC/mruby/oss-fuzz/new_fuzzer.c
 +name=$(basename $FUZZ_TARGET .c)
@@ -12,12 +13,10 @@
 +$CXX $CXXFLAGS $OUT/${name}.o $LIB_FUZZING_ENGINE -lm \
 +    $SRC/mruby/build/host/lib/libmruby.a -o $OUT/${name}
 +rm -f $OUT/${name}.o
-+)  
-+
+ )
+ 
  # Construct options files
- cat > $SRC/mruby/oss-fuzz/config/mruby_fuzzer.options <<EOF
- [libfuzzer]
-@@ -40,6 +50,14 @@
+@@ -40,6 +49,13 @@
  EOF
  cp $SRC/mruby/oss-fuzz/config/mruby_fuzzer.options $SRC/mruby/oss-fuzz/config/mruby_proto_fuzzer.options
  
@@ -27,12 +26,11 @@
 +dict = new.dict
 +only_ascii = 1
 +EOF
-+cp $SRC/mruby/oss-fuzz/config/new_fuzzer.options $SRC/mruby/oss-fuzz/config/new_fuzzer.options
 +
  # Build proto fuzzer: ASan and UBSan
  if [[ $CFLAGS != *sanitize=memory* ]]; then
      PROTO_FUZZ_TARGET=$SRC/mruby/oss-fuzz/mruby_proto_fuzzer.cpp
-@@ -66,6 +84,8 @@
+@@ -66,6 +82,8 @@
  # dict and config
  cp $SRC/mruby/oss-fuzz/config/mruby.dict $OUT
  cp $SRC/mruby/oss-fuzz/config/mruby_fuzzer.options $OUT
