@@ -94,10 +94,6 @@ modules:
         name: CMAKE (62.63%) 7778 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
 
-      - id: curl
-        name: CURL
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
-
       - id: example
         name: EXAMPLE (my-api-repo) (100.00%) 20 loc
         description: Sample OSS-Fuzz project
@@ -205,10 +201,6 @@ modules:
       - id: sqlite3
         name: SQLITE3
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
-
-      - id: sudoers
-        name: SUDOERS
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sudoers
 
       - id: tinyusb
         name: TINYUSB (13.55%) 11265 loc

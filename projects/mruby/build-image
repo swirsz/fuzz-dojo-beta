@@ -18,7 +18,9 @@ mkdir LPM; \
   ninja
 
 #cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-
+cp $SRC/mruby/oss-fuzz/config/mruby.dict $SRC/mruby/oss-fuzz/config/new.dict
+cp $SRC/mruby/oss-fuzz/config/mruby_fuzzer.options $SRC/mruby/oss-fuzz/config/new_fuzzer.options
+   
 patch -tuN /src/mruby/oss-fuzz/build.sh -i /challenge/build.patch -r -
 cd $SRC
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
