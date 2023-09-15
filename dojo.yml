@@ -175,7 +175,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mosquitto
 
       - id: mruby
-        name: MRUBY
+        name: MRUBY (20.15%) 66523 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mruby
 
       - id: nginx
