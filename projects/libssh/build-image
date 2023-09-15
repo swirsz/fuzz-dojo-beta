@@ -6,13 +6,13 @@ export SANITIZER=$1
 cd $SRC
 
 rm -rf $SRC/$PROJECT_NAME
-#apt-get update && apt-get install -y make autoconf automake libtool gettext pkg-config build-essential
-git clone --recurse-submodules https://github.com/google/snappy
+#apt-get update && apt-get install -y cmake zlib1g-dev libssl-dev
+git clone --depth=1 https://git.libssh.org/projects/libssh.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN /src/snappy/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
-cd $SRC/
+#patch -tuN /src/snappy/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/snappy_compress_fuzzer.cc $SRC/$PROJECT_NAME/new_fuzzer.cc
