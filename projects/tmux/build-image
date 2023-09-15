@@ -24,21 +24,21 @@ git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
 cp -r /src /out/src 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN /src/Makefile.am -i /challenge/Makefile.patch -r -
+patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/Makefile.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/tmux/fuzz/input-fuzzer.c $SRC/tmux/fuzz/new-fuzzer.c
-   cp $SRC/tmux/fuzz/input-fuzzer.dict $SRC/tmux/fuzz/new-fuzzer.dict
-   cp $SRC/tmux/fuzz/input-fuzzer.options $SRC/tmux/fuzz/new-fuzzer.options
-   cp $SRC/tmux/fuzz/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/tmux/fuzz/*.dict /home/hacker/$PROJECT_NAME
-   cp $SRC/tmux/Makefile.am /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.c $SRC/$PROJECT_NAME/fuzz/new-fuzzer.c
+   cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.dict $SRC/$PROJECT_NAME/fuzz/new-fuzzer.dict
+   cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.options $SRC/$PROJECT_NAME/fuzz/new-fuzzer.options
+   cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzz/*.dict /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/Makefile.am /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC/tmux/fuzz
-   cp /home/hacker/$PROJECT_NAME/*.dict $SRC/tmux/fuzz
-   cp /home/hacker/$PROJECT_NAME/Makefile.am $SRC/tmux
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
+   cp /home/hacker/$PROJECT_NAME/*.dict $SRC/$PROJECT_NAME/fuzz
+   cp /home/hacker/$PROJECT_NAME/Makefile.am $SRC/$PROJECT_NAME
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile

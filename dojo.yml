@@ -215,7 +215,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tinyusb
 
       - id: tmux
-        name: TMUX
+        name: TMUX (12.78%) 48752 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tmux
 
       - id: unrar
