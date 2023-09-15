@@ -31,9 +31,12 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/tmux/fuzz/input-fuzzer.c $SRC/tmux/fuzz/new-fuzzer.c
    cp $SRC/tmux/fuzz/*.c /home/hacker/$PROJECT_NAME
    cp $SRC/tmux/fuzz/*.dict /home/hacker/$PROJECT_NAME
+   cp $SRC/tmux/Makefile.am /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/* $SRC/tmux/fuzz
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/tmux/fuzz
+   cp /home/hacker/$PROJECT_NAME/*.dict $SRC/tmux/fuzz
+   cp /home/hacker/$PROJECT_NAME/Makefile.am $SRC/tmux
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile
