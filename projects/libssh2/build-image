@@ -1,6 +1,6 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=snappy
+export PROJECT_NAME=libssh2
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC

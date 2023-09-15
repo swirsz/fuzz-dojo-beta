@@ -1,5 +1,5 @@
 #!/bin/bash
-export PROJECT_NAME=snappy
+export PROJECT_NAME=libssh2
 /usr/local/sbin/loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME/build
