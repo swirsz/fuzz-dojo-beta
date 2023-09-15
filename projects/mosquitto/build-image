@@ -1,0 +1,25 @@
+#!/bin/sh
+. /usr/local/sbin/e
+export PROJECT_NAME=mosquitto
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf $SRC/$PROJECT_NAME
+#apt-get update && apt-get install -y make autoconf automake libtool gettext pkg-config build-essential
+git clone --recurse-submodules https://github.com/google/snappy
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN /src/snappy/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+cd $SRC/
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/snappy_compress_fuzzer.cc $SRC/$PROJECT_NAME/new_fuzzer.cc
+   cp $SRC/$PROJECT_NAME/*.cc /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+compile

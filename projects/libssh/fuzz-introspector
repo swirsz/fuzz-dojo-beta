@@ -1,0 +1,6 @@
+#!/bin/bash
+export PROJECT_NAME=libssh
+/usr/local/sbin/loc_count
+cd /src
+rm -rf /src/$PROJECT_NAME/build
+/usr/local/sbin/fi $PROJECT_NAME
