@@ -38,6 +38,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/oss-fuzz
    cp /home/hacker/$PROJECT_NAME/Makefile.diff $SRC/$PROJECT_NAME
+   mkdir -p  $SRC/$PROJECT_NAME/oss-fuzz/.depend
    cp /home/hacker/$PROJECT_NAME/fuzz-new.o.d $SRC/$PROJECT_NAME/oss-fuzz/.depend
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
