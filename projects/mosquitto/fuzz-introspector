@@ -1,6 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=mosquitto
 /usr/local/sbin/loc_count
-cd /src
-rm -rf /src/$PROJECT_NAME/build
+cd /src/$PROJECT_NAME
+rm -rf /src/$PROJECT_NAME
+git clone --depth 1 -b develop https://github.com/eclipse/mosquitto $SRC/mosquitto
+patch -tuN /src/mosquitto/fuzzing/broker/Makefile -i /challenge/Makefile.patch -r -
 /usr/local/sbin/fi $PROJECT_NAME
