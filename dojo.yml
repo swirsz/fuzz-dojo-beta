@@ -139,7 +139,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
         
       - id: libssh
-        name: LIBSSH
+        name: LIBSSH (37.71%) 26927 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh
         
       - id: libssh2
@@ -217,10 +217,6 @@ modules:
       - id: speex
         name: SPEEX (35.04%) 5867 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=speex
-
-      - id: sqlite3
-        name: SQLITE3
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
 
       - id: tinyusb
         name: TINYUSB (13.55%) 11265 loc
