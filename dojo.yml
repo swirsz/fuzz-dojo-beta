@@ -151,7 +151,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtasn1
       
       - id: libvnc
-        name: LIBVNC
+        name: LIBVNC (20.54%) 10793 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
       
       - id: lighttpd

@@ -11,6 +11,7 @@ git clone --depth 1 https://github.com/LibVNC/libvncserver.git
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+patch -tuN /src/build.sh -i /challenge/build.patch -r -
 patch -tuN /src/libvncserver/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 cd $SRC/libvncserver
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
