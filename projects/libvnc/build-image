@@ -5,7 +5,7 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-rm -rf $SRC/$PROJECT_NAME
+rm -rf $SRC/libvncserver
 #apt-get update && apt-get install -y cmake zlib1g-dev
 git clone --depth 1 https://github.com/LibVNC/libvncserver.git
 
