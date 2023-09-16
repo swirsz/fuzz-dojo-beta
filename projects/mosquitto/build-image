@@ -20,11 +20,15 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/snappy_compress_fuzzer.cc $SRC/$PROJECT_NAME/new_fuzzer.cc
-   cp $SRC/$PROJECT_NAME/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/broker/broker_fuzz_read_handle.cpp $SRC/$PROJECT_NAME/fuzzing/broker/new_fuzzer.cpp
+   cp $SRC/$PROJECT_NAME/fuzzing/broker/*.cpp /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/broker/*.h /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/broker/Makefile /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
+   cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/fuzzing/broker
+   cp /home/hacker/$PROJECT_NAME/*.h $SRC/$PROJECT_NAME/fuzzing/broker
+   cp /home/hacker/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME/fuzzing/broker
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile
