@@ -171,7 +171,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
         
       - id: mosquitto
-        name: MOSQUITTO
+        name: MOSQUITTO (25.80%) 26073 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mosquitto
 
       - id: mruby
