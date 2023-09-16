@@ -2,7 +2,7 @@
 export PROJECT_NAME=libvnc
 /usr/local/sbin/loc_count
 cd /src
-rm -rf /src/$PROJECT_NAME
+rm -rf /src/libvncserver
 git clone --depth 1 https://github.com/LibVNC/libvncserver.git
 patch -tuN /src/libvncserver/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 cp /home/hacker/$PROJECT_NAME/*.c /src/libvncserver/test
