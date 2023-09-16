@@ -1,0 +1,7 @@
+--- CMakeLists.txt	2023-09-16 18:51:15.673156034 +0000
++++ CMakeLists.txt	2023-09-16 19:12:06.019811398 +0000
+@@ -32,3 +32,4 @@
+ fuzzer(ssh_client_config_fuzzer)
+ fuzzer(ssh_bind_config_fuzzer)
+ fuzzer(ssh_known_hosts_fuzzer)
++fuzzer(ssh_new_fuzzer)
