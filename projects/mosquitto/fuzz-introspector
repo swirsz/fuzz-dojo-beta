@@ -1,5 +1,12 @@
 #!/bin/bash
 export PROJECT_NAME=mosquitto
 /usr/local/sbin/loc_count
+cd/src
+rm -rf /src/$PROJECT_NAME
+git clone --depth 1 -b develop https://github.com/eclipse/mosquitto /src/$PROJECT_NAME
 cd /src/$PROJECT_NAME
+patch -tuN /src/$PROJECT_NAME/fuzzing/broker/Makefile -i /challenge/Makefile.patch -r -
+cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/fuzzing/broker
+cp /home/hacker/$PROJECT_NAME/*.h /src/$PROJECT_NAME/fuzzing/broker
+cp /home/hacker/$PROJECT_NAME/Makefile /src/$PROJECT_NAME/fuzzing/broker
 /usr/local/sbin/fi $PROJECT_NAME
