@@ -17,9 +17,11 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/libvncserver/test/fuzz_server.c $SRC/libvncserver/test/fuzz_new.c
    cp $SRC/libvncserver/test/*.c /home/hacker/$PROJECT_NAME
+   cp /src/libvncserver/CMakeLists.txt /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/libvncserver/test
+   cp /home/hacker/$PROJECT_NAME/CMakeLists.txt /src/libvncserver
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile
