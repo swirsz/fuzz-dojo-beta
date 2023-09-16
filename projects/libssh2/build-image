@@ -7,10 +7,13 @@ cd $SRC
 
 rm -rf $SRC/$PROJECT_NAME
 
+#apt-get -y install automake libtool libssl-dev zlib1g-dev
 git clone --depth 1 https://github.com/libssh2/libssh2.git /src/libssh2
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+patch -tuN $SRC/build.sh -i /challenge/build.patch -r -
+patch -tuN $SRC/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh -i /challenge/ossfuzz.patch -r -
 #patch -tuN /src/snappy/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then

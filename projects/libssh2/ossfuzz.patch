@@ -1,0 +1,11 @@
+--- ossfuzz.sho	2023-09-16 22:26:09.677017447 +0000
++++ ossfuzz.sh	2023-09-16 22:26:23.801088999 +0000
+@@ -19,7 +19,7 @@
+ export MAKEFLAGS
+ 
+ # Install dependencies
+-apt-get -y install automake libtool libssl-dev zlib1g-dev
++#apt-get -y install automake libtool libssl-dev zlib1g-dev
+ 
+ # Compile the fuzzer.
+ ./buildconf
