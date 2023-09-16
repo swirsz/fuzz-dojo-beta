@@ -16,7 +16,7 @@ cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/fuzz/ssh_client_fuzzer.c $SRC/$PROJECT_NAME/tests/fuzz/ssh_new_fuzzer.c
-   cp $SRC/$PROJECT_NAME/tests/fuzz/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/fuzz/*.c /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
