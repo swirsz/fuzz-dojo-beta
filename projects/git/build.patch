@@ -1,0 +1,11 @@
+--- build.sh.o	2023-09-14 21:48:38.508034762 +0000
++++ build.sh	2023-09-14 21:50:24.376721278 +0000
+@@ -28,7 +28,7 @@
+ FUZZERS="fuzz-pack-headers fuzz-pack-idx fuzz-commit-graph"
+ #FUZZERS="$FUZZERS fuzz-cmd-status fuzz-cmd-diff fuzz-cmd-version"
+ #FUZZERS="$FUZZERS fuzz-command"
+-FUZZERS="$FUZZERS fuzz-cmd-diff"
++FUZZERS="$FUZZERS fuzz-cmd-diff fuzz-new"
+ # copy fuzzers
+ for fuzzer in $FUZZERS ; do
+   cp oss-fuzz/$fuzzer $OUT
