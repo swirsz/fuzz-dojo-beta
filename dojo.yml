@@ -122,10 +122,6 @@ modules:
         name: JSON (72.80%) 8008 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json
 
-      - id: json-c
-        name: JSON
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json
-
       - id: kamailio
         name: KAMAILIO (9.19%) 81190 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
@@ -161,6 +157,10 @@ modules:
       - id: lighttpd
         name: LIGHTTPD (34.58%) 1310 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
+
+      - id: lua
+        name: LUA
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lua
       
       - id: lzo
         name: LZO (92.23%) 3835 loc

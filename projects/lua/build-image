@@ -1,0 +1,31 @@
+#!/bin/sh
+. /usr/local/sbin/e
+export PROJECT_NAME=lua
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf $SRC/testdir
+git clone https://github.com/ligurio/lua-c-api-tests testdir
+cd $SRC/testdir
+git clone --depth 1 --jobs $(nproc) https://github.com/ligurio/lua-c-api-corpus corpus_dir
+cp /opt/oss-fuzz/projects/testdir/build.sh $SRC
+cp /opt/oss-fuzz/projects/testdir/build.sh $SRC/testdir
+cp /opt/oss-fuzz/projects/testdir/fuzz_lua.c $SRC/testdir
+
+
+#patch -tuN $SRC/testdir/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+
+cd $SRC
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/testdir/tests/fuzz/ssh_client_fuzzer.c $SRC/testdir/tests/fuzz/ssh_new_fuzzer.c
+   cp $SRC/testdir/tests/fuzz/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/testdir/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/testdir/tests/fuzz
+   cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/testdir/tests/fuzz
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+compile

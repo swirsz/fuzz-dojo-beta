@@ -1,0 +1,14 @@
+#!/bin/bash
+export PROJECT_NAME=lua
+/usr/local/sbin/loc_count
+cd /src
+rm -rf /src/testdir
+git clone https://github.com/ligurio/lua-c-api-tests testdir
+cd /src/testdir
+git clone --depth 1 --jobs $(nproc) https://github.com/ligurio/lua-c-api-corpus corpus_dir
+cp /opt/oss-fuzz/projects/testdir/build.sh /src
+cp /opt/oss-fuzz/projects/testdir/build.sh /src/testdir
+cp /opt/oss-fuzz/projects/testdir/fuzz_lua.c /src/testdir
+
+cd /src
+/usr/local/sbin/fi $PROJECT_NAME
