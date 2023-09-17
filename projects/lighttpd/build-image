@@ -13,15 +13,15 @@ git clone https://github.com/lighttpd/lighttpd1.4
 cp /opt/oss-fuzz/projects/lighttpd/build.sh $SRC/
 cp /opt/oss-fuzz/projects/lighttpd/fuzz_* $SRC/
 
-#patch -tuN /src/snappy/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+patch -tuN /src/build.sh -i /challenge/build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/snappy_compress_fuzzer.cc $SRC/$PROJECT_NAME/new_fuzzer.cc
-   cp $SRC/$PROJECT_NAME/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/fuzz_burl.c $SRC/fuzz_new.c
+   cp $SRC/*.c /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile
