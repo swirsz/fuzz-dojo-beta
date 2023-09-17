@@ -1,7 +1,9 @@
+--- build.sh	2023-09-17 18:24:28.208900208 +0000
++++ build.sh	2023-09-17 18:26:26.993482629 +0000
 @@ -34,7 +34,7 @@
  $CC $CFLAGS $SETTINGS -c -o ./src/haproxy.o ./src/haproxy.c
  ar cr libhaproxy.a ./src/*.o
-
+ 
 -for fuzzer in hpack_decode cfg_parser; do
 +for fuzzer in hpack_decode cfg_parser newfuzzer; do
    cp $SRC/fuzz_${fuzzer}.c .
