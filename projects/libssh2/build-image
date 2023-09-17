@@ -18,11 +18,11 @@ patch -tuN $SRC/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh -i /challenge/ossfuzz.pat
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/snappy_compress_fuzzer.cc $SRC/$PROJECT_NAME/new_fuzzer.cc
-   cp $SRC/$PROJECT_NAME/*.cc /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/ossfuzz/ssh2_client_fuzzer.cc $SRC/$PROJECT_NAME/tests/ossfuzz/new_fuzzer.cc
+   cp $SRC/$PROJECT_NAME/tests/ossfuzz/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/tests/ossfuzz
+   cp /home/hacker/$PROJECT_NAME/ossfuzz.sh $SRC/$PROJECT_NAME/tests/ossfuzz
 fi
 compile
