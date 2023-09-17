@@ -155,7 +155,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
       
       - id: lighttpd
-        name: LIGHTTPD
+        name: LIGHTTPD (34.58%) 1310 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
       
       - id: lzo
@@ -231,7 +231,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=uriparser
 
       - id: usbguard
-        name: USBGUARD (39.91%) 3525 loc (no fuzz introspector)
+        name: USBGUARD (39.91%) 3525 loc (no FI report)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=usbguard
 
       - id: valijson

@@ -2,5 +2,7 @@
 export PROJECT_NAME=lighttpd
 /usr/local/sbin/loc_count
 cd /src
-rm -rf /src/$PROJECT_NAME/build
+rm -rf /src/$PROJECT_NAME
+git clone https://github.com/lighttpd/lighttpd1.4
+cd /src/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME
