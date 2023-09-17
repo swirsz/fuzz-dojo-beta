@@ -13,9 +13,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/testdir
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_lua.c $SRC/testdir
 
-
-#patch -tuN $SRC/testdir/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
-
+patch -tuN $SRC/build.sh -i /challenge/build.patch -r -
 cd $SRC
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME

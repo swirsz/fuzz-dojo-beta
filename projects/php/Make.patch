@@ -1,4 +1,4 @@
---- Makefileo	2023-09-17 21:15:33.031639037 +0000
+--- Makefile	2023-09-17 21:15:33.031639037 +0000
 +++ Makefile	2023-09-17 21:16:49.204026298 +0000
 @@ -33,7 +33,8 @@
  PHP_FUZZER_UNSERIALIZEHASH_OBJS = sapi/fuzzer/fuzzer-unserializehash.lo sapi/fuzzer/fuzzer-sapi.lo

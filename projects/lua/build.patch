@@ -1,0 +1,13 @@
+--- build.sh	2023-09-17 21:14:26.359294788 +0000
++++ build.sh	2023-09-17 21:22:22.557664588 +0000
+@@ -28,8 +28,8 @@
+ else
+     PACKAGES="$PACKAGES zlib1g-dev libreadline-dev libunwind-dev"
+ fi
+-apt-get update
+-apt-get install -y $PACKAGES
++#apt-get update
++#apt-get install -y $PACKAGES
+ 
+ cd $SRC/testdir
+ 
