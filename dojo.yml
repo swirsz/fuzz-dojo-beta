@@ -122,6 +122,10 @@ modules:
         name: JSON (72.80%) 8008 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json
 
+      - id: json-c
+        name: JSON
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json
+
       - id: kamailio
         name: KAMAILIO (9.19%) 81190 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
