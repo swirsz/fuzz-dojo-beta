@@ -206,10 +206,6 @@ modules:
         name: PYCRYPTODOME (80.19%) 1398 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pycryptodome
 
-      - id: qubes-os
-        name: QUBES-OS
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=qubes-os
-
       - id: snappy
         name: SNAPPY (61.58%) 1502 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=snappy
