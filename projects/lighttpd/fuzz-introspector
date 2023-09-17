@@ -1,5 +1,5 @@
 #!/bin/bash
-export PROJECT_NAME=lighttpd
+export PROJECT_NAME=lighttpd1.4
 /usr/local/sbin/loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
