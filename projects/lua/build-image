@@ -9,9 +9,9 @@ rm -rf $SRC/testdir
 git clone https://github.com/ligurio/lua-c-api-tests testdir
 cd $SRC/testdir
 git clone --depth 1 --jobs $(nproc) https://github.com/ligurio/lua-c-api-corpus corpus_dir
-cp /opt/oss-fuzz/projects/testdir/build.sh $SRC
-cp /opt/oss-fuzz/projects/testdir/build.sh $SRC/testdir
-cp /opt/oss-fuzz/projects/testdir/fuzz_lua.c $SRC/testdir
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/testdir
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_lua.c $SRC/testdir
 
 
 #patch -tuN $SRC/testdir/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
