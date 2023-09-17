@@ -3,6 +3,8 @@ export PROJECT_NAME=libssh2
 /usr/local/sbin/loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
-git clone --depth 1 https://github.com/libssh2/libssh2.git /src/libssh2
+git clone --depth 1 https://github.com/libssh2/libssh2.git /src/$PROJECT_NAME
+patch -tuN $SRC/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh -i /challenge/ossfuzz.patch -r -
+patch -tuN $SRC/$PROJECT_NAME/tests/ossfuzz/Makefile.am -i /challenge/Makefile.patch -r -
 cd /src/$PROJECT_NAME
 /usr/local/sbin/fi $PROJECT_NAME
