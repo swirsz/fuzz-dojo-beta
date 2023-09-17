@@ -238,10 +238,6 @@ modules:
         name: VALIJSON (9.37%) 3566 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=valijson
 
-      - id: vlc
-        name: VLC
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vlc
-
       - id: vorbis
         name: VORBIS (35.22%) 8745 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vorbis
