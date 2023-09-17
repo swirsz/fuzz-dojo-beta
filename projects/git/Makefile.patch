@@ -1,10 +1,31 @@
---- Makefile.diff.o	2023-09-14 21:48:44.528075084 +0000
-+++ Makefile.diff	2023-09-14 21:51:07.880990750 +0000
-@@ -10,6 +10,7 @@
- +FUZZ_OBJS += oss-fuzz/fuzz-cmd-status.o
- +FUZZ_OBJS += oss-fuzz/fuzz-cmd-version.o
- +FUZZ_OBJS += oss-fuzz/fuzz-cmd-diff.o
-++FUZZ_OBJS += oss-fuzz/fuzz-new.o
- +
-  .PHONY: fuzz-objs
-  fuzz-objs: $(FUZZ_OBJS)
+--- /src/git2/Makefile	2023-09-17 19:42:49.188209698 +0000
++++ Makefile	2023-09-17 19:42:06.520006649 +0000
+@@ -752,6 +752,12 @@
+ FUZZ_OBJS += oss-fuzz/fuzz-commit-graph.o
+ FUZZ_OBJS += oss-fuzz/fuzz-pack-headers.o
+ FUZZ_OBJS += oss-fuzz/fuzz-pack-idx.o
++FUZZ_OBJS += oss-fuzz/fuzz-command.o
++FUZZ_OBJS += oss-fuzz/fuzz-cmd-status.o
++FUZZ_OBJS += oss-fuzz/fuzz-cmd-version.o
++FUZZ_OBJS += oss-fuzz/fuzz-cmd-diff.o
++FUZZ_OBJS += oss-fuzz/fuzz-new.o
++
+ .PHONY: fuzz-objs
+ fuzz-objs: $(FUZZ_OBJS)
+ 
+@@ -808,7 +814,6 @@
+ TEST_BUILTINS_OBJS += test-hash.o
+ TEST_BUILTINS_OBJS += test-hashmap.o
+ TEST_BUILTINS_OBJS += test-hexdump.o
+-TEST_BUILTINS_OBJS += test-index-version.o
+ TEST_BUILTINS_OBJS += test-json-writer.o
+ TEST_BUILTINS_OBJS += test-lazy-init-name-hash.o
+ TEST_BUILTINS_OBJS += test-match-trees.o
+@@ -1080,6 +1085,7 @@
+ LIB_OBJS += oidmap.o
+ LIB_OBJS += oidset.o
+ LIB_OBJS += oidtree.o
++LIB_OBJS += oss-fuzz/fuzz-cmd-base.o
+ LIB_OBJS += pack-bitmap-write.o
+ LIB_OBJS += pack-bitmap.o
+ LIB_OBJS += pack-check.o

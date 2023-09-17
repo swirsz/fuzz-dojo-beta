@@ -1,0 +1,10 @@
+--- Makefile.diff.o	2023-09-14 21:48:44.528075084 +0000
++++ Makefile.diff	2023-09-14 21:51:07.880990750 +0000
+@@ -10,6 +10,7 @@
+ +FUZZ_OBJS += oss-fuzz/fuzz-cmd-status.o
+ +FUZZ_OBJS += oss-fuzz/fuzz-cmd-version.o
+ +FUZZ_OBJS += oss-fuzz/fuzz-cmd-diff.o
+++FUZZ_OBJS += oss-fuzz/fuzz-new.o
+ +
+  .PHONY: fuzz-objs
+  fuzz-objs: $(FUZZ_OBJS)
