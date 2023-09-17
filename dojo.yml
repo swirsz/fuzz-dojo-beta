@@ -143,7 +143,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh
         
       - id: libssh2
-        name: LIBSSH2
+        name: LIBSSH2 (30.37%) 12632 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh2
       
       - id: libtasn1
