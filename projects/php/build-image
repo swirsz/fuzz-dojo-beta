@@ -12,19 +12,23 @@ git clone --depth 1 --branch master https://github.com/php/php-src.git php-src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
+patch -tuN $SRC/php-src/sapi/fuzzer/Makefile.frag  -i /challenge/Makefile.patch -r -
 cd $SRC/php-src
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/php-src/sapi/fuzzer/fuzzer-execute.c $SRC/php-src/sapi/fuzzer/fuzzer-new.c
+   cp $SRC/php-src/sapi/fuzzer/*.h /home/hacker/$PROJECT_NAME
    cp $SRC/php-src/sapi/fuzzer/*.c /home/hacker/$PROJECT_NAME
    cp $SRC/php-src/sapi/fuzzer/*.php /home/hacker/$PROJECT_NAME
    cp $SRC/php-src/sapi/fuzzer/*.dict /home/hacker/$PROJECT_NAME
    cp $SRC/php-src/sapi/fuzzer/Makefile.frag /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/* $SRC/php-src/sapi/fuzzer
-   
+   cp /home/hacker/$PROJECT_NAME/*.h $SRC/php-src/sapi/fuzzer
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/php-src/sapi/fuzzer
+   cp /home/hacker/$PROJECT_NAME/*.php $SRC/php-src/sapi/fuzzer
+   cp /home/hacker/$PROJECT_NAME/*.dict $SRC/php-src/sapi/fuzzer
+   cp /home/hacker/$PROJECT_NAME/Makefile.frag $SRC/php-src/sapi/fuzzer
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 
 fi
