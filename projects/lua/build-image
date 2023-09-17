@@ -11,7 +11,7 @@ cd $SRC/testdir
 git clone --depth 1 --jobs $(nproc) https://github.com/ligurio/lua-c-api-corpus corpus_dir
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/testdir
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_lua.c $SRC/testdir
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_lua.c $SRC
 
 patch -tuN $SRC/build.sh -i /challenge/build.patch -r -
 cd $SRC
