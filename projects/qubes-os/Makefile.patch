@@ -1,5 +1,5 @@
---- Makefile.o	2023-09-11 00:49:40.442320214 +0000
-+++ Makefile	2023-09-11 00:39:47.000000000 +0000
+--- Makefile	2023-09-17 04:47:11.705628434 +0000
++++ Makefile	2023-09-17 04:48:41.410086955 +0000
 @@ -19,7 +19,7 @@
  _LIBQREXEC_OBJS = remote.o write-stdin.o ioall.o txrx-vchan.o buffer.o replace.o exec.o log.o unix-server.o
  LIBQREXEC_OBJS = $(patsubst %.o,libqrexec-%.o,$(_LIBQREXEC_OBJS))
@@ -9,3 +9,12 @@
  SEEDS = $(patsubst %,%_seed_corpus.zip,$(FUZZERS))
  
  .PHONY: all
+@@ -40,6 +40,8 @@
+ 
+ qrexec_daemon_fuzzer: qrexec_daemon_fuzzer.o fuzz.o $(LIBQREXEC_OBJS) daemon-qrexec-daemon.o
+ 
++new_fuzzer: qrexec_daemon_fuzzer.o fuzz.o $(LIBQREXEC_OBJS) daemon-qrexec-daemon.o
++
+ %_fuzzer: %_fuzzer.o fuzz.o $(LIBQREXEC_OBJS)
+ 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIB_FUZZING_ENGINE)
+ 
