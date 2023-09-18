@@ -17,12 +17,14 @@ patch -tuN $SRC/build.sh -i /challenge/build.patch -r -
 cd $SRC
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/testdir/tests/fuzz/ssh_client_fuzzer.c $SRC/testdir/tests/fuzz/ssh_new_fuzzer.c
-   cp $SRC/testdir/tests/fuzz/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/testdir/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
+   cp $SRC/testdir/tests/luaL_loadbuffer_test.c $SRC/testdir/tests/newfuzzer.c
+   cp $SRC/testdir/tests/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/testdir/tests/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/testdir/tests/CMakeLists.txt /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/testdir/tests/fuzz
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/testdir/tests/fuzz
    cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/testdir/tests/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
