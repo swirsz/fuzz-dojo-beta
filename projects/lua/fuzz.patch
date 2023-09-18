@@ -1,0 +1,10 @@
+--- fuzz2	2023-09-18 01:57:09.872609703 +0000
++++ fuzz	2023-09-18 01:58:44.052957422 +0000
+@@ -93,6 +93,7 @@
+ list(APPEND BLACKLIST_TESTS "luaL_loadbuffer_test")
+ list(APPEND BLACKLIST_TESTS "luaL_loadstring_test")
+ list(APPEND BLACKLIST_TESTS "lua_dump_test")
++list(APPEND BLACKLIST_TESTS "newfuzzer")
+ 
+ file(GLOB tests LIST_DIRECTORIES false ${CMAKE_CURRENT_SOURCE_DIR} *.c *.cc)
+ foreach(filename ${tests})
