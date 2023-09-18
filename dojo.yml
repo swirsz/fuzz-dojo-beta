@@ -179,7 +179,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mosquitto
 
       - id: mpg123
-        name: MPG123
+        name: MPG123 (53.14%) 9826 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
 
       - id: mruby

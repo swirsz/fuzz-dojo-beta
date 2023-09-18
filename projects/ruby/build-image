@@ -1,0 +1,28 @@
+#!/bin/sh
+. /usr/local/sbin/e
+export PROJECT_NAME=ruby
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf $SRC/$PROJECT_NAME
+#apt-get update && apt-get install -y cmake zlib1g-dev libssl-dev
+git clone --depth=1 https://git.libssh.org/projects/libssh.git
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+#patch -tuN $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/fuzz/ssh_client_fuzzer.c $SRC/$PROJECT_NAME/tests/fuzz/ssh_new_fuzzer.c
+   cp $SRC/$PROJECT_NAME/tests/fuzz/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/fuzz
+   cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+compile

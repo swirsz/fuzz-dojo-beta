@@ -1,0 +1,10 @@
+#!/bin/bash
+export PROJECT_NAME=ruby
+/usr/local/sbin/loc_count
+cd /src
+rm -rf /src/$PROJECT_NAME
+
+
+
+cd /src/$PROJECT_NAME
+/usr/local/sbin/fi $PROJECT_NAME
