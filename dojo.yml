@@ -94,10 +94,6 @@ modules:
         name: CASYNC (10.01%) 1678 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
 
-      - id: cfengine
-        name: CFENGINE
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cfengine
-
       - id: cmake
         name: CMAKE (62.63%) 7778 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
