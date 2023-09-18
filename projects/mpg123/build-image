@@ -20,9 +20,9 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/read_fuzzer.c $SRC/$PROJECT_NAME/new_fuzzer.c
-   cp $SRC/$PROJECT_NAME/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/read_fuzzer.c $SRC/new_fuzzer.c
+   cp $SRC/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
    #cp $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
