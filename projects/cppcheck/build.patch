@@ -1,6 +1,6 @@
---- build.sho	1970-01-01 00:00:00.000000000 +0000
-+++ build.sh	2023-09-18 23:22:58.175504812 +0000
-@@ -0,0 +1,24 @@
+--- build.sh	1970-01-01 00:00:00.000000000 +0000
++++ build.sh	2023-09-18 23:38:25.019851271 +0000
+@@ -0,0 +1,25 @@
 +#!/bin/bash -eu
 +# Copyright 2019 Google Inc.
 +#
@@ -22,6 +22,7 @@
 +
 +cd $SRC/cppcheck/oss-fuzz
 +make oss-fuzz-client
++make newfuzzer
 +cp oss-fuzz-client newfuzzer $OUT/
 +
 +
