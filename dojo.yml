@@ -78,6 +78,10 @@ modules:
         name: AVAHI (32.89%) 2566 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=avahi
 
+      - id: boost
+        name: BOOST
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=boost
+
       - id: bzip2
         name: BZIP2 (92.97%) 2661 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bzip2
@@ -89,6 +93,10 @@ modules:
       - id: casync
         name: CASYNC (10.01%) 1678 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
+
+      - id: cfengine
+        name: CFENGINE
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cfengine
 
       - id: cmake
         name: CMAKE (62.63%) 7778 loc
@@ -173,6 +181,10 @@ modules:
       - id: mosquitto
         name: MOSQUITTO (25.80%) 26073 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mosquitto
+
+      - id: mpg123
+        name: MPG123
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
 
       - id: mruby
         name: MRUBY (20.15%) 66523 loc
