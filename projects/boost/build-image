@@ -24,9 +24,9 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/boost_regex_fuzzer.cc $SRC/boost_new_fuzzer.cc
    cp $SRC/*.cc /home/hacker/$PROJECT_NAME
    #cp $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/tests/fuzz
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
    #cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
