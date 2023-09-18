@@ -10,15 +10,19 @@ git checkout origin/next
 git pull origin next
 mkdir -p /src/$PROJECT_NAME/oss-fuzz
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz-* /src/$PROJECT_NAME/oss-fuzz
-#cp /opt/oss-fuzz/projects/$PROJECT_NAME/Makefile.diff /src/$PROJECT_NAME
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/Makefile.diff /src/$PROJECT_NAME
 
 cd /src/$PROJECT_NAME
-#git apply Makefile.diff
+git apply Makefile.diff
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1
 
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
+
+patch -tuN /src/build.sh -i /challenge/build.patch -r -
 patch -tuN /src/git/Makefile -i /challenge/Makefile.patch -r -
+
 cd /src/$PROJECT_NAME
 
 /usr/local/sbin/fi $PROJECT_NAME
