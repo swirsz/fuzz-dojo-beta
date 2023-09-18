@@ -210,10 +210,6 @@ modules:
         name: OPENSSH (35.88%) 27975 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
 
-      - id: php
-        name: PHP
-        description: Browse source code - no fuzz introspector report (8/27/2023)    https://introspector.oss-fuzz.com/project-profile?project=php
-
       - id: pycryptodome
         name: PYCRYPTODOME (80.19%) 1398 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pycryptodome
