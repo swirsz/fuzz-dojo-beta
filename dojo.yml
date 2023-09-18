@@ -79,7 +79,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=avahi
 
       - id: boost
-        name: BOOST
+        name: BOOST (60.81%) 11995 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=boost
 
       - id: bzip2
@@ -115,7 +115,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
 
       - id: git
-        name: GIT
+        name: GIT (9.56%) 183986 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=git
 
       - id: haproxy
