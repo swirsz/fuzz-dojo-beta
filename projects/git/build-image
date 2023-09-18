@@ -33,13 +33,13 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/oss-fuzz/fuzz-cmd-diff.c $SRC/$PROJECT_NAME/oss-fuzz/fuzz-new.c
    cp $SRC/$PROJECT_NAME/oss-fuzz/*.c /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/Makefile /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/oss-fuzz/.depend/fuzz-new.o.d /home/hacker/$PROJECT_NAME
+   #cp $SRC/$PROJECT_NAME/oss-fuzz/.depend/fuzz-new.o.d /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/oss-fuzz
    cp /home/hacker/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME
-   mkdir -p  $SRC/$PROJECT_NAME/oss-fuzz/.depend
-   cp /home/hacker/$PROJECT_NAME/fuzz-new.o.d $SRC/$PROJECT_NAME/oss-fuzz/.depend
+   #mkdir -p  $SRC/$PROJECT_NAME/oss-fuzz/.depend
+   #cp /home/hacker/$PROJECT_NAME/fuzz-new.o.d $SRC/$PROJECT_NAME/oss-fuzz/.depend
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile
