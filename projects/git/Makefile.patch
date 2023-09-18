@@ -10,22 +10,3 @@
 +FUZZ_OBJS += oss-fuzz/fuzz-cmd-diff.o
 +FUZZ_OBJS += oss-fuzz/fuzz-new.o
 +
- .PHONY: fuzz-objs
- fuzz-objs: $(FUZZ_OBJS)
- 
-@@ -808,7 +814,6 @@
- TEST_BUILTINS_OBJS += test-hash.o
- TEST_BUILTINS_OBJS += test-hashmap.o
- TEST_BUILTINS_OBJS += test-hexdump.o
--TEST_BUILTINS_OBJS += test-index-version.o
- TEST_BUILTINS_OBJS += test-json-writer.o
- TEST_BUILTINS_OBJS += test-lazy-init-name-hash.o
- TEST_BUILTINS_OBJS += test-match-trees.o
-@@ -1080,6 +1085,7 @@
- LIB_OBJS += oidmap.o
- LIB_OBJS += oidset.o
- LIB_OBJS += oidtree.o
-+LIB_OBJS += oss-fuzz/fuzz-cmd-base.o
- LIB_OBJS += pack-bitmap-write.o
- LIB_OBJS += pack-bitmap.o
- LIB_OBJS += pack-check.o

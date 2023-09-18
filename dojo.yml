@@ -157,10 +157,6 @@ modules:
       - id: lighttpd
         name: LIGHTTPD (34.58%) 1310 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
-
-      - id: lua
-        name: LUA
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lua
       
       - id: lzo
         name: LZO (92.23%) 3835 loc
