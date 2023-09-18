@@ -1,18 +1,22 @@
 #!/bin/sh
 . /usr/local/sbin/e
-export PROJECT_NAME=libssh
+export PROJECT_NAME=boost
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
 rm -rf $SRC/$PROJECT_NAME
-#apt-get update && apt-get install -y cmake zlib1g-dev libssl-dev
-git clone --depth=1 https://git.libssh.org/projects/libssh.git
 
+#apt-get update && apt-get install -y g++ python
+git clone --recursive https://github.com/boostorg/boost.git
+# This is to fix Fuzz Introspector build by using LLVM old pass manager
+# re https://github.com/ossf/fuzz-introspector/issues/305
+export OLD_LLVMPASS=1
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
-cp -r /src/libssh/tests/fuzz/ssh_client_fuzzer_corpus/ /src/libssh/tests/fuzz/ssh_new_fuzzer_corpus
+#patch -tuN $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
