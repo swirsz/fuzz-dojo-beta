@@ -1,11 +1,11 @@
---- Makefile	2023-09-17 19:42:49.188209698 +0000
-+++ Makefile	2023-09-17 19:42:06.520006649 +0000
-@@ -752,6 +752,12 @@
- FUZZ_OBJS += oss-fuzz/fuzz-commit-graph.o
- FUZZ_OBJS += oss-fuzz/fuzz-pack-headers.o
- FUZZ_OBJS += oss-fuzz/fuzz-pack-idx.o
-+FUZZ_OBJS += oss-fuzz/fuzz-command.o
-+FUZZ_OBJS += oss-fuzz/fuzz-cmd-status.o
-+FUZZ_OBJS += oss-fuzz/fuzz-cmd-version.o
-+FUZZ_OBJS += oss-fuzz/fuzz-cmd-diff.o
+--- Makefile	2023-09-18 04:30:54.091874663 +0000
++++ Makefile	2023-09-18 04:32:38.244436039 +0000
+@@ -742,6 +742,8 @@
+ clean-python-script:
+ 	$(RM) $(SCRIPT_PYTHON_GEN)
+ 
 +FUZZ_OBJS += oss-fuzz/fuzz-new.o
++
+ SCRIPTS = $(SCRIPT_SH_GEN) \
+ 	  $(SCRIPT_PERL_GEN) \
+ 	  $(SCRIPT_PYTHON_GEN) \
