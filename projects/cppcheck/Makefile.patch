@@ -1,0 +1,12 @@
+--- Makefile0	2023-09-18 23:21:48.315181088 +0000
++++ Makefile	2023-09-18 23:24:24.251904222 +0000
+@@ -14,6 +14,9 @@
+ oss-fuzz-client:	main.cpp	type2.cpp	type2.h
+ 	${CXX} -std=c++11 -g ${CXXFLAGS} -o oss-fuzz-client ${INCLUDE_DIR} ${SRC_FILES} ${LIB_FUZZING_ENGINE}
+ 
++newfuzzer:	newfuzzer.cpp	type2.cpp	type2.h
++	${CXX} -std=c++11 -g ${CXXFLAGS} -o oss-fuzz-client ${INCLUDE_DIR} ${SRC_FILES} ${LIB_FUZZING_ENGINE}
++
+ translate:	translate.cpp	type2.cpp	type2.h
+ 	${CXX} -std=c++11 -g ${CXXFLAGS} -o translate type2.cpp translate.cpp
+ 
