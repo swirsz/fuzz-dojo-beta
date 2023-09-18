@@ -98,6 +98,10 @@ modules:
         name: CMAKE (62.63%) 7778 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
 
+      - id: cppcheck
+        name: CPPCHECK
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cppcheck
+
       - id: example
         name: EXAMPLE (my-api-repo) (100.00%) 20 loc
         description: Sample OSS-Fuzz project
@@ -209,6 +213,10 @@ modules:
       - id: pycryptodome
         name: PYCRYPTODOME (80.19%) 1398 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pycryptodome
+
+      - id: ruby
+        name: RUBY
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ruby
 
       - id: snappy
         name: SNAPPY (61.58%) 1502 loc
