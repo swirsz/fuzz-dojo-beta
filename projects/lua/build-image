@@ -14,6 +14,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/testdir
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_lua.c $SRC
 
 patch -tuN $SRC/build.sh -i /challenge/build.patch -r -
+patch -tuN /src/testdir/build/tests/CTestTestfile.cmake -i /challenge/CTest.patch -r -
 patch -tuN /src/testdir/tests/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 cd $SRC
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
@@ -21,13 +22,13 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/testdir/tests/luaL_loadbuffer_test.c $SRC/testdir/tests/newfuzzer.c
    cp $SRC/testdir/tests/*.c /home/hacker/$PROJECT_NAME
    cp $SRC/testdir/tests/*.cc /home/hacker/$PROJECT_NAME
+   cp /src/testdir/build/tests/CTestTestfile.cmake /home/hacker/$PROJECT_NAME/
    cp $SRC/testdir/tests/CMakeLists.txt /home/hacker/$PROJECT_NAME
-   cp /src/testdir/tests/fuzz /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/testdir/tests
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC/testdir/tests
-   cp /home/hacker/$PROJECT_NAME/fuzz $SRC/testdir/tests
+   cp /home/hacker/$PROJECT_NAME/CTestTestfile.cmake /src/testdir/build/tests
    cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/testdir/tests
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
