@@ -10,5 +10,9 @@ cp /opt/oss-fuzz/projects/testdir/build.sh /src
 cp /opt/oss-fuzz/projects/testdir/build.sh /src/testdir
 cp /opt/oss-fuzz/projects/testdir/fuzz_lua.c /src
 
+patch -tuN /src/build.sh -i /challenge/build.patch -r -
+patch -tuN /src/testdir/build/tests/CTestTestfile.cmake -i /challenge/CTest.patch -r -
+patch -tuN /src/testdir/tests/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+
 cd /src
 /usr/local/sbin/fi $PROJECT_NAME
