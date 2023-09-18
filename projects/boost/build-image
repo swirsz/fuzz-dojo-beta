@@ -21,13 +21,13 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/tests/fuzz/ssh_client_fuzzer.c $SRC/$PROJECT_NAME/tests/fuzz/ssh_new_fuzzer.c
-   cp $SRC/$PROJECT_NAME/tests/fuzz/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
+   cp $SRC/boost_regex_fuzzer.cc $SRC/boost_new_fuzzer.c
+   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   #cp $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/fuzz
-   cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/tests/fuzz
+   #cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 compile
