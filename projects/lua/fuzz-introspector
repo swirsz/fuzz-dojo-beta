@@ -8,7 +8,7 @@ cd /src/testdir
 git clone --depth 1 --jobs $(nproc) https://github.com/ligurio/lua-c-api-corpus corpus_dir
 cp /opt/oss-fuzz/projects/testdir/build.sh /src
 cp /opt/oss-fuzz/projects/testdir/build.sh /src/testdir
-cp /opt/oss-fuzz/projects/testdir/fuzz_lua.c /src/testdir
+cp /opt/oss-fuzz/projects/testdir/fuzz_lua.c /src
 
 cd /src
 /usr/local/sbin/fi $PROJECT_NAME
