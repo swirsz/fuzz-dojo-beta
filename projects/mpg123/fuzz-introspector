@@ -3,8 +3,9 @@ export PROJECT_NAME=mpg123
 /usr/local/sbin/loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
+wget https://www.mpg123.de/snapshot
+tar -xvf snapshot
+mv mpg123* mpg123
 
-
-
-cd /src/$PROJECT_NAME
+cd /src
 /usr/local/sbin/fi $PROJECT_NAME
