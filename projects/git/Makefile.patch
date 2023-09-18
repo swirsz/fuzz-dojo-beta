@@ -1,4 +1,4 @@
---- /src/git2/Makefile	2023-09-17 19:42:49.188209698 +0000
+--- Makefile	2023-09-17 19:42:49.188209698 +0000
 +++ Makefile	2023-09-17 19:42:06.520006649 +0000
 @@ -752,6 +752,12 @@
  FUZZ_OBJS += oss-fuzz/fuzz-commit-graph.o
@@ -9,4 +9,3 @@
 +FUZZ_OBJS += oss-fuzz/fuzz-cmd-version.o
 +FUZZ_OBJS += oss-fuzz/fuzz-cmd-diff.o
 +FUZZ_OBJS += oss-fuzz/fuzz-new.o
-+
