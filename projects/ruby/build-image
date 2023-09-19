@@ -14,14 +14,16 @@ git clone https://github.com/ruby/ruby.git
 mkdir $SRC/fuzz
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cp *.rb *.c *.options $SRC/fuzz
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.rb $SRC/fuzz
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/fuzz
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/fuzz
 
 #patch -tuN $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/fuzz/ssh_client_fuzzer.c $SRC/$PROJECT_NAME/tests/fuzz/ssh_new_fuzzer.c
+   cp $SRC/fuzz/fuzz_ruby_gems.c $SRC/fuzz/fuzz_new.c
    cp $SRC/fuzz/*.c /home/hacker/$PROJECT_NAME
    cp $SRC/fuzz/*.rb /home/hacker/$PROJECT_NAME
    cp $SRC/fuzz/*.options /home/hacker/$PROJECT_NAME
