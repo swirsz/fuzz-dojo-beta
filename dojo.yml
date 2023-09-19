@@ -99,7 +99,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
 
       - id: cppcheck
-        name: CPPCHECK
+        name: CPPCHECK (26.12%) 79321 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cppcheck
 
       - id: example
