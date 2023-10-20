@@ -166,10 +166,6 @@ modules:
         name: LIGHTTPD (34.58%) 1310 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
       
-      - id: lzo
-        name: LZO (92.23%) 3835 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lzo
-
       - id: miniz
         name: MINIZ (47.67%) 5423 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=miniz
@@ -178,10 +174,6 @@ modules:
         name: MINIZIP (58.59%) 3639 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
         
-      - id: mosquitto
-        name: MOSQUITTO (25.80%) 26073 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mosquitto
-
       - id: mpg123
         name: MPG123 (53.14%) 9826 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
