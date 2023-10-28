@@ -1,7 +1,9 @@
 #!/opt/pwn.college/bash
 rm /out/crash-*
 rm /out/timeout-*
-time sudo -H -u hacker bash -c "/usr/local/sbin/loc_count $*"
+sudo cp /usr/local/sbin/loc_count /challenge/loc_count
+sudo chmod 4755 /challenge/loc_count
+time sudo -H -u hacker bash -c "/challenge/loc_count $*"
 if compgen -G "/out/timeout-*" > /dev/null; then
     echo
     echo "Timeouts detected within the /out directory!"
