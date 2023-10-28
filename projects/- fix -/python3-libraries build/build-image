@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/opt/pwn.college/bash
 . /usr/local/sbin/e
 export PROJECT_NAME=python3-libraries
 export SANITIZER=$1
