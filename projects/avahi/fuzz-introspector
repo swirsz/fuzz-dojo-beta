@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/opt/pwn.college/bash 
 export PROJECT_NAME=avahi
-/usr/local/sbin/loc_count
+sudo mv /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+/challenge/loc_count
 cd /src/$PROJECT_NAME
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME
