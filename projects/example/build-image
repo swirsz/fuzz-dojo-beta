@@ -23,4 +23,4 @@ else
    cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

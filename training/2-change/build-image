@@ -20,4 +20,4 @@ else
    cp /home/hacker/training-change/build.sh $SRC
 fi
 patch -tuN /src/minizip/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
-compile
+sudo --preserve-env compile

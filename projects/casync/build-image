@@ -29,4 +29,4 @@ else
    cp /home/hacker/$PROJECT_NAME/*.build $SRC/casync/test/fuzz
    cp /home/hacker/$PROJECT_NAME/oss-fuzz.sh $SRC/casync/tools
 fi
-compile
+sudo --preserve-env compile

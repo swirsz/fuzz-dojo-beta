@@ -21,4 +21,4 @@ else
    cp /home/hacker/training-newdriver/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/training-newdriver/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

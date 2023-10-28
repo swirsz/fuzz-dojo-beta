@@ -36,4 +36,4 @@ else
    cp /home/hacker/$PROJECT_NAME/Makefile.am $SRC/$PROJECT_NAME/src/Tests/Fuzzers
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

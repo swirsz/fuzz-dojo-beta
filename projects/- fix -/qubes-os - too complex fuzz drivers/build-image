@@ -27,4 +27,4 @@ else
    cp /home/hacker/$PROJECT_NAME/Makefile $SRC/qubes-os/qubes-core-qrexec/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

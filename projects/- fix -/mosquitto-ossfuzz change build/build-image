@@ -31,4 +31,4 @@ else
    cp /home/hacker/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME/fuzzing/broker
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

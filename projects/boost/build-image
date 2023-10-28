@@ -30,4 +30,4 @@ else
    #cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

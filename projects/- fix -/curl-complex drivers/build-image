@@ -32,4 +32,4 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC/curl_fuzzer
 fi
-compile
+sudo --preserve-env compile

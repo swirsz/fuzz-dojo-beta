@@ -22,4 +22,4 @@ else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

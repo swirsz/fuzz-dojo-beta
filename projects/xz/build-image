@@ -21,4 +21,4 @@ else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/ossfuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

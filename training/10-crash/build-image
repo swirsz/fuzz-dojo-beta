@@ -22,4 +22,4 @@ else
    cp /home/hacker/training-crashes/build.sh $SRC
 fi
 #patch -tuN /src/build.sh -i /challenge/build.patch -r -
-compile
+sudo --preserve-env compile

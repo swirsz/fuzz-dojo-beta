@@ -23,5 +23,5 @@ else
    cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/tests/fuzzers
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile
 

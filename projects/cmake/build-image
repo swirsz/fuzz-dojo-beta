@@ -29,4 +29,4 @@ else
    cp /home/hacker/cmake/*.cc $SRC/$PROJECT_NAME/Tests/Fuzzing
    cp /home/hacker/cmake/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

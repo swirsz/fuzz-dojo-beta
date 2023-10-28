@@ -27,4 +27,4 @@ else
    cp /home/hacker/$PROJECT_NAME/Makefile.am $SRC/$PROJECT_NAME/tests/ossfuzz
    cp /home/hacker/$PROJECT_NAME/ossfuzz.sh $SRC/$PROJECT_NAME/tests/ossfuzz
 fi
-compile
+sudo --preserve-env compile

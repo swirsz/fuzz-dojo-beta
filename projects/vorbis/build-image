@@ -27,4 +27,4 @@ else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC/$PROJECT_NAME/contrib/oss-fuzz
 fi
-compile
+sudo --preserve-env compile

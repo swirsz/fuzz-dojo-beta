@@ -42,4 +42,4 @@ else
    #cp /home/hacker/$PROJECT_NAME/fuzz-new.o.d $SRC/$PROJECT_NAME/oss-fuzz/.depend
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

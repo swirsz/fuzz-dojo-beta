@@ -25,4 +25,4 @@ else
    cp /home/hacker/$PROJECT_NAME/CMakeLists.txt /src/libvncserver
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile

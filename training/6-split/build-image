@@ -26,4 +26,4 @@ else
    cp /home/hacker/training-split/*.c $SRC/$PROJECT_NAME/fuzzers
    cp /home/hacker/training-split/build.sh $SRC
 fi
-compile
+sudo --preserve-env compile
