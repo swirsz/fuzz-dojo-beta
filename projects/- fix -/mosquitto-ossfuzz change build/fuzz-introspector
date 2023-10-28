@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/pwn.college/bash
 export PROJECT_NAME=mosquitto
 sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
 sudo chmod 4755 /challenge/loc_count /challenge/fi
