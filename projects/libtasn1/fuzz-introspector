@@ -1,7 +1,9 @@
 #!/bin/bash
 export PROJECT_NAME=libtasn1
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd /src/$PROJECT_NAME
 export GNULIB_TOOL=/src/gnulib/gnulib-tool
 export GNULIB_SRCDIR=/src/gnulib
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

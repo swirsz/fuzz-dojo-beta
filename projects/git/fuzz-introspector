@@ -1,6 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=git
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd /src
 rm -rf $PROJECT_NAME
 
@@ -26,4 +28,4 @@ patch -tuN /src/git/Makefile -i /challenge/Makefile.patch -r -
 cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/oss-fuzz
 cd /src/$PROJECT_NAME
 
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

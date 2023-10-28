@@ -1,6 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=php
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd /src
 rm -rf php-src
 # The current clang revision is broken, pin to older one.
@@ -11,4 +13,4 @@ git clone --depth 1 --branch master https://github.com/php/php-src.git php-src
 patch -tuN $SRC/php-src/sapi/fuzzer/Makefile.frag  -i /challenge/Makefile.patch -r -
 cd /src/php-src
 
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

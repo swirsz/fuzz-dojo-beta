@@ -1,6 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=lame
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd /src
 rm -rf lame
 rm -rf LAME-fuzzers
@@ -19,4 +21,4 @@ svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame $SRC/lame
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1
 
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

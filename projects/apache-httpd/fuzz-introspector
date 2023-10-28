@@ -1,10 +1,12 @@
 #!/bin/bash
 export PROJECT_NAME=apache-httpd
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd /src
 rm -rf /src/httpd
 git clone --depth=1 https://github.com/apache/httpd
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/httpd
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

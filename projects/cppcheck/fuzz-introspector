@@ -1,6 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=cppcheck
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
 git clone https://github.com/danmar/cppcheck.git
@@ -18,4 +20,4 @@ cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/oss-fuzz
 cp /home/hacker/$PROJECT_NAME/*.h /src/$PROJECT_NAME/oss-fuzz
 cp /home/hacker/$PROJECT_NAME/Makefile /src/$PROJECT_NAME/oss-fuzz
 cd /src/$PROJECT_NAME
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

@@ -1,6 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=openssl
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 
 mkdir $SRC/fuzz
 mv $SRC/$PROJECT_NAME/fuzz/*.c $SRC/fuzz
@@ -21,4 +23,4 @@ cp -f $SRC/fuzz/* $SRC/$PROJECT_NAME/fuzz
 rm -rf $SRC/fuzz/
 cd /src/$PROJECT_NAME
 
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

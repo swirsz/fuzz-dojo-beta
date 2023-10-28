@@ -1,6 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=lua
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd /src
 rm -rf /src/testdir
 git clone https://github.com/ligurio/lua-c-api-tests testdir
@@ -15,4 +17,4 @@ patch -tuN /src/testdir/build/tests/CTestTestfile.cmake -i /challenge/CTest.patc
 patch -tuN /src/testdir/tests/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 
 cd /src
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

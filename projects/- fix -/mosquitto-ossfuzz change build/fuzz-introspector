@@ -1,6 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=mosquitto
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd/src
 rm -rf /src/$PROJECT_NAME
 git clone --depth 1 -b develop https://github.com/eclipse/mosquitto /src/$PROJECT_NAME
@@ -9,4 +11,4 @@ patch -tuN /src/$PROJECT_NAME/fuzzing/broker/Makefile -i /challenge/Makefile.pat
 cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/fuzzing/broker
 cp /home/hacker/$PROJECT_NAME/*.h /src/$PROJECT_NAME/fuzzing/broker
 cp /home/hacker/$PROJECT_NAME/Makefile /src/$PROJECT_NAME/fuzzing/broker
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

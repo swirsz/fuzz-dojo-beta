@@ -1,6 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=wasm3
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd /src
 
 rm -rf $PROJECT_NAME
@@ -8,4 +10,4 @@ rm -rf $PROJECT_NAME
 git clone --depth 1 https://github.com/wasm3/wasm3
 
 cd $SRC/$PROJECT_NAME
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

@@ -1,10 +1,12 @@
 #!/bin/bash
 export PROJECT_NAME=usbguard
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd /src
 rm -rf $PROJECT_NAME
 rm -rf inspector
 git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard usbguard
 cd /src/usbguard
 export OLD_LLVMPASS=1
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME

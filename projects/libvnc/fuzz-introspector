@@ -1,6 +1,8 @@
 #!/bin/bash
 export PROJECT_NAME=libvnc
-/usr/local/sbin/loc_count
+sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
+sudo chmod 4755 /challenge/loc_count /challenge/fi
+/challenge/loc_count
 cd /src
 rm -rf /src/libvncserver
 git clone --depth 1 https://github.com/LibVNC/libvncserver.git
@@ -8,4 +10,4 @@ patch -tuN /src/libvncserver/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 cp /home/hacker/$PROJECT_NAME/*.c /src/libvncserver/test
 cp /home/hacker/$PROJECT_NAME/CMakeLists.txt /src/libvncserver
 cd /src/libvncserver
-/usr/local/sbin/fi $PROJECT_NAME
+/challenge/fi $PROJECT_NAME
