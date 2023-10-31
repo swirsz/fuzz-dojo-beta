@@ -6,10 +6,11 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 cd /src
 rm -rf $PROJECT_NAME
 
-git clone https://github.com/git/git git
-cd /src/$PROJECT_NAME
-git checkout origin/next
-git pull origin next
+#git clone https://github.com/git/git git
+cp -r /opt/fuzz-targets/git /src/git
+cd $SRC/$PROJECT_NAME
+#git checkout origin/next
+#git pull origin next
 mkdir -p /src/$PROJECT_NAME/oss-fuzz
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz-* /src/$PROJECT_NAME/oss-fuzz
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/Makefile.diff /src/$PROJECT_NAME

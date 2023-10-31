@@ -6,7 +6,9 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 cd /src
 
 rm -rf valijson
-git clone --depth 1 https://github.com/tristanpenman/valijson
+#git clone --depth 1 https://github.com/tristanpenman/valijson
+cp -r /opt/fuzz-targets/valijson /src/valijson
+
 cp /src/valijson/tests/fuzzing/oss-fuzz-build.sh $SRC/build.sh
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305

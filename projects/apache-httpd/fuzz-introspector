@@ -5,7 +5,9 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src
 rm -rf /src/httpd
-git clone --depth=1 https://github.com/apache/httpd
+#git clone --depth=1 https://github.com/apache/httpd
+cp -r /opt/fuzz-targets/httpd /src/httpd
+
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/httpd

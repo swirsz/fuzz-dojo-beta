@@ -6,6 +6,7 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 cd /src
 
 rm -rf /src/$PROJECT_NAME
-git clone https://github.com/haproxy/haproxy
+#git clone https://github.com/haproxy/haproxy
+cp -r /opt/fuzz-targets/haproxy /src/haproxy
 
 /challenge/fi $PROJECT_NAME

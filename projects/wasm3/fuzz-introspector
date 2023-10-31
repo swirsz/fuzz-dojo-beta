@@ -7,7 +7,8 @@ cd /src
 
 rm -rf $PROJECT_NAME
 #apt-get update && apt-get install -y make
-git clone --depth 1 https://github.com/wasm3/wasm3
+#git clone --depth 1 https://github.com/wasm3/wasm3
+cp -r /opt/fuzz-targets/wasm3 /src/wasm3
 
 cd $SRC/$PROJECT_NAME
 /challenge/fi $PROJECT_NAME

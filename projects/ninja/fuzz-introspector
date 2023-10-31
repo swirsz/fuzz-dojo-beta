@@ -5,7 +5,8 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src
 rm -rf ninja
-git clone --depth 1 https://github.com/ninja-build/ninja
+#git clone --depth 1 https://github.com/ninja-build/ninja
+cp -r /opt/fuzz-targets/ninja /src/ninja
 
 cd /src/$PROJECT_NAME
 /challenge/fi $PROJECT_NAME

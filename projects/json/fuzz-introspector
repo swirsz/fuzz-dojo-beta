@@ -5,7 +5,9 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src
 rm -rf $PROJECT_NAME
-git clone --depth 1 -b develop https://github.com/nlohmann/json.git
+#git clone --depth 1 -b develop https://github.com/nlohmann/json.git
+cp -r /opt/fuzz-targets/json /src/json
+
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1

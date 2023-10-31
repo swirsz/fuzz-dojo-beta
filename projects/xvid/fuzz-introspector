@@ -7,8 +7,12 @@ cd /src
 
 rm -rf xvidcore-install
 #apt-get update && apt-get install -y make autoconf automake libtool subversion
-svn checkout http://svn.xvid.org/trunk --username anonymous --password "" --non-interactive --no-auth-cache
-git clone --depth 1 https://github.com/guidovranken/fuzzing-headers.git
-git clone --depth 1 https://github.com/guidovranken/oss-fuzz-fuzzers.git
+#svn checkout http://svn.xvid.org/trunk --username anonymous --password "" --non-interactive --no-auth-cache
+#git clone --depth 1 https://github.com/guidovranken/fuzzing-headers.git
+#git clone --depth 1 https://github.com/guidovranken/oss-fuzz-fuzzers.git
+
+cp -r /opt/fuzz-targets/trunk /src/trunk
+cp -r /opt/fuzz-targets/fuzzing-headers /src/fuzzing-headers
+cp -r /opt/fuzz-targets/oss-fuzz-fuzzers /src/oss-fuzz-fuzzers
 
 /challenge/fi $PROJECT_NAME

@@ -5,7 +5,9 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src
 rm -rf /src/libvncserver
-git clone --depth 1 https://github.com/LibVNC/libvncserver.git
+#git clone --depth 1 https://github.com/LibVNC/libvncserver.git
+cp -r /opt/fuzz-targets/libvncserver /src/libvncserver
+
 patch -tuN /src/libvncserver/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 cp /home/hacker/$PROJECT_NAME/*.c /src/libvncserver/test
 cp /home/hacker/$PROJECT_NAME/CMakeLists.txt /src/libvncserver

@@ -8,14 +8,18 @@ rm -rf /src/mruby
 rm -rf /src/mruby_seeds
 rm -rf /src/libprotobuf-mutator
 #apt-get update && apt-get install -y build-essential ruby bison ninja-build cmake zlib1g-dev libbz2-dev liblzma-dev
-git clone --depth 1 https://github.com/mruby/mruby mruby
-git clone --depth 1 https://github.com/bshastry/mruby_seeds.git mruby_seeds
-git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
+#git clone --depth 1 https://github.com/mruby/mruby mruby
+#git clone --depth 1 https://github.com/bshastry/mruby_seeds.git mruby_seeds
+#git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
+
+cp -r /opt/fuzz-targets/mruby /src/mruby
+cp -r /opt/fuzz-targets/mruby_seeds /src/mruby_seeds
+cp -r /opt/fuzz-targets/libprotobuf-mutator /src/libprotobuf-mutator
+
 mkdir LPM; \
   cd LPM; \
   cmake /src/libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release; \
   ninja
-
 
 cd /src
 /challenge/fi $PROJECT_NAME
