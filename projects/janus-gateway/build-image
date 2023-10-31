@@ -9,7 +9,7 @@ cd $SRC
 
 # install libsrtp dep from source
 #git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
-cp -r /opt/fuzz-targets/ /src/libsrtp
+cp -r /opt/fuzz-targets/libsrtp /src/libsrtp
 
 cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
 cd $SRC/
