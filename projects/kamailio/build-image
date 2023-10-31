@@ -7,7 +7,8 @@ cd $SRC
 
 rm -rf $SRC/$PROJECT_NAME
 #apt-get update && apt-get install -y bison flex
-git clone https://github.com/kamailio/kamailio
+#git clone https://github.com/kamailio/kamailio
+cp -r /opt/fuzz-targets/kamailio /src/kamailio
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

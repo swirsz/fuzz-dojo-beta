@@ -10,7 +10,8 @@ rm -rf libevent
 rm -rf tmux
 rm -rf /work
 
-git clone https://github.com/libevent/libevent.git && \
+#git clone https://github.com/libevent/libevent.git
+cp -r /opt/fuzz-targets/libevent /src/libevent
     cd libevent && \
     mkdir build && \
     cd build && \
@@ -18,8 +19,10 @@ git clone https://github.com/libevent/libevent.git && \
     make && make install
     
 cd $SRC
-git clone --depth 1 https://github.com/tmux/tmux.git
-git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
+#git clone --depth 1 https://github.com/tmux/tmux.git
+#git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
+cp -r /opt/fuzz-targets/tmux /src/tmux
+cp -r /opt/fuzz-targets/tmux-fuzzing-corpus /src/tmux-fuzzing-corpus
 
 cp -r /src /out/src 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

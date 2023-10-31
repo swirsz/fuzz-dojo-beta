@@ -10,7 +10,8 @@ rm -rf $SRC/core
 #    libpcre3 libpcre3-dev bison libbison-dev libacl1 libacl1-dev libpq-dev lmdb-utils \
 #    liblmdb-dev libpam0g-dev flex libtool
 
-git clone --depth 1 https://github.com/cfengine/core --recursive
+#git clone --depth 1 https://github.com/cfengine/core --recursive
+cp -r /opt/fuzz-targets/core /src/core
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/string_fuzzer.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

@@ -7,7 +7,8 @@ cd $SRC
 
 #apt-get update && apt-get install -y make zip git
 rm -rf $SRC/$PROJECT_NAME
-git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
+#git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
+cp -r /opt/fuzz-targets/arduinojson /src/arduinojson
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

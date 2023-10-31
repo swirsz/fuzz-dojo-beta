@@ -8,7 +8,8 @@ cd $SRC
 #apt-get update && apt-get install -y make cmake g++
 rm -rf $SRC/openjpeg/data
 rm -rf $SRC/openjpeg/build
-git clone --depth 1 https://github.com/uclouvain/openjpeg
+#git clone --depth 1 https://github.com/uclouvain/openjpeg
+cp -r /opt/fuzz-targets/openjpeg /src/openjpeg
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

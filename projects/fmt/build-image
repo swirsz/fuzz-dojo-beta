@@ -8,7 +8,8 @@ cd $SRC
 #apt-get update && apt-get install -y cmake ninja-build
 
 rm -rf $PROJECT_NAME
-git clone --depth 1 --branch master https://github.com/fmtlib/fmt.git
+#git clone --depth 1 --branch master https://github.com/fmtlib/fmt.git
+cp -r /opt/fuzz-targets/fmt /src/fmt
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

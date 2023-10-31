@@ -8,7 +8,8 @@ cd $SRC
 #apt-get update && apt-get install -y cmake
 
 rm -rf $PROJECT_NAME
-git clone --depth 1 https://github.com/ninja-build/ninja
+#git clone --depth 1 https://github.com/ninja-build/ninja
+cp -r /opt/fuzz-targets/ninja /src/ninja
 
 cp $SRC/$PROJECT_NAME/misc/oss-fuzz/build.sh $SRC/
 cp $SRC/$PROJECT_NAME/misc/oss-fuzz/sample_ninja_build $SRC/

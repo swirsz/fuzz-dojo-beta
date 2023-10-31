@@ -7,7 +7,8 @@ cd $SRC
 
 rm -rf $SRC/libvncserver
 #apt-get update && apt-get install -y cmake zlib1g-dev
-git clone --depth 1 https://github.com/LibVNC/libvncserver.git
+#git clone --depth 1 https://github.com/LibVNC/libvncserver.git
+cp -r /opt/fuzz-targets/libvncserver /src/libvncserver
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

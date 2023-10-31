@@ -8,11 +8,14 @@ cd $SRC
 #apt-get update && apt-get install -y autoconf autoconf-archive automake gengetopt gtk-doc-tools libconfig-dev libglib2.0-dev libgnutls28-dev libini-config-dev libjansson-dev libnice-dev libssl-dev libtool openssl pkg-config
 
 # install libsrtp dep from source
-git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
+#git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
+cp -r /opt/fuzz-targets/ /src/libsrtp
+
 cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
 cd $SRC/
 # fetch Janus code
-git clone --single-branch --branch master https://github.com/meetecho/janus-gateway.git
+# git clone --single-branch --branch master https://github.com/meetecho/janus-gateway.git
+cp -r /opt/fuzz-targets/janus-gateway /src/janus-gateway
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

@@ -6,7 +6,8 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get update && apt-get install -y bison flex libssl-dev pkg-config
-git clone https://github.com/OpenSIPS/opensips
+#git clone https://github.com/OpenSIPS/opensips
+cp -r /opt/fuzz-targets/opensips /src/opensips
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

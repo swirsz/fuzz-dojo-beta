@@ -6,7 +6,8 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get install -y make autoconf autopoint libtool zip
-git clone https://git.tukaani.org/xz.git $SRC/xz
+#git clone https://git.tukaani.org/xz.git $SRC/xz
+cp -r /opt/fuzz-targets/xz /src/xz
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

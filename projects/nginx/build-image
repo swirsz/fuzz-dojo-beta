@@ -7,9 +7,14 @@ cd $SRC
 
 rm -rf nginx
 #apt-get update && apt-get install -y libpcre3-dev zlib1g-dev mercurial ninja-build cmake liblzma-dev libz-dev binutils libtool
-hg clone http://hg.nginx.org/nginx/
-git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
-git clone --depth 1 https://github.com/google/fuzzer-test-suite
+#hg clone http://hg.nginx.org/nginx/
+#git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
+#git clone --depth 1 https://github.com/google/fuzzer-test-suite
+
+cp -r /opt/fuzz-targets/nginx /src/nginx
+cp -r /opt/fuzz-targets/libprotobuf-mutator /src/libprotobuf-mutator
+cp -r /opt/fuzz-targets/fuzzer-test-suite /src/fuzzer-test-suite
+
 mkdir LPM && cd LPM && cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release && ninja
 cd $SRC
 

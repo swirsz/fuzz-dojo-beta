@@ -6,10 +6,12 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool bison
-git clone git://git.savannah.gnu.org/gnulib.git
+#git clone git://git.savannah.gnu.org/gnulib.git
 export GNULIB_TOOL=$SRC/gnulib/gnulib-tool
 export GNULIB_SRCDIR=$SRC/gnulib
-git clone https://gitlab.com/gnutls/libtasn1.git
+#git clone https://gitlab.com/gnutls/libtasn1.git
+cp -r /opt/fuzz-targets/gnulib /src/gnulib
+cp -r /opt/fuzz-targets/libtasn1 /src/libtasn1
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

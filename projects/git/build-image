@@ -9,10 +9,11 @@ rm -rf $PROJECT_NAME
 # libdbd-sqlite3-perl liberror-perl libexpat1-dev libhttp-date-perl libio-pty-perl libmailtools-perl libpcre2-dev \
 # libpcre3-dev libsvn-perl perl-modules libyaml-perl libz-dev python subversion tcl unzip asciidoc docbook-xsl xmlto libssl-dev zip
 
-git clone https://github.com/git/git git
+#git clone https://github.com/git/git git
+cp -r /opt/fuzz-targets/git /src/git
 cd $SRC/$PROJECT_NAME
-git checkout origin/next
-git pull origin next
+#git checkout origin/next
+#git pull origin next
 mkdir -p $SRC/$PROJECT_NAME/oss-fuzz
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz-* $SRC/$PROJECT_NAME/oss-fuzz
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/Makefile.diff $SRC/$PROJECT_NAME

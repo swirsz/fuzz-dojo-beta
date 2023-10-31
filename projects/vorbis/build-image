@@ -7,8 +7,12 @@ cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake ffmpeg libtool pkg-config python3 wget
 #python3 -m pip install corpus-replicator
-git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
-git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
+#git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
+#git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
+
+cp -r /opt/fuzz-targets/ogg /src/ogg
+cp -r /opt/fuzz-targets/vorbis /src/vorbis
+
 corpus-replicator -o decode_corpus audio_vorbis_ogg_libvorbis.yml audio
 # TODO: remove `people.xiph.org` lines once upstream build script is updated
 mkdir people.xiph.org/

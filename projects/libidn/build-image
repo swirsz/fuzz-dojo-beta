@@ -8,7 +8,8 @@ cd $SRC
 #apt-get update && apt-get install -y pkg-config autopoint autoconf autoconf-archive automake libtool gettext gengetopt curl gperf wget
 
 rm -rf /src/$PROJECT_NAME
-git clone https://git.savannah.gnu.org/git/libidn.git
+#git clone https://git.savannah.gnu.org/git/libidn.git
+cp -r /opt/fuzz-targets/libidn /src/libidn
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

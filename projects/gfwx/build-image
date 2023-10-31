@@ -11,7 +11,8 @@ cp /src/gfwx/*.zip /src/tmp
 cp /src/gfwx/*.cpp /src/tmp
 rm -rf /src/$PROJECT_NAME
 #apt-get update && apt-get install -y make autoconf automake libtool
-git clone --depth 1 https://github.com/guidovranken/gfwx-fuzzers.git gfwx
+#git clone --depth 1 https://github.com/guidovranken/gfwx-fuzzers.git gfwx
+cp -r /opt/fuzz-targets/gfwx /src/gfwx
 mv -f /src/tmp/* /src/gfwx
 rmdir /src/tmp
 

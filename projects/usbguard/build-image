@@ -16,7 +16,9 @@ cd $SRC
 rm -rf $PROJECT_NAME
 rm -rf inspector
 
-git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard usbguard
+#git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard usbguard
+cp -r /opt/fuzz-targets/usbguard /src/usbguard
+
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1

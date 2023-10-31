@@ -8,7 +8,8 @@ cd $SRC
 #apt-get update && apt-get install -y make autoconf automake libtool pkg-config cmake libcurlpp-dev libcurl4-openssl-dev
 
 rm -rf $PROJECT_NAME
-git clone --depth 1 https://github.com/tristanpenman/valijson
+#git clone --depth 1 https://github.com/tristanpenman/valijson
+cp -r /opt/fuzz-targets/valijson /src/valijson
 
 cp $SRC/$PROJECT_NAME/tests/fuzzing/oss-fuzz-build.sh $SRC/build.sh
 # This is to fix Fuzz Introspector build by using LLVM old pass manager

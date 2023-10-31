@@ -7,8 +7,8 @@ cd $SRC
 
 rm -rf $SRC/$PROJECT_NAME
 #apt-get update && apt-get install -y libz-dev libpcre2-dev libtool pkg-config autoconf
-git clone https://github.com/lighttpd/lighttpd1.4
-
+#git clone https://github.com/lighttpd/lighttpd1.4
+cp -r /opt/fuzz-targets/lighttpd1.4 /src/lighttpd1.4
 
 cp /opt/oss-fuzz/projects/lighttpd/build.sh $SRC/
 cp /opt/oss-fuzz/projects/lighttpd/fuzz_* $SRC/

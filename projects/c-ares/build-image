@@ -6,7 +6,8 @@ export SANITIZER=$1
 cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool
-git clone --depth 1 https://github.com/c-ares/c-ares.git
+#git clone --depth 1 https://github.com/c-ares/c-ares.git
+cp -r /opt/fuzz-targets/c-ares /src/c-ares
 export OLD_LLVMPASS=1
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
