@@ -5,6 +5,7 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
-git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
+#git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
+cp -r /opt/fuzz-targets/arduinojson /src/arduinojson
 cd /src/$PROJECT_NAME
 /challenge/fi $PROJECT_NAME
