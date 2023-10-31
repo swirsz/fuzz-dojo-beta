@@ -5,7 +5,8 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
-git clone https://github.com/danmar/cppcheck.git
+#git clone https://github.com/danmar/cppcheck.git
+cp -r /opt/fuzz-targets/cppcheck /src/cppcheck
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
