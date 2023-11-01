@@ -7,6 +7,7 @@ cd /src
 rm -rf libevent
 rm -rf tmux
 rm -rf /work
+mkdir -p /work && chmod a+rwx /work
 
 #git clone https://github.com/libevent/libevent.git
 cp -r /opt/fuzz-targets/libevent /src/libevent
