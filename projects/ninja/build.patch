@@ -1,5 +1,3 @@
---- build.sh.o	2023-09-09 03:52:17.331260321 +0000
-+++ build.sh	2023-09-09 03:55:36.068313956 +0000
 @@ -27,3 +27,7 @@
  $CXX $CXXFLAGS $LIB_FUZZING_ENGINE fuzzer.o -o $OUT/fuzzer fuzz_lib.a
  
