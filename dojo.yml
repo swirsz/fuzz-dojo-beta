@@ -138,10 +138,6 @@ modules:
         name: LAME (40.15%) 23539 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
 
-      - id: libidn
-        name: LIBIDN (80.46%) 2180 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libidn
-
       - id: libsodium
         name: LIBSODIUM (20.67%) 7761 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
