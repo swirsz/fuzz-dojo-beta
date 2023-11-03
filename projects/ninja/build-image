@@ -23,6 +23,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    patch -tuN $SRC/$PROJECT_NAME/misc/new_fuzzer.cc -i /challenge/new_fuzzer.patch -r -
    cp $SRC/$PROJECT_NAME/misc/*.cc /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/misc/oss-fuzz/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/misc
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC

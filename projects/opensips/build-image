@@ -18,6 +18,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/test/fuzz/fuzz_core_funcs.c $SRC/$PROJECT_NAME/test/fuzz/fuzz_newfuzzer.c
    cp $SRC/$PROJECT_NAME/test/fuzz/*.c /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/test/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC

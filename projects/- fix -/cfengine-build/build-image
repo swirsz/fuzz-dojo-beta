@@ -25,6 +25,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/*.c /home/hacker/$PROJECT_NAME
    #cp $SRC/core/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC
    #cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/core/tests/fuzz

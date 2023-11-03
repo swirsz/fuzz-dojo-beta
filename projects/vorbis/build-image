@@ -27,6 +27,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/decode_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/new_fuzzer.cc
    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/*.cc /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC/$PROJECT_NAME/contrib/oss-fuzz

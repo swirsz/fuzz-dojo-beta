@@ -24,6 +24,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/php-src/sapi/fuzzer/*.dict /home/hacker/$PROJECT_NAME
    cp $SRC/php-src/sapi/fuzzer/Makefile.frag /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.h $SRC/php-src/sapi/fuzzer
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/php-src/sapi/fuzzer

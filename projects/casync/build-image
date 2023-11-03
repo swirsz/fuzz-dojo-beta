@@ -24,6 +24,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/casync/test/fuzz/*.h /home/hacker/$PROJECT_NAME
    cp $SRC/casync/test/fuzz/*.build /home/hacker/$PROJECT_NAME
    cp $SRC/casync/tools/oss-fuzz.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/casync/test/fuzz
    cp /home/hacker/$PROJECT_NAME/*.h $SRC/casync/test/fuzz

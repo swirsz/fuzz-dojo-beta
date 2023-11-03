@@ -27,6 +27,7 @@ if [ ! -d "/home/hacker/cmake" ]; then
    cp $SRC/$PROJECT_NAME/Tests/Fuzzing/xml_parser_fuzzer.cc $SRC/$PROJECT_NAME/Tests/Fuzzing/new_fuzzer.cc
    cp $SRC/$PROJECT_NAME/Tests/Fuzzing/*.cc /home/hacker/cmake
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/cmake/*.cc $SRC/$PROJECT_NAME/Tests/Fuzzing
    cp /home/hacker/cmake/build.sh $SRC

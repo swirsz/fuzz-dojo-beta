@@ -21,6 +21,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/libvncserver/test/*.c /home/hacker/$PROJECT_NAME
    cp /src/libvncserver/CMakeLists.txt /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/libvncserver/test
    cp /home/hacker/$PROJECT_NAME/CMakeLists.txt /src/libvncserver

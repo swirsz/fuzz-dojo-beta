@@ -20,6 +20,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/vlc/test/Makefile.am /home/hacker/$PROJECT_NAME
    cp $SRC/vlc/test/*.c /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/vlc/test
    cp /home/hacker/$PROJECT_NAME/Makefile.am $SRC/vlc/test

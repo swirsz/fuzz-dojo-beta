@@ -33,6 +33,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/sqlite3/test/*.zip /home/hacker/$PROJECT_NAME
    cp /src/sqlite3/main.mk  /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.zip $SRC/sqlite3/test
    cp /home/hacker/$PROJECT_NAME/*.options $SRC/sqlite3/test

@@ -19,6 +19,7 @@ if [ ! -d "/home/hacker/training-broken" ]; then
    mkdir /home/hacker/training-broken
    cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/* /home/hacker/training-broken
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-broken
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/training-broken/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
    cp /home/hacker/training-broken/build.sh $SRC

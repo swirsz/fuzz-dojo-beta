@@ -18,6 +18,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/wasm3/platforms/app_fuzz/fuzzer.c $SRC/wasm3/platforms/app_fuzz/newfuzzer.c
    cp $SRC/wasm3/platforms/app_fuzz/*.c /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/wasm3/platforms/app_fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC

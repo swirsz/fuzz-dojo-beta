@@ -39,6 +39,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/fuzz/*.dict /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/Makefile.am /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/$PROJECT_NAME/*.dict $SRC/$PROJECT_NAME/fuzz

@@ -38,6 +38,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/LAME-fuzzers/fuzzer-encoder_seed_corpus.zip $SRC/LAME-fuzzers/fuzzer-new_seed_corpus.zip
    cp $SRC/LAME-fuzzers/* /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/LAME-fuzzers
    cp /home/hacker/$PROJECT_NAME/*.dict $SRC/LAME-fuzzers

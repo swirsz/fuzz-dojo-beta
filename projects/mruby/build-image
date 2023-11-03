@@ -37,6 +37,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/mruby/oss-fuzz/*.h /home/hacker/$PROJECT_NAME
    cp $SRC/mruby/oss-fuzz/*.proto /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/mruby/oss-fuzz
    cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/mruby/oss-fuzz

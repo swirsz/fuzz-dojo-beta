@@ -31,6 +31,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/curl_fuzzer/*.py /home/hacker/$PROJECT_NAME
    cp $SRC/curl_fuzzer/Makefile.am /home/hacker/$PROJECT_NAME
    cp $SRC/curl_fuzzer/scripts/fuzz_targets /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC/curl_fuzzer
 fi

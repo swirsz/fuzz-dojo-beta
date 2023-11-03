@@ -23,6 +23,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/oss-fuzz-fuzzers/xvid/fuzzer.cpp $SRC/oss-fuzz-fuzzers/xvid/newfuzzer.cpp
    cp -r $SRC/oss-fuzz-fuzzers/xvid /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    rm -rf $SRC/oss-fuzz-fuzzers/xvid
    cp -r /home/hacker/$PROJECT_NAME $SRC/oss-fuzz-fuzzers/xvid
