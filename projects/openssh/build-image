@@ -13,9 +13,10 @@ rm -rf /src/$PROJECT_NAME
 cp -r /opt/fuzz-targets/openssh /src/openssh
 cp -r /opt/fuzz-targets/openssh-fuzz-cases /src/openssh-fuzz-cases
 
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
 patch -tuN $SRC/build.sh -i /challenge/build.patch -r -
 patch -tuN $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/Makefile -i /challenge/Makefile.patch -r -
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
