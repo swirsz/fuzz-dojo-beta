@@ -1,5 +1,3 @@
---- build.sh	2023-11-03 21:35:50.957197949 +0000
-+++ build.sh	2023-11-03 21:26:02.132059158 +0000
 @@ -83,6 +83,10 @@
  	$SK_DUMMY agent_fuzz_helper.o ssh-sk.o -lssh -lopenbsd-compat -lz \
  	$STATIC_CRYPTO $LIB_FUZZING_ENGINE
