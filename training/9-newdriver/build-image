@@ -18,6 +18,7 @@ if [ ! -d "/home/hacker/training-newdriver" ]; then
    cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/training-newdriver
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-newdriver
+   chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/training-newdriver/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/training-newdriver/build.sh $SRC
