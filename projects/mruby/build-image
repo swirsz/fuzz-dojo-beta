@@ -25,6 +25,7 @@ mkdir LPM; \
 cp $SRC/mruby/oss-fuzz/config/mruby.dict $SRC/mruby/oss-fuzz/config/new.dict
 cp $SRC/mruby/oss-fuzz/config/mruby_fuzzer.options $SRC/mruby/oss-fuzz/config/new_fuzzer.options
    
+#vi /src/LPM/external.protobuf/tmp/external.protobuf-gitclone.cmake
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 patch -tuN /src/build.sh -i /challenge/build.patch -r -
