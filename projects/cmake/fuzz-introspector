@@ -11,7 +11,7 @@ rm -rf fuzzing-corpus
 #apt-get update && apt-get install -y make autoconf automake libtool pkg-config libssl-dev
 #git clone --depth 1 https://gitlab.kitware.com/cmake/cmake.git $PROJECT_NAME
 #git clone --depth 1 https://github.com/strongcourage/fuzzing-corpus
-cp -r /opt/fuzz-targets/ /src/$PROJECT_NAME
+cp -r /opt/fuzz-targets/cmake /src/$PROJECT_NAME
 cp -r /opt/fuzz-targets/fuzzing-corpus /src/fuzzing-corpus
 
 export OLD_LLVMPASS=1

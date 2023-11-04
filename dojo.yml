@@ -174,10 +174,6 @@ modules:
         name: MPG123 (53.14%) 9826 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
 
-      - id: mruby
-        name: MRUBY (20.15%) 66523 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mruby
-
       - id: nginx
         name: NGINX (14.18%) 86550 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=nginx
