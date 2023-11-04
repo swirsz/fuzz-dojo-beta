@@ -1,5 +1,4 @@
 #!/opt/pwn.college/bash
-set -x
 . /usr/local/sbin/e
 export PROJECT_NAME=lame
 export SANITIZER=$1
@@ -14,7 +13,7 @@ rm -rf mpg123
 
 # ubuntu apt has not recent enough mpg123
 #wget https://www.mpg123.de/snapshot
-cp -r /opt/fuzz-targets/snapshot /src/snapshot
+cp -r /opt/fuzz-targets/snapshot /src
 tar -xvf snapshot
 mv mpg123* mpg123
 
