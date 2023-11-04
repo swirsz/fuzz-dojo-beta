@@ -10,5 +10,6 @@ rm -rf /src/$PROJECT_NAME
 #git clone https://github.com/kamailio/kamailio
 cp -r /opt/fuzz-targets/$PROJECT_NAME /src/$PROJECT_NAME
 
+cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/misc/fuzz
 
 /challenge/fi $PROJECT_NAME
