@@ -16,5 +16,6 @@ cp -r /opt/fuzz-targets/fuzzing-corpus /src/fuzzing-corpus
 
 export OLD_LLVMPASS=1
 
+cp /home/hacker/cmake/*.cc /src/$PROJECT_NAME/Tests/Fuzzing
 cd /src/$PROJECT_NAME
 /usr/local/sbin/fi cmake
