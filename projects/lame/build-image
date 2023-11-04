@@ -1,4 +1,5 @@
 #!/opt/pwn.college/bash
+set -x
 . /usr/local/sbin/e
 export PROJECT_NAME=lame
 export SANITIZER=$1
