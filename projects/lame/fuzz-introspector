@@ -4,18 +4,15 @@ sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
 sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src
+
 rm -rf lame
-rm -rf LAME-fuzzers
 rm -rf mpg123
 
 # ubuntu apt has not recent enough mpg123
 #wget https://www.mpg123.de/snapshot
-cp -r /opt/fuzz-targets/snapshot /src/snapshot
+cp /opt/fuzz-targets/snapshot/* /src
 tar -xvf snapshot
 mv mpg123* mpg123
-
-#git clone --depth 1 https://github.com/guidovranken/LAME-fuzzers
-cp -r /opt/fuzz-targets/LAME-fuzzers /src/LAME-fuzzers
 
 #svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame $SRC/lame
 cp -r /opt/fuzz-targets/lame /src/lame
@@ -23,5 +20,6 @@ cp -r /opt/fuzz-targets/lame /src/lame
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1
+
 
 /challenge/fi $PROJECT_NAME
