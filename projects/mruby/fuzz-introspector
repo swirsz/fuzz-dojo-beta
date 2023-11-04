@@ -22,4 +22,12 @@ mkdir LPM; \
   ninja
 
 cd /src
+
+cp /src/mruby/oss-fuzz/config/mruby.dict /src/mruby/oss-fuzz/config/new.dict
+cp /src/mruby/oss-fuzz/config/mruby_fuzzer.options /src/mruby/oss-fuzz/config/new_fuzzer.options
+   
+cp /home/hacker/$PROJECT_NAME/*.c /src/mruby/oss-fuzz
+cp /home/hacker/$PROJECT_NAME/*.cpp /src/mruby/oss-fuzz
+cp /home/hacker/$PROJECT_NAME/*.h /src/mruby/oss-fuzz
+cp /home/hacker/$PROJECT_NAME/*.proto /src/mruby/oss-fuzz
 /challenge/fi $PROJECT_NAME
