@@ -11,4 +11,7 @@ hg clone http://hg.nginx.org/nginx/
 cp -r /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz /src/fuzz
 
 cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/*.dict /src/fuzz
+cp /home/hacker/$PROJECT_NAME/*.c /src/fuzz
+cp /home/hacker/$PROJECT_NAME/*.cc /src/fuzz
 /challenge/fi $PROJECT_NAME

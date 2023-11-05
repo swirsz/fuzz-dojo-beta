@@ -13,4 +13,6 @@ cp -r /opt/fuzz-targets/json /src/json
 export OLD_LLVMPASS=1
 
 cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/tests/src
+cp /home/hacker/$PROJECT_NAME/Makefile /src/$PROJECT_NAME/tests
 /challenge/fi $PROJECT_NAME

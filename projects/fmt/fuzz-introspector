@@ -9,4 +9,5 @@ rm -rf /src/$PROJECT_NAME
 #git clone --depth 1 --branch master https://github.com/fmtlib/fmt.git
 cp -r /opt/fuzz-targets/fmt /src/fmt
 cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME/test/fuzzing
 /challenge/fi $PROJECT_NAME

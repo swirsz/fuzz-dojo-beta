@@ -4,4 +4,5 @@ sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
 sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME/projects/example/my-api-repo
 /challenge/fi $PROJECT_NAME

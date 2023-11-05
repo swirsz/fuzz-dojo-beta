@@ -15,4 +15,7 @@ cp -r /opt/fuzz-targets/trunk /src/trunk
 cp -r /opt/fuzz-targets/fuzzing-headers /src/fuzzing-headers
 cp -r /opt/fuzz-targets/oss-fuzz-fuzzers /src/oss-fuzz-fuzzers
 
+rm -rf /src/oss-fuzz-fuzzers/xvid
+cp -r /home/hacker/$PROJECT_NAME /src/oss-fuzz-fuzzers/xvid
+   
 /challenge/fi $PROJECT_NAME

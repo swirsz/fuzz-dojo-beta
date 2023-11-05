@@ -17,4 +17,5 @@ mv -f /src/tmp/* /src/gfwx
 rmdir /src/tmp
 
 cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME
 /challenge/fi $PROJECT_NAME

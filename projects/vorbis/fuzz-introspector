@@ -7,4 +7,6 @@ cd /src
 mkdir people.xiph.org/
 touch people.xiph.org/dummy.ogg
 cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/contrib/oss-fuzz/
+cp /home/hacker/$PROJECT_NAME/build.sh /src/$PROJECT_NAME/contrib/oss-fuzz
 /challenge/fi $PROJECT_NAME

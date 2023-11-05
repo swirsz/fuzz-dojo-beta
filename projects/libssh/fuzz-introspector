@@ -11,4 +11,7 @@ cp -r /opt/fuzz-targets/libssh /src/libssh
 patch -tuN /src/$PROJECT_NAME/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
 cp -r /src/libssh/tests/fuzz/ssh_client_fuzzer_corpus/ /src/libssh/tests/fuzz/ssh_new_fuzzer_corpus
 cd /src/$PROJECT_NAME
+
+cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/tests/fuzz
+cp /home/hacker/$PROJECT_NAME/CMakeLists.txt /src/$PROJECT_NAME/tests/fuzz
 /challenge/fi $PROJECT_NAME

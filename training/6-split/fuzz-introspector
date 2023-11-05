@@ -4,4 +4,5 @@ sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
 sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src
+cp /home/hacker/training-split/*.c /src/$PROJECT_NAME/fuzzers
 /challenge/fi $PROJECT_NAME

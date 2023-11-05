@@ -15,4 +15,5 @@ cp /src/valijson/tests/fuzzing/oss-fuzz-build.sh $SRC/build.sh
 export OLD_LLVMPASS=1
 
 cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME/tests/fuzzing
 /challenge/fi $PROJECT_NAME

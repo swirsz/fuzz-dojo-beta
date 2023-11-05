@@ -4,4 +4,5 @@ sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
 sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src/$PROJECT_NAME
+cp /home/hacker/training-newdriver/*.c /src/$PROJECT_NAME/fuzz
 /challenge/fi $PROJECT_NAME

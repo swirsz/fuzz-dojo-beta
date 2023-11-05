@@ -6,4 +6,5 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 cd /src/$PROJECT_NAME
 rm -rf $SRC/openjpeg/data
 rm -rf $SRC/openjpeg/build
+cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/tests/fuzzers
 /challenge/fi $PROJECT_NAME

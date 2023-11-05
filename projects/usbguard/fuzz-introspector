@@ -11,4 +11,6 @@ cp -r /opt/fuzz-targets/usbguard /src/usbguard
 
 cd /src/usbguard
 export OLD_LLVMPASS=1
+cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/src/Tests/Fuzzers
+cp /home/hacker/$PROJECT_NAME/Makefile.am /src/$PROJECT_NAME/src/Tests/Fuzzers
 /challenge/fi $PROJECT_NAME

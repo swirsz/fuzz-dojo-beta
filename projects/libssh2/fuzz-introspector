@@ -12,4 +12,7 @@ cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/tests/ossfuzz
 patch -tuN /src/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh -i /challenge/ossfuzz.patch -r -
 patch -tuN /src/$PROJECT_NAME/tests/ossfuzz/Makefile.am -i /challenge/Makefile.patch -r -
 cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/tests/ossfuzz
+cp /home/hacker/$PROJECT_NAME/Makefile.am /src/$PROJECT_NAME/tests/ossfuzz
+cp /home/hacker/$PROJECT_NAME/ossfuzz.sh /src/$PROJECT_NAME/tests/ossfuzz
 /challenge/fi $PROJECT_NAME

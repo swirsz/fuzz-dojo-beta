@@ -27,6 +27,7 @@ patch -tuN /src/build.sh -i /challenge/build.patch -r -
 patch -tuN /src/git/Makefile -i /challenge/Makefile.patch -r -
 
 cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/oss-fuzz
+cp /home/hacker/$PROJECT_NAME/Makefile /src/$PROJECT_NAME
 cd /src/$PROJECT_NAME
 
 /challenge/fi $PROJECT_NAME
