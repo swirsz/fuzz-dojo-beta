@@ -15,7 +15,8 @@ cp -r /opt/fuzz-targets/nginx /src/nginx
 cp -r /opt/fuzz-targets/libprotobuf-mutator /src/libprotobuf-mutator
 cp -r /opt/fuzz-targets/fuzzer-test-suite /src/fuzzer-test-suite
 
-mkdir LPM && cd LPM && cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=OFF -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release && ninja
+
+mkdir LPM && cd LPM && cp -r /opt/fuzz-targets/external.protobuf external.protobuf && cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release && ninja
 cd $SRC
 
 cp -r /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz $SRC/fuzz
