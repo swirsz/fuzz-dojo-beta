@@ -202,10 +202,6 @@ modules:
         name: SNAPPY (61.58%) 1502 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=snappy
 
-      - id: tinyusb
-        name: TINYUSB (13.55%) 11265 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tinyusb
-
       - id: tmux
         name: TMUX (12.78%) 48752 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tmux
