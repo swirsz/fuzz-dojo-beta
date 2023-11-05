@@ -9,5 +9,5 @@ rm -rf /src/httpd
 #git clone --depth=1 https://github.com/apache/httpd
 cp -r /opt/fuzz-targets/httpd /src/httpd
 
-cd $SRC/httpd
+cd /src/httpd
 /challenge/fi $PROJECT_NAME

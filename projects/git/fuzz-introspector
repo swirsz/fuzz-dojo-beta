@@ -8,7 +8,7 @@ rm -rf $PROJECT_NAME
 
 #git clone https://github.com/git/git git
 cp -r /opt/fuzz-targets/git /src/git
-cd $SRC/$PROJECT_NAME
+cd /src/$PROJECT_NAME
 #git checkout origin/next
 #git pull origin next
 mkdir -p /src/$PROJECT_NAME/oss-fuzz

@@ -11,5 +11,5 @@ rm -rf $PROJECT_NAME
 cp -r /opt/fuzz-targets/wasm3 /src/wasm3
 
 cp /home/hacker/$PROJECT_NAME/*.c /src/wasm3/platforms/app_fuzz
-cd $SRC/$PROJECT_NAME
+cd /src/$PROJECT_NAME
 /challenge/fi $PROJECT_NAME

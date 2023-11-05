@@ -5,8 +5,8 @@ sudo chmod 4755 /challenge/loc_count /challenge/fi
 /challenge/loc_count
 cd /src
 
-rm -rf $SRC/qubes-os/qubes-core-qubesdb
-rm -rf $SRC/qubes-os/qubes-core-qrexec
+rm -rf /src/qubes-os/qubes-core-qubesdb
+rm -rf /src/qubes-os/qubes-core-qrexec
 #apt-get update && apt-get -y install build-essential automake libtool git python libsystemd-dev
 git clone --single-branch https://github.com/QubesOS/qubes-app-linux-input-proxy /src/qubes-os/app-linux-input-proxy
 git clone --single-branch https://github.com/QubesOS/qubes-core-qubesdb /src/qubes-os/qubes-core-qubesdb

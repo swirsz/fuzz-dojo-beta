@@ -10,7 +10,7 @@ rm -rf php-src
 #RUN apt-get update && apt-get install -y autoconf automake libtool bison re2c pkg-config
 git clone --depth 1 --branch master https://github.com/php/php-src.git php-src
 
-patch -tuN $SRC/php-src/sapi/fuzzer/Makefile.frag  -i /challenge/Makefile.patch -r -
+patch -tuN /src/php-src/sapi/fuzzer/Makefile.frag  -i /challenge/Makefile.patch -r -
 cd /src/php-src
 
 /challenge/fi $PROJECT_NAME

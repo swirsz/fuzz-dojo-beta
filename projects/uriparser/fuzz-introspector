@@ -9,5 +9,5 @@ rm -rf uriparser
 #git clone --depth 1 https://github.com/uriparser/uriparser uriparser
 cp -r /opt/fuzz-targets/uriparser /src/uriparser
 
-cd $SRC/$PROJECT_NAME
+cd /src/$PROJECT_NAME
 /challenge/fi $PROJECT_NAME
