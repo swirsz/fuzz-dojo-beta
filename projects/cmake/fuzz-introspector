@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=CMake
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 
 rm -rf $PROJECT_NAME
@@ -18,4 +16,4 @@ export OLD_LLVMPASS=1
 
 cp /home/hacker/cmake/*.cc /src/$PROJECT_NAME/Tests/Fuzzing
 cd /src/$PROJECT_NAME
-/challenge/fi cmake
+/challenge/.fi cmake

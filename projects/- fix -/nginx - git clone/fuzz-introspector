@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=nginx
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf nginx
 #apt-get update && apt-get install -y libpcre3-dev zlib1g-dev mercurial ninja-build cmake liblzma-dev libz-dev binutils libtool
@@ -14,4 +12,4 @@ cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/*.dict /src/fuzz
 cp /home/hacker/$PROJECT_NAME/*.c /src/fuzz
 cp /home/hacker/$PROJECT_NAME/*.cc /src/fuzz
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

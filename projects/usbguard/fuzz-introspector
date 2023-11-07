@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=usbguard
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf $PROJECT_NAME
 rm -rf inspector
@@ -13,4 +11,4 @@ cd /src/usbguard
 export OLD_LLVMPASS=1
 cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/src/Tests/Fuzzers
 cp /home/hacker/$PROJECT_NAME/Makefile.am /src/$PROJECT_NAME/src/Tests/Fuzzers
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

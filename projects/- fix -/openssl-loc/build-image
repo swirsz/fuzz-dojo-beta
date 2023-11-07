@@ -21,7 +21,7 @@ cp /opt/oss-fuzz/projects/openssl/*.options $SRC/
 cp -f $SRC/fuzz/* $SRC/$PROJECT_NAME/fuzz 
 rm -rf $SRC/fuzz/
 
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/openssl
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME

@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=cppcheck
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
 #git clone https://github.com/danmar/cppcheck.git
@@ -14,11 +12,11 @@ export OLD_LLVMPASS=1
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src
 
-patch -tuN /src/build.sh -i /challenge/build.patch -r -
-patch -tuN /src/$PROJECT_NAME/oss-fuzz/Makefile -i /challenge/Makefile.patch -r -
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN /src/$PROJECT_NAME/oss-fuzz/Makefile -i /challenge/.Makefile.patch -r -
 
 cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/oss-fuzz
 cp /home/hacker/$PROJECT_NAME/*.h /src/$PROJECT_NAME/oss-fuzz
 cp /home/hacker/$PROJECT_NAME/Makefile /src/$PROJECT_NAME/oss-fuzz
 cd /src/$PROJECT_NAME
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

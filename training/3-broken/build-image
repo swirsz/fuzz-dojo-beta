@@ -24,5 +24,5 @@ else
    cp /home/hacker/training-broken/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
    cp /home/hacker/training-broken/build.sh $SRC
 fi
-#patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/Makefile.patch -r -
+#patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
 sudo --preserve-env compile

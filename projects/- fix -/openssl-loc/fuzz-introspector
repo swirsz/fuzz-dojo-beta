@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=openssl
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 
 mkdir /src/fuzz
 mv /src/$PROJECT_NAME/fuzz/*.c /src/fuzz
@@ -23,4 +21,4 @@ cp -f /src/fuzz/* /src/$PROJECT_NAME/fuzz
 rm -rf /src/fuzz/
 cd /src/$PROJECT_NAME
 
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

@@ -1,18 +1,16 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=libssh2
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
 #git clone --depth 1 https://github.com/libssh2/libssh2.git /src/libssh2
 cp -r /opt/fuzz-targets/libssh2 /src/libssh2
 
 cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/tests/ossfuzz
-patch -tuN /src/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh -i /challenge/ossfuzz.patch -r -
-patch -tuN /src/$PROJECT_NAME/tests/ossfuzz/Makefile.am -i /challenge/Makefile.patch -r -
+patch -tuN /src/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+patch -tuN /src/$PROJECT_NAME/tests/ossfuzz/Makefile.am -i /challenge/.Makefile.patch -r -
 cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/tests/ossfuzz
 cp /home/hacker/$PROJECT_NAME/Makefile.am /src/$PROJECT_NAME/tests/ossfuzz
 cp /home/hacker/$PROJECT_NAME/ossfuzz.sh /src/$PROJECT_NAME/tests/ossfuzz
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

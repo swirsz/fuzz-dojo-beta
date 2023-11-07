@@ -15,9 +15,9 @@ cp $SRC/$PROJECT_NAME/misc/oss-fuzz/build.sh $SRC/
 cp $SRC/$PROJECT_NAME/misc/oss-fuzz/sample_ninja_build $SRC/
 
 cp $SRC/$PROJECT_NAME/misc/manifest_fuzzer.cc $SRC/$PROJECT_NAME/misc/new_fuzzer.cc
-patch -tuN $SRC/$PROJECT_NAME/misc/new_fuzzer.cc -i /challenge/new_fuzzer.patch -r -
+patch -tuN $SRC/$PROJECT_NAME/misc/new_fuzzer.cc -i /challenge/.new_fuzzer.patch -r -
    
-patch -tuN /src/build.sh -i /challenge/build.patch -r -
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cp /src/build.sh /src/ninja/misc/oss-fuzz/build.sh
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then

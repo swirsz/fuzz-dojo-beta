@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=minizip
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count $PROJECT_NAME
+/challenge/.loc_count $PROJECT_NAME
 cd /src/$PROJECT_NAME
 cp /home/hacker/training-change/*.c /src/$PROJECT_NAME/test/fuzz
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

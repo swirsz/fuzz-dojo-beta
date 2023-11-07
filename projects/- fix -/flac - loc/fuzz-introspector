@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=flac
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf flac
 rm -rf ogg
@@ -12,4 +10,4 @@ git clone --depth 1 https://github.com/xiph/flac.git
 git clone --depth 1 https://github.com/xiph/ogg.git
 git clone --depth 1 https://github.com/google/ExoPlayer.git
 
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

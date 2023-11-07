@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=fmt
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 #apt-get update && apt-get install -y cmake ninja-build
 rm -rf /src/$PROJECT_NAME
@@ -10,4 +8,4 @@ rm -rf /src/$PROJECT_NAME
 cp -r /opt/fuzz-targets/fmt /src/fmt
 cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME/test/fuzzing
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

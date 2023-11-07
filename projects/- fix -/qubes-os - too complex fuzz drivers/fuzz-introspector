@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=qubes-os
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 
 rm -rf /src/qubes-os/qubes-core-qubesdb
@@ -13,4 +11,4 @@ git clone --single-branch https://github.com/QubesOS/qubes-core-qubesdb /src/qub
 git clone --single-branch https://github.com/QubesOS/qubes-core-qrexec /src/qubes-os/qubes-core-qrexec
 
 cd /src/qubes-os
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=mpg123
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
 wget https://www.mpg123.de/snapshot
@@ -10,4 +8,4 @@ tar -xvf snapshot
 mv mpg123* mpg123
 
 cd /src
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

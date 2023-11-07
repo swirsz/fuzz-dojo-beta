@@ -1,9 +1,7 @@
 #!/opt/pwn.college/bash 
 INITIAL=30
 TARGET=35
-sudo cp /usr/local/sbin/loc_count /challenge/loc_count
-sudo chmod 4755 /challenge/loc_count
-time sudo -H -u hacker bash -c "/challenge/loc_count $*"
+time sudo -H -u hacker bash -c "/challenge/.loc_count $*"
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
     echo

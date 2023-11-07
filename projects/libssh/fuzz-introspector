@@ -1,17 +1,15 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=libssh
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
 #git clone --depth=1 https://git.libssh.org/projects/libssh.git
 cp -r /opt/fuzz-targets/libssh /src/libssh
 
-patch -tuN /src/$PROJECT_NAME/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+patch -tuN /src/$PROJECT_NAME/tests/fuzz/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 cp -r /src/libssh/tests/fuzz/ssh_client_fuzzer_corpus/ /src/libssh/tests/fuzz/ssh_new_fuzzer_corpus
 cd /src/$PROJECT_NAME
 
 cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/tests/fuzz
 cp /home/hacker/$PROJECT_NAME/CMakeLists.txt /src/$PROJECT_NAME/tests/fuzz
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

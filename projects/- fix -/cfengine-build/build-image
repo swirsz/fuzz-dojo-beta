@@ -16,7 +16,7 @@ cp -r /opt/fuzz-targets/core /src/core
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/string_fuzzer.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-#patch -tuN $SRC/core/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+#patch -tuN $SRC/core/tests/fuzz/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 
 cd $SRC/core
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then

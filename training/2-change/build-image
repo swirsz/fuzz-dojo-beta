@@ -21,5 +21,5 @@ else
    cp /home/hacker/training-change/*.c $SRC/$PROJECT_NAME/test/fuzz
    cp /home/hacker/training-change/build.sh $SRC
 fi
-patch -tuN /src/minizip/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+patch -tuN /src/minizip/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 sudo --preserve-env compile

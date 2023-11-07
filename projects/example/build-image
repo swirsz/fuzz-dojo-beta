@@ -10,7 +10,7 @@ cd $SRC
 cp -r /opt/fuzz-targets/example /src/example
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/Makefile.patch -r -
+patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME

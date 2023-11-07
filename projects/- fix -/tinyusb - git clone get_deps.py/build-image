@@ -14,7 +14,7 @@ cp -r /opt/fuzz-targets/tinyusb /src/tinyusb
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp -r $SRC/tinyusb/test/fuzz/device/cdc $SRC/tinyusb/test/fuzz/device/newfuzzer

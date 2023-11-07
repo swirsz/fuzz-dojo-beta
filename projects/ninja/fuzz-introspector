@@ -1,18 +1,16 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=ninja
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf ninja
 #git clone --depth 1 https://github.com/ninja-build/ninja
 cp -r /opt/fuzz-targets/ninja /src/ninja
 
 cp /src/$PROJECT_NAME/misc/manifest_fuzzer.cc /src/$PROJECT_NAME/misc/new_fuzzer.cc
-patch -tuN /src/$PROJECT_NAME/misc/new_fuzzer.cc -i /challenge/new_fuzzer.patch -r -
+patch -tuN /src/$PROJECT_NAME/misc/new_fuzzer.cc -i /challenge/.new_fuzzer.patch -r -
    
 cp /src/build.sh /src/ninja/misc/oss-fuzz/build.sh
 
 cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/misc
 cd /src/$PROJECT_NAME
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

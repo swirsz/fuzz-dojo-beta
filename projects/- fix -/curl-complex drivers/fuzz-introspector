@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=curl
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 
 rm -rf /src/curl
@@ -18,4 +16,4 @@ git clone --depth 1 https://github.com/curl/curl-fuzzer.git /src/curl_fuzzer
 /src/curl_fuzzer/scripts/ossfuzzdeps.sh
 
 cd /src/curl_fuzzer
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

@@ -18,7 +18,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.rb $SRC/fuzz
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/fuzz
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/fuzz
 
-#patch -tuN $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt -i /challenge/CMakeLists.patch -r -
+#patch -tuN $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then

@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=boost
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf /src/$PROJECT_NAME
 #apt-get update && apt-get install -y g++ python
@@ -13,4 +11,4 @@ cp -r /opt/fuzz-targets/boost /src/boost
 export OLD_LLVMPASS=1
 
 cd /src/$PROJECT_NAME
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

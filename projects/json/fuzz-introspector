@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=json
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf $PROJECT_NAME
 #git clone --depth 1 -b develop https://github.com/nlohmann/json.git
@@ -15,4 +13,4 @@ export OLD_LLVMPASS=1
 cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/tests/src
 cp /home/hacker/$PROJECT_NAME/Makefile /src/$PROJECT_NAME/tests
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

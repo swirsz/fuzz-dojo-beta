@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=lame
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 
 rm -rf lame
@@ -25,4 +23,4 @@ export OLD_LLVMPASS=1
 cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
 cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
 cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

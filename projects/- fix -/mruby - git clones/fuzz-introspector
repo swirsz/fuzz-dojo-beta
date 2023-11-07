@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=mruby
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 rm -rf /src/mruby
 rm -rf /src/mruby_seeds
@@ -30,4 +28,4 @@ cp /home/hacker/$PROJECT_NAME/*.c /src/mruby/oss-fuzz
 cp /home/hacker/$PROJECT_NAME/*.cpp /src/mruby/oss-fuzz
 cp /home/hacker/$PROJECT_NAME/*.h /src/mruby/oss-fuzz
 cp /home/hacker/$PROJECT_NAME/*.proto /src/mruby/oss-fuzz
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

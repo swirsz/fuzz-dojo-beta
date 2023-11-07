@@ -1,8 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=xz
-sudo cp /usr/local/sbin/loc_count /usr/local/sbin/fi /challenge
-sudo chmod 4755 /challenge/loc_count /challenge/fi
-/challenge/loc_count
+/challenge/.loc_count
 cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/tests/ossfuzz
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME

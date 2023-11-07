@@ -26,8 +26,8 @@ export OLD_LLVMPASS=1
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN /src/build.sh -i /challenge/build.patch -r -
-patch -tuN /src/git/Makefile -i /challenge/Makefile.patch -r -
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN /src/git/Makefile -i /challenge/.Makefile.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME

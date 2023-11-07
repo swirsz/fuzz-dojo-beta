@@ -28,7 +28,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/go-lpm.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz*.go $SRC/cel-go/cel/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.proto $SRC/
 
-#patch -tuN /src/build.sh -i /challenge/build.patch -r -
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then

@@ -1,0 +1,4 @@
+#!/opt/pwn.college/bash 
+cp /usr/local/sbin/loc_count /challenge/.loc_count
+cp /usr/local/sbin/fi /challenge/.fi
+chmod 4755 /challenge/.loc_count /challenge/.fi
