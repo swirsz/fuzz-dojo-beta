@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
 export PROJECT_NAME=valijson
-/challenge/loc_count
+/challenge/.loc_count
 cd /src
 
 rm -rf valijson
@@ -13,4 +13,4 @@ export OLD_LLVMPASS=1
 
 cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME/tests/fuzzing
-/challenge/fi $PROJECT_NAME
+/challenge/.fi $PROJECT_NAME
