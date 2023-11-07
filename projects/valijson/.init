@@ -1,0 +1,2 @@
+#!/opt/pwn.college/bash 
+cp /usr/local/sbin/loc_count /challenge/loc_count
