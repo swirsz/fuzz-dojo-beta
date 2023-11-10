@@ -3,4 +3,4 @@
 #cp /usr/local/sbin/fi /challenge/.fi
 ln /usr/local/sbin/loc_count /challenge/.loc_count
 ln -s /usr/local/sbin/fi /challenge/.fi
-#chmod 4755 /challenge/.loc_count /challenge/.fi
+chmod 4755 /challenge/.loc_count /challenge/.fi
