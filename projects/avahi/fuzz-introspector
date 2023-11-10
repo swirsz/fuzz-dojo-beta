@@ -3,5 +3,6 @@ export PROJECT_NAME=avahi
 /challenge/.loc_count
 cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/fuzz
+cp /challenge/public.zip $OUT/
 patch -tuN /src/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
 /challenge/.fi $PROJECT_NAME
