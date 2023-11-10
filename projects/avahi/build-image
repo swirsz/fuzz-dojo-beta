@@ -11,7 +11,7 @@ cd $SRC
 cp -r /opt/fuzz-targets/avahi /src/avahi 
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cp /challenge/public.zip $OUT/fuzz-packet_seed_corpus.zip
+cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
 patch -tuN /src/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
