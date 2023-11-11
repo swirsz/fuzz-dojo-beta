@@ -6,5 +6,7 @@ cd /src
 rm -rf /src/$PROJECT_NAME
 #git clone https://github.com/haproxy/haproxy
 cp -r /opt/fuzz-targets/haproxy /src/haproxy
+cp /home/hacker/$PROJECT_NAME/*.c /src
+cp /home/hacker/$PROJECT_NAME/build.sh /src
 
 /challenge/.fi $PROJECT_NAME
