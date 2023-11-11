@@ -1,0 +1,8 @@
+@@ -44,5 +44,5 @@
+ 
+ # Let's take the systemd public corpus here. It has been accumulating since 2018
+ # so it should be good enough for our purposes.
+-wget -O "$OUT/fuzz-packet_seed_corpus.zip" \
+-    https://storage.googleapis.com/systemd-backup.clusterfuzz-external.appspot.com/corpus/libFuzzer/systemd_fuzz-dns-packet/public.zip
++#wget -O "$OUT/fuzz-packet_seed_corpus.zip" \
++#    https://storage.googleapis.com/systemd-backup.clusterfuzz-external.appspot.com/corpus/libFuzzer/systemd_fuzz-dns-packet/public.zip
