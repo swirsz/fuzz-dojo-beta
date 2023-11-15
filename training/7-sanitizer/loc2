@@ -2,7 +2,7 @@
 INITIAL=1
 TARGET=45
 
-time sudo -H -u hacker bash -c "/challenge/.loc_count2 undefined"
+time sudo -H -u hacker bash -c "/challenge/.loc_count undefined newfuzzer"
 echo
 echo newfuzzer
 /usr/local/sbin/loc-calc newfuzzer
