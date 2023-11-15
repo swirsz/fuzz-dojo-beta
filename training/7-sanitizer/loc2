@@ -2,9 +2,7 @@
 INITIAL=1
 TARGET=45
 
-sudo cp /usr/local/sbin/loc_count2 /challenge/.loc_count2
-sudo chmod 4755 /challenge/.loc_count2
-time sudo -H -u hacker bash -c "/challenge/.loc_count2 undefined"
+time sudo -H -u hacker bash -c "/challenge/.loc_count undefined newfuzzer"
 echo
 echo newfuzzer
 /usr/local/sbin/loc-calc newfuzzer
