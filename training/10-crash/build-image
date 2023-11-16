@@ -18,7 +18,7 @@ if [ ! -d "/home/hacker/training-crashes" ]; then
    cp $SRC/minigzip_fuzzer.c $SRC/new_fuzzer.c
    cp $SRC/*.c* /home/hacker/training-crashes
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-crashes
-   chown -R hacker /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/training-crashes
 else
    cp /home/hacker/training-crashes/*.c* $SRC
    cp /home/hacker/training-crashes/build.sh $SRC

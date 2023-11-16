@@ -21,7 +21,7 @@ if [ ! -d "/home/hacker/training-sanitizer" ]; then
    mkdir /home/hacker/training-sanitizer
    cp $SRC/*.c /home/hacker/training-sanitizer
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-sanitizer
-   chown -R hacker /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/training-sanitizer
 else
    cp /home/hacker/training-sanitizer/*.c $SRC
    cp /home/hacker/training-sanitizer/build.sh $SRC

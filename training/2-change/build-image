@@ -16,7 +16,7 @@ if [ ! -d "/home/hacker/training-change" ]; then
    cp $SRC/$PROJECT_NAME/test/fuzz/unzip_fuzzer.c $SRC/$PROJECT_NAME/test/fuzz/new_fuzzer.c
    cp $SRC/$PROJECT_NAME/test/fuzz/*.c /home/hacker/training-change
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-change
-   chown -R hacker /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/training-change
 else
    cp /home/hacker/training-change/*.c $SRC/$PROJECT_NAME/test/fuzz
    cp /home/hacker/training-change/build.sh $SRC
