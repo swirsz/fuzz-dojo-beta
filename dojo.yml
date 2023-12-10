@@ -62,7 +62,7 @@ modules:
 
   - id: projects-simple
     name: SIMPLE PROJECTS
-    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
+    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.  These projects have relatively simple fuzz drivers.
 
     challenges:
 
@@ -141,7 +141,7 @@ modules:
 
   - id: projects-medium
     name: MEDIUM PROJECTS
-    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
+    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag. These projects have medium difficulty fuzz drivers.
 
     challenges:
 
@@ -207,7 +207,7 @@ modules:
 
   - id: projects-complex
     name: COMPLEX PROJECTS
-    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
+    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag. These projects have complex fuzz drivers.
 
     challenges:
 
