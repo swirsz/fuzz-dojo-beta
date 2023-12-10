@@ -172,6 +172,10 @@ modules:
       - id: libssh2
         name: LIBSSH2 (30.37%) 12632 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh2
+
+      - id: libvnc
+        name: LIBVNC (20.54%) 10793 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
       
       - id: miniz
         name: MINIZ (47.67%) 5423 loc
@@ -188,6 +192,10 @@ modules:
       - id: opensips
         name: OPENSIPS (13.37%) 62114 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
+
+      - id: openssh
+        name: OPENSSH (35.88%) 27975 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
 
       - id: tmux
         name: TMUX (12.78%) 48752 loc
@@ -238,18 +246,10 @@ modules:
       - id: libtasn1
         name: LIBTASN1 (59.15%) 6722 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtasn1
-      
-      - id: libvnc
-        name: LIBVNC (20.54%) 10793 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
-      
+            
       - id: openjpeg
         name: OPENJPEG (51.03%) 22939 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
-
-      - id: openssh
-        name: OPENSSH (35.88%) 27975 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
 
       - id: zlib
         name: ZLIB (69.77%) 5055 loc
