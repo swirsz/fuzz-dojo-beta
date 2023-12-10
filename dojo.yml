@@ -61,7 +61,7 @@ modules:
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
   - id: projects-simple
-    name: SIMPLE OSS-FUZZ PROJECTS
+    name: SIMPLE PROJECTS
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
 
     challenges:
@@ -140,7 +140,7 @@ modules:
 
 
   - id: projects-medium
-    name: MEDIUM OSS-FUZZ PROJECTS
+    name: MEDIUM PROJECTS
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
 
     challenges:
@@ -206,7 +206,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
 
   - id: projects-complex
-    name: COMPLEX OSS-FUZZ PROJECTS
+    name: COMPLEX PROJECTS
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
 
     challenges:
