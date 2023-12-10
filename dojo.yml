@@ -60,15 +60,11 @@ modules:
         name: Diagnose Crash Files
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
-  - id: projects
-    name: OSS-FUZZ PROJECTS
+  - id: projects-simple
+    name: SIMPLE OSS-FUZZ PROJECTS
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
 
     challenges:
-
-      - id: apache-httpd
-        name: APACHE-HTTPD (14.81%) 48312 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
 
       - id: arduinojson
         name: ARDUINOJSON (48.24%) 3599 loc 
@@ -78,53 +74,17 @@ modules:
         name: AVAHI (32.89%) 2566 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=avahi
 
-      - id: boost
-        name: BOOST (60.81%) 11995 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=boost
-
-      - id: bzip2
-        name: BZIP2 (92.97%) 2661 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bzip2
-
-      - id: c-ares
-        name: C-ARES (33.77%) 5676 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=c-ares
-
-      - id: casync
-        name: CASYNC (10.01%) 1678 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
-
       - id: cmake
         name: CMAKE (62.63%) 7778 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
-
-      - id: cppcheck
-        name: CPPCHECK (26.12%) 79321 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cppcheck
 
       - id: example
         name: EXAMPLE (my-api-repo) (100.00%) 20 loc
         description: Sample OSS-Fuzz project
 
-      - id: fmt
-        name: FMT (83.11%) 5904 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
-
-      - id: gfwx
-        name: GFWX (84.36%) 1087 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
-
-      - id: git
-        name: GIT (9.56%) 183986 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=git
-
       - id: haproxy
         name: HAPROXY (1.81%) 106108 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=haproxy
-
-      - id: janus-gateway
-        name: JANUS-GATEWAY (37.48%) 6131 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=janus-gateway
 
       - id: json
         name: JSON (72.80%) 8008 loc
@@ -134,61 +94,17 @@ modules:
         name: KAMAILIO (9.19%) 81190 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
 
-      - id: lame
-        name: LAME (40.15%) 23539 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
-
       - id: libsodium
         name: LIBSODIUM (20.67%) 7761 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
         
-      - id: libssh
-        name: LIBSSH (37.71%) 26927 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh
-        
-      - id: libssh2
-        name: LIBSSH2 (30.37%) 12632 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh2
-      
-      - id: libtasn1
-        name: LIBTASN1 (59.15%) 6722 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtasn1
-      
-      - id: libvnc
-        name: LIBVNC (20.54%) 10793 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
-      
       - id: lighttpd
         name: LIGHTTPD (34.58%) 1310 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
       
-      - id: miniz
-        name: MINIZ (47.67%) 5423 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=miniz
-
-      - id: minizip
-        name: MINIZIP (58.59%) 3639 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
-        
-      - id: mpg123
-        name: MPG123 (53.14%) 9826 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
-
       - id: ninja
         name: NINJA (32.26%) 4005 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ninja
-
-      - id: openjpeg
-        name: OPENJPEG (51.03%) 22939 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
-
-      - id: opensips
-        name: OPENSIPS (13.37%) 62114 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
-
-      - id: openssh
-        name: OPENSSH (35.88%) 27975 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
 
       - id: pycryptodome
         name: PYCRYPTODOME (80.19%) 1398 loc
@@ -197,18 +113,6 @@ modules:
       - id: snappy
         name: SNAPPY (61.58%) 1502 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=snappy
-
-      - id: tmux
-        name: TMUX (12.78%) 48752 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tmux
-
-      - id: unrar
-        name: UNRAR (15.16%) 13209 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
-
-      - id: uriparser
-        name: URIPARSER (78.88%) 4606 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=uriparser
 
       - id: usbguard
         name: USBGUARD (39.91%) 3525 loc (no FI report)
@@ -226,18 +130,127 @@ modules:
         name: WASM3 (71.51%) 4107 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wasm3
 
-      - id: xvid
-        name: XVID (33.47%) 13782 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
-
       - id: xz
         name: XZ (67.87%) 3414 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xz
 
-      - id: zlib
-        name: ZLIB (69.77%) 5055 loc
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
-
       - id: zopfli
         name: ZOPFLI (92.75%) 2221 loc
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zopfli
+
+
+  - id: projects-medium
+    name: MEDIUM OSS-FUZZ PROJECTS
+    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
+
+    challenges:
+
+      - id: apache-httpd
+        name: APACHE-HTTPD (14.81%) 48312 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
+
+      - id: boost
+        name: BOOST (60.81%) 11995 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=boost
+
+      - id: bzip2
+        name: BZIP2 (92.97%) 2661 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bzip2
+
+      - id: c-ares
+        name: C-ARES (33.77%) 5676 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=c-ares
+
+      - id: casync
+        name: CASYNC (10.01%) 1678 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
+
+      - id: gfwx
+        name: GFWX (84.36%) 1087 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
+
+      - id: libssh2
+        name: LIBSSH2 (30.37%) 12632 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh2
+      
+      - id: miniz
+        name: MINIZ (47.67%) 5423 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=miniz
+
+      - id: minizip
+        name: MINIZIP (58.59%) 3639 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
+        
+      - id: mpg123
+        name: MPG123 (53.14%) 9826 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
+
+      - id: opensips
+        name: OPENSIPS (13.37%) 62114 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
+
+      - id: tmux
+        name: TMUX (12.78%) 48752 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tmux
+
+      - id: unrar
+        name: UNRAR (15.16%) 13209 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
+
+      - id: uriparser
+        name: URIPARSER (78.88%) 4606 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=uriparser
+
+      - id: xvid
+        name: XVID (33.47%) 13782 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
+
+  - id: projects-complex
+    name: COMPLEX OSS-FUZZ PROJECTS
+    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag
+
+    challenges:
+
+      - id: cppcheck
+        name: CPPCHECK (26.12%) 79321 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cppcheck
+
+      - id: fmt
+        name: FMT (83.11%) 5904 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
+
+      - id: git
+        name: GIT (9.56%) 183986 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=git
+
+      - id: janus-gateway
+        name: JANUS-GATEWAY (37.48%) 6131 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=janus-gateway
+
+      - id: lame
+        name: LAME (40.15%) 23539 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
+
+      - id: libssh
+        name: LIBSSH (37.71%) 26927 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh
+        
+      - id: libtasn1
+        name: LIBTASN1 (59.15%) 6722 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtasn1
+      
+      - id: libvnc
+        name: LIBVNC (20.54%) 10793 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
+      
+      - id: openjpeg
+        name: OPENJPEG (51.03%) 22939 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
+
+      - id: openssh
+        name: OPENSSH (35.88%) 27975 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
+
+      - id: zlib
+        name: ZLIB (69.77%) 5055 loc
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
