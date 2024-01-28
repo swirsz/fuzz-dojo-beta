@@ -306,9 +306,9 @@ modules:
         name: file
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
 
-      - id: pixbuf
+      - id: gdk-pixbuf
         name: gdk-pixbuf
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pixbuf
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gdk-pixbuf
 
       - id: gpac
         name: gpac
