@@ -1,0 +1,5 @@
+#!/opt/pwn.college/bash
+export PROJECT_NAME=zzzzzzzzzz
+/challenge/.loc_count
+cd /src
+/challenge/.fi $PROJECT_NAME
