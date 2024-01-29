@@ -279,7 +279,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmark
 
       - id: curl
-        name: curl
+        name: curl - failing
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
 
       - id: cyclonedds
