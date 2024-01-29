@@ -303,7 +303,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ffmpeg
 
       - id: file
-        name: FILE
+        name: FILE *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
 
       - id: gdk-pixbuf
