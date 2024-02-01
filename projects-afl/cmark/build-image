@@ -14,3 +14,4 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 
 cd $SRC/$PROJECT_NAME
 sudo --preserve-env compile
+drivers

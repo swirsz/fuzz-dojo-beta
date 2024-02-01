@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=yara
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
@@ -31,3 +31,4 @@ else
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 sudo --preserve-env compile
+drivers

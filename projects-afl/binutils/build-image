@@ -16,3 +16,4 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_*.c $SRC/
 cd $SRC/
 
 sudo --preserve-env compile
+drivers

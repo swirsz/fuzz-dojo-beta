@@ -36,3 +36,4 @@ else
    cp /home/hacker/$PROJECT_NAME/* $SRC/curl_fuzzer
 fi
 sudo --preserve-env compile
+drivers

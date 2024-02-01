@@ -1,33 +1,18 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
-export PROJECT_NAME=zzzzzzzzzz
+export PROJECT_NAME=igraph
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-cp -r /opt/fuzz-targets/ /src/
-zzzzzzzzzz
+apt-get update && apt-get install -y cmake bison flex
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
+git clone --branch master  https://github.com/igraph/igraph
 
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzzing/build.sh $SRC/
 
 #patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-cd $SRC/
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
-   chown -R hacker /home/hacker/$PROJECT_NAME
-else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
-fi
+cd $SRC/$PROJECT_NAME
+
 sudo --preserve-env compile
+drivers
