@@ -263,7 +263,7 @@ modules:
     challenges:
 
       - id: bind9
-        name: bind9
+        name: bind9 - fails
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bind9
 
       - id: binutils
