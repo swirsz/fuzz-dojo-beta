@@ -387,7 +387,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libxml2
 
       - id: lua
-        name: lua - failing
+        name: lua - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lua
 
       - id: mbedtls
