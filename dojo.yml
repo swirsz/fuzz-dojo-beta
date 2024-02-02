@@ -399,15 +399,15 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mupdf
 
       - id: openssl
-        name: openssl
+        name: OPENSSL *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssl
 
       - id: poppler
-        name: poppler
+        name: poppler - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=poppler
 
       - id: speex
-        name: speex
+        name: SPEEX *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=speex
 
       - id: sqlite3
