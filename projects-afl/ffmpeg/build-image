@@ -1,5 +1,5 @@
 #!/opt/pwn.college/bash
-. /usr/local/sbin/e
+. /usr/local/sbin/eafl
 export PROJECT_NAME=ffmpeg
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'

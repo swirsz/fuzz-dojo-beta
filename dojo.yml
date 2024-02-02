@@ -411,23 +411,23 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=speex
 
       - id: sqlite3
-        name: sqlite3
+        name: SQLITE3 *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
 
       - id: w3m
-        name: w3m
+        name: W3M *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=w3m
 
       - id: wavpack
-        name: wavpack
+        name: WAVPACK *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wavpack
 
       - id: wireshark
-        name: wireshark
+        name: wireshark - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wireshark
 
       - id: woff2
-        name: woff2
+        name: WOFF2 *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=woff2
 
       - id: xpdf
