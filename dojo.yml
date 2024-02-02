@@ -371,7 +371,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtiff
 
       - id: libtpms
-        name: libtpms
+        name: LIBTPMS *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtpms
 
       - id: libvpx
@@ -379,7 +379,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
 
       - id: libwebp
-        name: libwebp
+        name: LIBWEBP *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libwebp
 
       - id: libxml2
@@ -391,11 +391,11 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lua
 
       - id: mbedtls
-        name: mbedtls
+        name: MBEDTLS *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mbedtls
 
       - id: mupdf
-        name: mupdf
+        name: MUPDF *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mupdf
 
       - id: openssl
