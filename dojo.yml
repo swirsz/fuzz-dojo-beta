@@ -299,7 +299,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
 
       - id: ffmpeg
-        name: ffmpeg
+        name: FFMPEG *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ffmpeg
 
       - id: file
