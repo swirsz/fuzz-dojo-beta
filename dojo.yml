@@ -263,15 +263,15 @@ modules:
     challenges:
 
       - id: bind9
-        name: bind9 - fails
+        name: bind9 - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bind9
 
       - id: binutils
-        name: binutils - fails
+        name: binutils - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=binutils
 
       - id: civetweb
-        name: civetweb - fails
+        name: civetweb - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=civetweb
 
       - id: cmark
@@ -283,7 +283,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
 
       - id: cyclonedds
-        name: cyclonedds
+        name: CYCLONEDDS *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cyclonedds
 
       - id: e2fsprogs
@@ -355,7 +355,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libevent
 
       - id: liblouis
-        name: liblouis
+        name: LIBLOUIS *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=liblouis
 
       - id: libpng
@@ -383,7 +383,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libwebp
 
       - id: libxml2
-        name: libxml2
+        name: LIBXML2 *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libxml2
 
       - id: lua
@@ -431,13 +431,13 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=woff2
 
       - id: xpdf
-        name: xpdf
+        name: xpdf - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xpdf
 
       - id: yara
-        name: yara
+        name: YARA *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=yara
 
       - id: zlib
-        name: zlib
+        name: ZLIB *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
