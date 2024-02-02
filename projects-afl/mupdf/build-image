@@ -5,30 +5,19 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-cp -r /opt/fuzz-targets/ /src/
-zzzzzzzzzz
+apt-get update && apt-get install -y make libtool pkg-config
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
-
+git clone --recursive --depth 1 git://git.ghostscript.com/mupdf.git mupdf
+git clone --depth 1 https://github.com/mozilla/pdf.js pdf.js && \
+    zip -q $SRC/pdf_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf && \
+    rm -rf pdf.js
+wget https://raw.githubusercontent.com/rc0r/afl-fuzz/master/dictionaries/pdf.dict
+mv pdf.dict pdf_fuzzer.dict
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-cd $SRC/
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
-   chown -R hacker /home/hacker/$PROJECT_NAME
-else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
-fi
+cd $SRC/mupdf
 sudo --preserve-env compile
 drivers

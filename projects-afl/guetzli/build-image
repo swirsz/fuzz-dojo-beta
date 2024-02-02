@@ -10,9 +10,11 @@ apt-get update && apt-get install -y make autoconf automake libtool libpng-dev p
 mkdir afl-testcases
 
 cd afl-testcases/ && curl https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz | tar -xz
+cd $SRC
+
 zip guetzli_fuzzer_seed_corpus.zip afl-testcases/jpeg/full/images/* afl-testcases/jpeg_turbo/full/images/* $SRC/libjpeg-turbo/testimages/
 
-git clone --depth=1 https://github.com/google/guetzli guetzli
+git clone --depth=1 https://github.com/google/guetzli 
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

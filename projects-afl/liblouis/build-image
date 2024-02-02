@@ -7,7 +7,7 @@ cd $SRC
 
 apt-get update && apt-get install -y make autoconf automake libtool \
   pkg-config zlib1g-dev libpci-dev
-git clone --depth 1 https://github.com/liblouis/liblouisz
+git clone --depth 1 https://github.com/liblouis/liblouis
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

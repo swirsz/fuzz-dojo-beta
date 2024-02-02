@@ -5,30 +5,25 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-#apt-get update && apt-get install -y zzzzzzzzzz
-cp -r /opt/fuzz-targets/ /src/
-zzzzzzzzzz
+apt-get update && apt-get install -y make cmake
+apt-get update && apt-get install -y \
+    python-all-dev \
+    python3-all-dev \
+    python3-pip
+# mbedtls needs jsonschema which needs rpds-py which needs pip>=20
+# or a Rust toolchain.
+pip3 install 'pip>=20'
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-zzzzzzzzzz
+git clone --recursive --depth 1 -b development https://github.com/Mbed-TLS/mbedtls.git mbedtls
+pip3 install -r $SRC/mbedtls/scripts/basic.requirements.txt
 
+git clone --depth 1 https://github.com/google/boringssl.git boringssl
+git clone --depth 1 https://github.com/openssl/openssl.git openssl && \
+    cd openssl && \
+    git submodule update --init fuzz/corpora
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-cd $SRC/
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/zzzzzzzzzz.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
-   chown -R hacker /home/hacker/$PROJECT_NAME
-else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
-fi
+cd $SRC/mbedtls
 sudo --preserve-env compile
 drivers

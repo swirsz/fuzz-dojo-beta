@@ -315,7 +315,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gpac
 
       - id: graphicsmagick
-        name: graphicsmagick
+        name: GRAPHICSMAGICK *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=graphicsmagick
 
       - id: gstreamer
@@ -327,7 +327,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=guetzli
 
       - id: igraph
-        name: igraph
+        name: IGRAPH *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
 
       - id: imagemagick
@@ -343,15 +343,15 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
 
       - id: libarchive
-        name: libarchive
+        name: libarchive - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libarchive
 
       - id: libdwarf
-        name: libdwarf
+        name: libdwarf - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libdwarf
 
       - id: libevent
-        name: libevent
+        name: libevent - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libevent
 
       - id: liblouis
@@ -359,15 +359,15 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=liblouis
 
       - id: libpng
-        name: libpng
+        name: LIBPNG *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpng
 
       - id: libsass
-        name: libsass
+        name: LIBSASS *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsass
 
       - id: libtiff
-        name: libtiff
+        name: libtiff - failed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtiff
 
       - id: libtpms
@@ -375,7 +375,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtpms
 
       - id: libvpx
-        name: libvpx
+        name: LIBVPX *
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
 
       - id: libwebp
