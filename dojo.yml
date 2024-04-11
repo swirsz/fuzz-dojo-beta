@@ -71,71 +71,71 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=arduinojson
 
       - id: avahi
-        name: AVAHI (32.89%) 2566 loc
+        name: AVAHI - 2566 loc 32% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=avahi
 
       - id: cmake
-        name: CMAKE (62.63%) 7778 loc
+        name: CMAKE - 7778 loc 62% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
 
       - id: example
-        name: EXAMPLE (my-api-repo) (100.00%) 20 loc
+        name: EXAMPLE (my-api-repo) - 20 loc 100% coverage
         description: Sample OSS-Fuzz project
 
       - id: haproxy
-        name: HAPROXY (1.81%) 106108 loc
+        name: HAPROXY - 106108 loc 1% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=haproxy
 
       - id: json
-        name: JSON (72.80%) 8008 loc
+        name: JSON - 8008 loc 72% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json
 
       - id: kamailio
-        name: KAMAILIO (9.19%) 81190 loc
+        name: KAMAILIO - 81190 loc 9% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
 
       - id: libsodium
-        name: LIBSODIUM (20.67%) 7761 loc
+        name: LIBSODIUM - 7761 loc 20% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
         
       - id: lighttpd
-        name: LIGHTTPD (34.58%) 1310 loc
+        name: LIGHTTPD - 1310 loc 34% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
       
       - id: ninja
-        name: NINJA (32.26%) 4005 loc
+        name: NINJA - 4005 loc 32% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ninja
 
       - id: pycryptodome
-        name: PYCRYPTODOME (80.19%) 1398 loc
+        name: PYCRYPTODOME - 1398 loc 80% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pycryptodome
 
       - id: snappy
-        name: SNAPPY (61.58%) 1502 loc
+        name: SNAPPY - 1502 loc 61% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=snappy
 
       - id: usbguard
-        name: USBGUARD (39.91%) 3525 loc (no FI report)
+        name: USBGUARD - 3525 loc 39% coverage (no FI report)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=usbguard
 
       - id: valijson
-        name: VALIJSON (9.37%) 3566 loc
+        name: VALIJSON - 3566 loc 9% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=valijson
 
       - id: vorbis
-        name: VORBIS (35.22%) 8745 loc
+        name: VORBIS - 8745 loc 35% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vorbis
 
       - id: wasm3
-        name: WASM3 (71.51%) 4107 loc
+        name: WASM3 - 4107 loc 71% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wasm3
 
       - id: xz
-        name: XZ (67.87%) 3414 loc
+        name: XZ - 3414 loc 67% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xz
 
       - id: zopfli
-        name: ZOPFLI (92.75%) 2221 loc
+        name: ZOPFLI - 2221 loc 92% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zopfli
 
 
@@ -146,71 +146,71 @@ modules:
     challenges:
 
       - id: apache-httpd
-        name: APACHE-HTTPD (14.81%) 48312 loc
+        name: APACHE-HTTPD - 48312 loc 14% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
 
       - id: boost
-        name: BOOST (60.81%) 11995 loc
+        name: BOOST - 11995 loc 60% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=boost
 
       - id: bzip2
-        name: BZIP2 (92.97%) 2661 loc
+        name: BZIP2 - 2661 loc 92% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bzip2
 
       - id: c-ares
-        name: C-ARES (33.77%) 5676 loc
+        name: C-ARES - 5676 loc 33% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=c-ares
 
       - id: casync
-        name: CASYNC (10.01%) 1678 loc
+        name: CASYNC - 1678 loc 10% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
 
       - id: gfwx
-        name: GFWX (84.36%) 1087 loc
+        name: GFWX - 1087 loc 84% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
 
       - id: libssh2
-        name: LIBSSH2 (30.37%) 12632 loc
+        name: LIBSSH2 - 12632 loc 30% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh2
 
       - id: libvnc
-        name: LIBVNC (20.54%) 10793 loc
+        name: LIBVNC - 10793 loc 20% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
       
       - id: miniz
-        name: MINIZ (47.67%) 5423 loc
+        name: MINIZ - 5423 loc 47% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=miniz
 
       - id: minizip
-        name: MINIZIP (58.59%) 3639 loc
+        name: MINIZIP - 3639 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
         
       - id: mpg123
-        name: MPG123 (53.14%) 9826 loc
+        name: MPG123 - 9826 loc 53% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
 
       - id: opensips
-        name: OPENSIPS (13.37%) 62114 loc
+        name: OPENSIPS - 62114 loc 13% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
 
       - id: openssh
-        name: OPENSSH (35.88%) 27975 loc
+        name: OPENSSH - 27975 loc 35% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
 
       - id: tmux
-        name: TMUX (12.78%) 48752 loc
+        name: TMUX - 48752 loc 12% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tmux
 
       - id: unrar
-        name: UNRAR (15.16%) 13209 loc
+        name: UNRAR - 13209 loc 15% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
 
       - id: uriparser
-        name: URIPARSER (78.88%) 4606 loc
+        name: URIPARSER - 4606 loc 78% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=uriparser
 
       - id: xvid
-        name: XVID (33.47%) 13782 loc
+        name: XVID - 13782 loc 33% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
 
   - id: projects-complex
@@ -220,39 +220,39 @@ modules:
     challenges:
 
       - id: cppcheck
-        name: CPPCHECK (26.12%) 79321 loc
+        name: CPPCHECK - 79321 loc 26% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cppcheck
 
       - id: fmt
-        name: FMT (83.11%) 5904 loc
+        name: FMT - 5904 loc 83% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
 
       - id: git
-        name: GIT (9.56%) 183986 loc
+        name: GIT - 183986 loc 9% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=git
 
       - id: janus-gateway
-        name: JANUS-GATEWAY (37.48%) 6131 loc
+        name: JANUS-GATEWAY - 6131 loc 37% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=janus-gateway
 
       - id: lame
-        name: LAME (40.15%) 23539 loc
+        name: LAME - 23539 loc 40% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
 
       - id: libssh
-        name: LIBSSH (37.71%) 26927 loc
+        name: LIBSSH - 26927 loc 37% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh
         
       - id: libtasn1
-        name: LIBTASN1 (59.15%) 6722 loc
+        name: LIBTASN1 - 6722 loc 59% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtasn1
             
       - id: openjpeg
-        name: OPENJPEG (51.03%) 22939 loc
+        name: OPENJPEG - 22939 loc 51% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
 
       - id: zlib
-        name: ZLIB (69.77%) 5055 loc
+        name: ZLIB - 5055 loc 69% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
 
 
