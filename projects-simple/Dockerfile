@@ -3,6 +3,12 @@ FROM pwncollege-challenge-2304
 USER root
 RUN echo hi
 
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get update && xargs apt-get install -yqq <<EOF
+    zip
+EOF
+
 COPY sbin/none              /usr/local/sbin/none
 COPY sbin/address           /usr/local/sbin/address
 COPY sbin/memory            /usr/local/sbin/memory
