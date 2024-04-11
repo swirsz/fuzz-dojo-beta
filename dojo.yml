@@ -32,7 +32,7 @@ modules:
         name: Fix Broken Fuzzing Harness
         description: Repair a broken fuzzing harness.  Run /challenge/training in Terminal to start.
 
-      - id 4-parameters
+      - id: 4-parameters
         name: Initial Parameters
         description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in Terminal to start.
 
