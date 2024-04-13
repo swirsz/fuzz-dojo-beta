@@ -2,7 +2,7 @@ id: fuzz
 
 name: FUZZ HARNESSING
 
-image: docker.io/library/fuzzimg
+image: fuzzimg
 
 description: |
   Important Resources:
