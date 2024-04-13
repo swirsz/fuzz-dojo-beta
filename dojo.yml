@@ -17,7 +17,7 @@ modules:
   - id: training
     name: TRAINING
     description: Learn techniques to improve the code coverage of fuzz driver harnesses
-    image: fuzzimg
+    image: fuzzimg:latest
 
     challenges:
 
