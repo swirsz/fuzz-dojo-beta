@@ -2,6 +2,8 @@ id: fuzz
 
 name: FUZZ HARNESSING
 
+image: fuzzimg:latest
+
 description: |
   Important Resources:
   - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
