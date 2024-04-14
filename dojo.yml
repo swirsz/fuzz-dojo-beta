@@ -2,6 +2,8 @@ id: fuzz
 
 name: FUZZ HARNESSING
 
+image: fuzzimg
+
 description: |
   Important Resources:
   - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
@@ -17,7 +19,6 @@ modules:
   - id: training
     name: TRAINING
     description: Learn techniques to improve the code coverage of fuzz driver harnesses
-    image: docker.io/stevenwirsz/fuzzimg
 
     challenges:
 
