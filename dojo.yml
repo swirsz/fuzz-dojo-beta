@@ -2,7 +2,7 @@ id: fuzz
 
 name: FUZZ HARNESSING
 
-image: fuzzimg
+image: fuzz-base
 
 description: |
   Important Resources:
