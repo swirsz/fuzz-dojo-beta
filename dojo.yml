@@ -2,7 +2,6 @@ id: fuzz
 
 name: FUZZ HARNESSING
 
-image: stevenwirsz/fuzz-base:latest
 
 description: |
   Important Resources:
