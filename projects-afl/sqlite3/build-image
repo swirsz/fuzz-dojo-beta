@@ -14,6 +14,8 @@ mkdir $SRC/sqlite3 && \
     curl 'https://www.sqlite.org/src/tarball?uuid=trunk' -o sqlite3.tar.gz && \
     tar xzf sqlite3.tar.gz
 
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 cd $SRC
 find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip
 

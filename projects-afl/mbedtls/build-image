@@ -22,6 +22,11 @@ git clone --depth 1 https://github.com/openssl/openssl.git openssl && \
     cd openssl && \
     git submodule update --init fuzz/corpora
 
+
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/mbedtls

@@ -30,6 +30,17 @@ git clone --depth 1 https://gitlab.xiph.org/xiph/theora.git
 git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
 git clone --depth 1 https://gitlab.gnome.org/GNOME/libxml2.git
 
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/group_seed_corpus.py $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

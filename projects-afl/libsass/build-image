@@ -8,6 +8,9 @@ cd $SRC
 apt-get update && apt-get install -y make autoconf automake libtool
 git clone --depth 1 https://github.com/sass/libsass.git libsass
 
+
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1

@@ -18,6 +18,9 @@ git clone --depth 1 https://github.com/file/file.git
 git clone --depth 1 https://github.com/DavidKorczynski/binary-samples.git
 git clone --depth 1 https://github.com/corkami/pocs
 
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzzer_temp_file.h $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/magic_fuzzer.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/magic_fuzzer_loaddb.cc $SRC/

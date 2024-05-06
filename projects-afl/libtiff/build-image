@@ -14,6 +14,13 @@ git clone https://www.cl.cam.ac.uk/~mgk25/git/jbigkit
 wget https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz
 wget https://raw.githubusercontent.com/google/AFL/debe27037b9444bbf090a0ffbd5d24889bb887ae/dictionaries/tiff.dict
 
+
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/$PROJECT_NAME

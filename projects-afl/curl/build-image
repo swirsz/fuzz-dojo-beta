@@ -17,7 +17,7 @@ cp -r /opt/fuzz-targets/curl /src/curl
 cp -r /opt/fuzz-targets/curl_fuzzer /src/curl_fuzzer
 
 # Use curl-fuzzer's scripts to get latest dependencies.
-$SRC/curl_fuzzer/scripts/ossfuzz.sh
+#$SRC/curl_fuzzer/scripts/ossfuzz.sh
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

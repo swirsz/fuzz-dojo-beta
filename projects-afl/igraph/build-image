@@ -9,6 +9,8 @@ apt-get update && apt-get install -y cmake bison flex
 
 git clone --branch master  https://github.com/igraph/igraph
 
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 cp $SRC/$PROJECT_NAME/fuzzing/build.sh $SRC/
 
 #patch -tuN /src/build.sh -i /challenge/.build.patch -r -

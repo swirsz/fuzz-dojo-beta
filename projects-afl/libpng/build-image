@@ -10,6 +10,11 @@ apt-get update && \
 
 git clone --depth 1 https://github.com/madler/zlib.git
 git clone --depth 1 https://github.com/pnggroup/libpng.git
+
+
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 cp libpng/contrib/oss-fuzz/build.sh $SRC
 
 #patch -tuN /src/build.sh -i /challenge/.build.patch -r -

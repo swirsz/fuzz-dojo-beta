@@ -7,6 +7,7 @@ cd $SRC
 
 apt-get update && apt-get install -y libgc-dev
 git clone https://github.com/tats/w3m
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

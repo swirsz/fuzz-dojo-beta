@@ -260,186 +260,130 @@ modules:
 
   - id: projects-afl
     name: AFL PROJECTS
-    description: These OSS-Fuzz Projects are under development
+    description: These OSS-Fuzz Projects build with AFL++
 
     challenges:
 
-      - id: bind9
-        name: bind9 - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bind9
-
-      - id: binutils
-        name: binutils - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=binutils
-
-      - id: civetweb
-        name: civetweb - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=civetweb
-
       - id: cmark
-        name: CMARK *
+        name: CMARK
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmark
 
       - id: curl
-        name: CURL *
+        name: CURL
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
 
       - id: cyclonedds
-        name: CYCLONEDDS *
+        name: CYCLONEDDS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cyclonedds
 
       - id: e2fsprogs
-        name: E2FSPROGS *
+        name: E2FSPROGS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=e2fsprogs
 
       - id: elfutils
-        name: ELFUTILS *
+        name: ELFUTILS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=elfutils
 
       - id: exiv2
-        name: EXIV2 *
+        name: EXIV2
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
 
       - id: ffmpeg
-        name: FFMPEG *
+        name: FFMPEG
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ffmpeg
 
       - id: file
-        name: FILE *
+        name: FILE
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
 
-      - id: gdk-pixbuf
-        name: gdk-pixbuf - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gdk-pixbuf
-
-      - id: gpac
-        name: gpac - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gpac
-
       - id: graphicsmagick
-        name: GRAPHICSMAGICK *
+        name: GRAPHICSMAGICK
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=graphicsmagick
 
       - id: gstreamer
-        name: GSTREAMER *
+        name: GSTREAMER
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gstreamer
 
       - id: guetzli
-        name: GUETZLI *
+        name: GUETZLI
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=guetzli
 
       - id: igraph
-        name: IGRAPH *
+        name: IGRAPH
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
 
-      - id: imagemagick
-        name: imagemagick - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=imagemagick
-
       - id: jq
-        name: JQ *
+        name: JQ
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=jq
 
       - id: lame
-        name: LAME *
+        name: LAME
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
 
-      - id: libarchive
-        name: libarchive - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libarchive
-
-      - id: libdwarf
-        name: libdwarf - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libdwarf
-
-      - id: libevent
-        name: libevent - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libevent
-
       - id: liblouis
-        name: LIBLOUIS *
+        name: LIBLOUIS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=liblouis
 
       - id: libpng
-        name: LIBPNG *
+        name: LIBPNG
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpng
 
       - id: libsass
-        name: LIBSASS *
+        name: LIBSASS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsass
 
-      - id: libtiff
-        name: libtiff - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtiff
-
       - id: libtpms
-        name: LIBTPMS *
+        name: LIBTPMS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtpms
 
       - id: libvpx
-        name: LIBVPX *
+        name: LIBVPX
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
 
       - id: libwebp
-        name: LIBWEBP *
+        name: LIBWEBP
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libwebp
 
       - id: libxml2
-        name: LIBXML2 *
+        name: LIBXML2
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libxml2
 
-      - id: lua
-        name: lua - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lua
-
       - id: mbedtls
-        name: MBEDTLS *
+        name: MBEDTLS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mbedtls
 
       - id: mupdf
-        name: MUPDF *
+        name: MUPDF
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mupdf
 
       - id: openssl
-        name: OPENSSL *
+        name: OPENSSL
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssl
 
-      - id: poppler
-        name: poppler - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=poppler
-
       - id: speex
-        name: SPEEX *
+        name: SPEEX
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=speex
 
       - id: sqlite3
-        name: SQLITE3 *
+        name: SQLITE3
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
 
       - id: w3m
-        name: W3M *
+        name: W3M
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=w3m
 
       - id: wavpack
-        name: WAVPACK *
+        name: WAVPACK
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wavpack
 
-      - id: wireshark
-        name: wireshark - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wireshark
-
       - id: woff2
-        name: WOFF2 *
+        name: WOFF2
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=woff2
 
-      - id: xpdf
-        name: xpdf - failed
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xpdf
-
       - id: yara
-        name: YARA *
+        name: YARA
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=yara
 
       - id: zlib
-        name: ZLIB *
+        name: ZLIB
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib

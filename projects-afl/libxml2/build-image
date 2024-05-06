@@ -14,6 +14,8 @@ curl -LO http://mirrors.kernel.org/ubuntu/pool/main/a/automake-1.16/automake_1.1
     apt install ./automake_1.16.5-1.3_all.deb
 git clone --depth 1 https://gitlab.gnome.org/GNOME/libxml2.git
 
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

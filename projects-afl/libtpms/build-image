@@ -12,6 +12,8 @@ apt-get update && \
         libssl-dev libseccomp-dev pkg-config
 git clone --depth 1 https://github.com/stefanberger/libtpms libtpms
 
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/libtpms

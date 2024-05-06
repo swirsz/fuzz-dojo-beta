@@ -12,6 +12,11 @@ wget https://storage.googleapis.com/downloads.webmproject.org/webp/testdata/fuzz
 unzip fuzz_seed_corpus.zip -d libwebp-test-data/
 rm fuzz_seed_corpus.zip
 
+
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/libwebp

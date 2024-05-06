@@ -8,6 +8,8 @@ cd $SRC
 git clone https://github.com/Exiv2/exiv2 exiv2
 ./exiv2/ci/install_dependencies.sh
 
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/$PROJECT_NAME

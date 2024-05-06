@@ -14,6 +14,10 @@ git clone --depth 1 https://github.com/mozilla/pdf.js pdf.js && \
 wget https://raw.githubusercontent.com/rc0r/afl-fuzz/master/dictionaries/pdf.dict
 mv pdf.dict pdf_fuzzer.dict
 
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/

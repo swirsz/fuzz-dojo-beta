@@ -5,16 +5,18 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt install -y \
-    autoconf \
-    automake \
-    libssl-dev \
-    libcunit1 \
-    libcunit1-dev \
-    bison \
-    libbison-dev
+#apt-get update && apt install -y \
+#    autoconf \
+#    automake \
+#    libssl-dev \
+#    libcunit1 \
+#    libcunit1-dev \
+#    bison \
+#    libbison-dev
 
-git clone --depth 1 https://github.com/eclipse-cyclonedds/cyclonedds
+#git clone --depth 1 https://github.com/eclipse-cyclonedds/cyclonedds
+
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305

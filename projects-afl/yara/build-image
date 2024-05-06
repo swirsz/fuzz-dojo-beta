@@ -15,6 +15,7 @@ apt-get update && apt-get install -y \
   flex
 
 git clone --depth 1 https://github.com/VirusTotal/yara.git
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

@@ -9,6 +9,7 @@ rm -rf $SRC/$PROJECT_NAME
 #apt-get update && apt-get install -y make autoconf libtool pkg-config wget
 git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
 git clone --depth 1 https://gitlab.xiph.org/xiph/speex.git speex
+cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
