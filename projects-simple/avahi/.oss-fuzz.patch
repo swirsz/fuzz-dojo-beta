@@ -1,4 +1,4 @@
-@@ -45,11 +45,11 @@
+@@ -45,12 +45,12 @@
  export LIB_FUZZING_ENGINE=${LIB_FUZZING_ENGINE:--fsanitize=fuzzer}
  
  if [[ -n "$FUZZING_ENGINE" ]]; then
@@ -7,12 +7,15 @@
 +    #apt-get update
 +    #apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev
  
-     if [[ "$ARCHITECTURE" == i386 ]]; then
+-    if [[ "$ARCHITECTURE" == i386 ]]; then
 -        apt-get install -y libexpat-dev:i386
+-    fi
++    #if [[ "$ARCHITECTURE" == i386 ]]; then
 +        #apt-get install -y libexpat-dev:i386
-     fi
++    #fi
  
      if [[ "$SANITIZER" == undefined ]]; then
+         additional_ubsan_checks=pointer-overflow,alignment
 @@ -93,5 +93,5 @@
  
  # Let's take the systemd public corpus here. It has been accumulating since 2018
