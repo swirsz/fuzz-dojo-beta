@@ -5,15 +5,14 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && \
-    apt-get install -y make autoconf automake libtool zlib1g-dev
+#apt-get update && \
+#    apt-get install -y make autoconf automake libtool zlib1g-dev
 
-git clone --depth 1 https://github.com/madler/zlib.git
-git clone --depth 1 https://github.com/pnggroup/libpng.git
+#git clone --depth 1 https://github.com/madler/zlib.git
+#git clone --depth 1 https://github.com/pnggroup/libpng.git
 
-
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/zlib /src/zlib
+cp -r /opt/fuzz-targets/libpng /src/libpng
 
 cp libpng/contrib/oss-fuzz/build.sh $SRC
 

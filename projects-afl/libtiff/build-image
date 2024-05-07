@@ -5,21 +5,22 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make autoconf automake libtool cmake nasm
-git clone --depth 1 https://gitlab.com/libtiff/libtiff
-git clone --depth 1 https://github.com/madler/zlib
-git clone --depth 1 https://github.com/libjpeg-turbo/libjpeg-turbo
-git clone https://www.cl.cam.ac.uk/~mgk25/git/jbigkit
+#apt-get update && apt-get install -y make autoconf automake libtool cmake nasm
+#git clone --depth 1 https://gitlab.com/libtiff/libtiff
+#git clone --depth 1 https://github.com/madler/zlib
+#git clone --depth 1 https://github.com/libjpeg-turbo/libjpeg-turbo
+#git clone https://www.cl.cam.ac.uk/~mgk25/git/jbigkit
 
-wget https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz
-wget https://raw.githubusercontent.com/google/AFL/debe27037b9444bbf090a0ffbd5d24889bb887ae/dictionaries/tiff.dict
+#wget https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz
+#wget https://raw.githubusercontent.com/google/AFL/debe27037b9444bbf090a0ffbd5d24889bb887ae/dictionaries/tiff.dict
 
 
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/libtiff /src/libtiff
+cp -r /opt/fuzz-targets/zlib /src/zlib
+cp -r /opt/fuzz-targets/libjpeg-turbo /src/libjpeg-turbo
+cp -r /opt/fuzz-targets/jbigkit /src/jbigkit
+cp -r /opt/fuzz-targets/afl-testcases /src/afl-testcases
+cp -r /opt/fuzz-targets/tiff.dict /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

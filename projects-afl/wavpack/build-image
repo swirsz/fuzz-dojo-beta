@@ -5,10 +5,10 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make autoconf automake libtool gettext
-git clone --depth 1 https://github.com/dbry/WavPack.git wavpack
+#apt-get update && apt-get install -y make autoconf automake libtool gettext
+#git clone --depth 1 https://github.com/dbry/WavPack.git wavpack
 
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/wavpack /src/wavpack
 
 cp wavpack/fuzzing/build.sh $SRC
 

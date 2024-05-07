@@ -5,10 +5,10 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make autoconf automake libtool
+#apt-get update && apt-get install -y make autoconf automake libtool
 
-git clone --depth 1 --recursive https://github.com/google/woff2
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+#git clone --depth 1 --recursive https://github.com/google/woff2
+cp -r /opt/fuzz-targets/woff2 /src/woff2
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

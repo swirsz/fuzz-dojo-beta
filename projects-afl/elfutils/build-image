@@ -5,11 +5,11 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && \
-    apt-get install -y pkg-config make autoconf autopoint zlib1g-dev zlib1g-dev:i386 flex gawk bison
-git clone --depth 1 git://sourceware.org/git/elfutils.git
+#apt-get update && \
+#    apt-get install -y pkg-config make autoconf autopoint zlib1g-dev zlib1g-dev:i386 flex gawk bison
+#git clone --depth 1 git://sourceware.org/git/elfutils.git
 
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/elfutils /src/elfutils
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.zip $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/

@@ -288,17 +288,9 @@ modules:
         name: EXIV2
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
 
-      - id: ffmpeg
-        name: FFMPEG
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ffmpeg
-
       - id: file
         name: FILE
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
-
-      - id: graphicsmagick
-        name: GRAPHICSMAGICK
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=graphicsmagick
 
       - id: gstreamer
         name: GSTREAMER

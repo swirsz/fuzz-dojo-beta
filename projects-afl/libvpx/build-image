@@ -5,13 +5,13 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y yasm wget gcc
+#apt-get update && apt-get install -y yasm wget gcc
 
-git clone https://chromium.googlesource.com/webm/libvpx
-wget https://storage.googleapis.com/downloads.webmproject.org/test_data/fuzzer/vpx_fuzzer_seed_corpus.zip
+#git clone https://chromium.googlesource.com/webm/libvpx
+#wget https://storage.googleapis.com/downloads.webmproject.org/test_data/fuzzer/vpx_fuzzer_seed_corpus.zip
 
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/libvpx /src/libvpx
+cp -r /opt/fuzz-targets/vpx_fuzzer_seed_corpus.zip /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/vpx_dec_fuzzer.dict $SRC/

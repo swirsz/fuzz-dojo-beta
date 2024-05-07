@@ -5,22 +5,22 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && \
-   apt-get install -y make autoconf automake libtool build-essential pkg-config bison flex patchelf \
-    python3-pip ninja-build && \
-   pip3 install meson==1.2.3
+#apt-get update && \
+#   apt-get install -y make autoconf automake libtool build-essential pkg-config bison flex patchelf \
+#   python3-pip ninja-build && \
+#   pip3 install meson==1.2.3
 
-git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git vorbis
-git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git ogg
-git clone --depth 1 https://gitlab.xiph.org/xiph/theora.git theora
+#git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git vorbis
+#git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git ogg
+#git clone --depth 1 https://gitlab.xiph.org/xiph/theora.git theora
 
 # Checkout repository
-git clone --depth 1 --recursive https://gitlab.freedesktop.org/gstreamer/gstreamer.git gstreamer
+#git clone --depth 1 --recursive https://gitlab.freedesktop.org/gstreamer/gstreamer.git gstreamer
 
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/vorbis /src/vorbis
+cp -r /opt/fuzz-targets/ogg /src/ogg
+cp -r /opt/fuzz-targets/theora /src/theora
+cp -r /opt/fuzz-targets/gstreamer /src/gstreamer
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

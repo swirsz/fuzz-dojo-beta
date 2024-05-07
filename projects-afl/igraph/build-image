@@ -5,11 +5,11 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y cmake bison flex
+#apt-get update && apt-get install -y cmake bison flex
 
-git clone --branch master  https://github.com/igraph/igraph
+#git clone --branch master  https://github.com/igraph/igraph
 
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/igraph /src/igraph
 
 cp $SRC/$PROJECT_NAME/fuzzing/build.sh $SRC/
 

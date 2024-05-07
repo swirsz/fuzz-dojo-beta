@@ -5,12 +5,12 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y \
-  make flex bison libtool automake autoconf
+#apt-get update && apt-get install -y \
+#  make flex bison libtool automake autoconf
 
-git clone --depth 1 https://github.com/jqlang/jq
+#git clone --depth 1 https://github.com/jqlang/jq
 
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/jq /src/jq
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/

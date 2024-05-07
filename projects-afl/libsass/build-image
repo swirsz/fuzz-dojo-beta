@@ -5,11 +5,10 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make autoconf automake libtool
-git clone --depth 1 https://github.com/sass/libsass.git libsass
+#apt-get update && apt-get install -y make autoconf automake libtool
+#git clone --depth 1 https://github.com/sass/libsass.git libsass
 
-
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/libsass /src/libsass
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305

@@ -5,10 +5,10 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-git clone https://github.com/Exiv2/exiv2 exiv2
-./exiv2/ci/install_dependencies.sh
-
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+#git clone https://github.com/Exiv2/exiv2 exiv2
+#./exiv2/ci/install_dependencies.sh
+#apt-get install -y cmake ninja-build g++ ---clang--- libexpat1-dev zlib1g-dev libbrotli-dev libssh-dev libcurl4-openssl-dev libgmock-dev libxml2-utils libinih-dev
+cp -r /opt/fuzz-targets/exiv2 /src/exiv2
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

@@ -5,27 +5,33 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y make cmake
-apt-get update && apt-get install -y \
-    python-all-dev \
-    python3-all-dev \
-    python3-pip
+#apt-get update && apt-get install -y make cmake
+#apt-get update && apt-get install -y \
+#    python-all-dev \
+#    python3-all-dev \
+#    python3-pip
 # mbedtls needs jsonschema which needs rpds-py which needs pip>=20
 # or a Rust toolchain.
-pip3 install 'pip>=20'
+######## pip3 install 'pip>=20'
 
-git clone --recursive --depth 1 -b development https://github.com/Mbed-TLS/mbedtls.git mbedtls
-pip3 install -r $SRC/mbedtls/scripts/basic.requirements.txt
+#git clone --recursive --depth 1 -b development https://github.com/Mbed-TLS/mbedtls.git mbedtls
+#pip3 install -r $SRC/mbedtls/scripts/basic.requirements.txt
 
-git clone --depth 1 https://github.com/google/boringssl.git boringssl
-git clone --depth 1 https://github.com/openssl/openssl.git openssl && \
-    cd openssl && \
-    git submodule update --init fuzz/corpora
+markupsafe < 2.1
+Jinja2 >= 2.10.3
+types-Jinja2 >= 2.11.9
+jsonschema >= 3.2.0
+types-jsonschema >= 3.2.0
+
+#git clone --depth 1 https://github.com/google/boringssl.git boringssl
+#git clone --depth 1 https://github.com/openssl/openssl.git openssl && \
+#    cd openssl && \
+#    git submodule update --init fuzz/corpora
 
 
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/mbedtls /src/mbedtls
+cp -r /opt/fuzz-targets/boringssl /src/boringssl
+cp -r /opt/fuzz-targets/openssl /src/openssl
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

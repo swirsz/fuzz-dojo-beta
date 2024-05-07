@@ -5,17 +5,17 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-apt-get update && apt-get install -y \
-  automake \
-  autoconf \
-  make \
-  libtool \
-  pkg-config \
-  bison \
-  flex
+#apt-get update && apt-get install -y \
+#  automake \
+#  autoconf \
+#  make \
+#  libtool \
+#  pkg-config \
+#  bison \
+#  flex
 
-git clone --depth 1 https://github.com/VirusTotal/yara.git
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+#git clone --depth 1 https://github.com/VirusTotal/yara.git
+cp -r /opt/fuzz-targets/yara /src/yara
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
