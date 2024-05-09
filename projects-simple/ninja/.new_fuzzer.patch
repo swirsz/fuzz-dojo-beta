@@ -10,10 +10,10 @@
 @@ -34,8 +34,8 @@
  	State state;
  	ManifestParser parser(&state, &disk_interface);
- 	
+ 
 -	parser.Load("/tmp/build.ninja", &err);
 +	parser.Load("/tmp/newbuild.ninja", &err);
- 	
+ 
 -	std::__fs::filesystem::remove_all("/tmp/build.ninja");
 +	std::__fs::filesystem::remove_all("/tmp/newbuild.ninja");
  	return 0;
