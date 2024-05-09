@@ -11,6 +11,7 @@ rm -rf $PROJECT_NAME
 
 #git clone https://github.com/git/git git
 cp -r /opt/fuzz-targets/git /src/git
+cp -r /opt/fuzz-targets/zlib /src/zlib
 cd $SRC/$PROJECT_NAME
 #git checkout origin/next
 #git pull origin next
