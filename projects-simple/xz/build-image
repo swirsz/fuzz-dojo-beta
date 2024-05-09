@@ -11,11 +11,11 @@ cp -r /opt/fuzz-targets/xz /src/xz
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN /src/xz/tests/ossfuzz/Makefile -i /challenge/.Makefile.patch -r -
+#patch -tuN /src/xz/tests/ossfuzz/Makefile -i /challenge/.Makefile.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/tests/ossfuzz/fuzz.c $SRC/$PROJECT_NAME/tests/ossfuzz/newfuzzer.c
+   cp $SRC/$PROJECT_NAME/tests/ossfuzz/fuzz_encode_stream.c $SRC/$PROJECT_NAME/tests/ossfuzz/newfuzzer.c
    cp $SRC/$PROJECT_NAME/tests/ossfuzz/*.c /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
