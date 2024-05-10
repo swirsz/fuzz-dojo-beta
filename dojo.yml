@@ -340,10 +340,6 @@ modules:
         name: LIBXML2
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libxml2
 
-      - id: mbedtls
-        name: MBEDTLS
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mbedtls
-
       - id: mupdf
         name: MUPDF
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mupdf

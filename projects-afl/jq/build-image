@@ -15,7 +15,7 @@ cp -r /opt/fuzz-targets/jq /src/jq
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
 
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/jq
 
 sudo --preserve-env compile

@@ -1,0 +1,14 @@
+--- build.sho	2024-05-10 21:45:58.918923823 +0000
++++ build.sh	2024-05-10 21:46:46.324740602 +0000
+@@ -52,11 +52,6 @@
+     ./.libs/libjq.a ./modules/oniguruma/src/.libs/libonig.a \
+     -o $OUT/jq_fuzz_parse_stream -I./src
+ 
+-$CXX $CXXFLAGS $LIB_FUZZING_ENGINE ./tests/jq_fuzz_execute.cpp \
+-    -I./src \
+-    ./.libs/libjq.a ./modules/oniguruma/src/.libs/libonig.a \
+-    -o $OUT/jq_fuzz_execute -I./src
+-
+ $CXX $CXXFLAGS $LIB_FUZZING_ENGINE ./tests/jq_fuzz_fixed.cpp \
+     -I./src \
+     ./.libs/libjq.a ./modules/oniguruma/src/.libs/libonig.a \
