@@ -18,6 +18,8 @@ rm -rf $SRC/$PROJECT_NAME
 cp -r /opt/fuzz-targets/openssl /src/openssl
 cp -r /opt/fuzz-targets/openssl111 /src/openssl111
 cp -r /opt/fuzz-targets/openssl30 /src/openssl30
+cp -r /opt/fuzz-targets/openssl31 /src/openssl31
+cp -r /opt/fuzz-targets/openssl32 /src/openssl32
 
 export AFL_SKIP_OSSFUZZ=1
 export AFL_LLVM_MODE_WORKAROUND=0
