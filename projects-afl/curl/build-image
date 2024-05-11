@@ -17,6 +17,7 @@ cp -r /opt/fuzz-targets/curl /src/curl
 cp -r /opt/fuzz-targets/curl_fuzzer /src/curl_fuzzer
 cp -r /opt/fuzz-targets/zlib /src/zlib
 cp -r /opt/fuzz-targets/openssl32 /src/openssl
+cp -r /opt/fuzz-targets/nghttp2 /src/nghttp2
 # Use curl-fuzzer's scripts to get latest dependencies.
 #$SRC/curl_fuzzer/scripts/ossfuzz.sh
 

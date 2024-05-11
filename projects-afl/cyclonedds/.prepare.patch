@@ -1,0 +1,9 @@
+@@ -21,7 +21,7 @@
+     cmake --build . --target install
+     
+     rm -rf cyclonedds-python
+-    git clone --depth=1 https://github.com/eclipse-cyclonedds/cyclonedds-python.git
++    #git clone --depth=1 https://github.com/eclipse-cyclonedds/cyclonedds-python.git
+     pip3 install ./cyclonedds-python
+     ln -sf "$(pwd)/cyclonedds-python/tests/support_modules/fuzz_tools" "${fuzzer}/fuzz_tools"
+     
