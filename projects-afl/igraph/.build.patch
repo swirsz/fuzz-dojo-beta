@@ -1,5 +1,12 @@
---- build.sho	2024-05-11 01:46:03.429078958 +0000
-+++ build.sh	2024-05-11 01:44:41.585993510 +0000
+@@ -8,7 +8,7 @@
+ # It may be necessary to leave CMAKE_BUILD_TYPE empty and specify LIBXML2_WITH_MODULES=OFF
+ # in order for fuzz introspector builds to succeed (details unverified).
+ cd $SRC
+-wget https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.6.tar.xz
++#wget https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.6.tar.xz
+ tar xf libxml2-2.12.6.tar.xz
+ cd libxml2-2.12.6
+ mkdir build && cd build
 @@ -93,7 +93,7 @@
  # disabled for UBSan:
  #  - read_dimacs_flow, needs a complete rewrite, see https://github.com/igraph/igraph/issues/1924
