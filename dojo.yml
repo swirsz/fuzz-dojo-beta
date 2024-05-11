@@ -104,10 +104,6 @@ modules:
         name: LIGHTTPD - 1310 loc 34% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
       
-      - id: ninja
-        name: NINJA - 4005 loc 32% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ninja
-
       - id: pycryptodome
         name: PYCRYPTODOME - 1398 loc 80% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pycryptodome
