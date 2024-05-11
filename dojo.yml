@@ -304,6 +304,10 @@ modules:
         name: IGRAPH
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
 
+      - id: jq
+        name: JQ
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=jq
+
       - id: lame
         name: LAME
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
