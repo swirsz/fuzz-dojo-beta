@@ -268,10 +268,6 @@ modules:
         name: CURL
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
 
-      - id: cyclonedds
-        name: CYCLONEDDS
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cyclonedds
-
       - id: e2fsprogs
         name: E2FSPROGS
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=e2fsprogs
@@ -287,10 +283,6 @@ modules:
       - id: file
         name: FILE
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
-
-      - id: gstreamer
-        name: GSTREAMER
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gstreamer
 
       - id: guetzli
         name: GUETZLI
