@@ -1,0 +1,14 @@
+--- build.sho	2024-05-12 19:33:04.177865708 +0000
++++ build.sh	2024-05-12 19:34:01.084152597 +0000
+@@ -95,9 +95,9 @@
+ # https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=45633
+ # To make sure all the fuzz targets use the same version of zlib
+ # it's also built with ASan and UBSan.
+-git clone https://github.com/madler/zlib
++#git clone https://github.com/madler/zlib
+ pushd zlib
+-git checkout v1.2.12
++#git checkout v1.2.12
+ if ! ./configure --static; then
+     cat configure.log
+     exit 1
