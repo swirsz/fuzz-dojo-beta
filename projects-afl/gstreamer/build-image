@@ -21,7 +21,7 @@ cp -r /opt/fuzz-targets/vorbis /src/vorbis
 cp -r /opt/fuzz-targets/ogg /src/ogg
 cp -r /opt/fuzz-targets/theora /src/theora
 cp -r /opt/fuzz-targets/gstreamer /src/gstreamer
-cp -r /opt/fuzz-targets/zlib /src/zlib
+cp -r /opt/fuzz-targets/zlib /src/$PROJECT_NAME/zlib
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
