@@ -1,0 +1,12 @@
+--- generate-samples.sho	2024-05-12 20:44:51.132196670 +0000
++++ generate-samples.sh	2024-05-12 20:45:52.870270621 +0000
+@@ -11,7 +11,8 @@
+ 
+ samples="${MALE_SAMPLE} ${FEMALE_SAMPLE} ${WB_MALE_SAMPLE}"
+ for sample in $samples; do
+-    wget --no-clobber https://www.speex.org/samples/audio/${sample}
++    #wget --no-clobber https://www.speex.org/samples/audio/${sample}
++    cp  /opt/fuzz-targets/${sample} .
+ done
+ 
+ bitrates="4 8 11 15"
