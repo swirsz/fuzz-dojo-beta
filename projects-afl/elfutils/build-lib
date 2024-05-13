@@ -1,0 +1,23 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+export PROJECT_NAME=elfutils
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && \
+#    apt-get install -y pkg-config make autoconf autopoint zlib1g-dev zlib1g-dev:i386 flex gawk bison
+#git clone --depth 1 git://sourceware.org/git/elfutils.git
+
+cp -r /opt/fuzz-targets/elfutils /src/elfutils
+cp -r /opt/fuzz-targets/zlib /src/$PROJECT_NAME/zlib
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.zip $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+
+sudo --preserve-env compile
+drivers

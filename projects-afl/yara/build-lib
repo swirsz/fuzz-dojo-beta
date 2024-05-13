@@ -1,0 +1,26 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+export PROJECT_NAME=yara
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y \
+#  automake \
+#  autoconf \
+#  make \
+#  libtool \
+#  pkg-config \
+#  bison \
+#  flex
+
+#git clone --depth 1 https://github.com/VirusTotal/yara.git
+cp -r /opt/fuzz-targets/yara /src/yara
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/yara
+
+sudo --preserve-env compile
+drivers

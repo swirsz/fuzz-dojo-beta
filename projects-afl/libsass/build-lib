@@ -1,0 +1,23 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+export PROJECT_NAME=libsass
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y make autoconf automake libtool
+#git clone --depth 1 https://github.com/sass/libsass.git libsass
+
+cp -r /opt/fuzz-targets/libsass /src/libsass
+
+# This is to fix Fuzz Introspector build by using LLVM old pass manager
+# re https://github.com/ossf/fuzz-introspector/issues/305
+export OLD_LLVMPASS=1
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/data_context_fuzzer.cc  $SRC/
+
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/
+sudo --preserve-env compile
+drivers

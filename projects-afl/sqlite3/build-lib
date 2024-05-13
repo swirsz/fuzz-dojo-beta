@@ -1,0 +1,49 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+export PROJECT_NAME=sqlite3
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+rm -rf $PROJECT_NAME
+#apt-get update && apt-get install -y make autoconf automake libtool curl tcl zlib1g-dev
+
+# We won't be able to poll fossil for changes, so this will build
+# only once a day.
+mkdir $SRC/sqlite3 && \
+    cd $SRC/sqlite3 && \
+    cp -r /opt/fuzz-targets/sqlite3.tar.gz $SRC/sqlite3 && \
+    tar xzf sqlite3.tar.gz
+    #curl 'https://www.sqlite.org/src/tarball?uuid=trunk' -o sqlite3.tar.gz && \
+    #tar xzf sqlite3.tar.gz
+
+
+
+cd $SRC
+find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/sqlite3/test/ossfuzz.c $SRC/sqlite3/test/newfuzzer.c
+   cp $SRC/sqlite3/test/ossfuzz.options $SRC/sqlite3/test/newfuzzer.options
+   cp $SRC/sqlite3/test/ossfuzz_seed_corpus.zip $SRC/sqlite3/test/newfuzzer_seed_corpus.zip
+   cp $SRC/sqlite3/test/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/sqlite3/test/*.options /home/hacker/$PROJECT_NAME
+   cp $SRC/sqlite3/test/*.zip /home/hacker/$PROJECT_NAME
+   cp /src/sqlite3/main.mk  /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.zip $SRC/sqlite3/test
+   cp /home/hacker/$PROJECT_NAME/*.options $SRC/sqlite3/test
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/sqlite3/test
+   cp /home/hacker/$PROJECT_NAME/main.mk  /src/sqlite3/
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile
+drivers

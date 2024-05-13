@@ -1,0 +1,20 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+export PROJECT_NAME=wavpack
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y make autoconf automake libtool gettext
+#git clone --depth 1 https://github.com/dbry/WavPack.git wavpack
+
+cp -r /opt/fuzz-targets/wavpack /src/wavpack
+
+cp wavpack/fuzzing/build.sh $SRC
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+cd $SRC/wavpack
+
+sudo --preserve-env compile
+drivers
