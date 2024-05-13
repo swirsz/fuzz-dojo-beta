@@ -25,3 +25,4 @@ else
 fi
 #patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 sudo --preserve-env compile
+drivers

@@ -28,3 +28,4 @@ fi
 
 cd $SRC
 sudo --preserve-env compile
+drivers

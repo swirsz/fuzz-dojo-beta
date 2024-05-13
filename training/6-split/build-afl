@@ -31,3 +31,4 @@ else
    cp /home/hacker/training-split/build.sh $SRC
 fi
 sudo --preserve-env compile
+drivers

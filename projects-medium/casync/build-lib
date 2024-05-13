@@ -32,3 +32,4 @@ else
    cp /home/hacker/$PROJECT_NAME/oss-fuzz.sh $SRC/casync/tools
 fi
 sudo --preserve-env compile
+drivers

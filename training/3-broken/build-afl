@@ -26,3 +26,4 @@ else
 fi
 #patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
 sudo --preserve-env compile
+drivers

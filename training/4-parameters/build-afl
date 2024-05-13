@@ -26,3 +26,4 @@ else
    cp /home/hacker/training-parameters/build.sh $SRC
 fi
 sudo --preserve-env compile
+drivers
