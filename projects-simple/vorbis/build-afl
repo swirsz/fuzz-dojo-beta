@@ -33,3 +33,4 @@ else
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC/$PROJECT_NAME/contrib/oss-fuzz
 fi
 sudo --preserve-env compile
+drivers

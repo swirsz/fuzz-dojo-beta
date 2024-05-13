@@ -33,3 +33,4 @@ else
    cp /home/hacker/cmake/build.sh $SRC
 fi
 sudo --preserve-env compile
+drivers
