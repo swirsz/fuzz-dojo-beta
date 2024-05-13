@@ -1,0 +1,19 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=wireshark
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+apt-get update && apt-get install -y ninja-build cmake \
+                       flex libc-ares-dev \
+                       libglib2.0-dev libgcrypt20-dev
+
+git clone --depth=1 https://gitlab.com/wireshark/wireshark.git
+git clone --depth=1 https://bitbucket.org/jwzawadzki/wireshark-fuzzdb.git
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+cd $SRC/wireshark
+sudo --preserve-env compile
+drivers

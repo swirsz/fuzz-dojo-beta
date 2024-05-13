@@ -1,0 +1,31 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=openssh
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf /src/$PROJECT_NAME
+#apt-get update && apt-get install -y make autoconf automake libtool
+#apt-get install -y libz-dev libssl1.1 libssl-dev libedit-dev zip
+#git clone --depth 1 https://github.com/openssh/openssh-portable openssh
+#git clone --depth 1 https://github.com/djmdjm/openssh-fuzz-cases
+cp -r /opt/fuzz-targets/openssh /src/openssh
+cp -r /opt/fuzz-targets/openssh-fuzz-cases /src/openssh-fuzz-cases
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/Makefile -i /challenge/.Makefile.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/agent_fuzz.cc $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/newfuzzer.cc
+   cp $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/*.cc /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/regress/misc/fuzz-harness
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile

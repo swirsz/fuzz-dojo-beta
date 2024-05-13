@@ -1,0 +1,25 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=haproxy
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf $SRC/$PROJECT_NAME
+#git clone https://github.com/haproxy/haproxy
+cp -r /opt/fuzz-targets/haproxy /src/haproxy
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz* $SRC
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
+
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/fuzz_cfg_parser.c $SRC/fuzz_newfuzzer.c
+   cp $SRC/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile

@@ -1,0 +1,35 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=gfwx
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+mkdir /src/tmp
+cp /src/gfwx/Makefile /src/tmp
+cp /src/gfwx/*.zip /src/tmp
+cp /src/gfwx/*.cpp /src/tmp
+rm -rf /src/$PROJECT_NAME
+#apt-get update && apt-get install -y make autoconf automake libtool
+#git clone --depth 1 https://github.com/guidovranken/gfwx-fuzzers.git gfwx
+cp -r /opt/fuzz-targets/gfwx /src/gfwx
+mv -f /src/tmp/* /src/gfwx
+rmdir /src/tmp
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+cd $SRC/$PROJECT_NAME
+patch -tuN $SRC/$PROJECT_NAME/Makefile -i /challenge/.Makefile.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/decoder.cpp $SRC/$PROJECT_NAME/newfuzzer.cpp
+   cp $SRC/$PROJECT_NAME/fuzzer-decoder_seed_corpus.zip $SRC/$PROJECT_NAME/newfuzzer_seed_corpus.zip
+   cp $SRC/$PROJECT_NAME/* /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile

@@ -1,0 +1,27 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=zlib
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y make autoconf automake libtool
+#git clone --depth 1 https://github.com/swirsz/zlib
+cp -r /opt/fuzz-targets/zlib /src/zlib
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/training-crashes" ]; then
+   mkdir /home/hacker/training-crashes
+   cp $SRC/minigzip_fuzzer.c $SRC/new_fuzzer.c
+   cp $SRC/*.c* /home/hacker/training-crashes
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-crashes
+   chown -R hacker /home/hacker/training-crashes
+else
+   cp /home/hacker/training-crashes/*.c* $SRC
+   cp /home/hacker/training-crashes/build.sh $SRC
+fi
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+sudo --preserve-env compile

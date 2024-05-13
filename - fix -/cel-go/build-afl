@@ -1,0 +1,44 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=cel-go
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#clone --depth 1 https://github.com/google/cel-go
+cp -r /opt/fuzz-targets/cel-go /src/cel-go
+
+#apt-get update && apt-get install -y protobuf-compiler libprotobuf-dev binutils cmake \
+#   ninja-build liblzma-dev libz-dev pkg-config autoconf libtool
+#git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
+cp -r /opt/fuzz-targets/libprotobuf-mutator /src/libprotobuf-mutator
+
+mkdir LPM; \
+  cd LPM; \
+  cmake $SRC/libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release; \
+  ninja;
+
+#git clone --depth 1 https://github.com/mdempsky/go114-fuzz-build.git
+cp -r /opt/fuzz-targets/go114-fuzz-build /src/go114-fuzz-build
+
+
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/go-lpm.cc $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz*.go $SRC/cel-go/cel/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.proto $SRC/
+
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/zzzzzzzzzzzzzzzzz.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy/newfuzzer.c
+   cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/*.c /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile

@@ -1,0 +1,33 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=janus-gateway
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y autoconf autoconf-archive automake gengetopt gtk-doc-tools libconfig-dev libglib2.0-dev libgnutls28-dev libini-config-dev libjansson-dev libnice-dev libssl-dev libtool openssl pkg-config
+
+# install libsrtp dep from source
+#git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
+cp -r /opt/fuzz-targets/libsrtp /src/libsrtp
+
+cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
+cd $SRC/
+# fetch Janus code
+#git clone --single-branch https://github.com/swirsz/janus-gateway.git
+cp -r /opt/fuzz-targets/janus-gateway /src/janus-gateway
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+cd $SRC/
+if [ ! -d "/home/hacker/training-split" ]; then
+   mkdir /home/hacker/training-split
+   cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
+   cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/training-split
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-split
+   chown -R hacker /home/hacker/training-split
+else
+   cp /home/hacker/training-split/*.c $SRC/$PROJECT_NAME/fuzzers
+   cp /home/hacker/training-split/build.sh $SRC
+fi
+sudo --preserve-env compile

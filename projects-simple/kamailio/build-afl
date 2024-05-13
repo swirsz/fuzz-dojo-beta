@@ -1,0 +1,27 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=kamailio
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf $SRC/$PROJECT_NAME
+#apt-get update && apt-get install -y bison flex
+#git clone https://github.com/kamailio/kamailio
+cp -r /opt/fuzz-targets/kamailio /src/kamailio
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/misc/fuzz/fuzz_uri.c $SRC/$PROJECT_NAME/misc/fuzz/newfuzzer.c
+   cp $SRC/$PROJECT_NAME/misc/fuzz/*.c /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/misc/fuzz
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile

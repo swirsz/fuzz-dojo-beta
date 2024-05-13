@@ -1,0 +1,27 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=example
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
+#git clone https://github.com/google/oss-fuzz.git example
+cp -r /opt/fuzz-targets/example /src/example
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.cpp $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.cpp
+   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.dict $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.dict
+   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer_seed_corpus.zip $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer_seed_corpus.zip
+   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/* /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile

@@ -1,0 +1,35 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=CMake
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf $PROJECT_NAME
+rm -rf inspector
+rm -rf fuzzing-corpus
+#apt-get update && apt-get install -y make autoconf automake libtool pkg-config libssl-dev
+#git clone --depth 1 https://gitlab.kitware.com/cmake/cmake.git $PROJECT_NAME
+#git clone --depth 1 https://github.com/strongcourage/fuzzing-corpus
+cp -r /opt/fuzz-targets/cmake /src/$PROJECT_NAME
+cp -r /opt/fuzz-targets/fuzzing-corpus /src/fuzzing-corpus
+
+# This is to fix Fuzz Introspector build by using LLVM old pass manager
+# re https://github.com/ossf/fuzz-introspector/issues/305
+export OLD_LLVMPASS=1
+
+cp /opt/oss-fuzz/projects/cmake/build.sh $SRC/
+
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/cmake" ]; then
+   mkdir /home/hacker/cmake
+   cp $SRC/$PROJECT_NAME/Tests/Fuzzing/xml_parser_fuzzer.cc $SRC/$PROJECT_NAME/Tests/Fuzzing/new_fuzzer.cc
+   cp $SRC/$PROJECT_NAME/Tests/Fuzzing/*.cc /home/hacker/cmake
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/cmake/*.cc $SRC/$PROJECT_NAME/Tests/Fuzzing
+   cp /home/hacker/cmake/build.sh $SRC
+fi
+sudo --preserve-env compile

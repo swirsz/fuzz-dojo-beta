@@ -1,0 +1,20 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=libevent
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+apt-get update && apt-get install -y cmake make
+
+git clone --depth 1 https://github.com/libevent/libevent.git libevent
+git clone --depth 1 https://github.com/google/fuzzing fuzzing
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
+
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+sudo --preserve-env compile
+drivers

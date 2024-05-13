@@ -1,0 +1,32 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=xvid
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf xvidcore-install
+#apt-get update && apt-get install -y make autoconf automake libtool subversion
+#svn checkout http://svn.xvid.org/trunk --username anonymous --password "" --non-interactive --no-auth-cache
+#git clone --depth 1 https://github.com/guidovranken/fuzzing-headers.git
+#git clone --depth 1 https://github.com/guidovranken/oss-fuzz-fuzzers.git
+
+cp -r /opt/fuzz-targets/trunk /src/trunk
+cp -r /opt/fuzz-targets/fuzzing-headers /src/fuzzing-headers
+cp -r /opt/fuzz-targets/oss-fuzz-fuzzers /src/oss-fuzz-fuzzers
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   cp $SRC/oss-fuzz-fuzzers/xvid/fuzzer.cpp $SRC/oss-fuzz-fuzzers/xvid/newfuzzer.cpp
+   cp -r $SRC/oss-fuzz-fuzzers/xvid /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   rm -rf $SRC/oss-fuzz-fuzzers/xvid
+   cp -r /home/hacker/$PROJECT_NAME $SRC/oss-fuzz-fuzzers/xvid
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile

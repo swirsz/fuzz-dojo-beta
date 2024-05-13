@@ -1,0 +1,32 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/eafl
+export PROJECT_NAME=ninja
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y cmake
+
+rm -rf $PROJECT_NAME
+#git clone --depth 1 https://github.com/ninja-build/ninja
+cp -r /opt/fuzz-targets/ninja /src/ninja
+
+cp $SRC/$PROJECT_NAME/misc/oss-fuzz/build.sh $SRC/
+cp $SRC/$PROJECT_NAME/misc/oss-fuzz/sample_ninja_build $SRC/
+
+cp $SRC/$PROJECT_NAME/misc/manifest_fuzzer.cc $SRC/$PROJECT_NAME/misc/new_fuzzer.cc
+patch -tuN $SRC/$PROJECT_NAME/misc/new_fuzzer.cc -i /challenge/.new_fuzzer.patch -r -
+   
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cp /src/build.sh /src/ninja/misc/oss-fuzz/build.sh
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/misc/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/misc/oss-fuzz/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/misc
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile
