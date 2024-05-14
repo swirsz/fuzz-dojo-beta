@@ -292,10 +292,6 @@ modules:
         name: IGRAPH - 57124 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
 
-      - id: lame
-        name: LAME
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
-
       - id: liblouis
         name: LIBLOUIS - 10478 loc 79% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=liblouis
@@ -355,7 +351,3 @@ modules:
       - id: yara
         name: YARA - 30443 loc 65% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=yara
-
-      - id: zlib
-        name: ZLIB
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib

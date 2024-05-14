@@ -1,5 +1,5 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=file
+export PROJECT_NAME=exiv2
 /challenge/.loc_count
 cd /src
 

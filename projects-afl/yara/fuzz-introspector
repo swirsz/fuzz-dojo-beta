@@ -1,5 +1,5 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=file
+export PROJECT_NAME=yara
 /challenge/.loc_count
 cd /src
 
