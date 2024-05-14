@@ -254,9 +254,9 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
 
 
-  - id: projects-afl
-    name: AFL PROJECTS
-    description: These OSS-Fuzz Projects build with AFL++
+  - id: projects-new
+    name: NEW PROJECTS
+    description: These OSS-Fuzz Projects build but do not have all features implemented yet
 
     challenges:
 
