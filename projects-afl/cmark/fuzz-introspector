@@ -8,6 +8,6 @@ rm -rf /src/cmark
 #git clone --depth 1 https://github.com/commonmark/cmark.git cmark
 cp -r /opt/fuzz-targets/cmark /src/cmark
 
-
+cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
 /challenge/.fi $PROJECT_NAME
