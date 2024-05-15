@@ -17,7 +17,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/src/pcre2_fuzzsupport.c /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/src/pcre2_fuzzsupport.c $SRC/$PROJECT_NAME/src
+   cp /home/hacker/$PROJECT_NAME/pcre2_fuzzsupport.c $SRC/$PROJECT_NAME/src
 fi
 sudo --preserve-env compile
 drivers
