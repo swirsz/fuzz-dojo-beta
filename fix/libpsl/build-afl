@@ -49,3 +49,4 @@ else
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 sudo --preserve-env compile
+drivers

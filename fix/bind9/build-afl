@@ -28,3 +28,4 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
 cd $SRC/bind9
 
 sudo --preserve-env compile
+drivers

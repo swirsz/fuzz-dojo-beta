@@ -35,3 +35,4 @@ else
 
 fi
 sudo --preserve-env compile
+drivers
