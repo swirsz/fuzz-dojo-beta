@@ -352,7 +352,7 @@ modules:
         name: YARA - 30443 loc 65% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=yara
 
-  - id: projects-dev
+  - id: fix
     name: BROKEN PROJECTS
     description: These OSS-Fuzz Projects fail in some way
 
