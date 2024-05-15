@@ -360,184 +360,184 @@ modules:
 
       - id: bind9
         name: bind9
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bind9
 
       - id: binutils
         name: binutils
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=binutils
 
       - id: cel-go
         name: cel-go
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cel-go
 
       - id: cfengine
         name: cfengine
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cfengine
 
       - id: civetweb
         name: civetweb
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=civetweb
 
       - id: cpython3
         name: cpython3
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cpython3
 
       - id: cyclonedds
         name: cyclonedds
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cyclonedds
 
       - id: ffmpeg
         name: ffmpeg
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ffmpeg
 
       - id: flac
         name: flac
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=flac
 
       - id: gdk-pixbuf
         name: gdk-pixbuf
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gdk-pixbuf
 
       - id: gpac
         name: gpac
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gpac
 
       - id: graphicsmagick
         name: graphicsmagick
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=graphicsmagick
 
       - id: gstreamer
         name: gstreamer
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gstreamer
 
       - id: imagemagick
         name: imagemagick
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=imagemagick
 
       - id: jq
         name: jq
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=jq
 
       - id: json-c
         name: json-c
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json-c
 
       - id: jsoncpp
         name: jsoncpp
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=jsoncpp
 
       - id: libarchive
         name: libarchive
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libarchive
 
       - id: libdwarf
         name: libdwarf
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libdwarf
 
       - id: libevent
         name: libevent
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libevent
 
       - id: libgd
         name: libgd
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libgd
 
       - id: libidn
         name: libidn
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libidn
 
       - id: libpcap
         name: libpcap
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpcap
 
       - id: libpsl
         name: libpsl
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpsl
 
       - id: lua
         name: lua
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lua
 
       - id: lzo
         name: lzo
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lzo
 
       - id: mariadb
         name: mariadb
-        description: 
-
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mariadb
+        
       - id: mbedtls
         name: mbedtls
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mbedtls
 
       - id: mosquitto
         name: mosquitto
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mosquitto
 
       - id: mruby
         name: mruby
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mruby
 
       - id: nginx
         name: nginx
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=nginx
 
       - id: ninja
         name: ninja
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ninja
 
       - id: pcre2
         name: pcre2
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pcre2
 
       - id: pffft
         name: pffft
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pffft
 
       - id: php
         name: php
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=php
 
       - id: poppler
         name: poppler
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=poppler
 
       - id: postfix
         name: postfix
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=postfix
 
       - id: python3
         name: python3
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=python3
 
       - id: qubes-os
         name: qubes-os
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=qubes-os
 
       - id: ruby
         name: ruby
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ruby
 
       - id: sudoers
         name: sudoers
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sudoers
 
       - id: tinyusb
         name: tinyusb
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tinyusb
 
       - id: vlc
         name: vlc
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vlc
 
       - id: wget
         name: wget
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wget
 
       - id: wireshark
         name: wireshark
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wireshark
 
       - id: xpdf
         name: xpdf
-        description: 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xpdf
