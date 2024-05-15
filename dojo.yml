@@ -351,3 +351,193 @@ modules:
       - id: yara
         name: YARA - 30443 loc 65% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=yara
+
+  - id: projects-dev
+    name: BROKEN PROJECTS
+    description: These OSS-Fuzz Projects fail in some way
+
+    challenges:
+
+      - id: bind9
+        name: bind9
+        description: 
+
+      - id: binutils
+        name: binutils
+        description: 
+
+      - id: cel-go
+        name: cel-go
+        description: 
+
+      - id: cfengine
+        name: cfengine
+        description: 
+
+      - id: civetweb
+        name: civetweb
+        description: 
+
+      - id: cpython3
+        name: cpython3
+        description: 
+
+      - id: cyclonedds
+        name: cyclonedds
+        description: 
+
+      - id: ffmpeg
+        name: ffmpeg
+        description: 
+
+      - id: flac
+        name: flac
+        description: 
+
+      - id: gdk-pixbuf
+        name: gdk-pixbuf
+        description: 
+
+      - id: gpac
+        name: gpac
+        description: 
+
+      - id: graphicsmagick
+        name: graphicsmagick
+        description: 
+
+      - id: gstreamer
+        name: gstreamer
+        description: 
+
+      - id: imagemagick
+        name: imagemagick
+        description: 
+
+      - id: jq
+        name: jq
+        description: 
+
+      - id: json-c
+        name: json-c
+        description: 
+
+      - id: jsoncpp
+        name: jsoncpp
+        description: 
+
+      - id: libarchive
+        name: libarchive
+        description: 
+
+      - id: libdwarf
+        name: libdwarf
+        description: 
+
+      - id: libevent
+        name: libevent
+        description: 
+
+      - id: libgd
+        name: libgd
+        description: 
+
+      - id: libidn
+        name: libidn
+        description: 
+
+      - id: libpcap
+        name: libpcap
+        description: 
+
+      - id: libpsl
+        name: libpsl
+        description: 
+
+      - id: lua
+        name: lua
+        description: 
+
+      - id: lzo
+        name: lzo
+        description: 
+
+      - id: mariadb
+        name: mariadb
+        description: 
+
+      - id: mbedtls
+        name: mbedtls
+        description: 
+
+      - id: mosquitto
+        name: mosquitto
+        description: 
+
+      - id: mruby
+        name: mruby
+        description: 
+
+      - id: nginx
+        name: nginx
+        description: 
+
+      - id: ninja
+        name: ninja
+        description: 
+
+      - id: pcre2
+        name: pcre2
+        description: 
+
+      - id: pffft
+        name: pffft
+        description: 
+
+      - id: php
+        name: php
+        description: 
+
+      - id: poppler
+        name: poppler
+        description: 
+
+      - id: postfix
+        name: postfix
+        description: 
+
+      - id: python3
+        name: python3
+        description: 
+
+      - id: qubes-os
+        name: qubes-os
+        description: 
+
+      - id: ruby
+        name: ruby
+        description: 
+
+      - id: sudoers
+        name: sudoers
+        description: 
+
+      - id: tinyusb
+        name: tinyusb
+        description: 
+
+      - id: vlc
+        name: vlc
+        description: 
+
+      - id: wget
+        name: wget
+        description: 
+
+      - id: wireshark
+        name: wireshark
+        description: 
+
+      - id: xpdf
+        name: xpdf
+        description: 
