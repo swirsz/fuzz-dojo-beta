@@ -163,6 +163,10 @@ modules:
         name: CASYNC - 1678 loc 10% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
 
+      - id: cmark
+        name: CMARK - 14688 loc 95% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmark
+
       - id: gfwx
         name: GFWX - 1087 loc 84% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
@@ -264,10 +268,6 @@ modules:
 
     challenges:
 
-      - id: cmark
-        name: CMARK - 14688 loc 95% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmark
-
       - id: curl
         name: CURL - 274257 loc 21% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
@@ -363,181 +363,181 @@ modules:
     challenges:
 
       - id: bind9
-        name: bind9
+        name: bind9 - 130404 loc 20% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bind9
 
       - id: binutils
-        name: binutils
+        name: binutils - 611961 loc 32% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=binutils
 
       - id: cel-go
-        name: cel-go
+        name: cel-go - 14292 loc 57% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cel-go
 
       - id: cfengine
-        name: cfengine
+        name: cfengine - failing 2702 loc 8% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cfengine
 
       - id: civetweb
-        name: civetweb
+        name: civetweb - 11403 loc 11% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=civetweb
 
       - id: cpython3
-        name: cpython3
+        name: cpython3 - 240847 loc 41% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cpython3
 
       - id: cyclonedds
-        name: cyclonedds
+        name: cyclonedds - 77965 loc 30% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cyclonedds
 
       - id: ffmpeg
-        name: ffmpeg
+        name: ffmpeg - failing 
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ffmpeg
 
       - id: flac
-        name: flac
+        name: flac - 33650 loc 86% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=flac
 
       - id: gdk-pixbuf
-        name: gdk-pixbuf
+        name: gdk-pixbuf - 188216 loc 5% coverage (no FI)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gdk-pixbuf
 
       - id: gpac
-        name: gpac
+        name: gpac - 461125 loc 15% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gpac
 
       - id: graphicsmagick
-        name: graphicsmagick
+        name: graphicsmagick - 437167 loc 38% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=graphicsmagick
 
       - id: gstreamer
-        name: gstreamer
+        name: gstreamer - 243861 loc 20% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gstreamer
 
       - id: imagemagick
-        name: imagemagick
+        name: imagemagick - 566468 loc 48% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=imagemagick
 
       - id: jq
-        name: jq
+        name: jq -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=jq
 
       - id: json-c
-        name: json-c
+        name: json-c -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json-c
 
       - id: jsoncpp
-        name: jsoncpp
+        name: jsoncpp -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=jsoncpp
 
       - id: libarchive
-        name: libarchive
+        name: libarchive -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libarchive
 
       - id: libdwarf
-        name: libdwarf
+        name: libdwarf -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libdwarf
 
       - id: libevent
-        name: libevent
+        name: libevent -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libevent
 
       - id: libgd
-        name: libgd
+        name: libgd -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libgd
 
       - id: libidn
-        name: libidn
+        name: libidn -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libidn
 
       - id: libpcap
-        name: libpcap
+        name: libpcap -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpcap
 
       - id: libpsl
-        name: libpsl
+        name: libpsl -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpsl
 
       - id: lua
-        name: lua
+        name: lua -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lua
 
       - id: lzo
-        name: lzo
+        name: lzo -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lzo
 
       - id: mariadb
-        name: mariadb
+        name: mariadb -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mariadb
         
       - id: mbedtls
-        name: mbedtls
+        name: mbedtls -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mbedtls
 
       - id: mosquitto
-        name: mosquitto
+        name: mosquitto -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mosquitto
 
       - id: mruby
-        name: mruby
+        name: mruby -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mruby
 
       - id: nginx
-        name: nginx
+        name: nginx -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=nginx
 
       - id: ninja
-        name: ninja
+        name: ninja -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ninja
 
       - id: pffft
-        name: pffft
+        name: pffft -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pffft
 
       - id: php
-        name: php
+        name: php -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=php
 
       - id: poppler
-        name: poppler
+        name: poppler -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=poppler
 
       - id: postfix
-        name: postfix
+        name: postfix -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=postfix
 
       - id: python3
-        name: python3
+        name: python3 -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=python3
 
       - id: qubes-os
-        name: qubes-os
+        name: qubes-os -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=qubes-os
 
       - id: ruby
-        name: ruby
+        name: ruby -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ruby
 
       - id: sudoers
-        name: sudoers
+        name: sudoers -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sudoers
 
       - id: tinyusb
-        name: tinyusb
+        name: tinyusb -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tinyusb
 
       - id: vlc
-        name: vlc
+        name: vlc -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vlc
 
       - id: wget
-        name: wget
+        name: wget -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wget
 
       - id: wireshark
-        name: wireshark
+        name: wireshark -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wireshark
 
       - id: xpdf
-        name: xpdf
+        name: xpdf -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xpdf

@@ -13,6 +13,17 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzz/cmark-fuzz.c $SRC/$PROJECT_NAME/fuzz/cmark-newfuzz.c
+   cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
+fi
+
 cd $SRC/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
