@@ -1,3 +1,12 @@
+@@ -95,7 +95,7 @@
+ # https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=45633
+ # To make sure all the fuzz targets use the same version of zlib
+ # it's also built with ASan and UBSan.
+-git clone https://github.com/madler/zlib
++# git clone https://github.com/madler/zlib
+ pushd zlib
+ git checkout v1.2.12
+ if ! ./configure --static; then
 @@ -144,3 +144,13 @@
  	./libasm/libasm.a ./libebl/libebl.a ./backends/libebl_backends.a ./libcpu/libcpu.a \
    ./libdw/libdw.a ./libelf/libelf.a ./lib/libeu.a "$zlib" \
