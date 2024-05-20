@@ -9,6 +9,7 @@ cd $SRC
 #    apt-get install -y pkg-config make autoconf autopoint zlib1g-dev zlib1g-dev:i386 flex gawk bison
 #git clone --depth 1 git://sourceware.org/git/elfutils.git
 
+rm -rf elfutils
 cp -r /opt/fuzz-targets/elfutils /src/elfutils
 cp -r /opt/fuzz-targets/zlib /src/$PROJECT_NAME/zlib
 
