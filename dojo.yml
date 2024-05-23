@@ -80,6 +80,10 @@ modules:
         name: CMAKE - 7778 loc 62% coverage (no AFL)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
 
+      - id: elfutils
+        name: ELFUTILS - 31383 loc 28% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=elfutils
+
       - id: example
         name: EXAMPLE (my-api-repo) - 20 loc 100% coverage
         description: Sample OSS-Fuzz project
@@ -275,10 +279,6 @@ modules:
       - id: e2fsprogs
         name: E2FSPROGS - 15878 loc 11% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=e2fsprogs
-
-      - id: elfutils
-        name: ELFUTILS - 31383 loc 28% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=elfutils
 
       - id: exiv2
         name: EXIV2 - 34282 loc 55% coverage
