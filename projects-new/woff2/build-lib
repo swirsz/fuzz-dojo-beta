@@ -13,7 +13,7 @@ cp -r /opt/fuzz-targets/woff2 /src/woff2
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 mkdir $SRC/corpus
-cp -r corpus $SRC/corpus
+cp -r /opt/oss-fuzz/projects/$PROJECT_NAME/corpus $SRC/corpus
 
 #patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/woff2
