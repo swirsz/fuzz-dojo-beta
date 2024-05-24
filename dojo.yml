@@ -261,6 +261,10 @@ modules:
         name: OPENJPEG - 22939 loc 51% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
 
+      - id: speex
+        name: SPEEX - 5867 loc 35% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=speex
+
       - id: zlib
         name: ZLIB - 5055 loc 69% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
@@ -331,10 +335,6 @@ modules:
       - id: openssl
         name: OPENSSL - 823997 loc 39% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssl
-
-      - id: speex
-        name: SPEEX - 5867 loc 35% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=speex
 
       - id: sqlite3
         name: SQLITE3 - 80385 loc 75% coverage
