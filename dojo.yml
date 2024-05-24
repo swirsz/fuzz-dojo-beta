@@ -206,6 +206,10 @@ modules:
       - id: pcre2
         name: pcre2 - 33249 loc 82% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pcre2
+
+      - id: sqlite3
+        name: SQLITE3 - 80385 loc 75% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
         
       - id: tmux
         name: TMUX - 48752 loc 12% coverage
@@ -335,10 +339,6 @@ modules:
       - id: openssl
         name: OPENSSL - 823997 loc 39% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssl
-
-      - id: sqlite3
-        name: SQLITE3 - 80385 loc 75% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
 
       - id: w3m
         name: W3M - 6400 loc 70% coverage
