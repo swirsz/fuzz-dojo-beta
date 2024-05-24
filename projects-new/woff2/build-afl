@@ -10,12 +10,11 @@ cd $SRC
 #git clone --depth 1 --recursive https://github.com/google/woff2
 cp -r /opt/fuzz-targets/woff2 /src
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-mkdir $SRC/corpus
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
 cp -r /opt/oss-fuzz/projects/$PROJECT_NAME/corpus $SRC
 
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/woff2
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME

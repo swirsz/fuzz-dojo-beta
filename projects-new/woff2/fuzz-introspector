@@ -11,11 +11,10 @@ cp -r /opt/fuzz-targets/woff2 /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options /src
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src
-mkdir /src/corpus
 cp -r /opt/oss-fuzz/projects/$PROJECT_NAME/corpus /src
 
+cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/src
 #patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd /src/woff2
-cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/src
 
 /challenge/.fi $PROJECT_NAME
