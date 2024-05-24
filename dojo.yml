@@ -132,6 +132,10 @@ modules:
         name: WASM3 - 4107 loc 71% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wasm3
 
+      - id: woff2
+        name: WOFF2 - 3985 loc 87% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=woff2
+
       - id: xz
         name: XZ - 3414 loc 67% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xz
@@ -347,10 +351,6 @@ modules:
       - id: wavpack
         name: WAVPACK - 4172 loc 81% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wavpack
-
-      - id: woff2
-        name: WOFF2 - 3985 loc 87% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=woff2
 
       - id: yara
         name: YARA - 30443 loc 65% coverage
