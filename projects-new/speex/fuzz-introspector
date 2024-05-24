@@ -9,5 +9,6 @@ rm -rf /src/$PROJECT_NAME
 #git clone --depth 1 https://gitlab.xiph.org/xiph/speex.git speex
 cp -r /opt/fuzz-targets/ogg /src/ogg
 cp -r /opt/fuzz-targets/speex /src/speex
+cd /src/$PROJECT_NAME
 
 /challenge/.fi $PROJECT_NAME
