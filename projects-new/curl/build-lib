@@ -23,6 +23,7 @@ cp -r /opt/fuzz-targets/nghttp2 /src/nghttp2
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+patch -tuN /src/curl_fuzzer/scripts/fuzz_targets -i /challenge/.fuzz_targets.patch -r -
 #patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/curl_fuzzer
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
