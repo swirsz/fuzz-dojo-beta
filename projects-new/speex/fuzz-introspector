@@ -11,5 +11,6 @@ cp -r /opt/fuzz-targets/ogg /src/ogg
 cp -r /opt/fuzz-targets/speex /src/speex
 cd /src/$PROJECT_NAME
 cp /src/$PROJECT_NAME/contrib/oss-fuzz/speexdec_fuzzer.cc /src/$PROJECT_NAME/contrib/oss-fuzz/new_fuzzer.cc
+patch -tuN /src/speex/src/generate-samples.sh -i /challenge/.generate-samples.patch -r -
 
 /challenge/.fi $PROJECT_NAME
