@@ -3,24 +3,28 @@ export PROJECT_NAME=curl
 /challenge/.loc_count
 cd /src
 
-rm -rf lame
-rm -rf mpg123
+rm -rf /src/curl
+rm -rf /src/curl_install
+rm -rf /src/curl_fuzzer
+rm -rf /src/nghttp2
+rm -rf /src/openssl
+rm -rf /src/zlib
+#git clone --depth 1 https://github.com/curl/curl.git /src/$PROJECT_NAME
+#git clone --depth 1 https://github.com/curl/curl-fuzzer.git /src/curl_fuzzer
+cp -r /opt/fuzz-targets/curl /src/curl
+cp -r /opt/fuzz-targets/curl_fuzzer /src/curl_fuzzer
+cp -r /opt/fuzz-targets/zlib /src/zlib
+cp -r /opt/fuzz-targets/openssl32 /src/openssl
+cp -r /opt/fuzz-targets/nghttp2 /src/nghttp2
+# Use curl-fuzzer's scripts to get latest dependencies.
+#/src/curl_fuzzer/scripts/ossfuzz.sh
 
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
 
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src/lame
-
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
+patch -tuN /src/curl_fuzzer/fuzz_targets -i /challenge/.fuzz_targets.patch -r -
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd /src/curl_fuzzer
+cp /home/hacker/$PROJECT_NAME/* /src/curl_fuzzer
 
 
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
 /challenge/.fi $PROJECT_NAME
