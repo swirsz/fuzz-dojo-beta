@@ -3,24 +3,26 @@ export PROJECT_NAME=sqlite3
 /challenge/.loc_count
 cd /src
 
-rm -rf lame
-rm -rf mpg123
+rm -rf $PROJECT_NAME
+#apt-get update && apt-get install -y make autoconf automake libtool curl tcl zlib1g-dev
 
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
+# We won't be able to poll fossil for changes, so this will build
+# only once a day.
+mkdir /src/sqlite3 && \
+    cd /src/sqlite3 && \
+    cp -r /opt/fuzz-targets/sqlite3.tar.gz /src/sqlite3 && \
+    tar xzf sqlite3.tar.gz
+    #curl 'https://www.sqlite.org/src/tarball?uuid=trunk' -o sqlite3.tar.gz && \
+    #tar xzf sqlite3.tar.gz
 
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src/lame
+cd /src
+find /src/sqlite3 -name "*.test" | xargs zip /src/ossfuzz_seed_corpus.zip
 
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
+cp /home/hacker/$PROJECT_NAME/*.zip /src/sqlite3/test
+cp /home/hacker/$PROJECT_NAME/*.options /src/sqlite3/test
+cp /home/hacker/$PROJECT_NAME/*.c /src/sqlite3/test
+cp /home/hacker/$PROJECT_NAME/main.mk  /src/sqlite3/
 
+cd /src/$PROJECT_NAME
 
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
 /challenge/.fi $PROJECT_NAME
