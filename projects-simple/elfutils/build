@@ -1,0 +1,37 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=elfutils
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && \
+#    apt-get install -y pkg-config make autoconf autopoint zlib1g-dev zlib1g-dev:i386 flex gawk bison
+#git clone --depth 1 git://sourceware.org/git/elfutils.git
+
+rm -rf elfutils
+cp -r /opt/fuzz-targets/elfutils /src
+cp -r /opt/fuzz-targets/zlib /src/$PROJECT_NAME
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/fuzz-libdwfl.c $SRC/fuzz-newfuzz.c
+   cp $SRC/*.c /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC
+fi
+
+cd $SRC/$PROJECT_NAME
+sudo --preserve-env compile
+drivers

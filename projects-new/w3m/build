@@ -1,0 +1,21 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=w3m
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y libgc-dev
+#git clone https://github.com/tats/w3m
+cp -r /opt/fuzz-targets/w3m /src
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+cd $SRC/
+sudo --preserve-env compile
+drivers

@@ -1,0 +1,40 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=arduinojson
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y make zip git
+rm -rf $SRC/$PROJECT_NAME
+#git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
+cp -r /opt/fuzz-targets/arduinojson /src
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN $SRC/$PROJECT_NAME/extras/fuzzing/Makefile -i /challenge/.Makefile.patch -r -
+patch -tuN $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
+cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_corpus
+cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_seed_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_seed_corpus
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/json_fuzzer.cpp $SRC/$PROJECT_NAME/extras/fuzzing/new_fuzzer.cpp
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt /home/hacker/$PROJECT_NAME/CMakeLists.txt
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/Makefile /home/hacker/$PROJECT_NAME/Makefile
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/*.cpp /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/extras/fuzzing
+   cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/extras/fuzzing
+   cp /home/hacker/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME/extras/fuzzing
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile
+drivers

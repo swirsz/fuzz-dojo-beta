@@ -1,0 +1,34 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=zlib
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y make autoconf automake libtool
+#git clone --depth 1 -b develop https://github.com/madler/zlib.git
+cp -r /opt/fuzz-targets/zlib /src
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/minigzip_fuzzer.c $SRC/new_fuzzer.c
+   cp $SRC/*.c* /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c* $SRC
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile
+drivers

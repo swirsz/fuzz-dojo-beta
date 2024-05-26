@@ -1,0 +1,35 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=tinyusb
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y make autoconf automake libtool
+
+rm -rf $PROJECT_NAME
+# TODO: Update this to use hathath instead of this fork.
+#git clone --depth 1 https://github.com/hathach/tinyusb.git tinyusb     # or use other version control
+cp -r /opt/fuzz-targets/tinyusb /src/
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   cp -r $SRC/tinyusb/test/fuzz/device/cdc $SRC/tinyusb/test/fuzz/device/newfuzzer
+   cp -r $SRC/tinyusb/test/fuzz /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   rm -rf $SRC/tinyusb/test/fuzz
+   cp -r /home/hacker/$PROJECT_NAME $SRC/tinyusb/test/fuzz
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile
+drivers

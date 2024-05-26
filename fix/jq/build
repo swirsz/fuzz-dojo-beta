@@ -1,0 +1,27 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fiafl
+export PROJECT_NAME=jq
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y \
+#  make flex bison libtool automake autoconf
+
+#git clone --depth 1 https://github.com/jqlang/jq
+
+cp -r /opt/fuzz-targets/jq /src/
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
+
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/jq
+
+sudo --preserve-env compile
+drivers

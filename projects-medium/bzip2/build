@@ -1,0 +1,37 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=bzip2
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf /src/$PROJECT_NAME
+rm -rf /src/$PROJECT_NAME-tests
+#apt-get update && apt-get install -y make autoconf automake libtool wget
+#git clone git://sourceware.org/git/bzip2.git
+#git clone git://sourceware.org/git/bzip2-tests.git
+cp -r /opt/fuzz-targets/bzip2 /src
+cp -r /opt/fuzz-targets/bzip2-tests /src
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/bzip2_filename.c $SRC/newfuzzer.c
+   cp $SRC/*.c /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+
+cd $SRC
+sudo --preserve-env compile
+drivers

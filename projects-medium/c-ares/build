@@ -1,0 +1,33 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=c-ares
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y make autoconf automake libtool
+#git clone --depth 1 https://github.com/c-ares/c-ares.git
+cp -r /opt/fuzz-targets/c-ares /src
+export OLD_LLVMPASS=1
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cd $SRC/$PROJECT_NAME
+
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/test/ares-test-fuzz.c $SRC/$PROJECT_NAME/test/newfuzzer.c
+   cp $SRC/$PROJECT_NAME/test/*.c /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/test
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile
+drivers

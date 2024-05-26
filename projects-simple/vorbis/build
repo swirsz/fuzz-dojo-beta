@@ -1,0 +1,41 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=vorbis
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y make autoconf automake ffmpeg libtool pkg-config python3 wget
+#python3 -m pip install corpus-replicator
+#git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
+#git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
+
+cp -r /opt/fuzz-targets/ogg /src
+cp -r /opt/fuzz-targets/vorbis /src
+
+corpus-replicator -o decode_corpus audio_vorbis_ogg_libvorbis.yml audio
+# TODO: remove `people.xiph.org` lines once upstream build script is updated
+mkdir people.xiph.org/
+touch people.xiph.org/dummy.ogg
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN $SRC/$PROJECT_NAME/contrib/oss-fuzz/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/decode_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/new_fuzzer.cc
+   cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC/$PROJECT_NAME/contrib/oss-fuzz
+fi
+sudo --preserve-env compile
+drivers

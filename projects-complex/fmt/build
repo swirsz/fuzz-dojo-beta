@@ -1,0 +1,36 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=fmt
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+#apt-get update && apt-get install -y cmake ninja-build
+
+rm -rf $PROJECT_NAME
+#git clone --depth 1 --branch master https://github.com/fmtlib/fmt.git
+cp -r /opt/fuzz-targets/fmt /src/
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN $SRC/$PROJECT_NAME/test/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/test/fuzzing/one-arg.cc $SRC/$PROJECT_NAME/test/fuzzing/newfuzzer.cc
+   cp $SRC/$PROJECT_NAME/test/fuzzing/CMakeLists.txt /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/test/fuzzing/*.h /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/test/fuzzing/*.cc /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/test/fuzzing
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile
+drivers

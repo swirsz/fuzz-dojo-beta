@@ -1,0 +1,41 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=boost
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+rm -rf $SRC/$PROJECT_NAME
+
+#apt-get update && apt-get install -y g++ python
+#git clone --recursive https://github.com/boostorg/boost.git
+cp -r /opt/fuzz-targets/boost /src
+# This is to fix Fuzz Introspector build by using LLVM old pass manager
+# re https://github.com/ossf/fuzz-introspector/issues/305
+export OLD_LLVMPASS=1
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/boost_regex_fuzzer.cc $SRC/boost_new_fuzzer.cc
+   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   #cp $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
+   #cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+sudo --preserve-env compile
+drivers

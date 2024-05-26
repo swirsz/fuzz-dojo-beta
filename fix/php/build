@@ -1,0 +1,43 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fi
+export PROJECT_NAME=php
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+rm -rf php-src
+# The current clang revision is broken, pin to older one.
+#FROM gcr.io/oss-fuzz-base/base-builder@sha256:111d6b9d3a52bd3392602c71dc8936c628607a7a9bc86d381db7586f9b1e840f
+#RUN apt-get update && apt-get install -y autoconf automake libtool bison re2c pkg-config
+git clone --depth 1 --branch master https://github.com/php/php-src.git php-src
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+patch -tuN $SRC/php-src/sapi/fuzzer/Makefile.frag -i /challenge/.Makefile.patch -r -
+patch -tuN $SRC/php-src/Makefile -i /challenge/.Make.patch -r -
+cd $SRC/php-src
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/php-src/sapi/fuzzer/fuzzer-execute.c $SRC/php-src/sapi/fuzzer/fuzzer-new.c
+   cp $SRC/php-src/sapi/fuzzer/*.h /home/hacker/$PROJECT_NAME
+   cp $SRC/php-src/sapi/fuzzer/*.c /home/hacker/$PROJECT_NAME
+   cp $SRC/php-src/sapi/fuzzer/*.php /home/hacker/$PROJECT_NAME
+   cp $SRC/php-src/sapi/fuzzer/*.dict /home/hacker/$PROJECT_NAME
+   cp $SRC/php-src/sapi/fuzzer/Makefile.frag /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.h $SRC/php-src/sapi/fuzzer
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/php-src/sapi/fuzzer
+   cp /home/hacker/$PROJECT_NAME/*.php $SRC/php-src/sapi/fuzzer
+   cp /home/hacker/$PROJECT_NAME/*.dict $SRC/php-src/sapi/fuzzer
+   cp /home/hacker/$PROJECT_NAME/Makefile.frag $SRC/php-src/sapi/fuzzer
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+
+fi
+sudo --preserve-env compile
+drivers

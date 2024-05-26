@@ -1,0 +1,36 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+else
+    . /usr/local/sbin/e
+fiafl
+export PROJECT_NAME=bind9
+export SANITIZER=$1
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+
+apt-get update && apt-get -y upgrade
+apt-get -y install          \
+        autoconf                \
+        automake                \
+        autotools-dev           \
+        bison                   \
+        build-essential         \
+        libcap-dev              \
+        libnghttp2-dev          \
+        libssl-dev              \
+        libtool                 \
+        libtool-bin             \
+        liburcu-dev             \
+        libuv1-dev              \
+        pkg-config              \
+        zip
+git clone --depth 1 https://gitlab.isc.org/isc-projects/bind9.git
+
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
+
+cd $SRC/bind9
+
+sudo --preserve-env compile
+drivers
