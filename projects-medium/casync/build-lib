@@ -10,7 +10,7 @@ cd $SRC
 #        zlib1g-dev libacl1-dev libfuse-dev rsync udev 
 #    pip3 install meson ninja
 #git clone --depth 1 https://github.com/systemd/casync casync
-cp -r /opt/fuzz-targets/casync /src/casync
+cp -r /opt/fuzz-targets/casync /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
 

@@ -5,7 +5,7 @@ cd /src
 #apt-get update && apt-get install -y cmake ninja-build
 rm -rf /src/$PROJECT_NAME
 #git clone --depth 1 --branch master https://github.com/fmtlib/fmt.git
-cp -r /opt/fuzz-targets/fmt /src/fmt
+cp -r /opt/fuzz-targets/fmt /src/
 cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME/test/fuzzing
 /challenge/.fi $PROJECT_NAME

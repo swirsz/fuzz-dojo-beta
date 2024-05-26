@@ -12,7 +12,7 @@ cd $SRC
 #        libssl-dev libseccomp-dev pkg-config
 #git clone --depth 1 https://github.com/stefanberger/libtpms libtpms
 
-cp -r /opt/fuzz-targets/libtpms /src/libtpms
+cp -r /opt/fuzz-targets/libtpms /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

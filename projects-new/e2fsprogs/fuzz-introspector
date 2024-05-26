@@ -13,7 +13,7 @@ tar -xvf snapshot
 mv mpg123* mpg123
 
 #svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src/lame
+cp -r /opt/fuzz-targets/lame /src
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305

@@ -9,7 +9,7 @@ cd $SRC
 
 #git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
 rm -rf  /src/unrar
-cp -r /opt/fuzz-targets/unrar /src/unrar
+cp -r /opt/fuzz-targets/unrar /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

@@ -8,7 +8,7 @@ cd $SRC
 rm -rf uriparser
 #apt-get update && apt-get install -y make autoconf automake wget sudo libtool cmake
 #git clone --depth 1 https://github.com/uriparser/uriparser uriparser
-cp -r /opt/fuzz-targets/uriparser /src/uriparser
+cp -r /opt/fuzz-targets/uriparser /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

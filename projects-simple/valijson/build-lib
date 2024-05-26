@@ -9,7 +9,7 @@ cd $SRC
 
 rm -rf $PROJECT_NAME
 #git clone --depth 1 https://github.com/tristanpenman/valijson
-cp -r /opt/fuzz-targets/valijson /src/valijson
+cp -r /opt/fuzz-targets/valijson /src
 
 cp $SRC/$PROJECT_NAME/tests/fuzzing/oss-fuzz-build.sh $SRC/build.sh
 # This is to fix Fuzz Introspector build by using LLVM old pass manager

@@ -9,7 +9,7 @@ cd $SRC
 
 #git clone --recursive --depth 1 git://git.ghostscript.com/mupdf.git mupdf
 #git clone --depth 1 https://github.com/mozilla/pdf.js pdf.js 
-cp -r /opt/fuzz-targets/mupdf /src/mupdf
+cp -r /opt/fuzz-targets/mupdf /src
 cp -r /opt/fuzz-targets/pdf.js /src
 
     zip -q $SRC/pdf_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf && \

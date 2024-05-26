@@ -4,7 +4,7 @@ export PROJECT_NAME=elfutils
 cd /src
 
 rm -rf elfutils
-cp -r /opt/fuzz-targets/elfutils /src/elfutils
-cp -r /opt/fuzz-targets/zlib /src/$PROJECT_NAME/zlib
+cp -r /opt/fuzz-targets/elfutils /src
+cp -r /opt/fuzz-targets/zlib /src/$PROJECT_NAME
 
 /challenge/.fi $PROJECT_NAME

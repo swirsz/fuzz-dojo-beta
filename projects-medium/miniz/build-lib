@@ -7,7 +7,7 @@ cd $SRC
 
 rm -rf $SRC/$PROJECT_NAME/build
 #git clone --depth 1 https://github.com/richgel999/miniz.git
-cp -r /opt/fuzz-targets/miniz /src/miniz
+cp -r /opt/fuzz-targets/miniz /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

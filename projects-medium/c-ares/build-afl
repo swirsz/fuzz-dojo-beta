@@ -7,7 +7,7 @@ cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool
 #git clone --depth 1 https://github.com/c-ares/c-ares.git
-cp -r /opt/fuzz-targets/c-ares /src/c-ares
+cp -r /opt/fuzz-targets/c-ares /src
 export OLD_LLVMPASS=1
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

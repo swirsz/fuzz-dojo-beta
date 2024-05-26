@@ -10,9 +10,9 @@ rm -rf /src/libprotobuf-mutator
 #git clone --depth 1 https://github.com/bshastry/mruby_seeds.git mruby_seeds
 #git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
 
-cp -r /opt/fuzz-targets/mruby /src/mruby
-cp -r /opt/fuzz-targets/mruby_seeds /src/mruby_seeds
-cp -r /opt/fuzz-targets/libprotobuf-mutator /src/libprotobuf-mutator
+cp -r /opt/fuzz-targets/mruby /src/
+cp -r /opt/fuzz-targets/mruby_seeds /src/
+cp -r /opt/fuzz-targets/libprotobuf-mutator /src/
 
 mkdir LPM; \
   cd LPM; \

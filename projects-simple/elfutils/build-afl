@@ -10,8 +10,8 @@ cd $SRC
 #git clone --depth 1 git://sourceware.org/git/elfutils.git
 
 rm -rf elfutils
-cp -r /opt/fuzz-targets/elfutils /src/elfutils
-cp -r /opt/fuzz-targets/zlib /src/$PROJECT_NAME/zlib
+cp -r /opt/fuzz-targets/elfutils /src
+cp -r /opt/fuzz-targets/zlib /src/$PROJECT_NAME/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.zip $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/

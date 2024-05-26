@@ -11,9 +11,9 @@ rm -rf xvidcore-install
 #git clone --depth 1 https://github.com/guidovranken/fuzzing-headers.git
 #git clone --depth 1 https://github.com/guidovranken/oss-fuzz-fuzzers.git
 
-cp -r /opt/fuzz-targets/trunk /src/trunk
-cp -r /opt/fuzz-targets/fuzzing-headers /src/fuzzing-headers
-cp -r /opt/fuzz-targets/oss-fuzz-fuzzers /src/oss-fuzz-fuzzers
+cp -r /opt/fuzz-targets/trunk /src
+cp -r /opt/fuzz-targets/fuzzing-headers /src
+cp -r /opt/fuzz-targets/oss-fuzz-fuzzers /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

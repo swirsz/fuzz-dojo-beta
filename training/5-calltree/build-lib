@@ -10,8 +10,8 @@ rm -rf /src/$PROJECT_NAME-tests
 #apt-get update && apt-get install -y make autoconf automake libtool wget
 #git clone https://github.com/swirsz/bzip2
 #git clone git://sourceware.org/git/bzip2-tests.git
-cp -r /opt/fuzz-targets/bzip2 /src/bzip2
-cp -r /opt/fuzz-targets/bzip2-tests /src/bzip2-tests
+cp -r /opt/fuzz-targets/bzip2 /src
+cp -r /opt/fuzz-targets/bzip2-tests /src
 
 cp /challenge/newfuzzer.c $SRC/newfuzzer.c
 

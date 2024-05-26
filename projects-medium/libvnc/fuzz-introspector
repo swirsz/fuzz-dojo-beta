@@ -4,7 +4,7 @@ export PROJECT_NAME=libvnc
 cd /src
 rm -rf /src/libvncserver
 #git clone --depth 1 https://github.com/LibVNC/libvncserver.git
-cp -r /opt/fuzz-targets/libvncserver /src/libvncserver
+cp -r /opt/fuzz-targets/libvncserver /src
 
 patch -tuN /src/libvncserver/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 cp /home/hacker/$PROJECT_NAME/*.c /src/libvncserver/test

@@ -7,7 +7,7 @@ cd $SRC
 
 #apt-get update && apt-get install -y make cmake python3
 #git clone --depth 1 https://github.com/commonmark/cmark.git cmark
-cp -r /opt/fuzz-targets/cmark /src/cmark
+cp -r /opt/fuzz-targets/cmark /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/

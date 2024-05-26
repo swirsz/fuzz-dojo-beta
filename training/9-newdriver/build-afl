@@ -9,9 +9,9 @@ cd $SRC
 #   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
 #git clone --depth 1 https://github.com/swirsz/avahi
 #git clone --depth 1 https://github.com/lathiat/avahi
-cp -r /opt/fuzz-targets/avahi /src/avahi 
+cp -r /opt/fuzz-targets/avahi /src 
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
 cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
 patch -tuN /src/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
 cd $SRC/$PROJECT_NAME

@@ -90,25 +90,11 @@ git -C libjxl submodule update --init --recommend-shallow \
 git clone https://www.cl.cam.ac.uk/~mgk25/git/jbigkit # does not support shallow
 
 
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
+cp -r /opt/fuzz-targets/cyclonedds /src/
+cp -r /opt/fuzz-targets/cyclonedds /src/
+cp -r /opt/fuzz-targets/cyclonedds /src/
+cp -r /opt/fuzz-targets/cyclonedds /src/
+cp -r /opt/fuzz-targets/cyclonedds /src/
 
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

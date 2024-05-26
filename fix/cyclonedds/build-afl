@@ -16,8 +16,8 @@ cd $SRC
 
 #git clone --depth 1 https://github.com/eclipse-cyclonedds/cyclonedds
 
-cp -r /opt/fuzz-targets/cyclonedds /src/cyclonedds
-cp -r /opt/fuzz-targets/cyclonedds-python /src/$PROJECT_NAME/cyclonedds-python
+cp -r /opt/fuzz-targets/cyclonedds /src
+cp -r /opt/fuzz-targets/cyclonedds-python /src/$PROJECT_NAME
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1

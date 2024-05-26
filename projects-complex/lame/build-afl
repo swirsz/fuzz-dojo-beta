@@ -18,10 +18,10 @@ tar -xvf snapshot
 mv mpg123* mpg123
 
 #git clone --depth 1 https://github.com/guidovranken/LAME-fuzzers
-cp -r /opt/fuzz-targets/LAME-fuzzers /src/LAME-fuzzers
+cp -r /opt/fuzz-targets/LAME-fuzzers /src/
 
 #svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame $SRC/lame
-cp -r /opt/fuzz-targets/lame /src/lame
+cp -r /opt/fuzz-targets/lame /src/
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305

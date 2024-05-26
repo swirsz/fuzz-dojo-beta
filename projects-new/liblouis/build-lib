@@ -9,7 +9,7 @@ cd $SRC
 #  pkg-config zlib1g-dev libpci-dev
 #git clone --depth 1 https://github.com/liblouis/liblouis
 
-cp -r /opt/fuzz-targets/liblouis /src/liblouis
+cp -r /opt/fuzz-targets/liblouis /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

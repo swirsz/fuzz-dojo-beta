@@ -9,7 +9,7 @@ cd $SRC
 
 #git clone --branch master  https://github.com/igraph/igraph
 
-cp -r /opt/fuzz-targets/igraph /src/igraph
+cp -r /opt/fuzz-targets/igraph /src
 cp /opt/fuzz-targets/libxml2-2.12.6.tar.xz /src
 
 cp $SRC/$PROJECT_NAME/fuzzing/build.sh $SRC/

@@ -8,7 +8,7 @@ rm -rf /work
 mkdir -p /work && chmod a+rwx /work
 
 #git clone https://github.com/libevent/libevent.git
-cp -r /opt/fuzz-targets/libevent /src/libevent
+cp -r /opt/fuzz-targets/libevent /src
     cd libevent && \
     mkdir build && \
     cd build && \
@@ -17,9 +17,9 @@ cp -r /opt/fuzz-targets/libevent /src/libevent
     
 cd /src
 #git clone --depth 1 https://github.com/tmux/tmux.git
-cp -r /opt/fuzz-targets/tmux /src/tmux
+cp -r /opt/fuzz-targets/tmux /src
 
-cp -r /src /out/src 
+cp -r /src /out
 
 cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/fuzz

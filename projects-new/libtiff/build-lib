@@ -15,11 +15,11 @@ cd $SRC
 #wget https://raw.githubusercontent.com/google/AFL/debe27037b9444bbf090a0ffbd5d24889bb887ae/dictionaries/tiff.dict
 
 
-cp -r /opt/fuzz-targets/libtiff /src/libtiff
-cp -r /opt/fuzz-targets/zlib /src/zlib
-cp -r /opt/fuzz-targets/libjpeg-turbo /src/libjpeg-turbo
-cp -r /opt/fuzz-targets/jbigkit /src/jbigkit
-cp -r /opt/fuzz-targets/afl-testcases /src/afl-testcases
+cp -r /opt/fuzz-targets/libtiff /src
+cp -r /opt/fuzz-targets/zlib /src
+cp -r /opt/fuzz-targets/libjpeg-turbo /src
+cp -r /opt/fuzz-targets/jbigkit /src
+cp -r /opt/fuzz-targets/afl-testcases /src
 cp -r /opt/fuzz-targets/tiff.dict /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

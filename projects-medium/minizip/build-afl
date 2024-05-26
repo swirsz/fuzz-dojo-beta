@@ -7,7 +7,7 @@ cd $SRC
 
 #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
 #git clone -b develop https://github.com/zlib-ng/minizip-ng minizip
-cp -r /opt/fuzz-targets/minizip /src/minizip
+cp -r /opt/fuzz-targets/minizip /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

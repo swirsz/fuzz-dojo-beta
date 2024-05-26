@@ -15,7 +15,7 @@ cd $SRC
 #  flex
 
 #git clone --depth 1 https://github.com/VirusTotal/yara.git
-cp -r /opt/fuzz-targets/yara /src/yara
+cp -r /opt/fuzz-targets/yara /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

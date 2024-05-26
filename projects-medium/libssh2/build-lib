@@ -9,7 +9,7 @@ rm -rf $SRC/$PROJECT_NAME
 
 #apt-get -y install automake libtool libssl-dev zlib1g-dev
 #git clone --depth 1 https://github.com/libssh2/libssh2.git /src/libssh2
-cp -r /opt/fuzz-targets/libssh2 /src/libssh2
+cp -r /opt/fuzz-targets/libssh2 /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

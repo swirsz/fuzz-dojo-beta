@@ -7,7 +7,7 @@ cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool
 #git clone --depth 1 -b develop https://github.com/madler/zlib.git
-cp -r /opt/fuzz-targets/zlib /src/zlib
+cp -r /opt/fuzz-targets/zlib /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
 

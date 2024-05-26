@@ -10,8 +10,8 @@ rm -rf /src/$PROJECT_NAME
 #apt-get install -y libz-dev libssl1.1 libssl-dev libedit-dev zip
 #git clone --depth 1 https://github.com/openssh/openssh-portable openssh
 #git clone --depth 1 https://github.com/djmdjm/openssh-fuzz-cases
-cp -r /opt/fuzz-targets/openssh /src/openssh
-cp -r /opt/fuzz-targets/openssh-fuzz-cases /src/openssh-fuzz-cases
+cp -r /opt/fuzz-targets/openssh /src
+cp -r /opt/fuzz-targets/openssh-fuzz-cases /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

@@ -17,11 +17,11 @@ cd $SRC
 # Checkout repository
 #git clone --depth 1 --recursive https://gitlab.freedesktop.org/gstreamer/gstreamer.git gstreamer
 
-cp -r /opt/fuzz-targets/vorbis /src/vorbis
-cp -r /opt/fuzz-targets/ogg /src/ogg
-cp -r /opt/fuzz-targets/theora /src/theora
-cp -r /opt/fuzz-targets/gstreamer /src/gstreamer
-cp -r /opt/fuzz-targets/zlib /src/zlib
+cp -r /opt/fuzz-targets/vorbis /src/
+cp -r /opt/fuzz-targets/ogg /src/
+cp -r /opt/fuzz-targets/theora /src/
+cp -r /opt/fuzz-targets/gstreamer /src/
+cp -r /opt/fuzz-targets/zlib /src/
 cp -r /opt/fuzz-targets/zlib-1.2.13.tar.gz /src/$PROJECT_NAME
 cp -r /opt/fuzz-targets/zlib_1.2.13-2_patch.zip /src/$PROJECT_NAME
 

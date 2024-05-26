@@ -4,7 +4,7 @@ export PROJECT_NAME=json
 cd /src
 rm -rf $PROJECT_NAME
 #git clone --depth 1 -b develop https://github.com/nlohmann/json.git
-cp -r /opt/fuzz-targets/json /src/json
+cp -r /opt/fuzz-targets/json /src
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305

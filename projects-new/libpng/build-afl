@@ -11,8 +11,8 @@ cd $SRC
 #git clone --depth 1 https://github.com/madler/zlib.git
 #git clone --depth 1 https://github.com/pnggroup/libpng.git
 
-cp -r /opt/fuzz-targets/zlib /src/zlib
-cp -r /opt/fuzz-targets/libpng /src/libpng
+cp -r /opt/fuzz-targets/zlib /src
+cp -r /opt/fuzz-targets/libpng /src
 
 cp libpng/contrib/oss-fuzz/build.sh $SRC
 

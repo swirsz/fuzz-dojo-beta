@@ -4,7 +4,7 @@ export PROJECT_NAME=ninja
 cd /src
 rm -rf ninja
 #git clone --depth 1 https://github.com/ninja-build/ninja
-cp -r /opt/fuzz-targets/ninja /src/ninja
+cp -r /opt/fuzz-targets/ninja /src/
 
 cp /src/$PROJECT_NAME/misc/manifest_fuzzer.cc /src/$PROJECT_NAME/misc/new_fuzzer.cc
 patch -tuN /src/$PROJECT_NAME/misc/new_fuzzer.cc -i /challenge/.new_fuzzer.patch -r -

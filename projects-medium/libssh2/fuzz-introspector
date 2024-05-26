@@ -4,7 +4,7 @@ export PROJECT_NAME=libssh2
 cd /src
 rm -rf /src/$PROJECT_NAME
 #git clone --depth 1 https://github.com/libssh2/libssh2.git /src/libssh2
-cp -r /opt/fuzz-targets/libssh2 /src/libssh2
+cp -r /opt/fuzz-targets/libssh2 /src
 
 cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/tests/ossfuzz
 patch -tuN /src/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -

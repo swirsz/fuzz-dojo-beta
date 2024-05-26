@@ -5,7 +5,7 @@ cd /src
 rm -rf $PROJECT_NAME
 # TODO: Update this to use hathath instead of this fork.
 #git clone --depth 1 https://github.com/hathach/tinyusb.git tinyusb     # or use other version control
-cp -r /opt/fuzz-targets/tinyusb /src/tinyusb
+cp -r /opt/fuzz-targets/tinyusb /src/
 
 cd /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

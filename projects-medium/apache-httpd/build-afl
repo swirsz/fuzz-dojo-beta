@@ -12,7 +12,7 @@ cd $SRC
 
 cd $SRC
 #git clone https://github.com/AdaLogics/fuzz-headers
-cp -r /opt/fuzz-targets/fuzz-headers /src/fuzz-headers
+cp -r /opt/fuzz-targets/fuzz-headers /src
 
 #wget https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.gz && \
 # tar -xf expat-2.4.1.tar.gz && cd expat-2.4.1 && ./configure && make && make install
@@ -20,7 +20,7 @@ cp -r /opt/fuzz-targets/fuzz-headers /src/fuzz-headers
 cd $SRC
 rm -rf /src/httpd
 #git clone --depth=1 https://github.com/apache/httpd
-cp -r /opt/fuzz-targets/httpd /src/httpd
+cp -r /opt/fuzz-targets/httpd /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

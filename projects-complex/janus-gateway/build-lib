@@ -9,13 +9,13 @@ cd $SRC
 
 # install libsrtp dep from source
 #git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
-cp -r /opt/fuzz-targets/libsrtp /src/libsrtp
+cp -r /opt/fuzz-targets/libsrtp /src/
 
 cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
 cd $SRC/
 # fetch Janus code
 # git clone --single-branch --branch master https://github.com/meetecho/janus-gateway.git
-cp -r /opt/fuzz-targets/janus-gateway /src/janus-gateway
+cp -r /opt/fuzz-targets/janus-gateway /src/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

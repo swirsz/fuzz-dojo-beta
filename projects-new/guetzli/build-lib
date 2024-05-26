@@ -10,12 +10,12 @@ cd $SRC
 #mkdir afl-testcases
 #cd afl-testcases/ && curl https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz | tar -xz
 #cd $SRC
-cp -r /opt/fuzz-targets/afl-testcases /src/afl-testcases
+cp -r /opt/fuzz-targets/afl-testcases /src
 
 zip guetzli_fuzzer_seed_corpus.zip afl-testcases/jpeg/full/images/* afl-testcases/jpeg_turbo/full/images/* $SRC/libjpeg-turbo/testimages/
 
 #git clone --depth=1 https://github.com/google/guetzli 
-cp -r /opt/fuzz-targets/guetzli /src/guetzli
+cp -r /opt/fuzz-targets/guetzli /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

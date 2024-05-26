@@ -12,7 +12,7 @@ rm -rf fuzzing-corpus
 #git clone --depth 1 https://gitlab.kitware.com/cmake/cmake.git $PROJECT_NAME
 #git clone --depth 1 https://github.com/strongcourage/fuzzing-corpus
 cp -r /opt/fuzz-targets/cmake /src/$PROJECT_NAME
-cp -r /opt/fuzz-targets/fuzzing-corpus /src/fuzzing-corpus
+cp -r /opt/fuzz-targets/fuzzing-corpus /src/
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305

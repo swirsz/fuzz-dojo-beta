@@ -12,7 +12,7 @@ rm -rf /work
 mkdir -p /work && chmod a+rwx /work
 
 #git clone https://github.com/libevent/libevent.git
-cp -r /opt/fuzz-targets/libevent /src/libevent
+cp -r /opt/fuzz-targets/libevent /src
     cd libevent && \
     mkdir build && \
     cd build && \
@@ -22,10 +22,10 @@ cp -r /opt/fuzz-targets/libevent /src/libevent
 cd $SRC
 #git clone --depth 1 https://github.com/tmux/tmux.git
 #git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
-cp -r /opt/fuzz-targets/tmux /src/tmux
-cp -r /opt/fuzz-targets/tmux-fuzzing-corpus /src/tmux-fuzzing-corpus
+cp -r /opt/fuzz-targets/tmux /src
+cp -r /opt/fuzz-targets/tmux-fuzzing-corpus /src
 
-cp -r /src /out/src 
+cp -r /src /out
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -

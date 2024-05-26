@@ -10,7 +10,7 @@ cd $SRC
 
 #git clone --depth 1 https://github.com/jqlang/jq
 
-cp -r /opt/fuzz-targets/jq /src/jq
+cp -r /opt/fuzz-targets/jq /src/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/

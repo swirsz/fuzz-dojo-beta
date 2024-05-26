@@ -10,8 +10,8 @@ rm -rf $PROJECT_NAME
 # libpcre3-dev libsvn-perl perl-modules libyaml-perl libz-dev python subversion tcl unzip asciidoc docbook-xsl xmlto libssl-dev zip
 
 #git clone https://github.com/git/git git
-cp -r /opt/fuzz-targets/git /src/git
-cp -r /opt/fuzz-targets/zlib /src/zlib
+cp -r /opt/fuzz-targets/git /src/
+cp -r /opt/fuzz-targets/zlib /src/
 cd $SRC/$PROJECT_NAME
 #git checkout origin/next
 #git pull origin next

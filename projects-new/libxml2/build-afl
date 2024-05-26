@@ -13,7 +13,7 @@ cd $SRC
 #curl -LO http://mirrors.kernel.org/ubuntu/pool/main/a/automake-1.16/automake_1.16.5-1.3_all.deb && \
 #git clone --depth 1 https://gitlab.gnome.org/GNOME/libxml2.git
 
-cp -r /opt/fuzz-targets/libxml2 /src/libxml2
+cp -r /opt/fuzz-targets/libxml2 /src
 cp -r /opt/fuzz-targets/automake_1.16.5-1.3_all.deb /src
 
 apt install ./automake_1.16.5-1.3_all.deb

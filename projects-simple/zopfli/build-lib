@@ -8,7 +8,7 @@ cd $SRC
 rm -rf /src/zopfli
 #apt-get update && apt-get install -y make autoconf automake libtool
 #git clone --depth 1 https://github.com/google/zopfli
-cp -r /opt/fuzz-targets/zopfli /src/zopfli
+cp -r /opt/fuzz-targets/zopfli /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 

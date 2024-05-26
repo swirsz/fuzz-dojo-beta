@@ -6,7 +6,7 @@ cd /src
 rm -rf /src/$PROJECT_NAME
 #apt-get update && apt-get install -y bison flex
 #git clone https://github.com/kamailio/kamailio
-cp -r /opt/fuzz-targets/$PROJECT_NAME /src/$PROJECT_NAME
+cp -r /opt/fuzz-targets/$PROJECT_NAME /src
 
 cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/misc/fuzz
 
