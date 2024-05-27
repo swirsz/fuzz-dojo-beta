@@ -3,6 +3,7 @@ export PROJECT_NAME=exiv2
 /challenge/.loc_count
 cd /src
 
+rm -rf $SRC/$PROJECT_NAME
 cp -r /opt/fuzz-targets/exiv2 /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
