@@ -13,5 +13,5 @@ patch -tuN /src/$PROJECT_NAME/fuzz/CMakeLists.txt -i /challenge/.CMakeLists.patc
 
 cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/fuzz
-cp /home/hacker/$PROJECT_NAME/build.sh /src
+
 /challenge/.fi $PROJECT_NAME
