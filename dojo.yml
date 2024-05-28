@@ -88,6 +88,10 @@ modules:
         name: EXAMPLE (my-api-repo) - 20 loc 100% coverage
         description: Sample OSS-Fuzz project
 
+      - id: exiv2
+        name: EXIV2 - 34282 loc 55% coverage (no FI report)
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
+
       - id: haproxy
         name: HAPROXY - 106108 loc 1% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=haproxy
@@ -291,10 +295,6 @@ modules:
       - id: e2fsprogs
         name: E2FSPROGS - 15878 loc 11% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=e2fsprogs
-
-      - id: exiv2
-        name: EXIV2 - 34282 loc 55% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
 
       - id: file
         name: FILE - 10664 loc 78% coverage
