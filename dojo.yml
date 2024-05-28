@@ -92,6 +92,10 @@ modules:
         name: EXIV2 - 34282 loc 55% coverage (no FI report)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
 
+      - id: guetzli
+        name: GUETZLI - 5648 loc 80% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=guetzli
+
       - id: haproxy
         name: HAPROXY - 106108 loc 1% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=haproxy
@@ -299,10 +303,6 @@ modules:
       - id: file
         name: FILE - 10664 loc 78% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
-
-      - id: guetzli
-        name: GUETZLI - 5648 loc 80% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=guetzli
 
       - id: igraph
         name: IGRAPH - 57124 loc 58% coverage
