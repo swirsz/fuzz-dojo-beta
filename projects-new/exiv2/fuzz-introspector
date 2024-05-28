@@ -6,12 +6,8 @@ cd /src
 rm -rf /src/$PROJECT_NAME
 cp -r /opt/fuzz-targets/exiv2 /src
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
-
-patch -tuN /src/$PROJECT_NAME/fuzz/build.sh -i /challenge/.build.patch -r -
 patch -tuN /src/$PROJECT_NAME/fuzz/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
-
-cd /src/$PROJECT_NAME
 cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/fuzz
 
+cd /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME
