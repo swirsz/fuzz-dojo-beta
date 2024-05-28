@@ -4,10 +4,19 @@ export PROJECT_NAME=exiv2
 cd /src
 
 rm -rf /src/$PROJECT_NAME
+#git clone https://github.com/Exiv2/exiv2 exiv2
+#./exiv2/ci/install_dependencies.sh
+#apt-get install -y cmake ninja-build g++ ---clang--- libexpat1-dev zlib1g-dev libbrotli-dev libssh-dev libcurl4-openssl-dev libgmock-dev libxml2-utils libinih-dev
 cp -r /opt/fuzz-targets/exiv2 /src
 
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
+
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 patch -tuN /src/$PROJECT_NAME/fuzz/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/fuzz
 
 cd /src/$PROJECT_NAME
+
+cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/fuzz
+cp /home/hacker/$PROJECT_NAME/build.sh /src
+
 /challenge/.fi $PROJECT_NAME
