@@ -15,6 +15,6 @@ patch -tuN /src/liblouis/tests/fuzzing/build.sh -i /challenge/.build.patch -r -
 cd /src/$PROJECT_NAME
 
 cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/tests/fuzzing
-cp /home/hacker/$PROJECT_NAME/build.sh /src
+cp /home/hacker/$PROJECT_NAME/build.sh /src/liblouis/tests/fuzzing
 
 /challenge/.fi $PROJECT_NAME
