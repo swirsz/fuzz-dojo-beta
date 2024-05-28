@@ -3,24 +3,14 @@ export PROJECT_NAME=guetzli
 /challenge/.loc_count
 cd /src
 
-rm -rf lame
-rm -rf mpg123
+cp -r /opt/fuzz-targets/afl-testcases /src
 
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
+zip guetzli_fuzzer_seed_corpus.zip afl-testcases/jpeg/full/images/* afl-testcases/jpeg_turbo/full/images/* /src/libjpeg-turbo/testimages/
 
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src
+#git clone --depth=1 https://github.com/google/guetzli 
+cp -r /opt/fuzz-targets/guetzli /src
 
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
+cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME
 
-
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
 /challenge/.fi $PROJECT_NAME
