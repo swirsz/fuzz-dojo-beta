@@ -12,6 +12,6 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/vpx_dec_fuzzer.dict /src/
 patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd /src/$PROJECT_NAME
 
-cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/examples
+cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/examples
 cp /home/hacker/$PROJECT_NAME/build.sh /src
 /challenge/.fi $PROJECT_NAME

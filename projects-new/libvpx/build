@@ -31,7 +31,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/examples
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/examples
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 sudo --preserve-env compile
