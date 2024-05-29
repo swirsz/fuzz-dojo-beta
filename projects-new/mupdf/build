@@ -24,12 +24,11 @@ cp /opt/fuzz-targets/pdf.dict /src
 cp pdf.dict new_fuzzer.dict
 mv pdf.dict pdf_fuzzer.dict
 
-
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
