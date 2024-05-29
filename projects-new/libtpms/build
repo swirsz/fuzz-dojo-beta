@@ -27,11 +27,11 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/fuzz.cc $SRC/$PROJECT_NAME/tests/fuzz-newfuzzer.cc
    cp $SRC/$PROJECT_NAME/tests/*.cc /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp /src/$PROJECT_NAME/tests/oss-fuzz.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/tests
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/$PROJECT_NAME/oss-fuzz.sh /src/$PROJECT_NAME/tests
 fi
 sudo --preserve-env compile
 drivers
