@@ -191,6 +191,10 @@ modules:
         name: LIBLOUIS - 10478 loc 79% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=liblouis
         
+      - id: libpng
+        name: LIBPNG - 13217 loc 39% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpng
+
       - id: libssh2
         name: LIBSSH2 - 12632 loc 30% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh2
@@ -311,10 +315,6 @@ modules:
       - id: igraph
         name: IGRAPH - 57124 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
-
-      - id: libpng
-        name: LIBPNG - 13217 loc 39% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpng
 
       - id: libsass
         name: LIBSASS - 19723 loc 33% coverage
