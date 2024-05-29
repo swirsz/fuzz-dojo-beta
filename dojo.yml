@@ -108,6 +108,10 @@ modules:
         name: KAMAILIO - 83091 loc 9% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
 
+      - id: libsass
+        name: LIBSASS - 19723 loc 33% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsass
+
       - id: libsodium
         name: LIBSODIUM - 8403 loc 19% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
@@ -315,10 +319,6 @@ modules:
       - id: igraph
         name: IGRAPH - 57124 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
-
-      - id: libsass
-        name: LIBSASS - 19723 loc 33% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsass
 
       - id: libtpms
         name: LIBTPMS - 68691 loc 22% coverage
