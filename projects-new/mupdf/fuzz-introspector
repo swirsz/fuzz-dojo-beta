@@ -22,8 +22,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc /src/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options /src/
 
-rm -rf /out/src
-cp -r /src /out
+cd /src/$PROJECT_NAME
 patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 
 cp /home/hacker/$PROJECT_NAME/*.cc /src
