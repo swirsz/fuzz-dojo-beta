@@ -5,6 +5,7 @@ cd /src
 
 #apt-get update && apt-get install -y make libtool pkg-config
 
+rm -rf /src/$PROJECT_NAME
 #git clone --recursive --depth 1 git://git.ghostscript.com/mupdf.git mupdf
 #git clone --depth 1 https://github.com/mozilla/pdf.js pdf.js 
 cp -r /opt/fuzz-targets/mupdf /src

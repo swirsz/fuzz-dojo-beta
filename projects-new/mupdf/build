@@ -10,6 +10,7 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+rm -rf $SRC/$PROJECT_NAME
 #apt-get update && apt-get install -y make libtool pkg-config
 
 #git clone --recursive --depth 1 git://git.ghostscript.com/mupdf.git mupdf
