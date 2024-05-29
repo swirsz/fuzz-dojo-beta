@@ -206,6 +206,10 @@ modules:
       - id: libvnc
         name: LIBVNC - 10793 loc 20% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
+
+      - id: libvpx
+        name: LIBVPX - 32885 loc 60% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
       
       - id: miniz
         name: MINIZ - 5423 loc 47% coverage
@@ -319,10 +323,6 @@ modules:
       - id: igraph
         name: IGRAPH - 57124 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
-
-      - id: libvpx
-        name: LIBVPX - 32885 loc 60% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
 
       - id: libwebp
         name: LIBWEBP - 29393 loc 88% coverage
