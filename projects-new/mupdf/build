@@ -29,6 +29,8 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 
+rm -rf /out/src
+cp -r /src /out
 #patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
