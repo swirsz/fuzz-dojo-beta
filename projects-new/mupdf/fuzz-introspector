@@ -3,24 +3,26 @@ export PROJECT_NAME=mupdf
 /challenge/.loc_count
 cd /src
 
-rm -rf lame
-rm -rf mpg123
+#apt-get update && apt-get install -y make libtool pkg-config
 
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
+#git clone --recursive --depth 1 git://git.ghostscript.com/mupdf.git mupdf
+#git clone --depth 1 https://github.com/mozilla/pdf.js pdf.js 
+cp -r /opt/fuzz-targets/mupdf /src
+cp -r /opt/fuzz-targets/pdf.js /src
 
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src
+zip -q /src/pdf_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf && rm -rf pdf.js
+    
+#wget https://raw.githubusercontent.com/rc0r/afl-fuzz/master/dictionaries/pdf.dict
+cp /opt/fuzz-targets/pdf.dict /src
+cp pdf.dict new_fuzzer.dict
+mv pdf.dict pdf_fuzzer.dict
 
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc /src/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options /src/
 
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
+cp /home/hacker/$PROJECT_NAME/*.cc /src
+cp /home/hacker/$PROJECT_NAME/build.sh /src
 /challenge/.fi $PROJECT_NAME
