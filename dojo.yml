@@ -320,10 +320,6 @@ modules:
         name: IGRAPH - 57124 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
 
-      - id: libtpms
-        name: LIBTPMS - 68691 loc 22% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtpms
-
       - id: libvpx
         name: LIBVPX - 32885 loc 60% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx

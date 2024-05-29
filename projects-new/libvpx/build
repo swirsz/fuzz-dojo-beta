@@ -21,7 +21,18 @@ cp -r /opt/fuzz-targets/vpx_fuzzer_seed_corpus.zip /src
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/vpx_dec_fuzzer.dict $SRC/
 
-cd $SRC/$PROJECT_NAME
 
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/examples/vpx_dec_fuzzer.cc $SRC/$PROJECT_NAME/examples/newfuzzer.cc
+   cp $SRC/$PROJECT_NAME/examples/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/examples
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
 sudo --preserve-env compile
 drivers
