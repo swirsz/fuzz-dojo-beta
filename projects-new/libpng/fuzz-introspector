@@ -3,24 +3,21 @@ export PROJECT_NAME=libpng
 /challenge/.loc_count
 cd /src
 
-rm -rf lame
-rm -rf mpg123
+#apt-get update && \
+#    apt-get install -y make autoconf automake libtool zlib1g-dev
 
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
+#git clone --depth 1 https://github.com/madler/zlib.git
+#git clone --depth 1 https://github.com/pnggroup/libpng.git
 
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src
+cp -r /opt/fuzz-targets/zlib /src
+cp -r /opt/fuzz-targets/libpng /src
 
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
+cp /src/libpng/contrib/oss-fuzz/build.sh /src
 
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd /src/libpng
 
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
+cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/contrib/oss-fuzz
+cp /home/hacker/$PROJECT_NAME/build.sh /src
+   
 /challenge/.fi $PROJECT_NAME
