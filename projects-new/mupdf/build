@@ -17,11 +17,11 @@ cd $SRC
 cp -r /opt/fuzz-targets/mupdf /src
 cp -r /opt/fuzz-targets/pdf.js /src
 
-    zip -q $SRC/pdf_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf && \
-    rm -rf pdf.js
+zip -q $SRC/pdf_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf && rm -rf pdf.js
     
 #wget https://raw.githubusercontent.com/rc0r/afl-fuzz/master/dictionaries/pdf.dict
-cp -r /opt/fuzz-targets/pdf.dict /src
+cp /opt/fuzz-targets/pdf.dict /src
+cp pdf.dict new_fuzzer.dict
 mv pdf.dict pdf_fuzzer.dict
 
 
@@ -29,6 +29,17 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 
-cd $SRC/mupdf
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/pdf_fuzzer.cc $SRC/new_fuzzer.cc
+   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
 sudo --preserve-env compile
 drivers
