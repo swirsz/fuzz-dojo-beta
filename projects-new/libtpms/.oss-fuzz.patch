@@ -1,0 +1,13 @@
+--- oss-fuzz.sho	2024-05-29 02:36:22.545957193 +0000
++++ oss-fuzz.sh	2024-05-29 02:39:23.070653692 +0000
+@@ -23,5 +23,10 @@
+ 
+ zip -jqr $OUT/fuzz_seed_corpus.zip "$LIBTPMS/tests/corpus-execute-command"
+ 
++make -j$(nproc) && make -C tests fuzz-newfuzzer
++
++zip -jqr $OUT/fuzz-newfuzzer_seed_corpus.zip "$LIBTPMS/tests/corpus-execute-command"
++
++
+ find $build -type f -executable -name "fuzz*" -exec mv {} $OUT \;
+ find $build -type f -name "*.options" -exec mv {} $OUT \;

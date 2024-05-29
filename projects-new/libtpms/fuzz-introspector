@@ -3,24 +3,20 @@ export PROJECT_NAME=libtpms
 /challenge/.loc_count
 cd /src
 
-rm -rf lame
-rm -rf mpg123
+#apt-get update && \
+#        apt-get install -y \
+#        make autoconf automake libtool \
+#        libstdc++-9-dev \
+#        libssl-dev libseccomp-dev pkg-config
+#git clone --depth 1 https://github.com/stefanberger/libtpms libtpms
 
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
+cp -r /opt/fuzz-targets/libtpms /src
 
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
 
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
+patch -tuN /src/$PROJECT_NAME/tests/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
+cd /src/libtpms
 
-
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
+cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/tests
+cp /home/hacker/$PROJECT_NAME/build.sh /src
 /challenge/.fi $PROJECT_NAME
