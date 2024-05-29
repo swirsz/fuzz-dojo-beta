@@ -24,5 +24,15 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/data_context_fuzzer.cc  $SRC/
 
 #patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/data_context_fuzzer.cc $SRC/new_fuzzer.cc
+   cp $SRC/*.cc /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
 sudo --preserve-env compile
 drivers
