@@ -22,7 +22,7 @@ export OLD_LLVMPASS=1
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/data_context_fuzzer.cc  $SRC/
 
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
