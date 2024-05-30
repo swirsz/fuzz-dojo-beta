@@ -223,6 +223,10 @@ modules:
         name: MPG123 - 9826 loc 53% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
 
+      - id: mupdf
+        name: MUPDF - 289131 loc 35% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mupdf
+
       - id: opensips
         name: OPENSIPS - 62114 loc 13% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
@@ -331,10 +335,6 @@ modules:
       - id: libxml2
         name: LIBXML2 - 88011 loc 65% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libxml2
-
-      - id: mupdf
-        name: MUPDF - 289131 loc 35% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mupdf
 
       - id: openssl
         name: OPENSSL - 823997 loc 39% coverage
