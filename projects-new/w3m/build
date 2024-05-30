@@ -17,5 +17,16 @@ cp -r /opt/fuzz-targets/w3m /src
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzz/fuzz-conv.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
+   cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
 sudo --preserve-env compile
 drivers
