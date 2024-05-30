@@ -18,7 +18,8 @@ rm -rf $SRC/$PROJECT_NAME
 cp -r /opt/fuzz-targets/mupdf /src
 cp -r /opt/fuzz-targets/pdf.js /src
 
-zip -q $SRC/pdf_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf && rm -rf pdf.js
+zip -q $SRC/pdf_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf
+zip -q $SRC/new_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf && rm -rf pdf.js
     
 #wget https://raw.githubusercontent.com/rc0r/afl-fuzz/master/dictionaries/pdf.dict
 cp /opt/fuzz-targets/pdf.dict /src
