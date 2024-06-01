@@ -340,10 +340,6 @@ modules:
         name: IGRAPH - 57124 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
 
-      - id: libtiff
-        name: LIBTIFF - 49583 loc 37% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtiff
-
       - id: libwebp
         name: LIBWEBP - 29393 loc 88% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libwebp
@@ -457,6 +453,10 @@ modules:
       - id: libpsl
         name: libpsl -  loc % coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpsl
+
+      - id: libtiff
+        name: LIBTIFF - 49583 loc 37% coverage - DWARF error 0x25
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtiff
 
       - id: lua
         name: lua -  loc % coverage
