@@ -3,24 +3,14 @@ export PROJECT_NAME=yara
 /challenge/.loc_count
 cd /src
 
-rm -rf lame
-rm -rf mpg123
+#git clone --depth 1 https://github.com/VirusTotal/yara.git
+cp -r /opt/fuzz-targets/yara /src
 
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
 
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src
+#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/tests/oss-fuzz
+cp /home/hacker/$PROJECT_NAME/build.sh /src
 
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
-
-
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
 /challenge/.fi $PROJECT_NAME
