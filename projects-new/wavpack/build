@@ -15,11 +15,25 @@ cd $SRC
 
 cp -r /opt/fuzz-targets/wavpack /src
 
-cp wavpack/fuzzing/build.sh $SRC
+cp /src/wavpack/fuzzing/build.sh $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-
-cd $SRC/wavpack
-
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/fuzzer.cc $SRC/$PROJECT_NAME/fuzzing/newfuzzer.cc
+   cp $SRC/$PROJECT_NAME/fuzzing/fuzzer.dict $SRC/$PROJECT_NAME/fuzzing/newfuzzer.dict
+   cp $SRC/$PROJECT_NAME/fuzzing/fuzzer.options $SRC/$PROJECT_NAME/fuzzing/newfuzzer.options
+   cp $SRC/$PROJECT_NAME/fuzzing/fuzzer_seed_corpus.zip $SRC/$PROJECT_NAME/fuzzing/newfuzzer_seed_corpus.zip
+   cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/*.zip /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
 sudo --preserve-env compile
 drivers
