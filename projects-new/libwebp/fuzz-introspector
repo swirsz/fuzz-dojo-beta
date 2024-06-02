@@ -3,24 +3,24 @@ export PROJECT_NAME=libwebp
 /challenge/.loc_count
 cd /src
 
-rm -rf lame
-rm -rf mpg123
+rm -rf /src/$PROJECT_NAME
 
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
+#apt-get update && apt-get install -y autoconf make libtool zip
+#git clone https://chromium.googlesource.com/webm/libwebp
+#git clone https://chromium.googlesource.com/webm/libwebp-test-data
+#wget https://storage.googleapis.com/downloads.webmproject.org/webp/testdata/fuzzer/fuzz_seed_corpus.zip
 
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src
+cp -r /opt/fuzz-targets/libwebp /src
+cp -r /opt/fuzz-targets/libwebp-test-data /src
+cp -r /opt/fuzz-targets/fuzz_seed_corpus.zip /src
 
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
+unzip fuzz_seed_corpus.zip -d libwebp-test-data/
+rm fuzz_seed_corpus.zip
 
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
 
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+cd /src/$PROJECT_NAME
+cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/tests/fuzzer
+cp /home/hacker/$PROJECT_NAME/build.sh /src
 /challenge/.fi $PROJECT_NAME
