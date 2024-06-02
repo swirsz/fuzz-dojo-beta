@@ -24,7 +24,19 @@ rm fuzz_seed_corpus.zip
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/libwebp
+patch -tuN /src/avahi/fuzz/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/fuzzer/enc_dec_fuzzer.cc $SRC/$PROJECT_NAME/tests/fuzzer/new_fuzzer.cc
+   cp $SRC/$PROJECT_NAME/tests/fuzzer/*.cc /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/tests/fuzzer
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
+
 
 sudo --preserve-env compile
 drivers
