@@ -4,6 +4,7 @@ export PROJECT_NAME=libwebp
 cd /src
 
 rm -rf /src/$PROJECT_NAME
+rm -rf $SRC/libwebp-test-data
 
 #apt-get update && apt-get install -y autoconf make libtool zip
 #git clone https://chromium.googlesource.com/webm/libwebp
