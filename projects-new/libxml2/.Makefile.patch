@@ -1,32 +1,32 @@
---- Makefile.am	2024-06-02 20:28:26.000000000 +0000
-+++ Makefile.amo	2024-06-02 20:20:16.286080510 +0000
+--- Makefile.amo	2024-06-02 20:20:16.286080510 +0000
++++ Makefile.am	2024-06-02 20:28:26.000000000 +0000
 @@ -1,7 +1,7 @@
  AUTOMAKE_OPTIONS = -Wno-syntax
  EXTRA_PROGRAMS = genSeed \
  		 api html lint reader regexp schema uri valid xinclude \
--		 xml xpath newfuzzer
-+		 xml xpath
+-		 xml xpath
++		 xml xpath newfuzzer
  check_PROGRAMS = testFuzzer
  EXTRA_DIST = html.dict regexp.dict schema.dict xml.dict xpath.dict \
  	     static_seed/uri static_seed/regexp fuzz.h
-@@ -237,20 +237,3 @@
+@@ -237,3 +237,20 @@
  	    $$XML_FUZZ_OPTIONS \
  	    corpus/xpath seed/xpath
  
--# XML Newfuzzer fuzzer
--
--seed/newfuzzer.stamp: genSeed$(EXEEXT)
--	@mkdir -p seed/newfuzzer
--	./genSeed$(EXEEXT) newfuzzer '$(top_srcdir)/test/newfuzzers/*.xsd'
--	@touch seed/newfuzzer.stamp
--
--newfuzzer_SOURCES = newfuzzer.c fuzz.c
--newfuzzer_LDFLAGS = $(AM_LDFLAGS) -fsanitize=fuzzer
--
--fuzz-newfuzzer: newfuzzer$(EXEEXT) seed/newfuzzer.stamp
--	@mkdir -p corpus/newfuzzer
--	./newfuzzer$(EXEEXT) \
--	    -dict=newfuzzer.dict \
--	    -max_len=$(XML_MAX_LEN) \
--	    $$XML_FUZZ_OPTIONS \
--	    corpus/newfuzzer seed/newfuzzer
++# XML Newfuzzer fuzzer
++
++seed/newfuzzer.stamp: genSeed$(EXEEXT)
++	@mkdir -p seed/newfuzzer
++	./genSeed$(EXEEXT) newfuzzer '$(top_srcdir)/test/newfuzzers/*.xsd'
++	@touch seed/newfuzzer.stamp
++
++newfuzzer_SOURCES = newfuzzer.c fuzz.c
++newfuzzer_LDFLAGS = $(AM_LDFLAGS) -fsanitize=fuzzer
++
++fuzz-newfuzzer: newfuzzer$(EXEEXT) seed/newfuzzer.stamp
++	@mkdir -p corpus/newfuzzer
++	./newfuzzer$(EXEEXT) \
++	    -dict=newfuzzer.dict \
++	    -max_len=$(XML_MAX_LEN) \
++	    $$XML_FUZZ_OPTIONS \
++	    corpus/newfuzzer seed/newfuzzer
