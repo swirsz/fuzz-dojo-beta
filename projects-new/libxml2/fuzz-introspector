@@ -3,24 +3,24 @@ export PROJECT_NAME=libxml2
 /challenge/.loc_count
 cd /src
 
-rm -rf lame
-rm -rf mpg123
+#apt-get update && \
+#    apt-get install -y --no-install-recommends \
+#        make autoconf libtool pkg-config \
+#        zlib1g-dev zlib1g-dev:i386 liblzma-dev liblzma-dev:i386
+# Build requires automake 1.16.3
+#curl -LO http://mirrors.kernel.org/ubuntu/pool/main/a/automake-1.16/automake_1.16.5-1.3_all.deb && \
+#git clone --depth 1 https://gitlab.gnome.org/GNOME/libxml2.git
 
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
+cp -r /opt/fuzz-targets/libxml2 /src
+cp -r /opt/fuzz-targets/automake_1.16.5-1.3_all.deb /src
 
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src
+apt install ./automake_1.16.5-1.3_all.deb
+    
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
 
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
+patch -tuN /src/libxml2/fuzz/oss-fuzz-build.sh -i /challenge/.oss-fuzz-build.patch -r -
+cd /src/$PROJECT_NAME
 
-
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
+cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/fuzz
+cp /home/hacker/$PROJECT_NAME/oss-fuzz-build.sh /src/$PROJECT_NAME/fuzz
 /challenge/.fi $PROJECT_NAME

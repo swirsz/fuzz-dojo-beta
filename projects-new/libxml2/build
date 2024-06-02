@@ -25,6 +25,18 @@ apt install ./automake_1.16.5-1.3_all.deb
     
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-cd $SRC/libxml2
+patch -tuN /src/libxml2/fuzz/oss-fuzz-build.sh -i /challenge/.oss-fuzz-build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzz/schema.c $SRC/$PROJECT_NAME/fuzz/newfuzzer.c
+   cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/$PROJECT_NAME
+   cp /src/libxml2/fuzz/oss-fuzz-build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
+   cp /home/hacker/$PROJECT_NAME/oss-fuzz-build.sh $SRC/$PROJECT_NAME/fuzz
+fi
+
 sudo --preserve-env compile
 drivers

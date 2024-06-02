@@ -1,0 +1,11 @@
+--- oss-fuzz-build.sho	2024-06-02 20:07:37.919881810 +0000
++++ oss-fuzz-build.sh	2024-06-02 20:10:05.169306644 +0000
+@@ -33,7 +33,7 @@
+ make fuzz.o
+ 
+ for fuzzer in \
+-    api html lint reader regexp schema uri valid xinclude xml xpath
++    api html lint reader regexp schema uri valid xinclude xml xpath newfuzzer
+ do
+     make $fuzzer.o
+     # Link with $CXX
