@@ -25,6 +25,9 @@ apt install ./automake_1.16.5-1.3_all.deb
     
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+mkdir -p /src/libxml2/test/newfuzzers
+cp /src/libxml2/test/schemas /src/libxml2/test/newfuzzers
+
 patch -tuN /src/libxml2/fuzz/oss-fuzz-build.sh -i /challenge/.oss-fuzz-build.patch -r -
 patch -tuN /src/libxml2/fuzz/Makefile.am -i /challenge/.Makefile.patch -r -
 cd $SRC/$PROJECT_NAME
