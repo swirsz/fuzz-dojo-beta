@@ -13,7 +13,7 @@ cd $SRC
 #apt-get update && apt-get install -y cmake bison flex
 
 #git clone --branch master  https://github.com/igraph/igraph
-rm -rf $SRC/$PROJECT_NAME
+rm -rf /src/igraph
 rm -rf /src/deps
 
 cp -r /opt/fuzz-targets/igraph /src
