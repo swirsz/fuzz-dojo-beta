@@ -332,14 +332,6 @@ modules:
         name: CURL - 274257 loc 21% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
 
-      - id: e2fsprogs
-        name: E2FSPROGS - 15878 loc 11% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=e2fsprogs
-
-      - id: file
-        name: FILE - 10664 loc 78% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
-
       - id: igraph
         name: IGRAPH - 57124 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
@@ -385,6 +377,10 @@ modules:
       - id: ffmpeg
         name: ffmpeg - failing 
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ffmpeg
+
+      - id: file
+        name: FILE - 10664 loc 78% coverage seccomp.c error use of undeclared identifier 'memory'
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
 
       - id: flac
         name: flac - 33650 loc 86% coverage
