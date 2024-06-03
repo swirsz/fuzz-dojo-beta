@@ -218,7 +218,11 @@ modules:
       - id: libvpx
         name: LIBVPX - 32885 loc 60% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
-      
+
+      - id: libwebp
+        name: LIBWEBP - 29393 loc 88% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libwebp
+
       - id: miniz
         name: MINIZ - 5423 loc 47% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=miniz
@@ -339,10 +343,6 @@ modules:
       - id: igraph
         name: IGRAPH - 57124 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
-
-      - id: libwebp
-        name: LIBWEBP - 29393 loc 88% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libwebp
 
       - id: openssl
         name: OPENSSL - 823997 loc 39% coverage
