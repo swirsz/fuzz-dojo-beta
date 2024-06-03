@@ -199,6 +199,10 @@ modules:
         name: GFWX - 1087 loc 84% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
 
+      - id: igraph
+        name: IGRAPH - 57124 loc 58% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
+        
       - id: liblouis
         name: LIBLOUIS - 10478 loc 79% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=liblouis
@@ -321,16 +325,6 @@ modules:
         name: ZLIB - 5055 loc 69% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
 
-
-  - id: projects-new
-    name: NEW PROJECTS
-    description: These OSS-Fuzz Projects build but do not have all features implemented yet
-
-    challenges:
-
-      - id: igraph
-        name: IGRAPH - 57124 loc 58% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
 
   - id: fix
     name: BROKEN PROJECTS
