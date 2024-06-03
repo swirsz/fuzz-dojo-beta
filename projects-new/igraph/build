@@ -15,6 +15,7 @@ cd $SRC
 #git clone --branch master  https://github.com/igraph/igraph
 rm -rf /src/igraph
 rm -rf /src/deps
+rm -rf /src/libxml2-2.12.6
 
 cp -r /opt/fuzz-targets/igraph /src
 cp /opt/fuzz-targets/libxml2-2.12.6.tar.xz /src
