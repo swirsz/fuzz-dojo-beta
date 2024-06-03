@@ -10,6 +10,7 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
+
 rm -rf /src/e2fsprogs
 rm -rf /src/fuzz
 
