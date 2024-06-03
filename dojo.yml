@@ -328,10 +328,6 @@ modules:
 
     challenges:
 
-      - id: curl
-        name: CURL - 274257 loc 21% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
-
       - id: igraph
         name: IGRAPH - 57124 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
@@ -361,6 +357,10 @@ modules:
       - id: civetweb
         name: civetweb - 11403 loc 11% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=civetweb
+
+      - id: curl
+        name: CURL - 274257 loc 21% coverage - clang-15 unable to execute command: Killed
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
 
       - id: cpython3
         name: cpython3 - 240847 loc 41% coverage
