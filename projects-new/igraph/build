@@ -13,6 +13,7 @@ cd $SRC
 #apt-get update && apt-get install -y cmake bison flex
 
 #git clone --branch master  https://github.com/igraph/igraph
+rm -rf $SRC/$PROJECT_NAME
 
 cp -r /opt/fuzz-targets/igraph /src
 cp /opt/fuzz-targets/libxml2-2.12.6.tar.xz /src

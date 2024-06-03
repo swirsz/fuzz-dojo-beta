@@ -9,9 +9,11 @@ export PROJECT_NAME=openssl
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
-mkdir $SRC/fuzz
-mv $SRC/$PROJECT_NAME/fuzz/*.c $SRC/fuzz
-rm -rf $SRC/$PROJECT_NAME
+rm -rf $SRC/openssl
+rm -rf $SRC/openssl111
+rm -rf $SRC/openssl30
+rm -rf $SRC/openssl31
+rm -rf $SRC/openssl32
 
 #apt-get install -y make
 #git clone --depth 1 https://github.com/openssl/openssl.git $SRC/openssl
@@ -25,6 +27,10 @@ cp -r /opt/fuzz-targets/openssl111 /src
 cp -r /opt/fuzz-targets/openssl30 /src
 cp -r /opt/fuzz-targets/openssl31 /src
 cp -r /opt/fuzz-targets/openssl32 /src
+
+
+mkdir $SRC/fuzz
+mv $SRC/$PROJECT_NAME/fuzz/*.c $SRC/fuzz
 
 export AFL_SKIP_OSSFUZZ=1
 export AFL_LLVM_MODE_WORKAROUND=0
