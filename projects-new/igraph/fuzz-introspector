@@ -3,24 +3,23 @@ export PROJECT_NAME=igraph
 /challenge/.loc_count
 cd /src
 
-rm -rf lame
-rm -rf mpg123
+#apt-get update && apt-get install -y cmake bison flex
 
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
+#git clone --branch master  https://github.com/igraph/igraph
+rm -rf /src/igraph
+rm -rf /src/deps
+rm -rf /src/libxml2-2.12.6
 
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src
+cp -r /opt/fuzz-targets/igraph /src
+cp /opt/fuzz-targets/libxml2-2.12.6.tar.xz /src
 
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
+cp /src/$PROJECT_NAME/fuzzing/build.sh /src/
 
+patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN /src/build.sh -i /challenge/.build2.patch -r -
+patch -tuN /src/igraph/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
+cd /src/$PROJECT_NAME
 
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
+cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/fuzzing
+cp /home/hacker/$PROJECT_NAME/build.sh /src
 /challenge/.fi $PROJECT_NAME
