@@ -359,7 +359,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=civetweb
 
       - id: curl
-        name: CURL - 274257 loc 21% coverage - clang-15 unable to execute command: Killed
+        name: CURL - 274257 loc 21% coverage - clang-15 unable to execute command - Killed
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
 
       - id: cpython3
