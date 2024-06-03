@@ -4,4 +4,4 @@
  add_fuzzer(vertex_separators)
  add_fuzzer(write_all_gml)
  add_fuzzer(write_all_graphml)
--add_fuzzer(newfuzzer)
++add_fuzzer(newfuzzer)
