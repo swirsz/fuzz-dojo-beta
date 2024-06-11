@@ -1,4 +1,6 @@
 #!/opt/pwn.college/bash
+export INITIAL=90
+export TARGET=95
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
