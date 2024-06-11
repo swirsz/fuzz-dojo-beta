@@ -1,5 +1,5 @@
 #!/opt/pwn.college/bash 
-time sudo -H -u hacker bash -c "/challenge/.loc_count $*"
+time sudo --preserve-env -H -u hacker bash -c "/challenge/.loc_count $*"
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -gt "$TARGET" ]; then
     echo
