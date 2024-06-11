@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-export INITIAL=90
-export TARGET=95
+INITIAL=90
+TARGET=95
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -41,3 +41,17 @@ else
 fi
 sudo --preserve-env compile
 drivers
+
+if [ "$1" = "coverage" ]; then
+   /usr/local/sbin/announce $INITIAL $? 
+   if [ "$?" -gt "$TARGET" ]; then
+       echo
+       echo Congratulations!  But make sure you also submit your improvements to Google!
+       cat /flag
+   fi
+   if compgen -G "/out/crash*" > /dev/null; then
+       echo
+       echo "Crashes detected within the /out directory!"
+       echo
+   fi
+fi
