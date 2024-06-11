@@ -1,4 +1,4 @@
 #!/opt/pwn.college/bash 
-ln /usr/local/sbin/loc_count /challenge/.loc_count
+ln /usr/local/sbin/loc_count /challenge/loc
 ln /usr/local/sbin/fi /challenge/fuzz-introspector
-chmod 4755 /challenge/.loc_count /challenge/fuzz-introspector
+chmod 4755 /challenge/loc /challenge/fuzz-introspector

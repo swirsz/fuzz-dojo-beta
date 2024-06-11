@@ -1,4 +1,6 @@
 #!/opt/pwn.college/bash
+echo 31 > /tmp/initial
+echo 36 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -20,8 +22,6 @@ mkdir $SRC/sqlite3 && \
     tar xzf sqlite3.tar.gz
     #curl 'https://www.sqlite.org/src/tarball?uuid=trunk' -o sqlite3.tar.gz && \
     #tar xzf sqlite3.tar.gz
-
-
 
 cd $SRC
 find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip
