@@ -1,20 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=liblouis
-/challenge/.loc_count
-cd /src
-
-#apt-get update && apt-get install -y make autoconf automake libtool \
-#  pkg-config zlib1g-dev libpci-dev
-#git clone --depth 1 https://github.com/liblouis/liblouis
-
-cp -r /opt/fuzz-targets/liblouis /src
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
-patch -tuN /src/liblouis/tests/fuzzing/build.sh -i /challenge/.build.patch -r -
-
-cd /src/$PROJECT_NAME
-
-cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/tests/fuzzing
-cp /home/hacker/$PROJECT_NAME/build.sh /src/liblouis/tests/fuzzing
-
 /challenge/.fi $PROJECT_NAME

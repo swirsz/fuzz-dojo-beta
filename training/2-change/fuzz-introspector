@@ -1,6 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=minizip
-/challenge/.loc_count $PROJECT_NAME
-cd /src/$PROJECT_NAME
-cp /home/hacker/training-change/*.c /src/$PROJECT_NAME/test/fuzz
 /challenge/.fi $PROJECT_NAME

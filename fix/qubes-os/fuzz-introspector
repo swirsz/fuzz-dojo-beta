@@ -1,14 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=qubes-os
-/challenge/.loc_count
-cd /src
-
-rm -rf /src/qubes-os/qubes-core-qubesdb
-rm -rf /src/qubes-os/qubes-core-qrexec
-#apt-get update && apt-get -y install build-essential automake libtool git python libsystemd-dev
-git clone --single-branch https://github.com/QubesOS/qubes-app-linux-input-proxy /src/qubes-os/app-linux-input-proxy
-git clone --single-branch https://github.com/QubesOS/qubes-core-qubesdb /src/qubes-os/qubes-core-qubesdb
-git clone --single-branch https://github.com/QubesOS/qubes-core-qrexec /src/qubes-os/qubes-core-qrexec
-
-cd /src/qubes-os
 /challenge/.fi $PROJECT_NAME

@@ -1,9 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=casync
-/challenge/.loc_count
-cd /src/$PROJECT_NAME
-cp /home/hacker/$PROJECT_NAME/*.c /src/casync/test/fuzz
-cp /home/hacker/$PROJECT_NAME/*.h /src/casync/test/fuzz
-cp /home/hacker/$PROJECT_NAME/*.build /src/casync/test/fuzz
-cp /home/hacker/$PROJECT_NAME/oss-fuzz.sh /src/casync/tools
 /challenge/.fi $PROJECT_NAME

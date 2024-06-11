@@ -1,6 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=janus-gateway
-/challenge/.loc_count
-cd /src
-cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/fuzzers
 /challenge/.fi $PROJECT_NAME

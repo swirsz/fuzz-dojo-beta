@@ -1,11 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=apache-httpd
-/challenge/.loc_count
-cd /src
-
-rm -rf /src/httpd
-#git clone --depth=1 https://github.com/apache/httpd
-cp -r /opt/fuzz-targets/httpd /src
-
-cd /src/httpd
 /challenge/.fi $PROJECT_NAME

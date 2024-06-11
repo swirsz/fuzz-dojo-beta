@@ -1,9 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=cfengine
-/challenge/.loc_count
-cd /src
-rm -rf /src/$PROJECT_NAME
-
-
-cd /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

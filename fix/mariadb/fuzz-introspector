@@ -1,11 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=mariadb
-/challenge/.loc_count
-cd /src
-rm -rf server
-#apt-get install -y build-essential libncurses5-dev gnutls-dev bison zlib1g-dev ccache
-git clone --depth=1 https://github.com/MariaDB/server
-
-cd /src/server
-
 /challenge/.fi $PROJECT_NAME

@@ -1,6 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=unrar
-/challenge/.loc_count
-cd /src
-cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

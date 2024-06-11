@@ -1,7 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=snappy
-/challenge/.loc_count
-cd /src
-rm -rf /src/$PROJECT_NAME/build
-cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

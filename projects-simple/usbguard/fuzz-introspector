@@ -1,14 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=usbguard
-/challenge/.loc_count
-cd /src
-rm -rf $PROJECT_NAME
-rm -rf inspector
-#git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard usbguard
-cp -r /opt/fuzz-targets/usbguard /src
-
-cd /src/usbguard
-export OLD_LLVMPASS=1
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/src/Tests/Fuzzers
-cp /home/hacker/$PROJECT_NAME/Makefile.am /src/$PROJECT_NAME/src/Tests/Fuzzers
 /challenge/.fi $PROJECT_NAME

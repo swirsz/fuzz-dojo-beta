@@ -1,13 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=wasm3
-/challenge/.loc_count
-cd /src
-
-rm -rf $PROJECT_NAME
-#apt-get update && apt-get install -y make
-#git clone --depth 1 https://github.com/wasm3/wasm3
-cp -r /opt/fuzz-targets/wasm3 /src
-
-cp /home/hacker/$PROJECT_NAME/*.c /src/wasm3/platforms/app_fuzz
-cd /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

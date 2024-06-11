@@ -1,7 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=miniz
-/challenge/.loc_count
-cd /src/$PROJECT_NAME
-rm -rf /src/$PROJECT_NAME/build
-cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/tests
 /challenge/.fi $PROJECT_NAME

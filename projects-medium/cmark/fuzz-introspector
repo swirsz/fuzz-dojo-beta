@@ -1,13 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=cmark
-/challenge/.loc_count
-cd /src
-
-rm -rf /src/cmark
-#apt-get update && apt-get install -y make cmake python3
-#git clone --depth 1 https://github.com/commonmark/cmark.git cmark
-cp -r /opt/fuzz-targets/cmark /src
-
-cd /src/$PROJECT_NAME
-cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
 /challenge/.fi $PROJECT_NAME

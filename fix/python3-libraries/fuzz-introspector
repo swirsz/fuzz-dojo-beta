@@ -1,5 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=python3-libraries
-/challenge/.loc_count
-cd /src
 /challenge/.fi $PROJECT_NAME

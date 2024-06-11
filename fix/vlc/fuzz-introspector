@@ -1,9 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=vlc
-/challenge/.loc_count
-cd /src
-rm -rf vlc
-
-git clone --depth 1 https://github.com/videolan/vlc vlc
-cd /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

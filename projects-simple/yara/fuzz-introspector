@@ -1,16 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=yara
-/challenge/.loc_count
-cd /src
-
-#git clone --depth 1 https://github.com/VirusTotal/yara.git
-cp -r /opt/fuzz-targets/yara /src
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src/
-
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-cd /src/$PROJECT_NAME
-cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/tests/oss-fuzz
-cp /home/hacker/$PROJECT_NAME/build.sh /src
-
 /challenge/.fi $PROJECT_NAME

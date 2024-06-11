@@ -1,6 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=libpsl
-/challenge/.loc_count
-cd /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME
-

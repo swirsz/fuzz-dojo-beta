@@ -1,12 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=arduinojson
-/challenge/.loc_count
-cd /src
-rm -rf /src/$PROJECT_NAME
-#git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
-cp -r /opt/fuzz-targets/arduinojson /src
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/extras/fuzzing
-cp /home/hacker/$PROJECT_NAME/CMakeLists.txt /src/$PROJECT_NAME/extras/fuzzing
-cp /home/hacker/$PROJECT_NAME/Makefile /src/$PROJECT_NAME/extras/fuzzing
-cd /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

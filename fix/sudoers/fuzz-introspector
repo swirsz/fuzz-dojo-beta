@@ -1,8 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=sudoers
-/challenge/.loc_count
-cd /src
-rm -rf sudo
-git clone https://github.com/sudo-project/sudo
-cd /src/sudo
 /challenge/.fi $PROJECT_NAME

@@ -1,16 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=valijson
-/challenge/.loc_count
-cd /src
-
-rm -rf valijson
-#git clone --depth 1 https://github.com/tristanpenman/valijson
-cp -r /opt/fuzz-targets/valijson /src
-
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
-
-cd /src/$PROJECT_NAME
-cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME/tests/fuzzing
 /challenge/.fi $PROJECT_NAME

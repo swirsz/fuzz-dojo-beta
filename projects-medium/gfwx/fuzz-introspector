@@ -1,19 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=gfwx
-/challenge/.loc_count
-
-cd /src
-mkdir /src/tmp
-cp /src/gfwx/Makefile /src/tmp
-cp /src/gfwx/*.zip /src/tmp
-cp /src/gfwx/*.cpp /src/tmp
-rm -rf /src/$PROJECT_NAME
-#apt-get update && apt-get install -y make autoconf automake libtool
-#git clone --depth 1 https://github.com/guidovranken/gfwx-fuzzers.git gfwx
-cp -r /opt/fuzz-targets/gfwx /src
-mv -f /src/tmp/* /src/gfwx
-rmdir /src/tmp
-
-cd /src/$PROJECT_NAME
-cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

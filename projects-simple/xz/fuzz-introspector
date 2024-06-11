@@ -1,6 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=xz
-/challenge/.loc_count
-cd /src/$PROJECT_NAME
-cp /home/hacker/$PROJECT_NAME/*.c /src/$PROJECT_NAME/tests/ossfuzz
 /challenge/.fi $PROJECT_NAME

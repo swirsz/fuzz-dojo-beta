@@ -1,10 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=lighttpd1.4
-/challenge/.loc_count
-cd /src
-rm -rf /src/$PROJECT_NAME
-#git clone https://github.com/lighttpd/lighttpd1.4
-cp -r /opt/fuzz-targets/lighttpd1.4 /src
-
-cd /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

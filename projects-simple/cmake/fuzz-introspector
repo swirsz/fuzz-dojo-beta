@@ -1,19 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=CMake
-/challenge/.loc_count
-cd /src
-
-rm -rf $PROJECT_NAME
-rm -rf inspector
-rm -rf fuzzing-corpus
-#apt-get update && apt-get install -y make autoconf automake libtool pkg-config libssl-dev
-#git clone --depth 1 https://gitlab.kitware.com/cmake/cmake.git $PROJECT_NAME
-#git clone --depth 1 https://github.com/strongcourage/fuzzing-corpus
-cp -r /opt/fuzz-targets/cmake /src/$PROJECT_NAME
-cp -r /opt/fuzz-targets/fuzzing-corpus /src/
-
-export OLD_LLVMPASS=1
-
-cp /home/hacker/cmake/*.cc /src/$PROJECT_NAME/Tests/Fuzzing
-cd /src/$PROJECT_NAME
-/challenge/.fi cmake
+/challenge/.fi $PROJECT_NAME

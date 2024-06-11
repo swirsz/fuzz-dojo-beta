@@ -1,26 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=libtiff
-/challenge/.loc_count
-cd /src
-
-rm -rf lame
-rm -rf mpg123
-
-# ubuntu apt has not recent enough mpg123
-#wget https://www.mpg123.de/snapshot
-cp /opt/fuzz-targets/snapshot/* /src
-tar -xvf snapshot
-mv mpg123* mpg123
-
-#svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame /src/lame
-cp -r /opt/fuzz-targets/lame /src
-
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
-
-
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.dict /src/LAME-fuzzers
-cp /home/hacker/$PROJECT_NAME/*.zip /src/LAME-fuzzers
 /challenge/.fi $PROJECT_NAME

@@ -1,22 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=woff2
-/challenge/.loc_count
-cd /src
-
-
-#apt-get update && apt-get install -y make autoconf automake libtool
-
-rm -rf /src/$PROJECT_NAME
-#git clone --depth 1 --recursive https://github.com/google/woff2
-cp -r /opt/fuzz-targets/woff2 /src
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options /src
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src
-cp -r /opt/oss-fuzz/projects/$PROJECT_NAME/corpus /src
-
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/src
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-cd /src/woff2
-
 /challenge/.fi $PROJECT_NAME

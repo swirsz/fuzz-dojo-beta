@@ -1,25 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=igraph
-/challenge/.loc_count
-cd /src
-
-#apt-get update && apt-get install -y cmake bison flex
-
-#git clone --branch master  https://github.com/igraph/igraph
-rm -rf /src/igraph
-rm -rf /src/deps
-rm -rf /src/libxml2-2.12.6
-
-cp -r /opt/fuzz-targets/igraph /src
-cp /opt/fuzz-targets/libxml2-2.12.6.tar.xz /src
-
-cp /src/$PROJECT_NAME/fuzzing/build.sh /src/
-
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-patch -tuN /src/build.sh -i /challenge/.build2.patch -r -
-patch -tuN /src/igraph/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
-cd /src/$PROJECT_NAME
-
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/fuzzing
-cp /home/hacker/$PROJECT_NAME/build.sh /src
 /challenge/.fi $PROJECT_NAME

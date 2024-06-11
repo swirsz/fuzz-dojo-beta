@@ -1,15 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=openssh
-/challenge/.loc_count
-cd /src
-mkdir /src/tmp
-cp -f /src/openssh/regress/misc/fuzz-harness/* /src/tmp
-rm -rf /src/$PROJECT_NAME
-#git clone --depth 1 https://github.com/openssh/openssh-portable openssh
-cp -r /opt/fuzz-targets/openssh /src
-
-mv -f /src/tmp/* /src/openssh/regress/misc/fuzz-harness
-rmdir /src/tmp
-cd /src/$PROJECT_NAME
-cp /home/hacker/$PROJECT_NAME/*.cc /src/$PROJECT_NAME/regress/misc/fuzz-harness
 /challenge/.fi $PROJECT_NAME

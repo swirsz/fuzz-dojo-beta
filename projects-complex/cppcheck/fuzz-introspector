@@ -1,22 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=cppcheck
-/challenge/.loc_count
-cd /src
-rm -rf /src/$PROJECT_NAME
-#git clone https://github.com/danmar/cppcheck.git
-cp -r /opt/fuzz-targets/cppcheck /src/
-
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
-
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /src
-
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-patch -tuN /src/$PROJECT_NAME/oss-fuzz/Makefile -i /challenge/.Makefile.patch -r -
-
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/oss-fuzz
-cp /home/hacker/$PROJECT_NAME/*.h /src/$PROJECT_NAME/oss-fuzz
-cp /home/hacker/$PROJECT_NAME/Makefile /src/$PROJECT_NAME/oss-fuzz
-cd /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

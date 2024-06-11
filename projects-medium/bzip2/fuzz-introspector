@@ -1,5 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=bzip2
-/challenge/.loc_count
-cd /src
 /challenge/.fi $PROJECT_NAME

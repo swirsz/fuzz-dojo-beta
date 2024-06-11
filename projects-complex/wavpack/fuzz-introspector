@@ -1,17 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=wavpack
-/challenge/.loc_count
-cd /src
-#apt-get update && apt-get install -y make autoconf automake libtool gettext
-#git clone --depth 1 https://github.com/dbry/WavPack.git wavpack
-
-cp -r /opt/fuzz-targets/wavpack /src
-
-cp /src/wavpack/fuzzing/build.sh /src
-
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-cd /src/$PROJECT_NAME
-
-cp /home/hacker/$PROJECT_NAME/* /src/$PROJECT_NAME/fuzzing
-cp /home/hacker/$PROJECT_NAME/build.sh /src
 /challenge/.fi $PROJECT_NAME

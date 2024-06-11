@@ -1,11 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=zopfli
-cd /src
-/challenge/.loc_count
-rm -rf /src/zopfli
-#apt-get update && apt-get install -y make autoconf automake libtool
-#git clone --depth 1 https://github.com/google/zopfli
-cp -r /opt/fuzz-targets/zopfli /src
-
-cd /src/$PROJECT_NAME
 /challenge/.fi $PROJECT_NAME

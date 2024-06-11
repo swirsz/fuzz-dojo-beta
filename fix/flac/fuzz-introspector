@@ -1,13 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=flac
-/challenge/.loc_count
-cd /src
-rm -rf flac
-rm -rf ogg
-rm -rf libogg-install
-rm -rf ExoPlayer
-git clone --depth 1 https://github.com/xiph/flac.git
-git clone --depth 1 https://github.com/xiph/ogg.git
-git clone --depth 1 https://github.com/google/ExoPlayer.git
-
 /challenge/.fi $PROJECT_NAME

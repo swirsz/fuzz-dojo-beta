@@ -1,8 +1,2 @@
 #!/opt/pwn.college/bash
-export PROJECT_NAME=openjpeg
-/challenge/.loc_count
-cd /src/$PROJECT_NAME
-rm -rf /src/openjpeg/data
-rm -rf /src/openjpeg/build
-cp /home/hacker/$PROJECT_NAME/*.cpp /src/$PROJECT_NAME/tests/fuzzers
 /challenge/.fi $PROJECT_NAME
