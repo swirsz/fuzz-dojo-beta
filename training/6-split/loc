@@ -1,0 +1,15 @@
+#!/opt/pwn.college/bash 
+INITIAL=35
+TARGET=38
+time sudo -H -u hacker bash -c "/challenge/.loc_count $*"
+/usr/local/sbin/announce $INITIAL $? 
+if [ "$?" -ge "$TARGET" ]; then
+    echo
+    echo Congratulations!  Additional code coverage detected!
+    cat /flag
+fi
+if compgen -G "/out/crash*" > /dev/null; then
+    echo
+    echo "Crashes detected within the /out directory!"
+    echo
+fi
