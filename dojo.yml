@@ -224,7 +224,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
 
       - id: libwebp
-        name: LIBWEBP - 29393 loc 88% coverage
+        name: LIBWEBP - 29393 loc 88% coverage (Failing on oss-fuzz)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libwebp
 
       - id: miniz
