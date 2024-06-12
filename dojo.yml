@@ -290,7 +290,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
 
       - id: git
-        name: GIT - 183986 loc 9% coverage
+        name: GIT - 183986 loc 9% coverage (Failing on oss-fuzz)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=git
 
       - id: janus-gateway
@@ -302,7 +302,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
 
       - id: libssh
-        name: LIBSSH - 26927 loc 37% coverage
+        name: LIBSSH - 26927 loc 37% coverage (Failing on oss-fuzz)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh
         
       - id: libtasn1
