@@ -1,8 +1,10 @@
-@@ -51,6 +51,7 @@
- FUZZERS="$FUZZERS fuzz-parse-attr-line"
- FUZZERS="$FUZZERS fuzz-url-decode-mem"
- FUZZERS="$FUZZERS fuzz-url-end-with-slash"
+--- build.sho	2024-06-12 01:43:01.990543211 +0000
++++ build.sh	2024-06-12 01:44:14.129493333 +0000
+@@ -29,6 +29,7 @@
+ #FUZZERS="$FUZZERS fuzz-cmd-status fuzz-cmd-diff fuzz-cmd-version"
+ #FUZZERS="$FUZZERS fuzz-command"
+ FUZZERS="$FUZZERS fuzz-cmd-diff"
 +FUZZERS="$FUZZERS fuzz-new"
- 
  # copy fuzzers
  for fuzzer in $FUZZERS ; do
+   cp oss-fuzz/$fuzzer $OUT
