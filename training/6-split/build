@@ -21,7 +21,7 @@ cp -r /opt/fuzz-targets/libsrtp /src
 cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
 cd $SRC/
 # fetch Janus code
-#git clone --single-branch https://github.com/swirsz/janus-gateway.git
+# git clone --single-branch https://github.com/swirsz/janus-gateway.git
 cp -r /opt/fuzz-targets/janus-gateway /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
