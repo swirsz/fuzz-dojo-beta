@@ -44,5 +44,6 @@ else
    cp /home/hacker/$PROJECT_NAME/oss-fuzz-build.sh $SRC/$PROJECT_NAME/fuzz
 fi
 
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

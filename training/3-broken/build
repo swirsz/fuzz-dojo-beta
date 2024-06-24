@@ -32,5 +32,6 @@ else
    cp /home/hacker/training-broken/build.sh $SRC
 fi
 #patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

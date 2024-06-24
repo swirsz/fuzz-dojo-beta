@@ -35,5 +35,6 @@ else
 fi
 
 cd $SRC
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

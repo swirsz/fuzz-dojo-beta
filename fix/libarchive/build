@@ -39,5 +39,6 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/libarchive_fuzzer.cc $SRC/
 
 #patch -tuN /src/build.sh -i /challenge/.build.patch -r -
 cd $SRC/
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

@@ -38,5 +38,6 @@ else
    cp /home/hacker/$PROJECT_NAME/*.build $SRC/casync/test/fuzz
    cp /home/hacker/$PROJECT_NAME/oss-fuzz.sh $SRC/casync/tools
 fi
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
