@@ -29,7 +29,7 @@ git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
 wget https://www.alsa-project.org/files/pub/lib/alsa-lib-1.1.0.tar.bz2
 git clone --depth 1 https://github.com/mstorsjo/fdk-aac.git
 git clone --depth 1 https://github.com/intel/libva
-git clone --depth 1 -b libvdpau-1.2 git://people.freedesktop.org/~aplattner/libvdpau
+#git clone --depth 1 -b libvdpau-1.2 git://gitlab.freedesktop.org/vdpau/libvdpau
 git clone --depth 1 https://chromium.googlesource.com/webm/libvpx
 git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
 git clone --depth 1 https://gitlab.xiph.org/xiph/opus.git
@@ -37,18 +37,22 @@ git clone --depth 1 https://gitlab.xiph.org/xiph/theora.git
 git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
 git clone --depth 1 https://gitlab.gnome.org/GNOME/libxml2.git
 
-
-cp -r /opt/fuzz-targets/cyclonedds /src/
-cp -r /opt/fuzz-targets/cyclonedds /src/
-cp -r /opt/fuzz-targets/cyclonedds /src/
-cp -r /opt/fuzz-targets/cyclonedds /src/
-cp -r /opt/fuzz-targets/cyclonedds /src/
-
+#cp -r /opt/fuzz-targets/cyclonedds /src/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/group_seed_corpus.py $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-
-cd $SRC
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/$PROJECT_NAME
+   #cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
+   #cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/$PROJECT_NAME
+   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   chown -R hacker /home/hacker/$PROJECT_NAME
+else
+   #cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
+   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+fi
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

@@ -1,0 +1,21 @@
+--- /opt/oss-fuzz/projects/ffmpeg/build.sh	2024-06-26 00:28:10.503714755 +0000
++++ build.sh	2024-06-28 17:38:38.242531127 +0000
+@@ -65,12 +65,12 @@
+ make -j$(nproc) all
+ make install
+ 
+-cd $SRC/libvdpau
+-./autogen.sh
+-./configure --prefix="$FFMPEG_DEPS_PATH" --enable-static --disable-shared
+-make clean
+-make -j$(nproc) all
+-make install
++#cd $SRC/libvdpau
++#./autogen.sh
++#./configure --prefix="$FFMPEG_DEPS_PATH" --enable-static --disable-shared
++#make clean
++#make -j$(nproc) all
++#make install
+ 
+ cd $SRC/libvpx
+ if [[ "$ARCHITECTURE" == i386 ]]; then
