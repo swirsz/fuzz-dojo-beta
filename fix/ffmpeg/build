@@ -6,7 +6,7 @@ if [ "$1" = "afl" ]; then
     shift
 else
     . /usr/local/sbin/e
-fiafl
+fi
 export PROJECT_NAME=ffmpeg
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
