@@ -11,7 +11,15 @@ export PROJECT_NAME=ffmpeg
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
-rm -rf $SRC/$PROJECT_NAME
+rm -rf /src/$PROJECT_NAME
+rm -rf /src/fdk-aac
+rm -rf /src/libva
+rm -rf /src/libvpx
+rm -rf /src/ogg
+rm -rf /src/opus
+rm -rf /src/theora
+rm -rf /src/vorbis
+rm -rf /src/libxml2
 
 #apt-get update && apt-get install -y make autoconf libtool build-essential \
 #	libass-dev:i386 libfreetype6-dev:i386 \
