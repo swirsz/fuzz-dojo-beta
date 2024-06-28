@@ -11,33 +11,44 @@ export PROJECT_NAME=ffmpeg
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
+rm -rf $SRC/$PROJECT_NAME
 
-apt-get update && apt-get install -y make autoconf libtool build-essential \
-	libass-dev:i386 libfreetype6-dev:i386 \
-	libvdpau-dev:i386 libxcb1-dev:i386 libxcb-shm0-dev:i386 libdrm-dev:i386 \
-	texinfo libbz2-dev:i386 libbz2-1.0:i386 lib32z1 zlib1g:i386 zlib1g-dev:i386 yasm cmake mercurial wget \
-	xutils-dev libpciaccess-dev:i386 nasm rsync libvpx-dev:i386 gcc-multilib \
-	libass-dev libfreetype6-dev libsdl1.2-dev \
-	libvdpau-dev libxcb1-dev libxcb-shm0-dev libdrm-dev \
-	pkg-config texinfo libbz2-dev zlib1g zlib1g-dev yasm cmake mercurial wget \
-	xutils-dev libpciaccess-dev nasm rsync libvpx-dev chrpath
+#apt-get update && apt-get install -y make autoconf libtool build-essential \
+#	libass-dev:i386 libfreetype6-dev:i386 \
+#	libvdpau-dev:i386 libxcb1-dev:i386 libxcb-shm0-dev:i386 libdrm-dev:i386 \
+#	texinfo libbz2-dev:i386 libbz2-1.0:i386 lib32z1 zlib1g:i386 zlib1g-dev:i386 yasm cmake mercurial wget \
+#	xutils-dev libpciaccess-dev:i386 nasm rsync libvpx-dev:i386 gcc-multilib \
+#	libass-dev libfreetype6-dev libsdl1.2-dev \
+#	libvdpau-dev libxcb1-dev libxcb-shm0-dev libdrm-dev \
+#	pkg-config texinfo libbz2-dev zlib1g zlib1g-dev yasm cmake mercurial wget \
+#	xutils-dev libpciaccess-dev nasm rsync libvpx-dev chrpath
 
-curl -LO http://mirrors.kernel.org/ubuntu/pool/main/a/automake-1.16/automake_1.16.5-1.3_all.deb && \
-    apt install ./automake_1.16.5-1.3_all.deb
-git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
+#curl -LO http://mirrors.kernel.org/ubuntu/pool/main/a/automake-1.16/automake_1.16.5-1.3_all.deb && \
+#    apt install ./automake_1.16.5-1.3_all.deb
+#git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
 
-wget https://www.alsa-project.org/files/pub/lib/alsa-lib-1.1.0.tar.bz2
-git clone --depth 1 https://github.com/mstorsjo/fdk-aac.git
-git clone --depth 1 https://github.com/intel/libva
-#git clone --depth 1 -b libvdpau-1.2 git://gitlab.freedesktop.org/vdpau/libvdpau
-git clone --depth 1 https://chromium.googlesource.com/webm/libvpx
-git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
-git clone --depth 1 https://gitlab.xiph.org/xiph/opus.git
-git clone --depth 1 https://gitlab.xiph.org/xiph/theora.git
-git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
-git clone --depth 1 https://gitlab.gnome.org/GNOME/libxml2.git
+#wget https://www.alsa-project.org/files/pub/lib/alsa-lib-1.1.0.tar.bz2
+#git clone --depth 1 https://github.com/mstorsjo/fdk-aac.git
+#git clone --depth 1 https://github.com/intel/libva
+##git clone --depth 1 -b libvdpau-1.2 git://gitlab.freedesktop.org/vdpau/libvdpau
+#git clone --depth 1 https://chromium.googlesource.com/webm/libvpx
+#git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
+#git clone --depth 1 https://gitlab.xiph.org/xiph/opus.git
+#git clone --depth 1 https://gitlab.xiph.org/xiph/theora.git
+#git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
+#git clone --depth 1 https://gitlab.gnome.org/GNOME/libxml2.git
 
-#cp -r /opt/fuzz-targets/cyclonedds /src/
+cp /opt/fuzz-targets/automake_1.16.5-1.3_all.deb /src
+cp -r /opt/fuzz-targets/ffmpeg /src
+cp /opt/fuzz-targets/alsa-lib-1.1.0.tar /src
+cp -r /opt/fuzz-targets/fdk-aac /src
+cp -r /opt/fuzz-targets/libva /src
+cp -r /opt/fuzz-targets/libvpx /src
+cp -r /opt/fuzz-targets/ogg /src
+cp -r /opt/fuzz-targets/opus /src
+cp -r /opt/fuzz-targets/theora /src
+cp -r /opt/fuzz-targets/vorbis /src
+cp -r /opt/fuzz-targets/libxml2 /src
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/group_seed_corpus.py $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
