@@ -285,6 +285,10 @@ modules:
         name: CPPCHECK - 79321 loc 26% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cppcheck
 
+      - id: ffmpeg
+        name: FFMPEG 
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ffmpeg
+
       - id: fmt
         name: FMT - 5904 loc 83% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
@@ -363,10 +367,6 @@ modules:
       - id: cyclonedds
         name: CYCLONEDDS - 77965 loc 30% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cyclonedds
-
-      - id: ffmpeg
-        name: FFMPEG - failing 
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ffmpeg
 
       - id: file
         name: FILE - 10664 loc 78% coverage seccomp.c error use of undeclared identifier 'memory'
