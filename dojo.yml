@@ -1,6 +1,6 @@
 id: fuzz
 
-name: FUZZ HARNESSING
+name: Fuzz Harnessing Dojo
 
 image: stevenwirsz/fuzz-base:latest
 
@@ -17,7 +17,7 @@ description: |
 modules:
 
   - id: training
-    name: TRAINING
+    name: Training Exercises
     description: Learn techniques to improve the code coverage of fuzz driver harnesses
 
     challenges:
@@ -63,7 +63,7 @@ modules:
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
   - id: projects-simple
-    name: SIMPLE PROJECTS
+    name: Simple Harnessing
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.  These projects have relatively simple fuzz drivers.
 
     challenges:
@@ -166,7 +166,7 @@ modules:
 
 
   - id: projects-medium
-    name: MEDIUM PROJECTS
+    name: Medium Harnessing
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag. These projects have medium difficulty fuzz drivers.
 
     challenges:
@@ -276,7 +276,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
 
   - id: projects-complex
-    name: COMPLEX PROJECTS
+    name: Complex Harnessing
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag. These projects have complex fuzz drivers.
 
     challenges:
@@ -327,7 +327,7 @@ modules:
 
 
   - id: fix
-    name: BROKEN PROJECTS
+    name: Broken Projects
     description: These OSS-Fuzz Projects fail in some way
 
     challenges:
@@ -527,3 +527,4 @@ modules:
       - id: xpdf
         name: XPDF - 124767 loc 13% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xpdf
+        
