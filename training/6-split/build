@@ -37,6 +37,6 @@ else
    cp /home/hacker/training-split/*.c $SRC/$PROJECT_NAME/fuzzers
    cp /home/hacker/training-split/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/training-split-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/training-split
 sudo --preserve-env compile
 drivers

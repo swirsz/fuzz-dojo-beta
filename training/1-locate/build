@@ -29,6 +29,6 @@ else
    cp /home/hacker/training-locate/build.sh $SRC
 fi
 patch -tuN /src/minizip/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/training-locate-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/training-locate
 sudo --preserve-env compile
 drivers
