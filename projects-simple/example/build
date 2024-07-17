@@ -24,7 +24,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.cpp $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.cpp
    cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.dict $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.dict
    cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer_seed_corpus.zip $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer_seed_corpus.zip
-   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/* /home/hacker/$PROJECT_NAME
+   cp -r $SRC/$PROJECT_NAME/projects/example/my-api-repo /home/hacker/$PROJECT_NAME
    cp /src/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
