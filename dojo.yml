@@ -76,10 +76,6 @@ modules:
         name: AVAHI - 2566 loc 32% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=avahi
 
-      - id: cmake
-        name: CMAKE - 7778 loc 62% coverage (no AFL) (slow)
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
-
       - id: elfutils
         name: ELFUTILS - 31383 loc 28% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=elfutils
@@ -351,6 +347,10 @@ modules:
       - id: civetweb
         name: CIVETWEB - 11403 loc 11% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=civetweb
+
+      - id: cmake
+        name: CMAKE - 7778 loc 62% coverage (no AFL) (works but too slow)
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
 
       - id: curl
         name: CURL - 274257 loc 21% coverage - clang-15 unable to execute command - Killed
