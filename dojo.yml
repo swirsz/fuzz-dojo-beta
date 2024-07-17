@@ -349,7 +349,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=civetweb
 
       - id: cmake
-        name: CMAKE - 7778 loc 62% coverage (no AFL) (works but too slow)
+        name: CMAKE - 7778 loc 62% coverage - no AFL - works but too slow
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
 
       - id: curl
