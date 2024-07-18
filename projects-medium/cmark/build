@@ -18,7 +18,7 @@ rm -rf $SRC/cmark
 cp -r /opt/fuzz-targets/cmark $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
+#cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
 
 

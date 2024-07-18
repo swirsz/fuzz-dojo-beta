@@ -101,7 +101,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json
 
       - id: kamailio
-        name: KAMAILIO - 83091 loc 9% coverage
+        name: KAMAILIO - 83091 loc 9% coverage (no FI)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
 
       - id: libsass
@@ -172,7 +172,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
 
       - id: boost
-        name: BOOST - 11995 loc 60% coverage (no FI)
+        name: BOOST - 11995 loc 60% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=boost
 
       - id: bzip2
@@ -196,7 +196,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
 
       - id: igraph
-        name: IGRAPH - 57124 loc 58% coverage
+        name: IGRAPH - 57124 loc 58% coverage (no FI)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
         
       - id: liblouis

@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 57 > /tmp/initial
-echo 62 > /tmp/target
+echo 53 > /tmp/initial
+echo 58 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -22,7 +22,6 @@ cp -r /opt/fuzz-targets/vpx_fuzzer_seed_corpus.zip $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/vpx_dec_fuzzer.dict $SRC/
-
 
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME
