@@ -219,10 +219,6 @@ modules:
         name: LIBVPX - 32885 loc 60% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
 
-      - id: libwebp
-        name: LIBWEBP - 29393 loc 88% coverage (Failing on oss-fuzz)
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libwebp
-
       - id: miniz
         name: MINIZ - 5423 loc 47% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=miniz
@@ -248,7 +244,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
 
       - id: pcre2
-        name: pcre2 - 33249 loc 82% coverage
+        name: PCRE2 - 33249 loc 82% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pcre2
 
       - id: sqlite3
@@ -439,6 +435,10 @@ modules:
       - id: libtiff
         name: LIBTIFF - 49583 loc 37% coverage - DWARF error 0x25
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtiff
+
+      - id: libwebp
+        name: LIBWEBP - 29393 loc 88% coverage (Failing on oss-fuzz)
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libwebp
 
       - id: libxml2
         name: LIBXML2 - 88011 loc 65% coverage - complex fuzz harness creation
