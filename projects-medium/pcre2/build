@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 53 > /tmp/initial
-echo 58 > /tmp/target
+echo 68 > /tmp/initial
+echo 73 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -22,10 +22,14 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME$SRC/pcre2_fuzzsupport.c /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/pcre2_fuzz*.dict /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/pcre2_fuzz*.options /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/src/pcre2_fuzzsupport.c /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/pcre2_fuzzsupport.c $SRC/$PROJECT_NAME$SRC
+   cp /home/hacker/$PROJECT_NAME/*.dict $SRC/$PROJECT_NAME
+   cp /home/hacker/$PROJECT_NAME/*.options $SRC/$PROJECT_NAME
+   cp /home/hacker/$PROJECT_NAME/pcre2_fuzzsupport.c $SRC/$PROJECT_NAME/src
 fi
 mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
