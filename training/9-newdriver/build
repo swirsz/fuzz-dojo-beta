@@ -16,11 +16,11 @@ cd $SRC
 #   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
 #git clone --depth 1 https://github.com/swirsz/avahi
 #git clone --depth 1 https://github.com/lathiat/avahi
-cp -r /opt/fuzz-targets/avahi /src
+cp -r /opt/fuzz-targets/avahi $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
-patch -tuN /src/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
+patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/training-newdriver" ]; then
    mkdir /home/hacker/training-newdriver
@@ -32,6 +32,7 @@ else
    cp /home/hacker/training-newdriver/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/training-newdriver/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/training-newdriver-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/training-newdriver
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-newdriver /home/hacker/training-newdriver
 sudo --preserve-env compile
 drivers

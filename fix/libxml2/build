@@ -20,30 +20,31 @@ cd $SRC
 #curl -LO http://mirrors.kernel.org/ubuntu/pool/main/a/automake-1.16/automake_1.16.5-1.3_all.deb && \
 #git clone --depth 1 https://gitlab.gnome.org/GNOME/libxml2.git
 
-cp -r /opt/fuzz-targets/libxml2 /src
-cp -r /opt/fuzz-targets/automake_1.16.5-1.3_all.deb /src
+cp -r /opt/fuzz-targets/libxml2 $SRC
+cp -r /opt/fuzz-targets/automake_1.16.5-1.3_all.deb $SRC
 
 apt install ./automake_1.16.5-1.3_all.deb
     
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-mkdir -p /src/libxml2/test/newfuzzers
-cp /src/libxml2/test/schemas/* /src/libxml2/test/newfuzzers
+mkdir -p $SRC/libxml2/test/newfuzzers
+cp $SRC/libxml2/test/schemas/* $SRC/libxml2/test/newfuzzers
 
-patch -tuN /src/libxml2/fuzz/oss-fuzz-build.sh -i /challenge/.oss-fuzz-build.patch -r -
-patch -tuN /src/libxml2/fuzz/Makefile.am -i /challenge/.Makefile.patch -r -
+patch -tuN $SRC/libxml2/fuzz/oss-fuzz-build.sh -i /challenge/.oss-fuzz-build.patch -r -
+patch -tuN $SRC/libxml2/fuzz/Makefile.am -i /challenge/.Makefile.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzz/schema.c $SRC/$PROJECT_NAME/fuzz/newfuzzer.c
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/$PROJECT_NAME
-   cp /src/libxml2/fuzz/oss-fuzz-build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/libxml2/fuzz/oss-fuzz-build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/$PROJECT_NAME/oss-fuzz-build.sh $SRC/$PROJECT_NAME/fuzz
 fi
 
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

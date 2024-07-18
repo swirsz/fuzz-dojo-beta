@@ -33,13 +33,14 @@ cd $SRC
 #    git submodule update --init fuzz/corpora
 
 
-cp -r /opt/fuzz-targets/mbedtls /src/
-cp -r /opt/fuzz-targets/boringssl /src/
-cp -r /opt/fuzz-targets/openssl /src/
+cp -r /opt/fuzz-targets/mbedtls $SRC/
+cp -r /opt/fuzz-targets/boringssl $SRC/
+cp -r /opt/fuzz-targets/openssl $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/mbedtls
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

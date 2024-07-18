@@ -27,7 +27,7 @@ git clone --depth 1 https://gitlab.gnome.org/GNOME/pango.git
 wget https://ftp.gnome.org/pub/gnome/sources/glib/2.70/glib-2.70.0.tar.xz
 tar xvJf $SRC/glib-2.70.0.tar.xz
 wget https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.tar.bz2
-wget https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_75_RTM/src/nss-3.75-with-nspr-4.32.tar.gz
+wget https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_75_RTM$SRC/nss-3.75-with-nspr-4.32.tar.gz
 git clone --depth 1 --single-branch https://gitlab.freedesktop.org/poppler/poppler.git
 
 git clone --depth 1 https://github.com/mozilla/pdf.js pdf.js && \
@@ -39,9 +39,10 @@ mv pdf.dict poppler.dict
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+#patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/poppler
 
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

@@ -16,27 +16,28 @@ cd $SRC
 
 rm -rf $PROJECT_NAME
 #git clone --depth 1 https://github.com/tristanpenman/valijson
-cp -r /opt/fuzz-targets/valijson /src
+cp -r /opt/fuzz-targets/valijson $SRC
 
 cp $SRC/$PROJECT_NAME/tests/fuzzing/oss-fuzz-build.sh $SRC/build.sh
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1
 
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-patch -tuN /src/build.sh -i /challenge/.build2.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build2.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/fuzzing/fuzzer.cpp $SRC/$PROJECT_NAME/tests/fuzzing/newfuzzer.cpp
    cp $SRC/$PROJECT_NAME/tests/fuzzing/*.cpp /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/fuzzing/*.sh /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/tests/fuzzing
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

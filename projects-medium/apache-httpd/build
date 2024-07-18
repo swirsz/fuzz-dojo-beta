@@ -19,31 +19,32 @@ cd $SRC
 
 cd $SRC
 #git clone https://github.com/AdaLogics/fuzz-headers
-cp -r /opt/fuzz-targets/fuzz-headers /src
+cp -r /opt/fuzz-targets/fuzz-headers $SRC
 
 #wget https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.gz && \
 # tar -xf expat-2.4.1.tar.gz && cd expat-2.4.1 && ./configure && make && make install
     
 cd $SRC
-rm -rf /src/httpd
+rm -rf $SRC/httpd
 #git clone --depth=1 https://github.com/apache/httpd
-cp -r /opt/fuzz-targets/httpd /src
+cp -r /opt/fuzz-targets/httpd $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz_*.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/httpd
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/fuzz_preq.c $SRC/fuzz_new.c
    cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

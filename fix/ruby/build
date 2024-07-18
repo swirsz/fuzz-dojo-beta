@@ -35,7 +35,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/fuzz/*.rb /home/hacker/$PROJECT_NAME
    cp $SRC/fuzz/*.options /home/hacker/$PROJECT_NAME
    #cp $SRC/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/fuzz
@@ -44,6 +44,7 @@ else
    #cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

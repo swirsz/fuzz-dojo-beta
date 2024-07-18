@@ -14,7 +14,7 @@ cd $SRC
 
 rm -rf $SRC/$PROJECT_NAME
 #git clone https://github.com/danmar/cppcheck.git
-cp -r /opt/fuzz-targets/cppcheck /src/
+cp -r /opt/fuzz-targets/cppcheck $SRC/
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
@@ -40,6 +40,7 @@ else
    cp /home/hacker/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME/oss-fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

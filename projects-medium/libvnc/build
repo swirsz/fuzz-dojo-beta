@@ -15,25 +15,26 @@ cd $SRC
 rm -rf $SRC/libvncserver
 #apt-get update && apt-get install -y cmake zlib1g-dev
 #git clone --depth 1 https://github.com/LibVNC/libvncserver.git
-cp -r /opt/fuzz-targets/libvncserver /src
+cp -r /opt/fuzz-targets/libvncserver $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-patch -tuN /src/libvncserver/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/libvncserver/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 cd $SRC/libvncserver
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/libvncserver/test/fuzz_server.c $SRC/libvncserver/test/fuzz_new.c
    cp $SRC/libvncserver/test/*.c /home/hacker/$PROJECT_NAME
-   cp /src/libvncserver/CMakeLists.txt /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/libvncserver/CMakeLists.txt /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/libvncserver/test
-   cp /home/hacker/$PROJECT_NAME/CMakeLists.txt /src/libvncserver
+   cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/libvncserver
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

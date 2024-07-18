@@ -16,13 +16,13 @@ cd $SRC
 
 # install libsrtp dep from source
 #git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
-cp -r /opt/fuzz-targets/libsrtp /src
+cp -r /opt/fuzz-targets/libsrtp $SRC
 
 cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
 cd $SRC/
 # fetch Janus code
 # git clone --single-branch https://github.com/swirsz/janus-gateway.git
-cp -r /opt/fuzz-targets/janus-gateway /src
+cp -r /opt/fuzz-targets/janus-gateway $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
@@ -37,6 +37,7 @@ else
    cp /home/hacker/training-split/*.c $SRC/$PROJECT_NAME/fuzzers
    cp /home/hacker/training-split/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/training-split-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/training-split
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-split /home/hacker/training-split
 sudo --preserve-env compile
 drivers

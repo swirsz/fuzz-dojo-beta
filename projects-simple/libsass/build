@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 26 > /tmp/initial
-echo 31 > /tmp/target
+echo 24 > /tmp/initial
+echo 29 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -15,7 +15,7 @@ cd $SRC
 #apt-get update && apt-get install -y make autoconf automake libtool
 #git clone --depth 1 https://github.com/sass/libsass.git libsass
 
-cp -r /opt/fuzz-targets/libsass /src
+cp -r /opt/fuzz-targets/libsass $SRC
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
@@ -24,18 +24,19 @@ export OLD_LLVMPASS=1
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/data_context_fuzzer.cc  $SRC/
 
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/data_context_fuzzer.cc $SRC/new_fuzzer.cc
    cp $SRC/*.cc /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

@@ -15,11 +15,11 @@ cd $SRC
 #apt-get update && apt-get install -y make autoconf automake libtool gettext
 #git clone --depth 1 https://github.com/dbry/WavPack.git wavpack
 
-cp -r /opt/fuzz-targets/wavpack /src
+cp -r /opt/fuzz-targets/wavpack $SRC
 
-cp /src/wavpack/fuzzing/build.sh $SRC
+cp $SRC/wavpack/fuzzing/build.sh $SRC
 
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
@@ -31,12 +31,13 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzzing/*.zip /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

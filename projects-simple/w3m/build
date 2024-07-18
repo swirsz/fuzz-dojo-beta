@@ -14,22 +14,23 @@ cd $SRC
 
 #apt-get update && apt-get install -y libgc-dev
 #git clone https://github.com/tats/w3m
-cp -r /opt/fuzz-targets/w3m /src
+cp -r /opt/fuzz-targets/w3m $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzz/fuzz-conv.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

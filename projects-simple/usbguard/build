@@ -24,7 +24,7 @@ rm -rf $PROJECT_NAME
 rm -rf inspector
 
 #git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard usbguard
-cp -r /opt/fuzz-targets/usbguard /src
+cp -r /opt/fuzz-targets/usbguard $SRC
 
 # This is to fix Fuzz Introspector build by using LLVM old pass manager
 # re https://github.com/ossf/fuzz-introspector/issues/305
@@ -32,20 +32,21 @@ export OLD_LLVMPASS=1
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN $SRC/$PROJECT_NAME/src/Tests/Fuzzers/Makefile.am -i /challenge/.Makefile.patch -r -
+patch -tuN $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers/Makefile.am -i /challenge/.Makefile.patch -r -
 cd $SRC/usbguard
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/fuzzer-uevent.cpp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/fuzzer-new.cpp
-   cp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/*.cpp /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/Makefile.am /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers/fuzzer-uevent.cpp $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers/fuzzer-new.cpp
+   cp $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers/*.cpp /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers/Makefile.am /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/src/Tests/Fuzzers
-   cp /home/hacker/$PROJECT_NAME/Makefile.am $SRC/$PROJECT_NAME/src/Tests/Fuzzers
+   cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers
+   cp /home/hacker/$PROJECT_NAME/Makefile.am $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

@@ -18,7 +18,7 @@ rm -rf $SRC/core
 #    liblmdb-dev libpam0g-dev flex libtool
 
 #git clone --depth 1 https://github.com/cfengine/core --recursive
-cp -r /opt/fuzz-targets/core /src
+cp -r /opt/fuzz-targets/core $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/string_fuzzer.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
@@ -31,13 +31,14 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/string_fuzzer.c $SRC/new_fuzzer.c
    cp $SRC/*.c /home/hacker/$PROJECT_NAME
    #cp $SRC/core/tests/fuzz/CMakeLists.txt /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC
    #cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/core/tests/fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

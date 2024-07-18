@@ -20,9 +20,9 @@ rm -rf $SRC/libprotobuf-mutator
 #git clone --depth 1 https://github.com/bshastry/mruby_seeds.git mruby_seeds
 #git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
 
-cp -r /opt/fuzz-targets/mruby /src/
-cp -r /opt/fuzz-targets/mruby_seeds /src/
-cp -r /opt/fuzz-targets/libprotobuf-mutator /src/
+cp -r /opt/fuzz-targets/mruby $SRC/
+cp -r /opt/fuzz-targets/mruby_seeds $SRC/
+cp -r /opt/fuzz-targets/libprotobuf-mutator $SRC/
 
 mkdir LPM; \
   cd LPM; \
@@ -32,10 +32,10 @@ mkdir LPM; \
 cp $SRC/mruby/oss-fuzz/config/mruby.dict $SRC/mruby/oss-fuzz/config/new.dict
 cp $SRC/mruby/oss-fuzz/config/mruby_fuzzer.options $SRC/mruby/oss-fuzz/config/new_fuzzer.options
    
-#vi /src/LPM/external.protobuf/tmp/external.protobuf-gitclone.cmake
+#vi $SRC/LPM/external.protobuf/tmp/external.protobuf-gitclone.cmake
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
@@ -44,7 +44,7 @@ if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    cp $SRC/mruby/oss-fuzz/*.cpp /home/hacker/$PROJECT_NAME
    cp $SRC/mruby/oss-fuzz/*.h /home/hacker/$PROJECT_NAME
    cp $SRC/mruby/oss-fuzz/*.proto /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/mruby/oss-fuzz
@@ -53,6 +53,7 @@ else
    cp /home/hacker/$PROJECT_NAME/*.proto $SRC/mruby/oss-fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

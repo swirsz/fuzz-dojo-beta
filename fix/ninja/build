@@ -16,7 +16,7 @@ cd $SRC
 
 rm -rf $PROJECT_NAME
 #git clone --depth 1 https://github.com/ninja-build/ninja
-cp -r /opt/fuzz-targets/ninja /src/
+cp -r /opt/fuzz-targets/ninja $SRC/
 
 cp $SRC/$PROJECT_NAME/misc/oss-fuzz/build.sh $SRC/
 cp $SRC/$PROJECT_NAME/misc/oss-fuzz/sample_ninja_build $SRC/
@@ -24,8 +24,8 @@ cp $SRC/$PROJECT_NAME/misc/oss-fuzz/sample_ninja_build $SRC/
 cp $SRC/$PROJECT_NAME/misc/manifest_fuzzer.cc $SRC/$PROJECT_NAME/misc/new_fuzzer.cc
 patch -tuN $SRC/$PROJECT_NAME/misc/new_fuzzer.cc -i /challenge/.new_fuzzer.patch -r -
    
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-cp /src/build.sh /src/ninja/misc/oss-fuzz/build.sh
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+cp $SRC/build.sh $SRC/ninja/misc/oss-fuzz/build.sh
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
@@ -36,6 +36,7 @@ else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/misc
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

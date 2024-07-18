@@ -20,28 +20,29 @@ rm -rf $SRC/libwebp-test-data
 #git clone https://chromium.googlesource.com/webm/libwebp-test-data
 #wget https://storage.googleapis.com/downloads.webmproject.org/webp/testdata/fuzzer/fuzz_seed_corpus.zip
 
-cp -r /opt/fuzz-targets/libwebp /src
-cp -r /opt/fuzz-targets/libwebp-test-data /src
-cp -r /opt/fuzz-targets/fuzz_seed_corpus.zip /src
+cp -r /opt/fuzz-targets/libwebp $SRC
+cp -r /opt/fuzz-targets/libwebp-test-data $SRC
+cp -r /opt/fuzz-targets/fuzz_seed_corpus.zip $SRC
 
 unzip fuzz_seed_corpus.zip -d libwebp-test-data/
 rm fuzz_seed_corpus.zip
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/fuzzer/enc_dec_fuzzer.cc $SRC/$PROJECT_NAME/tests/fuzzer/new_fuzzer.cc
    cp $SRC/$PROJECT_NAME/tests/fuzzer/* /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/tests/fuzzer
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

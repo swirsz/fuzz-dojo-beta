@@ -16,25 +16,26 @@ rm -rf $SRC/$PROJECT_NAME
 #apt-get update && apt-get install -y make autoconf libtool pkg-config wget
 #git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
 #git clone --depth 1 https://gitlab.xiph.org/xiph/speex.git speex
-cp -r /opt/fuzz-targets/ogg /src
-cp -r /opt/fuzz-targets/speex /src
+cp -r /opt/fuzz-targets/ogg $SRC
+cp -r /opt/fuzz-targets/speex $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-patch -tuN /src/speex/src/generate-samples.sh -i /challenge/.generate-samples.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/speex$SRC/generate-samples.sh -i /challenge/.generate-samples.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/speexdec_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/new_fuzzer.cc
    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/*.cc /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
 

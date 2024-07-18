@@ -15,23 +15,24 @@ cd $SRC
 rm -rf $SRC/$PROJECT_NAME
 #apt-get update && apt-get install -y libz-dev libpcre2-dev libtool pkg-config autoconf
 #git clone https://github.com/lighttpd/lighttpd1.4
-cp -r /opt/fuzz-targets/lighttpd1.4 /src
+cp -r /opt/fuzz-targets/lighttpd1.4 $SRC
 
 cp /opt/oss-fuzz/projects/lighttpd/build.sh $SRC/
 cp /opt/oss-fuzz/projects/lighttpd/fuzz_* $SRC/
 
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/fuzz_burl.c $SRC/fuzz_new.c
    cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-lighttpd /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

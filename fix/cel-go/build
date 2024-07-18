@@ -13,12 +13,12 @@ export SANITIZER=$1
 cd $SRC
 
 #clone --depth 1 https://github.com/google/cel-go
-cp -r /opt/fuzz-targets/cel-go /src
+cp -r /opt/fuzz-targets/cel-go $SRC
 
 #apt-get update && apt-get install -y protobuf-compiler libprotobuf-dev binutils cmake \
 #   ninja-build liblzma-dev libz-dev pkg-config autoconf libtool
 #git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
-cp -r /opt/fuzz-targets/libprotobuf-mutator /src
+cp -r /opt/fuzz-targets/libprotobuf-mutator $SRC
 
 mkdir LPM; \
   cd LPM; \
@@ -26,7 +26,7 @@ mkdir LPM; \
   ninja;
 
 #git clone --depth 1 https://github.com/mdempsky/go114-fuzz-build.git
-cp -r /opt/fuzz-targets/go114-fuzz-build /src
+cp -r /opt/fuzz-targets/go114-fuzz-build $SRC
 
 
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
@@ -35,19 +35,20 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/go-lpm.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz*.go $SRC/cel-go/cel/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.proto $SRC/
 
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+#patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/zzzzzzzzzzzzzzzzz.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy/newfuzzer.c
    cp $SRC/$PROJECT_NAME/yyyyyyyyyyyy/*.c /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/yyyyyyyyyyyy
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

@@ -14,7 +14,7 @@ cd $SRC
 
 #apt-get update && apt-get install -y make autoconf automake libtool
 #git clone --depth 1 https://github.com/swirsz/zlib
-cp -r /opt/fuzz-targets/zlib /src
+cp -r /opt/fuzz-targets/zlib $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
 
@@ -30,7 +30,8 @@ else
    cp /home/hacker/training-crashes/*.c* $SRC
    cp /home/hacker/training-crashes/build.sh $SRC
 fi
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/training-crashes-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/training-crashes
+#patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-crashes /home/hacker/training-crashes
 sudo --preserve-env compile
 drivers

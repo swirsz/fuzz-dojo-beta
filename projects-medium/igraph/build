@@ -15,30 +15,31 @@ cd $SRC
 #apt-get update && apt-get install -y cmake bison flex
 
 #git clone --branch master  https://github.com/igraph/igraph
-rm -rf /src/igraph
-rm -rf /src/deps
-rm -rf /src/libxml2-2.12.6
+rm -rf $SRC/igraph
+rm -rf $SRC/deps
+rm -rf $SRC/libxml2-2.12.6
 
-cp -r /opt/fuzz-targets/igraph /src
-cp /opt/fuzz-targets/libxml2-2.12.6.tar.xz /src
+cp -r /opt/fuzz-targets/igraph $SRC
+cp /opt/fuzz-targets/libxml2-2.12.6.tar.xz $SRC
 
 cp $SRC/$PROJECT_NAME/fuzzing/build.sh $SRC/
 
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
-patch -tuN /src/build.sh -i /challenge/.build2.patch -r -
-patch -tuN /src/igraph/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+patch -tuN $SRC/build.sh -i /challenge/.build2.patch -r -
+patch -tuN $SRC/igraph/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzzing/write_all_gml.cpp $SRC/$PROJECT_NAME/fuzzing/newfuzzer.cpp
    cp $SRC/$PROJECT_NAME/fuzzing/*.cpp /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/fuzzing
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
 
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

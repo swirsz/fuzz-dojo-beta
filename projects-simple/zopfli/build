@@ -12,26 +12,27 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-rm -rf /src/zopfli
+rm -rf $SRC/zopfli
 #apt-get update && apt-get install -y make autoconf automake libtool
 #git clone --depth 1 https://github.com/google/zopfli
-cp -r /opt/fuzz-targets/zopfli /src
+cp -r /opt/fuzz-targets/zopfli $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 
-#patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+#patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/zopfli_compress_fuzzer.cc $SRC/new_fuzzer.cc
    cp $SRC/*.cc /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

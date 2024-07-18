@@ -14,7 +14,7 @@ cd $SRC
 
 #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
 #git clone -b develop https://github.com/zlib-ng/minizip-ng minizip
-cp -r /opt/fuzz-targets/minizip /src
+cp -r /opt/fuzz-targets/minizip $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
@@ -28,7 +28,8 @@ else
    cp /home/hacker/training-change/*.c $SRC/$PROJECT_NAME/test/fuzz
    cp /home/hacker/training-change/build.sh $SRC
 fi
-patch -tuN /src/minizip/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/training-change-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/training-change
+patch -tuN $SRC/minizip/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-change /home/hacker/training-change
 sudo --preserve-env compile
 drivers

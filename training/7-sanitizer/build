@@ -12,13 +12,13 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
 
-rm -rf /src/$PROJECT_NAME
-rm -rf /src/$PROJECT_NAME-tests
+rm -rf $SRC/$PROJECT_NAME
+rm -rf $SRC/$PROJECT_NAME-tests
 #apt-get update && apt-get install -y make autoconf automake libtool wget
 #git clone https://github.com/swirsz/bzip2
 #git clone git://sourceware.org/git/bzip2-tests.git
-cp -r /opt/fuzz-targets/bzip2 /src
-cp -r /opt/fuzz-targets/bzip2-tests /src
+cp -r /opt/fuzz-targets/bzip2 $SRC
+cp -r /opt/fuzz-targets/bzip2-tests $SRC
 
 cp /challenge/newfuzzer.c $SRC/newfuzzer.c
 
@@ -35,6 +35,7 @@ else
 fi
 
 cd $SRC
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/training-sanitizer-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/training-sanitizer
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-sanitizer /home/hacker/training-sanitizer
 sudo --preserve-env compile
 drivers

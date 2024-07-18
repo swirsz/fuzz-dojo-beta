@@ -17,14 +17,14 @@ rm -rf $SRC/$PROJECT_NAME
 
 #git clone --recursive --depth 1 git://git.ghostscript.com/mupdf.git mupdf
 #git clone --depth 1 https://github.com/mozilla/pdf.js pdf.js 
-cp -r /opt/fuzz-targets/mupdf /src
-cp -r /opt/fuzz-targets/pdf.js /src
+cp -r /opt/fuzz-targets/mupdf $SRC
+cp -r /opt/fuzz-targets/pdf.js $SRC
 
 zip -q $SRC/pdf_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf
 zip -q $SRC/new_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf && rm -rf pdf.js
     
 #wget https://raw.githubusercontent.com/rc0r/afl-fuzz/master/dictionaries/pdf.dict
-cp /opt/fuzz-targets/pdf.dict /src
+cp /opt/fuzz-targets/pdf.dict $SRC
 cp pdf.dict new_fuzzer.dict
 mv pdf.dict pdf_fuzzer.dict
 
@@ -33,20 +33,21 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/new_fuzzer.options
 
-rm -rf /out/src
-cp -r /src /out
-patch -tuN /src/build.sh -i /challenge/.build.patch -r -
+rm -rf /out$SRC
+cp -r $SRC /out
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
    cp $SRC/pdf_fuzzer.cc $SRC/new_fuzzer.cc
    cp $SRC/*.cc /home/hacker/$PROJECT_NAME
-   cp /src/build.sh /home/hacker/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
    cp /home/hacker/$PROJECT_NAME/*.cc $SRC
    cp /home/hacker/$PROJECT_NAME/build.sh $SRC
 fi
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/$PROJECT_NAME-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/$PROJECT_NAME
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
 sudo --preserve-env compile
 drivers

@@ -14,17 +14,17 @@ cd $SRC
 
 #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
 #git clone https://github.com/google/oss-fuzz.git example
-cp -r /opt/fuzz-targets/example /src
+cp -r /opt/fuzz-targets/example $SRC
 
-cp /challenge/do_stuff_unittest.cpp /src/example/projects/example/my-api-repo
-cp /challenge/do_stuff_fuzzer.cpp /src/example/projects/example/my-api-repo
-cp /challenge/my_api.cpp /src/example/projects/example/my-api-repo
+cp /challenge/do_stuff_unittest.cpp $SRC/example/projects/example/my-api-repo
+cp /challenge/do_stuff_fuzzer.cpp $SRC/example/projects/example/my-api-repo
+cp /challenge/my_api.cpp $SRC/example/projects/example/my-api-repo
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/training-broken" ]; then
    mkdir /home/hacker/training-broken
-   cp -r $SRC/$PROJECT_NAME/projects/example/my-api-repo /home/hacker/training-broken
+   cp -r $SRC/$PROJECT_NAME/projects/example/my-api-repo/* /home/hacker/training-broken
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-broken
    chown -R hacker /home/hacker/training-broken
 else
@@ -32,6 +32,7 @@ else
    cp /home/hacker/training-broken/build.sh $SRC
 fi
 #patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.vnc/training-broken-$(TZ=US/Arizona date +"%F--%H-%M-%S") /home/hacker/training-broken
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-broken /home/hacker/training-broken
 sudo --preserve-env compile
 drivers
