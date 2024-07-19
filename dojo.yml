@@ -274,16 +274,12 @@ modules:
     challenges:
 
       - id: cppcheck
-        name: CPPCHECK - 79321 loc 26% coverage
+        name: CPPCHECK - 79321 loc 26% coverage (no FI)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cppcheck
 
       - id: fmt
         name: FMT - 5904 loc 83% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
-
-      - id: git
-        name: GIT - 183986 loc 9% coverage (Failing on oss-fuzz)
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=git
 
       - id: janus-gateway
         name: JANUS-GATEWAY - 6131 loc 37% coverage
@@ -293,10 +289,6 @@ modules:
         name: LAME - 23539 loc 40% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
 
-      - id: libssh
-        name: LIBSSH - 26927 loc 37% coverage (Failing on oss-fuzz)
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh
-        
       - id: libtasn1
         name: LIBTASN1 - 6722 loc 59% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtasn1
@@ -376,6 +368,10 @@ modules:
         name: GDK-PIXBUF - 188216 loc 5% coverage (no FI)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gdk-pixbuf
 
+      - id: git
+        name: GIT - 183986 loc 9% coverage (Failing on oss-fuzz)
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=git
+
       - id: gpac
         name: GPAC - 461125 loc 15% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gpac
@@ -432,6 +428,10 @@ modules:
         name: LIBPSL - 56052 loc 19% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpsl
 
+      - id: libssh
+        name: LIBSSH - 26927 loc 37% coverage (Failing on oss-fuzz)
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh
+        
       - id: libtiff
         name: LIBTIFF - 49583 loc 37% coverage - DWARF error 0x25
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtiff
