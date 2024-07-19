@@ -232,7 +232,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
 
       - id: mupdf
-        name: MUPDF - 289131 loc 35% coverage
+        name: MUPDF - 289131 loc 35% coverage (no FI)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mupdf
 
       - id: opensips
