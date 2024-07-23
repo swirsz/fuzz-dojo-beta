@@ -8,7 +8,7 @@ description: |
 
 ## Useful commands:
 
-==/challenge/build afl (sanitizer)== Compiles oss-fuzz project using AFL instead of LibFuzzer
+/challenge/build afl (sanitizer) Compiles oss-fuzz project using AFL instead of LibFuzzer
 
 /challenge/build (sanitizer) Compiles oss-fuzz project currently configured. Copies fuzz driver source code into /home/hacker/(project) Project Source code: /src Fuzz drivers: /out
 
