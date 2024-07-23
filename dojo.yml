@@ -6,6 +6,10 @@ image: stevenwirsz/fuzz-base:latest
 
 description: |
 
+Useful commands:
+
+/challenge/build afl (sanitizer) Compiles oss-fuzz project using AFL instead of LibFuzzer
+
   Important Resources:
   - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
   - [**OSS-Fuzz**: Statistics and Fuzzing Introspection reports](https://introspector.oss-fuzz.com/projects-overview)
