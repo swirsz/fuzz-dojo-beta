@@ -11,7 +11,7 @@ description: |
   
   - `/challenge/build (sanitizer)` Compiles oss-fuzz project currently configured. Copies fuzz driver source code into /home/hacker/(project) Project Source code: /src Fuzz drivers: /out
 
-  - (sanitizer) is an optional value of `none` (Default) `address memory undefined thread coverage` or `inspector`
+  -- (sanitizer) is an optional value of `none` (Default) `address memory undefined thread coverage` or `inspector`
 
   - `/challenge/loc (sanitizer) (driver)` Compiles and runs all fuzz drivers for 30 seconds, reports LOC and functional coverage of each fuzz driver and the entire project. If you make significant code coverage improvements to the entire project, this command will also give you a flag.
 
