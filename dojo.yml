@@ -6,10 +6,6 @@ image: stevenwirsz/fuzz-base:latest
 
 description: |
 
-Useful commands
-
-
-
   Important Resources:
   - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
   - [**OSS-Fuzz**: Statistics and Fuzzing Introspection reports](https://introspector.oss-fuzz.com/projects-overview)
