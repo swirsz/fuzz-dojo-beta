@@ -4,7 +4,11 @@ name: Fuzz Harnessing Dojo
 
 image: stevenwirsz/fuzz-base:latest
 
-description: |
+description: 
+
+
+Useful commands
+|
 
   Important Resources:
   - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
