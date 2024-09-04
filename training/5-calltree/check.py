@@ -3,17 +3,19 @@ import json
 import sys
 
 print("###\n### Improve Coverage Using the Call Tree - bzip2\n###\n")
-print("In this challenge, you have a working fuzz driver that improves code coverage")
-print("by calling functions higher in the call tree. Examine the source code of the")
-print("current fuzz driver and the source code of the project to find 2 different")
-print("functions that can be swapped for similar functions.\n")
+print("In this challenge, you have a working fuzz driver that could be improved")
+print("by calling functions higher in the call tree. The source code of the")
+print("current fuzz driver calls 2 different functions: BZ2_bzWrite and")
+print("BZ2_bzWriteClose64.  Both can be swapped for similar functions.\n")
 
-print("Hints: Viewing the source code of the fuzz driver, you will see 4 calls to")
-print("bzlib functions. You can either browse the source code directly or use")
-print("the fuzz introspector report, 'per-fuzzer coverage' to graphically see how")
-print("many times sections of the code are executed or not executed. Another helpful")
-print("view is the 'full calltree' option available under 'fuzzer details' that will")
-print("represent called or missed functions in a useful tree format.\n")
+print("To browse source code or get hints, you can run an updated fuzz introspector")
+print("report or https://introspector.oss-fuzz.com/project-profile?project=bzip2\n")
+
+print("Hint: View the source code of bzlib.c and look for functions that call")
+print("BZ2_bzWrite and BZ2_bzWriteClose64. See if you can use these functions")
+print("in a fuzz driver, and see what parameters they require.  Only swapping one")
+print("function should be required. Both functions should require fewer parameters")
+print("than those currently implemented in training-calltree/newfuzzer.c\n")
 
 summary_file = "/out/fuzzer_stats/newfuzzer.json"
 returncode = 0
