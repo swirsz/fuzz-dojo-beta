@@ -2,7 +2,7 @@ id: fuzz
 
 name: Fuzz Harnessing Dojo
 
-image: stevenwirsz/fuzz-base:latest
+image: fuzz-base:latest
 
 description: |
 
