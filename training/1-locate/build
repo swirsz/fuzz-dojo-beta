@@ -16,13 +16,13 @@ cd $SRC
 #git clone -b develop https://github.com/zlib-ng/minizip-ng minizip
 cp -r /opt/fuzz-targets/minizip $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/training-locate" ]; then
    mkdir /home/hacker/training-locate
    cp $SRC/$PROJECT_NAME/test/fuzz/unzip_fuzzer.c $SRC/$PROJECT_NAME/test/fuzz/new_fuzzer.c
    cp $SRC/$PROJECT_NAME/test/fuzz/*.c /home/hacker/training-locate
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-locate
+   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/training-locate
    chown -R hacker /home/hacker/training-locate
 else
    cp /home/hacker/training-locate/*.c $SRC/$PROJECT_NAME/test/fuzz

@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 24 > /tmp/initial
-echo 29 > /tmp/target
+echo 26 > /tmp/initial
+echo 31 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -21,8 +21,8 @@ cp -r /opt/fuzz-targets/libsass $SRC
 # re https://github.com/ossf/fuzz-introspector/issues/305
 export OLD_LLVMPASS=1
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/data_context_fuzzer.cc  $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/data_context_fuzzer.cc  $SRC/
 
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/

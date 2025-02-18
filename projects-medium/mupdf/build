@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 23 > /tmp/initial
-echo 28 > /tmp/target
+echo 26 > /tmp/initial
+echo 31 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -28,10 +28,10 @@ cp /opt/fuzz-targets/pdf.dict $SRC
 cp pdf.dict new_fuzzer.dict
 mv pdf.dict pdf_fuzzer.dict
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/new_fuzzer.options
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.cc $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/new_fuzzer.options
 
 rm -rf /out$SRC
 cp -r $SRC /out

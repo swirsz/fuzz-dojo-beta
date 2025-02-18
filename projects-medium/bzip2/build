@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 70 > /tmp/initial
-echo 75 > /tmp/target
+echo 73 > /tmp/initial
+echo 78 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -20,8 +20,8 @@ rm -rf $SRC/$PROJECT_NAME-tests
 cp -r /opt/fuzz-targets/bzip2 $SRC
 cp -r /opt/fuzz-targets/bzip2-tests $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.c $SRC/
 
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME

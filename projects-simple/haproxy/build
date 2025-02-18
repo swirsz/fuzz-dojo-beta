@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 4 > /tmp/initial
-echo 9 > /tmp/target
+echo 3 > /tmp/initial
+echo 8 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -15,8 +15,8 @@ cd $SRC
 rm -rf $SRC/$PROJECT_NAME
 #git clone https://github.com/haproxy/haproxy
 cp -r /opt/fuzz-targets/haproxy $SRC
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzz* $SRC
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/fuzz* $SRC
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC
 
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then

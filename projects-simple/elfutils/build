@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 10 > /tmp/initial
-echo 15 > /tmp/target
+echo 9 > /tmp/initial
+echo 14 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -20,8 +20,8 @@ rm -rf elfutils
 cp -r /opt/fuzz-targets/elfutils $SRC
 cp -r /opt/fuzz-targets/zlib $SRC/$PROJECT_NAME
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.c $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME

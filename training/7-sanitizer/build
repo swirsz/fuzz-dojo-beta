@@ -22,12 +22,12 @@ cp -r /opt/fuzz-targets/bzip2-tests $SRC
 
 cp /challenge/newfuzzer.c $SRC/newfuzzer.c
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.c $SRC/
 if [ ! -d "/home/hacker/training-sanitizer" ]; then
    mkdir /home/hacker/training-sanitizer
    cp $SRC/*.c /home/hacker/training-sanitizer
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-sanitizer
+   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/training-sanitizer
    chown -R hacker /home/hacker/training-sanitizer
 else
    cp /home/hacker/training-sanitizer/*.c $SRC

@@ -1,19 +1,21 @@
-@@ -12,7 +12,7 @@
- COMMON_DEPS=../../../libssh.a
+--- Makefile.o	2025-02-11 18:56:01.849900874 +0000
++++ Makefile	2025-02-11 19:13:58.883263005 +0000
+@@ -13,7 +13,7 @@
  
  TARGETS=pubkey_fuzz sig_fuzz authopt_fuzz authkeys_fuzz sshsig_fuzz \
--	sshsigopt_fuzz privkey_fuzz kex_fuzz agent_fuzz
-+	sshsigopt_fuzz privkey_fuzz kex_fuzz agent_fuzz newfuzzer
+ 	sshsigopt_fuzz privkey_fuzz kex_fuzz agent_fuzz \
+-	mkcorpus_sntrup761 sntrup761_enc_fuzz sntrup761_dec_fuzz
++	mkcorpus_sntrup761 sntrup761_enc_fuzz sntrup761_dec_fuzz newfuzzer
  
  all: $(TARGETS)
  
-@@ -46,6 +46,9 @@
- agent_fuzz: agent_fuzz.o agent_fuzz_helper.o sk-dummy.o ../../../ssh-sk.o $(COMMON_DEPS)
- 	$(CXX) -o $@ agent_fuzz.o agent_fuzz_helper.o sk-dummy.o ../../../ssh-sk.o $(LDFLAGS) $(LIBS) -lz
+@@ -64,6 +64,9 @@
+ sntrup761_enc_fuzz: sntrup761_enc_fuzz.o
+ 	$(CXX) -o $@ sntrup761_enc_fuzz.o $(LDFLAGS) $(FUZZ_FLAGS) $(FUZZ_LIBS) -lcrypto
  
 +newfuzzer: newfuzzer.o agent_fuzz_helper.o sk-dummy.o ../../../ssh-sk.o $(COMMON_DEPS)
 +        $(CXX) -o $@ newfuzzer.o agent_fuzz_helper.o sk-dummy.o ../../../ssh-sk.o $(LDFLAGS) $(LIBS) -lz
 +
- agent_fuzz_helper.o: agent_fuzz_helper.c ../../../ssh-agent.c
+ clean:
+ 	-rm -f *.o $(TARGETS)
  
- sk-dummy.o: ../sk-dummy/sk-dummy.c

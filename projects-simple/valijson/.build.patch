@@ -1,10 +1,9 @@
---- build.sh	2023-09-12 21:31:49.129252034 +0000
-+++ build.sh	2023-09-12 21:40:04.899563828 +0000
-@@ -37,3 +37,22 @@
+--- build.sho	2025-02-10 04:23:35.147808641 +0000
++++ build.sh	2025-02-10 04:32:06.769032381 +0000
+@@ -30,3 +30,20 @@
+ done
  
- zip "${OUT}/fuzzer_seed_corpus.zip" \
- 	"${SRC}/valijson/doc/schema/draft-03.json"
-+
+ zip -j -r "${OUT}/fuzzer_seed_corpus.zip" seed_corpus
 +
 +"$CXX" $CXXFLAGS -DVALIJSON_USE_EXCEPTIONS=1 \
 +        -I/src/valijson/thirdparty/rapidjson/include \
@@ -14,12 +13,11 @@
 +        -I/src/valijson/include/valijson/adapters \
 +        -c newfuzzer.cpp -o newfuzzer.o
 +
-+# shellcheck disable=SC2086
 +"$CXX" $CXXFLAGS "$LIB_FUZZING_ENGINE" \
-+        -DVALIJSON_USE_EXCEPTIONS=1 \
-+        -rdynamic newfuzzer.o \
-+        -o "${OUT}/newfuzzer" fuzz_lib.a
++    -DVALIJSON_USE_EXCEPTIONS=1 \
++        -I/src/valijson/thirdparty/rapidjson/include \
++        -I/src/valijson/include \
++        newfuzzer.cpp -o "${OUT}/newfuzzer"
 +
-+zip "${OUT}/newfuzzer_seed_corpus.zip" \
-+        "${SRC}/valijson/doc/schema/draft-03.json"
++zip "${OUT}/newfuzzer_seed_corpus.zip" seed_corpus
 +

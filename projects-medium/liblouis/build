@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 38 > /tmp/initial
-echo 43 > /tmp/target
+echo 35 > /tmp/initial
+echo 40 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -18,7 +18,7 @@ cd $SRC
 
 cp -r /opt/fuzz-targets/liblouis $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 patch -tuN $SRC/liblouis/tests/fuzzing/build.sh -i /challenge/.build.patch -r -
 
 cd $SRC/$PROJECT_NAME

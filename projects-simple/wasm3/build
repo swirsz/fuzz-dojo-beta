@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 34 > /tmp/initial
-echo 39 > /tmp/target
+echo 35 > /tmp/initial
+echo 40 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -16,7 +16,7 @@ rm -rf $PROJECT_NAME
 #git clone --depth 1 https://github.com/wasm3/wasm3
 cp -r /opt/fuzz-targets/wasm3 $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME

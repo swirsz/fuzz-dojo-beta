@@ -1,5 +1,14 @@
---- build.sh.o	2023-09-12 20:03:29.247484160 +0000
-+++ build.sh	2023-09-12 20:07:05.956560241 +0000
+--- build.sho	2025-02-11 20:04:14.715859770 +0000
++++ build.sh	2025-02-11 20:00:14.738664093 +0000
+@@ -29,7 +29,7 @@
+                -DSQLITE_DEBUG=1 \
+                -DSQLITE_MAX_PAGE_COUNT=16384"             
+                
+-../configure --enable-shared=no
++../configure
+ make -j$(nproc)
+ make sqlite3.c
+ 
 @@ -40,4 +40,11 @@
      $SRC/sqlite3/test/ossfuzz.o -o $OUT/ossfuzz \
      $LIB_FUZZING_ENGINE ./sqlite3.o

@@ -17,8 +17,8 @@ rm -rf uriparser
 #git clone --depth 1 https://github.com/uriparser/uriparser uriparser
 cp -r /opt/fuzz-targets/uriparser $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.cc $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
 #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME

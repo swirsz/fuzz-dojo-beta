@@ -1,6 +1,6 @@
---- generate-samples.sho	2024-05-12 20:44:51.132196670 +0000
-+++ generate-samples.sh	2024-05-12 20:45:52.870270621 +0000
-@@ -11,7 +11,8 @@
+--- generate-samples.sho	2025-02-10 19:34:02.683832946 +0000
++++ generate-samples.sh	2025-02-10 19:38:58.817565538 +0000
+@@ -12,11 +12,13 @@
  
  samples="${MALE_SAMPLE} ${FEMALE_SAMPLE} ${WB_MALE_SAMPLE}"
  for sample in $samples; do
@@ -9,4 +9,10 @@
 +    cp  /opt/fuzz-targets/${sample} .
  done
  
+ # FIXME: move to speex.org
+-wget --no-clobber https://people.xiph.org/~tterribe/speex/${UWB_MALE_SAMPLE}
++#wget --no-clobber https://people.xiph.org/~tterribe/speex/${UWB_MALE_SAMPLE}
++cp  /opt/fuzz-targets/${UWB_MALE_SAMPLE} .
+ 
  bitrates="4 8 11 15"
+ for b in $bitrates; do

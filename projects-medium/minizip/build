@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 53 > /tmp/initial
-echo 58 > /tmp/target
+echo 54 > /tmp/initial
+echo 59 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -16,7 +16,7 @@ cd $SRC
 #git clone -b develop https://github.com/zlib-ng/minizip-ng minizip
 cp -r /opt/fuzz-targets/minizip $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
 patch -tuN $SRC/minizip/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 cd $SRC/$PROJECT_NAME

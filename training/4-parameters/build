@@ -18,7 +18,7 @@ cd $SRC
 #git clone --depth 1 https://github.com/swirsz/avahi
 cp -r /opt/fuzz-targets/avahi $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
 patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
 cd $SRC/$PROJECT_NAME
@@ -26,7 +26,7 @@ if [ ! -d "/home/hacker/training-parameters" ]; then
    mkdir /home/hacker/training-parameters
    cp /challenge/fuzz-newfuzzer.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/training-parameters
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/training-parameters
+   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/training-parameters
    chown -R hacker /home/hacker/training-parameters
 else
    cp /home/hacker/training-parameters/*.c $SRC/$PROJECT_NAME/fuzz

@@ -17,9 +17,9 @@ rm -rf $SRC/cmark
 #git clone --depth 1 https://github.com/commonmark/cmark.git cmark
 cp -r /opt/fuzz-targets/cmark $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-#cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+#cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.dict $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.options $SRC/
 
 
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -

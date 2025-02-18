@@ -17,10 +17,10 @@ rm -rf $SRC/zopfli
 #git clone --depth 1 https://github.com/google/zopfli
 cp -r /opt/fuzz-targets/zopfli $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.cc $SRC/
 
 #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME

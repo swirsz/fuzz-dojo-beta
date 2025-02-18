@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 15 > /tmp/initial
-echo 20 > /tmp/target
+echo 12 > /tmp/initial
+echo 17 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -18,7 +18,7 @@ rm -rf $SRC/$PROJECT_NAME
 #apt-get install -y cmake ninja-build g++ ---clang--- libexpat1-dev zlib1g-dev libbrotli-dev libssh-dev libcurl4-openssl-dev libgmock-dev libxml2-utils libinih-dev
 cp -r /opt/fuzz-targets/exiv2 $SRC
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 patch -tuN $SRC/$PROJECT_NAME/fuzz/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -

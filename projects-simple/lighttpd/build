@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 34 > /tmp/initial
-echo 39 > /tmp/target
+echo 36 > /tmp/initial
+echo 41 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -17,8 +17,8 @@ rm -rf $SRC/$PROJECT_NAME
 #git clone https://github.com/lighttpd/lighttpd1.4
 cp -r /opt/fuzz-targets/lighttpd1.4 $SRC
 
-cp /opt/oss-fuzz/projects/lighttpd/build.sh $SRC/
-cp /opt/oss-fuzz/projects/lighttpd/fuzz_* $SRC/
+cp /opt/oss-fuzz-new/projects/lighttpd/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/lighttpd/fuzz_* $SRC/
 
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME

@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 21 > /tmp/initial
-echo 26 > /tmp/target
+echo 36 > /tmp/initial
+echo 41 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -17,7 +17,7 @@ cd $SRC
 cp -r /opt/fuzz-targets/c-ares $SRC
 export OLD_LLVMPASS=1
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -

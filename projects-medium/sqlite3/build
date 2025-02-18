@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 33 > /tmp/initial
-echo 38 > /tmp/target
+echo 31 > /tmp/initial
+echo 36 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -26,9 +26,9 @@ mkdir $SRC/sqlite3 && \
 cd $SRC
 find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.dict $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.options $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME

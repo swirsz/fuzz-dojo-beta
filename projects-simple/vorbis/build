@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 32 > /tmp/initial
-echo 37 > /tmp/target
+echo 33 > /tmp/initial
+echo 38 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -25,7 +25,7 @@ corpus-replicator -o decode_corpus audio_vorbis_ogg_libvorbis.yml audio
 mkdir people.xiph.org/
 touch people.xiph.org/dummy.ogg
 
-cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
 patch -tuN $SRC/$PROJECT_NAME/contrib/oss-fuzz/build.sh -i /challenge/.build.patch -r -
 cd $SRC/$PROJECT_NAME
