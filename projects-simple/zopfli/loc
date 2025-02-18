@@ -6,8 +6,8 @@ if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = 
 fi
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 cd $SRC
-cp /usr/msan/lib/libc++.a /usr/msan/lib/libc++.bk
-cp /usr/msan/lib/libc++experimental.a /usr/msan/lib/libc++experimental.bk
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk
 /challenge/build $SANITIZER
 if [ "$?" -gt 0 ]; then
     exit 1
@@ -24,8 +24,8 @@ else
     DRIVERS=$1
     run_fuzzer $DRIVERS -max_total_time=30
 fi
-cp /usr/msan/lib/libc++.bk /usr/msan/lib/libc++.a
-cp /usr/msan/lib/libc++experimental.bk /usr/msan/lib/libc++experimental.a
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a
 
 /challenge/build coverage
 
