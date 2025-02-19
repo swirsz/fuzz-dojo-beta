@@ -43,7 +43,7 @@ if compgen -G "/out/crash*" > /dev/null; then
     echo "Crashes detected within the /out directory!"
     echo
 fi
-/usr/local/sbin/announce $INITIAL $? 
+/usr/local/sbin/loc-calc
 if [ "$?" -ge "$TARGET" ]; then
     echo
     echo Congratulations!  Additional code coverage detected!
