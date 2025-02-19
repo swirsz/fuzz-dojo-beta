@@ -15,15 +15,10 @@ fi
 echo
 echo Fuzzing ~30 seconds - Sanitizer: $SANITIZER
 echo
-if [ -z "$1" ]
-then
-    cd /out
-    DRIVERS=($(ls -p -I '*.*' -I 'llvm-symbolizer' -I "crash-*" -I "timeout-*" -I "TEMP*" /out | grep -v /))
-    parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=30
-else
-    DRIVERS=$1
-    run_fuzzer $DRIVERS -max_total_time=30
-fi
+
+DRIVERS=fuzz-newfuzzer
+run_fuzzer $DRIVERS -max_total_time=30
+
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a
 
@@ -53,7 +48,6 @@ read TARGET < /tmp/target
 echo
 echo fuzz-newfuzzer coverage:
 /usr/local/sbin/loc-calc fuzz-newfuzzer
-/usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -ge "$TARGET" ]; then
     echo
     echo Congratulations!
@@ -65,6 +59,5 @@ if compgen -G "/out/crash*" > /dev/null; then
     echo
 fi
 
-/usr/local/sbin/announce $INITIAL $? >> /tmp/loc
 cp /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
 cat /tmp/loc
