@@ -51,5 +51,3 @@ if compgen -G "/out/crash*" > /dev/null; then
     echo "Crashes detected within the /out directory!"
     echo
 fi
-
-cp /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
