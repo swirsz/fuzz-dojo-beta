@@ -91,19 +91,6 @@ modules:
         name: Diagnose Crash Files
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
-    resources:
-      - name: "Fuzzing: Introduction"
-        type: lecture
-        video: K_2DAo5pPQQ
-        
-      - name: "GTAC 2016: Finding Bugs in C++ Libraries Using LibFuzzer"
-        type: lecture
-        video: FzaR3iH2iZs
-        
-      - name: "Using OSS-Fuzz to Improve the Fuzz Harness Code Coverage of BZIP2"
-        type: lecture
-        video: LUGG56LOf5U
-
   - id: projects-simple
     name: Simple Harnessing
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.  These projects have relatively simple fuzz drivers.
@@ -127,7 +114,7 @@ modules:
         description: Sample OSS-Fuzz project
 
       - id: exiv2
-        name: EXIV2 - 34282 loc 55% coverage
+        name: EXIV2 - 34282 loc 55% coverage (no FI report)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
 
       - id: guetzli
@@ -147,7 +134,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
 
       - id: libsass
-        name: LIBSASS - 19723 loc 33% coverage (no FI)
+        name: LIBSASS - 19723 loc 33% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsass
 
       - id: libsodium
@@ -328,7 +315,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=janus-gateway
 
       - id: lame
-        name: LAME - 23539 loc 40% coverage (broken on OSS-Fuzz)
+        name: LAME - 23539 loc 40% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
 
       - id: libtasn1
@@ -351,3 +338,222 @@ modules:
         name: ZLIB - 5055 loc 69% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
 
+
+  - id: fix
+    name: Broken Projects
+    description: These OSS-Fuzz Projects fail in some way
+
+    challenges:
+
+      - id: bind9
+        name: BIND9 - 130404 loc 20% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bind9
+
+      - id: binutils
+        name: BINUTILS - 611961 loc 32% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=binutils
+
+      - id: cel-go
+        name: CEL-GO - 14292 loc 57% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cel-go
+
+      - id: cfengine
+        name: CFENGINE - failing 2702 loc 8% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cfengine
+
+      - id: civetweb
+        name: CIVETWEB - 11403 loc 11% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=civetweb
+
+      - id: cmake
+        name: CMAKE - 7778 loc 62% coverage - no AFL - works but too slow
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmake
+
+      - id: curl
+        name: CURL - 274257 loc 21% coverage - clang-15 unable to execute command - Killed
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=curl
+
+      - id: cpython3
+        name: CPYTHON3 - 240847 loc 41% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cpython3
+
+      - id: cyclonedds
+        name: CYCLONEDDS - 77965 loc 30% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cyclonedds
+
+      - id: ffmpeg
+        name: FFMPEG - compiles, coverage reports fail
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ffmpeg
+
+      - id: file
+        name: FILE - 10664 loc 78% coverage seccomp.c error use of undeclared identifier 'memory'
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=file
+
+      - id: flac
+        name: FLAC - 33650 loc 86% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=flac
+
+      - id: gdk-pixbuf
+        name: GDK-PIXBUF - 188216 loc 5% coverage (no FI)
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gdk-pixbuf
+
+      - id: git
+        name: GIT - 183986 loc 9% coverage (Failing on oss-fuzz)
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=git
+
+      - id: gpac
+        name: GPAC - 461125 loc 15% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gpac
+
+      - id: graphicsmagick
+        name: GRAPHICSMAGICK - 437167 loc 38% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=graphicsmagick
+
+      - id: gstreamer
+        name: GSTREAMER - 243861 loc 20% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gstreamer
+
+      - id: imagemagick
+        name: IMAGEMAGICK - 566468 loc 48% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=imagemagick
+
+      - id: jq
+        name: JQ - 39800 loc 63% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=jq
+
+      - id: json-c
+        name: JSON-C - 3163 loc 41% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json-c
+
+      - id: jsoncpp
+        name: JSONCPP - 29698 loc 6% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=jsoncpp
+
+      - id: libarchive
+        name: LIBARCHIVE - 36214 loc 15% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libarchive
+
+      - id: libdwarf
+        name: LIBDWARF - 43653 loc 71% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libdwarf
+
+      - id: libevent
+        name: LIBEVENT - 18878 loc 28% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libevent
+
+      - id: libgd
+        name: LIBGD - 5365 loc 33% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libgd
+
+      - id: libidn
+        name: LIBIDN - 2179 loc 80% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libidn
+
+      - id: libpcap
+        name: LIBPCAP - 16876 loc 55% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpcap
+
+      - id: libpsl
+        name: LIBPSL - 56052 loc 19% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpsl
+
+      - id: libssh
+        name: LIBSSH - 26927 loc 37% coverage (Failing on oss-fuzz)
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh
+        
+      - id: libtiff
+        name: LIBTIFF - 49583 loc 37% coverage - DWARF error 0x25
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtiff
+
+      - id: libwebp
+        name: LIBWEBP - 29393 loc 88% coverage (Failing on oss-fuzz)
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libwebp
+
+      - id: libxml2
+        name: LIBXML2 - 88011 loc 65% coverage - complex fuzz harness creation
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libxml2
+
+      - id: lua
+        name: LUA - 88532 loc 27% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lua
+
+      - id: lzo
+        name: LZO - 3538 loc 91% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lzo
+
+      - id: mariadb
+        name: MARIADB - 19174 loc 3% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mariadb
+        
+      - id: mbedtls
+        name: MBEDTLS - 65983 loc 34% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mbedtls
+
+      - id: mosquitto
+        name: MOSQUITTO - 25571 loc 29% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mosquitto
+
+      - id: mruby
+        name: MRUBY - 69256 loc 18% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mruby
+
+      - id: nginx
+        name: NGINX - 90729 loc 13% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=nginx
+
+      - id: ninja
+        name: NINJA - 4123 loc 36% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ninja
+
+      - id: pffft
+        name: PFFFT - 1270 loc 93% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pffft
+
+      - id: php
+        name: PHP - 273255 loc 60% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=php
+
+      - id: poppler
+        name: POPPLER - 837637 loc 18% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=poppler
+
+      - id: postfix
+        name: POSTFIX - 10985 loc 8% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=postfix
+
+      - id: python3-libraries
+        name: PYTHON3-LIBRARIES - 240846 loc 41% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=python3-libraries
+
+      - id: qubes-os
+        name: QUBES-OS - 5416 loc 16% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=qubes-os
+
+      - id: ruby
+        name: RUBY - 219952 loc 0% coverage - OSS-FUZZ failing
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=ruby
+
+      - id: sudoers
+        name: SUDOERS - 20869 loc 50% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sudoers
+
+      - id: tinyusb
+        name: TINYUSB - 11185 loc 13% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tinyusb
+
+      - id: vlc
+        name: VLC - 106746 loc 10% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vlc
+
+      - id: wget
+        name: WGET - 143049 loc 5% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wget
+
+      - id: wireshark
+        name: WIRESHARK - 2594398 loc 54% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wireshark
+
+      - id: xpdf
+        name: XPDF - 124767 loc 13% coverage
+        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xpdf
+        

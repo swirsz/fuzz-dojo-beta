@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-echo 67 > /tmp/initial
-echo 72 > /tmp/target
+echo 48 > /tmp/initial
+echo 53 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
@@ -22,13 +22,13 @@ cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
    mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/pcre2_fuzz*.dict /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/pcre2_fuzz*.options /home/hacker/$PROJECT_NAME
+   #cp $SRC/$PROJECT_NAME/pcre2_fuzz*.dict /home/hacker/$PROJECT_NAME
+   #cp $SRC/$PROJECT_NAME/pcre2_fuzz*.options /home/hacker/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/src/pcre2_fuzzsupport.c /home/hacker/$PROJECT_NAME
    chown -R hacker /home/hacker/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.dict $SRC/$PROJECT_NAME
-   cp /home/hacker/$PROJECT_NAME/*.options $SRC/$PROJECT_NAME
+   #cp /home/hacker/$PROJECT_NAME/*.dict $SRC/$PROJECT_NAME
+   #cp /home/hacker/$PROJECT_NAME/*.options $SRC/$PROJECT_NAME
    cp /home/hacker/$PROJECT_NAME/pcre2_fuzzsupport.c $SRC/$PROJECT_NAME/src
 fi
 mkdir -p /home/hacker/.log
