@@ -1,10 +1,41 @@
-#!/opt/pwn.college/bash 
-INITIAL=1
-TARGET=45
-
-time sudo -H -u hacker bash -c "/challenge/.loc_count undefined newfuzzer"
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = "undefined" ] || [ "$1" = "thread" ]; then
+    export SANITIZER=$1
+    shift
+fi
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk
+/challenge/build $SANITIZER
+if [ "$?" -gt 0 ]; then
+    exit 1
+fi
 echo
-echo newfuzzer
+echo Fuzzing ~30 seconds - Sanitizer: $SANITIZER
+echo
+DRIVERS=undefined newfuzzer
+run_fuzzer $DRIVERS -max_total_time=30
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a
+
+/challenge/build coverage
+
+for driver in "${DRIVERS[@]}"
+do
+    sudo rm -rf /corpus/$driver
+    sudo mv /tmp/${driver}_corpus /corpus/$driver
+done
+
+sudo --preserve-env coverage
+if compgen -G "/out/crash*" > /dev/null; then
+    echo
+    echo "Crashes detected within the /out directory!"
+    echo
+fi
+echo
+echo newfuzzer:
 /usr/local/sbin/loc-calc newfuzzer
 /usr/local/sbin/announce $INITIAL $? 
 if [ "$?" -ge "$TARGET" ]; then
@@ -17,3 +48,6 @@ if compgen -G "/out/crash*" > /dev/null; then
     echo "Crashes detected within the /out directory!"
     echo
 fi
+
+
+
