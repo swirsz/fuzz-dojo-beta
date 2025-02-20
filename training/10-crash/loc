@@ -38,21 +38,6 @@ do
 done
 
 sudo --preserve-env coverage
-if compgen -G "/out/timeout-*" > /dev/null
-then
-    echo
-    echo "Timeouts detected within the /out directory!"
-    echo
-elif compgen -G "/out/crash-*" > /dev/null
-then
-    echo
-    echo "Crashes detected within the /out directory!"
-    echo
-else
-    echo
-    echo Congratulations!  No crashes detected.
-    cat /flag
-fi
 
 echo > /tmp/loc
 for driver in "${DRIVERS[@]}"
@@ -68,3 +53,19 @@ echo Total >> /tmp/loc
 /usr/local/sbin/announce $INITIAL $? >> /tmp/loc
 cp /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
 cat /tmp/loc
+
+if compgen -G "/out/timeout-*" > /dev/null
+then
+    echo
+    echo "Timeouts detected within the /out directory!"
+    echo
+elif compgen -G "/out/crash-*" > /dev/null
+then
+    echo
+    echo "Crashes detected within the /out directory!"
+    echo
+else
+    echo
+    echo Congratulations!  No crashes detected.
+    cat /flag
+fi
