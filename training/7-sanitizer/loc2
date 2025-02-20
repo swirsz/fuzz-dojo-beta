@@ -38,7 +38,7 @@ echo
 echo newfuzzer:
 /usr/local/sbin/loc-calc newfuzzer
 /usr/local/sbin/announce 45 $? 
-if [ "$?" -ge "$TARGET" ]; then
+if [ "$?" -ge "45" ]; then
     echo
     echo Congratulations!
     cat /flag
