@@ -22,17 +22,17 @@ cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
 patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
 cd $SRC/$PROJECT_NAME
-if [ ! -d "/home/hacker/training-parameters" ]; then
-   mkdir /home/hacker/training-parameters
-   cp /challenge/fuzz-newfuzzer.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
-   cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/training-parameters
-   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/training-parameters
-   chown -R hacker /home/hacker/training-parameters
+if [ ! -d "/home/hacker/training-newdriver" ]; then
+   mkdir /home/hacker/training-newdriver
+   cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
+   cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/training-newdriver
+   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/training-newdriver
+   chown -R hacker /home/hacker/training-newdriver
 else
-   cp /home/hacker/training-parameters/*.c $SRC/$PROJECT_NAME/fuzz
-   cp /home/hacker/training-parameters/build.sh $SRC
+   cp /home/hacker/training-newdriver/*.c $SRC/$PROJECT_NAME/fuzz
+   cp /home/hacker/training-newdriver/build.sh $SRC
 fi
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-parameters /home/hacker/training-parameters
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-newdriver /home/hacker/training-newdriver
 sudo --preserve-env compile
 drivers
