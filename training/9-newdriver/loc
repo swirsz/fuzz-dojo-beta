@@ -54,7 +54,6 @@ do
 done
 echo Total
 /usr/local/sbin/loc-calc
-/usr/local/sbin/announce $INITIAL $?
 if [ "$?" -ge "$TARGET" ]; then
     echo
     echo Congratulations!
