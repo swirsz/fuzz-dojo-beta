@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = "undefined" ] || [ "$1" = "thread" ]; then
-    export SANITIZER=$1
+    export SANITIZER=undefined
     shift
 fi
 [ -z "$SANITIZER" ] && export SANITIZER='none'
@@ -15,7 +15,7 @@ fi
 echo
 echo Fuzzing ~30 seconds - Sanitizer: $SANITIZER
 echo
-DRIVERS=undefined newfuzzer
+DRIVERS=newfuzzer
 run_fuzzer $DRIVERS -max_total_time=30
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a
