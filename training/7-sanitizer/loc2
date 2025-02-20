@@ -37,7 +37,7 @@ fi
 echo
 echo newfuzzer:
 /usr/local/sbin/loc-calc newfuzzer
-/usr/local/sbin/announce $INITIAL $? 
+/usr/local/sbin/announce 45 $? 
 if [ "$?" -ge "$TARGET" ]; then
     echo
     echo Congratulations!
