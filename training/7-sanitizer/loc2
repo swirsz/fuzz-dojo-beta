@@ -43,11 +43,5 @@ if [ "$?" -ge "45" ]; then
     echo Congratulations!
     cat /flag
 fi
-if compgen -G "/out/crash*" > /dev/null; then
-    echo
-    echo "Crashes detected within the /out directory!"
-    echo
-fi
-
 
 

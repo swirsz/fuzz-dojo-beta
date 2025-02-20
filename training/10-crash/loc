@@ -1,7 +1,43 @@
 #!/opt/pwn.college/bash
+. /usr/local/sbin/e
+if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = "undefined" ] || [ "$1" = "thread" ]; then
+    export SANITIZER=$1
+    shift
+fi
 rm /out/crash-*
 rm /out/timeout-*
-time sudo -H -u hacker bash -c "/challenge/.loc_count $*"
+[ -z "$SANITIZER" ] && export SANITIZER='none'
+cd $SRC
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk
+/challenge/build $SANITIZER
+if [ "$?" -gt 0 ]; then
+    exit 1
+fi
+echo
+echo Fuzzing ~30 seconds - Sanitizer: $SANITIZER
+echo
+if [ -z "$1" ]
+then
+    cd /out
+    DRIVERS=($(ls -p -I '*.*' -I 'llvm-symbolizer' -I "crash-*" -I "timeout-*" -I "TEMP*" /out | grep -v /))
+    parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=30
+else
+    DRIVERS=$1
+    run_fuzzer $DRIVERS -max_total_time=30
+fi
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a
+cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a
+
+/challenge/build coverage
+
+for driver in "${DRIVERS[@]}"
+do
+    sudo rm -rf /corpus/$driver
+    sudo mv /tmp/${driver}_corpus /corpus/$driver
+done
+
+sudo --preserve-env coverage
 if compgen -G "/out/timeout-*" > /dev/null
 then
     echo
@@ -17,3 +53,18 @@ else
     echo Congratulations!  No crashes detected.
     cat /flag
 fi
+
+echo > /tmp/loc
+for driver in "${DRIVERS[@]}"
+do
+    echo $driver >> /tmp/loc
+    /usr/local/sbin/loc-calc $driver >> /tmp/loc
+    echo >> /tmp/loc
+done
+read INITIAL < /tmp/initial
+read TARGET < /tmp/target
+echo Total >> /tmp/loc
+/usr/local/sbin/loc-calc >> /tmp/loc
+/usr/local/sbin/announce $INITIAL $? >> /tmp/loc
+cp /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
+cat /tmp/loc
