@@ -17,10 +17,10 @@ cd $SRC
 #git clone --branch master  https://github.com/igraph/igraph
 rm -rf $SRC/igraph
 rm -rf $SRC/deps
-rm -rf $SRC/libxml2-2.12.6
+rm -rf $SRC/libxml2-2.13.5
 
 cp -r /opt/fuzz-targets/igraph $SRC
-cp /opt/fuzz-targets/libxml2-2.12.6.tar.xz $SRC
+cp /opt/fuzz-targets/libxml2-2.13.5.tar.xz $SRC
 
 cp $SRC/$PROJECT_NAME/fuzzing/build.sh $SRC/
 
