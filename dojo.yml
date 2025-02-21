@@ -330,11 +330,7 @@ modules:
       - id: lame
         name: LAME - 23539 loc 40% coverage (broken on OSS-Fuzz)
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
-
-      - id: libtasn1
-        name: LIBTASN1 - 6722 loc 59% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtasn1
-            
+         
       - id: openjpeg
         name: OPENJPEG - 22939 loc 51% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
