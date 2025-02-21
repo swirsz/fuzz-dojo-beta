@@ -238,7 +238,7 @@ modules:
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
 
       - id: igraph
-        name: IGRAPH - 57124 loc 58% coverage (no FI)
+        name: IGRAPH - 57124 loc 58% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
         
       - id: liblouis

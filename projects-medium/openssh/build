@@ -22,6 +22,7 @@ cp -r /opt/fuzz-targets/openssh-fuzz-cases $SRC
 
 cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
+export CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 patch -tuN $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/Makefile -i /challenge/.Makefile.patch -r -
 cd $SRC/$PROJECT_NAME
