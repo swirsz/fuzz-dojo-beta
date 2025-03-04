@@ -52,6 +52,15 @@ read INITIAL < /tmp/initial
 read TARGET < /tmp/target
 echo Total >> /tmp/loc
 /usr/local/sbin/loc-calc >> /tmp/loc
+echo $?
+echo $?
+if [ "$?" -ge "$TARGET" ]; then
+    echo
+    echo Congratulations!  Additional code coverage detected!
+    cat /flag
+fi
+echo $?
 /usr/local/sbin/announce $INITIAL $? >> /tmp/loc
+echo $?
 cp /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
 cat /tmp/loc
