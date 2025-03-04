@@ -1,6 +1,4 @@
 #!/opt/pwn.college/bash
-echo 77 > /tmp/initial
-echo 82 > /tmp/target
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift

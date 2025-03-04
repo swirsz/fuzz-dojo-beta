@@ -1,4 +1,6 @@
 #!/opt/pwn.college/bash
+INITIAL=35
+TARGET=38
 . /usr/local/sbin/e
 if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = "undefined" ] || [ "$1" = "thread" ]; then
     export SANITIZER=$1
@@ -34,8 +36,6 @@ do
     sudo rm -rf /corpus/$driver
     sudo mv /tmp/${driver}_corpus /corpus/$driver
 done
-read INITIAL < /tmp/initial
-read TARGET < /tmp/target
 
 sudo --preserve-env coverage
 if compgen -G "/out/crash*" > /dev/null; then

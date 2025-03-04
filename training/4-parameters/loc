@@ -1,4 +1,6 @@
 #!/opt/pwn.college/bash
+INITIAL=9
+TARGET=12
 . /usr/local/sbin/e
 if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = "undefined" ] || [ "$1" = "thread" ]; then
     export SANITIZER=$1
@@ -36,8 +38,6 @@ if compgen -G "/out/crash*" > /dev/null; then
     echo "Crashes detected within the /out directory!"
     echo
 fi
-read INITIAL < /tmp/initial
-read TARGET < /tmp/target
 echo
 echo fuzz-newfuzzer coverage:
 /usr/local/sbin/loc-calc fuzz-newfuzzer
@@ -45,9 +45,4 @@ if [ "$?" -ge "$TARGET" ]; then
     echo
     echo Congratulations!
     cat /flag
-fi
-if compgen -G "/out/crash*" > /dev/null; then
-    echo
-    echo "Crashes detected within the /out directory!"
-    echo
 fi
