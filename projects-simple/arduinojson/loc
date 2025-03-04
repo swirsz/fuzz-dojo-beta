@@ -52,15 +52,12 @@ read INITIAL < /tmp/initial
 read TARGET < /tmp/target
 echo Total >> /tmp/loc
 /usr/local/sbin/loc-calc >> /tmp/loc
-echo %ERRORLEVEL%
-echo %ERRORLEVEL%
-if [ "%ERRORLEVEL%" -ge "$TARGET" ]; then
+COVERAGE=$?
+if [ "$COVERAGE" -ge "$TARGET" ]; then
     echo
     echo Congratulations!  Additional code coverage detected!
     cat /flag
 fi
-echo %ERRORLEVEL%
-/usr/local/sbin/announce $INITIAL %ERRORLEVEL% >> /tmp/loc
-echo %ERRORLEVEL%
+/usr/local/sbin/announce $INITIAL $COVERAGE >> /tmp/loc
 cp /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
 cat /tmp/loc
