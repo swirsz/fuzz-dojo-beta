@@ -24,5 +24,7 @@ done
 zip -y /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-fi /out/introspector-report/inspector/fuzz_report.html
 echo
 echo View report on virtual desktop under Applications/Web Browser: http://0.0.0.0:8008/fuzz_report.html
+echo
+echo If you encounter errors, run /challenge/fuzz-introspector under shell or Workspace first, then view report on Workspace or Desktop
 echo 
 python3 -m http.server 8008 --directory /out/introspector-report/inspector/
