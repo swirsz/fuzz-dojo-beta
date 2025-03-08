@@ -51,17 +51,11 @@ do
     echo >> /tmp/loc
 done
 echo Total >> /tmp/loc
+/usr/local/sbin/loc-calc >> /tmp/loc
+COVERAGE=$?
 cat /tmp/loc
 mv /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
-if [ "$COVERAGE" -ge "$TARGET" ]; then
-    echo
-    echo Congratulations!  Additional code coverage detected!
-    cat /flag
-    echo
-fi
-cp /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
-/usr/local/sbin/loc-calc 
-if [ "$?" -gt "$TARGET" ]; then
+if [ "$COVERAGE" -gt "$TARGET" ]; then
     echo
     echo Congratulations!
     cat /flag

@@ -51,9 +51,4 @@ if [ "$?" -ge "$TARGET" ]; then
     echo
     echo Congratulations! But you will need to run /challenge/loc2 to win.
 fi
-if compgen -G "/out/crash*" > /dev/null; then
-    echo
-    echo "Crashes detected within the /out directory!"
-    echo
-fi
 echo
