@@ -20,10 +20,10 @@ if [ -z "$1" ]
 then
     cd /out
     DRIVERS=($(ls -p -I '*.*' -I 'llvm-symbolizer' -I "crash-*" -I "timeout-*" -I "TEMP*" /out | grep -v /))
-    parallel run_fuzzer ::: ${DRIVERS[@]} ::: -seed=1 -max_total_time=30
+    parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=30
 else
     DRIVERS=$1
-    run_fuzzer $DRIVERS -seed=1 -max_total_time=30
+    run_fuzzer $DRIVERS -max_total_time=30
 fi
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a

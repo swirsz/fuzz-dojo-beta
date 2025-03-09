@@ -32,7 +32,7 @@ fi
 mv /src-$SANITIZER /src
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/fuzz-dojo/$PROJECT_NAME
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/extras/fuzzing/json_fuzzer.cpp $SRC/$PROJECT_NAME/extras/fuzzing/new_fuzzer.cpp
    cp $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt
    cp $SRC/$PROJECT_NAME/extras/fuzzing/Makefile /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile
