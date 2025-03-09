@@ -113,23 +113,23 @@ modules:
     challenges:
 
       - id: arduinojson
-        name: ARDUINOJSON - 3599 loc 49%/49%/99% coverage
+        name: ARDUINOJSON - 3599 loc 49%/49%/99% coverage - 1 min
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=arduinojson
 
       - id: avahi
-        name: AVAHI - 2566 loc 75%/76%/81% coverage
+        name: AVAHI - 2566 loc 74%/76%/81% coverage - 2 min
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=avahi
 
       - id: elfutils
-        name: ELFUTILS - 31383 loc 28% coverage
+        name: ELFUTILS - 31383 loc 11%/26%/40% coverage - 
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=elfutils
 
       - id: example
-        name: EXAMPLE (my-api-repo) - 20 loc 100% coverage
+        name: EXAMPLE (my-api-repo) - 20 loc 100% coverage - 1 min
         description: Sample OSS-Fuzz project
 
       - id: exiv2
-        name: EXIV2 - 34282 loc 55% coverage
+        name: EXIV2 - 34282 loc 55%/54%/- coverage - 
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
 
       - id: guetzli
