@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-INITIAL=70
-TARGET=75
+INITIAL=75
+TARGET=80
 . /usr/local/sbin/e
 if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = "undefined" ] || [ "$1" = "thread" ]; then
     export SANITIZER=$1
