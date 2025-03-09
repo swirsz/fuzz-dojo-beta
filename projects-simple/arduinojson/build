@@ -21,30 +21,32 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
     cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_corpus
     cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_seed_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_seed_corpus
+    echo Please wait, initial filecopy
     chown -hR hacker:hacker /src
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
     cp -r /src-orig /src-$SANITIZER
 fi
 mv /src-$SANITIZER /src
 cd $SRC/$PROJECT_NAME
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/extras/fuzzing/json_fuzzer.cpp $SRC/$PROJECT_NAME/extras/fuzzing/new_fuzzer.cpp
-   cp $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt /home/hacker/$PROJECT_NAME/CMakeLists.txt
-   cp $SRC/$PROJECT_NAME/extras/fuzzing/Makefile /home/hacker/$PROJECT_NAME/Makefile
-   cp $SRC/$PROJECT_NAME/extras/fuzzing/*.cpp /home/hacker/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
-   chown -R hacker /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/Makefile /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile
+   cp $SRC/$PROJECT_NAME/extras/fuzzing/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/extras/fuzzing
-   cp /home/hacker/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/extras/fuzzing
-   cp /home/hacker/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME/extras/fuzzing
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/extras/fuzzing
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/extras/fuzzing
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME/extras/fuzzing
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
 chown -hR hacker:hacker /src
