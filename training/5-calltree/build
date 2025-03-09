@@ -24,7 +24,7 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.c $SRC/
 
     echo Please wait, initial filecopy
-    chown -hR hacker:hacker /src
+    chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
@@ -46,5 +46,5 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-calltree /home/hacker/fuzz-dojo/training-calltree
 sudo --preserve-env compile
 drivers
-chown -hR hacker:hacker /src
+chown -hR hacker:hacker $SRC/$PROJECT_NAME
 mv /src /src-$SANITIZER

@@ -22,7 +22,7 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     patch -tuN $SRC/$PROJECT_NAME/tests/ossfuzz/Makefile.am -i /challenge/.Makefile.patch -r -
     echo Please wait, initial filecopy
-    chown -hR hacker:hacker /src
+    chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
@@ -48,5 +48,5 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
-chown -hR hacker:hacker /src
+chown -hR hacker:hacker $SRC/$PROJECT_NAME
 mv /src /src-$SANITIZER
