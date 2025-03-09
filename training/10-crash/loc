@@ -9,7 +9,6 @@ fi
 rm /out/crash-*
 rm /out/timeout-*
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk
 /challenge/build $SANITIZER
@@ -60,6 +59,7 @@ if [ "$COVERAGE" -ge "$TARGET" ]; then
     cat /flag
     echo
 fi
+chown -hR hacker:hacker /out
 
 if compgen -G "/out/timeout-*" > /dev/null
 then

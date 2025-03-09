@@ -8,34 +8,46 @@ fi
 export PROJECT_NAME=wavpack
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
 
-#apt-get update && apt-get install -y make autoconf automake libtool gettext
-#git clone --depth 1 https://github.com/dbry/WavPack.git wavpack
+if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y make autoconf automake libtool gettext
+    #git clone --depth 1 https://github.com/dbry/WavPack.git wavpack
 
-cp -r /opt/fuzz-targets/wavpack $SRC
+    cp -r /opt/fuzz-targets/wavpack $SRC
 
-cp $SRC/wavpack/fuzzing/build.sh $SRC
+    cp $SRC/wavpack/fuzzing/build.sh $SRC
 
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
+mv /src-$SANITIZER /src
+
 cd $SRC/$PROJECT_NAME
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzzing/fuzzer.cc $SRC/$PROJECT_NAME/fuzzing/newfuzzer.cc
    cp $SRC/$PROJECT_NAME/fuzzing/fuzzer.dict $SRC/$PROJECT_NAME/fuzzing/newfuzzer.dict
    cp $SRC/$PROJECT_NAME/fuzzing/fuzzer.options $SRC/$PROJECT_NAME/fuzzing/newfuzzer.options
    cp $SRC/$PROJECT_NAME/fuzzing/fuzzer_seed_corpus.zip $SRC/$PROJECT_NAME/fuzzing/newfuzzer_seed_corpus.zip
-   cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/fuzzing/*.zip /home/hacker/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
-   chown -R hacker /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/*.zip /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /src
+mv /src /src-$SANITIZER

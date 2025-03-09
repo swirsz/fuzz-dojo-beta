@@ -8,7 +8,8 @@ fi
 export PROJECT_NAME=zlib
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
+
+if [ ! -d "/src-orig" ]; then
 
 #apt-get update && apt-get install -y make autoconf automake libtool
 #git clone --depth 1 https://github.com/swirsz/zlib
@@ -17,19 +18,31 @@ cp -r /opt/fuzz-targets/zlib $SRC
 cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
 
 cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
+mv /src-$SANITIZER /src
+
 cd $SRC/$PROJECT_NAME
-if [ ! -d "/home/hacker/training-crashes" ]; then
-   mkdir /home/hacker/training-crashes
+if [ ! -d "/home/hacker/fuzz-dojo/training-crashes" ]; then
+   mkdir /home/hacker/fuzz-dojo/training-crashes
    cp $SRC/minigzip_fuzzer.c $SRC/new_fuzzer.c
-   cp $SRC/*.c* /home/hacker/training-crashes
-   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/training-crashes
-   chown -R hacker /home/hacker/training-crashes
+   cp $SRC/*.c* /home/hacker/fuzz-dojo/training-crashes
+   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-crashes
+   chown -R hacker /home/hacker/fuzz-dojo/training-crashes
 else
-   cp /home/hacker/training-crashes/*.c* $SRC
-   cp /home/hacker/training-crashes/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/training-crashes/*.c* $SRC
+   cp /home/hacker/fuzz-dojo/training-crashes/build.sh $SRC
 fi
 #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-crashes /home/hacker/training-crashes
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-crashes /home/hacker/fuzz-dojo/training-crashes
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /src
+mv /src /src-$SANITIZER

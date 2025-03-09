@@ -8,41 +8,50 @@ fi
 export PROJECT_NAME=apache-httpd
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
 
-#apt-get update && apt-get install -y make autoconf automake libtool wget uuid-dev pkg-config libtool-bin libbsd-dev
+if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y make autoconf automake libtool wget uuid-dev pkg-config libtool-bin libbsd-dev
 
-#git clone https://github.com/PCRE2Project/pcre2 pcre2 && \
-    #cd pcre2 && ./autogen.sh && ./configure && make && make install
+    #git clone https://github.com/PCRE2Project/pcre2 pcre2 && \
+        #cd pcre2 && ./autogen.sh && ./configure && make && make install
 
-cd $SRC
-#git clone https://github.com/AdaLogics/fuzz-headers
-cp -r /opt/fuzz-targets/fuzz-headers $SRC
+    #git clone https://github.com/AdaLogics/fuzz-headers
+    cp -r /opt/fuzz-targets/fuzz-headers $SRC
 
-#wget https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.gz && \
-# tar -xf expat-2.4.1.tar.gz && cd expat-2.4.1 && ./configure && make && make install
-    
-cd $SRC
-rm -rf $SRC/httpd
-#git clone --depth=1 https://github.com/apache/httpd
-cp -r /opt/fuzz-targets/httpd $SRC
+    #wget https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.gz && \
+    # tar -xf expat-2.4.1.tar.gz && cd expat-2.4.1 && ./configure && make && make install
+        
+    rm -rf $SRC/httpd
+    #git clone --depth=1 https://github.com/apache/httpd
+    cp -r /opt/fuzz-targets/httpd $SRC
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/fuzz_*.c $SRC/
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/fuzz_*.c $SRC/
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
+
 cd $SRC/httpd
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/fuzz_preq.c $SRC/fuzz_new.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
-   chown -R hacker /home/hacker/$PROJECT_NAME
+   cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /src
+mv /src /src-$SANITIZER

@@ -8,7 +8,8 @@ fi
 export PROJECT_NAME=janus-gateway
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
+
+if [ ! -d "/src-orig" ]; then
 
 #apt-get update && apt-get install -y autoconf autoconf-archive automake gengetopt gtk-doc-tools libconfig-dev libglib2.0-dev libgnutls28-dev libini-config-dev libjansson-dev libnice-dev libssl-dev libtool openssl pkg-config
 
@@ -25,17 +26,19 @@ cp -r /opt/fuzz-targets/janus-gateway $SRC
 cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
 cd $SRC/
-if [ ! -d "/home/hacker/training-split" ]; then
-   mkdir /home/hacker/training-split
+if [ ! -d "/home/hacker/fuzz-dojo/training-split" ]; then
+   mkdir /home/hacker/fuzz-dojo/training-split
    cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
-   cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/training-split
-   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/training-split
-   chown -R hacker /home/hacker/training-split
+   cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/fuzz-dojo/training-split
+   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-split
+   chown -R hacker /home/hacker/fuzz-dojo/training-split
 else
-   cp /home/hacker/training-split/*.c $SRC/$PROJECT_NAME/fuzzers
-   cp /home/hacker/training-split/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/training-split/*.c $SRC/$PROJECT_NAME/fuzzers
+   cp /home/hacker/fuzz-dojo/training-split/build.sh $SRC
 fi
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-split /home/hacker/training-split
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-split /home/hacker/fuzz-dojo/training-split
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /src
+mv /src /src-$SANITIZER

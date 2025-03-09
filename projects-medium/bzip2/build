@@ -8,32 +8,41 @@ fi
 export PROJECT_NAME=bzip2
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
 
-rm -rf $SRC/$PROJECT_NAME
-rm -rf $SRC/$PROJECT_NAME-tests
-#apt-get update && apt-get install -y make autoconf automake libtool wget
-#git clone git://sourceware.org/git/bzip2.git
-#git clone git://sourceware.org/git/bzip2-tests.git
-cp -r /opt/fuzz-targets/bzip2 $SRC
-cp -r /opt/fuzz-targets/bzip2-tests $SRC
+if [ ! -d "/src-orig" ]; then
+    rm -rf $SRC/$PROJECT_NAME
+    rm -rf $SRC/$PROJECT_NAME-tests
+    #apt-get update && apt-get install -y make autoconf automake libtool wget
+    #git clone git://sourceware.org/git/bzip2.git
+    #git clone git://sourceware.org/git/bzip2-tests.git
+    cp -r /opt/fuzz-targets/bzip2 $SRC
+    cp -r /opt/fuzz-targets/bzip2-tests $SRC
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.c $SRC/
-
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
-   cp $SRC/bzip2_filename.c $SRC/newfuzzer.c
-   cp $SRC/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
-   chown -R hacker /home/hacker/$PROJECT_NAME
-else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.c $SRC/
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
 fi
 
-cd $SRC
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/bzip2_filename.c $SRC/newfuzzer.c
+   cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
+else
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+fi
+
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /src
+mv /src /src-$SANITIZER

@@ -8,32 +8,44 @@ fi
 export PROJECT_NAME=libvpx
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
 
-#apt-get update && apt-get install -y yasm wget gcc
+if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y yasm wget gcc
 
-#git clone https://chromium.googlesource.com/webm/libvpx
-#wget https://storage.googleapis.com/downloads.webmproject.org/test_data/fuzzer/vpx_fuzzer_seed_corpus.zip
+    #git clone https://chromium.googlesource.com/webm/libvpx
+    #wget https://storage.googleapis.com/downloads.webmproject.org/test_data/fuzzer/vpx_fuzzer_seed_corpus.zip
 
-cp -r /opt/fuzz-targets/libvpx $SRC
-cp -r /opt/fuzz-targets/vpx_fuzzer_seed_corpus.zip $SRC
+    cp -r /opt/fuzz-targets/libvpx $SRC
+    cp -r /opt/fuzz-targets/vpx_fuzzer_seed_corpus.zip $SRC
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/vpx_dec_fuzzer.dict $SRC/
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/vpx_dec_fuzzer.dict $SRC/
 
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
+mv /src-$SANITIZER /src
+
 cd $SRC/$PROJECT_NAME
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/examples/vpx_dec_fuzzer.cc $SRC/$PROJECT_NAME/examples/newfuzzer.cc
-   cp $SRC/$PROJECT_NAME/examples/*.cc /home/hacker/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
-   chown -R hacker /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/examples/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/examples
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/examples
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /src
+mv /src /src-$SANITIZER

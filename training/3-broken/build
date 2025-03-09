@@ -8,7 +8,8 @@ fi
 export PROJECT_NAME=example
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
+
+if [ ! -d "/src-orig" ]; then
 
 #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
 #git clone https://github.com/google/oss-fuzz.git example
@@ -19,18 +20,30 @@ cp /challenge/do_stuff_fuzzer.cpp $SRC/example/projects/example/my-api-repo
 cp /challenge/my_api.cpp $SRC/example/projects/example/my-api-repo
 
 cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
+mv /src-$SANITIZER /src
+
 cd $SRC/$PROJECT_NAME
-if [ ! -d "/home/hacker/training-broken" ]; then
-   mkdir /home/hacker/training-broken
-   cp -r $SRC/$PROJECT_NAME/projects/example/my-api-repo/* /home/hacker/training-broken
-   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/training-broken
-   chown -R hacker /home/hacker/training-broken
+if [ ! -d "/home/hacker/fuzz-dojo/training-broken" ]; then
+   mkdir /home/hacker/fuzz-dojo/training-broken
+   cp -r $SRC/$PROJECT_NAME/projects/example/my-api-repo/* /home/hacker/fuzz-dojo/training-broken
+   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-broken
+   chown -R hacker /home/hacker/fuzz-dojo/training-broken
 else
-   cp /home/hacker/training-broken/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
-   cp /home/hacker/training-broken/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/training-broken/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
+   cp /home/hacker/fuzz-dojo/training-broken/build.sh $SRC
 fi
 #patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-broken /home/hacker/training-broken
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-broken /home/hacker/fuzz-dojo/training-broken
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /src
+mv /src /src-$SANITIZER

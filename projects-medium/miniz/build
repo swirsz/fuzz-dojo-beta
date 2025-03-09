@@ -8,27 +8,39 @@ fi
 export PROJECT_NAME=miniz
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
 
-rm -rf $SRC/$PROJECT_NAME/build
-#git clone --depth 1 https://github.com/richgel999/miniz.git
-cp -r /opt/fuzz-targets/miniz $SRC
+if [ ! -d "/src-orig" ]; then
+    rm -rf $SRC/$PROJECT_NAME/build
+    #git clone --depth 1 https://github.com/richgel999/miniz.git
+    cp -r /opt/fuzz-targets/miniz $SRC
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
-#patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
+mv /src-$SANITIZER /src
+
 cd $SRC/$PROJECT_NAME
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/compress_fuzzer.c $SRC/$PROJECT_NAME/tests/new_fuzzer.c
-   cp $SRC/$PROJECT_NAME/tests/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
-   chown -R hacker /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /src
+mv /src /src-$SANITIZER

@@ -8,34 +8,45 @@ fi
 export PROJECT_NAME=janus-gateway
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
 
-#apt-get update && apt-get install -y autoconf autoconf-archive automake gengetopt gtk-doc-tools libconfig-dev libglib2.0-dev libgnutls28-dev libini-config-dev libjansson-dev libnice-dev libssl-dev libtool openssl pkg-config
+if [ ! -d "/src-orig" ]; then
 
-# install libsrtp dep from source
-#git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
-cp -r /opt/fuzz-targets/libsrtp $SRC
+    #apt-get update && apt-get install -y autoconf autoconf-archive automake gengetopt gtk-doc-tools libconfig-dev libglib2.0-dev libgnutls28-dev libini-config-dev libjansson-dev libnice-dev libssl-dev libtool openssl pkg-config
 
-cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
+    # install libsrtp dep from source
+    #git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
+    cp -r /opt/fuzz-targets/libsrtp $SRC
+
+    cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
+    cd $SRC/
+    # fetch Janus code
+    # git clone --single-branch --branch master https://github.com/meetecho/janus-gateway.git
+    cp -r /opt/fuzz-targets/janus-gateway $SRC/
+
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
+
 cd $SRC/
-# fetch Janus code
-# git clone --single-branch --branch master https://github.com/meetecho/janus-gateway.git
-cp -r /opt/fuzz-targets/janus-gateway $SRC/
-
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-
-cd $SRC/
-if [ ! -d "/home/hacker/$PROJECT_NAME" ]; then
-   mkdir /home/hacker/$PROJECT_NAME
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
-   cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/$PROJECT_NAME
-   chown -R hacker /home/hacker/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzzers
-   cp /home/hacker/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzzers
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/$PROJECT_NAME
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /src
+mv /src /src-$SANITIZER

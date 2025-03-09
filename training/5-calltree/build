@@ -8,7 +8,8 @@ fi
 export PROJECT_NAME=bzip2
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
+
+if [ ! -d "/src-orig" ]; then
 
 rm -rf $SRC/$PROJECT_NAME
 rm -rf $SRC/$PROJECT_NAME-tests
@@ -22,18 +23,19 @@ cp /challenge/newfuzzer.c $SRC/newfuzzer.c
 
 cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.c $SRC/
-if [ ! -d "/home/hacker/training-calltree" ]; then
-   mkdir /home/hacker/training-calltree
-   cp $SRC/*.c /home/hacker/training-calltree
-   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/training-calltree
-   chown -R hacker /home/hacker/training-calltree
+if [ ! -d "/home/hacker/fuzz-dojo/training-calltree" ]; then
+   mkdir /home/hacker/fuzz-dojo/training-calltree
+   cp $SRC/*.c /home/hacker/fuzz-dojo/training-calltree
+   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-calltree
+   chown -R hacker /home/hacker/fuzz-dojo/training-calltree
 else
-   cp /home/hacker/training-calltree/*.c $SRC
-   cp /home/hacker/training-calltree/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/training-calltree/*.c $SRC
+   cp /home/hacker/fuzz-dojo/training-calltree/build.sh $SRC
 fi
 
-cd $SRC
 mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-calltree /home/hacker/training-calltree
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-calltree /home/hacker/fuzz-dojo/training-calltree
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /src
+mv /src /src-$SANITIZER

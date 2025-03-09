@@ -7,7 +7,6 @@ if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = 
     shift
 fi
 [ -z "$SANITIZER" ] && export SANITIZER='none'
-cd $SRC
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk
 /challenge/build $SANITIZER
@@ -66,3 +65,4 @@ else
     echo Run /challenge/fuzz-introspector to see what lines of code are not being executed.
     echo
 fi
+chown -hR hacker:hacker /out
