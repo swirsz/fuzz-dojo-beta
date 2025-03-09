@@ -10,18 +10,17 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y make build-essential
 
-#apt-get update && apt-get install -y make build-essential
+    #git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
+    rm -rf  $SRC/unrar
+    cp -r /opt/fuzz-targets/unrar $SRC/
 
-#git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
-rm -rf  $SRC/unrar
-cp -r /opt/fuzz-targets/unrar $SRC/
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-
-chmod 755 $SRC/build.sh
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    chmod 755 $SRC/build.sh
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     echo Please wait, initial filecopy
     chown -hR hacker:hacker /src
     mv /src /src-orig

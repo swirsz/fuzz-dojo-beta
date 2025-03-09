@@ -10,16 +10,15 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    rm -rf $SRC/$PROJECT_NAME
+    #apt-get update && apt-get install -y libz-dev libpcre2-dev libtool pkg-config autoconf
+    #git clone https://github.com/lighttpd/lighttpd1.4
+    cp -r /opt/fuzz-targets/lighttpd1.4 $SRC
 
-rm -rf $SRC/$PROJECT_NAME
-#apt-get update && apt-get install -y libz-dev libpcre2-dev libtool pkg-config autoconf
-#git clone https://github.com/lighttpd/lighttpd1.4
-cp -r /opt/fuzz-targets/lighttpd1.4 $SRC
+    cp /opt/oss-fuzz-new/projects/lighttpd/build.sh $SRC/
+    cp /opt/oss-fuzz-new/projects/lighttpd/fuzz_* $SRC/
 
-cp /opt/oss-fuzz-new/projects/lighttpd/build.sh $SRC/
-cp /opt/oss-fuzz-new/projects/lighttpd/fuzz_* $SRC/
-
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     echo Please wait, initial filecopy
     chown -hR hacker:hacker /src
     mv /src /src-orig

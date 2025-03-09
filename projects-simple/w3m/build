@@ -10,15 +10,24 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y libgc-dev
+    #git clone https://github.com/tats/w3m
+    cp -r /opt/fuzz-targets/w3m $SRC
 
-#apt-get update && apt-get install -y libgc-dev
-#git clone https://github.com/tats/w3m
-cp -r /opt/fuzz-targets/w3m $SRC
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cd $SRC/
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
-cd $SRC/
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
+
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzz/fuzz-conv.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c

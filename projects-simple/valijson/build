@@ -10,20 +10,19 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y make autoconf automake libtool pkg-config cmake libcurlpp-dev libcurl4-openssl-dev
 
-#apt-get update && apt-get install -y make autoconf automake libtool pkg-config cmake libcurlpp-dev libcurl4-openssl-dev
+    rm -rf $PROJECT_NAME
+    #git clone --depth 1 https://github.com/tristanpenman/valijson
+    cp -r /opt/fuzz-targets/valijson $SRC
 
-rm -rf $PROJECT_NAME
-#git clone --depth 1 https://github.com/tristanpenman/valijson
-cp -r /opt/fuzz-targets/valijson $SRC
+    cp $SRC/$PROJECT_NAME/tests/fuzzing/oss-fuzz-build.sh $SRC/build.sh
+    # This is to fix Fuzz Introspector build by using LLVM old pass manager
+    # re https://github.com/ossf/fuzz-introspector/issues/305
+    export OLD_LLVMPASS=1
 
-cp $SRC/$PROJECT_NAME/tests/fuzzing/oss-fuzz-build.sh $SRC/build.sh
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
-
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-patch -tuN $SRC/build.sh -i /challenge/.build2.patch -r -
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    patch -tuN $SRC/build.sh -i /challenge/.build2.patch -r -
     echo Please wait, initial filecopy
     chown -hR hacker:hacker /src
     mv /src /src-orig

@@ -10,20 +10,19 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    rm -rf $SRC/$PROJECT_NAME
+    #apt-get update && apt-get install -y make autoconf automake libtool
+    #apt-get install -y libz-dev libssl1.1 libssl-dev libedit-dev zip
+    #git clone --depth 1 https://github.com/openssh/openssh-portable openssh
+    #git clone --depth 1 https://github.com/djmdjm/openssh-fuzz-cases
+    cp -r /opt/fuzz-targets/openssh $SRC
+    cp -r /opt/fuzz-targets/openssh-fuzz-cases $SRC
 
-rm -rf $SRC/$PROJECT_NAME
-#apt-get update && apt-get install -y make autoconf automake libtool
-#apt-get install -y libz-dev libssl1.1 libssl-dev libedit-dev zip
-#git clone --depth 1 https://github.com/openssh/openssh-portable openssh
-#git clone --depth 1 https://github.com/djmdjm/openssh-fuzz-cases
-cp -r /opt/fuzz-targets/openssh $SRC
-cp -r /opt/fuzz-targets/openssh-fuzz-cases $SRC
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-
-export CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-patch -tuN $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/Makefile -i /challenge/.Makefile.patch -r -
+    export CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    patch -tuN $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/Makefile -i /challenge/.Makefile.patch -r -
     echo Please wait, initial filecopy
     chown -hR hacker:hacker /src
     mv /src /src-orig

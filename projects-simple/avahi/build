@@ -10,15 +10,14 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    #apt-get update && \
+    #   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
+    #git clone --depth 1 https://github.com/lathiat/avahi
+    cp -r /opt/fuzz-targets/avahi $SRC
 
-#apt-get update && \
-#   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
-#git clone --depth 1 https://github.com/lathiat/avahi
-cp -r /opt/fuzz-targets/avahi $SRC
-
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
-patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
+    patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
     echo Please wait, initial filecopy
     chown -hR hacker:hacker /src
     mv /src /src-orig

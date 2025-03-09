@@ -10,18 +10,27 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y make autoconf automake libtool
 
-#apt-get update && apt-get install -y make autoconf automake libtool
+    rm -rf $SRC/$PROJECT_NAME
+    #git clone --depth 1 --recursive https://github.com/google/woff2
+    cp -r /opt/fuzz-targets/woff2 $SRC
 
-rm -rf $SRC/$PROJECT_NAME
-#git clone --depth 1 --recursive https://github.com/google/woff2
-cp -r /opt/fuzz-targets/woff2 $SRC
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.options $SRC
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC
+    cp -r /opt/oss-fuzz-new/projects/$PROJECT_NAME/corpus $SRC
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.options $SRC
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC
-cp -r /opt/oss-fuzz-new/projects/$PROJECT_NAME/corpus $SRC
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
+
 cd $SRC/woff2
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME

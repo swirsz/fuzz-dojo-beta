@@ -10,20 +10,28 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y autoconf autoconf-archive automake gengetopt gtk-doc-tools libconfig-dev libglib2.0-dev libgnutls28-dev libini-config-dev libjansson-dev libnice-dev libssl-dev libtool openssl pkg-config
 
-#apt-get update && apt-get install -y autoconf autoconf-archive automake gengetopt gtk-doc-tools libconfig-dev libglib2.0-dev libgnutls28-dev libini-config-dev libjansson-dev libnice-dev libssl-dev libtool openssl pkg-config
+    # install libsrtp dep from source
+    #git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
+    cp -r /opt/fuzz-targets/libsrtp $SRC
 
-# install libsrtp dep from source
-#git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
-cp -r /opt/fuzz-targets/libsrtp $SRC
+    cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
+    cd $SRC/
+    # fetch Janus code
+    # git clone --single-branch https://github.com/swirsz/janus-gateway.git
+    cp -r /opt/fuzz-targets/janus-gateway $SRC
 
-cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
-cd $SRC/
-# fetch Janus code
-# git clone --single-branch https://github.com/swirsz/janus-gateway.git
-cp -r /opt/fuzz-targets/janus-gateway $SRC
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
 
 cd $SRC/
 if [ ! -d "/home/hacker/fuzz-dojo/training-split" ]; then

@@ -10,20 +10,29 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y make autoconf automake libtool
+    #git clone --depth 1 https://github.com/sass/libsass.git libsass
 
-#apt-get update && apt-get install -y make autoconf automake libtool
-#git clone --depth 1 https://github.com/sass/libsass.git libsass
+    cp -r /opt/fuzz-targets/libsass $SRC
 
-cp -r /opt/fuzz-targets/libsass $SRC
+    # This is to fix Fuzz Introspector build by using LLVM old pass manager
+    # re https://github.com/ossf/fuzz-introspector/issues/305
+    export OLD_LLVMPASS=1
 
-# This is to fix Fuzz Introspector build by using LLVM old pass manager
-# re https://github.com/ossf/fuzz-introspector/issues/305
-export OLD_LLVMPASS=1
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/data_context_fuzzer.cc  $SRC/
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/data_context_fuzzer.cc  $SRC/
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    echo Please wait, initial filecopy
+    chown -hR hacker:hacker /src
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$SANITIZER" ]; then
+    echo Please wait, initial filecopy
+    cp -r /src-orig /src-$SANITIZER
+fi
+
 cd $SRC/
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME

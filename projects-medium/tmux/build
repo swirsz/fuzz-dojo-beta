@@ -10,30 +10,29 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y autoconf automake bison pkg-config ncurses-dev libtool
+    rm -rf libevent
+    rm -rf tmux
+    rm -rf /work
+    mkdir -p /work && chmod a+rwx /work
 
-#apt-get update && apt-get install -y autoconf automake bison pkg-config ncurses-dev libtool
-rm -rf libevent
-rm -rf tmux
-rm -rf /work
-mkdir -p /work && chmod a+rwx /work
-
-#git clone https://github.com/libevent/libevent.git
-cp -r /opt/fuzz-targets/libevent $SRC
+    #git clone https://github.com/libevent/libevent.git
+    cp -r /opt/fuzz-targets/libevent $SRC
     cd libevent && \
     mkdir build && \
     cd build && \
     cmake -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_OPENSSL=ON -DEVENT__LIBRARY_TYPE=STATIC ../ && \
     make && make install
     
-#git clone --depth 1 https://github.com/tmux/tmux.git
-#git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
-cp -r /opt/fuzz-targets/tmux $SRC
-cp -r /opt/fuzz-targets/tmux-fuzzing-corpus $SRC
+    #git clone --depth 1 https://github.com/tmux/tmux.git
+    #git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
+    cp -r /opt/fuzz-targets/tmux $SRC
+    cp -r /opt/fuzz-targets/tmux-fuzzing-corpus $SRC
 
-cp -r $SRC /out
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp -r $SRC /out
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
-patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
+    patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
     echo Please wait, initial filecopy
     chown -hR hacker:hacker /src
     mv /src /src-orig

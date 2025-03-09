@@ -10,22 +10,21 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y \
+    #  automake \
+    #  autoconf \
+    #  make \
+    #  libtool \
+    #  pkg-config \
+    #  bison \
+    #  flex
 
-#apt-get update && apt-get install -y \
-#  automake \
-#  autoconf \
-#  make \
-#  libtool \
-#  pkg-config \
-#  bison \
-#  flex
+    #git clone --depth 1 https://github.com/VirusTotal/yara.git
+    cp -r /opt/fuzz-targets/yara $SRC
 
-#git clone --depth 1 https://github.com/VirusTotal/yara.git
-cp -r /opt/fuzz-targets/yara $SRC
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-
-#patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     echo Please wait, initial filecopy
     chown -hR hacker:hacker /src
     mv /src /src-orig

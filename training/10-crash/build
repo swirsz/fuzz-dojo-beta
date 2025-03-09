@@ -10,14 +10,13 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y make autoconf automake libtool
+    #git clone --depth 1 https://github.com/swirsz/zlib
+    cp -r /opt/fuzz-targets/zlib $SRC
 
-#apt-get update && apt-get install -y make autoconf automake libtool
-#git clone --depth 1 https://github.com/swirsz/zlib
-cp -r /opt/fuzz-targets/zlib $SRC
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
 
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
-
-cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     echo Please wait, initial filecopy
     chown -hR hacker:hacker /src
     mv /src /src-orig
