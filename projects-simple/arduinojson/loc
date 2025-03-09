@@ -61,3 +61,4 @@ if [ "$COVERAGE" -ge "$TARGET" ]; then
     cat /flag
     echo
 fi
+chown -hR hacker:hacker /out
