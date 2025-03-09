@@ -21,6 +21,7 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
     cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_corpus
     cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_seed_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_seed_corpus
+    chown -hR hacker:hacker /src
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
