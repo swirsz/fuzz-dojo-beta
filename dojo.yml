@@ -113,7 +113,7 @@ modules:
     challenges:
 
       - id: arduinojson
-        name: ARDUINOJSON - 3599 loc 48% coverage
+        name: ARDUINOJSON - 3599 loc 49%/99% coverage
         description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=arduinojson
 
       - id: avahi

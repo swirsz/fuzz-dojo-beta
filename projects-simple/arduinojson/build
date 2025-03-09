@@ -21,12 +21,12 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
     cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_corpus
     cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_seed_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_seed_corpus
-    echo Please wait, initial filecopy
+    echo Please wait, initial setup
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial filecopy
+    echo Please wait, initial setup
     cp -r /src-orig /src-$SANITIZER
 fi
 mv /src-$SANITIZER /src

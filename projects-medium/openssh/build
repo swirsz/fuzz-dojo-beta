@@ -23,12 +23,12 @@ if [ ! -d "/src-orig" ]; then
     export CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/Makefile -i /challenge/.Makefile.patch -r -
-    echo Please wait, initial filecopy
+    echo Please wait, initial setup
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial filecopy
+    echo Please wait, initial setup
     cp -r /src-orig /src-$SANITIZER
 fi
 mv /src-$SANITIZER /src

@@ -10,22 +10,22 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
-    rm -rf $SRC/$PROJECT_NAME/build
     #git clone --depth 1 https://github.com/richgel999/miniz.git
     cp -r /opt/fuzz-targets/miniz $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
     #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, initial filecopy
+    echo Please wait, initial setup
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial filecopy
+    echo Please wait, initial setup
     cp -r /src-orig /src-$SANITIZER
 fi
 mv /src-$SANITIZER /src
+rm -rf $SRC/$PROJECT_NAME/build
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
