@@ -16,6 +16,7 @@ if [ ! -d "/src-orig" ]; then
     cp -r /opt/fuzz-targets/wasm3 $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp $SRC/wasm3/platforms/app_fuzz/fuzzer.c $SRC/wasm3/platforms/app_fuzz/newfuzzer.c
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     echo Please wait, initial setup
@@ -31,7 +32,6 @@ mv /src-$SANITIZER /src
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/wasm3/platforms/app_fuzz/fuzzer.c $SRC/wasm3/platforms/app_fuzz/newfuzzer.c
    cp $SRC/wasm3/platforms/app_fuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME

@@ -21,6 +21,7 @@ if [ ! -d "/src-orig" ]; then
     cp -r /opt/fuzz-targets/oss-fuzz-fuzzers $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp $SRC/oss-fuzz-fuzzers/xvid/fuzzer.cpp $SRC/oss-fuzz-fuzzers/xvid/newfuzzer.cpp
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
@@ -33,8 +34,10 @@ if [ ! -d "/src-$SANITIZER" ]; then
     cp -r /src-orig /src-$SANITIZER
 fi
 
+mv /src-$SANITIZER /src
+
+cd $SRC
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
-   cp $SRC/oss-fuzz-fuzzers/xvid/fuzzer.cpp $SRC/oss-fuzz-fuzzers/xvid/newfuzzer.cpp
    cp -r $SRC/oss-fuzz-fuzzers/xvid /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME

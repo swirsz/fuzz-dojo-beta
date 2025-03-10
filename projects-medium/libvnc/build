@@ -10,27 +10,28 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
-    rm -rf $SRC/libvncserver
     #apt-get update && apt-get install -y cmake zlib1g-dev
     #git clone --depth 1 https://github.com/LibVNC/libvncserver.git
     cp -r /opt/fuzz-targets/libvncserver $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-
+    cp $SRC/libvncserver/test/fuzz_server.c $SRC/libvncserver/test/fuzz_new.c
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/libvncserver/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
     echo Please wait, initial setup
-    chown -hR hacker:hacker $SRC/$PROJECT_NAME
+    chown -hR hacker:hacker $SRC/libvncserver
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
     echo Please wait, initial setup
     cp -r /src-orig /src-$SANITIZER
 fi
+mv /src-$SANITIZER /src
+rm -rf $SRC/libvncserver/build
+
 cd $SRC/libvncserver
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/libvncserver/test/fuzz_server.c $SRC/libvncserver/test/fuzz_new.c
    cp $SRC/libvncserver/test/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/libvncserver/CMakeLists.txt /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -44,5 +45,5 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
-chown -hR hacker:hacker $SRC/$PROJECT_NAME
+chown -hR hacker:hacker $SRC/libvncserver
 mv /src /src-$SANITIZER

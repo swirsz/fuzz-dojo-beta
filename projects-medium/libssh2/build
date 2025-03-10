@@ -17,7 +17,7 @@ if [ ! -d "/src-orig" ]; then
     cp -r /opt/fuzz-targets/libssh2 $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-
+    cp $SRC/$PROJECT_NAME/tests/ossfuzz/ssh2_client_fuzzer.cc $SRC/$PROJECT_NAME/tests/ossfuzz/new_fuzzer.cc
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     patch -tuN $SRC/$PROJECT_NAME/tests/ossfuzz/Makefile.am -i /challenge/.Makefile.patch -r -
@@ -34,7 +34,6 @@ mv /src-$SANITIZER /src
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/tests/ossfuzz/ssh2_client_fuzzer.cc $SRC/$PROJECT_NAME/tests/ossfuzz/new_fuzzer.cc
    cp $SRC/$PROJECT_NAME/tests/ossfuzz/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/ossfuzz/Makefile.am /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh /home/hacker/fuzz-dojo/$PROJECT_NAME

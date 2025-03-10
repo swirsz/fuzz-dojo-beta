@@ -14,7 +14,9 @@ if [ ! -d "/src-orig" ]; then
     #git clone https://github.com/google/oss-fuzz.git example
     cp -r /opt/fuzz-targets/example $SRC
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-
+    cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.cpp $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.cpp
+    cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.dict $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.dict
+    cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer_seed_corpus.zip $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer_seed_corpus.zip
     patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
     echo Please wait, initial setup
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
@@ -29,9 +31,7 @@ mv /src-$SANITIZER /src
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.cpp $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.cpp
-   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.dict $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.dict
-   cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer_seed_corpus.zip $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer_seed_corpus.zip
+
    cp -r $SRC/$PROJECT_NAME/projects/example/my-api-repo/* /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME

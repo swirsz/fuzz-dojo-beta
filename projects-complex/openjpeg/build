@@ -18,7 +18,7 @@ if [ ! -d "/src-orig" ]; then
     cp -r /opt/fuzz-targets/data $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-
+    cp $SRC/$PROJECT_NAME/tests/fuzzers/opj_decompress_fuzzer_J2K.cpp $SRC/$PROJECT_NAME/tests/fuzzers/newfuzzer.cpp
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/openjpeg/tests/fuzzers/build_seed_corpus.sh -i /challenge/.build_seed_corpus.patch -r -
     echo Please wait, initial setup
@@ -34,7 +34,6 @@ mv /src-$SANITIZER /src
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/tests/fuzzers/opj_decompress_fuzzer_J2K.cpp $SRC/$PROJECT_NAME/tests/fuzzers/newfuzzer.cpp
    cp $SRC/$PROJECT_NAME/tests/fuzzers/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME

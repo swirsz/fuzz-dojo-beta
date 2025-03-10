@@ -23,6 +23,9 @@ if [ ! -d "/src-orig" ]; then
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
+    cp $SRC/$PROJECT_NAME/decoder.cpp $SRC/$PROJECT_NAME/newfuzzer.cpp
+    cp $SRC/$PROJECT_NAME/fuzzer-decoder_seed_corpus.zip $SRC/$PROJECT_NAME/newfuzzer_seed_corpus.zip
+   
     echo Please wait, initial setup
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
@@ -38,8 +41,6 @@ patch -tuN $SRC/$PROJECT_NAME/Makefile -i /challenge/.Makefile.patch -r -
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/decoder.cpp $SRC/$PROJECT_NAME/newfuzzer.cpp
-   cp $SRC/$PROJECT_NAME/fuzzer-decoder_seed_corpus.zip $SRC/$PROJECT_NAME/newfuzzer_seed_corpus.zip
    cp $SRC/$PROJECT_NAME/* /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME

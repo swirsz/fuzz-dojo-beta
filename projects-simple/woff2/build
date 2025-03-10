@@ -30,8 +30,9 @@ if [ ! -d "/src-$SANITIZER" ]; then
     echo Please wait, initial setup
     cp -r /src-orig /src-$SANITIZER
 fi
+mv /src-$SANITIZER /src
 
-cd $SRC/woff2
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME$SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME

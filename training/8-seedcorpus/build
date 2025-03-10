@@ -29,7 +29,9 @@ if [ ! -d "/src-$SANITIZER" ]; then
     echo Please wait, initial setup
     cp -r /src-orig /src-$SANITIZER
 fi
+mv /src-$SANITIZER /src
 
+cd $SRC
 if [ ! -d "/home/hacker/fuzz-dojo/training-seedcorpus" ]; then
    mkdir /home/hacker/fuzz-dojo/training-seedcorpus
    cp $SRC/build.sh /home/hacker/fuzz-dojo/training-seedcorpus

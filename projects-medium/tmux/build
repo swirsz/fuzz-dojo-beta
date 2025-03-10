@@ -33,6 +33,9 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
     patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
+    cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.c $SRC/$PROJECT_NAME/fuzz/new-fuzzer.c
+    cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.dict $SRC/$PROJECT_NAME/fuzz/new-fuzzer.dict
+    cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.options $SRC/$PROJECT_NAME/fuzz/new-fuzzer.options
     echo Please wait, initial setup
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
@@ -46,9 +49,6 @@ mv /src-$SANITIZER /src
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.c $SRC/$PROJECT_NAME/fuzz/new-fuzzer.c
-   cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.dict $SRC/$PROJECT_NAME/fuzz/new-fuzzer.dict
-   cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.options $SRC/$PROJECT_NAME/fuzz/new-fuzzer.options
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzz/*.dict /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/Makefile.am /home/hacker/fuzz-dojo/$PROJECT_NAME

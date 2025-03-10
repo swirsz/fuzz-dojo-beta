@@ -20,6 +20,8 @@ if [ ! -d "/src-orig" ]; then
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.c $SRC/
+    
+    cp $SRC/bzip2_filename.c $SRC/newfuzzer.c
     echo Please wait, initial setup
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
@@ -28,10 +30,11 @@ if [ ! -d "/src-$SANITIZER" ]; then
     echo Please wait, initial setup
     cp -r /src-orig /src-$SANITIZER
 fi
+mv /src-$SANITIZER /src
 
+cd $SRC
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/bzip2_filename.c $SRC/newfuzzer.c
    cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME

@@ -27,6 +27,9 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.dict $SRC/
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.options $SRC/
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp $SRC/sqlite3/test/ossfuzz.c $SRC/sqlite3/test/newfuzzer.c
+    cp $SRC/sqlite3/test/ossfuzz.options $SRC/sqlite3/test/newfuzzer.options
+    cp $SRC/sqlite3/test/ossfuzz_seed_corpus.zip $SRC/sqlite3/test/newfuzzer_seed_corpus.zip
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     echo Please wait, initial setup
@@ -42,9 +45,6 @@ mv /src-$SANITIZER /src
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/sqlite3/test/ossfuzz.c $SRC/sqlite3/test/newfuzzer.c
-   cp $SRC/sqlite3/test/ossfuzz.options $SRC/sqlite3/test/newfuzzer.options
-   cp $SRC/sqlite3/test/ossfuzz_seed_corpus.zip $SRC/sqlite3/test/newfuzzer_seed_corpus.zip
    cp $SRC/sqlite3/test/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/sqlite3/test/*.options /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/sqlite3/test/*.zip /home/hacker/fuzz-dojo/$PROJECT_NAME

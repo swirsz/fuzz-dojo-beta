@@ -19,7 +19,7 @@ echo
 if [ -z "$1" ]
 then
     cd /out
-    DRIVERS=($(ls -p -I '*.*' -I 'llvm-symbolizer' -I "crash-*" -I "timeout-*" -I "TEMP*" /out | grep -v /))
+    DRIVERS=($(ls -p -I '*.*' -I 'llvm-symbolizer' -I "crash-*" -I "slow-*" -I "oom-*" -I "timeout-*" -I "TEMP*" /out | grep -v /))
     parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=30
 else
     DRIVERS=$1

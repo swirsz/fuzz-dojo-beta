@@ -22,6 +22,7 @@ if [ ! -d "/src-orig" ]; then
     # fetch Janus code
     # git clone --single-branch --branch master https://github.com/meetecho/janus-gateway.git
     cp -r /opt/fuzz-targets/janus-gateway $SRC/
+    cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     echo Please wait, initial setup
@@ -32,11 +33,11 @@ if [ ! -d "/src-$SANITIZER" ]; then
     echo Please wait, initial setup
     cp -r /src-orig /src-$SANITIZER
 fi
+mv /src-$SANITIZER /src
 
 cd $SRC/
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
    cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME

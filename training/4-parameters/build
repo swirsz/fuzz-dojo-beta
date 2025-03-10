@@ -18,6 +18,7 @@ if [ ! -d "/src-orig" ]; then
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
+    cp /challenge/fuzz-newfuzzer.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
     patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
     echo Please wait, initial setup
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
@@ -32,7 +33,6 @@ mv /src-$SANITIZER /src
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/training-parameters" ]; then
    mkdir /home/hacker/fuzz-dojo/training-parameters
-   cp /challenge/fuzz-newfuzzer.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/fuzz-dojo/training-parameters
    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-parameters
    chown -R hacker /home/hacker/fuzz-dojo/training-parameters

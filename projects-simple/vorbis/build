@@ -14,7 +14,7 @@ if [ ! -d "/src-orig" ]; then
     #python3 -m pip install corpus-replicator
     #git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
     #git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
-
+    cd $SRC
     cp -r /opt/fuzz-targets/ogg $SRC
     cp -r /opt/fuzz-targets/vorbis $SRC
 
@@ -24,7 +24,8 @@ if [ ! -d "/src-orig" ]; then
     touch people.xiph.org/dummy.ogg
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-
+    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/decode_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/new_fuzzer.cc
+    
     patch -tuN $SRC/$PROJECT_NAME/contrib/oss-fuzz/build.sh -i /challenge/.build.patch -r -
     echo Please wait, initial setup
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
@@ -39,7 +40,6 @@ mv /src-$SANITIZER /src
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/decode_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/new_fuzzer.cc
    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME

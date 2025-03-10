@@ -12,7 +12,7 @@ export SANITIZER=$1
 if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make autoconf automake libtool
     #git clone --depth 1 https://github.com/sass/libsass.git libsass
-
+    cd $SRC
     cp -r /opt/fuzz-targets/libsass $SRC
 
     # This is to fix Fuzz Introspector build by using LLVM old pass manager
@@ -22,6 +22,7 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/data_context_fuzzer.cc  $SRC/
 
+    cp $SRC/data_context_fuzzer.cc $SRC/new_fuzzer.cc
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
     echo Please wait, initial setup
@@ -32,11 +33,11 @@ if [ ! -d "/src-$SANITIZER" ]; then
     echo Please wait, initial setup
     cp -r /src-orig /src-$SANITIZER
 fi
+mv /src-$SANITIZER /src
 
-cd $SRC/
+cd $SRC
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/data_context_fuzzer.cc $SRC/new_fuzzer.cc
    cp $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
