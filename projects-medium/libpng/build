@@ -23,12 +23,12 @@ if [ ! -d "/src-orig" ]; then
 
     cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/libpng_read_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/libpng_new_fuzzer.cc
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, initial setup
+    echo Please wait, creating /src-orig
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial setup
+    echo Please wait, creating /src-$SANITIZER
     cp -r /src-orig /src-$SANITIZER
 fi
 mv /src-$SANITIZER /src
@@ -47,5 +47,6 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /home/hacker/fuzz-dojo
 chown -hR hacker:hacker $SRC/$PROJECT_NAME
 mv /src /src-$SANITIZER

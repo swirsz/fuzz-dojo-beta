@@ -10,10 +10,11 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
+    cd $SRC
     #apt-get update && apt-get install -y autoconf automake bison pkg-config ncurses-dev libtool
-    rm -rf libevent
-    rm -rf tmux
-    rm -rf /work
+    #rm -rf libevent
+    #rm -rf tmux
+    #rm -rf /work
     mkdir -p /work && chmod a+rwx /work
 
     #git clone https://github.com/libevent/libevent.git
@@ -36,12 +37,12 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.c $SRC/$PROJECT_NAME/fuzz/new-fuzzer.c
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.dict $SRC/$PROJECT_NAME/fuzz/new-fuzzer.dict
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.options $SRC/$PROJECT_NAME/fuzz/new-fuzzer.options
-    echo Please wait, initial setup
+    echo Please wait, creating /src-orig
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial setup
+    echo Please wait, creating /src-$SANITIZER
     cp -r /src-orig /src-$SANITIZER
 fi
 mv /src-$SANITIZER /src
@@ -64,5 +65,6 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /home/hacker/fuzz-dojo
 chown -hR hacker:hacker $SRC/$PROJECT_NAME
 mv /src /src-$SANITIZER

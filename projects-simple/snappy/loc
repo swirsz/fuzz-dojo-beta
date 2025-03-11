@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-INITIAL=64
-TARGET=69
+INITIAL=67
+TARGET=72
 . /usr/local/sbin/e
 if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = "undefined" ] || [ "$1" = "thread" ]; then
     export SANITIZER=$1
@@ -42,6 +42,10 @@ if compgen -G "/out/crash*" > /dev/null; then
     echo "Crashes detected within the /out directory!"
     echo
 fi
+echo
+echo Previous LOC report:
+cat $(ls ~/.log/*.txt | sort -n -t _ -k 2 | tail -1)
+echo Current LOC report:
 echo > /tmp/loc
 for driver in "${DRIVERS[@]}"
 do

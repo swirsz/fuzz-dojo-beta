@@ -9,7 +9,8 @@ export PROJECT_NAME=mupdf
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
-if [ ! -d "/src-orig" ]; then
+#if [ ! -d "/src-orig" ]; then
+    cd $SRC
     rm -rf $SRC/$PROJECT_NAME
     #apt-get update && apt-get install -y make libtool pkg-config
 
@@ -20,7 +21,7 @@ if [ ! -d "/src-orig" ]; then
 
     zip -q $SRC/pdf_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf
     zip -q $SRC/new_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf && rm -rf pdf.js
-        
+
     #wget https://raw.githubusercontent.com/rc0r/afl-fuzz/master/dictionaries/pdf.dict
     cp /opt/fuzz-targets/pdf.dict $SRC
     cp pdf.dict new_fuzzer.dict
@@ -31,20 +32,21 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/new_fuzzer.options
 
-    rm -rf /out$SRC
-    cp -r $SRC /out
     cp $SRC/pdf_fuzzer.cc $SRC/new_fuzzer.cc
+    rm -rf /out/src
+    cp -r /src /out
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, initial setup
-    chown -hR hacker:hacker $SRC/$PROJECT_NAME
-    mv /src /src-orig
-fi
-if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial setup
-    cp -r /src-orig /src-$SANITIZER
-fi
-mv /src-$SANITIZER /src
 
+    chown -hR hacker:hacker $SRC/$PROJECT_NAME
+#    mv /src /src-orig
+#fi
+#if [ ! -d "/src-$SANITIZER" ]; then
+#    echo Please wait, initial setup
+#    cp -r /src-orig /src-$SANITIZER
+#fi
+#mv /src-$SANITIZER /src
+
+    
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -59,5 +61,6 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /home/hacker/fuzz-dojo
 chown -hR hacker:hacker $SRC/$PROJECT_NAME
-mv /src /src-$SANITIZER
+#mv /src /src-$SANITIZER

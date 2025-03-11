@@ -11,7 +11,7 @@ export SANITIZER=$1
 
 if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make autoconf automake libtool
-    rm -rf $SRC/$PROJECT_NAME
+    #rm -rf $SRC/$PROJECT_NAME
     #git clone https://github.com/Legrandin/pycryptodome.git
     cp -r /opt/fuzz-targets/pycryptodome $SRC
 
@@ -22,17 +22,18 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/pcd_aes_fuzzer.cc $SRC/newfuzzer.cc
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, initial setup
+    echo Please wait, creating /src-orig
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
-if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial setup
+#if [ ! -d "/src-$SANITIZER" ]; then
+#   echo Please wait, initial setup
+    rm -rf $SRC/$PROJECT_NAME
     cp -r /src-orig /src-$SANITIZER
-fi
+#fi
 mv /src-$SANITIZER /src
 
-cd $SRC/$PROJECT_NAME$SRC
+cd $SRC/$PROJECT_NAME/src
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -46,5 +47,6 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /home/hacker/fuzz-dojo
 chown -hR hacker:hacker $SRC/$PROJECT_NAME
 mv /src /src-$SANITIZER

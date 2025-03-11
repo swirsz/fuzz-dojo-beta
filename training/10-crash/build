@@ -18,12 +18,12 @@ if [ ! -d "/src-orig" ]; then
 
     cp $SRC/minigzip_fuzzer.c $SRC/new_fuzzer.c
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-    echo Please wait, initial setup
+    echo Please wait, creating /src-orig
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial setup
+    echo Please wait, creating /src-$SANITIZER
     cp -r /src-orig /src-$SANITIZER
 fi
 mv /src-$SANITIZER /src
@@ -43,5 +43,6 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-crashes /home/hacker/fuzz-dojo/training-crashes
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /home/hacker/fuzz-dojo
 chown -hR hacker:hacker $SRC/$PROJECT_NAME
 mv /src /src-$SANITIZER

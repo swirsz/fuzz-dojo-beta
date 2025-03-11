@@ -13,27 +13,28 @@ if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y cmake bison flex
 
     #git clone --branch master  https://github.com/igraph/igraph
-    rm -rf $SRC/igraph
-    rm -rf $SRC/deps
-    rm -rf $SRC/libxml2-2.13.5
 
     cp -r /opt/fuzz-targets/igraph $SRC
-    cp /opt/fuzz-targets/libxml2-2.13.5.tar.xz $SRC
-
     cp $SRC/$PROJECT_NAME/fuzzing/build.sh $SRC/
 
     cp $SRC/$PROJECT_NAME/fuzzing/write_all_gml.cpp $SRC/$PROJECT_NAME/fuzzing/newfuzzer.cpp
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    patch -tuN $SRC/igraph/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
-    echo Please wait, initial setup
+    echo Please wait, creating /src-orig
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial setup
+    echo Please wait, creating /src-$SANITIZER
     cp -r /src-orig /src-$SANITIZER
 fi
 mv /src-$SANITIZER /src
+rm -rf $SRC/igraph
+rm -rf $SRC/libxml2-2.13.6
+rm -rf $SRC/deps
+
+cp -r /opt/fuzz-targets/igraph $SRC
+cp /opt/fuzz-targets/libxml2-2.13.6.tar.xz $SRC
+patch -tuN $SRC/igraph/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
@@ -50,5 +51,6 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /home/hacker/fuzz-dojo
 chown -hR hacker:hacker $SRC/$PROJECT_NAME
 mv /src /src-$SANITIZER

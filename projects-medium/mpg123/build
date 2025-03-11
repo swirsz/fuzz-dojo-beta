@@ -9,32 +9,23 @@ export PROJECT_NAME=mpg123
 export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
-if [ ! -d "/src-orig" ]; then
-    rm -rf $SRC/$PROJECT_NAME
-    cd $SRC
-    #apt-get update && apt-get install -y make autoconf automake libtool wget bzip2
-    #wget https://www.mpg123.de/snapshot
-    cp /opt/fuzz-targets/snapshot/* $SRC
-    tar -xvf snapshot
-    mv mpg123* mpg123
+rm -rf $SRC/$PROJECT_NAME
+cd $SRC
+#apt-get update && apt-get install -y make autoconf automake libtool wget bzip2
+#wget https://www.mpg123.de/snapshot
+cp /opt/fuzz-targets/snapshot/* $SRC
+tar -xvf snapshot
+mv mpg123* mpg123
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/read_fuzzer.c $SRC/
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/decode_fuzzer.cc $SRC/
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/read_fuzzer.c $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/decode_fuzzer.cc $SRC/
+cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
-    cp $SRC/decode_fuzzer.cc $SRC/new_fuzzer.cc
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, initial setup
-    chown -hR hacker:hacker $SRC/$PROJECT_NAME
-    mv /src /src-orig
-fi
-if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial setup
-    cp -r /src-orig /src-$SANITIZER
-fi
-
-mv /src-$SANITIZER /src
-
+cp $SRC/decode_fuzzer.cc $SRC/new_fuzzer.cc
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+chown -hR hacker:hacker /home/hacker/fuzz-dojo
+chown -hR hacker:hacker $SRC/$PROJECT_NAME
+    
 cd $SRC
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -53,5 +44,5 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /home/hacker/fuzz-dojo
 chown -hR hacker:hacker $SRC/$PROJECT_NAME
-mv /src /src-$SANITIZER

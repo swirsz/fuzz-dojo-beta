@@ -10,7 +10,6 @@ export SANITIZER=$1
 [ -z "$SANITIZER" ] && export SANITIZER='none'
 
 if [ ! -d "/src-orig" ]; then
-    rm -rf xvidcore-install
     #apt-get update && apt-get install -y make autoconf automake libtool subversion
     #svn checkout http://svn.xvid.org/trunk --username anonymous --password "" --non-interactive --no-auth-cache
     #git clone --depth 1 https://github.com/guidovranken/fuzzing-headers.git
@@ -25,18 +24,19 @@ if [ ! -d "/src-orig" ]; then
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
-    echo Please wait, initial setup
-    chown -hR hacker:hacker $SRC/$PROJECT_NAME
+    echo Please wait, creating /src-orig
+    chown -hR hacker:hacker $SRC/trunk
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial setup
+    echo Please wait, creating /src-$SANITIZER
     cp -r /src-orig /src-$SANITIZER
 fi
 
 mv /src-$SANITIZER /src
-
 cd $SRC
+rm -rf xvidcore-install
+
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    cp -r $SRC/oss-fuzz-fuzzers/xvid /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -50,5 +50,6 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
-chown -hR hacker:hacker $SRC/$PROJECT_NAME
+chown -hR hacker:hacker /home/hacker/fuzz-dojo
+chown -hR hacker:hacker $SRC/trunk
 mv /src /src-$SANITIZER

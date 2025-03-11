@@ -1,6 +1,6 @@
 #!/opt/pwn.college/bash
-INITIAL=3
-TARGET=8
+INITIAL=1
+TARGET=6
 . /usr/local/sbin/e
 if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = "undefined" ] || [ "$1" = "thread" ]; then
     export SANITIZER=$1
@@ -20,10 +20,10 @@ if [ -z "$1" ]
 then
     cd /out
     DRIVERS=($(ls -p -I '*.*' -I 'llvm-symbolizer' -I "crash-*" -I "slow-*" -I "oom-*" -I "timeout-*" -I "TEMP*" /out | grep -v /))
-    parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=30
+    parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=30 > /dev/null 2>&1
 else
     DRIVERS=$1
-    run_fuzzer $DRIVERS -max_total_time=30
+    run_fuzzer $DRIVERS -max_total_time=30 > /dev/null 2>&1
 fi
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a
@@ -42,6 +42,10 @@ if compgen -G "/out/crash*" > /dev/null; then
     echo "Crashes detected within the /out directory!"
     echo
 fi
+echo
+echo Previous LOC report:
+cat $(ls ~/.log/*.txt | sort -n -t _ -k 2 | tail -1)
+echo Current LOC report:
 echo > /tmp/loc
 for driver in "${DRIVERS[@]}"
 do

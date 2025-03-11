@@ -40,6 +40,10 @@ done
 
 sudo --preserve-env coverage
 
+echo
+echo Previous LOC report:
+cat $(ls ~/.log/*.txt | sort -n -t _ -k 2 | tail -1)
+echo Current LOC report:
 echo > /tmp/loc
 for driver in "${DRIVERS[@]}"
 do

@@ -22,12 +22,12 @@ if [ ! -d "/src-orig" ]; then
     cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_corpus
     cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_seed_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_seed_corpus
     cp $SRC/$PROJECT_NAME/extras/fuzzing/json_fuzzer.cpp $SRC/$PROJECT_NAME/extras/fuzzing/new_fuzzer.cpp
-    echo Please wait, initial setup
+    echo Please wait, creating /src-orig
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
 if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, initial setup
+    echo Please wait, creating /src-$SANITIZER
     cp -r /src-orig /src-$SANITIZER
 fi
 mv /src-$SANITIZER /src
@@ -50,5 +50,6 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
+chown -hR hacker:hacker /home/hacker/fuzz-dojo
 chown -hR hacker:hacker $SRC/$PROJECT_NAME
 mv /src /src-$SANITIZER
