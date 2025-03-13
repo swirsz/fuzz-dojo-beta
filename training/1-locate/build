@@ -2,8 +2,10 @@
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
+    export LABEL=$1$FUZZING_ENGINE
 else
     . /usr/local/sbin/e
+    export LABEL=$1
 fi
 export PROJECT_NAME=minizip
 export SANITIZER=$1
@@ -17,14 +19,14 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/test/fuzz/unzip_fuzzer.c $SRC/$PROJECT_NAME/test/fuzz/new_fuzzer.c
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     echo Please wait, creating /src-orig
-    chown -hR hacker:hacker $SRC/$PROJECT_NAME
+    chown -hR hacker:hacker $SRC
     mv /src /src-orig
 fi
-if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, creating /src-$SANITIZER
-    cp -r /src-orig /src-$SANITIZER
+if [ ! -d "/src-$LABEL" ]; then
+    echo Please wait, creating /src-$LABEL
+    cp -r /src-orig /src-$LABEL
 fi
-mv /src-$SANITIZER /src
+mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/training-locate" ]; then
@@ -41,6 +43,5 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-locate /home/hacker/fuzz-dojo/training-locate
 sudo --preserve-env compile
 drivers
-chown -hR hacker:hacker /home/hacker/fuzz-dojo
-chown -hR hacker:hacker $SRC/$PROJECT_NAME
-mv /src /src-$SANITIZER
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+mv /src /src-$LABEL

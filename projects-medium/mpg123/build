@@ -2,8 +2,10 @@
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
+    export LABEL=$1$FUZZING_ENGINE
 else
     . /usr/local/sbin/e
+    export LABEL=$1
 fi
 export PROJECT_NAME=mpg123
 export SANITIZER=$1
@@ -23,8 +25,7 @@ cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
 cp $SRC/decode_fuzzer.cc $SRC/new_fuzzer.cc
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-chown -hR hacker:hacker /home/hacker/fuzz-dojo
-chown -hR hacker:hacker $SRC/$PROJECT_NAME
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
     
 cd $SRC
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
@@ -44,5 +45,4 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
 drivers
-chown -hR hacker:hacker /home/hacker/fuzz-dojo
-chown -hR hacker:hacker $SRC/$PROJECT_NAME
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
