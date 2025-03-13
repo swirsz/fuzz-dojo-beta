@@ -6,11 +6,14 @@ if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = 
     export SANITIZER=$1
     shift
 fi
-[[ -z "$SANITIZER" || ${SANITIZER+x} ]] && export SANITIZER='none'
+if [ -z "$SANITIZER" ]; then
+    export SANITIZER='none'
+fi
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk
 cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk
 /challenge/build $SANITIZER
 if [ "$?" -gt 0 ]; then
+    echo Build error, exiting
     exit 1
 fi
 echo
