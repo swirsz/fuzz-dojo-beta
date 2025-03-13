@@ -43,9 +43,11 @@ if compgen -G "/out/crash*" > /dev/null; then
     echo
 fi
 echo
-echo Previous LOC report:
-cat $(ls ~/.log/*.txt | sort -n -t _ -k 2 | tail -1)
-echo Current LOC report:
+if [ -f /tmp/loc ]; then
+    echo Previous LOC report:
+    cat /tmp/loc
+    echo Current LOC report:
+fi
 echo > /tmp/loc
 for driver in "${DRIVERS[@]}"
 do
@@ -57,7 +59,8 @@ echo Total >> /tmp/loc
 /usr/local/sbin/loc-calc >> /tmp/loc
 COVERAGE=$?
 cat /tmp/loc
-mv /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
+chown hacker:hacker /tmp/loc
+cp -p /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
 if [ "$COVERAGE" -gt "$TARGET" ]; then
     echo
     echo Congratulations!
@@ -69,4 +72,4 @@ else
     echo Run /challenge/fuzz-introspector to see what lines of code are not being executed.
     echo
 fi
-chown -hR hacker:hacker /out
+

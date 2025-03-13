@@ -41,9 +41,11 @@ done
 sudo --preserve-env coverage
 
 echo
-echo Previous LOC report:
-cat $(ls ~/.log/*.txt | sort -n -t _ -k 2 | tail -1)
-echo Current LOC report:
+if [ -f /tmp/loc ]; then
+    echo Previous LOC report:
+    cat /tmp/loc
+    echo Current LOC report:
+fi
 echo > /tmp/loc
 for driver in "${DRIVERS[@]}"
 do
@@ -56,14 +58,15 @@ echo Total >> /tmp/loc
 COVERAGE=$?
 /usr/local/sbin/announce $INITIAL $COVERAGE >> /tmp/loc
 cat /tmp/loc
-mv /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
+chown hacker:hacker /tmp/loc
+cp -p /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
 if [ "$COVERAGE" -ge "$TARGET" ]; then
     echo
     echo Congratulations!  Additional code coverage detected!
     cat /flag
     echo
 fi
-chown -hR hacker:hacker /out
+
 
 if compgen -G "/out/timeout-*" > /dev/null
 then

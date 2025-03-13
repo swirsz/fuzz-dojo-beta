@@ -51,4 +51,4 @@ if [ "$?" -ge "$TARGET" ]; then
     cat /flag
 fi
 echo
-chown -hR hacker:hacker /out
+

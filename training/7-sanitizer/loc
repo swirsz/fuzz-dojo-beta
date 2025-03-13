@@ -51,4 +51,4 @@ if [ "$?" -ge "$TARGET" ]; then
     echo Congratulations! But you will need to run /challenge/loc2 to win.
 fi
 echo
-chown -hR hacker:hacker /out
+

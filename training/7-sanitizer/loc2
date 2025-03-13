@@ -44,4 +44,4 @@ if [ "$?" -ge "$TARGET" ]; then
     echo Congratulations!
     cat /flag
 fi
-chown -hR hacker:hacker /out
+
