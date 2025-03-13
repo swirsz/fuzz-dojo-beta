@@ -45,7 +45,7 @@ fi
 echo
 if [ -f /tmp/loc ]; then
     echo Previous LOC report:
-    cat 
+    cat /tmp/loc
     echo Current LOC report:
 fi
 echo > /tmp/loc
