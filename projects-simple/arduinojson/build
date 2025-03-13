@@ -1,9 +1,11 @@
 #!/opt/pwn.college/bash
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
+    export LABEL=$SANITIZER-$FUZZING_ENGINE
     shift
 else
     . /usr/local/sbin/e
+    export LABEL=$SANITIZER
 fi
 export PROJECT_NAME=arduinojson
 export SANITIZER=$1
@@ -26,11 +28,11 @@ if [ ! -d "/src-orig" ]; then
     chown -hR hacker:hacker $SRC/$PROJECT_NAME
     mv /src /src-orig
 fi
-if [ ! -d "/src-$SANITIZER" ]; then
-    echo Please wait, creating /src-$SANITIZER-$FUZZING_ENGINE
-    cp -r /src-orig /src-$SANITIZER-$FUZZING_ENGINE
+if [ ! -d "/src-$LABEL" ]; then
+    echo Please wait, creating /src-$LABEL
+    cp -r /src-orig /src-$LABEL
 fi
-mv /src-$SANITIZER-$FUZZING_ENGINE /src
+mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
@@ -52,4 +54,4 @@ sudo --preserve-env compile
 drivers
 chown -hR hacker:hacker /home/hacker/fuzz-dojo
 chown -hR hacker:hacker $SRC/$PROJECT_NAME
-mv /src /src-$SANITIZER-$FUZZING_ENGINE
+mv /src /src-$LABEL
