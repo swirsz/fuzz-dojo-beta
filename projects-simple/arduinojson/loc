@@ -48,6 +48,7 @@ if [ -f /tmp/loc ]; then
     cat /tmp/loc
     echo Current LOC report:
 fi
+rm -f /tmp/loc
 echo > /tmp/loc
 for driver in "${DRIVERS[@]}"
 do
