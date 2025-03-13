@@ -60,6 +60,7 @@ echo Total >> /tmp/loc
 COVERAGE=$?
 /usr/local/sbin/announce $INITIAL $COVERAGE >> /tmp/loc
 cat /tmp/loc
+chown -hR hacker:hacker /tmp/loc
 cp /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
 if [ "$COVERAGE" -ge "$TARGET" ]; then
     echo
@@ -67,4 +68,3 @@ if [ "$COVERAGE" -ge "$TARGET" ]; then
     cat /flag
     echo
 fi
-chown -hR hacker:hacker /home/hacker/.log
