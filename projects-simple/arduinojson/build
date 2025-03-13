@@ -1,11 +1,11 @@
 #!/opt/pwn.college/bash
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
-    export LABEL=$SANITIZER-$FUZZING_ENGINE
     shift
+    export LABEL=$1$FUZZING_ENGINE
 else
     . /usr/local/sbin/e
-    export LABEL=$SANITIZER
+    export LABEL=$1
 fi
 export PROJECT_NAME=arduinojson
 export SANITIZER=$1
