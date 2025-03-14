@@ -11,10 +11,17 @@ fi
 
 SRC=/src-$LABEL
 
+
 if [ "$LABEL" = "none" ]; then
     export FLAGS=""
-else
-    export FLAGS=$SANITIZER_FLAGS_$LABEL
+elif [ "$LABEL" = "address" ]; then
+    export FLAGS=$SANITIZER_FLAGS_address
+elif [ "$LABEL" = "memory" ]; then
+    export FLAGS=$SANITIZER_FLAGS_memory
+elif [ "$LABEL" = "undefined" ]; then
+    export FLAGS=$SANITIZER_FLAGS_undefined
+elif [ "$LABEL" = "thread" ]; then
+    export FLAGS=$SANITIZER_FLAGS_thread
 fi
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/extras/fuzzing
