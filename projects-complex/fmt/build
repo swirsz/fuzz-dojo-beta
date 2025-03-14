@@ -9,7 +9,9 @@ else
 fi
 export PROJECT_NAME=fmt
 export SANITIZER=$1
-[ -z "$SANITIZER" ] && export SANITIZER='none'
+if [ -z "$SANITIZER" ]; then
+    export SANITIZER='none'
+fi
 
 if [ ! -d "/src-orig" ]; then
 
