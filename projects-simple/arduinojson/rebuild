@@ -9,7 +9,7 @@ if [ -z "$SANITIZER" ]; then
     LABEL='none'
 fi
 
-SRC='/src-$LABEL'
+SRC=/src-$LABEL
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/extras/fuzzing
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/extras/fuzzing
