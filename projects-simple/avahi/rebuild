@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 LABEL=$1
-PROJECT_NAME=arduinojson
+PROJECT_NAME=avahi
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
