@@ -11,6 +11,7 @@ export PROJECT_NAME=lame
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
+    export LABEL='none'$LABEL
 fi
 
 if [ ! -d "/src-orig" ]; then
