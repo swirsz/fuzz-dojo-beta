@@ -1,5 +1,4 @@
 #!/opt/pwn.college/bash
-set -x
 . /usr/local/sbin/e
 LABEL=$1
 PROJECT_NAME=arduinojson
@@ -10,7 +9,6 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 SRC=/src-$LABEL
-
 
 if [ "$LABEL" = "none" ]; then
     export FLAGS=""
@@ -23,6 +21,7 @@ elif [ "$LABEL" = "undefined" ]; then
 elif [ "$LABEL" = "thread" ]; then
     export FLAGS=$SANITIZER_FLAGS_thread
 fi
+set -x
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/extras/fuzzing
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/extras/fuzzing
