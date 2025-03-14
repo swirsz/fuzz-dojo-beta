@@ -18,9 +18,6 @@ cd $SRC/$PROJECT_NAME
 
 clang -c -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=fuzzer-no-link -I. fuzz/fuzz-newfuzzer.c -o fuzz-newfuzzer.o
 
-clang -c -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=address -fsanitize-address-use-after-scope -fsanitize=fuzzer-no-link -I. fuzz/fuzz-newfuzzer.c -o fuzz-newfuzzer.o
-
-
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=fuzzer-no-link -stdlib=libc++ fuzz-newfuzzer.o -o /out/fuzz-newfuzzer -fsanitize=fuzzer avahi-core/.libs/libavahi-core.a avahi-common/.libs/libavahi-common.a
 
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
