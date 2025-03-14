@@ -51,7 +51,6 @@ if [ -f /tmp/loc ]; then
     cat /tmp/loc
     echo Current LOC report:
 fi
-rm -f /tmp/loc
 echo > /tmp/loc
 for driver in "${DRIVERS[@]}"
 do
@@ -63,7 +62,6 @@ echo Total >> /tmp/loc
 /usr/local/sbin/loc-calc >> /tmp/loc
 COVERAGE=$?
 cat /tmp/loc
-chown hacker:hacker /tmp/loc
 cp -p /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
 if [ "$COVERAGE" -gt "$TARGET" ]; then
     echo

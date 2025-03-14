@@ -17,9 +17,7 @@ description: |
   - `45 seconds` - how long /challenge/loc requires to recalculate the code coverage when recompiling ONLY the fuzz drivers. The initial build requires more time, simply rebuilding with /challenge/build will require less time.
 
   Useful commands:
-    
-  `/challenge/build afl (sanitizer)` Compiles oss-fuzz project using AFL instead of LibFuzzer. Note: NOT supported by all projects
-  
+
   `/challenge/build (sanitizer)` Compiles oss-fuzz project currently configured. Copies fuzz driver source code into `/home/hacker/(project)` Project Source code is placed in: `/src-orig` Fuzz drivers: `/out`
 
   - `(sanitizer)` is an OPTIONAL value of `none` (Default) `address memory undefined thread coverage` or `inspector`
