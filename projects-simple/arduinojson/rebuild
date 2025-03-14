@@ -11,6 +11,12 @@ fi
 
 SRC=/src-$LABEL
 
+if [ "$LABEL" = "none" ]; then
+    export FLAGS=""
+else
+    export FLAGS=$SANITIZER_FLAGS_$LABEL
+fi
+
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/extras/fuzzing
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/extras/fuzzing
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME/extras/fuzzing
@@ -18,6 +24,6 @@ cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 
 cd $SRC/$PROJECT_NAME/extras/fuzzing
 
-clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION  -fsanitize=fuzzer-no-link -stdlib=libc++ -I../../src -DARDUINOJSON_DEBUG=1 -std=c++11 new_fuzzer.cpp -o/out/new_fuzzer -fsanitize=fuzzer
+clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -I../../src -DARDUINOJSON_DEBUG=1 -std=c++11 new_fuzzer.cpp -o/out/new_fuzzer -fsanitize=fuzzer
 
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
