@@ -1,0 +1,104 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+LABEL=$1
+PROJECT_NAME=guetzli
+SANITIZER=$1
+if [ -z "$SANITIZER" ]; then
+    SANITIZER='none'
+    LABEL='none'
+fi
+
+SRC=/src-$LABEL
+
+if [ "$LABEL" = "none" ]; then
+    FLAGS=""
+elif [ "$LABEL" = "address" ]; then
+    FLAGS=$SANITIZER_FLAGS_address
+elif [ "$LABEL" = "memory" ]; then
+    FLAGS=$SANITIZER_FLAGS_memory
+elif [ "$LABEL" = "undefined" ]; then
+    FLAGS=$SANITIZER_FLAGS_undefined
+elif [ "$LABEL" = "thread" ]; then
+    FLAGS=$SANITIZER_FLAGS_thread
+fi
+set -x
+
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+
+cd $SRC/$PROJECT_NAME/extras/fuzzing
+
+clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -I../../src -DARDUINOJSON_DEBUG=1 -std=c++11 new_fuzzer.cpp -o/out/new_fuzzer -fsanitize=fuzzer
+
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+
+
+
+
+
+
+
+
+
+
+
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+    LABEL=$1$FUZZING_ENGINE
+else
+    . /usr/local/sbin/e
+    LABEL=$1
+fi
+PROJECT_NAME=guetzli
+SANITIZER=$1
+if [ -z "$SANITIZER" ]; then
+    SANITIZER='none'
+    LABEL='none'$LABEL
+fi
+
+if [ ! -d "/src-orig" ]; then
+    #apt-get update && apt-get install -y make autoconf automake libtool libpng-dev pkg-config curl
+
+    #mkdir afl-testcases
+    #cd afl-testcases/ && curl https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz | tar -xz
+    cd $SRC
+    cp -r /opt/fuzz-targets/afl-testcases $SRC
+
+    zip guetzli_fuzzer_seed_corpus.zip afl-testcases/jpeg/full/images/* afl-testcases/jpeg_turbo/full/images/*
+
+    #git clone --depth=1 https://github.com/google/guetzli 
+    cp -r /opt/fuzz-targets/guetzli $SRC
+
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    cp $SRC/$PROJECT_NAME/fuzz_target.cc $SRC/$PROJECT_NAME/fuzz_newfuzzer.cc
+    
+    echo Please wait, creating /src-orig
+    chown -hR hacker:hacker $SRC
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$LABEL" ]; then
+    echo Please wait, creating /src-$LABEL
+    cp -r /src-orig /src-$LABEL
+fi
+mv /src-$LABEL /src
+
+cd $SRC
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
+else
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+fi
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
+sudo --preserve-env compile
+drivers
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+mv /src /src-$LABEL
