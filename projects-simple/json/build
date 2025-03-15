@@ -39,7 +39,7 @@ if [ ! -d "/src-$LABEL" ]; then
     cp -r /src-orig /src-$LABEL
 fi
 mv /src-$LABEL /src
-rm /src-none/json/tests/parse_new_fuzzer
+rm /src/json/tests/parse*
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
