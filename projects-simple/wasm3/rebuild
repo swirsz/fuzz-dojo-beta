@@ -8,7 +8,7 @@ if [ -z "$SANITIZER" ]; then
     LABEL='none'
 fi
 
-SRC=/src-$LABEL
+SRC=/src
 
 if [ "$LABEL" = "none" ]; then
     FLAGS=""
