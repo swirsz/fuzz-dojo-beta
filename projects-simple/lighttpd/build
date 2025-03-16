@@ -19,10 +19,10 @@ if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y libz-dev libpcre2-dev libtool pkg-config autoconf
     #git clone https://github.com/lighttpd/lighttpd1.4
     cp -r /opt/fuzz-targets/lighttpd1.4 $SRC
-    cp $SRC/fuzz_burl.c $SRC/fuzz_new.c
 
     cp /opt/oss-fuzz-new/projects/lighttpd/build.sh $SRC/
     cp /opt/oss-fuzz-new/projects/lighttpd/fuzz_* $SRC/
+    cp $SRC/fuzz_burl.c $SRC/fuzz_new.c
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     echo Please wait, creating /src-orig

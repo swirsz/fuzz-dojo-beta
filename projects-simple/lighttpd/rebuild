@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 LABEL=$1
-PROJECT_NAME=libsodium
+PROJECT_NAME=lighttpd1.4
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
@@ -23,12 +23,10 @@ elif [ "$LABEL" = "thread" ]; then
 fi
 set -x
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.h $SRC
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
 
-cd $SRC
+cd $SRC/$PROJECT_NAME
 
-clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -std=c++11 -I$SRC/libsodium/src/libsodium/include $SRC/new_fuzzer.cc -o /out/new_fuzzer $SRC/libsodium/src/libsodium/.libs/libsodium.a -fsanitize=fuzzer
-
+clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -c $SRC/fuzz_new.c -I. -I../include
 
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
