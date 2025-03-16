@@ -25,8 +25,9 @@ set -x
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
 
-cd $SRC/$PROJECT_NAME/
+cd $SRC/$PROJECT_NAME/fuzz
 
+clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=fuzzer-no-link -c ../fuzz/fuzz-newfuzzer.c -o fuzz-newfuzzer.o -I../ -I./
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -fsanitize=fuzzer fuzz-newfuzzer.o -o /out/fuzz-newfuzzer -I./libwc -DUSE_UNICODE -I. -I./.. -DHAVE_CONFIG_H ../Str.o ../myctype.o libwc.a /usr/lib/x86_64-linux-gnu/libgc.a
 
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
