@@ -36,12 +36,14 @@ chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
 
 
 -----------------------
+start-build
+
 PROJECT_NAME
 project cp statements
 fix dir
 project clang
 $FLAGS
-swap /src $src
+swap /src/ $SRC/
 
 -----------------------
 
