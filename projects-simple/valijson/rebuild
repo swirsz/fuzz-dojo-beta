@@ -25,7 +25,7 @@ set -x
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/tests/fuzzing
 
-cd $SRC/$PROJECT_NAME
+cd $SRC/$PROJECT_NAME/tests/fuzzing
 
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -DVALIJSON_USE_EXCEPTIONS=1 -I$SRC/valijson/thirdparty/rapidjson/include -I$SRC/valijson/thirdparty/rapidjson/include/rapidjson -I$SRC/valijson/include -I$SRC/valijson/include/valijson -I$SRC/valijson/include/valijson/adapters -c newfuzzer.cpp -o newfuzzer.o
 
