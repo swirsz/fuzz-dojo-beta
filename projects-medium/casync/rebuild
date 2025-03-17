@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 LABEL=$1
-PROJECT_NAME=guetzli
+PROJECT_NAME=casync
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
@@ -23,10 +23,12 @@ elif [ "$LABEL" = "thread" ]; then
 fi
 set -ex
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 
-cd $SRC/$PROJECT_NAME/extras/fuzzing
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/casync/test/fuzz
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.h $SRC/casync/test/fuzz
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.build $SRC/casync/test/fuzz
+
+cd $SRC/$PROJECT_NAME/
 
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -I../../src -DARDUINOJSON_DEBUG=1 -std=c++11 new_fuzzer.cpp -o/out/new_fuzzer -fsanitize=fuzzer
 
@@ -40,42 +42,36 @@ chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
 
 
 
-
-
+4
 #!/opt/pwn.college/bash
 if [ "$1" = "afl" ]; then
     . /usr/local/sbin/eafl
     shift
-    LABEL=$1$FUZZING_ENGINE
+    export LABEL=$1$FUZZING_ENGINE
 else
     . /usr/local/sbin/e
-    LABEL=$1
+    export LABEL=$1
 fi
-PROJECT_NAME=guetzli
-SANITIZER=$1
+export PROJECT_NAME=casync
+export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
-    SANITIZER='none'
-    LABEL='none'$LABEL
+    export SANITIZER='none'
+    export LABEL='none'$LABEL
 fi
 
 if [ ! -d "/src-orig" ]; then
-    #apt-get update && apt-get install -y make autoconf automake libtool libpng-dev pkg-config curl
+    #apt-get update && apt-get install -y python3-pip pkg-config wget \
+    #        liblzma-dev libzstd-dev libcurl4-openssl-dev libssl-dev libudev-dev \
+    #        zlib1g-dev libacl1-dev libfuse-dev rsync udev 
+    #    pip3 install meson ninja
+    #git clone --depth 1 https://github.com/systemd/casync casync
+    cp -r /opt/fuzz-targets/casync $SRC
 
-    #mkdir afl-testcases
-    #cd afl-testcases/ && curl https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz | tar -xz
-    cd $SRC
-    cp -r /opt/fuzz-targets/afl-testcases $SRC
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC
 
-    zip guetzli_fuzzer_seed_corpus.zip afl-testcases/jpeg/full/images/* afl-testcases/jpeg_turbo/full/images/*
-
-    #git clone --depth=1 https://github.com/google/guetzli 
-    cp -r /opt/fuzz-targets/guetzli $SRC
-
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    cp $SRC/$PROJECT_NAME/fuzz_target.cc $SRC/$PROJECT_NAME/fuzz_newfuzzer.cc
-    
+    patch -tuN $SRC/casync/test/fuzz/meson.build -i /challenge/.build.patch -r -
+    cp $SRC/casync/test/fuzz/fuzz-compress.c $SRC/casync/test/fuzz/fuzz-new.c
+    #patch -tuN $SRC/casync/test/fuzz/meson.build -i /challenge/.build.patch -r -
     echo Please wait, creating /src-orig
     chown -hR hacker:hacker $SRC
     mv /src /src-orig
@@ -86,15 +82,19 @@ if [ ! -d "/src-$LABEL" ]; then
 fi
 mv /src-$LABEL /src
 
-cd $SRC
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/casync/test/fuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/casync/test/fuzz/*.h /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/casync/test/fuzz/*.build /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/casync/tools/oss-fuzz.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/casync/test/fuzz
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.h $SRC/casync/test/fuzz
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.build $SRC/casync/test/fuzz
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/oss-fuzz.sh $SRC/casync/tools
 fi
 mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME

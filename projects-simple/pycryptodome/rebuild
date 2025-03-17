@@ -21,7 +21,7 @@ elif [ "$LABEL" = "undefined" ]; then
 elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
-set -x
+set -ex
 
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
