@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 LABEL=$1
-PROJECT_NAME=liblouis
+PROJECT_NAME=libpng
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
@@ -23,13 +23,10 @@ elif [ "$LABEL" = "thread" ]; then
 fi
 set -ex
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/fuzzing
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz
 
-cd $SRC/$PROJECT_NAME/tests/fuzzing
+cd $SRC/$PROJECT_NAME
 
-$CC $CFLAGS $FLAGS -pthread -c fuzz_newfuzzer.c -o fuzz_newfuzzer.o \
-    -I$SRC/liblouis -I$SRC/liblouis/liblouis
-$CXX $CXXFLAGS $FLAGS $LIB_FUZZING_ENGINE -pthread fuzz_newfuzzer.o \
-    -o $OUT/fuzz_newfuzzer fuzz_lib.a
+clang++ -O1 -fno-omit-frame-pointer -gline-tables-only $FLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=fuzzer-no-link -stdlib=libc++ -std=c++11 -I. $SRC/libpng/contrib/oss-fuzz/libpng_new_fuzzer.cc -o /out/libpng_new_fuzzer -lFuzzingEngine .libs/libpng16.a -lz
 
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
