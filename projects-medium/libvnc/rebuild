@@ -27,11 +27,11 @@ set -ex
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/libvncserver/test
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/libvncserver
 
-ren $SRC /src
+mv $SRC /src
 
-cd /src-none/libvncserver/build
+cd /src/libvncserver/build
 cmake --build .
 
-ren /src $SRC
+mv /src $SRC
 
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
