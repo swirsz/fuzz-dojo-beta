@@ -1,0 +1,32 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+LABEL=$1
+PROJECT_NAME=zopfli
+SANITIZER=$1
+if [ -z "$SANITIZER" ]; then
+    SANITIZER='none'
+    LABEL='none'
+fi
+
+SRC=/src-$LABEL
+
+if [ "$LABEL" = "none" ]; then
+    FLAGS=""
+elif [ "$LABEL" = "address" ]; then
+    FLAGS=$SANITIZER_FLAGS_address
+elif [ "$LABEL" = "memory" ]; then
+    FLAGS=$SANITIZER_FLAGS_memory
+elif [ "$LABEL" = "undefined" ]; then
+    FLAGS=$SANITIZER_FLAGS_undefined
+elif [ "$LABEL" = "thread" ]; then
+    FLAGS=$SANITIZER_FLAGS_thread
+fi
+set -x
+
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
+
+cd $SRC/$PROJECT_NAME
+
+clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -std=c++11 -I. -Isrc/zopfli $SRC/new_fuzzer.cc ./libzopfli.a -o /out/new_fuzzer -fsanitize=fuzzer
+
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
