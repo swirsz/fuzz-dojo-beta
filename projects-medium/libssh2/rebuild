@@ -1,0 +1,34 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+LABEL=$1
+PROJECT_NAME=libssh2
+SANITIZER=$1
+if [ -z "$SANITIZER" ]; then
+    SANITIZER='none'
+    LABEL='none'
+fi
+
+SRC=/src-$LABEL
+
+if [ "$LABEL" = "none" ]; then
+    FLAGS=""
+elif [ "$LABEL" = "address" ]; then
+    FLAGS=$SANITIZER_FLAGS_address
+elif [ "$LABEL" = "memory" ]; then
+    FLAGS=$SANITIZER_FLAGS_memory
+elif [ "$LABEL" = "undefined" ]; then
+    FLAGS=$SANITIZER_FLAGS_undefined
+elif [ "$LABEL" = "thread" ]; then
+    FLAGS=$SANITIZER_FLAGS_thread
+fi
+set -ex
+
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/tests/ossfuzz
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile.am $SRC/$PROJECT_NAME/tests/ossfuzz
+
+cd $SRC/$PROJECT_NAME/tests/ossfuzz
+
+clang++ -DHAVE_CONFIG_H -I. -I../../src  -I../../include -DLIBSSH2DEBUG  -fsanitize=fuzzer -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS  -fsanitize=fuzzer-no-link -stdlib=libc++ -MT new_fuzzer-new_fuzzer.o -MD -MP -MF .deps/new_fuzzer-new_fuzzer.Tpo -c -o new_fuzzer-new_fuzzer.o 
+../../libtool  --tag=CXX   --mode=link clang++  -fsanitize=fuzzer -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++  -static  -o new_fuzzer new_fuzzer-new_fuzzer.o ../../src/libssh2.la   -lssl -lcrypto -lz
+
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
