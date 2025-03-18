@@ -19,6 +19,8 @@ description: |
   Useful commands:
 
   `/challenge/build (sanitizer)` Compiles oss-fuzz project currently configured. Copies fuzz driver source code into `/home/hacker/(project)` Project Source code is placed in: `/src-orig` Fuzz drivers: `/out`
+  
+  `/challenge/rebuild (sanitizer)` Recompiles ONLY the fuzz harness and not the entire project.
 
   - `(sanitizer)` is an OPTIONAL value of `none` (Default) `address memory undefined thread coverage` or `inspector`
   
