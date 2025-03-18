@@ -1,10 +1,10 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 LABEL=$1
-PROJECT_NAME=uriparser
-SANITIZER=$1
+export PROJECT_NAME=uriparser
+export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
-    SANITIZER='none'
+    export SANITIZER='none'
     LABEL='none'
 fi
 
@@ -21,13 +21,14 @@ elif [ "$LABEL" = "undefined" ]; then
 elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
-set -ex
+set -x
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/N*.h $SRC/$PROJECT_NAME/fuzz
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/N*.cpp $SRC/$PROJECT_NAME/fuzz
 
-cd $SRC/$PROJECT_NAME
+mv $SRC /src
+cd /src/$PROJECT_NAME
 
 sudo --preserve-env compile
 
+mv /src $SRC
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
