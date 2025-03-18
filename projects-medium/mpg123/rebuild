@@ -1,0 +1,33 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+LABEL=$1
+PROJECT_NAME=arduinojson
+SANITIZER=$1
+if [ -z "$SANITIZER" ]; then
+    SANITIZER='none'
+    LABEL='none'
+fi
+
+SRC=/src
+
+if [ "$LABEL" = "none" ]; then
+    FLAGS=""
+elif [ "$LABEL" = "address" ]; then
+    FLAGS=$SANITIZER_FLAGS_address
+elif [ "$LABEL" = "memory" ]; then
+    FLAGS=$SANITIZER_FLAGS_memory
+elif [ "$LABEL" = "undefined" ]; then
+    FLAGS=$SANITIZER_FLAGS_undefined
+elif [ "$LABEL" = "thread" ]; then
+    FLAGS=$SANITIZER_FLAGS_thread
+fi
+set -ex
+
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
+
+cd $SRC
+
+clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ new_fuzzer.cc -I/work/include /work/lib/libmpg123.a -fsanitize=fuzzer -o /out/new_fuzzer
+
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
