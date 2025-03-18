@@ -1,14 +1,14 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 LABEL=$1
-PROJECT_NAME=mpg123
+PROJECT_NAME=mupdf
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
     LABEL='none'
 fi
 
-SRC=/src
+SRC=/src-$LABEL
 
 if [ "$LABEL" = "none" ]; then
     FLAGS=""
@@ -23,11 +23,10 @@ elif [ "$LABEL" = "thread" ]; then
 fi
 set -ex
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
 
-cd $SRC
+cd $SRC/$PROJECT_NAME
 
-clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ new_fuzzer.cc -I/work/include /work/lib/libmpg123.a -fsanitize=fuzzer -o /out/new_fuzzer
+clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -std=c++11 -Iinclude $SRC/new_fuzzer.cc -o /out/new_fuzzer -fsanitize=fuzzer /work/libmupdf.a /work/libmupdf-third.a
 
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out

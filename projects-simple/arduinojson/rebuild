@@ -38,6 +38,7 @@ chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
 -----------------------
 start-build
 
+speed test /build
 PROJECT_NAME
 project cp statements
 fix dir
