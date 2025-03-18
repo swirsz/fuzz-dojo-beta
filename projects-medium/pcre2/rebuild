@@ -21,12 +21,17 @@ elif [ "$LABEL" = "undefined" ]; then
 elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
-set -ex
+set -x
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/pcre2_fuzzsupport.c $SRC/$PROJECT_NAME/src
 
-cd $SRC/$PROJECT_NAME
+mv $SRC /src
+
+cd /src/$PROJECT_NAME
 
 make -j$(nproc) all
+
+cd
+mv /src $SRC
 
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
