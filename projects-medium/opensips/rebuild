@@ -29,6 +29,8 @@ cd $SRC/$PROJECT_NAME
 
 git config --global --add safe.directory /src/opensips
 
+make Makefile.conf
+
 clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -fsanitize=fuzzer ./parser/fuzz_newfuzzer.o libopensips.a -ldl -lresolv -o /out/fuzz_newfuzzer
 
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
