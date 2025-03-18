@@ -23,6 +23,7 @@ if [ ! -d "/src-orig" ]; then
     #cp /opt/oss-fuzz-new/projects/*.cc $SRC/
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/fuzz/ParseFuzzer.cpp $SRC/$PROJECT_NAME/fuzz/NewFuzzer.cpp 
+    patch -tuN $SRC/$PROJECT_NAME/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
     #cp $SRC/uri_parse_fuzzer.cc $SRC/new_fuzzer.cc
     #cp -r $SRC/$PROJECT_NAME/build/CMakeFiles/uri_parse_fuzzer.dir /$SRC/$PROJECT_NAME/build/CMakeFiles/new_fuzzer.dir 
 
@@ -40,11 +41,12 @@ mv /src-$LABEL /src
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzz/* /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
    chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.h $SRC/$PROJECT_NAME/fuzz
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 mkdir -p /home/hacker/.log
