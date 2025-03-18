@@ -42,7 +42,7 @@ if [ ! -d "/src-$LABEL" ]; then
 fi
 mv /src-$LABEL /src
 
-cd $SRC
+cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
