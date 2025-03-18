@@ -27,7 +27,6 @@ cp /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME
 
 cd $SRC/$PROJECT_NAME
 
-
 LDFLAGS=""
 UNRAR_DEFINES="-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -DRAR_SMP -DRARDLL -DSILENT -DNOVOLUME"
 UNRAR_WNOS="-Wno-logical-op-parentheses -Wno-switch -Wno-dangling-else"
@@ -37,10 +36,8 @@ UNRAR_SRC_DIR="$SRC/unrar"
 CFLAGS="$CFLAGS -fno-sanitize=enum"
 CXXFLAGS="$CXXFLAGS -fno-sanitize=enum"
 
-rm -v $UNRAR_SRC_DIR/libunrar.so
-
 $CXX $CXXFLAGS -I. $UNRAR_SRC_DIR/new_fuzzer.cc -o $OUT/new_fuzzer \
-     $UNRAR_DEFINES $LIB_FUZZING_ENGINE -L$UNRAR_SRC_DIR -lunrar
+     $UNRAR_DEFINES $LIB_FUZZING_ENGINE -L$UNRAR_SRC_DIR -lunrar -pthread
      
 #clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -fno-sanitize=enum -I. $SRC/unrar/new_fuzzer.cc -o /out/new_fuzzer -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -DRAR_SMP
 
