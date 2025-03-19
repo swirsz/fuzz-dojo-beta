@@ -23,7 +23,13 @@ do
 done
 zip -y /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-fi /out/introspector-report/inspector/fuzz_report.html
 echo
-echo View report on virtual desktop under Applications/Web Browser: http://0.0.0.0:8008/fuzz_report.html
+echo Workspace:
+echo  Coverage: https://pwn.college/workspace/code/proxy/8008/covreport/linux/report.html
+echo  Fuzz-Introspector: https://pwn.college/workspace/code/proxy/8008/fuzz_report.html
+echo
+echo Virtual Desktop under Applications/Web Browser:
+echo  Coverage: http://127.0.0.1:8008/fuzz_report.html
+echo  Fuzz-Introspector: http://127.0.0.1:8008/fuzz_report.html
 echo
 echo If you encounter errors, run /challenge/fuzz-introspector under shell or Workspace first, then view report on Workspace or Desktop
 echo 
