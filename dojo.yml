@@ -119,7 +119,7 @@ modules:
         type: lecture
         video: LUGG56LOf5U
 
-  - id: projects-simple
+  - id: simple
     name: Simple Fuzz Drivers
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.  These projects have relatively simple fuzz drivers.
 
