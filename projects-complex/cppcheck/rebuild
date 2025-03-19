@@ -27,7 +27,7 @@ cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/oss-fuzz
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.h $SRC/$PROJECT_NAME/oss-fuzz
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME/oss-fuzz
    
-cd $SRC/$PROJECT_NAME
+cd $SRC/$PROJECT_NAME/oss-fuzz
 
 clang++ -fsanitize=fuzzer -std=c++11 -g -w -I../lib -isystem../externals/simplecpp -isystem../externals/tinyxml2 -isystem../externals/picojson -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -c -o newfuzzer.o newfuzzer.cpp
 
