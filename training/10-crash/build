@@ -17,7 +17,7 @@ fi
 if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make autoconf automake libtool
     #git clone --depth 1 https://github.com/swirsz/zlib
-    cp -r /opt/fuzz-targets/zlib $SRC
+    cp -r /opt/fuzz-targets/swzlib $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
 
