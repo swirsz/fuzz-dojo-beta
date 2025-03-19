@@ -38,7 +38,7 @@ mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/training-newdriver" ]; then
-   mkdir /home/hacker/fuzz-dojo/training-newdriver
+   mkdir -p /home/hacker/fuzz-dojo/training-newdriver
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/fuzz-dojo/training-newdriver
    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-newdriver
    chown -R hacker /home/hacker/fuzz-dojo/training-newdriver

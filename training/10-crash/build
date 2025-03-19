@@ -17,7 +17,7 @@ fi
 if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make autoconf automake libtool
     #git clone --depth 1 https://github.com/swirsz/zlib
-    cp -r /opt/fuzz-targets/swzlib $SRC
+    cp -r /opt/fuzz-targets/swzlib $SRC/zlib
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
 
@@ -35,7 +35,7 @@ mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/training-crashes" ]; then
-   mkdir /home/hacker/fuzz-dojo/training-crashes
+   mkdir -p /home/hacker/fuzz-dojo/training-crashes
    cp $SRC/*.c* /home/hacker/fuzz-dojo/training-crashes
    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-crashes
    chown -R hacker /home/hacker/fuzz-dojo/training-crashes
