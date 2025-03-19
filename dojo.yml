@@ -119,7 +119,7 @@ modules:
         type: lecture
         video: LUGG56LOf5U
 
-  - id: simple
+  - id: s
     name: Simple Fuzz Drivers
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.  These projects have relatively simple fuzz drivers.
 
@@ -218,7 +218,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zopfli
 
 
-  - id: medium
+  - id: m
     name: Medium Fuzz Drivers
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag. These projects have medium difficulty fuzz drivers.
 
@@ -324,7 +324,7 @@ modules:
         name: XVID - 13782 loc 10%-33%-- - 1.5 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
 
-  - id: complex
+  - id: c
     name: Comple  Fuzz Drivers
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag. These projects have complex fuzz drivers.
 
