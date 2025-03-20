@@ -115,11 +115,11 @@ modules:
         type: lecture
         video: K_2DAo5pPQQ
         
-      - name: "GTAC 2016: Finding Bugs in C++ Libraries Using LibFuzzer"
+      - name: "2016 Fuzz Drivers: Fuzzing C++ Libraries With LibFuzzer"
         type: lecture
         video: FzaR3iH2iZs
         
-      - name: "Fuzz Dojo Intro"
+      - name: "Features of the Fuzz Harnessing Dojo"
         type: lecture
         video: VoA6hQZaqak
 
