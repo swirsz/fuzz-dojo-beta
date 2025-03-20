@@ -15,14 +15,8 @@ sudo mv /out/report /out/introspector-report/inspector/covreport
 # fix delays caused by internet references to unpkg.com & googletagmanager.com
 patch -tuN /out/introspector-report/inspector/fuzz_report.html -i /usr/local/sbin/fuzz_report.patch -r -
 for f in /out/introspector-report/inspector/calltree_view*.html ; do patch -tuN "$f" -i /usr/local/sbin/calltree_view.patch -r -; done
+for f in /out/report_target/*; do mv $f /out/introspector-report/inspector/covreport/$(basename $f); done
 
-
-for driver in "${DRIVERS[@]}"
-do
-    filename=$(basename -- "$driver")
-    filename="${filename%.*}"
-    sudo mv /out/report_target/$filename /out/introspector-report/inspector/covreport/$filename
-done
 zip -y /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-fi /out/introspector-report/inspector/fuzz_report.html
 echo
 echo Workspace:
