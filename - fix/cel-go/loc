@@ -36,6 +36,9 @@ do
 done
 
 sudo --preserve-env coverage
+
+for f in /out/report_target/*; do cp -r $f /out/report/$(basename $f); done
+
 if compgen -G "/out/crash*" > /dev/null; then
     echo
     echo "Crashes detected within the /out directory!"
@@ -55,3 +58,4 @@ echo Total >> /tmp/loc
 /usr/local/sbin/announce $INITIAL $? >> /tmp/loc
 cp /tmp/loc /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-loc.txt
 cat /tmp/loc
+chown -hR hacker:hacker /home/hacker/fuzz-dojo /home/hacker/.log /out

@@ -40,6 +40,9 @@ do
 done
 
 sudo --preserve-env coverage
+
+for f in /out/report_target/*; do cp -r $f /out/report/$(basename $f); done
+
 if compgen -G "/out/crash*" > /dev/null; then
     echo
     echo "Crashes detected within the /out directory!"
@@ -74,4 +77,4 @@ else
     echo Run /challenge/fuzz-introspector to see what lines of code are not being executed.
     echo
 fi
-
+chown -hR hacker:hacker /home/hacker/fuzz-dojo /home/hacker/.log /out
