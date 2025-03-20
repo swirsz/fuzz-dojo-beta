@@ -115,7 +115,7 @@ modules:
         type: lecture
         video: K_2DAo5pPQQ
         
-      - name: "2016 Fuzz Drivers: Fuzzing C++ Libraries With LibFuzzer"
+      - name: "Introduction to Fuzz Drivers: Fuzzing C++ Libraries With LibFuzzer"
         type: lecture
         video: FzaR3iH2iZs
         
@@ -329,7 +329,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
 
   - id: c
-    name: Complex  Fuzz Drivers
+    name: Complex Fuzz Drivers
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag. These projects have complex fuzz drivers.
 
     challenges:
