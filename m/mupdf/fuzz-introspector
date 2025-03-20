@@ -28,6 +28,6 @@ echo Virtual Desktop under Applications/Web Browser:
 echo  Coverage: http://127.0.0.1:8008/fuzz_report.html
 echo  Fuzz-Introspector: http://127.0.0.1:8008/fuzz_report.html
 echo
-echo If you encounter errors, run /challenge/fuzz-introspector under shell or Workspace first, then view report on Workspace or Desktop
+echo If you encounter errors, run /challenge/fuzz-introspector under shell or Workspace first, then view report on Desktop/Web Browser
 echo 
 python3 -m http.server 8008 --directory /out/introspector-report/inspector/
