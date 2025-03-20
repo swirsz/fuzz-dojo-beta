@@ -21,11 +21,11 @@ for f in /out/report_target/*; do mv $f /out/introspector-report/inspector/covre
 zip -y /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-fi /out/introspector-report/inspector/fuzz_report.html
 echo
 echo Workspace:
-echo  Coverage: https://pwn.college/workspace/code/proxy/8008/covreport/linux/report.html
+echo  Coverage: https://pwn.college/workspace/code/proxy/8008/covreport
 echo  Fuzz-Introspector: https://pwn.college/workspace/code/proxy/8008/fuzz_report.html
 echo
 echo Virtual Desktop under Applications/Web Browser:
-echo  Coverage: http://127.0.0.1:8008/fuzz_report.html
+echo  Coverage: http://127.0.0.1:8008/covreport
 echo  Fuzz-Introspector: http://127.0.0.1:8008/fuzz_report.html
 echo
 echo If you encounter errors, run /challenge/fuzz-introspector under shell or Workspace first, then view report on Desktop/Web Browser
