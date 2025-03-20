@@ -329,7 +329,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
 
   - id: c
-    name: Comple  Fuzz Drivers
+    name: Complex  Fuzz Drivers
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag. These projects have complex fuzz drivers.
 
     challenges:
