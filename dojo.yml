@@ -119,9 +119,9 @@ modules:
         type: lecture
         video: FzaR3iH2iZs
         
-      - name: "Features of the Fuzz Harnessing Dojo"
+      - name: "Features of the Fuzz Dojo"
         type: lecture
-        video: VoA6hQZaqak
+        video: u7GrifELIjU
 
   - id: s
     name: Simple Fuzz Drivers
