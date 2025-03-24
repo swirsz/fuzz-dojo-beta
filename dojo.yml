@@ -59,7 +59,7 @@ description: |
   - [**OSS-Fuzz**: Setting up a new project](https://google.github.io/oss-fuzz/getting-started/new-project-guide/)
   - [**OSS-Fuzz**: Ideal integration](https://google.github.io/oss-fuzz/advanced-topics/ideal-integration/)
   - [**GITHUB**: How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
-  - [**Google Blog**: Refreshed OSS-Fuzz rewards](https://security.googleblog.com/2023/02/taking-next-step-oss-fuzz-in-2023.html)
+  - [Getting started](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/getting_started_with_libfuzzer.md)
   - [Efficient Fuzzing Guide](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/efficient_fuzzing.md)
   - [Search OSS-Fuzz fuzz drivers](https://github.com/search?q=repo%3Agoogle%2Foss-fuzz+path%3A%2F%5Eprojects%5C%2F%2F++AND+%28language%3AC%2B%2B+OR+language%3AC%29&type=code)
 modules:
@@ -114,14 +114,22 @@ modules:
       - name: "Fuzzing: Introduction"
         type: lecture
         video: K_2DAo5pPQQ
-        
-      - name: "Introduction to Fuzz Drivers: Fuzzing C++ Libraries With LibFuzzer"
-        type: lecture
-        video: FzaR3iH2iZs
-        
+              
       - name: "Features of the Fuzz Dojo"
         type: lecture
         video: u7GrifELIjU
+              
+      - name: "Investigating a Project & Picking a Function to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+              
+      - name: "Understanding Existing Fuzz Drivers"
+        type: lecture
+        video: AtjkUvYOGJw
+              
+      - name: "New Fuzz Driver Creation"
+        type: lecture
+        video: yQb-cTy6Lr8
 
   - id: s
     name: Simple Fuzz Drivers
