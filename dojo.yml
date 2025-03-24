@@ -129,7 +129,7 @@ modules:
               
       - name: "New Fuzz Driver Creation"
         type: lecture
-        video: yQb-cTy6Lr8
+        video: 11fxFrOOLJ0
 
   - id: s
     name: Simple Fuzz Drivers
