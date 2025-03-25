@@ -146,6 +146,10 @@ modules:
         name: AVAHI - 2566 loc 74%-76%-81% - 2 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=avahi
 
+      - id: cjson
+        name: CJSON - 2304 loc 0%-43%-46% - 0 min
+        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cjson
+
       - id: elfutils
         name: ELFUTILS - 31383 loc 14%-26%-40% - 2.5 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=elfutils
