@@ -1,0 +1,53 @@
+#!/opt/pwn.college/bash
+if [ "$1" = "afl" ]; then
+    . /usr/local/sbin/eafl
+    shift
+    export LABEL=$1$FUZZING_ENGINE
+else
+    . /usr/local/sbin/e
+    export LABEL=$1
+fi
+export PROJECT_NAME=json
+export SANITIZER=$1
+if [ -z "$SANITIZER" ]; then
+    export SANITIZER='none'
+    export LABEL='none'$LABEL
+fi
+
+if [ ! -d "/src-orig" ]; then
+    #RUN apt-get update && apt-get install -y cmake
+    #rm -rf $PROJECT_NAME
+    #git clone --depth 1 -b develop https://github.com/nlohmann/json.git
+    cp -r /opt/fuzz-targets/cjson $SRC
+
+    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/newfuzzer.cpp
+
+    echo Please wait, creating /src-orig
+    chown -hR hacker:hacker $SRC
+    mv /src /src-orig
+fi
+if [ ! -d "/src-$LABEL" ]; then
+    echo Please wait, creating /src-$LABEL
+    cp -r /src-orig /src-$LABEL
+fi
+mv /src-$LABEL /src
+
+cd $SRC/$PROJECT_NAME
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/* /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
+else
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+fi
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
+sudo --preserve-env compile
+drivers
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+mv /src /src-$LABEL
