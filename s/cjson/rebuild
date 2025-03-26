@@ -23,7 +23,8 @@ elif [ "$LABEL" = "thread" ]; then
 fi
 set -x
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/misc/fuzz
+cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 mv $SRC /src
 
 cd /src/$PROJECT_NAME/
