@@ -21,8 +21,7 @@ if [ ! -d "/src-orig" ]; then
     cp -r /opt/fuzz-targets/cjson $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-    
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+
     patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/newfuzzer.cpp
 
