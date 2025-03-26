@@ -36,7 +36,7 @@ fi
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
-rm -rf build
+rm -rf $SRC/$PROJECT_NAME/build
 
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -50,7 +50,6 @@ fi
 mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
 sudo --preserve-env compile
-fuzzing/ossfuzz.sh
 drivers
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
 mv /src /src-$LABEL
