@@ -36,6 +36,8 @@ fi
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+fuzzing/ossfuzz.sh
+
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp -r $SRC/$PROJECT_NAME/fuzzing/* /home/hacker/fuzz-dojo/$PROJECT_NAME
