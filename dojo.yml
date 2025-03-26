@@ -2,7 +2,7 @@ id: fuzz
 
 name: Fuzz Dojo
 
-image: stevenwirsz/fuzz-base:latest
+image: stevenwirsz/fuzz-dojo:latest
 
 description: |
 
