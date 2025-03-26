@@ -132,6 +132,10 @@ modules:
       - name: "New Fuzz Driver Creation"
         type: lecture
         video: 11fxFrOOLJ0
+              
+      - name: "BZIP2: Case Study extending 62% Static Code Coverage to 92%"
+        type: lecture
+        video: LRpm2kd9vQI
 
   - id: s
     name: Simple Fuzz Drivers
