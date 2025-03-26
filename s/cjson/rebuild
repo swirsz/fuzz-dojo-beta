@@ -21,18 +21,21 @@ elif [ "$LABEL" = "undefined" ]; then
 elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
-set -ex
+set -x
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/misc/fuzz
+mv $SRC /src
 
-cd $SRC/$PROJECT_NAME/
+cd /src/$PROJECT_NAME/
 
-$CXX $CXXFLAGS $SRC/cjson/fuzzing/cjson_read_fuzzer.c -I. \
+$CXX $CXXFLAGS /src/cjson/fuzzing/cjson_read_fuzzer.c -I. \
     -o $OUT/cjson_read_fuzzer \
-    $LIB_FUZZING_ENGINE $SRC/cjson/build/libcjson.a -pthreads
+    $LIB_FUZZING_ENGINE /src/cjson/build/libcjson.a -pthreads
 
-$CXX $CXXFLAGS $SRC/cjson/fuzzing/newfuzzer.c -I. \
+$CXX $CXXFLAGS /src/cjson/fuzzing/newfuzzer.c -I. \
     -o $OUT/newfuzzer \
-    $LIB_FUZZING_ENGINE $SRC/cjson/build/libcjson.a -pthreads
+    $LIB_FUZZING_ENGINE /src/cjson/build/libcjson.a -pthreads
 
+cd
+mv /src $SRC
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
