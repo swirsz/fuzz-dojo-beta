@@ -7,10 +7,10 @@ if [ "$?" -gt 0 ]; then
 fi
 DRIVERS=(/src/inspector/*.covreport)
 
-sudo rm -rf /out/introspector-report
-sudo mkdir -p /out/introspector-report
-sudo mv /out/inspector /out/introspector-report/inspector
-sudo mv /out/report /out/introspector-report/inspector/covreport
+rm -rf /out/introspector-report
+mkdir -p /out/introspector-report
+mv /out/inspector /out/introspector-report/inspector
+mv /out/report /out/introspector-report/inspector/covreport
 
 # fix delays caused by internet references to unpkg.com & googletagmanager.com
 patch -tuN /out/introspector-report/inspector/fuzz_report.html -i /usr/local/sbin/fuzz_report.patch -r -

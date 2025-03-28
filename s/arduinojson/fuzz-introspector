@@ -5,12 +5,12 @@ export PROJECT_NAME=$1
 if [ "$?" -gt 0 ]; then
 	    exit 1
 fi
-DRIVERS=(/src/inspector/*.covreport)
+DRIVERS=(/out/textcov_reports/*.covreport)
 
-sudo rm -rf /out/introspector-report
-sudo mkdir -p /out/introspector-report
-sudo mv /out/inspector /out/introspector-report/inspector
-sudo mv /out/report /out/introspector-report/inspector/covreport
+rm -rf /out/introspector-report
+mkdir -p /out/introspector-report
+mv /out/inspector /out/introspector-report/inspector
+mv /out/report /out/introspector-report/inspector/covreport
 
 # fix delays caused by internet references to unpkg.com & googletagmanager.com
 patch -tuN /out/introspector-report/inspector/fuzz_report.html -i /usr/local/sbin/fuzz_report.patch -r -

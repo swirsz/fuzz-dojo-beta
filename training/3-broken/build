@@ -47,7 +47,7 @@ fi
 #patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
 mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-broken /home/hacker/fuzz-dojo/training-broken
-sudo --preserve-env compile
+compile
 drivers
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
 mv /src /src-$LABEL

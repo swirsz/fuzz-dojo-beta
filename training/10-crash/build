@@ -46,7 +46,7 @@ fi
 #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-crashes /home/hacker/fuzz-dojo/training-crashes
-sudo --preserve-env compile
+compile
 drivers
 chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
 mv /src /src-$LABEL

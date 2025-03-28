@@ -31,11 +31,11 @@ cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk /usr/local/lib/
 
 for driver in "${DRIVERS[@]}"
 do
-    sudo rm -rf /corpus/$driver
-    sudo mv /tmp/${driver}_corpus /corpus/$driver
+    rm -rf /corpus/$driver
+    mv /tmp/${driver}_corpus /corpus/$driver
 done
 
-sudo --preserve-env coverage
+coverage
 
 for f in /out/report_target/*; do cp -r $f /out/report/$(basename $f); done
 
