@@ -113,6 +113,11 @@ modules:
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
     resources:
+    
+      - name: "pwn.college - Getting Started"
+        type: lecture
+        video: DJO1A2neZ6Y
+        
       - name: "Fuzzing: Introduction"
         type: lecture
         video: K_2DAo5pPQQ
