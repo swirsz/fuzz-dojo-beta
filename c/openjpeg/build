@@ -19,8 +19,8 @@ if [ ! -d "/src-orig" ]; then
     rm -rf $SRC/openjpeg/data
     rm -rf $SRC/openjpeg/build
     #git clone --depth 1 https://github.com/uclouvain/openjpeg
-    cp -r /opt/fuzz-targets/openjpeg $SRC
-    cp -r /opt/fuzz-targets/data $SRC
+    cp -r /downloads/openjpeg $SRC
+    cp -r /downloads/data $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/tests/fuzzers/opj_decompress_fuzzer_J2K.cpp $SRC/$PROJECT_NAME/tests/fuzzers/newfuzzer.cpp

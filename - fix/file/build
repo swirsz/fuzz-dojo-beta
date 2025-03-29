@@ -25,9 +25,9 @@ rm -rf pocs
 #git clone --depth 1 https://github.com/DavidKorczynski/binary-samples.git
 #git clone --depth 1 https://github.com/corkami/pocs
 
-cp -r /opt/fuzz-targets/file $SRC
-cp -r /opt/fuzz-targets/binary-samples $SRC
-cp -r /opt/fuzz-targets/pocs $SRC
+cp -r /downloads/file $SRC
+cp -r /downloads/binary-samples $SRC
+cp -r /downloads/pocs $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/fuzzer_temp_file.h $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/magic_fuzzer.cc $SRC/

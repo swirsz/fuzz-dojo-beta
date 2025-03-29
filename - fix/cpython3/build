@@ -16,7 +16,7 @@ cd $SRC
 #	libc6-dev libsqlite3-dev tk-dev libbz2-dev zlib1g-dev libffi-dev
 
 #git clone https://github.com/python/cpython.git cpython3
-cp -r /opt/fuzz-targets/cpython3 $SRC
+cp -r /downloads/cpython3 $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

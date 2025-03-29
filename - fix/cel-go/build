@@ -13,12 +13,12 @@ export SANITIZER=$1
 cd $SRC
 
 #clone --depth 1 https://github.com/google/cel-go
-cp -r /opt/fuzz-targets/cel-go $SRC
+cp -r /downloads/cel-go $SRC
 
 #apt-get update && apt-get install -y protobuf-compiler libprotobuf-dev binutils cmake \
 #   ninja-build liblzma-dev libz-dev pkg-config autoconf libtool
 #git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
-cp -r /opt/fuzz-targets/libprotobuf-mutator $SRC
+cp -r /downloads/libprotobuf-mutator $SRC
 
 mkdir LPM; \
   cd LPM; \
@@ -26,7 +26,7 @@ mkdir LPM; \
   ninja;
 
 #git clone --depth 1 https://github.com/mdempsky/go114-fuzz-build.git
-cp -r /opt/fuzz-targets/go114-fuzz-build $SRC
+cp -r /downloads/go114-fuzz-build $SRC
 
 
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest

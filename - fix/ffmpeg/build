@@ -46,18 +46,18 @@ rm -rf $SRC/libxml2
 #git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
 #git clone --depth 1 https://gitlab.gnome.org/GNOME/libxml2.git
 
-cp /opt/fuzz-targets/automake_1.16.5-1.3_all.deb $SRC
-cp -r /opt/fuzz-targets/ffmpeg $SRC
-cp /opt/fuzz-targets/alsa-lib-1.1.0.tar.bz2 $SRC
-cp -r /opt/fuzz-targets/fdk-aac $SRC
-cp -r /opt/fuzz-targets/libva $SRC
-cp -r /opt/fuzz-targets/libvpx $SRC
-cp -r /opt/fuzz-targets/ogg $SRC
-cp -r /opt/fuzz-targets/opus $SRC
-cp -r /opt/fuzz-targets/theora $SRC
-cp -r /opt/fuzz-targets/vorbis $SRC
-cp -r /opt/fuzz-targets/libxml2 $SRC
-cp -r /opt/fuzz-targets/libvdpau $SRC
+cp /downloads/automake_1.16.5-1.3_all.deb $SRC
+cp -r /downloads/ffmpeg $SRC
+cp /downloads/alsa-lib-1.1.0.tar.bz2 $SRC
+cp -r /downloads/fdk-aac $SRC
+cp -r /downloads/libva $SRC
+cp -r /downloads/libvpx $SRC
+cp -r /downloads/ogg $SRC
+cp -r /downloads/opus $SRC
+cp -r /downloads/theora $SRC
+cp -r /downloads/vorbis $SRC
+cp -r /downloads/libxml2 $SRC
+cp -r /downloads/libvdpau $SRC
 
 apt install ./automake_1.16.5-1.3_all.deb
 

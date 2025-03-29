@@ -19,13 +19,13 @@ if [ ! -d "/src-orig" ]; then
 
     # install libsrtp dep from source
     #git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
-    cp -r /opt/fuzz-targets/libsrtp $SRC
+    cp -r /downloads/libsrtp $SRC
 
     cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
     cd $SRC/
     # fetch Janus code
     # git clone --single-branch https://github.com/swirsz/janus-gateway.git
-    cp -r /opt/fuzz-targets/janus-gateway $SRC
+    cp -r /downloads/janus-gateway $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c

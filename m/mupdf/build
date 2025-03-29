@@ -21,14 +21,14 @@ fi
 
     #git clone --recursive --depth 1 git://git.ghostscript.com/mupdf.git mupdf
     #git clone --depth 1 https://github.com/mozilla/pdf.js pdf.js 
-    cp -r /opt/fuzz-targets/mupdf $SRC
-    cp -r /opt/fuzz-targets/pdf.js $SRC
+    cp -r /downloads/mupdf $SRC
+    cp -r /downloads/pdf.js $SRC
 
     zip -q $SRC/pdf_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf
     zip -q $SRC/new_fuzzer_seed_corpus.zip pdf.js/test/pdfs/*.pdf && rm -rf pdf.js
 
     #wget https://raw.githubusercontent.com/rc0r/afl-fuzz/master/dictionaries/pdf.dict
-    cp /opt/fuzz-targets/pdf.dict $SRC
+    cp /downloads/pdf.dict $SRC
     cp pdf.dict new_fuzzer.dict
     mv pdf.dict pdf_fuzzer.dict
 

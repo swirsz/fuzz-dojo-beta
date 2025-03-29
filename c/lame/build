@@ -23,15 +23,15 @@ if [ ! -d "/src-orig" ]; then
 
     # ubuntu apt has not recent enough mpg123
     #wget https://www.mpg123.de/snapshot
-    cp /opt/fuzz-targets/snapshot/* $SRC
+    cp /downloads/snapshot/* $SRC
     tar -xvf snapshot
     mv mpg123* mpg123
 
     #git clone --depth 1 https://github.com/guidovranken/LAME-fuzzers
-    cp -r /opt/fuzz-targets/LAME-fuzzers $SRC
+    cp -r /downloads/LAME-fuzzers $SRC
 
     #svn checkout https://svn.code.sf.net/p/lame/svn/trunk/lame $SRC/lame
-    cp -r /opt/fuzz-targets/lame $SRC
+    cp -r /downloads/lame $SRC
 
     # This is to fix Fuzz Introspector build by using LLVM old pass manager
     # re https://github.com/ossf/fuzz-introspector/issues/305

@@ -18,7 +18,7 @@ if [ ! -d "/src-orig" ]; then
     cd $SRC
     #rm -rf $SRC/$PROJECT_NAME
     #git clone https://github.com/haproxy/haproxy
-    cp -r /opt/fuzz-targets/haproxy $SRC
+    cp -r /downloads/haproxy $SRC
     
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/fuzz* $SRC
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC

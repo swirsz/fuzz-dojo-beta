@@ -17,7 +17,7 @@ fi
 if [ ! -d "/src-orig" ]; then
     rm -rf $SRC/$PROJECT_NAME
     #git clone https://github.com/danmar/cppcheck.git
-    cp -r /opt/fuzz-targets/cppcheck $SRC/
+    cp -r /downloads/cppcheck $SRC/
 
     # This is to fix Fuzz Introspector build by using LLVM old pass manager
     # re https://github.com/ossf/fuzz-introspector/issues/305

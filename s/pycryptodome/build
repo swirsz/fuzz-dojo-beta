@@ -18,7 +18,7 @@ if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make autoconf automake libtool
     #rm -rf $SRC/$PROJECT_NAME
     #git clone https://github.com/Legrandin/pycryptodome.git
-    cp -r /opt/fuzz-targets/pycryptodome $SRC
+    cp -r /downloads/pycryptodome $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*_fuzzer.cc $SRC/
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/block_common.patch $SRC/pycryptodome$SRC

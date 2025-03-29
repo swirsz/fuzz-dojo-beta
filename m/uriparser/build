@@ -18,7 +18,7 @@ if [ ! -d "/src-orig" ]; then
     rm -rf uriparser
     #apt-get update && apt-get install -y make autoconf automake wget sudo libtool cmake
     #git clone --depth 1 https://github.com/uriparser/uriparser uriparser
-    cp -r /opt/fuzz-targets/$PROJECT_NAME $SRC
+    cp -r /downloads/$PROJECT_NAME $SRC
 
     #cp /opt/oss-fuzz-new/projects/*.cc $SRC/
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/

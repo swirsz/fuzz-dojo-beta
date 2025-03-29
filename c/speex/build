@@ -19,8 +19,8 @@ if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make autoconf libtool pkg-config wget
     #git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
     #git clone --depth 1 https://gitlab.xiph.org/xiph/speex.git speex
-    cp -r /opt/fuzz-targets/ogg $SRC
-    cp -r /opt/fuzz-targets/speex $SRC
+    cp -r /downloads/ogg $SRC
+    cp -r /downloads/speex $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/speexdec_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/new_fuzzer.cc

@@ -18,7 +18,7 @@ if [ ! -d "/src-orig" ]; then
     #apt-get update && \
     #   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
     #git clone --depth 1 https://github.com/lathiat/avahi
-    cp -r /opt/fuzz-targets/avahi $SRC
+    cp -r /downloads/avahi $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip

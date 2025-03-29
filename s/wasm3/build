@@ -17,7 +17,7 @@ fi
 if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make
     #git clone --depth 1 https://github.com/wasm3/wasm3
-    cp -r /opt/fuzz-targets/wasm3 $SRC
+    cp -r /downloads/wasm3 $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/wasm3/platforms/app_fuzz/fuzzer.c $SRC/wasm3/platforms/app_fuzz/newfuzzer.c

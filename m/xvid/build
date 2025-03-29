@@ -20,9 +20,9 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 https://github.com/guidovranken/fuzzing-headers.git
     #git clone --depth 1 https://github.com/guidovranken/oss-fuzz-fuzzers.git
 
-    cp -r /opt/fuzz-targets/trunk $SRC
-    cp -r /opt/fuzz-targets/fuzzing-headers $SRC
-    cp -r /opt/fuzz-targets/oss-fuzz-fuzzers $SRC
+    cp -r /downloads/trunk $SRC
+    cp -r /downloads/fuzzing-headers $SRC
+    cp -r /downloads/oss-fuzz-fuzzers $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/oss-fuzz-fuzzers/xvid/fuzzer.cpp $SRC/oss-fuzz-fuzzers/xvid/newfuzzer.cpp

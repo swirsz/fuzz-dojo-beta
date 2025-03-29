@@ -19,7 +19,7 @@ if [ ! -d "/src-orig" ]; then
 
     #apt-get -y install automake libtool libssl-dev zlib1g-dev
     #git clone --depth 1 https://github.com/libssh2/libssh2.git $SRC/libssh2
-    cp -r /opt/fuzz-targets/libssh2 $SRC
+    cp -r /downloads/libssh2 $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/tests/ossfuzz/ssh2_client_fuzzer.cc $SRC/$PROJECT_NAME/tests/ossfuzz/new_fuzzer.cc

@@ -19,7 +19,7 @@ if [ ! -d "/src-orig" ]; then
 
     #git clone --branch master  https://github.com/igraph/igraph
 
-    cp -r /opt/fuzz-targets/igraph $SRC
+    cp -r /downloads/igraph $SRC
     cp $SRC/$PROJECT_NAME/fuzzing/build.sh $SRC/
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
@@ -36,8 +36,8 @@ rm -rf $SRC/igraph
 rm -rf $SRC/libxml2-2.13.6
 rm -rf $SRC/deps
 
-cp -r /opt/fuzz-targets/igraph $SRC
-cp /opt/fuzz-targets/libxml2-2.13.6.tar.xz $SRC
+cp -r /downloads/igraph $SRC
+cp /downloads/libxml2-2.13.6.tar.xz $SRC
 patch -tuN $SRC/igraph/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 cp $SRC/$PROJECT_NAME/fuzzing/write_all_gml.cpp $SRC/$PROJECT_NAME/fuzzing/newfuzzer.cpp
 

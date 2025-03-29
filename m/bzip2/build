@@ -20,8 +20,8 @@ if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make autoconf automake libtool wget
     #git clone git://sourceware.org/git/bzip2.git
     #git clone git://sourceware.org/git/bzip2-tests.git
-    cp -r /opt/fuzz-targets/bzip2 $SRC
-    cp -r /opt/fuzz-targets/bzip2-tests $SRC
+    cp -r /downloads/bzip2 $SRC
+    cp -r /downloads/bzip2-tests $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.c $SRC/

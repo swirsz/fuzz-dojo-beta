@@ -20,8 +20,8 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
     #git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
     cd $SRC
-    cp -r /opt/fuzz-targets/ogg $SRC
-    cp -r /opt/fuzz-targets/vorbis $SRC
+    cp -r /downloads/ogg $SRC
+    cp -r /downloads/vorbis $SRC
 
     corpus-replicator -o decode_corpus audio_vorbis_ogg_libvorbis.yml audio
     # TODO: remove `people.xiph.org` lines once upstream build script is updated

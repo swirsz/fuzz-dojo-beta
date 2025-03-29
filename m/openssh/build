@@ -21,8 +21,8 @@ fi
     #apt-get install -y libz-dev libssl1.1 libssl-dev libedit-dev zip
     #git clone --depth 1 https://github.com/openssh/openssh-portable openssh
     #git clone --depth 1 https://github.com/djmdjm/openssh-fuzz-cases
-    cp -r /opt/fuzz-targets/openssh $SRC
-    cp -r /opt/fuzz-targets/openssh-fuzz-cases $SRC
+    cp -r /downloads/openssh $SRC
+    cp -r /downloads/openssh-fuzz-cases $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/agent_fuzz.cc $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/newfuzzer.cc

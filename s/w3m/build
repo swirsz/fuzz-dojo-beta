@@ -17,7 +17,7 @@ fi
 if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y libgc-dev
     #git clone https://github.com/tats/w3m
-    cp -r /opt/fuzz-targets/w3m $SRC
+    cp -r /downloads/w3m $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 

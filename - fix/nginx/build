@@ -18,12 +18,12 @@ rm -rf nginx
 #git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
 #git clone --depth 1 https://github.com/google/fuzzer-test-suite
 
-cp -r /opt/fuzz-targets/nginx $SRC/
-cp -r /opt/fuzz-targets/libprotobuf-mutator $SRC/
-cp -r /opt/fuzz-targets/fuzzer-test-suite $SRC/
+cp -r /downloads/nginx $SRC/
+cp -r /downloads/libprotobuf-mutator $SRC/
+cp -r /downloads/fuzzer-test-suite $SRC/
 
 
-cp -r /opt/fuzz-targets/LPM $SRC/
+cp -r /downloads/LPM $SRC/
 
 mkdir LPM && cd LPM && cmake ../libprotobuf-mutator -GNinja -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF -DCMAKE_BUILD_TYPE=Release && ninja && cd $SRC
 

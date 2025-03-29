@@ -18,7 +18,7 @@ rm -rf $SRC/core
 #    liblmdb-dev libpam0g-dev flex libtool
 
 #git clone --depth 1 https://github.com/cfengine/core --recursive
-cp -r /opt/fuzz-targets/core $SRC
+cp -r /downloads/core $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/string_fuzzer.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/

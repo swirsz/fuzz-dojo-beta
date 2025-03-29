@@ -22,12 +22,12 @@ cd $SRC
 #wget https://raw.githubusercontent.com/google/AFL/debe27037b9444bbf090a0ffbd5d24889bb887ae/dictionaries/tiff.dict
 
 
-cp -r /opt/fuzz-targets/libtiff $SRC
-cp -r /opt/fuzz-targets/zlib $SRC
-cp -r /opt/fuzz-targets/libjpeg-turbo $SRC
-cp -r /opt/fuzz-targets/jbigkit $SRC
-cp -r /opt/fuzz-targets/afl-testcases $SRC
-cp -r /opt/fuzz-targets/tiff.dict $SRC
+cp -r /downloads/libtiff $SRC
+cp -r /downloads/zlib $SRC
+cp -r /downloads/libjpeg-turbo $SRC
+cp -r /downloads/jbigkit $SRC
+cp -r /downloads/afl-testcases $SRC
+cp -r /downloads/tiff.dict $SRC
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

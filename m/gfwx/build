@@ -22,7 +22,7 @@ if [ ! -d "/src-orig" ]; then
     rm -rf $SRC/$PROJECT_NAME
     #apt-get update && apt-get install -y make autoconf automake libtool
     #git clone --depth 1 https://github.com/guidovranken/gfwx-fuzzers.git gfwx
-    cp -r /opt/fuzz-targets/gfwx $SRC
+    cp -r /downloads/gfwx $SRC
     mv -f $SRC/tmp/* $SRC/gfwx
     rmdir $SRC/tmp
 

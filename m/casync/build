@@ -20,7 +20,7 @@ if [ ! -d "/src-orig" ]; then
     #        zlib1g-dev libacl1-dev libfuse-dev rsync udev 
     #    pip3 install meson ninja
     #git clone --depth 1 https://github.com/systemd/casync casync
-    cp -r /opt/fuzz-targets/casync $SRC
+    cp -r /downloads/casync $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC
 

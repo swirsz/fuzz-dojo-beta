@@ -18,8 +18,8 @@ rm -rf $SRC/zlib
 # libpcre3-dev libsvn-perl perl-modules libyaml-perl libz-dev python subversion tcl unzip asciidoc docbook-xsl xmlto libssl-dev zip
 
 #git clone https://github.com/git/git git
-cp -r /opt/fuzz-targets/git $SRC/
-cp -r /opt/fuzz-targets/zlib $SRC/
+cp -r /downloads/git $SRC/
+cp -r /downloads/zlib $SRC/
 cd $SRC/$PROJECT_NAME
 #git checkout origin/next
 #git pull origin next

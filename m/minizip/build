@@ -17,7 +17,7 @@ fi
 if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
     #git clone -b develop https://github.com/zlib-ng/minizip-ng minizip
-    cp -r /opt/fuzz-targets/minizip $SRC
+    cp -r /downloads/minizip $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 

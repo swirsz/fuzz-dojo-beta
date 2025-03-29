@@ -20,11 +20,11 @@ rm -rf $SRC/openssl
 rm -rf $SRC/zlib
 #git clone --depth 1 https://github.com/curl/curl.git $SRC/$PROJECT_NAME
 #git clone --depth 1 https://github.com/curl/curl-fuzzer.git $SRC/curl_fuzzer
-cp -r /opt/fuzz-targets/curl $SRC
-cp -r /opt/fuzz-targets/curl_fuzzer $SRC
-cp -r /opt/fuzz-targets/zlib $SRC
-cp -r /opt/fuzz-targets/openssl32 $SRC/openssl
-cp -r /opt/fuzz-targets/nghttp2 $SRC
+cp -r /downloads/curl $SRC
+cp -r /downloads/curl_fuzzer $SRC
+cp -r /downloads/zlib $SRC
+cp -r /downloads/openssl32 $SRC/openssl
+cp -r /downloads/nghttp2 $SRC
 # Use curl-fuzzer's scripts to get latest dependencies.
 #$SRC/curl_fuzzer/scripts/ossfuzz.sh
 

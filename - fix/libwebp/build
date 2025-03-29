@@ -20,9 +20,9 @@ rm -rf $SRC/libwebp-test-data
 #git clone https://chromium.googlesource.com/webm/libwebp-test-data
 #wget https://storage.googleapis.com/downloads.webmproject.org/webp/testdata/fuzzer/fuzz_seed_corpus.zip
 
-cp -r /opt/fuzz-targets/libwebp $SRC
-cp -r /opt/fuzz-targets/libwebp-test-data $SRC
-cp -r /opt/fuzz-targets/fuzz_seed_corpus.zip $SRC
+cp -r /downloads/libwebp $SRC
+cp -r /downloads/libwebp-test-data $SRC
+cp -r /downloads/fuzz_seed_corpus.zip $SRC
 
 unzip fuzz_seed_corpus.zip -d libwebp-test-data/
 rm fuzz_seed_corpus.zip

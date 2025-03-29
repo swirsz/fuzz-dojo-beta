@@ -21,8 +21,8 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 https://github.com/madler/zlib.git
     #git clone --depth 1 https://github.com/pnggroup/libpng.git
 
-    cp -r /opt/fuzz-targets/zlib $SRC
-    cp -r /opt/fuzz-targets/libpng $SRC
+    cp -r /downloads/zlib $SRC
+    cp -r /downloads/libpng $SRC
 
     cp $SRC/libpng/contrib/oss-fuzz/build.sh $SRC
 

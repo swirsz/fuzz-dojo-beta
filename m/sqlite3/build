@@ -22,7 +22,7 @@ if [ ! -d "/src-orig" ]; then
     # only once a day.
     mkdir $SRC/sqlite3 && \
         cd $SRC/sqlite3 && \
-        cp -r /opt/fuzz-targets/sqlite3.tar.gz $SRC/sqlite3 && \
+        cp -r /downloads/sqlite3.tar.gz $SRC/sqlite3 && \
         tar xzf sqlite3.tar.gz
         #curl 'https://www.sqlite.org$SRC/tarball?uuid=trunk' -o sqlite3.tar.gz && \
         #tar xzf sqlite3.tar.gz

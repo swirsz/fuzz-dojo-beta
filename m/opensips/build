@@ -17,7 +17,7 @@ fi
 if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y bison flex libssl-dev pkg-config
     #git clone https://github.com/OpenSIPS/opensips
-    cp -r /opt/fuzz-targets/opensips $SRC
+    cp -r /downloads/opensips $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/test/fuzz/fuzz_core_funcs.c $SRC/$PROJECT_NAME/test/fuzz/fuzz_newfuzzer.c

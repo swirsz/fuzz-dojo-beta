@@ -19,7 +19,7 @@ if [ ! -d "/src-orig" ]; then
 
     rm -rf $PROJECT_NAME
     #git clone --depth 1 https://github.com/tristanpenman/valijson
-    cp -r /opt/fuzz-targets/valijson $SRC
+    cp -r /downloads/valijson $SRC
 
     cp $SRC/$PROJECT_NAME/tests/fuzzing/oss-fuzz-build.sh $SRC/build.sh
     # This is to fix Fuzz Introspector build by using LLVM old pass manager

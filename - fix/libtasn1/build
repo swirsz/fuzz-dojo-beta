@@ -20,8 +20,8 @@ rm -rf $SRC/gnulib
 export GNULIB_TOOL=$SRC/gnulib/gnulib-tool
 export GNULIB_SRCDIR=$SRC/gnulib
 #git clone https://gitlab.com/gnutls/libtasn1.git
-cp -r /opt/fuzz-targets/gnulib $SRC
-cp -r /opt/fuzz-targets/libtasn1 $SRC
+cp -r /downloads/gnulib $SRC
+cp -r /downloads/libtasn1 $SRC
 
 cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 

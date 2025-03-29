@@ -33,9 +33,9 @@ cd $SRC
 #    git submodule update --init fuzz/corpora
 
 
-cp -r /opt/fuzz-targets/mbedtls $SRC/
-cp -r /opt/fuzz-targets/boringssl $SRC/
-cp -r /opt/fuzz-targets/openssl $SRC/
+cp -r /downloads/mbedtls $SRC/
+cp -r /downloads/boringssl $SRC/
+cp -r /downloads/openssl $SRC/
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 

@@ -23,7 +23,7 @@ if [ ! -d "/src-orig" ]; then
     mkdir -p /work && chmod a+rwx /work
 
     #git clone https://github.com/libevent/libevent.git
-    cp -r /opt/fuzz-targets/libevent $SRC
+    cp -r /downloads/libevent $SRC
     cd libevent && \
     mkdir build && \
     cd build && \
@@ -32,8 +32,8 @@ if [ ! -d "/src-orig" ]; then
     
     #git clone --depth 1 https://github.com/tmux/tmux.git
     #git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
-    cp -r /opt/fuzz-targets/tmux $SRC
-    cp -r /opt/fuzz-targets/tmux-fuzzing-corpus $SRC
+    cp -r /downloads/tmux $SRC
+    cp -r /downloads/tmux-fuzzing-corpus $SRC
 
     cp -r $SRC /out
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/

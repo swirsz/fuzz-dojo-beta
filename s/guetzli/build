@@ -20,12 +20,12 @@ if [ ! -d "/src-orig" ]; then
     #mkdir afl-testcases
     #cd afl-testcases/ && curl https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz | tar -xz
     cd $SRC
-    cp -r /opt/fuzz-targets/afl-testcases $SRC
+    cp -r /downloads/afl-testcases $SRC
 
     zip guetzli_fuzzer_seed_corpus.zip afl-testcases/jpeg/full/images/* afl-testcases/jpeg_turbo/full/images/*
 
     #git clone --depth=1 https://github.com/google/guetzli 
-    cp -r /opt/fuzz-targets/guetzli $SRC
+    cp -r /downloads/guetzli $SRC
 
     cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
