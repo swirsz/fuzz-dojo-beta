@@ -1,12 +1,6 @@
 #!/opt/pwn.college/bash
-if [ "$1" = "afl" ]; then
-    . /usr/local/sbin/eafl
-    shift
-    export LABEL=$1$FUZZING_ENGINE
-else
-    . /usr/local/sbin/e
-    export LABEL=$1
-fi
+. /usr/local/sbin/e
+export LABEL=$1
 export PROJECT_NAME=guetzli
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
@@ -52,9 +46,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
-mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME
+fuzzlog
 compile
 drivers
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
 mv /src /src-$LABEL
