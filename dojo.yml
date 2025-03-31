@@ -18,7 +18,7 @@ description: |
 
   Useful commands:
 
-  `/challenge/build (sanitizer)` Run this first.  Compiles oss-fuzz project currently configured. Copies fuzz driver source code into `/home/hacker/fuzz-dojo/(project)` Project Source code is placed in: `/src-orig` - working code will be stored in /src-{sanitizer} such as `/src-none, /src-address, /src-memory /src-undefined and /src-thread` Fuzz drivers: `/out`
+  `/challenge/build (sanitizer)` Run this first.  Compiles oss-fuzz project currently configured. Copies fuzz driver source code into `/home/hacker/fuzz-dojo/(project)` Project Source code is placed in: `/src-orig` - working code will be stored in `/src-{sanitizer}` such as `/src-none, /src-address, /src-memory /src-undefined and /src-thread` Fuzz drivers: `/out`
   
   - `(sanitizer)` is an OPTIONAL value of `none` (Default) `address memory undefined thread coverage` or `inspector`
   
