@@ -1,5 +1,5 @@
 #!/opt/pwn.college/bash
-if [ "$(ls -A /out)" ]; then
+if [ ! "$(ls -A /out)" ]; then
     echo "Run /challenge/build first"
 else
 . /usr/local/sbin/e
