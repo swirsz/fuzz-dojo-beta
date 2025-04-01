@@ -153,7 +153,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=arduinojson
 
       - id: avahi
-        name: AVAHI - 2566 loc 74%-76%-81% - 2 min
+        name: AVAHI - 2566 loc 72%-76%-81% - 2 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=avahi
 
       - id: cjson
@@ -161,7 +161,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cjson
 
       - id: elfutils
-        name: ELFUTILS - 31383 loc 14%-26%-40% - 2.5 min
+        name: ELFUTILS - 31383 loc 9%-26%-40% - 2.5 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=elfutils
 
       - id: example
@@ -169,7 +169,7 @@ modules:
         description: Sample OSS-Fuzz project
 
       - id: exiv2
-        name: EXIV2 - 34282 loc 11%-54%-1% - 1 min
+        name: EXIV2 - 34282 loc 10%-54%-1% - 1 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
 
       - id: guetzli
