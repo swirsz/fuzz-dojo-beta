@@ -53,6 +53,4 @@ fi
 fuzzlog
 compile
 drivers
-rm -f /home/hacker/fuzz-dojo/$PROJECT_NAME-src
-ln -s /src-$LABEL/$PROJECT_NAME /home/hacker/fuzz-dojo/$PROJECT_NAME-src
 mv /src /src-$LABEL
