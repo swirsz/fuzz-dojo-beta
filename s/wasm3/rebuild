@@ -1,7 +1,4 @@
 #!/opt/pwn.college/bash
-if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ]; then
-    echo "Run /challenge/build first"
-else
 . /usr/local/sbin/e
 LABEL=$1
 PROJECT_NAME=wasm3
@@ -12,6 +9,9 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 SRC=/src-$LABEL
+if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ] || [ ! -d "$SRC" ]; then
+    echo "Run /challenge/build first"
+else 
 
 if [ "$LABEL" = "none" ]; then
     FLAGS=""
