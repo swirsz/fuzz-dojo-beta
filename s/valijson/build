@@ -23,7 +23,7 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/build.sh -i /challenge/.build2.patch -r -
     echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | sudo xargs -n 100 -P 8 chown hacker:hacker
+    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
     mv /src /src-orig
 fi
 if [ ! -d "/src-$LABEL" ]; then

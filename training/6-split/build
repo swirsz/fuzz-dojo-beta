@@ -31,7 +31,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
 
     echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | sudo xargs -n 100 -P 8 chown hacker:hacker
+    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
     mv /src /src-orig
 fi
 if [ ! -d "/src-$LABEL" ]; then
@@ -54,5 +54,5 @@ mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-split /home/hacker/fuzz-dojo/training-split
 compile
 drivers
-find $SRC -not -user hacker -print | sudo xargs -n 100 -P 8 chown hacker:hacker /home/hacker/fuzz-dojo /home/hacker/.log /out
+find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker /home/hacker/fuzz-dojo /home/hacker/.log /out
 mv /src /src-$LABEL
