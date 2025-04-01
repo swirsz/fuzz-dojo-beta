@@ -1,11 +1,11 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
-LABEL=$1
-PROJECT_NAME=gfwx
+export LABEL=$1
+export PROJECT_NAME=gfwx
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
-    LABEL='none'
+    export LABEL='none'
 fi
 
 SRC=/src-$LABEL
