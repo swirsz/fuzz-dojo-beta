@@ -21,7 +21,7 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     patch -tuN $SRC/$PROJECT_NAME/tests/ossfuzz/Makefile.am -i /challenge/.Makefile.patch -r -
     echo Please wait, creating /src-orig
-    chown -hR hacker:hacker $SRC
+    find $SRC -not -user hacker -print | sudo xargs -n 100 -P 8 chown hacker:hacker
     mv /src /src-orig
 fi
 if [ ! -d "/src-$LABEL" ]; then

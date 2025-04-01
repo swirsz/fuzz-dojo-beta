@@ -26,7 +26,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/fuzzer-decoder_seed_corpus.zip $SRC/$PROJECT_NAME/newfuzzer_seed_corpus.zip
    
     echo Please wait, creating /src-orig
-    chown -hR hacker:hacker $SRC
+    find $SRC -not -user hacker -print | sudo xargs -n 100 -P 8 chown hacker:hacker
     mv /src /src-orig
 fi
 if [ ! -d "/src-$LABEL" ]; then

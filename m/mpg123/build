@@ -22,7 +22,7 @@ cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
 
 cp $SRC/decode_fuzzer.cc $SRC/new_fuzzer.cc
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+find $SRC -not -user hacker -print | sudo xargs -n 100 -P 8 chown hacker:hacker /home/hacker/fuzz-dojo /home/hacker/.log /out
     
 cd $SRC
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then

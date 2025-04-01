@@ -37,7 +37,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.dict $SRC/$PROJECT_NAME/fuzz/new-fuzzer.dict
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.options $SRC/$PROJECT_NAME/fuzz/new-fuzzer.options
     echo Please wait, creating /src-orig
-    chown -hR hacker:hacker $SRC
+    find $SRC -not -user hacker -print | sudo xargs -n 100 -P 8 chown hacker:hacker
     mv /src /src-orig
 fi
 if [ ! -d "/src-$LABEL" ]; then

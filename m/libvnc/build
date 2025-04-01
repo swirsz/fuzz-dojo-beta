@@ -18,7 +18,7 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/libvncserver/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
     echo Please wait, creating /src-orig
-    chown -hR hacker:hacker $SRC
+    find $SRC -not -user hacker -print | sudo xargs -n 100 -P 8 chown hacker:hacker
     mv /src /src-orig
 fi
 if [ ! -d "/src-$LABEL" ]; then
