@@ -1,4 +1,7 @@
 #!/opt/pwn.college/bash
+if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ]; then
+    echo "Run /challenge/build first"
+else
 . /usr/local/sbin/e
 LABEL=$1
 PROJECT_NAME=libvpx
@@ -29,4 +32,5 @@ cd $SRC/$PROJECT_NAME
 
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -std=c++11 -DDECODER=vp9 -I$SRC/libvpx -I/work/build -Wl,--start-group -fsanitize=fuzzer $SRC/libvpx/examples/newfuzzer.cc -o /out/newfuzzer /work/build/libvpx.a -Wl,--end-group
 
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+drivers
+fi

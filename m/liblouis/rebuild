@@ -1,4 +1,7 @@
 #!/opt/pwn.college/bash
+if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ]; then
+    echo "Run /challenge/build first"
+else
 . /usr/local/sbin/e
 LABEL=$1
 PROJECT_NAME=liblouis
@@ -32,4 +35,5 @@ $CC $CFLAGS $FLAGS -pthread -c fuzz_newfuzzer.c -o fuzz_newfuzzer.o \
 $CXX $CXXFLAGS $FLAGS $LIB_FUZZING_ENGINE -pthread fuzz_newfuzzer.o \
     -o $OUT/fuzz_newfuzzer fuzz_lib.a
 
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+drivers
+fi

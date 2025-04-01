@@ -1,4 +1,7 @@
 #!/opt/pwn.college/bash
+if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ]; then
+    echo "Run /challenge/build first"
+else
 . /usr/local/sbin/e
 LABEL=$1
 PROJECT_NAME=lighttpd1.4
@@ -29,4 +32,5 @@ cd $SRC/$PROJECT_NAME/src
 
 clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -c $SRC/fuzz_new.c -I. -I../include
 
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+drivers
+fi

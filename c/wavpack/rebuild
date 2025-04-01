@@ -1,4 +1,7 @@
 #!/opt/pwn.college/bash
+if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ]; then
+    echo "Run /challenge/build first"
+else
 . /usr/local/sbin/e
 LABEL=$1
 PROJECT_NAME=wavpack
@@ -29,4 +32,5 @@ cd $SRC/$PROJECT_NAME
 
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -std=c++11 -I$SRC/wavpack/include -I$SRC/wavpack/cli $SRC/wavpack/fuzzing/newfuzzer.cc -o /out/newfuzzer -fsanitize=fuzzer $SRC/wavpack/src/.libs/libwavpack.a
 
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+drivers
+fi

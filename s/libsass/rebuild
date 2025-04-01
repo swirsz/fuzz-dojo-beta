@@ -1,4 +1,7 @@
 #!/opt/pwn.college/bash
+if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ]; then
+    echo "Run /challenge/build first"
+else
 . /usr/local/sbin/e
 LABEL=$1
 PROJECT_NAME=libsass
@@ -29,4 +32,5 @@ cd $SRC
 
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -I$SRC/libsass/include new_fuzzer.cc -fsanitize=fuzzer -o /out/new_fuzzer $SRC/libsass/lib/libsass.a
 
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+drivers
+fi

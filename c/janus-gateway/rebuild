@@ -1,4 +1,7 @@
 #!/opt/pwn.college/bash
+if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ]; then
+    echo "Run /challenge/build first"
+else
 . /usr/local/sbin/e
 LABEL=$1
 PROJECT_NAME=janus-gateway
@@ -30,4 +33,5 @@ cd $SRC/$PROJECT_NAME
 clang -c -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I. -I$SRC/janus-gateway/src $SRC/janus-gateway/fuzzers/newfuzzer.c -o /work/newfuzzer.o
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ /work/newfuzzer.o -o /out/newfuzzer -fsanitize=fuzzer /work/janus-lib.a -Wl,-Bstatic -lglib-2.0 -ljansson -pthread -Wl,-Bdynamic
 
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+drivers
+fi

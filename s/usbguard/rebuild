@@ -1,4 +1,7 @@
 #!/opt/pwn.college/bash
+if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ]; then
+    echo "Run /challenge/build first"
+else
 . /usr/local/sbin/e
 LABEL=$1
 export PROJECT_NAME=usbguard
@@ -32,5 +35,6 @@ cd $SRC/$PROJECT_NAME
 
 make -j32 -C src/Tests/Fuzzers fuzzer-new fuzzer-uevent fuzzer-rules fuzzer-usb-descriptor
 
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+drivers
+fi
 mv /src /src-$LABEL

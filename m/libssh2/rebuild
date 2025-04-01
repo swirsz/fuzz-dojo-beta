@@ -1,4 +1,7 @@
 #!/opt/pwn.college/bash
+if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ]; then
+    echo "Run /challenge/build first"
+else
 . /usr/local/sbin/e
 LABEL=$1
 PROJECT_NAME=libssh2
@@ -31,4 +34,5 @@ cd $SRC/$PROJECT_NAME/tests/ossfuzz
 clang++ -DHAVE_CONFIG_H -I. -I../../src  -I../../include -DLIBSSH2DEBUG  -fsanitize=fuzzer -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -MT new_fuzzer-new_fuzzer.o -MD -MP -MF .deps/new_fuzzer-new_fuzzer.Tpo -c -o new_fuzzer-new_fuzzer.o `test -f 'new_fuzzer.cc' || echo './'`new_fuzzer.cc
 clang++ -fsanitize=fuzzer -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -o new_fuzzer new_fuzzer-new_fuzzer.o  ../../src/.libs/libssh2.a -lssl -lcrypto -lz
 
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+drivers
+fi
