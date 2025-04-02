@@ -134,7 +134,7 @@ modules:
         type: lecture
         video: AtjkUvYOGJw
               
-      - name: "New Fuzz Driver Creation"
+      - name: "AVAHI: New Fuzz Driver Creation"
         type: lecture
         video: 11fxFrOOLJ0
               
@@ -146,7 +146,7 @@ modules:
         type: lecture
         video: KOHb0y_Oiko
 
-  - id: s
+  - id: simple
     name: Simple Fuzz Drivers
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.  These projects have relatively simple fuzz drivers.
 
@@ -249,7 +249,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zopfli
 
 
-  - id: m
+  - id: medium
     name: Medium Fuzz Drivers
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag. These projects have medium difficulty fuzz drivers.
 
@@ -355,7 +355,7 @@ modules:
         name: XVID - 13782 loc 10%-33%-- - 1.5 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
 
-  - id: c
+  - id: complex
     name: Complex Fuzz Drivers
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag. These projects have complex fuzz drivers.
 
