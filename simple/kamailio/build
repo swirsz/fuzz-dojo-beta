@@ -14,13 +14,11 @@ if [ ! -d "/src-orig" ]; then
     #git clone https://github.com/kamailio/kamailio
     cp -r /downloads/kamailio $SRC
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/misc/fuzz/fuzz_uri.c $SRC/$PROJECT_NAME/misc/fuzz/newfuzzer.c
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

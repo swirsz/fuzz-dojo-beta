@@ -15,15 +15,13 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 --recursive https://github.com/google/woff2
     cp -r /downloads/woff2 $SRC
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.options $SRC
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC
-    cp -r /opt/oss-fuzz-new/projects/$PROJECT_NAME/corpus $SRC
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
+    cp -r /opt/oss-fuzz/projects/$PROJECT_NAME/corpus $SRC
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

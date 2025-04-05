@@ -15,15 +15,13 @@ if [ ! -d "/src-orig" ]; then
     rm -rf  $SRC/unrar
     cp -r /downloads/unrar $SRC/
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
     cp $SRC/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME/new_fuzzer.cc
     chmod 755 $SRC/build.sh
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

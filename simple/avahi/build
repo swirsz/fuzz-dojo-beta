@@ -14,13 +14,11 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 https://github.com/lathiat/avahi
     cp -r /downloads/avahi $SRC
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
     patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
     cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

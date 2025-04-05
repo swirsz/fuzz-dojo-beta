@@ -23,10 +23,8 @@ if [ ! -d "/src-orig" ]; then
     cp /challenge/do_stuff_fuzzer.cpp $SRC/example/projects/example/my-api-repo
     cp /challenge/my_api.cpp $SRC/example/projects/example/my-api-repo
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL
@@ -38,7 +36,7 @@ cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/training-broken" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-broken
    cp -r $SRC/$PROJECT_NAME/projects/example/my-api-repo/* /home/hacker/fuzz-dojo/training-broken
-   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-broken
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-broken
    chown -R hacker /home/hacker/fuzz-dojo/training-broken
 else
    cp /home/hacker/fuzz-dojo/training-broken/* $SRC/$PROJECT_NAME/projects/example/my-api-repo

@@ -17,14 +17,12 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/libvpx $SRC
     cp -r /downloads/vpx_fuzzer_seed_corpus.zip $SRC
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/vpx_dec_fuzzer.dict $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/vpx_dec_fuzzer.dict $SRC/
     cp $SRC/$PROJECT_NAME/examples/vpx_dec_fuzzer.cc $SRC/$PROJECT_NAME/examples/newfuzzer.cc
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

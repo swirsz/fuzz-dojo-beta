@@ -13,13 +13,11 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 https://github.com/wasm3/wasm3
     cp -r /downloads/wasm3 $SRC
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/wasm3/platforms/app_fuzz/fuzzer.c $SRC/wasm3/platforms/app_fuzz/newfuzzer.c
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

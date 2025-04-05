@@ -21,9 +21,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/fuzzing/fuzzer_seed_corpus.zip $SRC/$PROJECT_NAME/fuzzing/newfuzzer_seed_corpus.zip
    
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

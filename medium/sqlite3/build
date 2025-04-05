@@ -23,17 +23,15 @@ if [ ! -d "/src-orig" ]; then
 
     find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.dict $SRC/
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.options $SRC/
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/sqlite3/test/ossfuzz.c $SRC/sqlite3/test/newfuzzer.c
     cp $SRC/sqlite3/test/ossfuzz.options $SRC/sqlite3/test/newfuzzer.options
     cp $SRC/sqlite3/test/ossfuzz_seed_corpus.zip $SRC/sqlite3/test/newfuzzer_seed_corpus.zip
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

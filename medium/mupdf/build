@@ -26,17 +26,17 @@ fi
     cp pdf.dict new_fuzzer.dict
     mv pdf.dict pdf_fuzzer.dict
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/*.cc $SRC/
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/new_fuzzer.options
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/pdf_fuzzer.options $SRC/new_fuzzer.options
 
     cp $SRC/pdf_fuzzer.cc $SRC/new_fuzzer.cc
     rm -rf /out/src
     cp -r /src /out
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
+    build-cleanup2
 #    mv /src /src-orig
 #fi
 #if [ ! -d "/src-$LABEL" ]; then

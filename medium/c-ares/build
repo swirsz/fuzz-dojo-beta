@@ -15,10 +15,8 @@ if [ ! -d "/src-orig" ]; then
     export OLD_LLVMPASS=1
 
     cp $SRC/$PROJECT_NAME/test/ares-test-fuzz.c $SRC/$PROJECT_NAME/test/newfuzzer.c
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

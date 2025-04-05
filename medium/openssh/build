@@ -18,14 +18,13 @@ fi
     cp -r /downloads/openssh $SRC
     cp -r /downloads/openssh-fuzz-cases $SRC
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/agent_fuzz.cc $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/newfuzzer.cc
 
     export CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/Makefile -i /challenge/.Makefile.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
+    build-cleanup2
 #    mv /src /src-orig
 #fi
 #if [ ! -d "/src-$LABEL" ]; then

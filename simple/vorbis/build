@@ -22,13 +22,11 @@ if [ ! -d "/src-orig" ]; then
     mkdir people.xiph.org/
     touch people.xiph.org/dummy.ogg
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/decode_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/new_fuzzer.cc
     
     patch -tuN $SRC/$PROJECT_NAME/contrib/oss-fuzz/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

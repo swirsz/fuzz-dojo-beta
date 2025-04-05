@@ -12,14 +12,12 @@ if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
     #git clone https://github.com/google/oss-fuzz.git example
     cp -r /downloads/example $SRC
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.cpp $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.cpp
     cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer.dict $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer.dict
     cp $SRC/$PROJECT_NAME/projects/example/my-api-repo/do_stuff_fuzzer_seed_corpus.zip $SRC/$PROJECT_NAME/projects/example/my-api-repo/new_fuzzer_seed_corpus.zip
     patch -tuN $SRC/$PROJECT_NAME/projects/example/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

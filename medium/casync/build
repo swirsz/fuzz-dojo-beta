@@ -16,14 +16,12 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 https://github.com/systemd/casync casync
     cp -r /downloads/casync $SRC
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
 
     patch -tuN $SRC/casync/test/fuzz/meson.build -i /challenge/.build.patch -r -
     cp $SRC/casync/test/fuzz/fuzz-compress.c $SRC/casync/test/fuzz/fuzz-new.c
     #patch -tuN $SRC/casync/test/fuzz/meson.build -i /challenge/.build.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

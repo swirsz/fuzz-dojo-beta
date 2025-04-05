@@ -14,17 +14,15 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 https://github.com/uriparser/uriparser uriparser
     cp -r /downloads/$PROJECT_NAME $SRC
 
-    #cp /opt/oss-fuzz-new/projects/*.cc $SRC/
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    #cp /opt/oss-fuzz/projects/*.cc $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/fuzz/ParseFuzzer.cpp $SRC/$PROJECT_NAME/fuzz/NewFuzzer.cpp 
     patch -tuN $SRC/$PROJECT_NAME/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
     #cp $SRC/uri_parse_fuzzer.cc $SRC/new_fuzzer.cc
     #cp -r $SRC/$PROJECT_NAME/build/CMakeFiles/uri_parse_fuzzer.dir /$SRC/$PROJECT_NAME/build/CMakeFiles/new_fuzzer.dir 
 
     #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL

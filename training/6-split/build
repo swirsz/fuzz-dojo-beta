@@ -27,12 +27,10 @@ if [ ! -d "/src-orig" ]; then
     # git clone --single-branch https://github.com/swirsz/janus-gateway.git
     cp -r /downloads/janus-gateway $SRC
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
 
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL
@@ -44,7 +42,7 @@ cd $SRC/
 if [ ! -d "/home/hacker/fuzz-dojo/training-split" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-split
    cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/fuzz-dojo/training-split
-   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-split
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-split
    chown -R hacker /home/hacker/fuzz-dojo/training-split
 else
    cp /home/hacker/fuzz-dojo/training-split/*.c $SRC/$PROJECT_NAME/fuzzers

@@ -21,13 +21,11 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 https://github.com/swirsz/avahi
     cp -r /downloads/swavahi $SRC/avahi
 
-    cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
     cp /challenge/fuzz-newfuzzer.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
     patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
-    echo Please wait, creating /src-orig
-    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
-    mv /src /src-orig
+    build-cleanup
 fi
 if [ ! -d "/src-$LABEL" ]; then
     echo Please wait, creating /src-$LABEL
@@ -39,7 +37,7 @@ cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/training-parameters" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-parameters
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/fuzz-dojo/training-parameters
-   cp /opt/oss-fuzz-new/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-parameters
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-parameters
    chown -R hacker /home/hacker/fuzz-dojo/training-parameters
 else
    cp /home/hacker/fuzz-dojo/training-parameters/*.c $SRC/$PROJECT_NAME/fuzz
