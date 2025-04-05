@@ -38,10 +38,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.options $SRC/$PROJECT_NAME/fuzz/new-fuzzer.options
     build-cleanup
 fi
-if [ ! -d "/src-$LABEL" ]; then
-    echo Please wait, creating /src-$LABEL
-    cp -r /src-orig /src-$LABEL
-fi
+build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
