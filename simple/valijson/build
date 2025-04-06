@@ -11,7 +11,7 @@ fi
 if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y make autoconf automake libtool pkg-config cmake libcurlpp-dev libcurl4-openssl-dev
 
-    rm -rf $PROJECT_NAME
+    #rm -rf $SRC/$PROJECT_NAME
     #git clone --depth 1 https://github.com/tristanpenman/valijson
     cp -r /downloads/valijson $SRC
 
@@ -22,7 +22,12 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/tests/fuzzing/fuzzer.cpp $SRC/$PROJECT_NAME/tests/fuzzing/newfuzzer.cpp
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/build.sh -i /challenge/.build2.patch -r -
-    build-cleanup
+    rm -rf /downloads
+    rm -rf /opt/oss-fuz
+    echo
+    echo Please wait, creating /src-orig
+    find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker
+    mv /src /src-orig
 fi
 build-srcfolders
 mv /src-$LABEL /src
