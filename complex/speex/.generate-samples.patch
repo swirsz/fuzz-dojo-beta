@@ -6,13 +6,13 @@
  for sample in $samples; do
 -    wget --no-clobber https://www.speex.org/samples/audio/${sample}
 +    #wget --no-clobber https://www.speex.org/samples/audio/${sample}
-+    cp  /opt/fuzz-targets/${sample} .
++    cp  /downloads/${sample} .
  done
  
  # FIXME: move to speex.org
 -wget --no-clobber https://people.xiph.org/~tterribe/speex/${UWB_MALE_SAMPLE}
 +#wget --no-clobber https://people.xiph.org/~tterribe/speex/${UWB_MALE_SAMPLE}
-+cp  /opt/fuzz-targets/${UWB_MALE_SAMPLE} .
++cp  /downloads/${UWB_MALE_SAMPLE} .
  
  bitrates="4 8 11 15"
  for b in $bitrates; do
