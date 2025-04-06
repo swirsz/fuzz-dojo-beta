@@ -10,7 +10,7 @@ fi
 
 if [ ! -d "/src-orig" ]; then
     rm -rf $SRC/$PROJECT_NAME
-
+    echo Please wait, copying install files
     #apt-get update && apt-get install -y g++ python
     #git clone --recursive https://github.com/boostorg/boost.git
     cp -r /downloads/boost $SRC

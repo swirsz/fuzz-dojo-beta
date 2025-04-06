@@ -324,7 +324,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mupdf
 
       - id: opensips
-        name: OPENSIPS - 62114 loc 10%-13%-17% - 4 min
+        name: OPENSIPS - 62114 loc 10%-13%-17% - 4 min (slow FI)
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
 
       - id: openssh
@@ -332,11 +332,11 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
 
       - id: pcre2
-        name: PCRE2 - 33249 loc 57%-80%-96% - 11 min
+        name: PCRE2 - 33249 loc 57%-80%-96% - 11 min (slow FI)
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pcre2
 
       - id: sqlite3
-        name: SQLITE3 - 80385 loc 33%-75%-76% - 5 min
+        name: SQLITE3 - 80385 loc 33%-75%-76% - 5 min (slow FI)
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
         
       - id: tmux
@@ -366,7 +366,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cppcheck
 
       - id: fmt
-        name: FMT - 5904 loc 77%-81%-13% - 4 min
+        name: FMT - 5904 loc 77%-81%-13% - 4 min (slow FI)
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
 
       - id: janus-gateway
