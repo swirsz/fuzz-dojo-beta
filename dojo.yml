@@ -217,7 +217,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=usbguard
 
       - id: valijson
-        name: VALIJSON - 3566 loc 68%-72%-52% - 1.5 min
+        name: VALIJSON - 3566 loc 68%-72%-52% - 1.5 min (slow FI)
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=valijson
 
       - id: vorbis

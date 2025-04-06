@@ -13,6 +13,7 @@ fi
     rm -rf $SRC/$PROJECT_NAME
     #apt-get update && apt-get install -y make libtool pkg-config
 
+    echo Please wait, copying install files
     #git clone --recursive --depth 1 git://git.ghostscript.com/mupdf.git mupdf
     #git clone --depth 1 https://github.com/mozilla/pdf.js pdf.js 
     cp -r /downloads/mupdf $SRC
