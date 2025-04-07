@@ -16,9 +16,12 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/boost $SRC
     # This is to fix Fuzz Introspector build by using LLVM old pass manager
     # re https://github.com/ossf/fuzz-introspector/issues/305
-    export OLD_LLVMPASS=1
-
+    #export OLD_LLVMPASS=1
+    # Preferably, move boost_regex_fuzzer.cc to the boost repository.
+    #COPY build.sh *.zip *.cc $SRC/
+    
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.zip $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
     cp $SRC/boost_regex_fuzzer.cc $SRC/boost_new_fuzzer.cc
