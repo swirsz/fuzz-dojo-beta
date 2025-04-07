@@ -181,7 +181,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=guetzli
 
       - id: haproxy
-        name: HAPROXY - 106108 loc 1%-1%-2% - 7 min
+        name: HAPROXY - 106108 loc 1%-1%-2% - 7 min (broken on OSS-Fuzz)
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=haproxy
 
       - id: json
@@ -260,7 +260,7 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
 
       - id: boost
-        name: BOOST - 11995 loc 42%-57%--% - 10 min 
+        name: BOOST - 11995 loc 43%-57%--% - 10 min 
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=boost
 
       - id: bzip2

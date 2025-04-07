@@ -16,7 +16,7 @@ if [ ! -d "/src-orig" ]; then
 
     #git clone https://github.com/AdaLogics/fuzz-headers
     cp -r /downloads/fuzz-headers $SRC
-    cp -r /downloads/pcre2-apache $SRC/pcre2
+    cp -r /downloads/pcre2 $SRC/pcre2
     cd $SRC/pcre2
         ./autogen.sh 
         ./configure
