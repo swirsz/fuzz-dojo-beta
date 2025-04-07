@@ -17,11 +17,13 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/speex $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    rm -rf /opt/oss-fuzz &
     cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/speexdec_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/new_fuzzer.cc
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/speex$SRC/generate-samples.sh -i /challenge/.generate-samples.patch -r -
-    build-cleanup
+    build-cleanup2
+    mv /src /src-orig
 fi
 build-srcfolders
 mv /src-$LABEL /src
