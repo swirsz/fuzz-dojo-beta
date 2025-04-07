@@ -17,7 +17,8 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/fuzzing/build.sh $SRC/
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    build-cleanup
+    build-cleanup2
+    mv /src /src-orig    
 fi
 build-srcfolders
 mv /src-$LABEL /src
