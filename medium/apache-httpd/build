@@ -17,6 +17,12 @@ if [ ! -d "/src-orig" ]; then
     #git clone https://github.com/AdaLogics/fuzz-headers
     cp -r /downloads/fuzz-headers $SRC
     cp -r /downloads/pcre2-apache $SRC/pcre2
+    cd $SRC/pcre2
+        ./autogen.sh 
+        ./configure
+        make
+        make install 
+    cd $SRC
 
     #wget https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.gz && \
     # tar -xf expat-2.4.1.tar.gz && cd expat-2.4.1 && ./configure && make && make install
