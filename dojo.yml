@@ -260,11 +260,11 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
 
       - id: boost
-        name: BOOST - 11995 loc 43%-57%--% - 10 min 
+        name: BOOST - 11995 loc 43%-57%--% - 10 min (no FI)
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=boost
 
       - id: bzip2
-        name: BZIP2 - 2661 loc 74%-92%-99% - 1 min (no FI)
+        name: BZIP2 - 2661 loc 74%-92%-99% - 1 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bzip2
 
       - id: c-ares
