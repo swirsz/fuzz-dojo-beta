@@ -33,7 +33,9 @@ if [ ! -d "/home/hacker/fuzz-dojo/training-fix-broken" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-fix-broken
    
    cp -r $SRC/projects/example/my-api-repo/* /home/hacker/fuzz-dojo/training-fix-broken
-   cp /home/hacker/fuzz-dojo/training-fix-broken/* $SRC/projects/example/my-api-repo
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/training-fix-broken
+else
+   cp -r /home/hacker/fuzz-dojo/training-fix-broken/* $SRC/projects/example/my-api-repo
    cp /home/hacker/fuzz-dojo/training-fix-broken/build.sh $SRC
 fi
 export PROJECT_NAME=training-fix-broken
