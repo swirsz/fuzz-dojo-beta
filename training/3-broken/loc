@@ -3,6 +3,6 @@ INITIAL=76
 TARGET=95
 /usr/local/sbin/loc_count $INITIAL $TARGET $@
 echo
-echo If you do not reach 95% code coverage, then run
+echo If you do not reach 100% code coverage, then run
 echo /challenge/fuzz-introspector to see what lines of code are not being executed.
 echo

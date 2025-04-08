@@ -12,11 +12,13 @@ if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
     #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
     #git clone https://github.com/google/oss-fuzz.git example
-    cp -r /downloads/example $SRC
-
-    cp /challenge/do_stuff_unittest.cpp $SRC/example/projects/example/my-api-repo
-    cp /challenge/do_stuff_fuzzer.cpp $SRC/example/projects/example/my-api-repo
-    cp /challenge/my_api.cpp $SRC/example/projects/example/my-api-repo
+    mkdir -p $SRC/projects
+    cp -r /downloads/example/projects/example $SRC/projects
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    
+    cp /challenge/do_stuff_unittest.cpp $SRC/projects/example/my-api-repo
+    cp /challenge/do_stuff_fuzzer.cpp $SRC/projects/example/my-api-repo
+    cp /challenge/my_api.cpp $SRC/projects/example/my-api-repo
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 #----------------------------------------------------------------------
@@ -29,10 +31,9 @@ cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/training-fix-broken" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-fix-broken
-   cp -r $SRC/$PROJECT_NAME/projects/example/my-api-repo/* /home/hacker/fuzz-dojo/training-fix-broken
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-fix-broken
-else
-   cp /home/hacker/fuzz-dojo/training-fix-broken/* $SRC/$PROJECT_NAME/projects/example/my-api-repo
+   
+   cp -r $SRC/projects/example/my-api-repo/* /home/hacker/fuzz-dojo/training-fix-broken
+   cp /home/hacker/fuzz-dojo/training-fix-broken/* $SRC/projects/example/my-api-repo
    cp /home/hacker/fuzz-dojo/training-fix-broken/build.sh $SRC
 fi
 export PROJECT_NAME=training-fix-broken
