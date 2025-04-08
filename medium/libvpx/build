@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y yasm wget gcc
 
     #git clone https://chromium.googlesource.com/webm/libvpx
@@ -22,12 +23,14 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/examples/vpx_dec_fuzzer.cc $SRC/$PROJECT_NAME/examples/newfuzzer.cc
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/examples/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -37,6 +40,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/examples
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

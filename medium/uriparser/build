@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     rm -rf uriparser
     #apt-get update && apt-get install -y make autoconf automake wget sudo libtool cmake
     #git clone --depth 1 https://github.com/uriparser/uriparser uriparser
@@ -22,12 +23,14 @@ if [ ! -d "/src-orig" ]; then
     #cp -r $SRC/$PROJECT_NAME/build/CMakeFiles/uri_parse_fuzzer.dir /$SRC/$PROJECT_NAME/build/CMakeFiles/new_fuzzer.dir 
 
     #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzz/* /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -38,6 +41,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

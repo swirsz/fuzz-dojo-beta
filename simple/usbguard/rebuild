@@ -25,6 +25,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -x
+#----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/src/Tests/Fuzzers
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile.am $SRC/$PROJECT_NAME/src/Tests/Fuzzers
@@ -35,6 +36,7 @@ cd $SRC/$PROJECT_NAME
 
 make -j32 -C src/Tests/Fuzzers fuzzer-new fuzzer-uevent fuzzer-rules fuzzer-usb-descriptor
 
+#----------------------------------------------------------------------
 drivers
 fi
 mv /src /src-$LABEL

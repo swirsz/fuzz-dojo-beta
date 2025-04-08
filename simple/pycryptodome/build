@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y make autoconf automake libtool
     #rm -rf $SRC/$PROJECT_NAME
     #git clone https://github.com/Legrandin/pycryptodome.git
@@ -21,6 +22,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/pcd_aes_fuzzer.cc $SRC/newfuzzer.cc
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 #if [ ! -d "/src-$LABEL" ]; then
@@ -31,6 +33,7 @@ fi
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME/src
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -40,6 +43,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

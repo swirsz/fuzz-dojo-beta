@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y cmake zlib1g-dev
     #git clone --depth 1 https://github.com/LibVNC/libvncserver.git
     cp -r /downloads/libvncserver $SRC
@@ -17,6 +18,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/libvncserver/test/fuzz_server.c $SRC/libvncserver/test/fuzz_new.c
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/libvncserver/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
@@ -24,6 +26,7 @@ mv /src-$LABEL /src
 rm -rf $SRC/libvncserver/build
 
 cd $SRC/libvncserver
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/libvncserver/test/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -35,6 +38,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/libvncserver
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

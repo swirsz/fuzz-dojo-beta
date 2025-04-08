@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y make autoconf automake libtool wget uuid-dev pkg-config libtool-bin libbsd-dev
 
     #git clone https://github.com/PCRE2Project/pcre2 pcre2 && \
@@ -36,12 +37,14 @@ if [ ! -d "/src-orig" ]; then
 
     cp $SRC/fuzz_preq.c $SRC/fuzz_new.c
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/httpd
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -51,6 +54,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

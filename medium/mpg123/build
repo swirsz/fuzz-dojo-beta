@@ -8,6 +8,7 @@ if [ -z "$SANITIZER" ]; then
     export LABEL='none'$LABEL
 fi
 
+#----------------------------------------------------------------------
 rm -rf $SRC/$PROJECT_NAME
 cd $SRC
 #apt-get update && apt-get install -y make autoconf automake libtool wget bzip2
@@ -22,9 +23,11 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
 cp $SRC/decode_fuzzer.cc $SRC/new_fuzzer.cc
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+#----------------------------------------------------------------------
 build-cleanup2
     
 cd $SRC
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -38,6 +41,7 @@ else
    #cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

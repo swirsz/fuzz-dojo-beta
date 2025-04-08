@@ -25,6 +25,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -ex
+#----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/misc/fuzz
 
@@ -34,5 +35,6 @@ clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE
 
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -fsanitize=fuzzer newfuzzer.o -o /out/newfuzzer -DFAST_LOCK -D__CPU_i386 ./src/libkamilio.a -I./src/ -I./src/core/parser -ldl -lresolv -lm
 
+#----------------------------------------------------------------------
 drivers
 fi

@@ -22,6 +22,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -ex
+#----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/regress/misc/fuzz-harness
 
@@ -37,5 +38,6 @@ $CXX $CXXFLAGS -std=c++11 $EXTRA_CFLAGS -I. -L. -Lopenbsd-compat -g \
         $STATIC_CRYPTO -pthreads -ldl $LIB_FUZZING_ENGINE
 
 
+#----------------------------------------------------------------------
 drivers
 fi

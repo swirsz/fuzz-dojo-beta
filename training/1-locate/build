@@ -15,18 +15,21 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
     #git clone -b develop https://github.com/zlib-ng/minizip-ng minizip
     cp -r /downloads/minizip $SRC
 
     cp $SRC/$PROJECT_NAME/test/fuzz/unzip_fuzzer.c $SRC/$PROJECT_NAME/test/fuzz/new_fuzzer.c
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/training-locate" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-locate
    cp $SRC/$PROJECT_NAME/test/fuzz/*.c /home/hacker/fuzz-dojo/training-locate
@@ -36,6 +39,7 @@ else
    cp /home/hacker/fuzz-dojo/training-locate/*.c $SRC/$PROJECT_NAME/test/fuzz
    cp /home/hacker/fuzz-dojo/training-locate/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 patch -tuN $SRC/minizip/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-locate /home/hacker/fuzz-dojo/training-locate

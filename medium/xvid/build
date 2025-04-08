@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y make autoconf automake libtool subversion
     #svn checkout http://svn.xvid.org/trunk --username anonymous --password "" --non-interactive --no-auth-cache
     #git clone --depth 1 https://github.com/guidovranken/fuzzing-headers.git
@@ -23,6 +24,7 @@ if [ ! -d "/src-orig" ]; then
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
@@ -31,6 +33,7 @@ mv /src-$LABEL /src
 cd $SRC
 rm -rf xvidcore-install
 
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    cp -r $SRC/oss-fuzz-fuzzers/xvid /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -40,6 +43,7 @@ else
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME $SRC/oss-fuzz-fuzzers/xvid
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

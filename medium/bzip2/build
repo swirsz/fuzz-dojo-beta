@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     rm -rf $SRC/$PROJECT_NAME
     rm -rf $SRC/$PROJECT_NAME-tests
     #apt-get update && apt-get install -y make autoconf automake libtool wget
@@ -21,12 +22,14 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
     
     cp $SRC/bzip2_compress_target.c $SRC/newfuzzer.c
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -36,7 +39,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
-
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

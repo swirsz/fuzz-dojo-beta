@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y make autoconf automake libtool libpng-dev pkg-config curl
 
     #mkdir afl-testcases
@@ -26,12 +27,14 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     cp $SRC/$PROJECT_NAME/fuzz_target.cc $SRC/$PROJECT_NAME/fuzz_newfuzzer.cc
     cd /
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -41,6 +44,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

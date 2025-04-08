@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     rm -rf $SRC/$PROJECT_NAME
     #apt-get update && apt-get install -y libz-dev libpcre2-dev libtool pkg-config autoconf
     #git clone https://github.com/lighttpd/lighttpd1.4
@@ -19,12 +20,14 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/fuzz_burl.c $SRC/fuzz_new.c
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -34,8 +37,8 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
-mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-lighttpd /home/hacker/fuzz-dojo/$PROJECT_NAME
+#----------------------------------------------------------------------
+fuzzlog
 compile
 drivers
 mv /src /src-$LABEL

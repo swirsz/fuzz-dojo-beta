@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && \
     #    apt-get install -y pkg-config make autoconf autopoint zlib1g-dev zlib1g-dev:i386 flex gawk bison
     #git clone --depth 1 git://sourceware.org/git/elfutils.git
@@ -22,21 +23,21 @@ if [ ! -d "/src-orig" ]; then
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     cp $SRC/fuzz-libdwfl.c $SRC/fuzz-newfuzz.c
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
-   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
 fi
-
-cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

@@ -25,6 +25,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -ex
+#----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
 
@@ -33,5 +34,6 @@ cd $SRC/$PROJECT_NAME/
 clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=fuzzer-no-link -Isrc -Ibuild/src -c fuzz/cmark-newfuzz.c -o cmark_newfuzzer.o
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -fsanitize=fuzzer cmark_newfuzzer.o build/src/libcmark.a -o /out/cmark_newfuzzer
 
+#----------------------------------------------------------------------
 drivers
 fi

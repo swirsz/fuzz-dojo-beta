@@ -25,6 +25,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -ex
+#----------------------------------------------------------------------
 
 rm -rf $SRC/oss-fuzz-fuzzers/xvid
 cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME $SRC/oss-fuzz-fuzzers/xvid
@@ -33,5 +34,6 @@ cd $SRC/trunk/xvidcore/build/generic
 
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -I $SRC/trunk/xvidcore/src/ $SRC/oss-fuzz-fuzzers/xvid/newfuzzer.cpp ./libxvidcore.a -fsanitize=fuzzer -o /out/newfuzzer
 
+#----------------------------------------------------------------------
 drivers
 fi

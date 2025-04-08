@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #RUN apt-get update && apt-get install -y cmake
     #rm -rf $PROJECT_NAME
     #git clone --depth 1 -b develop https://github.com/nlohmann/json.git
@@ -18,6 +19,7 @@ if [ ! -d "/src-orig" ]; then
 
     patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/newfuzzer.c
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
@@ -26,6 +28,7 @@ mv /src-$LABEL /src
 cd $SRC/$PROJECT_NAME
 rm -rf $SRC/$PROJECT_NAME/build
 
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp -r $SRC/$PROJECT_NAME/fuzzing/* /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -35,6 +38,7 @@ else
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

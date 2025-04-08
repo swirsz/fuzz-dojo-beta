@@ -15,6 +15,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     rm -rf $SRC/$PROJECT_NAME
     rm -rf $SRC/$PROJECT_NAME-tests
     #apt-get update && apt-get install -y make autoconf automake libtool wget
@@ -26,12 +27,14 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
 
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/training-seedcorpus" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-seedcorpus
    cp $SRC/build.sh /home/hacker/fuzz-dojo/training-seedcorpus
@@ -42,6 +45,7 @@ else
    cp /home/hacker/fuzz-dojo/training-seedcorpus/* $SRC
    cp /home/hacker/fuzz-dojo/training-seedcorpus/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 
 mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-seedcorpus /home/hacker/fuzz-dojo/training-seedcorpus

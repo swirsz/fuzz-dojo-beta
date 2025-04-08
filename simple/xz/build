@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get install -y make autoconf autopoint libtool zip
     #git clone https://git.tukaani.org/xz.git $SRC/xz
     cp -r /downloads/xz $SRC
@@ -17,12 +18,14 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/tests/ossfuzz/fuzz_encode_stream.c $SRC/$PROJECT_NAME/tests/ossfuzz/newfuzzer.c
 
     #patch -tuN $SRC/xz/tests/ossfuzz/Makefile -i /challenge/.Makefile.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/ossfuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -32,6 +35,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/ossfuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

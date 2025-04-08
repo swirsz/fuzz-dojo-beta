@@ -25,6 +25,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -ex
+#----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.h $SRC
@@ -34,5 +35,6 @@ cd $SRC
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -std=c++11 -I$SRC/libsodium/src/libsodium/include $SRC/new_fuzzer.cc -o /out/new_fuzzer $SRC/libsodium/src/libsodium/.libs/libsodium.a -fsanitize=fuzzer
 
 
+#----------------------------------------------------------------------
 drivers
 fi

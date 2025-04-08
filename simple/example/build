@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
     #git clone https://github.com/google/oss-fuzz.git example
     mkdir -p $SRC/projects
@@ -18,12 +19,14 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/projects/$PROJECT_NAME/my-api-repo/do_stuff_fuzzer.dict $SRC/projects/$PROJECT_NAME/my-api-repo/new_fuzzer.dict
 
     patch -tuN $SRC/projects/$PROJECT_NAME/my-api-repo/Makefile -i /challenge/.Makefile.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
 
@@ -34,6 +37,7 @@ else
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/projects/$PROJECT_NAME/my-api-repo
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

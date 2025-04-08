@@ -25,6 +25,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -x
+#----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.zip $SRC/sqlite3/test
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.options $SRC/sqlite3/test
@@ -35,5 +36,6 @@ cd $SRC/$PROJECT_NAME
 
 clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -I. -c $SRC/sqlite3/test/newfuzzer.c -o $SRC/sqlite3/test/newfuzzer.o
 
+#----------------------------------------------------------------------
 drivers
 fi

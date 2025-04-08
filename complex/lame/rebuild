@@ -25,6 +25,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -x
+#----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/LAME-fuzzers
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.dict $SRC/LAME-fuzzers
@@ -34,5 +35,6 @@ cd $SRC/$PROJECT_NAME
 
 ...
 
+#----------------------------------------------------------------------
 drivers
 fi

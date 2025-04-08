@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     rm -rf $SRC/zopfli
     #apt-get update && apt-get install -y make autoconf automake libtool
     #git clone --depth 1 https://github.com/google/zopfli
@@ -19,12 +20,14 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/zopfli_compress_fuzzer.cc $SRC/new_fuzzer.cc
     #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -34,6 +37,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

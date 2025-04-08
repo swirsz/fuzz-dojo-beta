@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y make cmake python3
     #git clone --depth 1 https://github.com/commonmark/cmark.git cmark
     cp -r /downloads/cmark $SRC
@@ -19,6 +20,7 @@ if [ ! -d "/src-orig" ]; then
 
     cp $SRC/$PROJECT_NAME/fuzz/cmark-fuzz.c $SRC/$PROJECT_NAME/fuzz/cmark-newfuzz.c
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
@@ -26,6 +28,7 @@ mv /src-$LABEL /src
 
 rm -rf $SRC/cmark/build
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -33,8 +36,7 @@ if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
 else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
 fi
-
-cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

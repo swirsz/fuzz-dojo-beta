@@ -25,6 +25,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -ex
+#----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
 
@@ -33,5 +34,6 @@ cd $SRC/$PROJECT_NAME/fuzz
 clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=fuzzer-no-link -c ../fuzz/fuzz-newfuzzer.c -o fuzz-newfuzzer.o -I../ -I./ -I../libwc
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -fsanitize=fuzzer fuzz-newfuzzer.o -o /out/fuzz-newfuzzer -I./libwc -DUSE_UNICODE -I. -I./.. -I../libwc -DHAVE_CONFIG_H ../Str.o ../myctype.o $SRC/$PROJECT_NAME/libwc/libwc.a /usr/lib/x86_64-linux-gnu/libgc.a
 
+#----------------------------------------------------------------------
 drivers
 fi

@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y make autoconf automake libtool
     #git clone --depth 1 https://github.com/sass/libsass.git libsass
     cd $SRC
@@ -24,6 +25,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/data_context_fuzzer.cc $SRC/new_fuzzer.cc
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
@@ -31,6 +33,7 @@ git config --global --add safe.directory /src/libsass
 mv /src-$LABEL /src
 
 cd $SRC
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -40,6 +43,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

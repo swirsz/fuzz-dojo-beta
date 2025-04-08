@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y make cmake g++
     rm -rf $SRC/openjpeg/data
     rm -rf $SRC/openjpeg/build
@@ -20,6 +21,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/tests/fuzzers/opj_decompress_fuzzer_J2K.cpp $SRC/$PROJECT_NAME/tests/fuzzers/newfuzzer.cpp
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/openjpeg/tests/fuzzers/build_seed_corpus.sh -i /challenge/.build_seed_corpus.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
@@ -27,6 +29,7 @@ mv /src-$LABEL /src
 rm -rf $SRC/$PROJECT_NAME/build
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/fuzzers/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -36,6 +39,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/tests/fuzzers
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

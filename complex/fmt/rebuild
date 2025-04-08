@@ -25,6 +25,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -x
+#----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/test/fuzzing
 mv $SRC /src
@@ -36,5 +37,6 @@ cmake --build . $FLAGS
 
 cd
 mv /src $SRC
+#----------------------------------------------------------------------
 drivers
 fi

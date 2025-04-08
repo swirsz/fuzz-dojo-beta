@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y bison flex libssl-dev pkg-config
     #git clone https://github.com/OpenSIPS/opensips
     cp -r /downloads/opensips $SRC
@@ -17,6 +18,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/test/fuzz/fuzz_core_funcs.c $SRC/$PROJECT_NAME/test/fuzz/fuzz_newfuzzer.c
 
     patch -tuN $SRC/$PROJECT_NAME/test/fuzz/oss-fuzz-build.sh -i /challenge/.oss-fuzz-build.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
@@ -24,6 +26,7 @@ mv /src-$LABEL /src
 git config --global --add safe.directory /src/opensips
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/test/fuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -33,6 +36,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/test/fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

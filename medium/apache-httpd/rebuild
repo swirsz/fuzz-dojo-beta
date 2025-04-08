@@ -25,6 +25,7 @@ elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -ex
+#----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
 
@@ -33,5 +34,6 @@ cd $SRC/httpd
 clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -c -I$SRC/fuzz-headers/lang/c -I./include -I./os/unix -I./srclib/apr/include -I./srclib/apr-util/include/ $SRC/fuzz_new.c
 clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -fsanitize=fuzzer fuzz_new.o -o /out/fuzz_new ./modules.o buildmark.o -Wl,--start-group ./server/.libs/libmain.a ./modules/core/.libs/libmod_so.a ./modules/http/.libs/libmod_http.a ./server/mpm/event/.libs/libevent.a ./os/unix/.libs/libos.a ./srclib/apr/.libs/libapr-2.a -Wl,--end-group -luuid -lcrypt -lexpat -l:libbsd.a $SRC/pcre2/.libs/libpcre2-8.a
 
+#----------------------------------------------------------------------
 drivers
 fi

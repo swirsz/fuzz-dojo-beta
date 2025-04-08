@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     rm -rf $PROJECT_NAME
     #apt-get update && apt-get install -y make autoconf automake libtool curl tcl zlib1g-dev
 
@@ -31,6 +32,7 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/sqlite3/test/ossfuzz_seed_corpus.zip $SRC/sqlite3/test/newfuzzer_seed_corpus.zip
 
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
@@ -38,6 +40,7 @@ mv /src-$LABEL /src
 rm -rf $SRC/$PROJECT_NAME/bld
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/sqlite3/test/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -53,6 +56,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/main.mk  $SRC/sqlite3/
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

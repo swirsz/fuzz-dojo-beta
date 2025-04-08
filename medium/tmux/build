@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     cd $SRC
     #apt-get update && apt-get install -y autoconf automake bison pkg-config ncurses-dev libtool
     #rm -rf libevent
@@ -36,12 +37,14 @@ if [ ! -d "/src-orig" ]; then
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.c $SRC/$PROJECT_NAME/fuzz/new-fuzzer.c
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.dict $SRC/$PROJECT_NAME/fuzz/new-fuzzer.dict
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.options $SRC/$PROJECT_NAME/fuzz/new-fuzzer.options
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -55,6 +58,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile.am $SRC/$PROJECT_NAME
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers

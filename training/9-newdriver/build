@@ -15,6 +15,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && \
     #   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
     #git clone --depth 1 https://github.com/lathiat/avahi
@@ -26,12 +27,14 @@ if [ ! -d "/src-orig" ]; then
     
     cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
     patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/training-newdriver" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-newdriver
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/fuzz-dojo/training-newdriver
@@ -41,6 +44,7 @@ else
    cp /home/hacker/fuzz-dojo/training-newdriver/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/fuzz-dojo/training-newdriver/build.sh $SRC
 fi
+#----------------------------------------------------------------------
 mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-newdriver /home/hacker/fuzz-dojo/training-newdriver
 compile

@@ -9,6 +9,7 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
     #apt-get update && apt-get install -y make autoconf automake libtool \
     #  pkg-config zlib1g-dev libpci-dev
     #git clone --depth 1 https://github.com/liblouis/liblouis
@@ -19,12 +20,14 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/liblouis/tests/fuzzing/build.sh -i /challenge/.build.patch -r -
 
     cp $SRC/$PROJECT_NAME/tests/fuzzing/fuzz_backtranslate.c $SRC/$PROJECT_NAME/tests/fuzzing/fuzz_newfuzzer.c
+#----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/fuzzing/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
@@ -34,6 +37,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/fuzzing
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC/liblouis/tests/fuzzing
 fi
+#----------------------------------------------------------------------
 fuzzlog
 compile
 drivers
