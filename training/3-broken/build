@@ -32,7 +32,7 @@ cd $SRC
 if [ ! -d "/home/hacker/fuzz-dojo/training-fix-broken" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-fix-broken
    
-   cp -r $SRC/projects/example/my-api-repo/* /home/hacker/fuzz-dojo/training-fix-broken
+   cp $SRC/projects/example/my-api-repo/* /home/hacker/fuzz-dojo/training-fix-broken
    cp $SRC/build.sh /home/hacker/fuzz-dojo/training-fix-broken
 else
    cp /home/hacker/fuzz-dojo/training-fix-broken/* $SRC/projects/example/my-api-repo
