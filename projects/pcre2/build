@@ -30,7 +30,6 @@ if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    #cp $SRC/$PROJECT_NAME/pcre2_fuzz*.dict /home/hacker/fuzz-dojo/$PROJECT_NAME
    #cp $SRC/$PROJECT_NAME/pcre2_fuzz*.options /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/src/pcre2_fuzzsupport.c /home/hacker/fuzz-dojo/$PROJECT_NAME
-   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    #cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.dict $SRC/$PROJECT_NAME
    #cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.options $SRC/$PROJECT_NAME

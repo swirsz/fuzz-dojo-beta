@@ -1,60 +1,7 @@
 #!/opt/pwn.college/bash
 INITIAL=45
-TARGET=45
-. /usr/local/sbin/e
-if [ "$1" = "none" ] || [ "$1" = "address" ] || [ "$1" = "memory" ] || [ "$1" = "undefined" ] || [ "$1" = "thread" ]; then
-    export SANITIZER=$1
-    shift
-fi
-if [ -z "$SANITIZER" ]; then
-    export SANITIZER='none'
-fi
-cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk
-cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk
-/challenge/build $SANITIZER
-if [ "$?" -gt 0 ]; then
-    echo Build error, exiting
-    exit 1
-fi
+TARGET=100
+/usr/local/sbin/loc_count $INITIAL $TARGET $@
 echo
-echo Fuzzing ~30 seconds - Sanitizer: $SANITIZER
+echo Note: You will need to run /challenge/loc2 to win this challenge
 echo
-if [ -z "$1" ]
-then
-    cd /out
-    DRIVERS=($(ls -p -I '*.*' -I 'llvm-symbolizer' -I "crash-*" -I "slow-*" -I "oom-*" -I "timeout-*" -I "TEMP*" /out | grep -v /))
-    parallel run_fuzzer ::: ${DRIVERS[@]} ::: -max_total_time=30
-else
-    DRIVERS=$1
-    run_fuzzer $DRIVERS -max_total_time=30
-fi
-cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++.a
-cp /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.bk /usr/local/lib/x86_64-unknown-linux-gnu/libc++experimental.a
-
-/challenge/build coverage
-
-for driver in "${DRIVERS[@]}"
-do
-    rm -rf /corpus/$driver
-    mv /tmp/${driver}_corpus /corpus/$driver
-done
-
-coverage
-
-for f in /out/report_target/*; do cp -r $f /out/report/$(basename $f); done
-
-if compgen -G "/out/crash*" > /dev/null; then
-    echo
-    echo "Crashes detected within the /out directory!"
-    echo
-fi
-echo
-echo newfuzzer:
-/usr/local/sbin/loc-calc newfuzzer
-/usr/local/sbin/announce $INITIAL $? 
-if [ "$?" -ge "$TARGET" ]; then
-    echo
-    echo Congratulations! But you will need to run /challenge/loc2 to win.
-fi
-echo
-chown -hR hacker:hacker /home/hacker/fuzz-dojo /home/hacker/.log /out

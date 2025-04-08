@@ -37,7 +37,6 @@ rm -rf xvidcore-install
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    cp -r $SRC/oss-fuzz-fuzzers/xvid /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
-   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    rm -rf $SRC/oss-fuzz-fuzzers/xvid
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME $SRC/oss-fuzz-fuzzers/xvid

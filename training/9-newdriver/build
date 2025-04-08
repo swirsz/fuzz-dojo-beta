@@ -39,7 +39,6 @@ if [ ! -d "/home/hacker/fuzz-dojo/training-newdriver" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-newdriver
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/fuzz-dojo/training-newdriver
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-newdriver
-   chown -R hacker /home/hacker/fuzz-dojo/training-newdriver
 else
    cp /home/hacker/fuzz-dojo/training-newdriver/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/fuzz-dojo/training-newdriver/build.sh $SRC

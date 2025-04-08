@@ -31,7 +31,6 @@ if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/wasm3/platforms/app_fuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
-   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/wasm3/platforms/app_fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC

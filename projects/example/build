@@ -32,7 +32,6 @@ if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
 
    cp -r $SRC/projects/$PROJECT_NAME/my-api-repo/* /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
-   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/projects/$PROJECT_NAME/my-api-repo
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC

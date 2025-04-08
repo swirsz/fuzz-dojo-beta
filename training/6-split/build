@@ -43,7 +43,6 @@ if [ ! -d "/home/hacker/fuzz-dojo/training-split" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-split
    cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/fuzz-dojo/training-split
    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-split
-   chown -R hacker /home/hacker/fuzz-dojo/training-split
 else
    cp /home/hacker/fuzz-dojo/training-split/*.c $SRC/$PROJECT_NAME/fuzzers
    cp /home/hacker/fuzz-dojo/training-split/build.sh $SRC

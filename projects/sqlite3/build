@@ -48,7 +48,6 @@ if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    cp $SRC/sqlite3/test/*.zip /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/sqlite3/main.mk  /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
-   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.zip $SRC/sqlite3/test
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.options $SRC/sqlite3/test

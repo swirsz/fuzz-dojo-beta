@@ -34,7 +34,6 @@ if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/tests/ossfuzz/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/ossfuzz/Makefile.am /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/$PROJECT_NAME/tests/ossfuzz/ossfuzz.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
-   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/tests/ossfuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile.am $SRC/$PROJECT_NAME/tests/ossfuzz

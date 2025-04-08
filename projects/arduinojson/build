@@ -36,7 +36,6 @@ if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    cp $SRC/$PROJECT_NAME/extras/fuzzing/Makefile /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile
    cp $SRC/$PROJECT_NAME/extras/fuzzing/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
-   chown -R hacker /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/extras/fuzzing
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/extras/fuzzing
