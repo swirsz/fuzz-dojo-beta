@@ -1,12 +1,6 @@
 #!/opt/pwn.college/bash
-if [ "$1" = "afl" ]; then
-    . /usr/local/sbin/eafl
-    shift
-    export LABEL=$1$FUZZING_ENGINE
-else
-    . /usr/local/sbin/e
-    export LABEL=$1
-fi
+. /usr/local/sbin/e
+export LABEL=$1
 export PROJECT_NAME=bzip2
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
@@ -35,20 +29,18 @@ mv /src-$LABEL /src
 
 cd $SRC
 #----------------------------------------------------------------------
-if [ ! -d "/home/hacker/fuzz-dojo/training-seedcorpus" ]; then
-   mkdir -p /home/hacker/fuzz-dojo/training-seedcorpus
-   cp $SRC/build.sh /home/hacker/fuzz-dojo/training-seedcorpus
-   cp $SRC/*.c /home/hacker/fuzz-dojo/training-seedcorpus
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-seedcorpus
+if [ ! -d "/home/hacker/fuzz-dojo/training-implement-seedcorpus" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/training-implement-seedcorpus
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/training-implement-seedcorpus
+   cp $SRC/*.c /home/hacker/fuzz-dojo/training-implement-seedcorpus
+   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-implement-seedcorpus
 else
-   cp /home/hacker/fuzz-dojo/training-seedcorpus/* $SRC
-   cp /home/hacker/fuzz-dojo/training-seedcorpus/build.sh $SRC
+   cp /home/hacker/fuzz-dojo/training-implement-seedcorpus/* $SRC
+   cp /home/hacker/fuzz-dojo/training-implement-seedcorpus/build.sh $SRC
 fi
+export PROJECT_NAME=training-implement-seedcorpus
 #----------------------------------------------------------------------
-
-mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-seedcorpus /home/hacker/fuzz-dojo/training-seedcorpus
+fuzzlog
 compile
 drivers
-find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker /home/hacker/fuzz-dojo /home/hacker/.log /out
 mv /src /src-$LABEL

@@ -1,12 +1,6 @@
 #!/opt/pwn.college/bash
-if [ "$1" = "afl" ]; then
-    . /usr/local/sbin/eafl
-    shift
-    export LABEL=$1$FUZZING_ENGINE
-else
-    . /usr/local/sbin/e
-    export LABEL=$1
-fi
+. /usr/local/sbin/e
+export LABEL=$1
 export PROJECT_NAME=janus-gateway
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
@@ -47,10 +41,9 @@ else
    cp /home/hacker/fuzz-dojo/training-split/*.c $SRC/$PROJECT_NAME/fuzzers
    cp /home/hacker/fuzz-dojo/training-split/build.sh $SRC
 fi
+export PROJECT_NAME=training-split
 #----------------------------------------------------------------------
-mkdir -p /home/hacker/.log
-[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-training-split /home/hacker/fuzz-dojo/training-split
+fuzzlog
 compile
 drivers
-find $SRC -not -user hacker -print | xargs -n 100 -P 8 chown hacker:hacker /home/hacker/fuzz-dojo /home/hacker/.log /out
 mv /src /src-$LABEL
