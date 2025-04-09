@@ -31,7 +31,7 @@ cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/training-initial-parameters" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-initial-parameters
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/fuzz-dojo/training-initial-parameters
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-initial-parameters
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/training-initial-parameters
 else
    cp /home/hacker/fuzz-dojo/training-initial-parameters/*.c $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/fuzz-dojo/training-initial-parameters/build.sh $SRC
