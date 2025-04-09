@@ -1,28 +1,11 @@
---- oss-fuzz.sho	2025-02-07 18:34:46.530029464 +0000
-+++ oss-fuzz.sh	2025-02-07 18:40:16.414722467 +0000
-@@ -45,12 +45,12 @@
- export LIB_FUZZING_ENGINE=${LIB_FUZZING_ENGINE:--fsanitize=fuzzer}
+--- oss-fuzz.sho	2025-04-09 02:54:39.475802624 +0000
++++ oss-fuzz.sh	2025-04-09 03:01:23.351776189 +0000
+@@ -43,6 +43,6 @@
+ done
  
- if [[ -n "${FUZZING_ENGINE:-}" ]]; then
--    apt-get update
--    apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev
-+#    apt-get update
-+#    apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev
- 
--    if [[ "$ARCHITECTURE" == i386 ]]; then
--        apt-get install -y libexpat-dev:i386
--    fi
-+#    if [[ "$ARCHITECTURE" == i386 ]]; then
-+#        apt-get install -y libexpat-dev:i386
-+#    fi
- 
-     if [[ "$SANITIZER" == undefined ]]; then
-         additional_ubsan_checks=pointer-overflow,alignment
-@@ -102,5 +102,5 @@
- 
- # Let's take the systemd public corpus here. It has been accumulating since 2018
- # so it should be good enough for our purposes.
--wget -O "$OUT/fuzz-packet_seed_corpus.zip" \
--    https://storage.googleapis.com/systemd-backup.clusterfuzz-external.appspot.com/corpus/libFuzzer/systemd_fuzz-dns-packet/public.zip
-+#wget -O "$OUT/fuzz-packet_seed_corpus.zip" \
-+#    https://storage.googleapis.com/systemd-backup.clusterfuzz-external.appspot.com/corpus/libFuzzer/systemd_fuzz-dns-packet/public.zip
+ for t in consume-{key,record}; do
+-    wget -O "$OUT/fuzz-${t}_seed_corpus.zip" \
+-        "https://storage.googleapis.com/avahi-backup.clusterfuzz-external.appspot.com/corpus/libFuzzer/avahi_packet_${t//-/_}_fuzzer/public.zip"
++    #wget -O "$OUT/fuzz-${t}_seed_corpus.zip" \
++    #"https://storage.googleapis.com/avahi-backup.clusterfuzz-external.appspot.com/corpus/libFuzzer/avahi_packet_${t//-/_}_fuzzer/public.zip"
+ done
