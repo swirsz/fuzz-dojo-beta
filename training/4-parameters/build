@@ -14,6 +14,7 @@ if [ ! -d "/src-orig" ]; then
     #   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
     #git clone --depth 1 https://github.com/lathiat/avahi
     #git clone --depth 1 https://github.com/swirsz/avahi
+    #RUN git clone --depth 1 https://github.com/avahi/avahi
     cp -r /downloads/swavahi $SRC/avahi
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
@@ -31,10 +32,8 @@ cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/training-initial-parameters" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-initial-parameters
    cp $SRC/$PROJECT_NAME/fuzz/*.c /home/hacker/fuzz-dojo/training-initial-parameters
-   cp $SRC/build.sh /home/hacker/fuzz-dojo/training-initial-parameters
 else
    cp /home/hacker/fuzz-dojo/training-initial-parameters/*.c $SRC/$PROJECT_NAME/fuzz
-   cp /home/hacker/fuzz-dojo/training-initial-parameters/build.sh $SRC
 fi
 export PROJECT_NAME=training-initial-parameters
 #----------------------------------------------------------------------
