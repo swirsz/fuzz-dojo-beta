@@ -17,8 +17,7 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/swavahi $SRC/avahi
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-    cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-consume-key_seed_corpus.zip
-    cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-consume-record_seed_corpus.zip
+    cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
     cp /challenge/fuzz-newfuzzer.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
     patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
 #----------------------------------------------------------------------
