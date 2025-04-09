@@ -14,7 +14,7 @@ if [ ! -d "/src-orig" ]; then
     #   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
     #git clone --depth 1 https://github.com/lathiat/avahi
     #git clone --depth 1 https://github.com/swirsz/avahi
-    #RUN git clone --depth 1 https://github.com/avahi/avahi
+    #git clone --depth 1 https://github.com/avahi/avahi
     cp -r /downloads/swavahi $SRC/avahi
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
