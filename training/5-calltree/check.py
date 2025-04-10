@@ -19,8 +19,7 @@ print("than those currently implemented in training-calltree/newfuzzer.c\n")
 
 summary_file = "/out/fuzzer_stats/newfuzzer.json"
 returncode = 0
-target = 19
-flag = open("/flag").read().strip()
+target = 19=
 try:
     with open(summary_file, "r") as fj:
         content = json.load(fj)
