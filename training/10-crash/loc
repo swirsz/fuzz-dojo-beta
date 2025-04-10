@@ -1,14 +1,9 @@
 #!/opt/pwn.college/bash
 INITIAL=78
 TARGET=100
-/usr/local/sbin/loc_count $INITIAL $TARGET $@
+/usr/local/sbin/loc_count2 $INITIAL $TARGET $@
 
-if compgen -G "/out/timeout-*" > /dev/null
-then
-    echo
-    echo "Timeouts detected within the /out directory!"
-    echo
-elif compgen -G "/out/crash-*" > /dev/null
+if compgen -G "/out/crash-*" > /dev/null
 then
     echo
     echo "Crashes detected within the /out directory!"
