@@ -63,7 +63,7 @@ static void fuzzer_read_data(FILE *file, size_t size) {
   int    bzerr;
   int    verbosity = 0;
   char   obuf[size];
-  char   unused[BZ_MAX_UNUSED];
+  char   unused[size];
   int    nUnused = 0;
   bool   smallMode = 0;
 
