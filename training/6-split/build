@@ -15,9 +15,8 @@ if [ ! -d "/src-orig" ]; then
     # install libsrtp dep from source
     #git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
     cp -r /downloads/libsrtp $SRC
+    cd $SRC/libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
 
-    cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
-    cd $SRC/
     # fetch Janus code
     # git clone --single-branch https://github.com/swirsz/janus-gateway.git
     cp -r /downloads/janus-gateway $SRC
