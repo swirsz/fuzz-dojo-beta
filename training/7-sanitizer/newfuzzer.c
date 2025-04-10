@@ -62,7 +62,7 @@ static void fuzzer_write_data(FILE *file, const uint8_t *data, size_t size) {
 static void fuzzer_read_data(FILE *file, size_t size) {
   int    bzerr;
   int    verbosity = 0;
-  char   obuf[size];
+  char   obuf[BZ_MAX_UNUSED];
   char   unused[BZ_MAX_UNUSED];
   int    nUnused = 0;
   bool   smallMode = 0;
