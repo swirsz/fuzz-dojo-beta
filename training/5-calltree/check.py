@@ -18,7 +18,7 @@ print("function should be required. Both functions should require fewer paramete
 print("than those currently implemented in training-calltree/newfuzzer.c\n")
 
 summary_file = "/out/fuzzer_stats/newfuzzer.json"
-level = 0
+returncode = 0
 target = 19
 flag = open("/flag").read().strip()
 try:
