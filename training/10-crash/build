@@ -18,7 +18,7 @@ if [ ! -d "/src-orig" ]; then
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     
-    cp $SRC/example_flush_fuzzer.c $SRC/new_fuzzer.c
+    cp $SRC/minigzip_fuzzer.c $SRC/new_fuzzer.c
     #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
     build-cleanup
