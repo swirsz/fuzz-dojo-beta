@@ -27,8 +27,8 @@ fi
 set -ex
 #----------------------------------------------------------------------
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+cp /home/hacker/fuzz-dojo/training-create-newdriver/*.c $SRC/training-create-newdriver/fuzz
+cp /home/hacker/fuzz-dojo/training-create-newdriver/build.sh $SRC
 
 cd $SRC/$PROJECT_NAME
 
