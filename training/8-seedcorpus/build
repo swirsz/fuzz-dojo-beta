@@ -33,7 +33,7 @@ if [ ! -d "/home/hacker/fuzz-dojo/training-implement-seedcorpus" ]; then
    mkdir -p /home/hacker/fuzz-dojo/training-implement-seedcorpus
    cp $SRC/build.sh /home/hacker/fuzz-dojo/training-implement-seedcorpus
    cp $SRC/*.c /home/hacker/fuzz-dojo/training-implement-seedcorpus
-   cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh /home/hacker/fuzz-dojo/training-implement-seedcorpus
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/training-implement-seedcorpus
 else
    cp /home/hacker/fuzz-dojo/training-implement-seedcorpus/* $SRC
    cp /home/hacker/fuzz-dojo/training-implement-seedcorpus/build.sh $SRC

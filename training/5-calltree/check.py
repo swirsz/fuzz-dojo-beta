@@ -1,5 +1,3 @@
-#!/usr/bin/exec-suid --real -- /run/workspace/bin/python
-
 #!/usr/bin/env python3
 import json
 import sys
@@ -32,12 +30,9 @@ try:
                 if files.get('filename') == "/src/bzip2/bzlib.c":
                     func = files['summary']['functions']['covered']
                     print("{0} functions reached. ".format(str(func)))
-                    level = int(func)
+                    returncode = int(func)
 except:
     print("Missing "+summary_file)
     print("\nPlease run /challenge/loc first\n")
 
-if code > target:
-    print(flag)
-else:
-    print("Additional functions could be called higher in the calltree.  Try again.")
+exit(returncode)
