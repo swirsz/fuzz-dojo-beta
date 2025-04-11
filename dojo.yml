@@ -163,6 +163,8 @@ modules:
         name: ARDUINOJSON - simple 3599 loc 49%-49%-99% - 1 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=arduinojson
 
+        ArduinoJson is a C++ JSON library - 99.51% static reachability, but only 49% actual coverage, plenty of functions that are not being called by the 2 fuzz drivers
+        
       - id: avahi
         name: AVAHI - simple 2566 loc 73%-76%-81% - 2 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=avahi
