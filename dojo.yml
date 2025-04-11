@@ -32,7 +32,7 @@ description: |
 
   - `(sanitizer)` is an OPTIONAL value of `none` (Default) `address memory undefined` or `thread`
 
-  - `(driver)` is an OPTIONAL value of exactly 1 fuzz driver to execute and provide coverage data instead of executing all fuzz drivers.  For example: `/challenge/loc newfuzzer` If this is not provided, all of the fuzz drivers will be compiled.
+  - `(driver)` is an OPTIONAL value of exactly 1 fuzz driver to execute and provide coverage data instead of executing all fuzz drivers.  For example: ```/challenge/loc newfuzzer``` If this is not provided, all of the fuzz drivers will be compiled.
 
   `/challenge/fuzz-introspector` Compiles project and creates Fuzz Introspector report that can be viewed in a web browser under `Desktop`
 
