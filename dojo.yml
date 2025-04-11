@@ -193,7 +193,6 @@ modules:
 
       - id: elfutils
         name: ELFUTILS - simple 31383 loc 9%-26%-40% - 2.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=elfutils
 
       - id: example
         name: EXAMPLE - simple 20 loc 100% - 1 min
@@ -201,7 +200,6 @@ modules:
 
       - id: exiv2
         name: EXIV2 - simple 34282 loc 10%-54%-1% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
         
       - id: fmt
         name: FMT - complex 5904 loc 77%-81%-13% - 4 min (slow FI)
@@ -213,11 +211,9 @@ modules:
 
       - id: guetzli
         name: GUETZLI - simple 5648 loc 79%-80%-72% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=guetzli
 
       - id: haproxy
         name: HAPROXY - simple 106108 loc 1%-1%-2% - 7 min (broken on OSS-Fuzz)
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=haproxy
 
       - id: igraph
         name: IGRAPH - medium 57124 loc 20%-62%-44% - 4 min (slow FI)
@@ -229,7 +225,6 @@ modules:
 
       - id: json
         name: JSON - simple 8008 loc 68%-74%-94% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json
 
       - id: kamailio
         name: KAMAILIO - simple 83091 loc 4%-10%-11% (no FI) - 5 min
