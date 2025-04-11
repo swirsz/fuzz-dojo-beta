@@ -228,7 +228,6 @@ modules:
 
       - id: kamailio
         name: KAMAILIO - simple 83091 loc 4%-10%-11% (no FI) - 5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
 
       - id: lame
         name: LAME - complex 23539 loc 40% (broken on OSS-Fuzz)
@@ -244,12 +243,10 @@ modules:
         
       - id: libsass
         name: LIBSASS - simple 19723 loc 29%-26%-4% (no FI) - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsass
 
       - id: libsodium
         name: LIBSODIUM - simple 8403 loc 18%-19%-12% - 2 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
-       
+
       - id: libssh2
         name: LIBSSH2 - medium 12632 loc 9%-20%-26% - 2 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh2

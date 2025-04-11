@@ -1,4 +1,3 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cjson
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=bzip2
 
-cJSON is discussed in the training video: "cJSON Case Study extending 27% Static Code Coverage to 73%"
-
+BZIP2 is discussed in the training video: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
