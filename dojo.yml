@@ -157,7 +157,6 @@ modules:
 
       - id: apache-httpd
         name: APACHE-HTTPD - medium 48312 loc 12%-14%-6% - 5.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
 
       - id: arduinojson
         name: ARDUINOJSON - simple 3599 loc 49%-49%-99% - 1 min
@@ -167,18 +166,15 @@ modules:
         
       - id: boost
         name: BOOST - medium 11995 loc 43%-57%--% - 10 min (no FI)
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=boost
 
       - id: bzip2
         name: BZIP2 - medium 2661 loc 74%-92%-99% - 1 min
 
       - id: c-ares
         name: C-ARES - medium 5676 loc 35%-39%-72% - 2.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=c-ares
 
       - id: casync
         name: CASYNC - medium 1678 loc 11%-10%-14% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
 
       - id: cjson
         name: CJSON - simple 2304 loc 43%-43%-46% - 1 min
@@ -261,7 +257,6 @@ modules:
  
       - id: lighttpd
         name: LIGHTTPD - simple 1310 loc 36%-35%-47% - 2 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
 
       - id: miniz
         name: MINIZ - medium 5423 loc 56%-60%-74% - 1 min
