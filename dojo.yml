@@ -162,13 +162,13 @@ modules:
         name: ARDUINOJSON - simple 3599 loc 49%-49%-99% - 1 min
 
       - id: avahi
-        name: AVAHI - simple 2566 loc 73%-76%-81% - 2 min
+        name: * AVAHI - simple 2566 loc 73%-76%-81% - 2 min
         
       - id: boost
         name: BOOST - medium 11995 loc 43%-57%--% - 10 min (no FI)
 
       - id: bzip2
-        name: BZIP2 - medium 2661 loc 74%-92%-99% - 1 min
+        name: * BZIP2 - medium 2661 loc 74%-92%-99% - 1 min
 
       - id: c-ares
         name: C-ARES - medium 5676 loc 35%-39%-72% - 2.5 min
@@ -180,18 +180,16 @@ modules:
         name: CJSON - simple 2304 loc 43%-43%-46% - 1 min
 
       - id: cmark
-        name: CMARK - medium 14688 loc 81%-95%-82% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cmark
+        name: * CMARK - medium 14688 loc 81%-95%-82% - 1 min
         
       - id: cppcheck
-        name: CPPCHECK - complex 79321 loc 20%-24%-24% (no FI) - 1.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=cppcheck
+        name: * CPPCHECK - complex 79321 loc 20%-24%-24% (coverage broken on oss-fuzz) - 1.5 min
 
       - id: elfutils
         name: ELFUTILS - simple 31383 loc 9%-26%-40% - 2.5 min
 
       - id: example
-        name: EXAMPLE - simple 20 loc 100% - 1 min
+        name: * EXAMPLE - simple 20 loc 100% - 1 min
         description: Sample OSS-Fuzz project
 
       - id: exiv2
@@ -199,17 +197,15 @@ modules:
         
       - id: fmt
         name: FMT - complex 5904 loc 77%-81%-13% - 4 min (slow FI)
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
 
       - id: gfwx
-        name: GFWX - medium 1087 loc 88%-85%--% - 1.75 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=gfwx
+        name: * GFWX - medium 1087 loc 88%-85%--% - 1.75 min
 
       - id: guetzli
         name: GUETZLI - simple 5648 loc 79%-80%-72% - 1 min
 
       - id: haproxy
-        name: HAPROXY - simple 106108 loc 1%-1%-2% - 7 min (broken on OSS-Fuzz)
+        name: * HAPROXY - simple 106108 loc 1%-1%-2% - 7 min (broken on OSS-Fuzz)
 
       - id: igraph
         name: IGRAPH - medium 57124 loc 20%-62%-44% - 4 min (slow FI)
@@ -363,5 +359,5 @@ modules:
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
 
       - id: zopfli
-        name: ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
+        name: * ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zopfli
