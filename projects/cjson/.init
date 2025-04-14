@@ -1,2 +1,2 @@
 #!/bin/bash
-/challenge/build
+/challenge/build &
