@@ -1,6 +1,8 @@
 #!/opt/pwn.college/bash
-set -e
 . /usr/local/sbin/e
+if [ "$?" -gt 0 ]; then
+    exit 1
+fi
 export LABEL=$1
 export PROJECT_NAME=openjpeg
 export SANITIZER=$1
