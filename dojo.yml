@@ -163,7 +163,7 @@ modules:
 
       - id: avahi
         name: [D] AVAHI - simple 2566 loc 73%-76%-81% - 2 min
-        
+
       - id: boost
         name: BOOST - medium 11995 loc 43%-57%--% - 10 min (no FI)
 
@@ -181,7 +181,7 @@ modules:
 
       - id: cmark
         name: [D] CMARK - medium 14688 loc 81%-95%-82% - 1 min
-        
+
       - id: cppcheck
         name: [D] CPPCHECK - complex 79321 loc 20%-24%-24% (coverage broken on oss-fuzz) - 1.5 min
 
@@ -194,7 +194,7 @@ modules:
 
       - id: exiv2
         name: EXIV2 - simple 34282 loc 10%-54%-1% - 1 min
-        
+ 
       - id: fmt
         name: FMT - complex 5904 loc 77%-81%-13% - 4 min (slow FI)
 
@@ -224,7 +224,7 @@ modules:
       - id: lame
         name: LAME - complex 23539 loc 40% (broken on OSS-Fuzz)
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
-         
+
       - id: liblouis
         name: LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=liblouis
@@ -232,7 +232,7 @@ modules:
       - id: libpng
         name: LIBPNG - medium 13217 loc 40%-43%-57% - 1.5 min
         description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpng
-        
+
       - id: libsass
         name: LIBSASS - simple 19723 loc 29%-26%-4% (no FI) - 1 min
 
