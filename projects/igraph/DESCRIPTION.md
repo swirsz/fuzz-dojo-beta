@@ -1,5 +1,5 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
 
-{fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams.
+Igraph is a C library for complex network analysis and graph theory, with emphasis on efficiency, portability and ease of use.
 
-7 fuzz drivers cover 80% of the project code, which is composed of hundreds of mostly independent functions. There are still a few uncovered functions, such as copy_fill_from, constexpr auto count(), write_codecvt, do_write, write, operator functions, and many more.
+25 fuzz drivers cover 80% of the project code, 

@@ -42,7 +42,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
    #cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
-fi
+fi2
 #----------------------------------------------------------------------
 fuzzlog
 compile
