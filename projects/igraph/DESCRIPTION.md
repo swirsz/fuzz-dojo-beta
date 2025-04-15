@@ -2,4 +2,4 @@ Use (Report link) to browse the source code and fuzz introspector report https:/
 
 Igraph is a C library for complex network analysis and graph theory, with emphasis on efficiency, portability and ease of use.
 
-25 fuzz drivers cover 80% of the project code, 
+25 fuzz drivers cover 60% of the project code.  Certain areas such as linear algebra functions have 0% coverage.
