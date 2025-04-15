@@ -47,7 +47,7 @@ if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
 else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/regress/misc/fuzz-harness
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
-fi2
+fi
 #----------------------------------------------------------------------
 fuzzlog
 compile
