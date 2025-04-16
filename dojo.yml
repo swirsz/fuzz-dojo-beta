@@ -180,7 +180,7 @@ modules:
         name: (D) CMARK - medium 14688 loc 81%-95%-82% - 1 min
 
       - id: cppcheck
-        name: (D) CPPCHECK - complex 79321 loc 20%-24%-24% (coverage broken on oss-fuzz) - 1.5 min
+        name: (D) CPPCHECK - complex 79321 loc 20%-24%-24% (broken on oss-fuzz) - 1.5 min
 
       - id: elfutils
         name: ELFUTILS - simple 31383 loc 9%-26%-40% - 2.5 min
