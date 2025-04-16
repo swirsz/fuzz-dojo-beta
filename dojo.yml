@@ -146,6 +146,11 @@ modules:
         type: lecture
         video: KOHb0y_Oiko
 
+      - name: "OSS Fuzz Driver Development"
+        type: lecture
+        video: KDHVPqx6F1s
+        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
+
   - id: projects
     name: OSS-Fuzz Projects
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.
