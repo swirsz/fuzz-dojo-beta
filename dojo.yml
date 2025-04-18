@@ -148,7 +148,7 @@ modules:
 
       - name: "OSS Fuzz Driver Development"
         type: lecture
-        video: KDHVPqx6F1s
+        video: gvA0cXxG4cg
         slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
 
   - id: projects
