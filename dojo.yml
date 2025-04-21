@@ -223,15 +223,12 @@ modules:
 
       - id: lame
         name: LAME - complex 23539 loc 40% (broken on OSS-Fuzz)
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lame
 
       - id: liblouis
         name: LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=liblouis
         
       - id: libpng
         name: LIBPNG - medium 13217 loc 40%-43%-57% - 1.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpng
 
       - id: libsass
         name: LIBSASS - simple 19723 loc 29%-26%-4% (no FI) - 1 min
@@ -241,123 +238,93 @@ modules:
 
       - id: libssh2
         name: LIBSSH2 - medium 12632 loc 9%-20%-26% - 2 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh2
 
       - id: libvnc
         name: LIBVNC - medium 10793 loc 16%-19%-22% - 3.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
 
       - id: libvpx
         name: LIBVPX - medium 32885 loc 54%-60%-0% - 2.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
  
       - id: lighttpd
         name: LIGHTTPD - simple 1310 loc 36%-35%-47% - 2 min
 
       - id: miniz
         name: MINIZ - medium 5423 loc 56%-60%-74% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=miniz
 
       - id: minizip
         name: MINIZIP - medium 3639 loc 75%-76%-64% - 45 sec
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
         
       - id: mpg123
         name: MPG123 - medium 9826 loc 39%-52%-43% - 2 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
 
       - id: mupdf
         name: MUPDF - medium 289131 loc 25%-36%--% (no FI) - 12 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mupdf
 
       - id: openjpeg
         name: OPENJPEG - complex 22939 loc 5%--%-4% - 2 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
 
       - id: opensips
         name: OPENSIPS - medium 62114 loc 10%-13%-17% - 4 min (slow FI)
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
 
       - id: openssh
         name: OPENSSH - medium 27975 loc 25%-29%-36% - 13 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openssh
 
       - id: pcre2
         name: PCRE2 - medium 33249 loc 57%-80%-96% - 11 min (slow FI)
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pcre2
 
       - id: pycryptodome
         name: PYCRYPTODOME - simple 1398 loc 80%-80%-79% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=pycryptodome
 
       - id: snappy
         name: SNAPPY - simple 1502 loc 67%-67%-61% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=snappy
 
       - id: speex
         name: SPEEX - complex 5867 loc 80%--%--% - 4.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=speex
 
       - id: sqlite3
         name: SQLITE3 - medium 80385 loc 33%-75%-76% - 5 min (slow FI)
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
         
       - id: tmux
         name: TMUX - medium 48752 loc 12%-12%-31% - 1.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tmux
 
       - id: unrar
         name: UNRAR - medium 13209 loc 8%-58%-86% - 1.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
 
       - id: uriparser
         name: URIPARSER - medium 4606 loc 72%-81%-93% - 45 sec
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=uriparser
 
       - id: usbguard
         name: USBGUARD - simple 3525 loc 39%-41%-93% (no FI) - 2 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=usbguard
 
       - id: valijson
         name: VALIJSON - simple 3566 loc 68%-72%-52% - 1.5 min (slow FI)
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=valijson
 
       - id: vorbis
         name: VORBIS - simple 8745 loc 31%-35%-36% - 2.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vorbis
 
       - id: w3m
         name: W3M - simple 6400 loc 66%-70%-30% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=w3m
 
       - id: wasm3
         name: WASM3 - simple 4107 loc 34%-65%-22% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wasm3
 
       - id: wavpack
         name: WAVPACK - complex 4172 loc 73%-84%-96% - 1.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=wavpack
 
       - id: woff2
         name: WOFF2 - simple 3985 loc 71%-87%-89% - 3 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=woff2
 
       - id: xvid
         name: XVID - medium 13782 loc 10%-33%-- - 1.5 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
         
       - id: xz
         name: XZ - simple 3414 loc 69%-71%-12% - 2 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xz
 
       - id: yara
         name: YARA - simple 30443 loc 49%-63%-43% - 3 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=yara
 
       - id: zlib
         name: ZLIB - complex 5055 loc 78%-79%-87% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
 
       - id: zopfli
         name: (D) ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
-        description: Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zopfli
