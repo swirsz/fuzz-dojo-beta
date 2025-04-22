@@ -118,14 +118,19 @@ modules:
         type: lecture
         video: DJO1A2neZ6Y
         
-      - name: "Fuzzing: Introduction"
+      - name: "Introduction to Fuzzing"
         type: lecture
         video: K_2DAo5pPQQ
               
-      - name: "Features of the Fuzz Dojo"
+      - name: "Fuzz Dojo only: Building and Running Reports"
         type: lecture
         video: u7GrifELIjU
               
+      - name: "OSS Fuzz only: Building and Running Reports"
+        type: lecture
+        video: gvA0cXxG4cg
+        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
+        
       - name: "Investigating a Project & Picking a Function to Fuzz"
         type: lecture
         video: OP22mPweQbU
@@ -146,10 +151,6 @@ modules:
         type: lecture
         video: KOHb0y_Oiko
 
-      - name: "OSS Fuzz Driver Development"
-        type: lecture
-        video: gvA0cXxG4cg
-        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
 
   - id: projects
     name: OSS-Fuzz Projects
@@ -222,7 +223,7 @@ modules:
         name: KAMAILIO - simple 83091 loc 4%-10%-11% (no FI) - 5 min
 
       - id: lame
-        name: LAME - complex 23539 loc 40% (broken on OSS-Fuzz)
+        name: (D) LAME - complex 23539 loc 40% (broken on OSS-Fuzz)
 
       - id: liblouis
         name: LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min
@@ -270,19 +271,19 @@ modules:
         name: OPENSSH - medium 27975 loc 25%-29%-36% - 13 min
 
       - id: pcre2
-        name: PCRE2 - medium 33249 loc 57%-80%-96% - 11 min (slow FI)
+        name: (D) PCRE2 - medium 33249 loc 57%-80%-96% - 11 min (slow FI)
 
       - id: pycryptodome
-        name: PYCRYPTODOME - simple 1398 loc 80%-80%-79% - 1 min
+        name: (D) PYCRYPTODOME - simple 1398 loc 80%-80%-79% - 1 min
 
       - id: snappy
         name: SNAPPY - simple 1502 loc 67%-67%-61% - 1 min
 
       - id: speex
-        name: SPEEX - complex 5867 loc 80%--%--% - 4.5 min
+        name: (D) SPEEX - complex 5867 loc 80%--%--% - 4.5 min
 
       - id: sqlite3
-        name: SQLITE3 - medium 80385 loc 33%-75%-76% - 5 min (slow FI)
+        name: SQLITE3 - complex 80385 loc 33%-75%-76% - 5 min (slow FI)
         
       - id: tmux
         name: TMUX - medium 48752 loc 12%-12%-31% - 1.5 min
@@ -291,7 +292,7 @@ modules:
         name: UNRAR - medium 13209 loc 8%-58%-86% - 1.5 min
 
       - id: uriparser
-        name: URIPARSER - medium 4606 loc 72%-81%-93% - 45 sec
+        name: (D) URIPARSER - medium 4606 loc 72%-81%-93% - 45 sec
 
       - id: usbguard
         name: USBGUARD - simple 3525 loc 39%-41%-93% (no FI) - 2 min
@@ -309,10 +310,10 @@ modules:
         name: WASM3 - simple 4107 loc 34%-65%-22% - 1 min
 
       - id: wavpack
-        name: WAVPACK - complex 4172 loc 73%-84%-96% - 1.5 min
+        name: (D) WAVPACK - complex 4172 loc 73%-84%-96% - 1.5 min
 
       - id: woff2
-        name: WOFF2 - simple 3985 loc 71%-87%-89% - 3 min
+        name: (D) WOFF2 - simple 3985 loc 71%-87%-89% - 3 min
 
       - id: xvid
         name: XVID - medium 13782 loc 10%-33%-- - 1.5 min

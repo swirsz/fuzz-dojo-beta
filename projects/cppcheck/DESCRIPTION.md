@@ -3,4 +3,4 @@ Use (Report link) to browse the source code and fuzz introspector report https:/
 Fuzz Introspector
 https://storage.googleapis.com/oss-fuzz-introspector/cppcheck/inspector-report/20250411/fuzz_report.html
 
-No coverage data available - project broken on oss-fuzz
+Can't currently generate coverage data - project broken on oss-fuzz

@@ -3,3 +3,5 @@ Use (Report link) to browse the source code and fuzz introspector report https:/
 Fuzz Introspector
 https://storage.googleapis.com/oss-fuzz-introspector/libssh2/inspector-report/20250411/fuzz_report.html
 
+Libssh2 is a library implementing the SSH2 protocol.  It has only 1 fuzz driver that acts as a client and reaches only 26% of the code.  
+

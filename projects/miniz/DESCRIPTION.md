@@ -3,3 +3,5 @@ Use (Report link) to browse the source code and fuzz introspector report https:/
 Fuzz Introspector
 https://storage.googleapis.com/oss-fuzz-introspector/miniz/inspector-report/20250411/fuzz_report.html
 
+Miniz is a lossless, high performance data compression library in a single source file that implements the zlib (RFC 1950) and Deflate (RFC 1951) compressed data format specification standards.  Miniz also contains simple to use functions for writing .PNG format image files and reading/writing/appending .ZIP format archives.  It has 9 different fuzz drivers reaching 60% of the code.
+
