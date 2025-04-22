@@ -122,6 +122,10 @@ modules:
         type: lecture
         video: K_2DAo5pPQQ
               
+      - name: "Investigating a Project & Picking a Function to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+              
       - name: "Fuzz Dojo only: Building and Running Reports"
         type: lecture
         video: u7GrifELIjU
@@ -131,11 +135,7 @@ modules:
         video: gvA0cXxG4cg
         slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
         
-      - name: "Investigating a Project & Picking a Function to Fuzz"
-        type: lecture
-        video: OP22mPweQbU
-              
-      - name: "Understanding Existing Fuzz Drivers"
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
         type: lecture
         video: AtjkUvYOGJw
               
