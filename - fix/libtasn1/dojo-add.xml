@@ -1,5 +1,0 @@
-
-      - id: libtasn1
-        name: LIBTASN1 - 6722 loc 59% coverage
-        description: Browse source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libtasn1
-   

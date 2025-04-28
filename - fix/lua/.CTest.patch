@@ -1,9 +1,0 @@
---- CTestTestfile.cmake0	2023-09-18 02:35:45.196212090 +0000
-+++ CTestTestfile.cmake	2023-09-18 02:40:45.418210260 +0000
-@@ -24,4 +24,6 @@
- set_tests_properties(lua_stringtonumber_test PROPERTIES  ENVIRONMENT "ASAN_OPTIONS='detect_invalid_pointer_pairs=2'" _BACKTRACE_TRIPLES "/src/testdir/tests/CMakeLists.txt;70;add_test;/src/testdir/tests/CMakeLists.txt;107;create_test;/src/testdir/tests/CMakeLists.txt;0;")
- add_test(torture_test "/usr/bin/sh" "-c" "/src/testdir/build/tests/torture_test -use_value_profile=1 -report_slow_units=5 -reload=1 -reduce_inputs=1 -print_pcs=1 -print_final_stats=1 -mutate_depth=20 -runs=\${RUNS:-5} -artifact_prefix=torture_test_")
- set_tests_properties(torture_test PROPERTIES  ENVIRONMENT "ASAN_OPTIONS='detect_invalid_pointer_pairs=2'" _BACKTRACE_TRIPLES "/src/testdir/tests/CMakeLists.txt;70;add_test;/src/testdir/tests/CMakeLists.txt;107;create_test;/src/testdir/tests/CMakeLists.txt;0;")
-+add_test(newfuzzer "/usr/bin/sh" "-c" "/src/testdir/build/tests/luaL_loadbufferx_test -use_value_profile=1 -report_slow_units=5 -reload=1 -reduce_inputs=1 -print_pcs=1 -print_final_stats=1 -mutate_depth=20 -runs=\${RUNS:-5} -artifact_prefix=luaL_loadbufferx_test_")
-+set_tests_properties(newfuzzer PROPERTIES  ENVIRONMENT "ASAN_OPTIONS='detect_invalid_pointer_pairs=2'" _BACKTRACE_TRIPLES "/src/testdir/tests/CMakeLists.txt;70;add_test;/src/testdir/tests/CMakeLists.txt;107;create_test;/src/testdir/tests/CMakeLists.txt;0;")
- subdirs("luaL_loadbuffer_proto")

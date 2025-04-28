@@ -1,8 +1,0 @@
-@@ -7,6 +7,7 @@
-  FUZZ_OBJS += oss-fuzz/fuzz-pack-headers.o
-  FUZZ_OBJS += oss-fuzz/fuzz-pack-idx.o
- +FUZZ_OBJS += oss-fuzz/fuzz-command.o
-++FUZZ_OBJS += oss-fuzz/fuzz-new.o
- +FUZZ_OBJS += oss-fuzz/fuzz-cmd-status.o
- +FUZZ_OBJS += oss-fuzz/fuzz-cmd-version.o
- +FUZZ_OBJS += oss-fuzz/fuzz-cmd-diff.o

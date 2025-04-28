@@ -121,35 +121,6 @@ modules:
       - name: "Introduction to Fuzzing"
         type: lecture
         video: K_2DAo5pPQQ
-              
-      - name: "Investigating a Project & Picking a Function to Fuzz"
-        type: lecture
-        video: OP22mPweQbU
-              
-      - name: "Fuzz Dojo only: Building and Running Reports"
-        type: lecture
-        video: u7GrifELIjU
-              
-      - name: "OSS Fuzz only: Building and Running Reports"
-        type: lecture
-        video: gvA0cXxG4cg
-        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
-        
-      - name: "AVAHI: Understanding Existing Fuzz Drivers"
-        type: lecture
-        video: AtjkUvYOGJw
-              
-      - name: "AVAHI: New Fuzz Driver Creation"
-        type: lecture
-        video: 11fxFrOOLJ0
-              
-      - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
-        type: lecture
-        video: LRpm2kd9vQI
-
-      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
-        type: lecture
-        video: KOHb0y_Oiko
 
 
   - id: projects
@@ -180,7 +151,7 @@ modules:
         name: CASYNC - medium 1678 loc 11%-10%-14% - 1 min
 
       - id: cjson
-        name: CJSON - simple 2304 loc 43%-43%-46% - 1 min
+        name: (D) CJSON - simple 2304 loc 43%-43%-46% - 1 min
 
       - id: cmark
         name: (D) CMARK - medium 14688 loc 81%-95%-82% - 1 min
@@ -329,3 +300,498 @@ modules:
 
       - id: zopfli
         name: (D) ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
+
+  - id: understanding-1
+    name: Understanding Fuzz Drivers EASY
+    description: Examine a project's fuzz drivers and decypher how they work
+
+    challenges:
+ 
+      - id: lighttpd
+        name: LIGHTTPD - 1310 loc - 2 min
+
+      - id: snappy
+        name: SNAPPY - 1502 loc - 1 min
+
+      - id: xz
+        name: XZ - 3414 loc - 2 min
+
+      - id: usbguard
+        name: USBGUARD - 3525 loc - 2 min
+
+      - id: arduinojson
+        name: ARDUINOJSON - 3599 loc - 1 min
+        
+      - id: wasm3
+        name: WASM3 - 4107 loc - 1 min
+
+      - id: guetzli
+        name: GUETZLI - 5648 loc - 1 min
+
+      - id: w3m
+        name: W3M - 6400 loc - 1 min
+
+      - id: json
+        name: JSON - 8008 loc - 1 min
+
+      - id: libsodium
+        name: LIBSODIUM - 8403 loc - 2 min
+
+    resources:
+    
+      - name: "Investigating a Project & Picking Functions to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+
+  - id: understanding-2
+    name: Understanding Fuzz Drivers MEDIUM
+    description: Examine a project's fuzz drivers and decypher how they work
+
+    challenges:
+
+      - id: casync
+        name: CASYNC - 1678 loc - 1 min
+
+      - id: miniz
+        name: MINIZ - 5423 loc - 1 min
+
+      - id: c-ares
+        name: C-ARES - 5676 loc - 2.5 min
+        
+      - id: mpg123
+        name: MPG123 - 9826 loc - 2 min
+
+      - id: libvnc
+        name: LIBVNC - 10793 loc - 3.5 min
+
+      - id: libssh2
+        name: LIBSSH2 - 12632 loc - 2 min
+        
+      - id: unrar
+        name: UNRAR - 13209 loc - 1.5 min
+        
+      - id: libpng
+        name: LIBPNG - 13217 loc - 1.5 min
+
+      - id: libvpx
+        name: LIBVPX - 32885 loc - 2.5 min
+ 
+      - id: tmux
+        name: TMUX - 48752 loc - 1.5 min
+
+    resources:
+    
+      - name: "Investigating a Project & Picking Functions to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+
+  - id: understanding-3
+    name: Understanding Fuzz Drivers HARD
+    description: Examine a project's fuzz drivers and decypher how they work
+
+    challenges:
+
+      - id: zlib
+        name: ZLIB - 5055 loc - 1 min
+ 
+      - id: fmt
+        name: FMT - 5904 loc - 4 min (slow FI)
+        
+      - id: janus-gateway
+        name: JANUS-GATEWAY - 6131 loc - 1.5 min
+
+      - id: openjpeg
+        name: OPENJPEG - 22939 loc - 2 min
+
+      - id: igraph
+        name: IGRAPH - 57124 loc - 4 min (slow FI)
+
+      - id: sqlite3
+        name: SQLITE3 - 80385 loc - 5 min (slow FI)
+
+    resources:
+    
+      - name: "Investigating a Project & Picking Functions to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+
+  - id: planning-1
+    name: Planning New Fuzz Drivers EASY
+    description: Investigate a project & pick functions to fuzz
+
+    challenges:
+ 
+      - id: lighttpd
+        name: LIGHTTPD - 1310 loc - 2 min
+
+      - id: snappy
+        name: SNAPPY - 1502 loc - 1 min
+
+      - id: xz
+        name: XZ - 3414 loc - 2 min
+
+      - id: usbguard
+        name: USBGUARD - 3525 loc - 2 min
+
+      - id: arduinojson
+        name: ARDUINOJSON - 3599 loc - 1 min
+        
+      - id: wasm3
+        name: WASM3 - 4107 loc - 1 min
+
+      - id: guetzli
+        name: GUETZLI - 5648 loc - 1 min
+
+      - id: w3m
+        name: W3M - 6400 loc - 1 min
+
+      - id: json
+        name: JSON - 8008 loc - 1 min
+
+      - id: libsodium
+        name: LIBSODIUM - 8403 loc - 2 min
+
+    resources:
+    
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+        type: lecture
+        video: AtjkUvYOGJw
+
+  - id: planning-2
+    name: Planning New Fuzz Drivers MEDIUM
+    description: Investigate a project & pick functions to fuzz
+    
+    challenges:
+
+      - id: casync
+        name: CASYNC - 1678 loc - 1 min
+
+      - id: miniz
+        name: MINIZ - 5423 loc - 1 min
+
+      - id: c-ares
+        name: C-ARES - 5676 loc - 2.5 min
+        
+      - id: mpg123
+        name: MPG123 - 9826 loc - 2 min
+
+      - id: libvnc
+        name: LIBVNC - 10793 loc - 3.5 min
+
+      - id: libssh2
+        name: LIBSSH2 - 12632 loc - 2 min
+        
+      - id: unrar
+        name: UNRAR - 13209 loc - 1.5 min
+        
+      - id: libpng
+        name: LIBPNG - 13217 loc - 1.5 min
+
+      - id: libvpx
+        name: LIBVPX - 32885 loc - 2.5 min
+ 
+      - id: tmux
+        name: TMUX - 48752 loc - 1.5 min
+
+    resources:
+    
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+        type: lecture
+        video: AtjkUvYOGJw
+
+  - id: planning-3
+    name: Planning New Fuzz Drivers HARD
+    description: Investigate a project & pick functions to fuzz
+
+    challenges:
+
+      - id: zlib
+        name: ZLIB - 5055 loc - 1 min
+ 
+      - id: fmt
+        name: FMT - 5904 loc - 4 min (slow FI)
+        
+      - id: janus-gateway
+        name: JANUS-GATEWAY - 6131 loc - 1.5 min
+
+      - id: openjpeg
+        name: OPENJPEG - 22939 loc - 2 min
+
+      - id: igraph
+        name: IGRAPH - 57124 loc - 4 min (slow FI)
+
+      - id: sqlite3
+        name: SQLITE3 - 80385 loc - 5 min (slow FI)
+
+    resources:
+    
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+        type: lecture
+        video: AtjkUvYOGJw
+
+  - id: implement-1
+    name: Implement New Fuzz Driver EASY
+    description: Implement a Fuzz Driver
+
+    challenges:
+ 
+      - id: lighttpd
+        name: LIGHTTPD - 1310 loc - 2 min
+
+      - id: snappy
+        name: SNAPPY - 1502 loc - 1 min
+
+      - id: xz
+        name: XZ - 3414 loc - 2 min
+
+      - id: usbguard
+        name: USBGUARD - 3525 loc - 2 min
+
+      - id: arduinojson
+        name: ARDUINOJSON - 3599 loc - 1 min
+        
+      - id: wasm3
+        name: WASM3 - 4107 loc - 1 min
+
+      - id: guetzli
+        name: GUETZLI - 5648 loc - 1 min
+
+      - id: w3m
+        name: W3M - 6400 loc - 1 min
+
+      - id: json
+        name: JSON - 8008 loc - 1 min
+
+      - id: libsodium
+        name: LIBSODIUM - 8403 loc - 2 min
+
+    resources:
+    
+      - name: "Fuzz Dojo only: Building and Running Reports"
+        type: lecture
+        video: u7GrifELIjU
+              
+      - name: "OSS Fuzz only: Building and Running Reports"
+        type: lecture
+        video: gvA0cXxG4cg
+        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
+        
+      - name: "AVAHI: New Fuzz Driver Creation"
+        type: lecture
+        video: 11fxFrOOLJ0
+
+  - id: implement-2
+    name: Implement New Fuzz Driver MEDIUM
+    description: Implement a Fuzz Driver
+
+    challenges:
+
+      - id: casync
+        name: CASYNC - 1678 loc - 1 min
+
+      - id: miniz
+        name: MINIZ - 5423 loc - 1 min
+
+      - id: c-ares
+        name: C-ARES - 5676 loc - 2.5 min
+        
+      - id: mpg123
+        name: MPG123 - 9826 loc - 2 min
+
+      - id: libvnc
+        name: LIBVNC - 10793 loc - 3.5 min
+
+      - id: libssh2
+        name: LIBSSH2 - 12632 loc - 2 min
+        
+      - id: unrar
+        name: UNRAR - 13209 loc - 1.5 min
+        
+      - id: libpng
+        name: LIBPNG - 13217 loc - 1.5 min
+
+      - id: libvpx
+        name: LIBVPX - 32885 loc - 2.5 min
+ 
+      - id: tmux
+        name: TMUX - 48752 loc - 1.5 min
+
+    resources:
+    
+      - name: "Fuzz Dojo only: Building and Running Reports"
+        type: lecture
+        video: u7GrifELIjU
+              
+      - name: "OSS Fuzz only: Building and Running Reports"
+        type: lecture
+        video: gvA0cXxG4cg
+        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
+        
+      - name: "AVAHI: New Fuzz Driver Creation"
+        type: lecture
+        video: 11fxFrOOLJ0
+
+  - id: implement-3
+    name: Implement New Fuzz Driver HARD
+    description: Implement a Fuzz Driver
+
+    challenges:
+
+      - id: zlib
+        name: ZLIB - 5055 loc - 1 min
+ 
+      - id: fmt
+        name: FMT - 5904 loc - 4 min (slow FI)
+        
+      - id: janus-gateway
+        name: JANUS-GATEWAY - 6131 loc - 1.5 min
+
+      - id: openjpeg
+        name: OPENJPEG - 22939 loc - 2 min
+
+      - id: igraph
+        name: IGRAPH - 57124 loc - 4 min (slow FI)
+
+      - id: sqlite3
+        name: SQLITE3 - 80385 loc - 5 min (slow FI)
+
+    resources:
+    
+      - name: "Fuzz Dojo only: Building and Running Reports"
+        type: lecture
+        video: u7GrifELIjU
+              
+      - name: "OSS Fuzz only: Building and Running Reports"
+        type: lecture
+        video: gvA0cXxG4cg
+        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
+        
+      - name: "AVAHI: New Fuzz Driver Creation"
+        type: lecture
+        video: 11fxFrOOLJ0
+
+  - id: improve-1
+    name: Improve a Fuzz Driver EASY
+    description: Refine and improve a fuzz driver to optimize coverage and execution speed.
+
+    challenges:
+ 
+      - id: lighttpd
+        name: LIGHTTPD - 1310 loc - 2 min
+
+      - id: snappy
+        name: SNAPPY - 1502 loc - 1 min
+
+      - id: xz
+        name: XZ - 3414 loc - 2 min
+
+      - id: usbguard
+        name: USBGUARD - 3525 loc - 2 min
+
+      - id: arduinojson
+        name: ARDUINOJSON - 3599 loc - 1 min
+        
+      - id: wasm3
+        name: WASM3 - 4107 loc - 1 min
+
+      - id: guetzli
+        name: GUETZLI - 5648 loc - 1 min
+
+      - id: w3m
+        name: W3M - 6400 loc - 1 min
+
+      - id: json
+        name: JSON - 8008 loc - 1 min
+
+      - id: libsodium
+        name: LIBSODIUM - 8403 loc - 2 min
+
+    resources:
+    
+      - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
+        type: lecture
+        video: LRpm2kd9vQI
+
+      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
+        type: lecture
+        video: KOHb0y_Oiko
+
+  - id: improve-2
+    name: Improve a Fuzz Driver MEDIUM
+    description: Refine and improve a fuzz driver to optimize coverage and execution speed.
+
+    challenges:
+
+      - id: casync
+        name: CASYNC - 1678 loc - 1 min
+
+      - id: miniz
+        name: MINIZ - 5423 loc - 1 min
+
+      - id: c-ares
+        name: C-ARES - 5676 loc - 2.5 min
+        
+      - id: mpg123
+        name: MPG123 - 9826 loc - 2 min
+
+      - id: libvnc
+        name: LIBVNC - 10793 loc - 3.5 min
+
+      - id: libssh2
+        name: LIBSSH2 - 12632 loc - 2 min
+        
+      - id: unrar
+        name: UNRAR - 13209 loc - 1.5 min
+        
+      - id: libpng
+        name: LIBPNG - 13217 loc - 1.5 min
+
+      - id: libvpx
+        name: LIBVPX - 32885 loc - 2.5 min
+ 
+      - id: tmux
+        name: TMUX - 48752 loc - 1.5 min
+
+    resources:
+    
+      - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
+        type: lecture
+        video: LRpm2kd9vQI
+
+      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
+        type: lecture
+        video: KOHb0y_Oiko
+
+  - id: improve-3
+    name: Improve a Fuzz Driver HARD
+    description: Refine and improve a fuzz driver to optimize coverage and execution speed.
+
+    challenges:
+
+      - id: zlib
+        name: ZLIB - 5055 loc - 1 min
+ 
+      - id: fmt
+        name: FMT - 5904 loc - 4 min (slow FI)
+        
+      - id: janus-gateway
+        name: JANUS-GATEWAY - 6131 loc - 1.5 min
+
+      - id: openjpeg
+        name: OPENJPEG - 22939 loc - 2 min
+
+      - id: igraph
+        name: IGRAPH - 57124 loc - 4 min (slow FI)
+
+      - id: sqlite3
+        name: SQLITE3 - 80385 loc - 5 min (slow FI)
+
+    resources:
+    
+      - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
+        type: lecture
+        video: LRpm2kd9vQI
+
+      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
+        type: lecture
+        video: KOHb0y_Oiko
