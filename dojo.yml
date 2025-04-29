@@ -536,6 +536,10 @@ modules:
 
     resources:
  
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+        type: lecture
+        video: AtjkUvYOGJw
+        
   - id: implement-1
     name: Implement New Fuzz Driver EASY
     description: Implement a Fuzz Driver
