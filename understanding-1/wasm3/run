@@ -1,0 +1,2 @@
+#!/opt/pwn.college/bash
+/challenge/build none c "$PROJECT_NAME/platforms/app_fuzz"
