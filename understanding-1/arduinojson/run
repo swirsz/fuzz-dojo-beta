@@ -43,13 +43,16 @@ fi
 #----------------------------------------------------------------------
 mv /src /src-$LABEL
 echo
-echo /###
-echo /###  Understanding Fuzz Drivers
-echo /###
+echo "###"
+echo "###  Understanding Fuzz Drivers"
+echo "###"
 echo
 echo Fuzz drivers for $PROJECT_NAME have been copied into ~/fuzz-dojo/$PROJECT_NAME
 echo
-echo Edit each of these files and add comments to the code to demonstrate your understanding of their operation.   A flag will be provided when sufficient comments are added to each driver, and your comments will be evaluated later.
+echo Edit each of these files and add comments to the code to demonstrate
+echo your understanding of their operation.   A flag will be provided when
+echo sufficient comments are added to each driver, and your comments will
+echo be evaluated later.
 echo
 cd ~/fuzz-dojo/$PROJECT_NAME
 DRIVERS=($(ls -p *.cpp | grep -v /))
