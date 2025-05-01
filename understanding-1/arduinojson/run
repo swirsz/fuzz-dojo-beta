@@ -51,9 +51,11 @@ DRIVERS=($(ls -p *.cpp | grep -v /))
 for driver in "${DRIVERS[@]}"
 do
     COUNT=$(diff ~/fuzz-dojo/$PROJECT_NAME/$driver /src-orig/$PROJECT_NAME/extras/fuzzing/$driver | wc -w)
-    echo $COUNT
     if test $COUNT -gt 5
     then
         echo "yes"
+    else
+        echo $COUNT
+        break
     fi
 done
