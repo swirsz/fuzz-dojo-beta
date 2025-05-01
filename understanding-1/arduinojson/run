@@ -62,7 +62,7 @@ echo sufficient comments are added to each driver, and your comments will
 echo be evaluated later.
 echo
 cd ~/fuzz-dojo/$PROJECT_NAME
-DRIVERS=($(ls -p *.$EXT | grep -v /))
+DRIVERS=($(ls -p *.$EXT -I "new*"  | grep -v /))
 for driver in "${DRIVERS[@]}"
 do
     COUNT=0
