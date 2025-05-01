@@ -45,3 +45,14 @@ if [ -e "/tmp/build.lck" ]; then
   rm /tmp/build.lck
 fi
 mv /src /src-$LABEL
+
+cd ~/fuzz-dojo/$PROJECT_NAME
+DRIVERS=($(ls -p *.cpp | grep -v /))
+for driver in "${DRIVERS[@]}"
+do
+    echo $driver
+done
+
+#diff fuzz-dojo/arduinojson/json_fuzzer.cpp /src-orig/arduinojson/extras/fuzzing/json_fuzzer.cpp | wc --chars
+
+
