@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-build cpp "extras/fuzzing"
+/challenge/build cpp "extras/fuzzing"
