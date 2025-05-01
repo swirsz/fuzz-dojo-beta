@@ -63,8 +63,8 @@ DRIVERS=($(ls -p *.cpp | grep -v /))
 for driver in "${DRIVERS[@]}"
 do
     COUNT=0
-    sort ~/fuzz-dojo/arduinojson/json_fuzzer.cpp > /tmp/file1.sorted
-    sort /src-orig/arduinojson/extras/fuzzing/json_fuzzer.cpp > /tmp/file2.sorted
+    sort ~/fuzz-dojo/arduinojson/$driver > /tmp/file1.sorted
+    sort /src-orig/arduinojson/extras/fuzzing/$driver > /tmp/file2.sorted
     COUNT=$(comm -23 /tmp/file1.sorted /tmp/file2.sorted | wc -w)
     rm /tmp/file1.sorted /tmp/file2.sorted
     if test $COUNT -gt 10
