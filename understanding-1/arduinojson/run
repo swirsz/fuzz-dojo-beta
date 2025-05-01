@@ -42,6 +42,10 @@ else
 fi
 #----------------------------------------------------------------------
 mv /src /src-$LABEL
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+if [ -e "/tmp/build.lck" ]; then
+  rm /tmp/build.lck
+fi
 echo
 echo "###"
 echo "###  Understanding Fuzz Drivers"
@@ -71,7 +75,3 @@ done
 cat /flag
 mkdir -p /home/hacker/.log
 [ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME-Understanding /home/hacker/fuzz-dojo/$PROJECT_NAME
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
-if [ -e "/tmp/build.lck" ]; then
-  rm /tmp/build.lck
-fi
