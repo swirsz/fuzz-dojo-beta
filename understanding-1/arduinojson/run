@@ -62,7 +62,9 @@ cd ~/fuzz-dojo/$PROJECT_NAME
 DRIVERS=($(ls -p *.cpp | grep -v /))
 for driver in "${DRIVERS[@]}"
 do
-    COUNT=$(diff ~/fuzz-dojo/$PROJECT_NAME/$driver /src-orig/$PROJECT_NAME/extras/fuzzing/$driver | wc -w)
+    sort ~/fuzz-dojo/arduinojson/json_fuzzer.cpp > /tmp/file1.sorted
+    sort /src-orig/arduinojson/extras/fuzzing/json_fuzzer.cpp > /tmp/file2.sorted
+    COUNT=$(comm -23 /tmp/file1.sorted /tmp/file2.sorted | wc -w)
     if test $COUNT -gt 10
     then
         echo Examining $driver
