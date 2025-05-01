@@ -42,7 +42,7 @@ else
 fi
 #----------------------------------------------------------------------
 mv /src /src-$LABEL
-chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+chown -hR hacker:hacker /src-$LABEL /home/hacker/fuzz-dojo /home/hacker/.log /out
 if [ -e "/tmp/build.lck" ]; then
   rm /tmp/build.lck
 fi
