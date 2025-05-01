@@ -43,9 +43,9 @@ fi
 #----------------------------------------------------------------------
 mv /src /src-$LABEL
 echo
-echo ###
-echo ###  Understanding Fuzz Drivers
-echo ###
+echo /###
+echo /###  Understanding Fuzz Drivers
+echo /###
 echo
 echo Fuzz drivers for $PROJECT_NAME have been copied into ~/fuzz-dojo/$PROJECT_NAME
 echo
@@ -61,6 +61,7 @@ do
         echo Examining $driver
     else
         echo Add more comments to $driver - word count: $COUNT
+        echo
         exit 0
     fi
 done
