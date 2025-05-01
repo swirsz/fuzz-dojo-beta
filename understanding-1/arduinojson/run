@@ -42,6 +42,9 @@ else
 fi
 #----------------------------------------------------------------------
 mv /src /src-$LABEL
+
+EXT=cpp
+DRVPATH="extras/fuzzing"
 chown -hR hacker:hacker /src-$LABEL /home/hacker/fuzz-dojo /home/hacker/.log /out
 if [ -e "/tmp/build.lck" ]; then
   rm /tmp/build.lck
@@ -59,17 +62,17 @@ echo sufficient comments are added to each driver, and your comments will
 echo be evaluated later.
 echo
 cd ~/fuzz-dojo/$PROJECT_NAME
-DRIVERS=($(ls -p *.cpp | grep -v /))
+DRIVERS=($(ls -p *.$EXT | grep -v /))
 for driver in "${DRIVERS[@]}"
 do
     COUNT=0
     sort ~/fuzz-dojo/arduinojson/$driver > /tmp/file1.sorted
-    sort /src-orig/arduinojson/extras/fuzzing/$driver > /tmp/file2.sorted
+    sort /src-orig/arduinojson/$DRVPATH/$driver > /tmp/file2.sorted
     COUNT=$(comm -23 /tmp/file1.sorted /tmp/file2.sorted | wc -w)
     rm /tmp/file1.sorted /tmp/file2.sorted
     if test $COUNT -gt 10
     then
-        echo Examining $driver $count
+        echo Examining $driver word count: $COUNT
     else
         echo Add more comments to $driver - word count: $COUNT
         echo
