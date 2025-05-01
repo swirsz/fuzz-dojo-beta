@@ -46,7 +46,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
-if [ -v "$2" ]; then
+if [ ! -z "$3" ]; then
     understanding $2 $3
 else
     fuzzlog
