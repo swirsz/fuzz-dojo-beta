@@ -46,6 +46,9 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
+if [-z $2]; then
+    echo yes $2
+fi
 fuzzlog
 compile
 drivers
