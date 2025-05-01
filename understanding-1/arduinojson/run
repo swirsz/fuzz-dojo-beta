@@ -41,13 +41,16 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
-if [ -e "/tmp/build.lck" ]; then
-  rm /tmp/build.lck
-fi
 mv /src /src-$LABEL
-
-
-
+echo
+echo ###
+echo ###  Understanding Fuzz Drivers
+echo ###
+echo
+echo Fuzz drivers for $PROJECT_NAME have been copied into ~/fuzz-dojo/$PROJECT_NAME
+echo
+echo Edit each of these files and add comments to the code to demonstrate your understanding of their operation.   A flag will be provided when sufficient comments are added to each driver, and your comments will be evaluated later.
+echo
 cd ~/fuzz-dojo/$PROJECT_NAME
 DRIVERS=($(ls -p *.cpp | grep -v /))
 for driver in "${DRIVERS[@]}"
@@ -62,3 +65,9 @@ do
     fi
 done
 cat /flag
+mkdir -p /home/hacker/.log
+[ ! "$SANITIZER" = "introspector" ] && [ ! "$SANITIZER" = "coverage" ] && zip -ry /home/hacker/.log/$(TZ=US/Arizona date +"%F--%H-%M-%S")-$PROJECT_NAME-Understanding /home/hacker/fuzz-dojo/$PROJECT_NAME
+chown -hR hacker:hacker $SRC /home/hacker/fuzz-dojo /home/hacker/.log /out
+if [ -e "/tmp/build.lck" ]; then
+  rm /tmp/build.lck
+fi
