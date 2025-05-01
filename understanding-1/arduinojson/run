@@ -52,6 +52,9 @@ for driver in "${DRIVERS[@]}"
 do
     wc -w < "diff ~/fuzz-dojo/arduinojson/$driver /src-orig/arduinojson/extras/fuzzing/$driver"
     if test "$( wc -w < "diff ~/fuzz-dojo/arduinojson/$driver /src-orig/arduinojson/extras/fuzzing/$driver" )" -gt "5"
+    then
+        echo "yes"
+    fi
     echo $driver
 done
 
