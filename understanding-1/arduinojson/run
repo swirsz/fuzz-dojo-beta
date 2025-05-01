@@ -51,11 +51,12 @@ DRIVERS=($(ls -p *.cpp | grep -v /))
 for driver in "${DRIVERS[@]}"
 do
     COUNT=$(diff ~/fuzz-dojo/$PROJECT_NAME/$driver /src-orig/$PROJECT_NAME/extras/fuzzing/$driver | wc -w)
-    if test $COUNT -gt 5
+    if test $COUNT -gt 10
     then
-        echo "yes"
+        echo Examining $driver
     else
-        echo $COUNT
-        break
+        echo Add more comments to $driver - word count: $COUNT
+        exit(0)
     fi
 done
+cat /flag
