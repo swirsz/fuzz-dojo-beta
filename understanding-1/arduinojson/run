@@ -72,9 +72,9 @@ do
     rm /tmp/file1.sorted /tmp/file2.sorted
     if test $COUNT -gt 10
     then
-        echo Examining $driver word count: $COUNT
+        echo Examining $driver - Word Count: $COUNT
     else
-        echo Add more comments to $driver - word count: $COUNT
+        echo Add more comments to $driver - Word Count: $COUNT
         echo
         exit 0
     fi
