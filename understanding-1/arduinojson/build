@@ -46,10 +46,11 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
-if [-z $2]; then
-    echo yes $2
+if [ -v $2 ]; then
+    understanding $2 $3
+else
+    fuzzlog
+    compile
+    drivers
 fi
-fuzzlog
-compile
-drivers
 mv /src /src-$LABEL
