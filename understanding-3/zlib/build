@@ -18,7 +18,8 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/zlib $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
-
+    mv $SRC/*.cc $SRC/*.c
+    
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
     cp $SRC/minigzip_fuzzer.c $SRC/new_fuzzer.c
