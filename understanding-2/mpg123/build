@@ -34,7 +34,6 @@ cd $SRC
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
    #cp $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
