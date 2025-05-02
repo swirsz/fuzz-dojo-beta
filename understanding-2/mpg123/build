@@ -17,7 +17,8 @@ cd $SRC
 #apt-get update && apt-get install -y make autoconf automake libtool wget bzip2
 #wget https://www.mpg123.de/snapshot
 cp /downloads/snapshot/* $SRC
-tar -xvf snapshot
+mv $SRC/read_fuzzer.c $SRC/read_fuzzer.cc
+tar -xvf snapshot > /dev/null
 mv mpg123* mpg123
 
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/read_fuzzer.c $SRC/
