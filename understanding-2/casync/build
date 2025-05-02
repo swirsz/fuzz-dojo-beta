@@ -46,7 +46,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/oss-fuzz.sh $SRC/casync/tools
 fi
 #----------------------------------------------------------------------
-if [ ! -z "$3" ]; then
+if [ ! -z "$2" ]; then
     understanding $2 $3
 else
     fuzzlog

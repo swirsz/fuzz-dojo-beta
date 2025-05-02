@@ -59,7 +59,7 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
-if [ ! -z "$3" ]; then
+if [ ! -z "$2" ]; then
     understanding $2 $3
 else
     fuzzlog
