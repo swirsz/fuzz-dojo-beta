@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cc "$PROJECT_NAME/tests/ossfuzz"
+/challenge/build none cc "libssh2/tests/ossfuzz"

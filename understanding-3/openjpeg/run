@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "$PROJECT_NAME/tests/fuzzers"
+/challenge/build none cpp "openjpeg/tests/fuzzers"

@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none c "$PROJECT_NAME/tests"
+/challenge/build none c "miniz/tests"

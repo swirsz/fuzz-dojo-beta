@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "$PROJECT_NAME/fuzzing"
+/challenge/build none cpp "igraph/fuzzing"

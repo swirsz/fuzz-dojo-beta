@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cc "$PROJECT_NAME/examples"
+/challenge/build none cc "libvpx/examples"

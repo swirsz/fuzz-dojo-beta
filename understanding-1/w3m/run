@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none c "$PROJECT_NAME/fuzz"
+/challenge/build none c "w3m/fuzz"
