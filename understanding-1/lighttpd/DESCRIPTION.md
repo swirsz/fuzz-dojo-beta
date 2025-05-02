@@ -1,6 +1,7 @@
 Run `/challenge/run` to copy fuzz drivers into `/home/hacker/fuzz-dojo/{project}`
 
 Edit each of these files and add comments to the code to demonstrate your understanding of their operation. A flag will be provided when sufficient comments are added to each driver, and your comments will be evaluated later.
+-
 
 ---
 
@@ -14,6 +15,7 @@ Lighttpd is a high-performance Web server.
 A single fuzz driver submits urls with random input to the Web server, but many other methods of fuzzing the code are possible.  Access or authentication methods could be Run `/challenge/run` to copy fuzz drivers into `/home/hacker/fuzz-dojo/{project}`
 
 Edit each of these files and add comments to the code to demonstrate your understanding of their operation. A flag will be provided when sufficient comments are added to each driver, and your comments will be evaluated later.
+-
 
 ---
 

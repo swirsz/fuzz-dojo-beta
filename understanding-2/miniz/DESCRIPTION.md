@@ -1,6 +1,7 @@
 Run `/challenge/run` to copy fuzz drivers into `/home/hacker/fuzz-dojo/{project}`
 
 Edit each of these files and add comments to the code to demonstrate your understanding of their operation. A flag will be provided when sufficient comments are added to each driver, and your comments will be evaluated later.
+-
 
 ---
 
@@ -12,6 +13,7 @@ https://storage.googleapis.com/oss-fuzz-introspector/miniz/inspector-report/2025
 Miniz is a lossless, high performance data compression library in a single source file that implements the zlib (RFC 1950) and Deflate (RFC 1951) compressed data format specification standards.  Miniz also contains simple to Run `/challenge/run` to copy fuzz drivers into `/home/hacker/fuzz-dojo/{project}`
 
 Edit each of these files and add comments to the code to demonstrate your understanding of their operation. A flag will be provided when sufficient comments are added to each driver, and your comments will be evaluated later.
+-
 
 ---
 
