@@ -35,7 +35,7 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
     patch -tuN $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers/Makefile.am -i /challenge/.Makefile.patch -r -
-    cp $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers/fuzzer-uevent.cpp $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers/fuzzer-new.cpp
+    cp $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers/fuzzer-uevent.cpp $SRC/$PROJECT_NAME/src/Tests/Fuzzers/fuzzer-new.cpp
 
 #----------------------------------------------------------------------
     build-cleanup
