@@ -20,8 +20,6 @@ if [ ! -d "/src-orig" ]; then
     #git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
     cp -r /downloads/libsrtp $SRC
 
-    cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
-    cd $SRC/
     # fetch Janus code
     # git clone --single-branch --branch master https://github.com/meetecho/janus-gateway.git
     cp -r /downloads/janus-gateway $SRC/
@@ -49,6 +47,8 @@ fi
 if [ ! -z "$2" ]; then
     understanding $2 $3
 else
+    cd $SRC/libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
+    cd $SRC
     fuzzlog
     compile
     drivers
