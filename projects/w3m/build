@@ -19,7 +19,6 @@ if [ ! -d "/src-orig" ]; then
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-    cd $SRC/
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
     cp $SRC/$PROJECT_NAME/fuzz/fuzz-conv.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
