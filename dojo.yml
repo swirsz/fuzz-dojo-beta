@@ -160,10 +160,10 @@ modules:
         name: LIBSODIUM - 8403 loc - 2 min
 
     resources:
-    
-      - name: "Investigating a Project & Picking Functions to Fuzz"
+
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
         type: lecture
-        video: OP22mPweQbU
+        video: AtjkUvYOGJw
 
   - id: understanding-2
     name: Understanding Fuzz Drivers MEDIUM
@@ -203,9 +203,9 @@ modules:
 
     resources:
     
-      - name: "Investigating a Project & Picking Functions to Fuzz"
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
         type: lecture
-        video: OP22mPweQbU
+        video: AtjkUvYOGJw    
 
   - id: understanding-3
     name: Understanding Fuzz Drivers HARD
@@ -233,10 +233,9 @@ modules:
 
     resources:
     
-      - name: "Investigating a Project & Picking Functions to Fuzz"
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
         type: lecture
-        video: OP22mPweQbU
-
+        video: AtjkUvYOGJw
 
   - id: projects
     name: OSS-Fuzz Projects
@@ -454,9 +453,9 @@ modules:
 
     resources:
     
-      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+      - name: "Investigating a Project & Picking Functions to Fuzz"
         type: lecture
-        video: AtjkUvYOGJw
+        video: OP22mPweQbU
 
   - id: planning-2
     name: Planning New Fuzz Drivers MEDIUM
@@ -496,9 +495,9 @@ modules:
 
     resources:
     
-      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+      - name: "Investigating a Project & Picking Functions to Fuzz"
         type: lecture
-        video: AtjkUvYOGJw
+        video: OP22mPweQbU
 
   - id: planning-3
     name: Planning New Fuzz Drivers HARD
@@ -526,9 +525,9 @@ modules:
 
     resources:
     
-      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+      - name: "Investigating a Project & Picking Functions to Fuzz"
         type: lecture
-        video: AtjkUvYOGJw
+        video: OP22mPweQbU
 
   - id: nextsteps
     name: The Next Steps
@@ -536,7 +535,7 @@ modules:
 
     resources:
  
-      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+      - name: "To be added:  Final tests and submitting your fuzz driver to Google"
         type: lecture
         video: AtjkUvYOGJw
         
