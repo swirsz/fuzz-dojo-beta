@@ -60,8 +60,7 @@ fi
 if [ ! -z "$2" ]; then
     understanding $2 $3
 else
-    CD $SRC
-    cd libevent && \
+    cd $SRC/libevent && \
     mkdir build && \
     cd build && \
     cmake -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_OPENSSL=ON -DEVENT__LIBRARY_TYPE=STATIC ../ && \
