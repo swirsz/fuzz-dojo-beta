@@ -22,12 +22,7 @@ if [ ! -d "/src-orig" ]; then
 
     #git clone https://github.com/libevent/libevent.git
     cp -r /downloads/libevent $SRC
-    cd libevent && \
-    mkdir build && \
-    cd build && \
-    cmake -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_OPENSSL=ON -DEVENT__LIBRARY_TYPE=STATIC ../ && \
-    make && make install
-    
+  
     #git clone --depth 1 https://github.com/tmux/tmux.git
     #git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
     cp -r /downloads/tmux $SRC
@@ -65,6 +60,13 @@ fi
 if [ ! -z "$2" ]; then
     understanding $2 $3
 else
+    CD $SRC
+    cd libevent && \
+    mkdir build && \
+    cd build && \
+    cmake -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_OPENSSL=ON -DEVENT__LIBRARY_TYPE=STATIC ../ && \
+    make && make install
+    cd $SRC/$PROJECT_NAME  
     fuzzlog
     compile
     drivers
