@@ -2,6 +2,8 @@ Run `/challenge/run` to copy fuzz drivers into `/home/hacker/fuzz-dojo/{project}
 
 Edit each of these files and add comments to the code to demonstrate your understanding of their operation. A flag will be provided when sufficient comments are added to each driver, and your comments will be evaluated later.
 
+---
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=c-ares
 
 Fuzz Introspector
@@ -10,6 +12,8 @@ https://storage.googleapis.com/oss-fuzz-introspector/c-ares/inspector-report/202
 C-Ares is a C library for asynchronous DNS requests.  It has two simple fuzz drivers, one that validates URLs, and a legacy fuzz driver that providea sample code to execute many different parsing functions.  This is is not Run `/challenge/run` to copy fuzz drivers into `/home/hacker/fuzz-dojo/{project}`
 
 Edit each of these files and add comments to the code to demonstrate your understanding of their operation. A flag will be provided when sufficient comments are added to each driver, and your comments will be evaluated later.
+
+---
 
 Useful today since all of these parsing functions have been simplified into a single function.
 
