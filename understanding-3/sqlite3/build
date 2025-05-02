@@ -25,7 +25,7 @@ if [ ! -d "/src-orig" ]; then
         #curl 'https://www.sqlite.org$SRC/tarball?uuid=trunk' -o sqlite3.tar.gz && \
         #tar xzf sqlite3.tar.gz
 
-    find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip
+    find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip > \dev\null
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
@@ -47,13 +47,13 @@ cd $SRC/$PROJECT_NAME
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/sqlite3/test/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/sqlite3/test/*.options /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/sqlite3/test/*.zip /home/hacker/fuzz-dojo/$PROJECT_NAME
+   #cp $SRC/sqlite3/test/*.options /home/hacker/fuzz-dojo/$PROJECT_NAME
+   #cp $SRC/sqlite3/test/*.zip /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/sqlite3/main.mk  /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.zip $SRC/sqlite3/test
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.options $SRC/sqlite3/test
+   #cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.zip $SRC/sqlite3/test
+   #cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.options $SRC/sqlite3/test
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/sqlite3/test
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/main.mk  $SRC/sqlite3/
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
