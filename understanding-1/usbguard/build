@@ -26,12 +26,7 @@ if [ ! -d "/src-orig" ]; then
     #git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard usbguard
     cp -r /downloads/usbguard $SRC
     cp -r /downloads/libqb $SRC
-    cd $SRC/libqb
-    ./autogen.sh
-    ./configure 
-    make 
-    make install 
-    cd $SRC
+
 
     # This is to fix Fuzz Introspector build by using LLVM old pass manager
     # re https://github.com/ossf/fuzz-introspector/issues/305
@@ -64,6 +59,12 @@ fi
 if [ ! -z "$2" ]; then
     understanding $2 $3
 else
+    cd $SRC/libqb
+    ./autogen.sh
+    ./configure 
+    make 
+    make install 
+    cd $SRC
     fuzzlog
     compile
     drivers
