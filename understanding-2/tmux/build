@@ -36,6 +36,7 @@ if [ ! -d "/src-orig" ]; then
     cp -r $SRC /out
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+    cd /
     patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.c $SRC/$PROJECT_NAME/fuzz/new-fuzzer.c
     cp $SRC/$PROJECT_NAME/fuzz/input-fuzzer.dict $SRC/$PROJECT_NAME/fuzz/new-fuzzer.dict

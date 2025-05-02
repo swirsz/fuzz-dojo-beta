@@ -27,6 +27,7 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/janus-gateway $SRC/
     cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
 
+    cd /
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 #----------------------------------------------------------------------
     build-cleanup

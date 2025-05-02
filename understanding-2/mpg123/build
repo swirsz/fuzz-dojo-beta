@@ -24,6 +24,7 @@ cp /opt/oss-fuzz/projects/$PROJECT_NAME/read_fuzzer.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/decode_fuzzer.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
+cd /
 cp $SRC/decode_fuzzer.cc $SRC/new_fuzzer.cc
 patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
