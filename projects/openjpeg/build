@@ -13,6 +13,7 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
+    echo Please wait, initial copy
     #apt-get update && apt-get install -y make cmake g++
     rm -rf $SRC/openjpeg/data
     rm -rf $SRC/openjpeg/build
