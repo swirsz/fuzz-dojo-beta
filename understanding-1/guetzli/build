@@ -20,7 +20,7 @@ if [ ! -d "/src-orig" ]; then
     cd $SRC
     cp -r /downloads/afl-testcases $SRC
 
-    zip guetzli_fuzzer_seed_corpus.zip afl-testcases/jpeg/full/images/* afl-testcases/jpeg_turbo/full/images/*
+    zip guetzli_fuzzer_seed_corpus.zip afl-testcases/jpeg/full/images/* afl-testcases/jpeg_turbo/full/images/* > /dev/null
 
     #git clone --depth=1 https://github.com/google/guetzli 
     cp -r /downloads/guetzli $SRC
