@@ -17,8 +17,11 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 -b develop https://github.com/madler/zlib.git
     cp -r /downloads/zlib $SRC
 
+
+    mv /opt/oss-fuzz/projects/$PROJECT_NAME/zlib_uncompress_fuzzer.cc /opt/oss-fuzz/projects/$PROJECT_NAME/zlib_uncompress_fuzzer.c
+    mv /opt/oss-fuzz/projects/$PROJECT_NAME/zlib_uncompress2_fuzzer.cc /opt/oss-fuzz/projects/$PROJECT_NAME/zlib_uncompress2_fuzzer.c
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*_fuzzer.c* $SRC/
-    mv $SRC/*.cc $SRC/*.c
+    
     
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
