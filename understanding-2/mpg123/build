@@ -47,6 +47,7 @@ else
 fi
 #----------------------------------------------------------------------
 if [ ! -z "$2" ]; then
+    cd /
     mv /src /src-orig
     understanding $2 $3
     mv /src-orig /src
