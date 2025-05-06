@@ -722,7 +722,7 @@ modules:
     
         Refine your fuzz drivers to increase code coverage.  This module is open-ended and provides the same tools as the last module.
     
-        * Run a fuzz introspector report and view the call tree, looking at unreached sections, and determine why these areas are not being hit
+        * Run a fuzz introspector report and view the call tree, looking at unreached sections, and determine why these areas are not being hit.
         
         * Vary the structure and constraints on your input data. Are many runs failing early due to invalid data types?
         
