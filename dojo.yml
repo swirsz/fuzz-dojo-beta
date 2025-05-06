@@ -742,7 +742,7 @@ modules:
         
         * Can you improve performance by testing and optimizing your code?
         
-        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?
+        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?\
 
         \
 
