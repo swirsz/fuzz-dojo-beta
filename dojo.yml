@@ -748,7 +748,6 @@ modules:
 
         Practical examples of fuzz driver improvements may be found in the training exercises.
 
-
     challenges:
  
       - id: lighttpd
@@ -793,7 +792,35 @@ modules:
 
   - id: improve-2
     name: Improve a Fuzz Driver MEDIUM
-    description: Refine and improve a fuzz driver to optimize coverage and execution speed.
+    description: 
+    
+        Refine your fuzz drivers to increase code coverage.  This module is open-ended and provides the same tools as the last module.
+    
+        * Run a fuzz introspector report and view the call tree, looking at unreached sections, and determine why these areas are not being hit.
+        
+        * Vary the structure and constraints on your input data. Are many runs failing early due to invalid data types?
+        
+        * Could different parameter combinations hit code not currently being reached?
+        
+        * Examine the functions being called. Could you call functions higher on the call tree to reach more code?
+        
+        * Experiment with different sanitizers and check for hidden errors, revealed by fuzzing runs with address, undefined, thread, and memory sanitizers.
+        
+        * Are you using a seed corpus?   Can you make this corpus more diverse and also remove redundant samples?
+        
+        * Could implementing additional preconditions be necessary to fulfill control dependencies needed for untouched code?  I.E., do you need to open a file before you can read from it?
+        
+        * Look for complex branch conditions involving checksums, hashes, or magic values.  Could you add custom comparators to your fuzz driver, or bypass these checks by calling functions beyond them?
+        
+        * Are timeouts or memory errors occurring when running your fuzz driver?
+        
+        * Can you improve performance by testing and optimizing your code?
+        
+        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?\
+
+        \
+
+        Practical examples of fuzz driver improvements may be found in the training exercises.
 
     challenges:
 
@@ -839,7 +866,35 @@ modules:
 
   - id: improve-3
     name: Improve a Fuzz Driver HARD
-    description: Refine and improve a fuzz driver to optimize coverage and execution speed.
+    description: 
+    
+        Refine your fuzz drivers to increase code coverage.  This module is open-ended and provides the same tools as the last module.
+    
+        * Run a fuzz introspector report and view the call tree, looking at unreached sections, and determine why these areas are not being hit.
+        
+        * Vary the structure and constraints on your input data. Are many runs failing early due to invalid data types?
+        
+        * Could different parameter combinations hit code not currently being reached?
+        
+        * Examine the functions being called. Could you call functions higher on the call tree to reach more code?
+        
+        * Experiment with different sanitizers and check for hidden errors, revealed by fuzzing runs with address, undefined, thread, and memory sanitizers.
+        
+        * Are you using a seed corpus?   Can you make this corpus more diverse and also remove redundant samples?
+        
+        * Could implementing additional preconditions be necessary to fulfill control dependencies needed for untouched code?  I.E., do you need to open a file before you can read from it?
+        
+        * Look for complex branch conditions involving checksums, hashes, or magic values.  Could you add custom comparators to your fuzz driver, or bypass these checks by calling functions beyond them?
+        
+        * Are timeouts or memory errors occurring when running your fuzz driver?
+        
+        * Can you improve performance by testing and optimizing your code?
+        
+        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?\
+
+        \
+
+        Practical examples of fuzz driver improvements may be found in the training exercises.
 
     challenges:
 
