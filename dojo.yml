@@ -740,7 +740,9 @@ modules:
         
         * Are timeouts or memory errors occurring when running your fuzz driver?
         
-        * Can you improve performance by testing and optimizing your code?\
+        * Can you improve performance by testing and optimizing your code?
+        
+        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?
 
         \
 
