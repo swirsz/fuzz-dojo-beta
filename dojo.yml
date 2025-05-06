@@ -718,24 +718,25 @@ modules:
 
   - id: improve-1
     name: Improve a Fuzz Driver EASY
-    description: Refine your fuzz drivers to increase code coverage.\
+    description: Refine your fuzz drivers to increase code coverage.  This module is open-ended and provides the same tools as the last module.\
     
         \
     
-        * Run a fuzz introspector report and view the call tree, looking at unreached sections and determine why these areas are not being hit
-        * Vary the structure and constraints on your input data: are many runs failing early due to invalid data types?
-        * Could different parameter combinations hit code that is not being reached currently?
+        * Run a fuzz introspector report and view the call tree, looking at unreached sections, and determine why these areas are not being hit
+        * Vary the structure and constraints on your input data. Are many runs failing early due to invalid data types?
+        * Could different parameter combinations hit code not currently being reached?
         * Examine the functions being called. Could you call functions higher on the call tree to reach more code?
         * Experiment with different sanitizers and check for hidden errors, revealed by fuzzing runs with address, undefined, thread, and memory sanitizers.
-        * Are you using a seed corpus?   Can you make this corpus more diverse and also proven redundant samples?
-        * Could implementing additional preconditions be necessary in order to fulfill control dependencies needed for untouched code?  IE: Do you need to open a file before you can read from it?
-        * Look for complex branch conditions involving checksums, hashes, or magic values.  Could you add custom comparators to your fuzz driver or simply bypass  these checks by calling functions beyond them?
-        * Are timeouts or memory occurring when running your fuzz driver?
+        * Are you using a seed corpus?   Can you make this corpus more diverse and also remove redundant samples?
+        * Could implementing additional preconditions be necessary to fulfill control dependencies needed for untouched code?  I.E., do you need to open a file before you can read from it?
+        * Look for complex branch conditions involving checksums, hashes, or magic values.  Could you add custom comparators to your fuzz driver, or bypass these checks by calling functions beyond them?
+        * Are timeouts or memory errors occurring when running your fuzz driver?
         * Can you improve performance by testing and optimizing your code?\
 
         \
 
-        Practical examples of fuzz driver improvements can be found in the training exercises.
+        Practical examples of fuzz driver improvements may be found in the training exercises.
+
 
     challenges:
  
