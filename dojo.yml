@@ -73,7 +73,7 @@ modules:
     challenges:
 
       - id: consent
-        name: Consent
+        name: Consent to allow your anonymous data to contribute to this user study
         description:  Run /challenge/run in Terminal to start.
 
       - id: 1-locate
@@ -132,7 +132,11 @@ modules:
     description: Examine a project's fuzz drivers and decypher how they work
 
     challenges:
- 
+
+      - id: consent
+        name: Consent to allow your anonymous data to contribute to this user study
+        description:  Run /challenge/run in Terminal to start.
+
       - id: lighttpd
         name: LIGHTTPD - 1310 loc - 2 min
 
