@@ -72,6 +72,10 @@ modules:
 
     challenges:
 
+      - id: consent
+        name: Consent
+        description:  Run /challenge/run in Terminal to start.
+
       - id: 1-locate
         name: Locate Harnesses
         description: Locate the fuzz harnesses in a project.  Run /challenge/training in Terminal to start.
