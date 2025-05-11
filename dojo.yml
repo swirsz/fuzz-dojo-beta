@@ -128,7 +128,7 @@ modules:
 
 
   - id: understanding-1
-    name: Understanding Fuzz Drivers EASY
+    name: Understanding Fuzz Drivers SIMPLE
     description: Examine a project's fuzz drivers and decypher how they work
 
     challenges:
@@ -216,7 +216,7 @@ modules:
         video: AtjkUvYOGJw    
 
   - id: understanding-3
-    name: Understanding Fuzz Drivers HARD
+    name: Understanding Fuzz Drivers COMPLEX
     description: Examine a project's fuzz drivers and decypher how they work
 
     challenges:
@@ -424,7 +424,7 @@ modules:
         name: (D) ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
 
   - id: planning-1
-    name: Planning New Fuzz Drivers EASY
+    name: Planning New Fuzz Drivers SIMPLE
     description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
     
         \
@@ -532,7 +532,7 @@ modules:
         video: OP22mPweQbU
 
   - id: planning-3
-    name: Planning New Fuzz Drivers HARD
+    name: Planning New Fuzz Drivers COMPLEX
     description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
     
         \
@@ -584,7 +584,7 @@ modules:
         video: AtjkUvYOGJw
         
   - id: implement-1
-    name: Implement New Fuzz Driver EASY
+    name: Implement New Fuzz Driver SIMPLE
     description: Implement a Fuzz Driver
 
     challenges:
@@ -686,7 +686,7 @@ modules:
         video: 11fxFrOOLJ0
 
   - id: implement-3
-    name: Implement New Fuzz Driver HARD
+    name: Implement New Fuzz Driver COMPLEX
     description: Implement a Fuzz Driver
 
     challenges:
@@ -725,7 +725,7 @@ modules:
         video: 11fxFrOOLJ0
 
   - id: improve-1
-    name: Improve a Fuzz Driver EASY
+    name: Improve a Fuzz Driver SIMPLE
     description: 
     
         Refine your fuzz drivers to increase code coverage.  This module is open-ended and provides the same tools as the last module.
@@ -873,7 +873,7 @@ modules:
         video: KOHb0y_Oiko
 
   - id: improve-3
-    name: Improve a Fuzz Driver HARD
+    name: Improve a Fuzz Driver COMPLEX
     description: 
     
         Refine your fuzz drivers to increase code coverage.  This module is open-ended and provides the same tools as the last module.
