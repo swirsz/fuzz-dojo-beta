@@ -73,7 +73,7 @@ modules:
     challenges:
 
       - id: consent
-        name: Consent to allow your anonymous data to contribute to this user study
+        name: Consent
         description:  Run /challenge/run in Terminal to start.
 
 
@@ -722,7 +722,7 @@ modules:
 
   - id: nextsteps
     name: The Next Steps
-    description: Steps to submit your fuzz driver to Google
+    description: Submitting your fuzz driver to Google
 
     resources:
  
