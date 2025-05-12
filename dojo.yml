@@ -66,65 +66,15 @@ description: |
 
 modules:
 
-  - id: training
-    name: Training Exercises
-    description: Learn techniques to improve the code coverage of fuzz driver harnesses
+  - id: consent
+    name: Consent
+    description: Contribute by allowing your anonymous, non-personalized work in this module to be used for research
 
     challenges:
 
       - id: consent
         name: Consent to allow your anonymous data to contribute to this user study
         description:  Run /challenge/run in Terminal to start.
-
-      - id: 1-locate
-        name: Locate Harnesses
-        description: Locate the fuzz harnesses in a project.  Run /challenge/training in Terminal to start.
-
-      - id: 2-change
-        name: Modify a Fuzzing Harness
-        description: Make a change to a fuzzing harness.  Run /challenge/training in Terminal to start.
-
-      - id: 3-broken
-        name: Fix Broken Fuzzing Harness
-        description: Repair a broken fuzzing harness.  Run /challenge/training in Terminal to start.
-
-      - id: 4-parameters
-        name: Initial Parameters
-        description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in Terminal to start.
-
-      - id: 5-calltree
-        name: Improve Coverage Using the Call Tree
-        description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
-
-      - id: 6-split
-        name: Split Into Multiple Harness
-        description: Break large complicated fuzz drivers into multiple individual drivers.  Run /challenge/training in Terminal to start.
-
-      - id: 7-sanitizer
-        name: Correct Sanitizer Specific Problems
-        description: Identify the sanitizer that is crashing and repair it.  Run /challenge/training in Terminal to start.
-
-      - id: 8-seedcorpus
-        name: Implement Seed Corpus
-        description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
-
-      - id: 9-newdriver
-        name: Create New Fuzz Driver
-        description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
-
-      - id: 10-crash
-        name: Diagnose Crash Files
-        description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
-
-    resources:
-    
-      - name: "pwn.college - Getting Started"
-        type: lecture
-        video: DJO1A2neZ6Y
-        
-      - name: "Introduction to Fuzzing"
-        type: lecture
-        video: K_2DAo5pPQQ
 
 
   - id: understanding-1
@@ -132,10 +82,6 @@ modules:
     description: Examine a project's fuzz drivers and decypher how they work
 
     challenges:
-
-      - id: consent
-        name: Consent to allow your anonymous data to contribute to this user study
-        description:  Run /challenge/run in Terminal to start.
 
       - id: lighttpd
         name: LIGHTTPD - 1310 loc - 2 min
@@ -244,6 +190,216 @@ modules:
       - name: "AVAHI: Understanding Existing Fuzz Drivers"
         type: lecture
         video: AtjkUvYOGJw
+
+  - id: training
+    name: Training Exercises
+    description: Learn techniques to improve the code coverage of existing fuzz drivers
+
+    challenges:
+
+      - id: 1-locate
+        name: Locate Harnesses
+        description: Locate the fuzz harnesses in a project.  Run /challenge/training in Terminal to start.
+
+      - id: 2-change
+        name: Modify a Fuzzing Harness
+        description: Make a change to a fuzzing harness.  Run /challenge/training in Terminal to start.
+
+      - id: 3-broken
+        name: Fix Broken Fuzzing Harness
+        description: Repair a broken fuzzing harness.  Run /challenge/training in Terminal to start.
+
+      - id: 4-parameters
+        name: Initial Parameters
+        description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in Terminal to start.
+
+      - id: 5-calltree
+        name: Improve Coverage Using the Call Tree
+        description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
+
+      - id: 6-split
+        name: Split Into Multiple Harness
+        description: Break large complicated fuzz drivers into multiple individual drivers.  Run /challenge/training in Terminal to start.
+
+      - id: 7-sanitizer
+        name: Correct Sanitizer Specific Problems
+        description: Identify the sanitizer that is crashing and repair it.  Run /challenge/training in Terminal to start.
+
+      - id: 8-seedcorpus
+        name: Implement Seed Corpus
+        description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
+
+      - id: 9-newdriver
+        name: Create New Fuzz Driver
+        description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
+
+      - id: 10-crash
+        name: Diagnose Crash Files
+        description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
+
+    resources:
+    
+      - name: "pwn.college - Getting Started"
+        type: lecture
+        video: DJO1A2neZ6Y
+        
+      - name: "Introduction to Fuzzing"
+        type: lecture
+        video: K_2DAo5pPQQ
+
+  - id: planning-1
+    name: Planning New Fuzz Drivers SIMPLE
+    description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
+    
+        \
+        
+        Before writing any code, familiarize yourself with the project's architecture.  One way of doing this is to ask an AI platform to "explain the different files in the <project name> source code folder."\ 
+        
+        \
+        
+        Browse the source code and fuzz introspector report and identify the parsing functions, input handlers, and data processing routines.  Are there any other components that process untrusted input?  As you consider your driver, focus on functions high in the call tree and consider state dependencies and requirements.  Does this function require corpus data, such as image files or sound files, as input?  What initiation is needed by the program before this function typically executes?  What sequence of operations makes the most sense?\ 
+        
+        \
+        
+        After spending some time in the project code, describe your conceptual fuzz driver using a few English sentences, and paste that into the text input prompt of `/challenge/run` to achieve the flag.
+
+    challenges:
+ 
+      - id: lighttpd
+        name: LIGHTTPD - 1310 loc - 2 min
+
+      - id: snappy
+        name: SNAPPY - 1502 loc - 1 min
+
+      - id: xz
+        name: XZ - 3414 loc - 2 min
+
+      - id: usbguard
+        name: USBGUARD - 3525 loc - 2 min
+
+      - id: arduinojson
+        name: ARDUINOJSON - 3599 loc - 1 min
+        
+      - id: wasm3
+        name: WASM3 - 4107 loc - 1 min
+
+      - id: guetzli
+        name: GUETZLI - 5648 loc - 1 min
+
+      - id: w3m
+        name: W3M - 6400 loc - 1 min
+
+      - id: json
+        name: JSON - 8008 loc - 1 min
+
+      - id: libsodium
+        name: LIBSODIUM - 8403 loc - 2 min
+
+    resources:
+    
+      - name: "Investigating a Project & Picking Functions to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
+        
+  - id: planning-2
+    name: Planning New Fuzz Drivers MEDIUM
+    description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
+    
+        \
+        
+        Before writing any code, familiarize yourself with the project's architecture.  One way of doing this is to ask an AI platform to "explain the different files in the <project name> source code folder."\ 
+        
+        \
+        
+        Browse the source code and fuzz introspector report and identify the parsing functions, input handlers, and data processing routines.  Are there any other components that process untrusted input?  As you consider your driver, focus on functions high in the call tree and consider state dependencies and requirements.  Does this function require corpus data, such as image files or sound files, as input?  What initiation is needed by the program before this function typically executes?  What sequence of operations makes the most sense?\ 
+        
+        \
+        
+        After spending some time in the project code, describe your conceptual fuzz driver using a few English sentences, and paste that into the text input prompt of `/challenge/run` to achieve the flag.
+    
+    challenges:
+
+      - id: casync
+        name: CASYNC - 1678 loc - 1 min
+
+      - id: miniz
+        name: MINIZ - 5423 loc - 1 min
+
+      - id: c-ares
+        name: C-ARES - 5676 loc - 2.5 min
+        
+      - id: mpg123
+        name: MPG123 - 9826 loc - 2 min
+
+      - id: libvnc
+        name: LIBVNC - 10793 loc - 3.5 min
+
+      - id: libssh2
+        name: LIBSSH2 - 12632 loc - 2 min
+        
+      - id: unrar
+        name: UNRAR - 13209 loc - 1.5 min
+        
+      - id: libpng
+        name: LIBPNG - 13217 loc - 1.5 min
+
+      - id: libvpx
+        name: LIBVPX - 32885 loc - 2.5 min
+ 
+      - id: tmux
+        name: TMUX - 48752 loc - 1.5 min
+
+    resources:
+    
+      - name: "Investigating a Project & Picking Functions to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
+
+  - id: planning-3
+    name: Planning New Fuzz Drivers COMPLEX
+    description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
+    
+        \
+        
+        Before writing any code, familiarize yourself with the project's architecture.  One way of doing this is to ask an AI platform to "explain the different files in the <project name> source code folder."\ 
+        
+        \
+        
+        Browse the source code and fuzz introspector report and identify the parsing functions, input handlers, and data processing routines.  Are there any other components that process untrusted input?  As you consider your driver, focus on functions high in the call tree and consider state dependencies and requirements.  Does this function require corpus data, such as image files or sound files, as input?  What initiation is needed by the program before this function typically executes?  What sequence of operations makes the most sense?\ 
+        
+        \
+        
+        After spending some time in the project code, describe your conceptual fuzz driver using a few English sentences, and paste that into the text input prompt of `/challenge/run` to achieve the flag.
+
+    challenges:
+
+      - id: zlib
+        name: ZLIB - 5055 loc - 1 min
+ 
+      - id: fmt
+        name: FMT - 5904 loc - 4 min (slow FI)
+        
+      - id: janus-gateway
+        name: JANUS-GATEWAY - 6131 loc - 1.5 min
+
+      - id: openjpeg
+        name: OPENJPEG - 22939 loc - 2 min
+
+      - id: igraph
+        name: IGRAPH - 57124 loc - 4 min (slow FI)
+
+      - id: sqlite3
+        name: SQLITE3 - 80385 loc - 5 min (slow FI)
+
+    resources:
+    
+      - name: "Investigating a Project & Picking Functions to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
+
 
   - id: projects
     name: OSS-Fuzz Projects
@@ -422,166 +578,6 @@ modules:
 
       - id: zopfli
         name: (D) ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
-
-  - id: planning-1
-    name: Planning New Fuzz Drivers SIMPLE
-    description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
-    
-        \
-        
-        Before writing any code, familiarize yourself with the project's architecture.  One way of doing this is to ask an AI platform to "explain the different files in the <project name> source code folder."\ 
-        
-        \
-        
-        Browse the source code and fuzz introspector report and identify the parsing functions, input handlers, and data processing routines.  Are there any other components that process untrusted input?  As you consider your driver, focus on functions high in the call tree and consider state dependencies and requirements.  Does this function require corpus data, such as image files or sound files, as input?  What initiation is needed by the program before this function typically executes?  What sequence of operations makes the most sense?\ 
-        
-        \
-        
-        After spending some time in the project code, describe your conceptual fuzz driver using a few English sentences, and paste that into the text input prompt of `/challenge/run` to achieve the flag.
-
-    challenges:
- 
-      - id: lighttpd
-        name: LIGHTTPD - 1310 loc - 2 min
-
-      - id: snappy
-        name: SNAPPY - 1502 loc - 1 min
-
-      - id: xz
-        name: XZ - 3414 loc - 2 min
-
-      - id: usbguard
-        name: USBGUARD - 3525 loc - 2 min
-
-      - id: arduinojson
-        name: ARDUINOJSON - 3599 loc - 1 min
-        
-      - id: wasm3
-        name: WASM3 - 4107 loc - 1 min
-
-      - id: guetzli
-        name: GUETZLI - 5648 loc - 1 min
-
-      - id: w3m
-        name: W3M - 6400 loc - 1 min
-
-      - id: json
-        name: JSON - 8008 loc - 1 min
-
-      - id: libsodium
-        name: LIBSODIUM - 8403 loc - 2 min
-
-    resources:
-    
-      - name: "Investigating a Project & Picking Functions to Fuzz"
-        type: lecture
-        video: OP22mPweQbU
-
-  - id: planning-2
-    name: Planning New Fuzz Drivers MEDIUM
-    description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
-    
-        \
-        
-        Before writing any code, familiarize yourself with the project's architecture.  One way of doing this is to ask an AI platform to "explain the different files in the <project name> source code folder."\ 
-        
-        \
-        
-        Browse the source code and fuzz introspector report and identify the parsing functions, input handlers, and data processing routines.  Are there any other components that process untrusted input?  As you consider your driver, focus on functions high in the call tree and consider state dependencies and requirements.  Does this function require corpus data, such as image files or sound files, as input?  What initiation is needed by the program before this function typically executes?  What sequence of operations makes the most sense?\ 
-        
-        \
-        
-        After spending some time in the project code, describe your conceptual fuzz driver using a few English sentences, and paste that into the text input prompt of `/challenge/run` to achieve the flag.
-    
-    challenges:
-
-      - id: casync
-        name: CASYNC - 1678 loc - 1 min
-
-      - id: miniz
-        name: MINIZ - 5423 loc - 1 min
-
-      - id: c-ares
-        name: C-ARES - 5676 loc - 2.5 min
-        
-      - id: mpg123
-        name: MPG123 - 9826 loc - 2 min
-
-      - id: libvnc
-        name: LIBVNC - 10793 loc - 3.5 min
-
-      - id: libssh2
-        name: LIBSSH2 - 12632 loc - 2 min
-        
-      - id: unrar
-        name: UNRAR - 13209 loc - 1.5 min
-        
-      - id: libpng
-        name: LIBPNG - 13217 loc - 1.5 min
-
-      - id: libvpx
-        name: LIBVPX - 32885 loc - 2.5 min
- 
-      - id: tmux
-        name: TMUX - 48752 loc - 1.5 min
-
-    resources:
-    
-      - name: "Investigating a Project & Picking Functions to Fuzz"
-        type: lecture
-        video: OP22mPweQbU
-
-  - id: planning-3
-    name: Planning New Fuzz Drivers COMPLEX
-    description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
-    
-        \
-        
-        Before writing any code, familiarize yourself with the project's architecture.  One way of doing this is to ask an AI platform to "explain the different files in the <project name> source code folder."\ 
-        
-        \
-        
-        Browse the source code and fuzz introspector report and identify the parsing functions, input handlers, and data processing routines.  Are there any other components that process untrusted input?  As you consider your driver, focus on functions high in the call tree and consider state dependencies and requirements.  Does this function require corpus data, such as image files or sound files, as input?  What initiation is needed by the program before this function typically executes?  What sequence of operations makes the most sense?\ 
-        
-        \
-        
-        After spending some time in the project code, describe your conceptual fuzz driver using a few English sentences, and paste that into the text input prompt of `/challenge/run` to achieve the flag.
-
-    challenges:
-
-      - id: zlib
-        name: ZLIB - 5055 loc - 1 min
- 
-      - id: fmt
-        name: FMT - 5904 loc - 4 min (slow FI)
-        
-      - id: janus-gateway
-        name: JANUS-GATEWAY - 6131 loc - 1.5 min
-
-      - id: openjpeg
-        name: OPENJPEG - 22939 loc - 2 min
-
-      - id: igraph
-        name: IGRAPH - 57124 loc - 4 min (slow FI)
-
-      - id: sqlite3
-        name: SQLITE3 - 80385 loc - 5 min (slow FI)
-
-    resources:
-    
-      - name: "Investigating a Project & Picking Functions to Fuzz"
-        type: lecture
-        video: OP22mPweQbU
-
-  - id: nextsteps
-    name: The Next Steps
-    description: Steps to submit your fuzz driver to Google
-
-    resources:
- 
-      - name: "To be added:  Final tests and submitting your fuzz driver to Google"
-        type: lecture
-        video: AtjkUvYOGJw
         
   - id: implement-1
     name: Implement New Fuzz Driver SIMPLE
@@ -723,6 +719,16 @@ modules:
       - name: "AVAHI: New Fuzz Driver Creation"
         type: lecture
         video: 11fxFrOOLJ0
+
+  - id: nextsteps
+    name: The Next Steps
+    description: Steps to submit your fuzz driver to Google
+
+    resources:
+ 
+      - name: "The Next Steps - submitting your fuzz driver to Google"
+        type: lecture
+        slides: 1wY-6xqYhhzf4uf272UMjHPh8KZ4sc1fjgcKuGrsa4ks
 
   - id: improve-1
     name: Improve a Fuzz Driver SIMPLE
