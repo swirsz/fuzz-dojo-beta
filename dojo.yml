@@ -407,6 +407,9 @@ modules:
 
     challenges:
 
+      - id: alembic
+        name: ALEMBIC
+
       - id: apache-httpd
         name: APACHE-HTTPD - medium 48312 loc 12%-14%-6% - 5.5 min
 
