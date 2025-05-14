@@ -409,6 +409,24 @@ modules:
 
       - id: alembic
         name: ALEMBIC
+        
+      - id: ampproject
+        name: AMPPROJECT
+
+      - id: args
+        name: args
+
+      - id: aspell
+        name: aspell
+
+      - id: astc-encoder
+        name: astc-encoder
+
+      - id: boost-beast
+        name: boost-beast
+
+      - id: boost-json
+        name: boost-json
 
       - id: apache-httpd
         name: APACHE-HTTPD - medium 48312 loc 12%-14%-6% - 5.5 min

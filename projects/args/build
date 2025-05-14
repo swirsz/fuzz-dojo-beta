@@ -13,15 +13,18 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && apt-get install -y build-essential zlib1g-dev zlib1g-dev:i386 python make automake
-    #git clone --depth 1 https://github.com/alembic/alembic
 
-    # Ubuntu's libilmbase-dev package doesn't include static libraries, so we have
-    # to build OpenEXR from source.
-    #RUN git clone -b v2.5.9 --depth 1 https://github.com/AcademySoftwareFoundation/openexr
+    #RUN apt-get update && \
+    #    apt-get install -y \
+    #    make \
+    #    cmake
 
-    #COPY build.sh *.h *.cc $SRC/
-    #WORKDIR $WORK/
+    #RUN git clone --depth 1 https://github.com/Taywee/args.git $SRC/args/
+
+    #COPY build.sh $SRC/
+    #WORKDIR $SRC/args/
+
+
 
     #apt-get update && \
     #   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386

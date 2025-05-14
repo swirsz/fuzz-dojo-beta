@@ -13,15 +13,17 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && apt-get install -y build-essential zlib1g-dev zlib1g-dev:i386 python make automake
-    #git clone --depth 1 https://github.com/alembic/alembic
+    #FROM gcr.io/oss-fuzz-base/base-builder@sha256:19782f7fe8092843368894dbc471ce9b30dd6a2813946071a36e8b05f5b1e27e
+    # ! This project was pinned after a clang bump. Please remove the pin, Try to fix any build warnings and errors, as well as runtime errors
+    #RUN apt-get update && apt-get install -y make autoconf automake libtool libomp-dev libgomp1 nodejs
+    #COPY build.sh *.diff $SRC/
 
-    # Ubuntu's libilmbase-dev package doesn't include static libraries, so we have
-    # to build OpenEXR from source.
-    #RUN git clone -b v2.5.9 --depth 1 https://github.com/AcademySoftwareFoundation/openexr
+    #RUN git clone --depth 1 https://github.com/ampproject/amphtml amphtml && \
+    #cd amphtml && \
+    #git apply  --ignore-space-change --ignore-whitespace $SRC/fuzz_patch.diff
+    #WORKDIR amphtml
 
-    #COPY build.sh *.h *.cc $SRC/
-    #WORKDIR $WORK/
+
 
     #apt-get update && \
     #   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
