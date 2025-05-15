@@ -76,121 +76,6 @@ modules:
         name: Consent
         description:  Run /challenge/run in Terminal to start.
 
-
-  - id: understanding-1
-    name: Understanding Fuzz Drivers SIMPLE
-    description: Examine a project's fuzz drivers and decypher how they work
-
-    challenges:
-
-      - id: lighttpd
-        name: LIGHTTPD - 1310 loc - 2 min
-
-      - id: snappy
-        name: SNAPPY - 1502 loc - 1 min
-
-      - id: xz
-        name: XZ - 3414 loc - 2 min
-
-      - id: usbguard
-        name: USBGUARD - 3525 loc - 2 min
-
-      - id: arduinojson
-        name: ARDUINOJSON - 3599 loc - 1 min
-        
-      - id: wasm3
-        name: WASM3 - 4107 loc - 1 min
-
-      - id: guetzli
-        name: GUETZLI - 5648 loc - 1 min
-
-      - id: w3m
-        name: W3M - 6400 loc - 1 min
-
-      - id: json
-        name: JSON - 8008 loc - 1 min
-
-      - id: libsodium
-        name: LIBSODIUM - 8403 loc - 2 min
-
-    resources:
-
-      - name: "AVAHI: Understanding Existing Fuzz Drivers"
-        type: lecture
-        video: AtjkUvYOGJw
-
-  - id: understanding-2
-    name: Understanding Fuzz Drivers MEDIUM
-    description: Examine a project's fuzz drivers and decypher how they work
-
-    challenges:
-
-      - id: casync
-        name: CASYNC - 1678 loc - 1 min
-
-      - id: miniz
-        name: MINIZ - 5423 loc - 1 min
-
-      - id: c-ares
-        name: C-ARES - 5676 loc - 2.5 min
-        
-      - id: mpg123
-        name: MPG123 - 9826 loc - 2 min
-
-      - id: libvnc
-        name: LIBVNC - 10793 loc - 3.5 min
-
-      - id: libssh2
-        name: LIBSSH2 - 12632 loc - 2 min
-        
-      - id: unrar
-        name: UNRAR - 13209 loc - 1.5 min
-        
-      - id: libpng
-        name: LIBPNG - 13217 loc - 1.5 min
-
-      - id: libvpx
-        name: LIBVPX - 32885 loc - 2.5 min
- 
-      - id: tmux
-        name: TMUX - 48752 loc - 1.5 min
-
-    resources:
-    
-      - name: "AVAHI: Understanding Existing Fuzz Drivers"
-        type: lecture
-        video: AtjkUvYOGJw    
-
-  - id: understanding-3
-    name: Understanding Fuzz Drivers COMPLEX
-    description: Examine a project's fuzz drivers and decypher how they work
-
-    challenges:
-
-      - id: zlib
-        name: ZLIB - 5055 loc - 1 min
- 
-      - id: fmt
-        name: FMT - 5904 loc - 4 min (slow FI)
-        
-      - id: janus-gateway
-        name: JANUS-GATEWAY - 6131 loc - 1.5 min
-
-      - id: openjpeg
-        name: OPENJPEG - 22939 loc - 2 min
-
-      - id: igraph
-        name: IGRAPH - 57124 loc - 4 min (slow FI)
-
-      - id: sqlite3
-        name: SQLITE3 - 80385 loc - 5 min (slow FI)
-
-    resources:
-    
-      - name: "AVAHI: Understanding Existing Fuzz Drivers"
-        type: lecture
-        video: AtjkUvYOGJw
-
   - id: training
     name: Training Exercises
     description: Learn techniques to improve the code coverage of existing fuzz drivers
@@ -247,163 +132,39 @@ modules:
         type: lecture
         video: K_2DAo5pPQQ
 
-  - id: planning-1
-    name: Planning New Fuzz Drivers SIMPLE
-    description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
-    
-        \
-        
-        Before writing any code, familiarize yourself with the project's architecture.  One way of doing this is to ask an AI platform to "explain the different files in the <project name> source code folder."\ 
-        
-        \
-        
-        Browse the source code and fuzz introspector report and identify the parsing functions, input handlers, and data processing routines.  Are there any other components that process untrusted input?  As you consider your driver, focus on functions high in the call tree and consider state dependencies and requirements.  Does this function require corpus data, such as image files or sound files, as input?  What initiation is needed by the program before this function typically executes?  What sequence of operations makes the most sense?\ 
-        
-        \
-        
-        After spending some time in the project code, describe your conceptual fuzz driver using a few English sentences, and paste that into the text input prompt of `/challenge/run` to achieve the flag.
-
-    challenges:
- 
-      - id: lighttpd
-        name: LIGHTTPD - 1310 loc - 2 min
-
-      - id: snappy
-        name: SNAPPY - 1502 loc - 1 min
-
-      - id: xz
-        name: XZ - 3414 loc - 2 min
-
-      - id: usbguard
-        name: USBGUARD - 3525 loc - 2 min
-
-      - id: arduinojson
-        name: ARDUINOJSON - 3599 loc - 1 min
-        
-      - id: wasm3
-        name: WASM3 - 4107 loc - 1 min
-
-      - id: guetzli
-        name: GUETZLI - 5648 loc - 1 min
-
-      - id: w3m
-        name: W3M - 6400 loc - 1 min
-
-      - id: json
-        name: JSON - 8008 loc - 1 min
-
-      - id: libsodium
-        name: LIBSODIUM - 8403 loc - 2 min
-
-    resources:
-    
-      - name: "Investigating a Project & Picking Functions to Fuzz"
-        type: lecture
-        video: OP22mPweQbU
-        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
-        
-  - id: planning-2
-    name: Planning New Fuzz Drivers MEDIUM
-    description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
-    
-        \
-        
-        Before writing any code, familiarize yourself with the project's architecture.  One way of doing this is to ask an AI platform to "explain the different files in the <project name> source code folder."\ 
-        
-        \
-        
-        Browse the source code and fuzz introspector report and identify the parsing functions, input handlers, and data processing routines.  Are there any other components that process untrusted input?  As you consider your driver, focus on functions high in the call tree and consider state dependencies and requirements.  Does this function require corpus data, such as image files or sound files, as input?  What initiation is needed by the program before this function typically executes?  What sequence of operations makes the most sense?\ 
-        
-        \
-        
-        After spending some time in the project code, describe your conceptual fuzz driver using a few English sentences, and paste that into the text input prompt of `/challenge/run` to achieve the flag.
-    
-    challenges:
-
-      - id: casync
-        name: CASYNC - 1678 loc - 1 min
-
-      - id: miniz
-        name: MINIZ - 5423 loc - 1 min
-
-      - id: c-ares
-        name: C-ARES - 5676 loc - 2.5 min
-        
-      - id: mpg123
-        name: MPG123 - 9826 loc - 2 min
-
-      - id: libvnc
-        name: LIBVNC - 10793 loc - 3.5 min
-
-      - id: libssh2
-        name: LIBSSH2 - 12632 loc - 2 min
-        
-      - id: unrar
-        name: UNRAR - 13209 loc - 1.5 min
-        
-      - id: libpng
-        name: LIBPNG - 13217 loc - 1.5 min
-
-      - id: libvpx
-        name: LIBVPX - 32885 loc - 2.5 min
- 
-      - id: tmux
-        name: TMUX - 48752 loc - 1.5 min
-
-    resources:
-    
-      - name: "Investigating a Project & Picking Functions to Fuzz"
-        type: lecture
-        video: OP22mPweQbU
-        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
-
-  - id: planning-3
-    name: Planning New Fuzz Drivers COMPLEX
-    description: This module aims to dive into the source code of your target program and develop a conceptual plan to create a new fuzz driver.  Now that you are familiar with the existing fuzz drivers, consider what is not currently being fuzzed.\
-    
-        \
-        
-        Before writing any code, familiarize yourself with the project's architecture.  One way of doing this is to ask an AI platform to "explain the different files in the <project name> source code folder."\ 
-        
-        \
-        
-        Browse the source code and fuzz introspector report and identify the parsing functions, input handlers, and data processing routines.  Are there any other components that process untrusted input?  As you consider your driver, focus on functions high in the call tree and consider state dependencies and requirements.  Does this function require corpus data, such as image files or sound files, as input?  What initiation is needed by the program before this function typically executes?  What sequence of operations makes the most sense?\ 
-        
-        \
-        
-        After spending some time in the project code, describe your conceptual fuzz driver using a few English sentences, and paste that into the text input prompt of `/challenge/run` to achieve the flag.
-
-    challenges:
-
-      - id: zlib
-        name: ZLIB - 5055 loc - 1 min
- 
-      - id: fmt
-        name: FMT - 5904 loc - 4 min (slow FI)
-        
-      - id: janus-gateway
-        name: JANUS-GATEWAY - 6131 loc - 1.5 min
-
-      - id: openjpeg
-        name: OPENJPEG - 22939 loc - 2 min
-
-      - id: igraph
-        name: IGRAPH - 57124 loc - 4 min (slow FI)
-
-      - id: sqlite3
-        name: SQLITE3 - 80385 loc - 5 min (slow FI)
-
-    resources:
-    
-      - name: "Investigating a Project & Picking Functions to Fuzz"
-        type: lecture
-        video: OP22mPweQbU
-        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
-
-
   - id: projects
     name: OSS-Fuzz Projects
-    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.
+    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.\
+
+        \
+    
+        Refine your fuzz drivers to increase code coverage.
+    
+        * Run a fuzz introspector report and view the call tree, looking at unreached sections, and determine why these areas are not being hit.
+        
+        * Vary the structure and constraints on your input data. Are many runs failing early due to invalid data types?
+        
+        * Could different parameter combinations hit code not currently being reached?
+        
+        * Examine the functions being called. Could you call functions higher on the call tree to reach more code?
+        
+        * Experiment with different sanitizers and check for hidden errors, revealed by fuzzing runs with address, undefined, thread, and memory sanitizers.
+        
+        * Are you using a seed corpus?   Can you make this corpus more diverse and also remove redundant samples?
+        
+        * Could implementing additional preconditions be necessary to fulfill control dependencies needed for untouched code?  I.E., do you need to open a file before you can read from it?
+        
+        * Look for complex branch conditions involving checksums, hashes, or magic values.  Could you add custom comparators to your fuzz driver, or bypass these checks by calling functions beyond them?
+        
+        * Are timeouts or memory errors occurring when running your fuzz driver?
+        
+        * Can you improve performance by testing and optimizing your code?
+        
+        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?\
+
+        \
+
+        Practical examples of fuzz driver improvements may be found in the training exercises.
 
     challenges:
 
@@ -599,44 +360,17 @@ modules:
 
       - id: zopfli
         name: (D) ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
-        
-  - id: implement-1
-    name: Implement New Fuzz Driver SIMPLE
-    description: Implement a Fuzz Driver
-
-    challenges:
- 
-      - id: lighttpd
-        name: LIGHTTPD - 1310 loc - 2 min
-
-      - id: snappy
-        name: SNAPPY - 1502 loc - 1 min
-
-      - id: xz
-        name: XZ - 3414 loc - 2 min
-
-      - id: usbguard
-        name: USBGUARD - 3525 loc - 2 min
-
-      - id: arduinojson
-        name: ARDUINOJSON - 3599 loc - 1 min
-        
-      - id: wasm3
-        name: WASM3 - 4107 loc - 1 min
-
-      - id: guetzli
-        name: GUETZLI - 5648 loc - 1 min
-
-      - id: w3m
-        name: W3M - 6400 loc - 1 min
-
-      - id: json
-        name: JSON - 8008 loc - 1 min
-
-      - id: libsodium
-        name: LIBSODIUM - 8403 loc - 2 min
-
+    
     resources:
+    
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+        type: lecture
+        video: AtjkUvYOGJw
+        
+      - name: "Investigating a Project & Picking Functions to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
     
       - name: "Fuzz Dojo only: Building and Running Reports"
         type: lecture
@@ -650,96 +384,16 @@ modules:
       - name: "AVAHI: New Fuzz Driver Creation"
         type: lecture
         video: 11fxFrOOLJ0
-
-  - id: implement-2
-    name: Implement New Fuzz Driver MEDIUM
-    description: Implement a Fuzz Driver
-
-    challenges:
-
-      - id: casync
-        name: CASYNC - 1678 loc - 1 min
-
-      - id: miniz
-        name: MINIZ - 5423 loc - 1 min
-
-      - id: c-ares
-        name: C-ARES - 5676 loc - 2.5 min
-        
-      - id: mpg123
-        name: MPG123 - 9826 loc - 2 min
-
-      - id: libvnc
-        name: LIBVNC - 10793 loc - 3.5 min
-
-      - id: libssh2
-        name: LIBSSH2 - 12632 loc - 2 min
-        
-      - id: unrar
-        name: UNRAR - 13209 loc - 1.5 min
-        
-      - id: libpng
-        name: LIBPNG - 13217 loc - 1.5 min
-
-      - id: libvpx
-        name: LIBVPX - 32885 loc - 2.5 min
- 
-      - id: tmux
-        name: TMUX - 48752 loc - 1.5 min
-
-    resources:
     
-      - name: "Fuzz Dojo only: Building and Running Reports"
+      - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
         type: lecture
-        video: u7GrifELIjU
-              
-      - name: "OSS Fuzz only: Building and Running Reports"
+        video: LRpm2kd9vQI
+
+      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
         type: lecture
-        video: gvA0cXxG4cg
-        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
-        
-      - name: "AVAHI: New Fuzz Driver Creation"
-        type: lecture
-        video: 11fxFrOOLJ0
+        video: KOHb0y_Oiko
 
-  - id: implement-3
-    name: Implement New Fuzz Driver COMPLEX
-    description: Implement a Fuzz Driver
 
-    challenges:
-
-      - id: zlib
-        name: ZLIB - 5055 loc - 1 min
- 
-      - id: fmt
-        name: FMT - 5904 loc - 4 min (slow FI)
-        
-      - id: janus-gateway
-        name: JANUS-GATEWAY - 6131 loc - 1.5 min
-
-      - id: openjpeg
-        name: OPENJPEG - 22939 loc - 2 min
-
-      - id: igraph
-        name: IGRAPH - 57124 loc - 4 min (slow FI)
-
-      - id: sqlite3
-        name: SQLITE3 - 80385 loc - 5 min (slow FI)
-
-    resources:
-    
-      - name: "Fuzz Dojo only: Building and Running Reports"
-        type: lecture
-        video: u7GrifELIjU
-              
-      - name: "OSS Fuzz only: Building and Running Reports"
-        type: lecture
-        video: gvA0cXxG4cg
-        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
-        
-      - name: "AVAHI: New Fuzz Driver Creation"
-        type: lecture
-        video: 11fxFrOOLJ0
 
   - id: nextsteps
     name: The Next Steps
@@ -750,213 +404,3 @@ modules:
       - name: "The Next Steps - submitting your fuzz driver to Google"
         type: lecture
         slides: 1wY-6xqYhhzf4uf272UMjHPh8KZ4sc1fjgcKuGrsa4ks
-
-  - id: improve-1
-    name: Improve a Fuzz Driver SIMPLE
-    description: 
-    
-        Refine your fuzz drivers to increase code coverage.  This module is open-ended and provides the same tools as the last module.
-    
-        * Run a fuzz introspector report and view the call tree, looking at unreached sections, and determine why these areas are not being hit.
-        
-        * Vary the structure and constraints on your input data. Are many runs failing early due to invalid data types?
-        
-        * Could different parameter combinations hit code not currently being reached?
-        
-        * Examine the functions being called. Could you call functions higher on the call tree to reach more code?
-        
-        * Experiment with different sanitizers and check for hidden errors, revealed by fuzzing runs with address, undefined, thread, and memory sanitizers.
-        
-        * Are you using a seed corpus?   Can you make this corpus more diverse and also remove redundant samples?
-        
-        * Could implementing additional preconditions be necessary to fulfill control dependencies needed for untouched code?  I.E., do you need to open a file before you can read from it?
-        
-        * Look for complex branch conditions involving checksums, hashes, or magic values.  Could you add custom comparators to your fuzz driver, or bypass these checks by calling functions beyond them?
-        
-        * Are timeouts or memory errors occurring when running your fuzz driver?
-        
-        * Can you improve performance by testing and optimizing your code?
-        
-        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?\
-
-        \
-
-        Practical examples of fuzz driver improvements may be found in the training exercises.
-
-    challenges:
- 
-      - id: lighttpd
-        name: LIGHTTPD - 1310 loc - 2 min
-
-      - id: snappy
-        name: SNAPPY - 1502 loc - 1 min
-
-      - id: xz
-        name: XZ - 3414 loc - 2 min
-
-      - id: usbguard
-        name: USBGUARD - 3525 loc - 2 min
-
-      - id: arduinojson
-        name: ARDUINOJSON - 3599 loc - 1 min
-        
-      - id: wasm3
-        name: WASM3 - 4107 loc - 1 min
-
-      - id: guetzli
-        name: GUETZLI - 5648 loc - 1 min
-
-      - id: w3m
-        name: W3M - 6400 loc - 1 min
-
-      - id: json
-        name: JSON - 8008 loc - 1 min
-
-      - id: libsodium
-        name: LIBSODIUM - 8403 loc - 2 min
-
-    resources:
-    
-      - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
-        type: lecture
-        video: LRpm2kd9vQI
-
-      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
-        type: lecture
-        video: KOHb0y_Oiko
-
-  - id: improve-2
-    name: Improve a Fuzz Driver MEDIUM
-    description: 
-    
-        Refine your fuzz drivers to increase code coverage.  This module is open-ended and provides the same tools as the last module.
-    
-        * Run a fuzz introspector report and view the call tree, looking at unreached sections, and determine why these areas are not being hit.
-        
-        * Vary the structure and constraints on your input data. Are many runs failing early due to invalid data types?
-        
-        * Could different parameter combinations hit code not currently being reached?
-        
-        * Examine the functions being called. Could you call functions higher on the call tree to reach more code?
-        
-        * Experiment with different sanitizers and check for hidden errors, revealed by fuzzing runs with address, undefined, thread, and memory sanitizers.
-        
-        * Are you using a seed corpus?   Can you make this corpus more diverse and also remove redundant samples?
-        
-        * Could implementing additional preconditions be necessary to fulfill control dependencies needed for untouched code?  I.E., do you need to open a file before you can read from it?
-        
-        * Look for complex branch conditions involving checksums, hashes, or magic values.  Could you add custom comparators to your fuzz driver, or bypass these checks by calling functions beyond them?
-        
-        * Are timeouts or memory errors occurring when running your fuzz driver?
-        
-        * Can you improve performance by testing and optimizing your code?
-        
-        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?\
-
-        \
-
-        Practical examples of fuzz driver improvements may be found in the training exercises.
-
-    challenges:
-
-      - id: casync
-        name: CASYNC - 1678 loc - 1 min
-
-      - id: miniz
-        name: MINIZ - 5423 loc - 1 min
-
-      - id: c-ares
-        name: C-ARES - 5676 loc - 2.5 min
-        
-      - id: mpg123
-        name: MPG123 - 9826 loc - 2 min
-
-      - id: libvnc
-        name: LIBVNC - 10793 loc - 3.5 min
-
-      - id: libssh2
-        name: LIBSSH2 - 12632 loc - 2 min
-        
-      - id: unrar
-        name: UNRAR - 13209 loc - 1.5 min
-        
-      - id: libpng
-        name: LIBPNG - 13217 loc - 1.5 min
-
-      - id: libvpx
-        name: LIBVPX - 32885 loc - 2.5 min
- 
-      - id: tmux
-        name: TMUX - 48752 loc - 1.5 min
-
-    resources:
-    
-      - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
-        type: lecture
-        video: LRpm2kd9vQI
-
-      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
-        type: lecture
-        video: KOHb0y_Oiko
-
-  - id: improve-3
-    name: Improve a Fuzz Driver COMPLEX
-    description: 
-    
-        Refine your fuzz drivers to increase code coverage.  This module is open-ended and provides the same tools as the last module.
-    
-        * Run a fuzz introspector report and view the call tree, looking at unreached sections, and determine why these areas are not being hit.
-        
-        * Vary the structure and constraints on your input data. Are many runs failing early due to invalid data types?
-        
-        * Could different parameter combinations hit code not currently being reached?
-        
-        * Examine the functions being called. Could you call functions higher on the call tree to reach more code?
-        
-        * Experiment with different sanitizers and check for hidden errors, revealed by fuzzing runs with address, undefined, thread, and memory sanitizers.
-        
-        * Are you using a seed corpus?   Can you make this corpus more diverse and also remove redundant samples?
-        
-        * Could implementing additional preconditions be necessary to fulfill control dependencies needed for untouched code?  I.E., do you need to open a file before you can read from it?
-        
-        * Look for complex branch conditions involving checksums, hashes, or magic values.  Could you add custom comparators to your fuzz driver, or bypass these checks by calling functions beyond them?
-        
-        * Are timeouts or memory errors occurring when running your fuzz driver?
-        
-        * Can you improve performance by testing and optimizing your code?
-        
-        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?\
-
-        \
-
-        Practical examples of fuzz driver improvements may be found in the training exercises.
-
-    challenges:
-
-      - id: zlib
-        name: ZLIB - 5055 loc - 1 min
- 
-      - id: fmt
-        name: FMT - 5904 loc - 4 min (slow FI)
-        
-      - id: janus-gateway
-        name: JANUS-GATEWAY - 6131 loc - 1.5 min
-
-      - id: openjpeg
-        name: OPENJPEG - 22939 loc - 2 min
-
-      - id: igraph
-        name: IGRAPH - 57124 loc - 4 min (slow FI)
-
-      - id: sqlite3
-        name: SQLITE3 - 80385 loc - 5 min (slow FI)
-
-    resources:
-    
-      - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
-        type: lecture
-        video: LRpm2kd9vQI
-
-      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
-        type: lecture
-        video: KOHb0y_Oiko
