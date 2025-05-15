@@ -33,7 +33,7 @@ if [ ! -d "/src-orig" ]; then
     
     #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
     #patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
-    cp $SRC/alembic_dump_info_fuzzer.cc $SRC/newfuzz_fuzzer.c
+    cp $SRC/alembic_dump_info_fuzzer.cc $SRC/newfuzz_fuzzer.cc
 #----------------------------------------------------------------------
     build-cleanup
 fi
