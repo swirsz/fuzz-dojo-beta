@@ -4,7 +4,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=avahi
+export PROJECT_NAME=boost-json
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -13,27 +13,22 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #FROM gcr.io/oss-fuzz-base/base-builder@sha256:19782f7fe8092843368894dbc471ce9b30dd6a2813946071a36e8b05f5b1e27e
-    # ! This project was pinned after a clang bump. Please remove the pin, Try to fix any build warnings and errors, as well as runtime errors
-    #RUN apt-get update && apt-get install -y make autoconf automake libtool libomp-dev libgomp1 nodejs
-    #COPY build.sh *.diff $SRC/
+    #RUN git clone --depth 1 --single-branch --branch master https://github.com/boostorg/boost.git
+    #RUN pwd
+    #RUN ls
+    #RUN git -C boost submodule update --init libs/json
+    #RUN git -C boost/libs/json checkout develop
+    #RUN git -C boost submodule update --init --depth 1 libs/align/ libs/assert libs/config/ libs/container libs/container_hash/ libs/core libs/describe libs/endian libs/headers/ libs/intrusive/ libs/move/ libs/mp11/ libs/predef/ libs/static_assert libs/system/ libs/throw_exception/ libs/type_traits/ libs/winapi/ libs/variant2/ tools/boost_install tools/build
 
-    #RUN git clone --depth 1 https://github.com/ampproject/amphtml amphtml && \
-    #cd amphtml && \
-    #git apply  --ignore-space-change --ignore-whitespace $SRC/fuzz_patch.diff
-    #WORKDIR amphtml
+    #WORKDIR boost
+    #COPY build.sh $SRC/
 
-
-
-    #apt-get update && \
-    #   apt-get install -y autoconf gettext libtool m4 automake pkg-config libexpat-dev libexpat-dev:i386
-    #git clone --depth 1 https://github.com/lathiat/avahi
-    cp -r /downloads/avahi $SRC
+    cp -r /downloads/boost $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-    cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
-    patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
-    cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
+    #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
+    #patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
+    #cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
 #----------------------------------------------------------------------
     build-cleanup
 fi
