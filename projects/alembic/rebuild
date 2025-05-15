@@ -27,14 +27,12 @@ fi
 set -ex
 #----------------------------------------------------------------------
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/fuzz
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 
 cd $SRC/$PROJECT_NAME
 
-clang -c -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -I. fuzz/fuzz-newfuzzer.c -o fuzz-newfuzzer.o
-
-clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ fuzz-newfuzzer.o -o /out/fuzz-newfuzzer -fsanitize=fuzzer avahi-core/.libs/libavahi-core.a avahi-common/.libs/libavahi-common.a
+clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=fuzzer-no-link -stdlib=libc++ -std=c++11 -I /src -I /src/alembic/lib -I /work/build_alembic/lib -I /usr/local/include/OpenEXR /src/alembic_dump_info_fuzzer.cc /work/build_alembic/lib/Alembic/libAlembic.a -fsanitize=fuzzer -o /out/alembic_dump_info_fuzzer -lImath -lIex -lHalf
 
 #----------------------------------------------------------------------
 drivers

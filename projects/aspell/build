@@ -20,7 +20,7 @@ if [ ! -d "/src-orig" ]; then
     #COPY build.sh $SRC/
 
 
-    cp -r /downloads/aspell-fuzz $SRC
+    cp -r /downloads/aspell-fuzz $SRC/aspell
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
