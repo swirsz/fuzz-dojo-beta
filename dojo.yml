@@ -408,7 +408,7 @@ modules:
     challenges:
 
       - id: alembic
-        name: ALEMBIC
+        name: ALEMBIC - medium 12569 loc 1%-9%-0% - 1 min (slow FI)
         
       - id: ampproject
         name: AMPPROJECT
