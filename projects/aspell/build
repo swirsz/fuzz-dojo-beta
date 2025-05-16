@@ -20,6 +20,7 @@ if [ ! -d "/src-orig" ]; then
     #COPY build.sh $SRC/
 
 
+    cp -r /downloads/aspell $SRC
     cp -r /downloads/aspell-fuzz $SRC
 
     cp /opt/oss-fuzz/projects/aspell/build.sh $SRC/
