@@ -40,3 +40,4 @@ $CXX $CXXFLAGS -std=c++11 $EXTRA_CFLAGS -I. -L. -Lopenbsd-compat -g \
 
 #----------------------------------------------------------------------
 drivers
+fi

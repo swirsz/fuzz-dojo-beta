@@ -37,3 +37,4 @@ clang -DPACKAGE_NAME=\"tmux\" -DPACKAGE_TARNAME=\"tmux\" -DPACKAGE_VERSION=\"nex
 
 #----------------------------------------------------------------------
 drivers
+fi

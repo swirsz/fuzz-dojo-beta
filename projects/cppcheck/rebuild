@@ -39,3 +39,4 @@ clang++ -std=c++11 -g -w -I../lib -isystem../externals/simplecpp -isystem../exte
 
 #----------------------------------------------------------------------
 drivers
+fi

@@ -38,3 +38,4 @@ $CXX $CXXFLAGS $FLAGS $LIB_FUZZING_ENGINE -pthread fuzz_newfuzzer.o \
 
 #----------------------------------------------------------------------
 drivers
+fi

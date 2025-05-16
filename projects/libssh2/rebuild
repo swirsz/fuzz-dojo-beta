@@ -37,3 +37,4 @@ clang++ -fsanitize=fuzzer -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZI
 
 #----------------------------------------------------------------------
 drivers
+fi

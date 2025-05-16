@@ -38,4 +38,5 @@ make -j32 -C src/Tests/Fuzzers fuzzer-new fuzzer-uevent fuzzer-rules fuzzer-usb-
 
 #----------------------------------------------------------------------
 drivers
+fi
 mv /src /src-$LABEL

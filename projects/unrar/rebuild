@@ -47,3 +47,4 @@ $CXX $CXXFLAGS -I. $UNRAR_SRC_DIR/new_fuzzer.cc -o $OUT/new_fuzzer \
 
 #----------------------------------------------------------------------
 drivers
+fi

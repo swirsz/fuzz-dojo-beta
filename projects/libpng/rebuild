@@ -35,3 +35,4 @@ clang++ -O1 -fno-omit-frame-pointer -gline-tables-only $FLAGS -DFUZZING_BUILD_MO
 
 #----------------------------------------------------------------------
 drivers
+fi
