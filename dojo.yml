@@ -175,7 +175,7 @@ modules:
         name: AMPPROJECT
 
       - id: args
-        name: ARGS - simple 1796 loc 22%-22%-47% - 1 min
+        name: ARGS - simple 1796 loc 22%-22%-47% - 3 min
 
       - id: aspell
         name: aspell
