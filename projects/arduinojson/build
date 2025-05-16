@@ -47,7 +47,7 @@ else
 fi
 #----------------------------------------------------------------------
 if [ ! -z "$2" ]; then
-    understanding $2 $3
+    comments $2 $3
 else
     fuzzlog
     compile

@@ -43,7 +43,11 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/ossfuzz.sh $SRC/$PROJECT_NAME/tests/ossfuzz
 fi
 #----------------------------------------------------------------------
-fuzzlog
-compile
-drivers
+if [ ! -z "$2" ]; then
+    comments $2 $3
+else
+    fuzzlog
+    compile
+    drivers
+fi
 mv /src /src-$LABEL
