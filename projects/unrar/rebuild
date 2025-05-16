@@ -24,7 +24,7 @@ elif [ "$LABEL" = "undefined" ]; then
 elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
-set -ex
+set -x
 #----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME
@@ -47,4 +47,3 @@ $CXX $CXXFLAGS -I. $UNRAR_SRC_DIR/new_fuzzer.cc -o $OUT/new_fuzzer \
 
 #----------------------------------------------------------------------
 drivers
-fi

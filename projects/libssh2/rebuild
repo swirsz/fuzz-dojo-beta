@@ -24,7 +24,7 @@ elif [ "$LABEL" = "undefined" ]; then
 elif [ "$LABEL" = "thread" ]; then
     FLAGS=$SANITIZER_FLAGS_thread
 fi
-set -ex
+set -x
 #----------------------------------------------------------------------
 
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/tests/ossfuzz
@@ -37,4 +37,3 @@ clang++ -fsanitize=fuzzer -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZI
 
 #----------------------------------------------------------------------
 drivers
-fi

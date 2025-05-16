@@ -38,4 +38,3 @@ clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE
 
 #----------------------------------------------------------------------
 drivers
-fi
