@@ -43,8 +43,8 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/ossfuzz.sh $SRC/$PROJECT_NAME/tests/ossfuzz
 fi
 #----------------------------------------------------------------------
-if [ ! -z "$2" ]; then
-    comments $2 $3
+if [ ! -z "$4" ]; then
+    $4 $2 $3
 else
     fuzzlog
     compile
