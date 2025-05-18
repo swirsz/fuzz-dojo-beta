@@ -1,3 +1,2 @@
 #!/opt/pwn.college/bash
 /challenge/build none c "." planning
-chown -hR hacker:hacker /home/hacker/fuzz-dojo /home/hacker/.log
