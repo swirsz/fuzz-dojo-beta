@@ -46,9 +46,9 @@ else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
-if [ "$arg4" = "understanding" ]; then
+if [[ "$arg4" = "understanding" ]]; then
     understanding $arg2 $arg3
-elif [ "$arg4" = "planning" ]; then
+elif [[ "$arg4" = "planning" ]]; then
     planning $arg2 $arg3
 else
     fuzzlog
