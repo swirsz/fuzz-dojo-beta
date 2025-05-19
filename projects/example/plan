@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "arduinojson/extras/fuzzing" planning
+/challenge/build none cpp "projects/example/my-api-repo" planning

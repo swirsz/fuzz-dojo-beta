@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "arduinojson/extras/fuzzing" understanding
+/challenge/build none c "tmux/fuzz" understanding
