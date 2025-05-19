@@ -1,3 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "arduinojson/extras/fuzzing" planning
-chown -hR hacker:hacker /home/hacker/fuzz-dojo /home/hacker/.log
+/challenge/build none cc "." planning
