@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none * "oss-fuzz-fuzzers/xvid" planning
+/challenge/build none cpp "oss-fuzz-fuzzers/xvid" planning
