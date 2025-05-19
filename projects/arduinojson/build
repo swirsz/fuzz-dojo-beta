@@ -47,9 +47,9 @@ else
 fi
 #----------------------------------------------------------------------
 if [[ "$4" = "understanding" ]]; then
-    understanding $arg2 $arg3
+    understanding $2 $3
 elif [[ "$4" = "planning" ]]; then
-    planning $arg2 $arg3
+    planning $2 $3
 else
     fuzzlog
     compile
