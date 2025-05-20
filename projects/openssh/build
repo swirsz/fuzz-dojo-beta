@@ -27,7 +27,7 @@ fi
 
     cd /
     mkdir -p /src-orig/$PROJECT_NAME/regress/misc/fuzz-harness
-    cp $SRC/*.cc /src-orig/$PROJECT_NAME/regress/misc/fuzz-harness
+    cp $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/*.cc /src-orig/$PROJECT_NAME/regress/misc/fuzz-harness
     export CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/Makefile -i /challenge/.Makefile.patch -r -
