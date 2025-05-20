@@ -22,9 +22,6 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
     cp -r /opt/oss-fuzz/projects/$PROJECT_NAME/corpus $SRC
-
-    mkdir -p /src-orig/$PROJECT_NAME/src
-    cp $SRC/$PROJECT_NAME/src/*.cc /src-orig/$PROJECT_NAME/src
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
 #----------------------------------------------------------------------
