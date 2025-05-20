@@ -27,7 +27,7 @@ fi
 
     cd /
     mkdir -p /src-orig
-    cp $SRC/*.c* /src-orig
+    cp $SRC/*.cc /src-orig
     export CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     patch -tuN $SRC/$PROJECT_NAME/regress/misc/fuzz-harness/Makefile -i /challenge/.Makefile.patch -r -
