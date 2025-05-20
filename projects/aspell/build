@@ -23,11 +23,11 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/aspell $SRC
     cp -r /downloads/aspell-fuzz $SRC
 
-    cp /downloads/aspell* /tmp
+    cp /downloads/aspell*.bz2 /tmp
 
     cp /opt/oss-fuzz/projects/aspell/build.sh $SRC/
     #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
-    patch -tuN $SRC/aspell-fuzz/oss-fuzz.sh -i /challenge/.ossfuzz.patch -r -
+    patch -tuN $SRC/aspell-fuzz/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
 #----------------------------------------------------------------------
     build-cleanup
