@@ -36,10 +36,6 @@ fi
 build-srcfolders
 mv /src-$LABEL /src
 
-cd $SRC
-mkdir people.xiph.org/
-touch people.xiph.org/dummy.ogg
-
 cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
