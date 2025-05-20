@@ -172,13 +172,13 @@ modules:
         name: ALEMBIC - medium 12569 loc 1%-9%-0% - 1 min (slow FI)
         
       - id: ampproject
-        name: AMPPROJECT
+        name: ampproject
 
       - id: args
         name: ARGS - simple 1796 loc 22%-22%-47% - 3 min
 
       - id: aspell
-        name: ASPELL - 
+        name: aspell
 
       - id: astc-encoder
         name: astc-encoder
