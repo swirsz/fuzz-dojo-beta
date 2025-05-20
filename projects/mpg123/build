@@ -23,6 +23,8 @@ mv mpg123* mpg123
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/read_fuzzer.c $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/decode_fuzzer.cc $SRC/
 cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+mkdir -p /src-orig
+cp $SRC/*.c* /src-orig
 
 cd /
 cp $SRC/decode_fuzzer.cc $SRC/new_fuzzer.cc
