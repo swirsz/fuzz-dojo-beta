@@ -28,6 +28,8 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz/projects/aspell/build.sh $SRC/
     #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
     patch -tuN $SRC/aspell-fuzz/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    patch -tuN $SRC/aspell-fuzz/Makefile.am -i /challenge/.Makefile.patch -r -
+        
     cp $SRC/aspell-fuzz/aspell_fuzzer.cpp $SRC/aspell-fuzz/new_fuzzer.cpp
 #----------------------------------------------------------------------
     build-cleanup
