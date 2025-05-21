@@ -30,7 +30,7 @@ set -x
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 
-cd $SRC/$PROJECT_NAME
+cd $SRC/$PROJECT_NAME/Source
 
 for fuzzer in ./Fuzzers/fuzz_*.cpp; do
   $CXX $CXXFLAGS \
