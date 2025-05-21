@@ -18,11 +18,9 @@ if [ ! -d "/src-orig" ]; then
     #WORKDIR astc-encoder/Source
     #COPY build.sh $SRC/
 
-
-
     cp -r /downloads/astc-encoder $SRC
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
     #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
     #patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzz/fuzz-consume-record.c $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.c
@@ -32,7 +30,7 @@ fi
 build-srcfolders
 mv /src-$LABEL /src
 
-cd $SRC/$PROJECT_NAME
+cd $SRC/$PROJECT_NAME/Source
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME

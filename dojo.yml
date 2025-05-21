@@ -175,7 +175,7 @@ modules:
         name: ARGS - simple 1796 loc 22%-22%-47% - 3 min
 
       - id: aspell
-        name: aspell
+        name: ASPELL - complex 14514 loc 58%-68%-26% - 2 min
 
       - id: astc-encoder
         name: astc-encoder
