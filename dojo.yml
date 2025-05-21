@@ -180,12 +180,6 @@ modules:
       - id: astc-encoder
         name: ASTC-ENCODER - simple 2941 loc - 50%-50%-74% - 1.5 min
 
-      - id: boost-beast
-        name: boost-beast
-
-      - id: boost-json
-        name: boost-json
-
       - id: apache-httpd
         name: APACHE-HTTPD - medium 48312 loc 12%-14%-6% - 5.5 min
 
