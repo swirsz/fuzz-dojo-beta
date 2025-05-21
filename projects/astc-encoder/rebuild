@@ -27,7 +27,7 @@ fi
 set -x
 #----------------------------------------------------------------------
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzz
+cp $SRC/$PROJECT_NAME/Source/Fuzzers/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 
 cd $SRC/$PROJECT_NAME/Source
