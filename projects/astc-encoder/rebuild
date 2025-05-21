@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 export LABEL=$1
-export PROJECT_NAME=avahi
+export PROJECT_NAME=astc-encoder
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
@@ -32,10 +32,14 @@ cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 
 cd $SRC/$PROJECT_NAME
 
-clang -c -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -I. fuzz/fuzz-newfuzzer.c -o fuzz-newfuzzer.o
-
-clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ fuzz-newfuzzer.o -o /out/fuzz-newfuzzer -fsanitize=fuzzer avahi-core/.libs/libavahi-core.a avahi-common/.libs/libavahi-common.a
-
+for fuzzer in ./Fuzzers/fuzz_*.cpp; do
+  $CXX $CXXFLAGS \
+      -DASTCENC_SSE=0 \
+      -DASTCENC_AVX=0 \
+      -DASTCENC_POPCNT=0 \
+      -I. -std=c++14 $fuzzer $LIB_FUZZING_ENGINE ./libastcenc.a \
+      -o $OUT/$(basename -s .cpp $fuzzer)
+done  
 #----------------------------------------------------------------------
 drivers
 fi
