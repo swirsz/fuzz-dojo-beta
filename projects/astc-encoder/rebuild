@@ -37,7 +37,7 @@ for fuzzer in ./Fuzzers/fuzz_*.cpp; do
       -DASTCENC_SSE=0 \
       -DASTCENC_AVX=0 \
       -DASTCENC_POPCNT=0 \
-      -I. -std=c++14 $fuzzer $LIB_FUZZING_ENGINE ./libastcenc.a \
+      -I. -std=c++14  -pthread $fuzzer $LIB_FUZZING_ENGINE ./libastcenc.a \
       -o $OUT/$(basename -s .cpp $fuzzer)
 done  
 #----------------------------------------------------------------------
