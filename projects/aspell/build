@@ -33,8 +33,6 @@ fi
 build-srcfolders
 mv /src-$LABEL /src
 
-rm -rf $SRC/$PROJECT_NAME/build
-
 cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then

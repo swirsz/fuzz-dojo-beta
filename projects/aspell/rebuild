@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 export LABEL=$1
-export PROJECT_NAME=args
+export PROJECT_NAME=aspell-fuzz
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
@@ -27,12 +27,14 @@ fi
 set -x
 #----------------------------------------------------------------------
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/fuzz
+
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME
 cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 
 cd $SRC/$PROJECT_NAME
 
-clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=fuzzer-no-link -stdlib=libc++ -fsanitize=fuzzer -I$SRC/args $SRC/args/fuzz/newfuzzer_fuzzer.cpp -o /out/newfuzzer_fuzzer
+clang++ -DPACKAGE_NAME=\"GNU\ Aspell\ Fuzzer\" -DPACKAGE_TARNAME=\"aspell-fuzzer\" -DPACKAGE_VERSION=\"-\" -DPACKAGE_STRING=\"GNU\ Aspell\ Fuzzer\ -\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"http://www.gnu.org/software/aspell-fuzzer/\" -DPACKAGE=\"aspell-fuzzer\" -DVERSION=\"-\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_DLFCN_H=1
+-DLT_OBJDIR=\".libs/\"   -I/out/deps/include   -fsanitize=fuzzer -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION  -fsanitize=fuzzer-no-link -stdlib=libc++ -g -MT new_fuzzer-new_fuzzer.o -MD -MP -MF .deps/new_fuzzer-new_fuzzer.Tpo -c -o new_fuzzer-new_fuzzer.o `test -f 'new_fuzzer.cpp' || echo './'`new_fuzzer.cpp
 
 #----------------------------------------------------------------------
 drivers
