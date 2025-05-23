@@ -1,8 +1,8 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=args
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=aspell
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/args/inspector-report/20250515/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/aspell/inspector-report/20250519/fuzz_report.html
 
-Args is a simple, small, flexible, single-header C++11 argument parsing library.  It is similar to Python's argparse, but in C++.
+GNU Aspell is a Free and Open Source spell checker.
 
-A single fuzz driver hits just about half of the project code, but many features in this single-file project are not addressed. These include Validation, Match, GetDescription, Arg Parsing, etc.
+A single fuzz driver reaches 75% of the project's code.  The driver hits most of the core features of the program.  Checking through the manual http://aspell.net/man-html/index.html and compare the command-line options with the uncovered functions such as "to_soundslike", dictionary functions, and so on.
