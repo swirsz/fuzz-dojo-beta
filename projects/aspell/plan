@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "args/fuzz" planning
+/challenge/build none cpp "aspell-fuzz" planning

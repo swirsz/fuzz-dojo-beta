@@ -181,7 +181,7 @@ modules:
         name: ARGS - simple 1796 loc 22%-22%-47% - 3 min
 
       - id: aspell
-        name: ASPELL
+        name: ASPELL - complex 14390 loc 58%-67%-26% - 2 min
 
       - id: astc-encoder
         name: ASTC-ENCODER - simple 2941 loc - 50%-50%-74% - 1.5 min
@@ -398,4 +398,5 @@ modules:
  
       - name: "Adding a New Project"
         type: lecture
+        video: bevVP94a0yI
         slides: 1tdZPEOzOKF9Lu7DKqDoauW_o6R6gaDJjVj0neemwUfI
