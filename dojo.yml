@@ -181,7 +181,7 @@ modules:
         name: ARGS - simple 1796 loc 22%-22%-47% - 3 min
 
       - id: aspell
-        name: ASPELL - complex 14514 loc 58%-68%-26% - 2 min
+        name: ASPELL
 
       - id: astc-encoder
         name: ASTC-ENCODER - simple 2941 loc - 50%-50%-74% - 1.5 min
@@ -395,3 +395,7 @@ modules:
       - name: "Submitting your fuzz driver to Google"
         type: lecture
         slides: 1wY-6xqYhhzf4uf272UMjHPh8KZ4sc1fjgcKuGrsa4ks
+ 
+      - name: "Adding a New Project"
+        type: lecture
+        slides: 1tdZPEOzOKF9Lu7DKqDoauW_o6R6gaDJjVj0neemwUfI

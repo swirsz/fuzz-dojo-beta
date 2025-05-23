@@ -19,29 +19,32 @@ if [ ! -d "/src-orig" ]; then
     #WORKDIR $SRC/aspell-fuzz
     #COPY build.sh $SRC/
 
+
     cp -r /downloads/aspell $SRC
     cp -r /downloads/aspell-fuzz $SRC
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /downloads/aspell*.bz2 /tmp
+
+    cp /opt/oss-fuzz/projects/aspell/build.sh $SRC/
     #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
-    #patch -tuN $SRC/avahi/fuzz/oss-fuzz.sh -i /challenge/.oss-fuzz.patch -r -
-    cp $SRC/$PROJECT_NAME/fuzz/parse_args_fuzzer.cpp $SRC/$PROJECT_NAME/fuzz/newfuzzer_fuzzer.cpp
+    patch -tuN $SRC/aspell-fuzz/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    patch -tuN $SRC/aspell-fuzz/Makefile.am -i /challenge/.Makefile.patch -r -
+        
+    cp $SRC/aspell-fuzz/aspell_fuzzer.cpp $SRC/aspell-fuzz/new_fuzzer.cpp
 #----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
-rm -rf $SRC/$PROJECT_NAME/build
-
 cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/fuzz/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/aspell-fuzz/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/fuzz
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/aspell-fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
