@@ -93,7 +93,7 @@ modules:
 
         - `(sanitizer)` is an OPTIONAL value of `none` (Default) `address memory undefined thread coverage` or `inspector`
 
-        `/challenge/rebuild (sanitizer)` Recompiles ONLY the fuzz drivers and not the entire project.  NOTE: This function primarily checks for compile errors. It may or may not replace the compiled fuzz driver in the /OUT directory!
+        `/challenge/rebuild (sanitizer)` Recompiles ONLY the fuzz drivers and not the entire project.  NOTE This function primarily checks for compile errors. It may or may not replace the compiled fuzz driver in the /OUT directory!
 
         - `(sanitizer)` is an OPTIONAL value of `none` (Default) `address memory undefined thread coverage` or `inspector`
 
@@ -103,7 +103,7 @@ modules:
 
         - `(sanitizer)` is an OPTIONAL value of `none` (Default) `address memory undefined` or `thread`
 
-        - `(driver)` is an OPTIONAL value of exactly 1 fuzz driver to execute and provide coverage data.  If this is not provided, all of the fuzz drivers will be compiled. Example: 
+        - `(driver)` is an OPTIONAL value of exactly 1 fuzz driver to execute and provide coverage data.  If this is not provided, all of the fuzz drivers will be compiled. Example 
         ```sh
         /challenge/loc newfuzzer
         ```
@@ -124,7 +124,7 @@ modules:
 
         `test-crashes` Tests all crash files within the `/out` directory by executing all fuzz drivers with all crash files
 
-        Important Resources:
+        Important Resources
         - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
         - [More libfuzzer tips](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/getting_started_with_libfuzzer.md)
         - [Efficient Fuzzing Guide](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/efficient_fuzzing.md)
