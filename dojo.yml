@@ -87,7 +87,7 @@ modules:
         - `94%` - static analysis shows that existing fuzz drivers have the theoretical ability to reach 94% of the code. This is not always accurate.
         - `45 seconds` - how long /challenge/loc requires to recalculate the code coverage when recompiling ONLY the fuzz drivers. The initial build requires more time, simply rebuilding with /challenge/build will require less time.
 
-        Useful commands:
+        Useful commands
 
         `/challenge/build (sanitizer)` Run this first.  Compiles oss-fuzz project currently configured. Copies fuzz driver source code into `/home/hacker/fuzz-dojo/(project)` Project Source code is placed in: `/src-orig` - working code will be stored in `/src-{sanitizer}` such as `/src-none, /src-address, /src-memory /src-undefined and /src-thread` Fuzz drivers: `/out`
 
