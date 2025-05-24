@@ -4,7 +4,17 @@ name: Fuzz Dojo
 
 image: stevenwirsz/fuzz-dojo:latest
 
-description: 
+description: Important Resources:
+        - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
+        - [More libfuzzer tips](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/getting_started_with_libfuzzer.md)
+        - [Efficient Fuzzing Guide](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/efficient_fuzzing.md)
+        - [**OSS-Fuzz**: Fuzzing Introspection](https://introspector.oss-fuzz.com/projects-overview)
+        - [**OSS-Fuzz**: OSS-Fuzz - Setting up a new project](https://google.github.io/oss-fuzz/getting-started/new-project-guide/)
+        - [**OSS-Fuzz**: Ideal integration](https://google.github.io/oss-fuzz/advanced-topics/ideal-integration/)
+        - [**OSS-Fuzz**: Interesting fuzz driver creation case studies](https://github.com/ossf/fuzz-introspector/blob/main/doc/CaseStudies.md)
+        - [**GITHUB**: How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
+        - [Keyword Search all OSS-Fuzz fuzz drivers](https://github.com/search?q=repo%3Agoogle%2Foss-fuzz+path%3A%2F%5Eprojects%5C%2F%2F++AND+%28language%3AC%2B%2B+OR+language%3AC%29&type=code)
+
 modules:
 
   - id: consent
@@ -123,17 +133,6 @@ modules:
         `drivers` Lists all fuzz drivers within `/out`
 
         `test-crashes` Tests all crash files within the `/out` directory by executing all fuzz drivers with all crash files
-
-        Important Resources
-        - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
-        - [More libfuzzer tips](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/getting_started_with_libfuzzer.md)
-        - [Efficient Fuzzing Guide](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/efficient_fuzzing.md)
-        - [**OSS-Fuzz**: Fuzzing Introspection](https://introspector.oss-fuzz.com/projects-overview)
-        - [**OSS-Fuzz**: OSS-Fuzz - Setting up a new project](https://google.github.io/oss-fuzz/getting-started/new-project-guide/)
-        - [**OSS-Fuzz**: Ideal integration](https://google.github.io/oss-fuzz/advanced-topics/ideal-integration/)
-        - [**OSS-Fuzz**: Interesting fuzz driver creation case studies](https://github.com/ossf/fuzz-introspector/blob/main/doc/CaseStudies.md)
-        - [**GITHUB**: How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
-        - [Keyword Search all OSS-Fuzz fuzz drivers](https://github.com/search?q=repo%3Agoogle%2Foss-fuzz+path%3A%2F%5Eprojects%5C%2F%2F++AND+%28language%3AC%2B%2B+OR+language%3AC%29&type=code)
 
         \
 
