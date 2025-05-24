@@ -75,9 +75,7 @@ modules:
 
   - id: projects
     name: OSS-Fuzz Projects
-    description: |
-    
-        Improve a OSS-Fuzz driver by 5% or more to achieve the flag.\
+    description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.\
 
         Projects show a project size in lines of code, code coverage percentages, and a compile time. 
 
