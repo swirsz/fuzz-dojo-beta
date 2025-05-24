@@ -89,7 +89,11 @@ modules:
         - `94%` - static analysis shows that existing fuzz drivers have the theoretical ability to reach 94% of the code. This is not always accurate.
         - `45 seconds` - how long /challenge/loc requires to recalculate the code coverage when recompiling ONLY the fuzz drivers. The initial build requires more time, simply rebuilding with /challenge/build will require less time.
 
-        Useful commands
+        Useful commands:
+
+        `/challenge/comments` add comments to existing fuzz drivers to demonstrate your understanding of their operation.
+
+        `/challenge/plan` develop a conceptual plan to create a new fuzz driver
 
         `/challenge/build (sanitizer)` Run this first.  Compiles oss-fuzz project currently configured. Copies fuzz driver source code into `/home/hacker/fuzz-dojo/(project)` Project Source code is placed in `/src-orig` - working code will be stored in `/src-{sanitizer}` such as `/src-none, /src-address, /src-memory /src-undefined and /src-thread` Fuzz drivers are placed in `/out`
 
@@ -148,7 +152,7 @@ modules:
 
         * Can you improve performance by testing and optimizing your code?
 
-        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?\
+        * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?
 
         Practical examples of fuzz driver improvements may be found in the training exercises.
 
