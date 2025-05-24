@@ -93,9 +93,9 @@ modules:
 
         Useful commands:
 
-        `/challenge/comments` add comments to existing fuzz drivers to demonstrate your understanding of their operation.
+        `/challenge/comments` Add comments to existing fuzz drivers to demonstrate your understanding of their operation.
 
-        `/challenge/plan` develop a conceptual plan to create a new fuzz driver
+        `/challenge/plan` Develop a conceptual plan to create a new fuzz driver
 
         `/challenge/build (sanitizer)` Run this first.  Compiles oss-fuzz project currently configured. Copies fuzz driver source code into `/home/hacker/fuzz-dojo/(project)` Project Source code is placed in `/src-orig` - working code will be stored in `/src-{sanitizer}` such as `/src-none, /src-address, /src-memory /src-undefined and /src-thread` Fuzz drivers are placed in `/out`
 
