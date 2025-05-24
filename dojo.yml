@@ -4,7 +4,7 @@ name: Fuzz Dojo
 
 image: stevenwirsz/fuzz-dojo:latest
 
-description: 
+description: |
 modules:
 
   - id: consent
