@@ -131,6 +131,8 @@ modules:
         `drivers` Lists all fuzz drivers within `/out`
 
         `test-crashes` Tests all crash files within the `/out` directory by executing all fuzz drivers with all crash files
+        
+        ---
 
         Refine your fuzz drivers to increase code coverage.
 
@@ -158,6 +160,7 @@ modules:
 
         Practical examples of fuzz driver improvements may be found in the training exercises.
 
+        ---
 
         Important Resources:
         - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
