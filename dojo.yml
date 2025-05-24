@@ -4,7 +4,9 @@ name: Fuzz Dojo
 
 image: stevenwirsz/fuzz-dojo:latest
 
-description: Important Resources:
+description: |
+
+        Important Resources:
         - [LibFuzzer Documentation](https://llvm.org/docs/LibFuzzer.html)
         - [More libfuzzer tips](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/getting_started_with_libfuzzer.md)
         - [Efficient Fuzzing Guide](https://chromium.googlesource.com/chromium/src/+/main/testing/libfuzzer/efficient_fuzzing.md)
