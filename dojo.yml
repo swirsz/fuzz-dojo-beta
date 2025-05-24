@@ -105,7 +105,7 @@ modules:
 
         - `(sanitizer)` is an OPTIONAL value of `none` (Default) `address memory undefined` or `thread`
 
-        - `(driver)` is an OPTIONAL value of exactly 1 fuzz driver to execute and provide coverage data.  If this is not provided, all of the fuzz drivers will be compiled. Example 
+        - `(driver)` is an OPTIONAL value of exactly 1 fuzz driver to execute and provide coverage data.  If this is not provided, all of the fuzz drivers will be compiled. Example: 
         ```sh
         /challenge/loc newfuzzer
         ```
@@ -125,8 +125,6 @@ modules:
         `drivers` Lists all fuzz drivers within `/out`
 
         `test-crashes` Tests all crash files within the `/out` directory by executing all fuzz drivers with all crash files
-
-        \
 
         Refine your fuzz drivers to increase code coverage.
 
@@ -151,8 +149,6 @@ modules:
         * Can you improve performance by testing and optimizing your code?
 
         * Do you see the need to extend your fuzz driver by calling additional functions or by creating a different new fuzz driver entirely?\
-
-        \
 
         Practical examples of fuzz driver improvements may be found in the training exercises.
 
