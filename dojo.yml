@@ -79,7 +79,7 @@ modules:
 
         Projects show a project size in lines of code, code coverage percentages, and a compile time. 
 
-        For example: `JSON - 8008 loc 68%-74%-94% - 45 sec`
+        For example `JSON - 8008 loc 68%-74%-94% - 45 sec`
 
         - `8008 loc` - This means that the source code has 8008 lines of code
         - `68%` - When fuzzing for 30 seconds after running `/challenge/loc` it will explore 68% of the project
