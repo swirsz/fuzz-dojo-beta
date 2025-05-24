@@ -81,13 +81,15 @@ modules:
 
         Projects show a project size in lines of code, code coverage percentages, and a compile time. 
 
-        For example `JSON - 8008 loc 68%-74%-94% - 45 sec`
+        For example: `JSON - 8008 loc 68%-74%-94% - 45 sec`
 
         - `8008 loc` - This means that the source code has 8008 lines of code
         - `68%` - When fuzzing for 30 seconds after running `/challenge/loc` it will explore 68% of the project
         - `74%` - Google's OSS-Fuzz infrastructure performing continuous fuzzing explores 74% of the code
         - `94%` - static analysis shows that existing fuzz drivers have the theoretical ability to reach 94% of the code. This is not always accurate.
         - `45 seconds` - how long /challenge/loc requires to recalculate the code coverage when recompiling ONLY the fuzz drivers. The initial build requires more time, simply rebuilding with /challenge/build will require less time.
+        
+        ---
 
         Useful commands:
 
