@@ -7,74 +7,8 @@ image: stevenwirsz/fuzz-dojo:latest
 description: |
 modules:
 
-  - id: consent
-    name: Consent
-    description: Contribute by allowing your anonymous, non-personalized work in this module to be used for research
-
-    challenges:
-
-      - id: consent
-        name: Consent
-        description:  Run /challenge/run in Terminal to start.
-
-  - id: training
-    name: Training Exercises
-    description: Learn techniques to improve the code coverage of existing fuzz drivers
-
-    challenges:
-
-      - id: 1-locate
-        name: Locate Harnesses
-        description: Locate the fuzz harnesses in a project.  Run /challenge/training in Terminal to start.
-
-      - id: 2-change
-        name: Modify a Fuzzing Harness
-        description: Make a change to a fuzzing harness.  Run /challenge/training in Terminal to start.
-
-      - id: 3-broken
-        name: Fix Broken Fuzzing Harness
-        description: Repair a broken fuzzing harness.  Run /challenge/training in Terminal to start.
-
-      - id: 4-parameters
-        name: Initial Parameters
-        description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in Terminal to start.
-
-      - id: 5-calltree
-        name: Improve Coverage Using the Call Tree
-        description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
-
-      - id: 6-split
-        name: Split Into Multiple Harness
-        description: Break large complicated fuzz drivers into multiple individual drivers.  Run /challenge/training in Terminal to start.
-
-      - id: 7-sanitizer
-        name: Correct Sanitizer Specific Problems
-        description: Identify the sanitizer that is crashing and repair it.  Run /challenge/training in Terminal to start.
-
-      - id: 8-seedcorpus
-        name: Implement Seed Corpus
-        description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
-
-      - id: 9-newdriver
-        name: Create New Fuzz Driver
-        description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
-
-      - id: 10-crash
-        name: Diagnose Crash Files
-        description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
-
-    resources:
-    
-      - name: "pwn.college - Getting Started"
-        type: lecture
-        video: DJO1A2neZ6Y
-        
-      - name: "Introduction to Fuzzing"
-        type: lecture
-        video: K_2DAo5pPQQ
-
-  - id: projects
-    name: OSS-Fuzz Projects
+  - id: Help
+    name: Help
     description: |
 
         Improve a OSS-Fuzz driver by 5% or more to achieve the flag.
@@ -172,6 +106,108 @@ modules:
         - [**OSS-Fuzz**: Interesting fuzz driver creation case studies](https://github.com/ossf/fuzz-introspector/blob/main/doc/CaseStudies.md)
         - [**GITHUB**: How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
         - [Keyword Search all OSS-Fuzz fuzz drivers](https://github.com/search?q=repo%3Agoogle%2Foss-fuzz+path%3A%2F%5Eprojects%5C%2F%2F++AND+%28language%3AC%2B%2B+OR+language%3AC%29&type=code)
+
+    resources:
+    
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+        type: lecture
+        video: AtjkUvYOGJw
+        
+      - name: "Investigating a Project & Picking Functions to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
+    
+      - name: "Fuzz Dojo only: Building and Running Reports"
+        type: lecture
+        video: u7GrifELIjU
+              
+      - name: "OSS Fuzz only: Building and Running Reports"
+        type: lecture
+        video: gvA0cXxG4cg
+        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
+        
+      - name: "AVAHI: New Fuzz Driver Creation"
+        type: lecture
+        video: 11fxFrOOLJ0
+    
+      - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
+        type: lecture
+        video: LRpm2kd9vQI
+
+      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
+        type: lecture
+        video: KOHb0y_Oiko
+
+
+  - id: consent
+    name: Consent
+    description: Contribute by allowing your anonymous, non-personalized work in this module to be used for research
+
+    challenges:
+
+      - id: consent
+        name: Consent
+        description:  Run /challenge/run in Terminal to start.
+
+  - id: training
+    name: Training Exercises
+    description: Learn techniques to improve the code coverage of existing fuzz drivers
+
+    challenges:
+
+      - id: 1-locate
+        name: Locate Harnesses
+        description: Locate the fuzz harnesses in a project.  Run /challenge/training in Terminal to start.
+
+      - id: 2-change
+        name: Modify a Fuzzing Harness
+        description: Make a change to a fuzzing harness.  Run /challenge/training in Terminal to start.
+
+      - id: 3-broken
+        name: Fix Broken Fuzzing Harness
+        description: Repair a broken fuzzing harness.  Run /challenge/training in Terminal to start.
+
+      - id: 4-parameters
+        name: Initial Parameters
+        description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in Terminal to start.
+
+      - id: 5-calltree
+        name: Improve Coverage Using the Call Tree
+        description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
+
+      - id: 6-split
+        name: Split Into Multiple Harness
+        description: Break large complicated fuzz drivers into multiple individual drivers.  Run /challenge/training in Terminal to start.
+
+      - id: 7-sanitizer
+        name: Correct Sanitizer Specific Problems
+        description: Identify the sanitizer that is crashing and repair it.  Run /challenge/training in Terminal to start.
+
+      - id: 8-seedcorpus
+        name: Implement Seed Corpus
+        description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
+
+      - id: 9-newdriver
+        name: Create New Fuzz Driver
+        description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
+
+      - id: 10-crash
+        name: Diagnose Crash Files
+        description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
+
+    resources:
+    
+      - name: "pwn.college - Getting Started"
+        type: lecture
+        video: DJO1A2neZ6Y
+        
+      - name: "Introduction to Fuzzing"
+        type: lecture
+        video: K_2DAo5pPQQ
+
+  - id: projects
+    name: OSS-Fuzz Projects
 
     challenges:
 
@@ -359,39 +395,6 @@ modules:
       - id: zopfli
         name: (D) ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
     
-    resources:
-    
-      - name: "AVAHI: Understanding Existing Fuzz Drivers"
-        type: lecture
-        video: AtjkUvYOGJw
-        
-      - name: "Investigating a Project & Picking Functions to Fuzz"
-        type: lecture
-        video: OP22mPweQbU
-        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
-    
-      - name: "Fuzz Dojo only: Building and Running Reports"
-        type: lecture
-        video: u7GrifELIjU
-              
-      - name: "OSS Fuzz only: Building and Running Reports"
-        type: lecture
-        video: gvA0cXxG4cg
-        slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
-        
-      - name: "AVAHI: New Fuzz Driver Creation"
-        type: lecture
-        video: 11fxFrOOLJ0
-    
-      - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
-        type: lecture
-        video: LRpm2kd9vQI
-
-      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
-        type: lecture
-        video: KOHb0y_Oiko
-
-
 
   - id: nextsteps
     name: The Next Steps
