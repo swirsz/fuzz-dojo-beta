@@ -8,7 +8,7 @@ description: |
 
 modules:
 
-  - id: Help
+  - id: help
     name: Help
     description: Improve a OSS-Fuzz driver by 5% or more to achieve the flag.
 
