@@ -221,6 +221,26 @@ modules:
       - id: training-fd
         name: Training Project (Fuzz Dojo)
 
+      - id: training-oss
+        name: Training Project (OSS-Fuzz)
+
+      - id: simple-fd
+        name: Simple Project (Fuzz Dojo)
+
+      - id: simple-oss
+        name: Simple Project (OSS-Fuzz)
+
+      - id: medium-fd
+        name: Medium Project (Fuzz Dojo)
+
+      - id: training-oss
+        name: Training Project (OSS-Fuzz)
+
+      - id: training-fd
+        name: Training Project (Fuzz Dojo)
+
+      - id: training-oss
+        name: Training Project (OSS-Fuzz)
 
   - id: projects
     name: OSS-Fuzz Projects
@@ -229,7 +249,7 @@ modules:
 
       - id: alembic
         name: ALEMBIC - medium 12569 loc 1%-9%-0% - 1 min (slow FI)
-        
+
       - id: apache-httpd
         name: APACHE-HTTPD - medium 48312 loc 12%-14%-6% - 5.5 min
 
