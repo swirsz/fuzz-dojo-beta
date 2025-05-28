@@ -8,6 +8,19 @@ description: |
 
 modules:
 
+  - id: Help
+    name: Help
+    description: |
+
+        Improve a OSS-Fuzz driver by 5% or more to achieve the flag.
+
+        Projects show a project size in lines of code, code coverage percentages, and a compile time. 
+
+    challenges:
+
+      - id: consent
+        name: Consent
+        description:  Run /challenge/run in Terminal to start.
 
   - id: consent
     name: Consent
