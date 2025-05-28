@@ -218,8 +218,8 @@ modules:
 
     challenges:
 
-      - id: trainingfd
-        name: Training Project - Fuzz Dojo)
+      - id: training-fd
+        name: Training Project (Fuzz Dojo)
 
 
   - id: projects
