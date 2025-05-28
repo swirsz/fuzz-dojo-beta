@@ -9,7 +9,7 @@ description: |
 modules:
 
   - id: help
-    name: Help
+    name: Lectures and Reading
     description: |
 
         Improve a OSS-Fuzz driver by 5% or more to achieve the flag.
@@ -109,7 +109,15 @@ modules:
         - [Keyword Search all OSS-Fuzz fuzz drivers](https://github.com/search?q=repo%3Agoogle%2Foss-fuzz+path%3A%2F%5Eprojects%5C%2F%2F++AND+%28language%3AC%2B%2B+OR+language%3AC%29&type=code)
 
     resources:
-    
+        
+      - name: "pwn.college - Getting Started"
+        type: lecture
+        video: DJO1A2neZ6Y
+        
+      - name: "Introduction to Fuzzing"
+        type: lecture
+        video: K_2DAo5pPQQ
+
       - name: "AVAHI: Understanding Existing Fuzz Drivers"
         type: lecture
         video: AtjkUvYOGJw
@@ -140,6 +148,14 @@ modules:
         type: lecture
         video: KOHb0y_Oiko
 
+      - name: "Submitting your fuzz driver to Google"
+        type: lecture
+        slides: 1wY-6xqYhhzf4uf272UMjHPh8KZ4sc1fjgcKuGrsa4ks
+ 
+      - name: "Adding a New Project"
+        type: lecture
+        video: bevVP94a0yI
+        slides: 1tdZPEOzOKF9Lu7DKqDoauW_o6R6gaDJjVj0neemwUfI
 
   - id: consent
     name: Consent
@@ -196,16 +212,6 @@ modules:
       - id: 10-crash
         name: Diagnose Crash Files
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
-
-    resources:
-    
-      - name: "pwn.college - Getting Started"
-        type: lecture
-        video: DJO1A2neZ6Y
-        
-      - name: "Introduction to Fuzzing"
-        type: lecture
-        video: K_2DAo5pPQQ
 
   - id: projects
     name: OSS-Fuzz Projects
@@ -396,18 +402,3 @@ modules:
       - id: zopfli
         name: (D) ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
     
-
-  - id: nextsteps
-    name: The Next Steps
-    description: Submitting your fuzz driver to Google
-
-    resources:
- 
-      - name: "Submitting your fuzz driver to Google"
-        type: lecture
-        slides: 1wY-6xqYhhzf4uf272UMjHPh8KZ4sc1fjgcKuGrsa4ks
- 
-      - name: "Adding a New Project"
-        type: lecture
-        video: bevVP94a0yI
-        slides: 1tdZPEOzOKF9Lu7DKqDoauW_o6R6gaDJjVj0neemwUfI
