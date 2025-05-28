@@ -214,15 +214,33 @@ modules:
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
   - id: research
-    name: OSS-Fuzz Projects
+    name: User Study
 
     challenges:
 
       - id: training-fd
-        name: Training Fuzz Dojo
+        name: Training Project (Fuzz Dojo)
 
       - id: training-oss
-        name: Training Fuzz Dojo
+        name: Training Project (OSS-Fuzz)
+
+      - id: simple-fd
+        name: Simple Project (Fuzz Dojo)
+
+      - id: simple-oss
+        name: Simple Project (OSS-Fuzz)
+
+      - id: medium-fd
+        name: Medium Project (Fuzz Dojo)
+
+      - id: training-oss
+        name: Training Project (OSS-Fuzz)
+
+      - id: training-fd
+        name: Training Project (Fuzz Dojo)
+
+      - id: training-oss
+        name: Training Project (OSS-Fuzz)
 
   - id: projects
     name: OSS-Fuzz Projects
