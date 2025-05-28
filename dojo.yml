@@ -213,6 +213,17 @@ modules:
         name: Diagnose Crash Files
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
+  - id: research
+    name: OSS-Fuzz Projects
+
+    challenges:
+
+      - id: training-fd
+        name: Training Fuzz Dojo
+
+      - id: training-oss
+        name: Training Fuzz Dojo
+
   - id: projects
     name: OSS-Fuzz Projects
 
