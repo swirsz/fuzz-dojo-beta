@@ -233,14 +233,14 @@ modules:
       - id: medium-fd
         name: Medium Project (Fuzz Dojo)
 
-      - id: training-oss
-        name: Training Project (OSS-Fuzz)
+      - id: medium-oss
+        name: Medium Project (OSS-Fuzz)
 
-      - id: training-fd
-        name: Training Project (Fuzz Dojo)
+      - id: complex-fd
+        name: Complex Project (Fuzz Dojo)
 
-      - id: training-oss
-        name: Training Project (OSS-Fuzz)
+      - id: complex-oss
+        name: Complex Project (OSS-Fuzz)
 
   - id: projects
     name: OSS-Fuzz Projects
