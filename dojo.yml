@@ -218,29 +218,9 @@ modules:
 
     challenges:
 
-      - id: training-fd
-        name: Training Project (Fuzz Dojo)
+      - id: trainingfd
+        name: Training Project - Fuzz Dojo)
 
-      - id: training-oss
-        name: Training Project (OSS-Fuzz)
-
-      - id: simple-fd
-        name: Simple Project (Fuzz Dojo)
-
-      - id: simple-oss
-        name: Simple Project (OSS-Fuzz)
-
-      - id: medium-fd
-        name: Medium Project (Fuzz Dojo)
-
-      - id: training-oss
-        name: Training Project (OSS-Fuzz)
-
-      - id: training-fd
-        name: Training Project (Fuzz Dojo)
-
-      - id: training-oss
-        name: Training Project (OSS-Fuzz)
 
   - id: projects
     name: OSS-Fuzz Projects
