@@ -5,15 +5,19 @@ import random
 import string
 import shutil
 
-with open("/flag") as f:
-    random.seed(f.read())
+#with open("/flag") as f:
+#    random.seed(f.read())
+random.seed(os.environ["DOJO_USER_ID"])
 
-init_path = Path(__file__)
+init_file = Path(__file__)
 
 chosen_subdir = random.randint(0, 6)
-subdir_path = Path("/challenge") / str(chosen_subdir)
+init_path = Path("/challenge/init")
+subdir_path = init_path / str(chosen_subdir)
 
 for file_path in subdir_path.iterdir():
     shutil.move(str(file_path), str(Path("/challenge") / file_path.name))
     
-init_path.unlink()
+init_file.unlink()
+
+init_path.rmdir()
