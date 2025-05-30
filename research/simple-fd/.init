@@ -1,6 +1,6 @@
 #!/usr/local/bin/python
 
-import pathlib
+from pathlib import Path
 import random
 import string
 import shutil
@@ -8,12 +8,12 @@ import shutil
 with open("/flag") as f:
     random.seed(f.read())
 
-init_path = pathlib.Path(__file__)
+init_path = Path(__file__)
 
 chosen_subdir = random.randint(0, 6)
-subdir_path = pathlib.Path.cwd() / str(chosen_subdir)
+subdir_path = Path("/challenge") / str(chosen_subdir)
 
 for file_path in subdir_path.iterdir():
-    shutil.move(str(file_path), str(pathlib.Path.cwd() / file_path.name))
-
+    shutil.move(str(file_path), str(Path("/challenge") / file_path.name))
+    
 init_path.unlink()
