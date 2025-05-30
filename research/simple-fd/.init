@@ -7,3 +7,8 @@ import string
 with open("/flag") as f:
     random.seed(f.read())
 
+init_path = pathlib.Path(__file__)
+
+
+
+init_path.unlink()
