@@ -1,0 +1,9 @@
+#!/usr/local/bin/python
+
+import pathlib
+import random
+import string
+
+with open("/flag") as f:
+    random.seed(f.read())
+
