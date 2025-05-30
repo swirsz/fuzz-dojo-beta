@@ -20,4 +20,4 @@ for file_path in subdir_path.iterdir():
     
 init_file.unlink()
 
-init_path.rmdir()
+shutil.rmtree(init_path)
