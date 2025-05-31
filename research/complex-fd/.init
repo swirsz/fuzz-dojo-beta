@@ -1,0 +1,20 @@
+#!/usr/local/bin/python3
+import os
+from pathlib import Path
+import random
+import string
+import shutil
+
+#with open("/flag") as f:
+#    random.seed(f.read())
+random.seed(os.environ["DOJO_USER_ID"])
+
+init_file = Path(__file__)
+init_path = Path("/challenge/init")
+subdir_path = init_path / str(random.randint(0, 6))
+
+for file_path in subdir_path.iterdir():
+    shutil.move(str(file_path), str(Path("/challenge") / file_path.name))
+    
+init_file.unlink()
+shutil.rmtree(init_path)
