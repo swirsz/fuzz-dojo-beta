@@ -13,6 +13,7 @@ Dojo_User_Id = int(re.findall(r'\d+', brackets[0])[0]) if brackets else None
 random.seed(Dojo_User_Id)
 path = Path("/challenge/init")
 count = sum(1 for item in os.listdir(path) if item.isdigit() and (path / item).is_dir())
+random.randint(0, 1)
 subdir = path / str(random.randint(0, count-1))
 
 for file in subdir.iterdir():
