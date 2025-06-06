@@ -7,21 +7,6 @@ image: stevenwirsz/fuzz-dojo:latest
 description: |
 
 modules:
-
-  - id: progression-locked-module
-    challenges:
-      - id: unlocked-challenge
-        progression_locked: true
-        import:
-          dojo: example
-          module: world
-          challenge: earth
-      - id: locked-challenge
-        progression_locked: true
-        import:
-          dojo: example
-          module: world
-          challenge: mars
           
   - id: help
     name: Lectures and Reading
@@ -240,21 +225,27 @@ modules:
         name: Training Project (OSS-Fuzz)
 
       - id: simple-fd
+        progression_locked: true
         name: Simple Project (Fuzz Dojo)
 
       - id: simple-oss
+        progression_locked: true
         name: Simple Project (OSS-Fuzz)
 
       - id: medium-fd
+        progression_locked: true
         name: Medium Project (Fuzz Dojo)
 
       - id: medium-oss
+        progression_locked: true
         name: Medium Project (OSS-Fuzz)
 
       - id: complex-fd
+        progression_locked: true
         name: Complex Project (Fuzz Dojo)
 
       - id: complex-oss
+        progression_locked: true
         name: Complex Project (OSS-Fuzz)
 
   - id: projects
