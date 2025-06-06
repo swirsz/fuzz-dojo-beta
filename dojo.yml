@@ -234,7 +234,7 @@ modules:
         name: Complex Project (Fuzz Dojo)
 
   - id: research-oss
-    name: User Study
+    name: User Study (OSS-Fuzz)
     
     challenges:
 
