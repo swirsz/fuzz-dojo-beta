@@ -22,7 +22,7 @@ git() {
     local destination="$3"
 
     if [[ "$command" == "clone" ]]; then
-        echo "$source" | sed 's/[^a-zA-Z0-9_-]/-/g' | sed 's/^-\+\|-\+$//g'
+        source="${source##*/}"
         log_info "Running fuzzer: $source for project: $destination"
     fi
     
