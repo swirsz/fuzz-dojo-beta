@@ -29,7 +29,7 @@ git() {
     else
         log_info "git clone the project $source into destination: $destination"
         mkdir -p $destination
-        cp -r /downloads/$source $destination
+        cp -r /downloads/$source $destination/..
     fi   
 }
     
