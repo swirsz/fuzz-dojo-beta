@@ -24,15 +24,15 @@ git() {
     
     if [[ ! -d "/downloads/$source" ]]; then
         log_info "Project $source is not available"
-    elif [[ "$command" == "clone" && -v "$destination" ]]; then
+    elif [[ -v "$destination" ]]; then
+        log_info "Must specify destination"
+    elif [[ "$command" != "clone" ]]; then
+        log_info "OSS-Fuzz: Only git clone command is supported"
+    else
         log_info "OSS-Fuzz: git clone the project $source into destination: $destination"
         mkdir -p $destination
         cp -r /downloads/$source $destination
-    fi
-    
-    
-    
-    
+    fi   
 }
     
 helper() {
