@@ -21,9 +21,11 @@ git() {
     local source="$2"
     local destination="$3"
 
-    if [[ "$command" == "clone" ]]; then
-        source="${source##*/}"
-        log_info "Running fuzzer: $source for project: $destination"
+    if [[ "$command" == "clone" && -z "$destination" && -d "/downloads/$source" ]]; then
+        source="${source##*/}"  #strip off path
+        log_info "OSS-Fuzz: git clone the project $source into destination: $destination"
+        mkdir -p $destination
+        cp -r /downloads/$source $destination
     fi
     
     
