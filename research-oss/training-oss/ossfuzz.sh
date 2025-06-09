@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 # Default values
 DEFAULT_ARCHITECTURE="x86_64"
 DEFAULT_ENGINE="libfuzzer"
@@ -14,7 +12,7 @@ log_info() {
 }
 
 
-run_fuzzer() {
+git() {
     local project_name="$1"
     local fuzzer_name="$2"
     local engine="${3:-$DEFAULT_ENGINE}"
@@ -25,6 +23,5 @@ run_fuzzer() {
     local fuzzer_args=("$@")
     
     log_info "Running fuzzer: $fuzzer_name for project: $project_name"
-    cat /flag
 }
     
