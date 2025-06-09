@@ -20,8 +20,9 @@ git() {
     local command="$1"
     local source="$2"
     local destination="$3"
-
-    if [[ "$command" == "clone" && -v "$destination" && -d "/downloads/$source" ]]; then
+    if [[ ! -d "/downloads/$source" ]]; then
+        log_info "Project $source is not available"
+    elif [[ "$command" == "clone" && -v "$destination" ]]; then
         source="${source##*/}"  #strip off path
         log_info "OSS-Fuzz: git clone the project $source into destination: $destination"
         mkdir -p $destination
