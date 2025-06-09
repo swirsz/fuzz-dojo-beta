@@ -26,8 +26,6 @@ git() {
         log_info "Project $source is not available"
     elif [[ -v "$destination" ]]; then
         log_info "Must specify destination"
-    elif [ "$command" != "clone" ]; then
-        log_info "Command: $command - only git clone command is supported"
     else
         log_info "git clone the project $source into destination: $destination"
         mkdir -p $destination
