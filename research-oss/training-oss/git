@@ -25,5 +25,6 @@ run_fuzzer() {
     local fuzzer_args=("$@")
     
     log_info "Running fuzzer: $fuzzer_name for project: $project_name"
-    }
+}
     
+run_fuzzer()
