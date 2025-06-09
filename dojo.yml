@@ -2,6 +2,9 @@ id: fuzz
 
 name: Fuzz Dojo
 
+award:
+  emoji: 🐁
+  
 image: stevenwirsz/fuzz-dojo:latest
 
 description: |
