@@ -11,8 +11,26 @@ log_info() {
     echo "[INFO] $*" >&2
 }
 
+normalize_name() {
+    local name="$1"
+    echo "$name" | sed 's/[^a-zA-Z0-9_-]/-/g' | sed 's/^-\+\|-\+$//g'
+}
 
 git() {
+    local command="$1"
+    local source="$2"
+    local destination="$3"
+
+    if [[ "$command" == "clone" ]]; then
+        log_info "Running fuzzer: $source for project: $destination"
+    fi
+    
+    
+    
+    
+}
+    
+helper() {
     local project_name="$1"
     local fuzzer_name="$2"
     local engine="${3:-$DEFAULT_ENGINE}"
