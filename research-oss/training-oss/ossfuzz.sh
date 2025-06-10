@@ -30,9 +30,13 @@ git() {
         if [[ ! -n "$destination" ]]; then
             local destination="$source"
         fi
-        log_info "git clone the project $source into destination: $destination"
+        log_info "git clone project: $source   to destination: $destination"
         mkdir -p $destination
-        cp -r /downloads/$source/. $destination
+        if [[ "$source" == "oss-fuzz" ]]; then
+            cp -r /opt/$source/. $destination
+        else
+            cp -r /downloads/$source/. $destination
+        fi
     fi   
 }
     
