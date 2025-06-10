@@ -41,15 +41,39 @@ git() {
 }
     
 helper() {
-    local project_name="$1"
-    local fuzzer_name="$2"
-    local engine="${3:-$DEFAULT_ENGINE}"
-    local sanitizer="${4:-$DEFAULT_SANITIZER}"
-    local architecture="${5:-$DEFAULT_ARCHITECTURE}"
-    local corpus_dir="$6"
-    shift 6
+    local command="$1"
+    local project_name="$2"
+    local fuzzer_name="$3"
+    local engine="${4:-$DEFAULT_ENGINE}"
+    local sanitizer="${5:-$DEFAULT_SANITIZER}"
+    local architecture="${6:-$DEFAULT_ARCHITECTURE}"
+    local corpus_dir="$7"
+    shift 7
     local fuzzer_args=("$@")
     
-    log_info "Running fuzzer: $fuzzer_name for project: $project_name"
+    log_info "command: $command"
+    log_info "project_name: $project_name"
+    log_info "fuzzer_name: $fuzzer_name"
+    log_info "engine: $engine"
+    log_info "sanitizer: $sanitizer"
+    log_info "architecture: $architecture"
+    log_info "corpus_dir: $corpus_dir"
+    log_info "fuzzer_args: $fuzzer_args"
+
+    if [[ "$command" == "build_image" ]]; then
+        log_info
+    elif [[ "$command" == "build_fuzzers" ]]; then
+        log_info
+    elif [[ "$command" == "check_build" ]]; then
+        log_info
+    elif [[ "$command" == "run_fuzzer" ]]; then
+        log_info
+    elif [[ "$command" == "coverage" ]]; then
+        log_info
+    elif [[ "$command" == "introspector" ]]; then
+        log_info
+    else
+        log_error Syntax:  helper {command} {project name} {options}
+    fi
 }
     
