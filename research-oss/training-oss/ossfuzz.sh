@@ -24,7 +24,7 @@ git() {
     
     if [[ -z "$source" || ! -z "$4" ]]; then
         log_info "Syntax: git clone {source} {destination}"
-    elif [[ ! -d "/downloads/$source" ]]; then
+    elif [[ ! -d "/downloads/$source" && "$source" != "oss-fuzz" ]]; then
         log_error "Project $source is not available"
     else
         if [[ ! -n "$destination" ]]; then
