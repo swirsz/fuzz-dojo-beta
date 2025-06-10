@@ -11,10 +11,10 @@ log_info() {
     echo "[INFO] $*" >&2
 }
 
-normalize_name() {
-    local name="$1"
-    echo "$name" | sed 's/[^a-zA-Z0-9_-]/-/g' | sed 's/^-\+\|-\+$//g'
+log_error() {
+    echo "[ERROR] $*" >&2
 }
+
 
 git() {
     local command="$1"
@@ -22,11 +22,14 @@ git() {
     local destination="$3"
     source="${source##*/}"  #strip off path
     
-    if [[ ! -d "/downloads/$source" ]]; then
-        log_info "Project $source is not available"
-    elif [[ -v "$destination" ]]; then
-        log_info "Must specify destination"
+    if [[ -z "$source" || ! -z "$4" ]]; then
+        log_info "Syntax: git clone {source} {destination}"
+    elif [[ ! -d "/downloads/$source" ]]; then
+        log_error "Project $source is not available"
     else
+        if [[ ! -n "$destination" ]]; then
+            local destination="$source"
+        fi
         log_info "git clone the project $source into destination: $destination"
         mkdir -p $destination
         cp -r /downloads/$source/. $destination
