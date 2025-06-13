@@ -3,6 +3,10 @@
 if [ "$?" -gt 0 ]; then
     exit 1
 fi
+if [ $(echo -n "$2" | sha256sum | cut -d' ' -f1) != "2ed73ee0d7ad2fd8b8e57fc154cfc26f3948ed32b2844b34479333e5b07712a5" ]; then
+    echo Call script from ossfuzz commands only
+    exit 1
+fi
 export LABEL=$1
 export PROJECT_NAME=cjson
 export SANITIZER=$1
@@ -23,7 +27,7 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/newfuzzer.c
 #----------------------------------------------------------------------
-    build-cleanup
+    build-cleanup2
 fi
 build-srcfolders
 mv /src-$LABEL /src
@@ -48,6 +52,6 @@ elif [ "$4" = "planning" ]; then
 else
     fuzzlog
     compile
-    drivers
+    drivers > /dev/null
 fi
 mv /src /src-$LABEL
