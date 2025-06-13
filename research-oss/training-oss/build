@@ -6,10 +6,10 @@ if [ $(echo -n "$2" | sha256sum | cut -d' ' -f1) != "2ed73ee0d7ad2fd8b8e57fc154c
     echo
     exit 1
 fi
-. /usr/local/sbin/e
 if [ "$?" -gt 0 ]; then
     exit 1
 fi
+. /usr/local/sbin/e
 export LABEL=$1
 export PROJECT_NAME=cjson
 export SANITIZER=$1
@@ -30,7 +30,7 @@ if [ ! -d "/src-orig" ]; then
     patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/newfuzzer.c
 #----------------------------------------------------------------------
-    build-cleanup2
+    build-cleanup-oss
 fi
 build-srcfolders
 mv /src-$LABEL /src
