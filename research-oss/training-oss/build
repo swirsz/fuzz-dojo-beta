@@ -5,6 +5,7 @@ if [ "$?" -gt 0 ]; then
 fi
 if [ $(echo -n "$2" | sha256sum | cut -d' ' -f1) != "2ed73ee0d7ad2fd8b8e57fc154cfc26f3948ed32b2844b34479333e5b07712a5" ]; then
     echo Call script from ossfuzz commands only
+    echo Run: . ossfuzz
     exit 1
 fi
 export LABEL=$1
