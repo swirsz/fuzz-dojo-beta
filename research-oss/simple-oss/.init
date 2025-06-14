@@ -1,0 +1,22 @@
+#!/usr/local/bin/python3
+import os
+from pathlib import Path
+import random
+import shutil
+import subprocess
+import re  
+
+result = subprocess.run(["findmnt", "-n", "--raw", "-o", "SOURCE", "/home/hacker"], capture_output=True, text=True)
+brackets = re.findall(r'\[([^\]]*)\]', result.stdout)
+Dojo_User_Id = int(re.findall(r'\d+', brackets[0])[0]) if brackets else None
+
+random.seed(Dojo_User_Id)
+path = Path("/challenge/init")
+count = sum(1 for item in os.listdir(path) if item.isdigit() and (path / item).is_dir())
+subdir = path / str(random.randint(0, count-1))
+
+for file in subdir.iterdir():
+    shutil.move(str(file), f"/challenge/{file.name}")
+
+Path(__file__).unlink()
+shutil.rmtree(path)
