@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none c "cjson/fuzzing" planning
+/challenge/build none c "minizip/test/fuzz" planning
