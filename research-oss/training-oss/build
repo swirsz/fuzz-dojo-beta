@@ -18,9 +18,6 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/minizip $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
-
-    cp $SRC/$PROJECT_NAME/test/fuzz/unzip_fuzzer.c $SRC/$PROJECT_NAME/test/fuzz/new_fuzzer.c
-    patch -tuN $SRC/minizip/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 #----------------------------------------------------------------------
     build-cleanup
 fi
@@ -28,16 +25,6 @@ build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
-#----------------------------------------------------------------------
-if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
-   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/test/fuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
-else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/test/fuzz
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
-fi
-#----------------------------------------------------------------------
 if [ "$4" = "understanding" ]; then
     understanding $2 $3
 elif [ "$4" = "planning" ]; then
