@@ -43,6 +43,6 @@ else
     fi
     fuzzlog
     compile
-    drivers > /dev/null
+    drivers > /dev/null > /dev/null
 fi
 mv /src /src-$LABEL
