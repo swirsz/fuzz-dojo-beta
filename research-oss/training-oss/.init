@@ -1,4 +1,4 @@
 #!/bin/bash
 
-source /usr/local/sbin/ossfuzz
+#source /usr/local/sbin/ossfuzz
 #rm /challenge/.init
