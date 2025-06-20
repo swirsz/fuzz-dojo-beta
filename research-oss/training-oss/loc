@@ -1,11 +1,4 @@
 #!/opt/pwn.college/bash
 INITIAL=22
 TARGET=27
-if [ $(echo -n "$2" | sha256sum | cut -d' ' -f1) != "2ed73ee0d7ad2fd8b8e57fc154cfc26f3948ed32b2844b34479333e5b07712a5" ]; then
-    echo Call this script using ossfuzz commands only
-    echo
-    echo Run: \'. ossfuzz\' then \'python3 infra/helper.py  {command} {project name} {options}\'
-    echo
-    exit 1
-fi
 /usr/local/sbin/loc_count_oss $INITIAL $TARGET $1
