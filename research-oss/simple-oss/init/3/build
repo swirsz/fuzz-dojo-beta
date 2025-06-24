@@ -22,24 +22,24 @@ if [ ! -d "/src-orig" ]; then
     build-cleanup-oss
 fi
 build-srcfolders
-mv /src-$LABEL /src
-rm -rf $SRC/$PROJECT_NAME/build
-
-cd $SRC/$PROJECT_NAME
-if [ "$4" = "understanding" ]; then
-    understanding $2 $3
-elif [ "$4" = "planning" ]; then
-    planning $2 $3
+if [ "$3" == "skip" ]; then
+    rm -rf /tmp/build.lck
 else
-    if [ $(echo -n "$2" | sha256sum | cut -d' ' -f1) != "2ed73ee0d7ad2fd8b8e57fc154cfc26f3948ed32b2844b34479333e5b07712a5" ]; then
-        echo Call this script using ossfuzz commands only
-        echo
-        echo Run: \'. ossfuzz\' then \'python3 infra/helper.py  {command} {project name} {options}\'
-        echo
-        exit 1
+    mv /src-$LABEL /src
+
+    cd $SRC/$PROJECT_NAME
+    if [ "$4" = "understanding" ]; then
+        understanding $2 $3
+    elif [ "$4" = "planning" ]; then
+        planning $2 $3
+    else
+        if [ $(echo -n "$2" | sha256sum | cut -d' ' -f1) != "2ed73ee0d7ad2fd8b8e57fc154cfc26f3948ed32b2844b34479333e5b07712a5" ]; then
+            oss_help
+            exit 1
+        fi
+        fuzzlog
+        compile
+        drivers > /dev/null
     fi
-    fuzzlog
-    compile
-    drivers > /dev/null
+    mv /src /src-$LABEL
 fi
-mv /src /src-$LABEL
