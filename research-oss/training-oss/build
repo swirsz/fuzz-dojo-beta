@@ -22,7 +22,9 @@ if [ ! -d "/src-orig" ]; then
     build-cleanup-oss
 fi
 build-srcfolders
-if [ "$3" != "skip" ]; then
+if [ "$3" == "skip" ]; then
+    rm -rf /tmp/build.lck
+else
     mv /src-$LABEL /src
 
     cd $SRC/$PROJECT_NAME
