@@ -25,7 +25,8 @@ if [ ! -d "/src-orig" ]; then
 fi
 build-srcfolders
 if [ "$3" == "skip" ]; then
-    drivers > /dev/null
+    chown -hR hacker:hacker /src-$LABEL /out
+    rm -rf /tmp/build.lck
 else
     mv /src-$LABEL /src
 
