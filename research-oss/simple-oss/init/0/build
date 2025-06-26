@@ -13,12 +13,12 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    rm -rf $SRC/$PROJECT_NAME
+    #rm -rf $SRC/$PROJECT_NAME
     #apt-get update && apt-get install -y make autoconf automake libtool gettext pkg-config build-essential
     #git clone --recurse-submodules https://github.com/google/snappy
     cp -r /downloads/snappy $SRC
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/\
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi
