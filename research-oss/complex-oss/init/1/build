@@ -25,6 +25,7 @@ if [ ! -d "/src-orig" ]; then
     cp /downloads/aspell*.bz2 /tmp
 
     cp /opt/oss-fuzz/projects/aspell/build.sh $SRC/
+    patch -tuN $SRC/$PROJECT_NAME/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi
