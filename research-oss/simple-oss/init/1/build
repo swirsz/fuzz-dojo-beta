@@ -30,7 +30,7 @@ if [ ! -d "/src-orig" ]; then
     build-cleanup-oss
 fi
 build-srcfolders
-if [ "$3" == "skip" ]; then
+if [ "$4" == "skip" ]; then
     chown -hR hacker:hacker /src-$LABEL /out
     rm -rf /tmp/build.lck
 else
