@@ -42,7 +42,7 @@ else
             echo "[ERROR] Project $3 not available in this challenge"
             exit 1
         fi
-        fuzzlog
+        fuzzlog_oss $SRC/$PROJECT_NAME/*.cc
         compile
         drivers > /dev/null
     fi
