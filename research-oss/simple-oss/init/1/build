@@ -21,6 +21,7 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/astc-encoder $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
+    patch -tuN $SRC/$PROJECT_NAME/Source/Fuzzers/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi
