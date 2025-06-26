@@ -1,15 +1,5 @@
 --- ossfuzz.sho	2025-05-16 21:55:48.550966647 +0000
 +++ ossfuzz.sh	2025-05-20 21:35:03.653665881 +0000
-@@ -60,6 +60,9 @@
- cp -v aspell_fuzzer $OUT/
- zip $OUT/aspell_fuzzer_seed_corpus.zip aspell_fuzzer_corpus/*
- 
-+cp -v new_fuzzer $OUT/
-+zip $OUT/new_fuzzer_seed_corpus.zip aspell_fuzzer_corpus/*
-+
- # Install some dictionaries!
- export PATH=$ASPELL_PREFIX/bin:$PATH
- 
 @@ -67,7 +70,8 @@
      LANG=$1
      DICT=$2
