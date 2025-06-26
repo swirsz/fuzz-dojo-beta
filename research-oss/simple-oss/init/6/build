@@ -2,10 +2,14 @@
 if [ "$?" -gt 0 ]; then
     exit 1
 fi
-. /usr/local/sbin/e
 export LABEL=$1
 export PROJECT_NAME=vorbis
 export SANITIZER=$1
+if [ "$3" != "$PROJECT_NAME" ]; then
+    echo "[ERROR] Project $PROJECT_NAME not available in this challenge"
+    exit 1
+fi
+. /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
     export LABEL='none'$LABEL
