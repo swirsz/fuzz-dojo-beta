@@ -13,6 +13,7 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
+    echo
     echo Installing pre-reqs for $PROJECT_NAME
     echo
     #apt-get update && apt-get install -y make autoconf automake libtool libpng-dev pkg-config curl
