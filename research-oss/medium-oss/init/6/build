@@ -45,10 +45,12 @@ else
         if [ $(echo -n "$2" | sha256sum | cut -d' ' -f1) != "2ed73ee0d7ad2fd8b8e57fc154cfc26f3948ed32b2844b34479333e5b07712a5" ]; then
             oss_help
             rm -rf /tmp/build.lck
+            mv /src /src-$LABEL
             exit 1
         elif [ "$3" != "$PROJECT_NAME" ]; then
             echo "[ERROR] Project $3 not available in this challenge"
             rm -rf /tmp/build.lck
+            mv /src /src-$LABEL
             exit 1
         fi
         fuzzlog_oss $SRC/$PROJECT_NAME/tests/oss-fuzz/*.cc
