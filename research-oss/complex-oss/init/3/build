@@ -13,6 +13,9 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
+    echo Installing pre-reqs for $PROJECT_NAME
+    echo
+    sleep 2
     cd $SRC
     #apt-get update && apt-get install -y autoconf automake bison pkg-config ncurses-dev libtool
     #rm -rf libevent
