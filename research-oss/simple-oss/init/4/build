@@ -13,6 +13,8 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
+    echo Installing pre-reqs for $PROJECT_NAME
+    echo
     #apt-get update && apt-get install -y make autoconf automake libtool libpng-dev pkg-config curl
 
     #mkdir afl-testcases
@@ -24,7 +26,7 @@ if [ ! -d "/src-orig" ]; then
 
     #git clone --depth=1 https://github.com/google/guetzli 
     cp -r /downloads/guetzli $SRC
-
+    cd \
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 #----------------------------------------------------------------------
     build-cleanup-oss
