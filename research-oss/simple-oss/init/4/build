@@ -26,7 +26,7 @@ if [ ! -d "/src-orig" ]; then
 
     #git clone --depth=1 https://github.com/google/guetzli 
     cp -r /downloads/guetzli $SRC
-    cd \
+    cd /
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 #----------------------------------------------------------------------
     build-cleanup-oss
