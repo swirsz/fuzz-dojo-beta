@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=usbguard
+export PROJECT_NAME=vorbis
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,30 +13,19 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && apt-get install -y make autoconf automake libtool pkg-config libxml2-utils1 libxml2-dev xsltproc \
-    #  libprotobuf-dev protobuf-compiler libdbus-1-dev libdbus-glib-1-dev libgio2.0-cil-dev libgcrypt20-dev \
-    #  libpolkit-gobject-1-dev libseccomp-dev libcap-ng-dev
-
-    #git clone https://github.com/ClusterLabs/libqb && cd libqb && \
-    #    ./autogen.sh && ./configure && make && make install
+    #apt-get update && apt-get install -y make autoconf automake ffmpeg libtool pkg-config python3 wget
+    #python3 -m pip install corpus-replicator
+    #git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
+    #git clone --depth 1 https://gitlab.xiph.org/xiph/vorbis.git
     cd $SRC
-    rm -rf $PROJECT_NAME
-    rm -rf inspector
+    cp -r /downloads/ogg $SRC
+    cp -r /downloads/vorbis $SRC
 
-    #git clone --recurse-submodules --depth 1 https://github.com/USBGuard/usbguard usbguard
-    cp -r /downloads/usbguard $SRC
-    cp -r /downloads/libqb $SRC
-    cd $SRC/libqb
-    ./autogen.sh
-    ./configure 
-    make 
-    make install 
+    corpus-replicator -o decode_corpus audio_vorbis_ogg_libvorbis.yml audio
+    # TODO: remove `people.xiph.org` lines once upstream build script is updated
+    mkdir people.xiph.org/
+    touch people.xiph.org/dummy.ogg
     cd /
-
-    # This is to fix Fuzz Introspector build by using LLVM old pass manager
-    # re https://github.com/ossf/fuzz-introspector/issues/305
-    export OLD_LLVMPASS=1
-
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 #----------------------------------------------------------------------
     build-cleanup-oss
@@ -63,7 +52,7 @@ else
             rm -rf /tmp/build.lck
             exit 1
         fi
-        fuzzlog_oss $SRC/$PROJECT_NAME$SRC/Tests/Fuzzers/*.cpp
+        fuzzlog_oss $SRC/$PROJECT_NAME/contrib/oss-fuzz/*.cc
         compile
         drivers > /dev/null
     fi

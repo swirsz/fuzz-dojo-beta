@@ -1,8 +1,8 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=astc-encoder
-
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
+       
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/astc-encoder/inspector-report/20250520/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/libsodium/inspector-report/20250411/fuzz_report.html
 
-The arm astc-encoder or Adaptive Scalable Texture Compression (ASTC) Encoder, astcenc, is a command-line tool for compressing and decompressing images using the ASTC texture compression standard.
+LibSodium is an easy-to-use software library for encryption, decryption, signatures, password hashing, and more. 
 
-The encoder has 1 fuzz driver that covers symbolic_to_physical and reaches 50% of the project coverage. A second single function symbolic_to_physical  should reach the majority of the remaining code.
+This library has roughly 20% code coverage with only 2 fuzz drivers, exercising the encryption, decryption, and maybe hashing functions and very little else.  Just implementing ED25519 key signatures as a fuzz driver should greatly increase the code coverage of the project
