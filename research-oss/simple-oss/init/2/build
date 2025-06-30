@@ -39,7 +39,7 @@ else
 
     cd $SRC/$PROJECT_NAME
     if [ "$4" = "understanding" ]; then
-        understanding $2 $3
+        understanding_oss $2 $3
     elif [ "$4" = "planning" ]; then
         planning $2 $3
     else

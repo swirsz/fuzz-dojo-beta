@@ -14,7 +14,7 @@ random.seed(Dojo_User_Id)
 path = Path("/challenge/init")
 count = sum(1 for item in os.listdir(path) if item.isdigit() and (path / item).is_dir())
 subdir = path / str(random.randint(0, count-1))
-subdir = path / "5"
+#subdir = path / "0"
 
 for file in subdir.iterdir():
     shutil.move(str(file), f"/challenge/{file.name}")
