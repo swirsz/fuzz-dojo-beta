@@ -13,12 +13,9 @@ description: |
         1. Complete Initial Survey
         2. Consent Challenge
         3. View Lectures and Reference
-        
-        for each level:
-        a. Run /challenge/comments and /challenge/plan
-        b. Improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
-        
-        4. Complete Exit Survey
+        4. Run /challenge/comments and /challenge/plan
+        5. Improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
+        6. Complete Exit Survey
 
 modules:
           
