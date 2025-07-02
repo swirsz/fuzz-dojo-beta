@@ -9,6 +9,9 @@ image: stevenwirsz/fuzz-dojo:latest
 
 description: |
 
+        1. Complete Consent Challenge
+        2. 
+
 modules:
           
   - id: help
