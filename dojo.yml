@@ -39,7 +39,7 @@ modules:
         description:  Run /challenge/run in Terminal to start.
 
   - id: research-oss
-    name: Set A Projects OSS-Fuzz
+    name: Set A OSS-Fuzz Projects
     
     challenges:
 
@@ -59,7 +59,7 @@ modules:
         name: Level 3 Project (OSS-Fuzz)
 
   - id: research-fd
-    name: Set B Projects Fuzz Dojo
+    name: Set B Fuzz Dojo Projects
     
     challenges:
 
