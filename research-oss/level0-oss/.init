@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import re  
 
-subprocess.run(["echo", "source", "/usr/local/sbin/ossfuzz", ">>", "/etc/bash.bashrc"])
-
+with open("/etc/bash.bashrc", "a") as f:
+    f.write("source /usr/local/sbin/ossfuzz\n")
+    
 Path(__file__).unlink()
