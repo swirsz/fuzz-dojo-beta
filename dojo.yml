@@ -3,36 +3,129 @@ id: fuzz
 name: Fuzz Dojo
 
 award:
-  emoji: 🐁
-  
+  emoji: 🥼
+
 image: stevenwirsz/fuzz-dojo:latest
 
 description: |
 
-        THANK YOU! 
-        
-        Your participation in this study advances knowledge of cybersecurity research and helps improve pwn.college. Your help is greatly appreciated. Those who complete level 3 for both project sets will automatically get entered into a random drawing for a study prize. To be considered make sure we have your correct email address or phone number in the following survey.
+        Welcome and thank you for your participation in this study which advances cybersecurity research. Your help is greatly appreciated. Those who complete level 3 for both project sets will automatically be entered into a random drawing for a study prize. (To be considered for the prize please provide your contact email or phone number in the initial survey.)
+
 
         Step 1: Complete Initial Survey https://forms.gle/FWF1iEn9pLpkRMGq9
-        
-        Step 2: Consent Challenge
-        
-        Step 3: For each level, first run /challenge/comments and /challenge/plan then create a new fuzz driver to improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
+
+        Step 2: Complete the Consent Challenge
+
+        Step 3: For each study project, first run `/challenge/comments` and then run `/challenge/plan` and then create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5% or more.
+
+        Using the reference information and practice exercises as necessary, complete all study projects in both sets of challenges in any order.  You may go back and forth between the two sets, but you cannot advance to the next level until the previous level has been completed.
+
+        The objective is to complete level 3 projects for both sets. Those who do so successfully will automatically be entered into a randomized drawing for a study prize.  (One prize will be awarded at study completion. Participants who do not respond to email or text within 24 hours will forfeit the prize to the next selected study participant).
 
         Step 4: Complete Exit Survey https://forms.gle/uG8yik8pXFRXQHSGA
-        
-        Using the reference information and practice exercises as necessary, complete all study projects in both sets of challenges in any order.  You may go back and forth between the two sets, but you cannot advance to the next level until the previous level has been completed.  The levels get progressively complex, but should be doable by those who can complete Level 0 projects. 
 
-        The objective is to complete level 3 projects for both sets. Those who do so successfully will automatically be entered into a randomized drawing for a study prize.  (One prize will be awarded on or before July 31, 2025. Participants who cannot be reached by email or text within 24 hours will forfeit the prize to the next selected study participant).
-
-        Make sure to submit your last entry by July 31, 2025. 
-
-        Thank you again for your participation.
+        All entries must be submitted by xxxxxxx.
 
 modules:
-          
+
+  - id: consent
+    name: Consent Form
+    description: Contribute by allowing your anonymous, non-personalized work in this module to be used for research
+
+    challenges:
+
+      - id: consent
+        name: Consent
+        description:  Run /challenge/run in Terminal to start.
+
+  - id: research-oss
+    name: Set A Projects OSS-Fuzz
+    
+    challenges:
+
+      - id: level0-oss
+        name: Level 0 Project (OSS-Fuzz)
+
+      - id: level1-oss
+        progression_locked: true
+        name: Level 1 Project (OSS-Fuzz)
+
+      - id: level2-oss
+        progression_locked: true
+        name: Level 2 Project (OSS-Fuzz)
+
+      - id: level3-oss
+        progression_locked: true
+        name: Level 3 Project (OSS-Fuzz)
+
+  - id: research-fd
+    name: Set B Projects Fuzz Dojo
+    
+    challenges:
+
+      - id: level0-fd
+        name: Level 0 Project (Fuzz Dojo)
+
+      - id: level1-fd
+        progression_locked: true
+        name: Level 1 Project (Fuzz Dojo)
+
+      - id: level2-fd
+        progression_locked: true
+        name: Level 2 Project (Fuzz Dojo)
+
+      - id: level3-fd
+        progression_locked: true
+        name: Level 3 Project (Fuzz Dojo)
+
+  - id: training
+    name: Training Exercises (optional)
+    description: Learn techniques to improve the code coverage of existing fuzz drivers
+
+    challenges:
+
+      - id: 1-locate
+        name: Locate Harnesses
+        description: Locate the fuzz harnesses in a project.  Run /challenge/training in Terminal to start.
+
+      - id: 2-change
+        name: Modify a Fuzzing Harness
+        description: Make a change to a fuzzing harness.  Run /challenge/training in Terminal to start.
+
+      - id: 3-broken
+        name: Fix Broken Fuzzing Harness
+        description: Repair a broken fuzzing harness.  Run /challenge/training in Terminal to start.
+
+      - id: 4-parameters
+        name: Initial Parameters
+        description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in Terminal to start.
+
+      - id: 5-calltree
+        name: Improve Coverage Using the Call Tree
+        description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
+
+      - id: 6-split
+        name: Split Into Multiple Harness
+        description: Break large complicated fuzz drivers into multiple individual drivers.  Run /challenge/training in Terminal to start.
+
+      - id: 7-sanitizer
+        name: Correct Sanitizer Specific Problems
+        description: Identify the sanitizer that is crashing and repair it.  Run /challenge/training in Terminal to start.
+
+      - id: 8-seedcorpus
+        name: Implement Seed Corpus
+        description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
+
+      - id: 9-newdriver
+        name: Create New Fuzz Driver
+        description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
+
+      - id: 10-crash
+        name: Diagnose Crash Files
+        description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
+
   - id: help
-    name: Lectures and Reference
+    name: Help (Reference Material)
     description: |
 
         Improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
@@ -179,99 +272,3 @@ modules:
         type: lecture
         video: bevVP94a0yI
         slides: 1tdZPEOzOKF9Lu7DKqDoauW_o6R6gaDJjVj0neemwUfI
-
-  - id: consent
-    name: Consent Form
-    description: Contribute by allowing your anonymous, non-personalized work in this module to be used for research
-
-    challenges:
-
-      - id: consent
-        name: Consent
-        description:  Run /challenge/run in Terminal to start.
-
-  - id: research-oss
-    name: Study Projects (OSS-Fuzz)
-    
-    challenges:
-
-      - id: level0-oss
-        name: Level 0 Project (OSS-Fuzz)
-
-      - id: level1-oss
-        progression_locked: true
-        name: Level 1 Project (OSS-Fuzz)
-
-      - id: level2-oss
-        progression_locked: true
-        name: Level 2 Project (OSS-Fuzz)
-
-      - id: level3-oss
-        progression_locked: true
-        name: Level 3 Project (OSS-Fuzz)
-
-  - id: research-fd
-    name: Study Projects (Fuzz Dojo)
-    
-    challenges:
-
-      - id: level0-fd
-        name: Level 0 Project (Fuzz Dojo)
-
-      - id: level1-fd
-        progression_locked: true
-        name: Level 1 Project (Fuzz Dojo)
-
-      - id: level2-fd
-        progression_locked: true
-        name: Level 2 Project (Fuzz Dojo)
-
-      - id: level3-fd
-        progression_locked: true
-        name: Level 3 Project (Fuzz Dojo)
-
-  - id: training
-    name: Training Exercises (optional)
-    description: Learn techniques to improve the code coverage of existing fuzz drivers
-
-    challenges:
-
-      - id: 1-locate
-        name: Locate Harnesses
-        description: Locate the fuzz harnesses in a project.  Run /challenge/training in Terminal to start.
-
-      - id: 2-change
-        name: Modify a Fuzzing Harness
-        description: Make a change to a fuzzing harness.  Run /challenge/training in Terminal to start.
-
-      - id: 3-broken
-        name: Fix Broken Fuzzing Harness
-        description: Repair a broken fuzzing harness.  Run /challenge/training in Terminal to start.
-
-      - id: 4-parameters
-        name: Initial Parameters
-        description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in Terminal to start.
-
-      - id: 5-calltree
-        name: Improve Coverage Using the Call Tree
-        description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
-
-      - id: 6-split
-        name: Split Into Multiple Harness
-        description: Break large complicated fuzz drivers into multiple individual drivers.  Run /challenge/training in Terminal to start.
-
-      - id: 7-sanitizer
-        name: Correct Sanitizer Specific Problems
-        description: Identify the sanitizer that is crashing and repair it.  Run /challenge/training in Terminal to start.
-
-      - id: 8-seedcorpus
-        name: Implement Seed Corpus
-        description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
-
-      - id: 9-newdriver
-        name: Create New Fuzz Driver
-        description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
-
-      - id: 10-crash
-        name: Diagnose Crash Files
-        description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
