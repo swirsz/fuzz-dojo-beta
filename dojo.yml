@@ -9,13 +9,25 @@ image: stevenwirsz/fuzz-dojo:latest
 
 description: |
 
-        Steps:
-        1. Complete Initial Survey
-        2. Consent Challenge
-        3. View Lectures and Reference
-        4. Run /challenge/comments and /challenge/plan
-        5. Improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
-        6. Complete Exit Survey
+        THANK YOU! 
+        
+        Your participation in this study advances knowledge of cybersecurity research and helps improve pwn.college. Your help is greatly appreciated. Those who complete level 3 for both project sets will automatically get entered into a random drawing for a study prize. To be considered make sure we have your correct email address or phone number in the following survey.
+
+        Step 1: Complete Initial Survey https://forms.gle/FWF1iEn9pLpkRMGq9
+        
+        Step 2: Consent Challenge
+        
+        Step 3: For each level, first run /challenge/comments and /challenge/plan then create a new fuzz driver to improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
+
+        Step 4: Complete Exit Survey https://forms.gle/uG8yik8pXFRXQHSGA
+        
+        Using the reference information and practice exercises as necessary, complete all study projects in both sets of challenges in any order.  You may go back and forth between the two sets, but you cannot advance to the next level until the previous level has been completed.  The levels get progressively complex, but should be doable by those who can complete Level 0 projects. 
+
+        The objective is to complete level 3 projects for both sets. Those who do so successfully will automatically be entered into a randomized drawing for a study prize.  (One prize will be awarded on or before July 31, 2025. Participants who cannot be reached by email or text within 24 hours will forfeit the prize to the next selected study participant).
+
+        Make sure to submit your last entry by July 31, 2025. 
+
+        Thank you again for your participation.
 
 modules:
           
