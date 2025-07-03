@@ -17,11 +17,11 @@ description: |
         
         - `Step 3:` Complete `Set A Projects` (OSS-Fuzz) and `Set B Projects` (Fuzz Dojo) in any order. You may go back and forth between the two sets and revisit projects but advancement to the next level project within a set can only occur after the previous level has been completed.
 
-        For each study project, first run `/challenge/comments` , then run `/challenge/plan` and then create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5% or more. Participants are encouraged to improve the code as much as possible within the study duration, and projects may be revisited to continue optimization. 
+            For each study project, first run `/challenge/comments` , then run `/challenge/plan` and then create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5% or more. Participants are encouraged to improve the code as much as possible within the study duration, and projects may be revisited to continue optimization. 
 
-        See `Reference Material` for help if needed. Optional practice projects are provided under `Training Exercises`.
+            See `Reference Material` for help if needed. Optional practice projects are provided under `Training Exercises`.
 
-        The objective is to obtain flags for all four levels for both sets (8 projects total). Those who complete both level 3 projects sucessfully will be awarded a study prize. To receive the prize, please provide your contact information (email or phone) in the initial survey. Note: Participants who do not provide valid contact information or who do not respond to the prize notification within 72 hours agree to forfeit the award.
+            The objective is to obtain flags for all four levels for both sets (8 projects total). Those who complete both level 3 projects sucessfully will be awarded a study prize. To receive the prize, please provide your contact information (email or phone) in the initial survey. Note: Participants who do not provide valid contact information or who do not respond to the prize notification within 72 hours agree to forfeit the award.
 
         - `Step 4:` Complete Exit Survey at https://forms.gle/uG8yik8pXFRXQHSGA
 
