@@ -17,9 +17,9 @@ description: |
         
         - `Step 3:` Complete `Set A Projects` (OSS-Fuzz) and `Set B Projects` (Fuzz Dojo) in any order. You may go back and forth between the two sets and revisit projects but advancement to the next level project within a set can only occur after the previous level has been completed.
 
-            For each study project, first run `/challenge/comments` , then run `/challenge/plan` and then create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5% or more. Participants are encouraged to improve the code as much as possible within the study duration, and projects may be revisited to continue optimization. 
+            For each study project, after reading the suggestions in `/challenge/DESCRIPTION.md`, first run `/challenge/comments` , then run `/challenge/plan` and then create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5% or more. Participants are encouraged to improve the code as much as possible within the study duration, and projects may be revisited to continue optimization. 
 
-            See `Reference Material` for help if needed. Optional practice projects are provided under `Training Exercises`.
+            See `Videos and Reference` to get started. Optional practice projects to demonstrate additional techniques to gain code coverage are provided under `Training Exercises`.
 
             The objective is to obtain flags for all four levels for both sets (8 projects total). Those who complete both level 3 projects sucessfully will be awarded a study prize. To receive the prize, please provide your contact information (email or phone) in the initial survey. Note: Participants who do not provide valid contact information or who do not respond to the prize notification within 72 hours agree to forfeit the award.
 
@@ -80,54 +80,8 @@ modules:
         progression_locked: true
         name: Level 3 Project (Fuzz Dojo)
 
-  - id: training
-    name: Training Exercises (optional)
-    description: Learn techniques to improve the code coverage of existing fuzz drivers
-
-    challenges:
-
-      - id: 1-locate
-        name: Locate Harnesses
-        description: Locate the fuzz harnesses in a project.  Run /challenge/training in Terminal to start.
-
-      - id: 2-change
-        name: Modify a Fuzzing Harness
-        description: Make a change to a fuzzing harness.  Run /challenge/training in Terminal to start.
-
-      - id: 3-broken
-        name: Fix Broken Fuzzing Harness
-        description: Repair a broken fuzzing harness.  Run /challenge/training in Terminal to start.
-
-      - id: 4-parameters
-        name: Initial Parameters
-        description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in Terminal to start.
-
-      - id: 5-calltree
-        name: Improve Coverage Using the Call Tree
-        description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
-
-      - id: 6-split
-        name: Split Into Multiple Harness
-        description: Break large complicated fuzz drivers into multiple individual drivers.  Run /challenge/training in Terminal to start.
-
-      - id: 7-sanitizer
-        name: Correct Sanitizer Specific Problems
-        description: Identify the sanitizer that is crashing and repair it.  Run /challenge/training in Terminal to start.
-
-      - id: 8-seedcorpus
-        name: Implement Seed Corpus
-        description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
-
-      - id: 9-newdriver
-        name: Create New Fuzz Driver
-        description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
-
-      - id: 10-crash
-        name: Diagnose Crash Files
-        description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
-
   - id: help
-    name: Reference Material
+    name: Videos and Reference
     description: |
 
         Improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
@@ -269,8 +223,49 @@ modules:
       - name: "Submitting your fuzz driver to Google"
         type: lecture
         slides: 1wY-6xqYhhzf4uf272UMjHPh8KZ4sc1fjgcKuGrsa4ks
- 
-      - name: "Adding a New Project"
-        type: lecture
-        video: bevVP94a0yI
-        slides: 1tdZPEOzOKF9Lu7DKqDoauW_o6R6gaDJjVj0neemwUfI
+
+  - id: training
+    name: Training Exercises (optional)
+    description: Learn techniques to improve the code coverage of existing fuzz drivers
+
+    challenges:
+
+      - id: 1-locate
+        name: Locate Harnesses
+        description: Locate the fuzz harnesses in a project.  Run /challenge/training in Terminal to start.
+
+      - id: 2-change
+        name: Modify a Fuzzing Harness
+        description: Make a change to a fuzzing harness.  Run /challenge/training in Terminal to start.
+
+      - id: 3-broken
+        name: Fix Broken Fuzzing Harness
+        description: Repair a broken fuzzing harness.  Run /challenge/training in Terminal to start.
+
+      - id: 4-parameters
+        name: Initial Parameters
+        description: Increase code coverage by selecting better initial parameters.  Run /challenge/training in Terminal to start.
+
+      - id: 5-calltree
+        name: Improve Coverage Using the Call Tree
+        description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
+
+      - id: 6-split
+        name: Split Into Multiple Harness
+        description: Break large complicated fuzz drivers into multiple individual drivers.  Run /challenge/training in Terminal to start.
+
+      - id: 7-sanitizer
+        name: Correct Sanitizer Specific Problems
+        description: Identify the sanitizer that is crashing and repair it.  Run /challenge/training in Terminal to start.
+
+      - id: 8-seedcorpus
+        name: Implement Seed Corpus
+        description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
+
+      - id: 9-newdriver
+        name: Create New Fuzz Driver
+        description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
+
+      - id: 10-crash
+        name: Diagnose Crash Files
+        description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.

