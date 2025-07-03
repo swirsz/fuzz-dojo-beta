@@ -9,22 +9,26 @@ image: stevenwirsz/fuzz-dojo:latest
 
 description: |
 
-        Welcome and thank you for your participation in this study which advances cybersecurity research. Your help is greatly appreciated. Those who complete level 3 for both project sets will automatically be entered into a random drawing for a study prize. (To be considered for the prize please provide your contact email or phone number in the initial survey.)
+        Welcome and thank you for your participation in this study which advances cybersecurity research. Your help is greatly appreciated!  
 
+       		Please follow the steps below:
+		
+		Step 1: Complete Initial Survey https://forms.gle/FWF1iEn9pLpkRMGq9
+        
+        Step 2: Complete the Consent Form (see Modules below)
+        
+        Step 3: Complete `Set A Projects` and `Set B Projects`. You may go back and forth between the two sets but advancement to the next level can only occur after the previous level has been completed.
 
-        Step 1: Complete Initial Survey https://forms.gle/FWF1iEn9pLpkRMGq9
-
-        Step 2: Complete the Consent Challenge
-
-        Step 3: For each study project, first run `/challenge/comments` and then run `/challenge/plan` and then create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5% or more.
-
-        Using the reference information and practice exercises as necessary, complete all study projects in both sets of challenges in any order.  You may go back and forth between the two sets, but you cannot advance to the next level until the previous level has been completed.
-
-        The objective is to complete level 3 projects for both sets. Those who do so successfully will automatically be entered into a randomized drawing for a study prize.  (One prize will be awarded at study completion. Participants who do not respond to email or text within 24 hours will forfeit the prize to the next selected study participant).
-
-        Step 4: Complete Exit Survey https://forms.gle/uG8yik8pXFRXQHSGA
-
-        All entries must be submitted by xxxxxxx.
+		For each study project, first run `/challenge/comments` , then run `/challenge/plan` and then create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5% or more.
+		
+		See `References Material` for help if needed. Optional practice projects are provided under `Training Exercises`.
+		
+		The objective is to complete all levels for both sets. Those who complete both level 3 projects sucessfully will be automatically entered into a randomized drawing for a study prize. To be considered please provide your contact information (email or phone) in the initial survey. Note: One prize will be awarded at study completion. Participants who do not respond to the prize notification within 24 hours will forfeit the prize to the next selected study participant.
+		
+		Step 4: Complete Exit Survey https://forms.gle/uG8yik8pXFRXQHSGA
+		
+		All entries must be submitted by August 31, 2025.
+		
 
 modules:
 
@@ -39,7 +43,7 @@ modules:
         description:  Run /challenge/run in Terminal to start.
 
   - id: research-oss
-    name: Set A OSS-Fuzz Projects
+    name: Set A Projects OSS-Fuzz
     
     challenges:
 
@@ -59,7 +63,7 @@ modules:
         name: Level 3 Project (OSS-Fuzz)
 
   - id: research-fd
-    name: Set B Fuzz Dojo Projects
+    name: Set B Projects Fuzz Dojo
     
     challenges:
 
@@ -125,7 +129,7 @@ modules:
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
   - id: help
-    name: Help (Reference Material)
+    name: Reference Material
     description: |
 
         Improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
