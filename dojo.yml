@@ -40,48 +40,8 @@ modules:
         name: Consent
         description:  Run /challenge/run in Terminal to start.
 
-  - id: research-oss
-    name: Set A Projects OSS-Fuzz
-    
-    challenges:
-
-      - id: level0-oss
-        name: Level 0 Project (OSS-Fuzz)
-
-      - id: level1-oss
-        progression_locked: true
-        name: Level 1 Project (OSS-Fuzz)
-
-      - id: level2-oss
-        progression_locked: true
-        name: Level 2 Project (OSS-Fuzz)
-
-      - id: level3-oss
-        progression_locked: true
-        name: Level 3 Project (OSS-Fuzz)
-
-  - id: research-fd
-    name: Set B Projects Fuzz Dojo
-    
-    challenges:
-
-      - id: level0-fd
-        name: Level 0 Project (Fuzz Dojo)
-
-      - id: level1-fd
-        progression_locked: true
-        name: Level 1 Project (Fuzz Dojo)
-
-      - id: level2-fd
-        progression_locked: true
-        name: Level 2 Project (Fuzz Dojo)
-
-      - id: level3-fd
-        progression_locked: true
-        name: Level 3 Project (Fuzz Dojo)
-
   - id: training
-    name: Videos and Reference
+    name: Training
     description: |
 
         Improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
@@ -267,3 +227,44 @@ modules:
       - id: 10-crash
         name: Diagnose Crash Files
         description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
+
+  - id: research-oss
+    name: Set A Projects OSS-Fuzz
+    
+    challenges:
+
+      - id: level0-oss
+        name: Level 0 Project (OSS-Fuzz)
+
+      - id: level1-oss
+        progression_locked: true
+        name: Level 1 Project (OSS-Fuzz)
+
+      - id: level2-oss
+        progression_locked: true
+        name: Level 2 Project (OSS-Fuzz)
+
+      - id: level3-oss
+        progression_locked: true
+        name: Level 3 Project (OSS-Fuzz)
+
+  - id: research-fd
+    name: Set B Projects Fuzz Dojo
+    
+    challenges:
+
+      - id: level0-fd
+        name: Level 0 Project (Fuzz Dojo)
+
+      - id: level1-fd
+        progression_locked: true
+        name: Level 1 Project (Fuzz Dojo)
+
+      - id: level2-fd
+        progression_locked: true
+        name: Level 2 Project (Fuzz Dojo)
+
+      - id: level3-fd
+        progression_locked: true
+        name: Level 3 Project (Fuzz Dojo)
+
