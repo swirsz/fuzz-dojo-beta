@@ -3,7 +3,7 @@ id: fuzz
 name: Fuzz Dojo
 
 award:
-  emoji: 🥼
+  emoji: 🐇
 
 image: stevenwirsz/fuzz-dojo:latest
 
@@ -80,7 +80,7 @@ modules:
         progression_locked: true
         name: Level 3 Project (Fuzz Dojo)
 
-  - id: help
+  - id: training
     name: Videos and Reference
     description: |
 
@@ -179,6 +179,8 @@ modules:
         - [**OSS-Fuzz**: Interesting fuzz driver creation case studies](https://github.com/ossf/fuzz-introspector/blob/main/doc/CaseStudies.md)
         - [**GITHUB**: How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
         - [Keyword Search all OSS-Fuzz fuzz drivers](https://github.com/search?q=repo%3Agoogle%2Foss-fuzz+path%3A%2F%5Eprojects%5C%2F%2F++AND+%28language%3AC%2B%2B+OR+language%3AC%29&type=code)
+        
+        Learn techniques to improve the code coverage of existing fuzz drivers
 
     resources:
         
@@ -223,10 +225,6 @@ modules:
       - name: "Submitting your fuzz driver to Google"
         type: lecture
         slides: 1wY-6xqYhhzf4uf272UMjHPh8KZ4sc1fjgcKuGrsa4ks
-
-  - id: training
-    name: Training Exercises (optional)
-    description: Learn techniques to improve the code coverage of existing fuzz drivers
 
     challenges:
 
