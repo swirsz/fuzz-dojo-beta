@@ -6,6 +6,9 @@ import shutil
 import subprocess
 import re  
 
+with open("/etc/bash.bashrc", "a") as f:
+    f.write("source /usr/local/sbin/ossfuzz\n")
+    
 result = subprocess.run(["findmnt", "-n", "--raw", "-o", "SOURCE", "/home/hacker"], capture_output=True, text=True)
 brackets = re.findall(r'\[([^\]]*)\]', result.stdout)
 Dojo_User_Id = int(re.findall(r'\d+', brackets[0])[0]) if brackets else None

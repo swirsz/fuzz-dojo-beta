@@ -140,7 +140,7 @@ modules:
         - [**GITHUB**: How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
         - [Keyword Search all OSS-Fuzz fuzz drivers](https://github.com/search?q=repo%3Agoogle%2Foss-fuzz+path%3A%2F%5Eprojects%5C%2F%2F++AND+%28language%3AC%2B%2B+OR+language%3AC%29&type=code)
         
-        Learn techniques to improve the code coverage of existing fuzz drivers
+        The challenges below will demonstrate techniques to improve the code coverage of existing fuzz drivers
 
     resources:
         
