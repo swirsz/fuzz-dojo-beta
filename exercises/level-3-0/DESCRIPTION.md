@@ -1,2 +1,1 @@
-Simple Fuzz-Dojo Project
-
+Medium Difficulty Project
