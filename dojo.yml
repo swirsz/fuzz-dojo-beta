@@ -233,27 +233,27 @@ modules:
     
     challenges:
 
-      - id: level0-oss
+      - id: level1.0
         name: Level 1.0
 
-      - id: level0-fd
+      - id: level1.1
         name: Level 1.1
 
-      - id: level1-oss
+      - id: level2.0
         name: Level 2.0
 
-      - id: level1-fd
+      - id: level2.1
         name: Level 2.1
 
-      - id: level2-oss
+      - id: level3.0
         name: Level 3.0
 
-      - id: level2-fd
+      - id: level3.1
         name: Level 3.1
 
-      - id: level3-oss
+      - id: level4.0
         name: Level 4.0
 
-      - id: level3-fd
+      - id: level4.1
         name: Level 4.1
 
