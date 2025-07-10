@@ -14,6 +14,7 @@ random.seed(Dojo_User_Id+3411)
 study = 'fd' if random.randint(0, 1) == 0 else 'oss'
 
 if study == 'oss':
+    unused_random_float = random.random()
     with open("/etc/bash.bashrc", "a") as f:
         f.write("source /usr/local/sbin/ossfuzz\n")
     
