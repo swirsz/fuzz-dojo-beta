@@ -1,0 +1,60 @@
+#!/opt/pwn.college/bash
+if [ "$?" -gt 0 ]; then
+    exit 1
+fi
+export LABEL=$1
+export PROJECT_NAME=xvid
+export SANITIZER=$1
+. /usr/local/sbin/e
+if [ -z "$SANITIZER" ]; then
+    export SANITIZER='none'
+    export LABEL='none'$LABEL
+fi
+
+if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
+    #apt-get update && apt-get install -y make autoconf automake libtool subversion
+    #svn checkout http://svn.xvid.org/trunk --username anonymous --password "" --non-interactive --no-auth-cache
+    #git clone --depth 1 https://github.com/guidovranken/fuzzing-headers.git
+    #git clone --depth 1 https://github.com/guidovranken/oss-fuzz-fuzzers.git
+
+    cp -r /downloads/trunk $SRC
+    cp -r /downloads/fuzzing-headers $SRC
+    cp -r /downloads/oss-fuzz-fuzzers $SRC
+
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+#----------------------------------------------------------------------
+    build-cleanup-oss
+fi
+build-srcfolders
+if [ "$4" == "skip" ]; then
+    chown -hR hacker:hacker /src-$LABEL /out
+    rm -rf /tmp/build.lck
+else
+    mv /src-$LABEL /src
+
+    cd /src
+    rm -rf xvidcore-install
+
+    if [ "$4" = "understanding" ]; then
+        understanding_oss $2 $3
+    elif [ "$4" = "planning" ]; then
+        planning $2 $3
+    else
+        if [ $(echo -n "$2" | sha256sum | cut -d' ' -f1) != "2ed73ee0d7ad2fd8b8e57fc154cfc26f3948ed32b2844b34479333e5b07712a5" ]; then
+            oss_help
+            rm -rf /tmp/build.lck
+            mv /src /src-$LABEL
+            exit 1
+        elif [ "$3" != "$PROJECT_NAME" ]; then
+            echo "[ERROR] Project $3 not available in this challenge"
+            rm -rf /tmp/build.lck
+            mv /src /src-$LABEL
+            exit 1
+        fi
+        fuzzlog_oss $SRC/oss-fuzz-fuzzers/xvid/*
+        compile
+        drivers > /dev/null
+    fi
+    mv /src /src-$LABEL
+fi
