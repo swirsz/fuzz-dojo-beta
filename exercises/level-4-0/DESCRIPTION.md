@@ -1,1 +1,1 @@
-Complex Difficulty Project
+Complex Difficulty Project - see /challenge/DESCRIPTION.md for details

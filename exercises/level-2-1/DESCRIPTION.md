@@ -1,1 +1,1 @@
-Simple Difficulty Project
+Simple Difficulty Project - see /challenge/DESCRIPTION.md for details
