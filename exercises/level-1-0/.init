@@ -6,7 +6,22 @@ import shutil
 import subprocess
 import re  
 
-with open("/etc/bash.bashrc", "a") as f:
-    f.write("source /usr/local/sbin/ossfuzz\n")
+result = subprocess.run(["findmnt", "-n", "--raw", "-o", "SOURCE", "/home/hacker"], capture_output=True, text=True)
+brackets = re.findall(r'\[([^\]]*)\]', result.stdout)
+Dojo_User_Id = int(re.findall(r'\d+', brackets[0])[0]) if brackets else None
+
+random.seed(Dojo_User_Id)
+study = 'fd' if random.randint(0, 1) == 1 else 'oss'
+
+if study == 'oss':
+    with open("/etc/bash.bashrc", "a") as f:
+        f.write("source /usr/local/sbin/ossfuzz\n")
     
+path = Path(f'/challenge/study-{study}')
+
+for file in path.iterdir():
+    shutil.move(str(file), f"/challenge/{file.name}")
+
 Path(__file__).unlink()
+shutil.rmtree(f'/challenge/study-fd')
+shutil.rmtree(f'/challenge/study-oss')
