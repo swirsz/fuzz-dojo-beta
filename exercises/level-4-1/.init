@@ -10,14 +10,14 @@ result = subprocess.run(["findmnt", "-n", "--raw", "-o", "SOURCE", "/home/hacker
 brackets = re.findall(r'\[([^\]]*)\]', result.stdout)
 Dojo_User_Id = int(re.findall(r'\d+', brackets[0])[0]) if brackets else None
 
-random.seed(Dojo_User_Id*Dojo_User_Id*Dojo_User_Id)
+random.seed(Dojo_User_Id*1337)
 unused_random_float = random.random()
 unused_random_float = random.random()
 unused_random_float = random.random()
 study = 'fd' if random.randint(0, 1) == 0 else 'oss'
 
 if study == 'oss':
-    random.seed(Dojo_User_Id*Dojo_User_Id)
+    random.seed(Dojo_User_Id*7331)
     with open("/etc/bash.bashrc", "a") as f:
         f.write("source /usr/local/sbin/ossfuzz\n")
     
