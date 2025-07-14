@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=wasm3
+export PROJECT_NAME=kamailio
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,9 +13,10 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && apt-get install -y make
-    #git clone --depth 1 https://github.com/wasm3/wasm3
-    cp -r /downloads/wasm3 $SRC
+    rm -rf $SRC/$PROJECT_NAME
+    #apt-get update && apt-get install -y bison flex
+    #git clone https://github.com/kamailio/kamailio
+    cp -r /downloads/kamailio $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 #----------------------------------------------------------------------
@@ -45,7 +46,7 @@ else
             mv /src /src-$LABEL
             exit 1
         fi
-        fuzzlog_oss $SRC/wasm3/platforms/app_fuzz/*.c
+        fuzzlog_oss $SRC/$PROJECT_NAME/fuzz/*
         compile
         drivers > /dev/null
     fi

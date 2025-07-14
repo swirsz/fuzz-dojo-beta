@@ -1,8 +1,8 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/opensips/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/fmt/inspector-report/20250411/fuzz_report.html
 
-Opensips is a (Session Initiation Protocol) server, also known as a SIP proxy server, is the central hub in a VoIP system that manages and directs all SIP-based communication, including calls, messages, and video streams, between two or more participants.  SIP servers have many  independent functions, such as: initiation termination, call routing, authentication and encryption, load-balancing, codec negotiation, session management, and many other features.  4 current fuzz drivers only reach a few of the modules and about 13% of the code.
+{fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams.
 
-This is a large project with many different independent modules, each with their own readme and functionality. https://github.com/OpenSIPS/opensips/tree/master/modules   A majority of these modules have 0% code coverage.
+7 fuzz drivers cover 80% of the project code, which is composed of hundreds of mostly independent functions. There are still a few uncovered functions, such as copy_fill_from, constexpr auto count(), write_codecvt, do_write, write, operator functions, and many more.

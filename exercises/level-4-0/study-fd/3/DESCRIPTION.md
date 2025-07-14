@@ -1,6 +1,8 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvnc
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/libvpx/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/libvnc/inspector-report/20250411/fuzz_report.html
 
-Libvpx is a free software video codec library that serves as the reference software implementation for the VP8 and VP9 video coding formats, and for AV1.  It has 2 decoding fuzz drivers, one for VP8 and another for VP9 that reaches 60% of the code.  The source code includes hundreds of unit tests in /test and additional code under /examples that could be turned into new fuzz drivers.
+LibVNCServer/LibVNCClient are cross-platform C libraries that allow you to easily implement VNC server or client functionality in your program. It has a single fuzz driver that fuzzes the server code and reaches 19% of the project's code.  
+
+Many components of this library are completely untouched, such as websocket code.  Roughly more than two thirds of the functions in main.c exhibit high complexity and are also not touched.

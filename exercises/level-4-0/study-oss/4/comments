@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "exiv2/fuzz" understanding
+/challenge/build none c "liblouis/tests/fuzzing" understanding

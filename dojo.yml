@@ -259,7 +259,7 @@ modules:
 
 
   - id: projects
-    name: OSS-Fuzz Projects
+    name: All Projects
 
     challenges:
 

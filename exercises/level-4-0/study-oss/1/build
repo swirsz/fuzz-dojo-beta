@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=aspell-fuzz
+export PROJECT_NAME=c-ares
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,19 +13,12 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #RUN git clone --depth 1 https://github.com/gnuaspell/aspell.git $SRC/aspell
-    #RUN git clone --depth 1 -b master https://github.com/gnuaspell/aspell-fuzz.git $SRC/aspell-fuzz
+    #apt-get update && apt-get install -y make autoconf automake libtool
+    #git clone --depth 1 https://github.com/c-ares/c-ares.git
+    cp -r /downloads/c-ares $SRC
+    export OLD_LLVMPASS=1
 
-    #WORKDIR $SRC/aspell-fuzz
-    #COPY build.sh $SRC/
-
-    cp -r /downloads/aspell $SRC
-    cp -r /downloads/aspell-fuzz $SRC
-
-    cp /downloads/aspell*.bz2 /tmp
-
-    cp /opt/oss-fuzz/projects/aspell/build.sh $SRC/
-    patch -tuN $SRC/$PROJECT_NAME/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi
@@ -53,7 +46,7 @@ else
             mv /src /src-$LABEL
             exit 1
         fi
-        fuzzlog_oss $SRC/$PROJECT_NAME/*.cpp
+        fuzzlog_oss $SRC/$PROJECT_NAME/test/*.c
         compile
         drivers > /dev/null
     fi

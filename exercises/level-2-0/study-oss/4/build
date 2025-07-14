@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=guetzli
+export PROJECT_NAME=tmux
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,22 +13,33 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    echo
     echo Installing pre-reqs for $PROJECT_NAME
     echo
-    #apt-get update && apt-get install -y make autoconf automake libtool libpng-dev pkg-config curl
-
-    #mkdir afl-testcases
-    #cd afl-testcases/ && curl https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz | tar -xz
+    sleep 2
     cd $SRC
-    cp -r /downloads/afl-testcases $SRC
+    #apt-get update && apt-get install -y autoconf automake bison pkg-config ncurses-dev libtool
+    #rm -rf libevent
+    #rm -rf tmux
+    #rm -rf /work
+    mkdir -p /work && chmod a+rwx /work
 
-    zip guetzli_fuzzer_seed_corpus.zip afl-testcases/jpeg/full/images/* afl-testcases/jpeg_turbo/full/images/*
+    #git clone https://github.com/libevent/libevent.git
+    cp -r /downloads/libevent $SRC
+    cd libevent && \
+    mkdir build && \
+    cd build && \
+    cmake -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_OPENSSL=ON -DEVENT__LIBRARY_TYPE=STATIC ../ && \
+    make && make install
+    
+    #git clone --depth 1 https://github.com/tmux/tmux.git
+    #git clone --depth 1 https://github.com/tmux/tmux-fuzzing-corpus.git
+    cp -r /downloads/tmux $SRC
+    cp -r /downloads/tmux-fuzzing-corpus $SRC
 
-    #git clone --depth=1 https://github.com/google/guetzli 
-    cp -r /downloads/guetzli $SRC
-    cd /
+    cp -r $SRC /out
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+    cd /
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi
@@ -56,7 +67,7 @@ else
             mv /src /src-$LABEL
             exit 1
         fi
-        fuzzlog_oss $SRC/$PROJECT_NAME/*.cc
+        fuzzlog_oss $SRC/$PROJECT_NAME/fuzz/*
         compile
         drivers > /dev/null
     fi

@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=json
+export PROJECT_NAME=unrar
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,18 +13,16 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && apt-get install -y binutils make
-    rm -rf $PROJECT_NAME
-    #git clone --depth 1 -b develop https://github.com/nlohmann/json.git
-    cp -r /downloads/json $SRC
+    #apt-get update && apt-get install -y make build-essential
 
-    # This is to fix Fuzz Introspector build by using LLVM old pass manager
-    # re https://github.com/ossf/fuzz-introspector/issues/305
-    export OLD_LLVMPASS=1
+    #git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
+    rm -rf  $SRC/unrar
+    cp -r /downloads/unrar $SRC/
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/parse_afl_fuzzer.dict $SRC/
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+    chmod 755 $SRC/build.sh
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi
@@ -52,7 +50,7 @@ else
             mv /src /src-$LABEL
             exit 1
         fi
-        fuzzlog_oss $SRC/$PROJECT_NAME/tests$SRC/fuzzer*.cpp
+        fuzzlog_oss $SRC/$PROJECT_NAME/*.cc
         compile
         drivers > /dev/null
     fi

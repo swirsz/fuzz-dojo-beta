@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cc "unrar" understanding
+/challenge/build none c "opensips/test/fuzz" understanding

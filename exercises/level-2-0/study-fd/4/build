@@ -4,7 +4,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=arduinojson
+export PROJECT_NAME=lighttpd1.4
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -13,18 +13,16 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && apt-get install -y make zip git
     rm -rf $SRC/$PROJECT_NAME
-    #git clone --depth 1 https://github.com/bblanchon/ArduinoJson.git arduinojson
-    cp -r /downloads/arduinojson $SRC
+    #apt-get update && apt-get install -y libz-dev libpcre2-dev libtool pkg-config autoconf
+    #git clone https://github.com/lighttpd/lighttpd1.4
+    cp -r /downloads/lighttpd1.4 $SRC
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/lighttpd/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/lighttpd/fuzz_* $SRC/
+    cp $SRC/fuzz_burl.c $SRC/fuzz_new.c
 
-    patch -tuN $SRC/$PROJECT_NAME/extras/fuzzing/Makefile -i /challenge/.Makefile.patch -r -
-    patch -tuN $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
-    cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_corpus
-    cp -r $SRC/$PROJECT_NAME/extras/fuzzing/json_seed_corpus $SRC/$PROJECT_NAME/extras/fuzzing/new_seed_corpus
-    cp $SRC/$PROJECT_NAME/extras/fuzzing/json_fuzzer.cpp $SRC/$PROJECT_NAME/extras/fuzzing/new_fuzzer.cpp
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
     build-cleanup
 fi
@@ -35,14 +33,10 @@ cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/extras/fuzzing/CMakeLists.txt /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt
-   cp $SRC/$PROJECT_NAME/extras/fuzzing/Makefile /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile
-   cp $SRC/$PROJECT_NAME/extras/fuzzing/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/extras/fuzzing
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/extras/fuzzing
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile $SRC/$PROJECT_NAME/extras/fuzzing
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------

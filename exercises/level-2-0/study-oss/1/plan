@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cc "." planning
+/challenge/build cpp "exiv2/fuzz" planning

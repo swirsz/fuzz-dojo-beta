@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "valijson/tests/fuzzing" planning
+/challenge/build none cc "libvpx/examples" planning

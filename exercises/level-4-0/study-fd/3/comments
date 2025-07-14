@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cc "libvpx/examples" understanding
+/challenge/build none c "libvncserver/test" understanding

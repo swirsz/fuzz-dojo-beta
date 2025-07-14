@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=minizip
+export PROJECT_NAME=alembic
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,11 +13,22 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
-    #git clone -b develop https://github.com/zlib-ng/minizip-ng minizip
-    cp -r /downloads/minizip $SRC
+    #apt-get update && apt-get install -y build-essential zlib1g-dev zlib1g-dev:i386 python make automake
+    #git clone --depth 1 https://github.com/alembic/alembic
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
+    # Ubuntu's libilmbase-dev package doesn't include static libraries, so we have
+    # to build OpenEXR from source.
+    #RUN git clone -b v2.5.9 --depth 1 https://github.com/AcademySoftwareFoundation/openexr
+
+    #COPY build.sh *.h *.cc $SRC/
+    #WORKDIR $WORK/
+
+    cp -r /downloads/alembic $SRC
+    cp -r /downloads/openexr $SRC
+
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.h $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi
@@ -45,7 +56,7 @@ else
             mv /src /src-$LABEL
             exit 1
         fi
-        fuzzlog_oss $SRC/$PROJECT_NAME/test/fuzz/*.c
+        fuzzlog_oss $SRC/*.cc
         compile
         drivers > /dev/null
     fi

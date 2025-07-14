@@ -4,7 +4,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=janus-gateway
+export PROJECT_NAME=boost
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -13,36 +13,40 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    cd $SRC/
-    #apt-get update && apt-get install -y autoconf autoconf-archive automake gengetopt gtk-doc-tools libconfig-dev libglib2.0-dev libgnutls28-dev libini-config-dev libjansson-dev libnice-dev libssl-dev libtool openssl pkg-config
-
-    # install libsrtp dep from source
-    #git clone --single-branch --branch 2_2_x_throttle https://github.com/cisco/libsrtp.git libsrtp
-    cp -r /downloads/libsrtp $SRC
-
-    cd libsrtp && ./configure --enable-openssl && make -j$(nproc) shared_library && make install
-    cd $SRC/
-    # fetch Janus code
-    # git clone --single-branch --branch master https://github.com/meetecho/janus-gateway.git
-    cp -r /downloads/janus-gateway $SRC/
-    cp $SRC/$PROJECT_NAME/fuzzers/rtcp_fuzzer.c $SRC/$PROJECT_NAME/fuzzers/newfuzzer.c
-
-    cd /
+    rm -rf $SRC/$PROJECT_NAME
+    echo Please wait, copying install files
+    #apt-get update && apt-get install -y g++ python
+    #git clone --recursive https://github.com/boostorg/boost.git
+    cp -r /downloads/boost $SRC
+    # This is to fix Fuzz Introspector build by using LLVM old pass manager
+    # re https://github.com/ossf/fuzz-introspector/issues/305
+    #export OLD_LLVMPASS=1
+    # Preferably, move boost_regex_fuzzer.cc to the boost repository.
+    #COPY build.sh *.zip *.cc $SRC/
+    
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.zip $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+    cp $SRC/boost_regex_fuzzer.cc $SRC/boost_new_fuzzer.cc
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+
 #----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
 
-cd $SRC/
+cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/fuzzers/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   #cp $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/fuzzers
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
+   #cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------

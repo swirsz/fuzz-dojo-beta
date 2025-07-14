@@ -1,8 +1,6 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=alembic
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/alembic/inspector-report/20250514/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/minizip/inspector-report/20250411/fuzz_report.html
 
-Alembic is an open framework for storing and sharing scene data that includes a C++ library, a file format, and client plugins and applications.
-
-Alembic has only a single fuzz driver that is shown as blocked by static analysis, reaching almost no code at all.  Dynamic analysis shows 10% coverage, with lots of potential for new fuzz drivers.
+Minizip-ng is a zip manipulation library written in C.  It has a zipping and unzipping fuzz drivers reaching 71% code coverage.  Stream functioning and encryption functionality is not well fuzzed.

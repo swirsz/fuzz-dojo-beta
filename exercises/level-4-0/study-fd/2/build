@@ -4,7 +4,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=openjpeg
+export PROJECT_NAME=igraph
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -13,33 +13,37 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    echo Please wait, initial copy
-    #apt-get update && apt-get install -y make cmake g++
-    rm -rf $SRC/openjpeg/data
-    rm -rf $SRC/openjpeg/build
-    #git clone --depth 1 https://github.com/uclouvain/openjpeg
-    cp -r /downloads/openjpeg $SRC
-    cp -r /downloads/data $SRC
+    #apt-get update && apt-get install -y cmake bison flex
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-    cp $SRC/$PROJECT_NAME/tests/fuzzers/opj_decompress_fuzzer_J2K.cpp $SRC/$PROJECT_NAME/tests/fuzzers/newfuzzer.cpp
+    #git clone --branch master  https://github.com/igraph/igraph
+
+    cp -r /downloads/igraph $SRC
+    cp $SRC/$PROJECT_NAME/fuzzing/build.sh $SRC/
+
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    patch -tuN $SRC/openjpeg/tests/fuzzers/build_seed_corpus.sh -i /challenge/.build_seed_corpus.patch -r -
 #----------------------------------------------------------------------
-    build-cleanup
+    build-cleanup2
+    mv /src /src-orig    
 fi
 build-srcfolders
 mv /src-$LABEL /src
-rm -rf $SRC/$PROJECT_NAME/build
+rm -rf $SRC/igraph
+rm -rf $SRC/libxml2-2.14.0
+rm -rf $SRC/deps
+
+cp -r /downloads/igraph $SRC
+cp /downloads/libxml2-2.14.2.tar.xz $SRC
+patch -tuN $SRC/igraph/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
+cp $SRC/$PROJECT_NAME/fuzzing/write_all_gml.cpp $SRC/$PROJECT_NAME/fuzzing/newfuzzer.cpp
 
 cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/tests/fuzzers/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/fuzzing/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/tests/fuzzers
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/fuzzing
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
@@ -53,4 +57,3 @@ else
     drivers
 fi
 mv /src /src-$LABEL
-

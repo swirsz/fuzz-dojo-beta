@@ -1,8 +1,8 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsass
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=usbguard
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/libsass/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/usbguard/inspector-report/20250411/fuzz_report.html
 
-Libsaas is a C++ port of the original Ruby Sass CSS compiler with a C API.  
+USBGuard is a software framework for implementing USB device authorization policies. 3 fuzz drivers reach 41% of the project code.  97% static code coverage indicates that large sections of the code could possibly be called by these existing fuzz drivers but currently is not.
 
-This project has 30% total code coverage.  Currently has a single partially broken fuzz driver. There are lots of parsing functions with no code coverage. Likely to need a good CSS dictionary/corpus for effective fuzzing.
+For example, the appliesToWithConditions, a function in RulePrivate.cpp that checks if a rule applies to a given device with additional conditions is mostly untested.
