@@ -1,3 +1,7 @@
+###
+### Welcome to a OSS-Fuzz Challenge
+###
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=guetzli
 
 Fuzz Introspector
