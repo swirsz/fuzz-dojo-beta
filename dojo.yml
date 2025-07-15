@@ -270,7 +270,7 @@ modules:
         name: APACHE-HTTPD - medium 48312 loc 12%-14%-6% - 5.5 min
 
       - id: arduinojson
-        name: ARDUINOJSON - simple 3599 loc 49%-49%-99% - 1 min
+        name: (D) ARDUINOJSON - simple 3599 loc 99%-99%-99% - 1 min
 
       - id: args
         name: ARGS - simple 1796 loc 22%-22%-47% - 3 min

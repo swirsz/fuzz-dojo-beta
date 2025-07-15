@@ -13,6 +13,9 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
+    echo Installing pre-reqs for $PROJECT_NAME
+    echo
+    sleep 2
     #apt-get update && apt-get install -y make autoconf automake libtool wget uuid-dev pkg-config libtool-bin libbsd-dev
 
     #git clone https://github.com/PCRE2Project/pcre2 pcre2 && \
@@ -50,7 +53,7 @@ if [ "$4" == "skip" ]; then
 else
     mv /src-$LABEL /src
 
-    cd $SRC/$PROJECT_NAME
+    cd $SRC/httpd
     if [ "$4" = "understanding" ]; then
         understanding_oss $2 $3
     elif [ "$4" = "planning" ]; then
@@ -61,13 +64,13 @@ else
             rm -rf /tmp/build.lck
             mv /src /src-$LABEL
             exit 1
-        elif [ "$3" != "$PROJECT_NAME" ]; then
+        elif [ "$3" != "httpd" ]; then
             echo "[ERROR] Project $3 not available in this challenge"
             rm -rf /tmp/build.lck
             mv /src /src-$LABEL
             exit 1
         fi
-        fuzzlog_oss $SRC/$PROJECT_NAME/fuzz/*
+        fuzzlog_oss $SRC/httpd/fuzz/*
         compile
         drivers > /dev/null
     fi
