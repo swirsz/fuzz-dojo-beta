@@ -32,7 +32,7 @@ if [ "$4" == "skip" ]; then
 else
     mv /src-$LABEL /src
 
-    cd $SRC/$PROJECT_NAME
+    cd $SRC/$PROJECT_NAME/Source
     if [ "$4" = "understanding" ]; then
         understanding_oss $2 $3
     elif [ "$4" = "planning" ]; then
