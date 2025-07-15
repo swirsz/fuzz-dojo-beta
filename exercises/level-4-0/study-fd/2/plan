@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "igraph/fuzzing" planning
+/challenge/build none c "." planning

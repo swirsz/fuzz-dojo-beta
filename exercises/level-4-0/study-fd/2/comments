@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "igraph/fuzzing" understanding
+/challenge/build none c "." understanding

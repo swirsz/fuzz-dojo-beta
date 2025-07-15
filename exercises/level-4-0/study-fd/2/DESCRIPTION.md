@@ -2,11 +2,11 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=igraph
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/igraph/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/zlib/inspector-report/20250411/fuzz_report.html
 
-Igraph is a C library for complex network analysis and graph theory, with emphasis on efficiency, portability and ease of use.
+Zlib is a general purpose data compression library. It has 10 different fuzz drivers that reach 80% of the project's code, and 87% of the project's cyclomatic complexity.
 
-25 fuzz drivers cover 60% of the project code.  Certain areas such as linear algebra functions have 0% coverage.
+The deflate slow and deflate fast functions have some untouched sections of code.
