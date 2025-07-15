@@ -1,10 +1,8 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=arduinojson 
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/arduinojson/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/kamailio/inspector-report/20250411/fuzz_report.html
 
-ArduinoJson is a C++ JSON library
+Kamailio is used by large Internet Service Providers to provide public telephony service as a SIP Server.
 
-Fuzz introspective reports that it has 99.51% static reachability, but only 49% actual coverage is being reached by the 2 existing fuzz drivers.
-
-Plenty of functions in the code coverage report show 0% coverage, and these would be ideal to call with a new fuzz driver.
+It currently uses 2 fairly simple fuzz drivers with 10% total code coverage.   There are many unfuzzed functions with huge unreached code complexity such as "main2" & "yyparse"

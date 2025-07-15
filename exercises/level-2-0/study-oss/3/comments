@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none c "kamailio/misc/fuzz" understanding
+/challenge/build none c "wasm3/platforms/app_fuzz" understanding
