@@ -47,7 +47,7 @@ else
             rm -rf /tmp/build.lck
             mv /src /src-$LABEL
             exit 1
-        elif [ "$3" != "$PROJECT_NAME" ]; then
+        elif [ "$3" != "aspell" ]; then
             echo "[ERROR] Project $3 not available in this challenge"
             rm -rf /tmp/build.lck
             mv /src /src-$LABEL
