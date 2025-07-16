@@ -16,7 +16,7 @@ unused_random_float = random.random()
 unused_random_float = random.random()
 study = 'fd' if random.randint(0, 1) == 1 else 'oss'
 
-study = 'fd'
+study = 'oss'
 
 if study == 'oss':
     random.seed(Dojo_User_Id*7331)
@@ -27,7 +27,7 @@ path = Path(f'/challenge/study-{study}')
 count = sum(1 for item in os.listdir(path) if item.isdigit() and (path / item).is_dir())
 
 #subdir = path / str(random.randint(0, count-1))
-subdir = path / str("5")
+subdir = path / str("1")
 
 for file in subdir.iterdir():
     shutil.move(str(file), f"/challenge/{file.name}")
