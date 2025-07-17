@@ -36,7 +36,6 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/tmux $SRC
     cp -r /downloads/tmux-fuzzing-corpus $SRC
 
-    cp -r $SRC /out
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
     cd /
