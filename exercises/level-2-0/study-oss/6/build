@@ -13,6 +13,8 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
+    echo Installing pre-reqs for $PROJECT_NAME
+    echo
     #apt-get update && apt-get install -y make autoconf automake ffmpeg libtool pkg-config python3 wget
     #python3 -m pip install corpus-replicator
     #git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
