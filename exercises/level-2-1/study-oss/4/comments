@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cc "guetzli" understanding
+/challenge/build none c "tmux/fuzz" understanding

@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none c "tmux/fuzz" planning
+/challenge/build none cpp "json/tests/src" planning

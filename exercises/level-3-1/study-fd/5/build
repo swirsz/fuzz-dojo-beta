@@ -4,42 +4,46 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=libpng
+export PROJECT_NAME=mpg123
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
     export LABEL='none'$LABEL
 fi
 
-if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && \
-    #    apt-get install -y make autoconf automake libtool zlib1g-dev
+rm -rf $SRC/$PROJECT_NAME
+cd $SRC
+#apt-get update && apt-get install -y make autoconf automake libtool wget bzip2
+#wget https://www.mpg123.de/snapshot
+cp /downloads/snapshot/* $SRC
+tar -xvf snapshot
+mv mpg123* mpg123
 
-    #git clone --depth 1 https://github.com/madler/zlib.git
-    #git clone --depth 1 https://github.com/pnggroup/libpng.git
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/read_fuzzer.c $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/decode_fuzzer.cc $SRC/
+cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+mkdir -p /src-orig
+cp $SRC/*.c* /src-orig
 
-    cp -r /downloads/zlib $SRC
-    cp -r /downloads/libpng $SRC
-
-    cp $SRC/libpng/contrib/oss-fuzz/build.sh $SRC
-
-    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/libpng_read_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/libpng_new_fuzzer.cc
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+cd /
+cp $SRC/decode_fuzzer.cc $SRC/new_fuzzer.cc
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
-    build-cleanup
-fi
-build-srcfolders
-mv /src-$LABEL /src
-
-cd $SRC/$PROJECT_NAME
+build-cleanup2
+    
+cd $SRC
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   #cp $SRC/$PROJECT_NAME/tests/fuzz/CMakeLists.txt /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC
+   #cp /home/hacker/fuzz-dojo/$PROJECT_NAME/CMakeLists.txt $SRC/$PROJECT_NAME/tests/fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
@@ -52,4 +56,3 @@ else
     compile
     drivers
 fi
-mv /src /src-$LABEL

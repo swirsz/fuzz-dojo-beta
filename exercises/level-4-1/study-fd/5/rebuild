@@ -1,10 +1,10 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 export LABEL=$1
-export PROJECT_NAME=xz
-SANITIZER=$1
+export PROJECT_NAME=openjpeg
+export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
-    SANITIZER='none'
+    export SANITIZER='none'
     export LABEL='none'
 fi
 
@@ -27,11 +27,11 @@ fi
 set -x
 #----------------------------------------------------------------------
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/ossfuzz
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/tests/fuzzers
 
-cd $SRC/$PROJECT_NAME/tests/ossfuzz
+cd $SRC/$PROJECT_NAME
 
-clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -c newfuzzer.c -I ../../src/liblzma/api/
+./tests/fuzzers/build_google_oss_fuzzers.sh
 
 #----------------------------------------------------------------------
 drivers

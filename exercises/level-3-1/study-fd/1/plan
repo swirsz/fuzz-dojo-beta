@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none c "miniz/tests" planning
+/challenge/build c "." planning

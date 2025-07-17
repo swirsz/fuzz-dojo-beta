@@ -1,8 +1,12 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=w3m
+###
+### Welcome to a Fuzz Dojo Challenge
+###
+
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=valijson
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/w3m/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/valijson/inspector-report/20250411/fuzz_report.html
 
-w3m converts www to text, can also be used as a textmode web browser.  It has a single fuzz driver reaching 70% of the project code.  
+Valijson is a C++ library for JSON Schema validation, with support for many popular parsers.  It has a single fuzz driver reaching 72% of the code.
 
-Several conversion functions, such as from iso2022 and utf8 have significant uncovered code.
+The validation_visitor.hpp shows many sections of code that are not be exercised. These include date and time matching, integer and double constraint checking, and other regex functions.

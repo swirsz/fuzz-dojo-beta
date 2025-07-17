@@ -1,4 +1,4 @@
 #!/opt/pwn.college/bash
-INITIAL=40
-TARGET=45
+INITIAL=39
+TARGET=44
 /usr/local/sbin/loc_count $INITIAL $TARGET $@

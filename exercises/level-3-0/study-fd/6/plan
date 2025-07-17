@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "usbguard/src/Tests/Fuzzers" planning
+/challenge/build none c "xz/tests/ossfuzz" planning

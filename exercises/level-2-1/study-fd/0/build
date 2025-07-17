@@ -4,7 +4,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=lighttpd1.4
+export PROJECT_NAME=kamailio
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -14,15 +14,14 @@ fi
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
     rm -rf $SRC/$PROJECT_NAME
-    #apt-get update && apt-get install -y libz-dev libpcre2-dev libtool pkg-config autoconf
-    #git clone https://github.com/lighttpd/lighttpd1.4
-    cp -r /downloads/lighttpd1.4 $SRC
+    #apt-get update && apt-get install -y bison flex
+    #git clone https://github.com/kamailio/kamailio
+    cp -r /downloads/kamailio $SRC
 
-    cp /opt/oss-fuzz/projects/lighttpd/build.sh $SRC/
-    cp /opt/oss-fuzz/projects/lighttpd/fuzz_* $SRC/
-    cp $SRC/fuzz_burl.c $SRC/fuzz_new.c
-
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp $SRC/$PROJECT_NAME/misc/fuzz/fuzz_uri.c $SRC/$PROJECT_NAME/misc/fuzz/newfuzzer.c
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+
 #----------------------------------------------------------------------
     build-cleanup
 fi
@@ -33,10 +32,10 @@ cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/misc/fuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/misc/fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------

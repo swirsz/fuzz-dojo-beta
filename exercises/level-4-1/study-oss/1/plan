@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "aspell-fuzz" planning
+/challenge/build none c "c-ares/test" planning

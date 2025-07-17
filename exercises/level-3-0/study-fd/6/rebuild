@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 export LABEL=$1
-export export PROJECT_NAME=usbguard
+export PROJECT_NAME=xz
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
@@ -27,16 +27,12 @@ fi
 set -x
 #----------------------------------------------------------------------
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/src/Tests/Fuzzers
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/Makefile.am $SRC/$PROJECT_NAME/src/Tests/Fuzzers
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/ossfuzz
 
-mv /src-$LABEL /src
-SRC=/src
-cd $SRC/$PROJECT_NAME
+cd $SRC/$PROJECT_NAME/tests/ossfuzz
 
-make -j32 -C src/Tests/Fuzzers fuzzer-new fuzzer-uevent fuzzer-rules fuzzer-usb-descriptor
+clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -c newfuzzer.c -I ../../src/liblzma/api/
 
 #----------------------------------------------------------------------
 drivers
 fi
-mv /src /src-$LABEL

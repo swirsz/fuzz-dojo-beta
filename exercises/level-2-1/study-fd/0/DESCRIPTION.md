@@ -1,8 +1,12 @@
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
+###
+### Welcome to a Fuzz Dojo Challenge
+###
+
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/lighttpd/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/kamailio/inspector-report/20250411/fuzz_report.html
 
-Lighttpd is a high-performance Web server.
+Kamailio is used by large Internet Service Providers to provide public telephony service as a SIP Server.
 
-A single fuzz driver submits urls with random input to the Web server, but many other methods of fuzzing the code are possible.  Access or authentication methods could be used to access the buffer functions that have uncovered complexity for example.
+It currently uses 2 fairly simple fuzz drivers with 10% total code coverage.   There are many unfuzzed functions with huge unreached code complexity such as "main2" & "yyparse"

@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cc "snappy" planning
+/challenge/build none cpp "astc-encoder/Source/Fuzzers" planning

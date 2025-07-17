@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cpp "json/tests/src" planning
+/challenge/build none cc "unrar" planning

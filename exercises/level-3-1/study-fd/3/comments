@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none c "libvncserver/test" understanding
+/challenge/build none cc "libpng/contrib/oss-fuzz" understanding

@@ -1,23 +1,20 @@
---- build.sho	2025-02-10 04:23:35.147808641 +0000
-+++ build.sh	2025-02-10 04:32:06.769032381 +0000
-@@ -30,3 +30,20 @@
+--- build.sho	2024-05-29 18:21:26.195932484 +0000
++++ build.sh	2024-05-29 18:24:35.695297800 +0000
+@@ -61,3 +61,17 @@
+   cp $SRC/vpx_fuzzer_seed_corpus.zip $OUT/${fuzzer_name}_seed_corpus.zip
+   cp $SRC/vpx_dec_fuzzer.dict $OUT/${fuzzer_name}.dict
  done
- 
- zip -j -r "${OUT}/fuzzer_seed_corpus.zip" seed_corpus
 +
-+"$CXX" $CXXFLAGS -DVALIJSON_USE_EXCEPTIONS=1 \
-+        -I/src/valijson/thirdparty/rapidjson/include \
-+        -I/src/valijson/thirdparty/rapidjson/include/rapidjson \
-+        -I/src/valijson/include \
-+        -I/src/valijson/include/valijson \
-+        -I/src/valijson/include/valijson/adapters \
-+        -c newfuzzer.cpp -o newfuzzer.o
++  $CXX $CXXFLAGS -std=c++11 \
++    -DDECODER=vp9 \
++    -I$SRC/libvpx \
++    -I${build_dir} \
++    -Wl,--start-group \
++    $LIB_FUZZING_ENGINE \
++    $SRC/libvpx/examples/newfuzzer.cc -o $OUT/newfuzzer \
++    ${build_dir}/libvpx.a \
++    -Wl,--end-group
++  cp $SRC/vpx_fuzzer_seed_corpus.zip $OUT/newfuzzer_seed_corpus.zip
++  cp $SRC/vpx_dec_fuzzer.dict $OUT/newfuzzer.dict
 +
-+"$CXX" $CXXFLAGS "$LIB_FUZZING_ENGINE" \
-+    -DVALIJSON_USE_EXCEPTIONS=1 \
-+        -I/src/valijson/thirdparty/rapidjson/include \
-+        -I/src/valijson/include \
-+        newfuzzer.cpp -o "${OUT}/newfuzzer"
-+
-+zip "${OUT}/newfuzzer_seed_corpus.zip" seed_corpus
 +

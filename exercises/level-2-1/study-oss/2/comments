@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cc "vorbis/contrib/oss-fuzz" understanding
+/challenge/build none cc "guetzli" understanding

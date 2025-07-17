@@ -15,11 +15,20 @@ if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
     #apt-get update && apt-get install -y make autoconf automake libtool
     #git clone --depth 1 https://github.com/c-ares/c-ares.git
-    cp -r /downloads/c-ares $SRC
-    export OLD_LLVMPASS=1
+    
+    #apt-get update && apt-get install -y make autoconf automake libtool pkg-config
+    #RUN git clone --depth 1 https://github.com/c-ares/c-ares.git
+    #RUN git clone --depth 1 https://github.com/google/googletest
 
-    cp $SRC/$PROJECT_NAME/test/ares-test-fuzz.c $SRC/$PROJECT_NAME/test/newfuzzer.c
+    #WORKDIR c-ares
+    #COPY build.sh run_tests.sh $SRC/
+    
+    cp -r /downloads/c-ares $SRC
+    cp -r /downloads/googletest $SRC
+    #export OLD_LLVMPASS=1
+
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/run_tests.sh $SRC/
 #----------------------------------------------------------------------
     build-cleanup
 fi

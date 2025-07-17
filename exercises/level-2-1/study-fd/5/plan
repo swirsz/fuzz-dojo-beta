@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none c "w3m/fuzz" planning
+/challenge/build none cpp "valijson/tests/fuzzing" planning

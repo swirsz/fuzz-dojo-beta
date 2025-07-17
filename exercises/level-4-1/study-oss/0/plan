@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/challenge/build none cc "fmt/test/fuzzing" planning
+/challenge/build none c "." planning
