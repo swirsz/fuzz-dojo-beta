@@ -38,7 +38,7 @@ modules:
         description:  Run /challenge/run in Terminal to start.
 
   - id: training
-    name: Training
+    name: Training (optional)
     description: |
 
         Improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
@@ -257,7 +257,8 @@ modules:
 
   - id: projects
     name: All Projects
-
+    type: hidden
+    
     challenges:
 
       - id: alembic
