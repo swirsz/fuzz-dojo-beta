@@ -1,7 +1,7 @@
 id: fuzz
 
 name: Fuzz Dojo
-type: public
+type: hidden
 award:
   emoji: 🐇
 
