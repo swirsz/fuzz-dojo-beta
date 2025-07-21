@@ -15,7 +15,7 @@ description: |
         
         - `Step 2:` Complete the `Consent Form` (see modules below)
         
-        - `Step 3:` Complete the `Fuzzing Challenges` which are composed of OSS-Fuzz and Fuzz Dojo configurations.  The solution to level 1 is provided in the training videos.  Higher level challenges may be more complex than lower level challenges.
+        - `Step 3:` Complete the `Fuzzing Challenges` which are composed of OSS-Fuzz and Fuzz Dojo configurations.  Code that can be used to solve level 1 is provided in the cJSON training video.  Higher level challenges are randomized and each level may be more complex than lower level challenges.
 
             For each study project, after reading the suggestions in `/challenge/DESCRIPTION.md`, first run `/challenge/comments` , then run `/challenge/plan` and then create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5% or more. Participants are encouraged to improve the code as much as possible within the study duration, and projects may be revisited at any time to continue optimization. 
 
