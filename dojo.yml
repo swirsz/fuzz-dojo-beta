@@ -19,7 +19,9 @@ description: |
 
             For each study project, after reading the suggestions in `/challenge/DESCRIPTION.md`, first run `/challenge/comments` , then run `/challenge/plan` and then create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5% or more. Participants are encouraged to improve the code as much as possible within the study duration, and projects may be revisited at any time to continue optimization. 
 
-            See the videos and reference material under `Training` to get started. Optional practice projects are also provided to demonstrate additional techniques to gain code coverage.
+            See the videos and slides under `Training` to get started.  Fuzz-Dojo specific commands are shown on this page, `oss_help` displays oss-fuzz specific commands.  
+            
+            Although the most promising method to gain additional code coverage is to write a new fuzz driver, optional practice projects are also provided to demonstrate additional techniques to increase code coverage.
 
             The objective is to obtain flags for all eight levels.
 
