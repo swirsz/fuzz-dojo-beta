@@ -180,6 +180,7 @@ modules:
       - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
         type: lecture
         video: KOHb0y_Oiko
+        slides: 1Da3GXF5fJjJdF5JhO6VDYcNbz3wCSXOLJPKueyCdEBw
 
       - name: "Submitting your fuzz driver to Google"
         type: lecture
@@ -255,4 +256,3 @@ modules:
 
       - id: level-4-1
         name: Level 4.1
-
