@@ -177,7 +177,7 @@ modules:
         type: lecture
         video: LRpm2kd9vQI
 
-      - name: "cJSON: Case Study extending 27% Static Code Coverage to 73%"
+      - name: "cJSON: Case Study extending 27% Static Code Coverage to 70%"
         type: lecture
         video: KOHb0y_Oiko
         slides: 1Da3GXF5fJjJdF5JhO6VDYcNbz3wCSXOLJPKueyCdEBw
