@@ -208,25 +208,13 @@ modules:
         name: Improve Coverage Using the Call Tree
         description: Find a function higher in the call tree that calls this function and fuzz it instead.  Run /challenge/training in Terminal to start.
 
-      - id: 6-split
-        name: Split Into Multiple Harness
-        description: Break large complicated fuzz drivers into multiple individual drivers.  Run /challenge/training in Terminal to start.
-
-      - id: 7-sanitizer
-        name: Correct Sanitizer Specific Problems
-        description: Identify the sanitizer that is crashing and repair it.  Run /challenge/training in Terminal to start.
-
-      - id: 8-seedcorpus
+      - id: 6-seedcorpus
         name: Implement Seed Corpus
         description: Implement a seed corpus.  Run /challenge/training in Terminal to start.
 
-      - id: 9-newdriver
+      - id: 7-newdriver
         name: Create New Fuzz Driver
         description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
-
-      - id: 10-crash
-        name: Diagnose Crash Files
-        description: When compiling ZLIB crashes are produced. Why is this occurring? Run /challenge/training in Terminal to start.
 
   - id: exercises
     name: Fuzzing Challenges
