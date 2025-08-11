@@ -1,0 +1,2 @@
+#!/opt/pwn.college/bash
+/challenge/build none cpp "oss-fuzz-fuzzers/xvid" understanding
