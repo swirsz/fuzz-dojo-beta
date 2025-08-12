@@ -12,7 +12,7 @@ digits = re.findall(r'\d+', brackets[0]) if brackets else []
 Dojo_User_Id = int(digits[0]) if digits else None
 
 random.seed(Dojo_User_Id)
-study = 'fd' if Dojo_User_Id % 2 == 0 else 'oss'
+study = 'fd' if Dojo_User_Id * random.randint(0, 99) % 2 == 0 else 'oss'
 
 if study == 'oss':
     with open("/etc/bash.bashrc", "a") as f:
