@@ -8,10 +8,11 @@ import re
 
 result = subprocess.run(["findmnt", "-n", "--raw", "-o", "SOURCE", "/home/hacker"], capture_output=True, text=True)
 brackets = re.findall(r'\[([^\]]*)\]', result.stdout)
-Dojo_User_Id = int(re.findall(r'\d+', brackets[0])[0]) if brackets else None
+digits = re.findall(r'\d+', brackets[0]) if brackets else []
+Dojo_User_Id = int(digits[0]) if digits else None
 
-random.seed(Dojo_User_Id*1337)
-study = 'fd' if random.randint(0, 1) == 1 else 'oss'
+random.seed(Dojo_User_Id)
+study = 'fd' if Dojo_User_Id % 2 == 1 else 'oss'
 
 if study == 'oss':
     with open("/etc/bash.bashrc", "a") as f:

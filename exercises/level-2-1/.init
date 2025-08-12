@@ -11,9 +11,9 @@ brackets = re.findall(r'\[([^\]]*)\]', result.stdout)
 digits = re.findall(r'\d+', brackets[0]) if brackets else []
 Dojo_User_Id = int(digits[0]) if digits else None
 
-random.seed(Dojo_User_Id*1337)
+random.seed(Dojo_User_Id)
 unused_random_float = random.random()
-study = 'fd' if random.randint(0, 1) == 0 else 'oss'
+study = 'fd' if Dojo_User_Id % 2 == 0 else 'oss'
 difficulty = random.randint(1, 3)
 
 #study = 'oss'
