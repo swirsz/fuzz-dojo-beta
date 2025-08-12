@@ -1,2 +1,0 @@
-#!/opt/pwn.college/bash
-/challenge/build none cc "libpng/contrib/oss-fuzz" planning

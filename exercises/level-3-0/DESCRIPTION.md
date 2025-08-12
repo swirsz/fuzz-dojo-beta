@@ -1,1 +1,0 @@
-See /challenge/DESCRIPTION.md for details
