@@ -34,9 +34,5 @@ for file in subdir.iterdir():
     shutil.move(str(file), f"/challenge/{file.name}")
 
 Path(__file__).unlink()
-shutil.rmtree(f'/challenge/study-fd-1', ignore_errors=True)
-shutil.rmtree(f'/challenge/study-fd-2', ignore_errors=True)
-shutil.rmtree(f'/challenge/study-fd-3', ignore_errors=True)
-shutil.rmtree(f'/challenge/study-oss-1', ignore_errors=True)
-shutil.rmtree(f'/challenge/study-oss-2', ignore_errors=True)
-shutil.rmtree(f'/challenge/study-oss-3', ignore_errors=True)
+shutil.rmtree(f'/challenge/study-fd', ignore_errors=True)
+shutil.rmtree(f'/challenge/study-oss', ignore_errors=True)
