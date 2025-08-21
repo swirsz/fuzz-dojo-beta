@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+LIBSSH2 - medium 12632 loc 9%-20%-26% - 2 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libssh2
 
 Fuzz Introspector

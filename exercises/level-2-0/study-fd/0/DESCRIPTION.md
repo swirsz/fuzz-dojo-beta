@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+KAMAILIO - simple 83091 loc 4%-10%-11% (no FI) - 5 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
 
 Fuzz Introspector

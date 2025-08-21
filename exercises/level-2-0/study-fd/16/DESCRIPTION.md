@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+ZLIB - complex 5055 loc 78%-79%-87% - 1 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zlib
 
 Fuzz Introspector

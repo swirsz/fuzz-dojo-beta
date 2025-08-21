@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+JANUS-GATEWAY - complex 6131 loc 36%-37%-34% - 1.5 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=janus-gateway
 
 Fuzz Introspector

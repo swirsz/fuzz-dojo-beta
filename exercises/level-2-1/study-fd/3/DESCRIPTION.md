@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+LIBVPX - medium 32885 loc 54%-60%-0% - 2.5 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
 
 Fuzz Introspector

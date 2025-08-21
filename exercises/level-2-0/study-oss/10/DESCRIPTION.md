@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+MINIZIP - medium 3639 loc 75%-76%-64% - 45 sec
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
 
 Fuzz Introspector

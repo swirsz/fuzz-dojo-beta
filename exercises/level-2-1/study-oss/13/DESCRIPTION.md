@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+YARA - simple 30443 loc 49%-63%-43% - 3 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=yara
 
 Fuzz Introspector

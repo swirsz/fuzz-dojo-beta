@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+LIGHTTPD - simple 1310 loc 36%-35%-47% - 2 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
 
 Fuzz Introspector

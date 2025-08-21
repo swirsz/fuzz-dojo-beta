@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+JSON - simple 8008 loc 68%-74%-94% - 1 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=json
 
 Fuzz Introspector

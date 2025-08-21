@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+VALIJSON - simple 3566 loc 68%-72%-52% - 1.5 min (slow FI)
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=valijson
 
 Fuzz Introspector

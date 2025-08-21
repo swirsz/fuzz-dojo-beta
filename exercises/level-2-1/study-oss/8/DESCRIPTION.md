@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+ASPELL - complex 14390 loc 58%-67%-26% - 2 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=aspell
 
 Fuzz Introspector

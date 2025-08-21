@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=liblouis
 
 Fuzz Introspector

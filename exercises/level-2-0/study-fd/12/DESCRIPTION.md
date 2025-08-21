@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+MPG123 - medium 9826 loc 39%-52%-43% - 2 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=mpg123
 
 Fuzz Introspector

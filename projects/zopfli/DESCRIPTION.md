@@ -1,3 +1,5 @@
+(D) ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=zopfli
 
 Fuzz Introspector

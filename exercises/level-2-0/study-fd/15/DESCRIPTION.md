@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+BOOST - medium 11995 loc 43%-57%--% - 10 min (no FI)
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=boost
 
 Boost is a very large collection of portable C++.  14 fuzz drivers currently exercise about half of the code in the project.

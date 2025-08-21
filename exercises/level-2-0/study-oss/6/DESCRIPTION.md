@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+VORBIS - simple 8745 loc 31%-35%-36% - 2.5 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vorbis
 
 Fuzz Introspector

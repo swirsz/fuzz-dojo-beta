@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+C-ARES - medium 5676 loc 35%-39%-72% - 2.5 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=c-ares
 
 Fuzz Introspector

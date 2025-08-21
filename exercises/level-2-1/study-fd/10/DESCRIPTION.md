@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+LIBPNG - medium 13217 loc 40%-43%-57% - 1.5 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpng
 
 Fuzz Introspector

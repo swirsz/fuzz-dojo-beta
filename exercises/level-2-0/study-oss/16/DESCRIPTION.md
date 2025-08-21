@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+FMT - complex 5904 loc 77%-81%-13% - 4 min (slow FI)
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
 
 Fuzz Introspector

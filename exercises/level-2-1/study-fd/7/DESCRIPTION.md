@@ -2,6 +2,8 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
+CASYNC - medium 1678 loc 11%-10%-14% - 1 min
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
 
 Fuzz Introspector

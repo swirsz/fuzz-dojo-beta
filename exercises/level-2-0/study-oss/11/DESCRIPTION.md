@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+OPENSIPS - medium 62114 loc 10%-13%-17% - 4 min (slow FI)
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
 
 Fuzz Introspector

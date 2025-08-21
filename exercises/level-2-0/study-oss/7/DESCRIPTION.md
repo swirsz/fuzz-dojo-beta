@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+ALEMBIC - medium 12569 loc 1%-9%-0% - 1 min (slow FI)
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=alembic
 
 Fuzz Introspector

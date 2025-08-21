@@ -1,7 +1,7 @@
 id: fuzz
 
 name: Fuzz Dojo
-type: hidden
+type: public
 award:
   emoji: 🐇
 
@@ -224,7 +224,7 @@ modules:
         name: Level 2.1 Project
 
   - id: projects
-    name: All Projects
+    name: All Projects (reference only)
     
     challenges:
 

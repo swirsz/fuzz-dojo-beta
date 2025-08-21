@@ -2,6 +2,8 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
+SQLITE3 - complex 80385 loc 33%-75%-76% - 5 min (slow FI)
+
 Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
 
 Fuzz Introspector
