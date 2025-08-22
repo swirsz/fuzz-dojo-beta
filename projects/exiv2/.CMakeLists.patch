@@ -1,7 +1,7 @@
---- CMakeLists.txo	2024-05-27 21:24:51.654048464 +0000
-+++ CMakeLists.txt	2024-05-27 21:21:04.189532544 +0000
-@@ -13,3 +13,4 @@
- endmacro()
+--- CMakeLists.txt.o	2025-08-22 20:23:59.390822179 +0000
++++ CMakeLists.txt	2025-08-22 20:25:12.144911717 +0000
+@@ -14,3 +14,4 @@
  
  FUZZER(fuzz-read-print-write)
+ FUZZER(fuzz-read-write)
 +FUZZER(fuzz-newfuzzer)
