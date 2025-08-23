@@ -411,4 +411,3 @@ modules:
 
       - id: zopfli
         name: (D) ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min
-    

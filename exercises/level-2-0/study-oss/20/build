@@ -27,7 +27,8 @@ if [ ! -d "/src-orig" ]; then
         #tar xzf sqlite3.tar.gz
         #curl 'https://www.sqlite.org$SRC/tarball?uuid=trunk' -o sqlite3.tar.gz && \
         #tar xzf sqlite3.tar.gz
-    cp -rf /downloads/sqlite3/. $SRC/sqlite3
+    #cp -rf /downloads/sqlite3/. $SRC/sqlite3
+    tar xzf /challenge/sqlite3.tar.gz
     
     find $SRC/sqlite3 -name "*.test" | xargs zip $SRC/ossfuzz_seed_corpus.zip
     cd /
