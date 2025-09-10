@@ -1,2 +1,0 @@
-#!/opt/pwn.college/bash
-/challenge/build none cpp "valijson/tests/fuzzing" planning
