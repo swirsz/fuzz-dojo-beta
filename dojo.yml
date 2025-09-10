@@ -11,21 +11,13 @@ description: |
 
         Forum link: https://discord.com/channels/750635557666816031/1409993436328759328
 
-        Welcome and thank you for your participation in this study. Your help to advance cybersecurity research is greatly appreciated! Please follow the steps below:
-
-        - `Step 1:` Complete Initial Survey at https://forms.gle/FWF1iEn9pLpkRMGq9
+        Fuzzing is a powerful technique used in both academia and industry to automate software testing.  It has also become the standard approach for discovering zero-day vulnerabilities.  Google considers fuzzing to be their first line of defense, and has built an open source version of their fuzzing platform, known as OSS-Fuzz, to continually test popular open source software.  OSS-Fuzz has been used successfully in over a thousand projects.  However, due to its limitations, only about 30% of the code typically gets tested, leaving 70% unevaluated.
         
-        - `Step 2:` Complete the `Consent Form` (see modules below)
+        You will learn in this dojo how to create and improve fuzz testing drivers for real-world software.  Join us in evaluating this new platform by participating in our research study.  You will have access to a wide array of training materials and have the opportunity to create two new real fuzz drivers, with the option to submit your work to Google for a monetary compensation of up to $10,000.
         
-        - `Step 3:` Complete the `Fuzzing Challenges` which are composed of OSS-Fuzz and Fuzz Dojo configurations.  Code that can be used to solve level 1 is provided in the cJSON training video.  The level 2 challenges are randomized.
-
-            For each study project, create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5% or more. Participants are encouraged to improve the code as much as possible within the study duration, and projects may be revisited at any time to continue optimization. The goals are to increase project code coverage, to cover a wide range of API functions and data dependencies, and achieve a good speed of executions/sec when running the fuzz driver.
-
-            See the videos and slides under `Training` to get started.  Fuzz-Dojo specific commands are shown on this page, `oss_help` displays oss-fuzz specific commands.  
-            
-            Although the most promising method to gain additional code coverage is to write a new fuzz driver, optional training projects are also provided to demonstrate additional techniques to increase code coverage.
-
-        - `Step 4:` Complete Exit Survey at https://forms.gle/uG8yik8pXFRXQHSGA
+        To participate in our research study, complete the `Consent Form` challenge and our initial survey at https://forms.gle/FWF1iEn9pLpkRMGq9 
+        
+        After completing the `Real World Fuzzing` module, we would also appreciate completion of our exit survey at https://forms.gle/uG8yik8pXFRXQHSGA
 
 modules:
 
@@ -40,7 +32,7 @@ modules:
         description:  Run /challenge/run in Terminal to start.
 
   - id: training
-    name: Training (optional)
+    name: Introduction to Fuzzing
     description: |
 
         Improve a OSS-Fuzz project code coverage by 5% or more to achieve the flag.
@@ -209,7 +201,7 @@ modules:
         description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
 
   - id: exercises
-    name: Fuzzing Challenges
+    name: Real World Fuzzing
     
     challenges:
 
