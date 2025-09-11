@@ -124,7 +124,7 @@ modules:
 
       - id: 8-oss-build
         name: OSS-Fuzz - Build a Project
-        description: OSS-Fuzz challenges simulate a clean linux setup with only the OSS-Fuzz library available. Learn how to compile a project using only OSS-Fuzz
+        description: OSS-Fuzz challenges simulate a clean linux setup with only the OSS-Fuzz library available. Learn how to compile a project using only OSS-Fuzz.
 
       - id: 9-oss-loc
         name: OSS-Fuzz - Code Coverage
