@@ -45,8 +45,6 @@ modules:
         - [**OSS-Fuzz**: Interesting fuzz driver creation case studies](https://github.com/ossf/fuzz-introspector/blob/main/doc/CaseStudies.md)
         - [**GITHUB**: How to contribute to a project through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
         - [Keyword Search all OSS-Fuzz fuzz drivers](https://github.com/search?q=repo%3Agoogle%2Foss-fuzz+path%3A%2F%5Eprojects%5C%2F%2F++AND+%28language%3AC%2B%2B+OR+language%3AC%29&type=code)
-        
-        The challenges below will demonstrate techniques to improve the code coverage of existing fuzz drivers
 
     resources:
         
@@ -70,6 +68,7 @@ modules:
       - name: "Fuzz Dojo only: Building and Running Reports"
         type: lecture
         video: u7GrifELIjU
+        slides: 1-JxZd7rNU8JBiCdbyfg37YrJM0w70jOx3-2vAZg0hx0
               
       - name: "OSS Fuzz only: Building and Running Reports"
         type: lecture
