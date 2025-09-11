@@ -123,15 +123,15 @@ modules:
         description: Search for unreached code within a project and create a simple fuzz driver to increase total project code coverage.  Run /challenge/training in Terminal to start.
 
       - id: 8-oss-build
-        name: OSS-Fuzz: Build a Project
+        name: OSS-Fuzz - Build a Project
         description: OSS-Fuzz challenges simulate a clean linux setup with only the OSS-Fuzz library available. Learn how to compile a project using only OSS-Fuzz
 
       - id: 9-oss-loc
-        name: OSS-Fuzz: Code Coverage
+        name: OSS-Fuzz - Code Coverage
         description: Run a code coverage report in this challenge
 
       - id: 10-oss-fi
-        name: OSS-Fuzz: Fuzz Introspector
+        name: OSS-Fuzz - Fuzz Introspector
         description: Run a Fuzz Introspector report
 
   - id: exercises
