@@ -13,7 +13,7 @@ description: |
 
         Fuzzing is a powerful technique used in both academia and industry to automate software testing.  It has also become the standard approach for discovering zero-day vulnerabilities.  Google considers fuzzing to be their first line of defense, and has built an open source version of their fuzzing platform, known as OSS-Fuzz, to continually test popular open source software.  OSS-Fuzz has been used successfully in over a thousand projects.  However, due to its limitations, only about 30% of the code typically gets tested, leaving 70% unevaluated.
 
-        You will learn in this dojo how to create and improve fuzz testing drivers for real-world software.  You will have access to a wide array of training materials and have the opportunity to create two new real fuzz drivers, with the option to submit your work to Google for a monetary compensation of up to $10,000.
+        You will learn in this dojo how to create and improve fuzz testing drivers for real-world software.  You will have access to a wide array of training materials and have the opportunity to create two new real fuzz drivers, with the option to submit your work to Google for a monetary compensation of up to $10,000.  New fuzz drivers should increase the overall project code coverage, cover a wide range of API functions and data dependencies, and achieve a good speed of executions/sec.
 
         To participate in our research study, complete the `Consent Form` challenge and our initial survey at https://forms.gle/FWF1iEn9pLpkRMGq9 
         
