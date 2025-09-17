@@ -15,9 +15,11 @@ description: |
 
         You will learn in this dojo how to create and improve fuzz testing drivers for real-world software.  You will have access to a wide array of training materials and have the opportunity to create two new real fuzz drivers, with the option to submit your work to Google for a monetary compensation of up to $10,000.  New fuzz drivers should increase the overall project code coverage, cover a wide range of API functions and data dependencies, and achieve a good speed of executions/sec.
 
-        To participate in our research study, complete the `Consent Form` challenge and our initial survey at https://forms.gle/FWF1iEn9pLpkRMGq9 
+        Initial Survey https://forms.gle/FWF1iEn9pLpkRMGq9 
         
-        After completing the `Real World Fuzzing` module, we would also appreciate completion of our exit survey at https://forms.gle/uG8yik8pXFRXQHSGA
+        Exit Survey https://forms.gle/uG8yik8pXFRXQHSGA  
+        
+        The first 30 participants to complete the module and the surveys will be rewarded a $50 Amazon gift card at completion of the study.  Valid email address required.  Limit 1 submission per person.
 
 modules:
 
