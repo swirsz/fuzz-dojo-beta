@@ -1,4 +1,4 @@
-Your goal for this challenge is to create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5%.
+Your goal for this challenge is to create a new fuzz driver to improve the project's code coverage. A flag is awarded when the code coverage is improved by 5%.  To receive the flag after code coverage has been improved, either run /challenge/loc (for Fuzz Dojo challenges) or follow the instructions in the training 'OSS-Fuzz - Code Coverage.'
 
 This is a practice problem to familiarize you with the interface. This challenge may randomly be an OSS-Fuzz or a Fuzz Dojo configuration.  The "cJSON Case Study" training video and slides provide the source code to solve this challenge. All you have to do is cut-and-paste the fuzz driver code provided in the slides into a new fuzz driver, check for code coverage, and you should be provided a flag for this level.
 
