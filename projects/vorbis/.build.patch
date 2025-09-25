@@ -1,8 +1,11 @@
---- build.sh	2023-09-11 20:49:10.330665361 +0000
-+++ build.sh	2023-09-11 20:48:56.806601119 +0000
-@@ -3,6 +3,7 @@
+--- build.sho	2025-09-25 20:42:03.172849474 +0000
++++ build.sh	2025-09-25 20:43:13.681391183 +0000
+@@ -1,8 +1,9 @@
+ #!/bin/bash -eu
+ 
  pushd $SRC
- mv people.xiph.org/*.ogg decode_corpus/
+-mv people.xiph.org/*.ogg decode_corpus/
++cp people.xiph.org/*.ogg decode_corpus/
  zip -r "$OUT/decode_fuzzer_seed_corpus.zip" decode_corpus/
 +zip -r "$OUT/new_fuzzer_seed_corpus.zip" decode_corpus/
  popd
