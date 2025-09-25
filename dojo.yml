@@ -19,7 +19,9 @@ description: |
         
         Exit Survey https://forms.gle/uG8yik8pXFRXQHSGA  
         
-        The first 30 participants to complete the module and the surveys will be rewarded with a $50 Amazon gift card upon completion of the study.  Valid email address required.  Limit 1 submission per person.
+        The first 30 participants to complete the module and the surveys will be rewarded with a $50 Amazon gift card upon completion of the study.  Valid contact information required.  Limit 1 submission per person.
+        
+        The Bash (Bourne Again SHell) is required for some of these challenges.  This is the default shell unless you change it.
 
 modules:
 
@@ -296,7 +298,7 @@ modules:
 
       - id: sqlite3
         name: SQLITE3 - complex 80385 loc 33%-75%-76% - 5 min (slow FI)
-        
+
       - id: tmux
         name: TMUX - medium 48752 loc 12%-12%-31% - 1.5 min
 
