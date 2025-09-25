@@ -29,6 +29,7 @@ if [ ! -d "/src-orig" ]; then
     touch people.xiph.org/dummy.ogg
     cd /
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    patch -tuN $SRC/$PROJECT_NAME/contrib/oss-fuzz/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi
