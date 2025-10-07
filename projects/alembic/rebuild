@@ -11,6 +11,7 @@ fi
 SRC=$SRC-$LABEL
 if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ] || [ ! -d "$SRC" ]; then
     echo "Run /challenge/build first"
+    rm /tmp/build.lck
 else 
 
 if [ "$LABEL" = "none" ]; then
