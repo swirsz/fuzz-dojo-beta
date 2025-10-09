@@ -28,6 +28,7 @@ if [ ! -d "/src-orig" ]; then
     #export OLD_LLVMPASS=1
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/run_tests.sh $SRC/
 #----------------------------------------------------------------------
     build-cleanup
@@ -37,7 +38,6 @@ mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
 
-patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME

@@ -1,2 +1,2 @@
 #!/opt/pwn.college/bash
-/usr/local/sbin/fi_oss $@
+/usr/local/sbin/fi

@@ -2,13 +2,13 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
-LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min
+FMT - complex 5904 loc 77%-81%-13% - 4 min (slow FI)
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=liblouis
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=fmt
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/liblouis/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/fmt/inspector-report/20250411/fuzz_report.html
 
-Liblouis is an open-source braille translator and back-translator.  
+{fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams.
 
-3 existing fuzz drivers test the main functionality of the project already, translation and back translation.  Only small sections of code are unreached and seem to be spread out in many small miscellaneous functions.  A folder of test cases exists for this project that might provide sample code that could be useful in reaching these functions.
+7 fuzz drivers cover 80% of the project code, which is composed of hundreds of mostly independent functions. There are still a few uncovered functions, such as copy_fill_from, constexpr auto count(), write_codecvt, do_write, write, operator functions, and many more.

@@ -1,14 +1,16 @@
 ###
-### Welcome to a OSS-Fuzz Challenge
+### Welcome to a Fuzz Dojo Challenge
 ###
 
-SQLITE3 - complex 80385 loc 33%-75%-76% - 5 min (slow FI)
+OPENJPEG - complex 22939 loc 5%--%-4% - 2 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=sqlite3
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/sqlite3/inspector-report/20250406/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/openjpeg/inspector-report/20240911/fuzz_report.html
 
-Sqlite3 is an open-source relational database written in C.  It has a single fuzz driver that reaches 76% of the code, by parsing random data as SQL statements.  
+https://storage.googleapis.com/oss-fuzz-introspector/openjpeg/inspector-report/20250411/fuzz_report.html
 
-Unreached sections of code are distributed through a wide number of functions, making targeting these areas fairly difficult.  There appears to be Json parsing, file I/O, and other small miscellaneous sections with some potential.
+OpenJPEG is an open-source JPEG 2000 codec written in C language.  It consists of two libraries, one for implementing JPEG 2000 files and also a client/server architecture for remote browsing of JPEG 2000 images known as jpip.  The project reached 52% code coverage in 2024 with 2 fuzz drivers, one fuzz driver for each library, however a more recent change has broken the code coverage details of the project.
+
+This project is highly dependent on corpus data to exercise functionality.   Important functions in j2k.c and jp2.c are not currently being covered, such as comparisons and encoding functions. A tests folder contains many operations that are not currently implemented as fuzz drivers.
