@@ -28,11 +28,11 @@ fi
 build-srcfolders
 mv /src-$LABEL /src
 rm -rf $SRC/igraph
-rm -rf $SRC/libxml2-2.14.0
+rm -rf $SRC/libxml2-2.15.0
 rm -rf $SRC/deps
 
 cp -r /downloads/igraph $SRC
-cp /downloads/libxml2-2.14.2.tar.xz $SRC
+cp /downloads/libxml2-2.15.0.tar.xz $SRC
 patch -tuN $SRC/igraph/fuzzing/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
 cp $SRC/$PROJECT_NAME/fuzzing/write_all_gml.cpp $SRC/$PROJECT_NAME/fuzzing/newfuzzer.cpp
 
