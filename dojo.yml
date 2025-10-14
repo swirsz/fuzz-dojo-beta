@@ -138,6 +138,10 @@ modules:
         name: OSS-Fuzz - Fuzz Introspector
         description: Run a Fuzz Introspector report
 
+      - id: 11-add-newfuzzer
+        name: OSS-Fuzz - Add a new fuzz driver
+        description: Go through the steps to add a new fuzz driver to an existing OSS-Fuzz project
+
   - id: exercises
     name: Real World Fuzzing
     
