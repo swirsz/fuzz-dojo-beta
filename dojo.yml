@@ -55,20 +55,11 @@ modules:
       - name: "pwn.college - Getting Started"
         type: lecture
         video: DJO1A2neZ6Y
-        
+
       - name: "Introduction to Fuzzing"
         type: lecture
         video: K_2DAo5pPQQ
 
-      - name: "AVAHI: Understanding Existing Fuzz Drivers"
-        type: lecture
-        video: AtjkUvYOGJw
-        
-      - name: "Investigating a Project & Picking Functions to Fuzz"
-        type: lecture
-        video: OP22mPweQbU
-        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
-    
       - name: "Fuzz Dojo only: Building and Running Reports"
         type: lecture
         video: u7GrifELIjU
@@ -78,11 +69,20 @@ modules:
         type: lecture
         video: gvA0cXxG4cg
         slides: 1eJ7y0pYSBVFg9cT353-IPF8FHI0AWGfpTh0vKcrlLk8
-        
+
+      - name: "Investigating a Project & Picking Functions to Fuzz"
+        type: lecture
+        video: OP22mPweQbU
+        slides: 1nJ82sezXrM9U0TWRJmCKyhaX38ySCO2v34q3kxyxZTA
+
+      - name: "AVAHI: Understanding Existing Fuzz Drivers"
+        type: lecture
+        video: AtjkUvYOGJw
+
       - name: "AVAHI: New Fuzz Driver Creation"
         type: lecture
         video: 11fxFrOOLJ0
-    
+
       - name: "BZIP2: Case Study Extending 62% Static Code Coverage to 92%"
         type: lecture
         video: LRpm2kd9vQI
