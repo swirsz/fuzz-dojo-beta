@@ -31,6 +31,10 @@ modules:
 
     challenges:
 
+      - id: consent
+        name: Consent
+        description:  Run /challenge/run in Terminal to start.
+
   - id: training
     name: Introduction to Fuzzing
     description: |
