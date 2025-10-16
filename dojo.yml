@@ -31,10 +31,6 @@ modules:
 
     challenges:
 
-      - id: consent
-        name: Consent
-        description:  Run /challenge/run in Terminal to start.
-
   - id: training
     name: Introduction to Fuzzing
     description: |
@@ -64,7 +60,7 @@ modules:
         type: lecture
         video: u7GrifELIjU
         slides: 1-JxZd7rNU8JBiCdbyfg37YrJM0w70jOx3-2vAZg0hx0
-              
+
       - name: "OSS Fuzz only: Building and Running Reports"
         type: lecture
         video: gvA0cXxG4cg
