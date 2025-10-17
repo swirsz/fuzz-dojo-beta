@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=minizip
+export PROJECT_NAME=unrar
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,11 +13,16 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && apt-get install -y make cmake pkg-config libssl-dev:i386
-    #git clone -b develop https://github.com/zlib-ng/minizip-ng minizip
-    cp -r /downloads/minizip $SRC
+    #apt-get update && apt-get install -y make build-essential
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
+    #git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
+    rm -rf  $SRC/unrar
+    cp -r /downloads/unrar $SRC/
+
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+
+    chmod 755 $SRC/build.sh
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi
@@ -45,7 +50,7 @@ else
             mv /src /src-$LABEL
             exit 1
         fi
-        fuzzlog_oss $SRC/$PROJECT_NAME/test/fuzz/*.c
+        fuzzlog_oss $SRC/$PROJECT_NAME/*.cc
         compile
         drivers > /dev/null
     fi

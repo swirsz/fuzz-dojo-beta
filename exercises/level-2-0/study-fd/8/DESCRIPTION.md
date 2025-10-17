@@ -2,13 +2,15 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
-ELFUTILS - simple 31383 loc 9%-26%-40% - 2.5 min
+OPENJPEG - complex 22939 loc 5%--%-4% - 2 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=elfutils
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/elfutils/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/openjpeg/inspector-report/20240911/fuzz_report.html
 
-Elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.
+https://storage.googleapis.com/oss-fuzz-introspector/openjpeg/inspector-report/20250411/fuzz_report.html
 
-This project has low code coverage, only three fuzz drivers, many of these utilities/libraries are not fuzzed: for example multiple disassemblers have 0% code coverage.
+OpenJPEG is an open-source JPEG 2000 codec written in C language.  It consists of two libraries, one for implementing JPEG 2000 files and also a client/server architecture for remote browsing of JPEG 2000 images known as jpip.  The project reached 52% code coverage in 2024 with 2 fuzz drivers, one fuzz driver for each library, however a more recent change has broken the code coverage details of the project.
+
+This project is highly dependent on corpus data to exercise functionality.   Important functions in j2k.c and jp2.c are not currently being covered, such as comparisons and encoding functions. A tests folder contains many operations that are not currently implemented as fuzz drivers.

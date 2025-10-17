@@ -1,14 +1,14 @@
 ###
-### Welcome to a OSS-Fuzz Challenge
+### Welcome to a Fuzz Dojo Challenge
 ###
 
-OPENSIPS - medium 62114 loc 10%-13%-17% - 4 min (slow FI)
+VALIJSON - simple 3566 loc 68%-72%-52% - 1.5 min (slow FI)
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=opensips
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=valijson
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/opensips/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/valijson/inspector-report/20250411/fuzz_report.html
 
-Opensips is a (Session Initiation Protocol) server, also known as a SIP proxy server, is the central hub in a VoIP system that manages and directs all SIP-based communication, including calls, messages, and video streams, between two or more participants.  SIP servers have many  independent functions, such as: initiation termination, call routing, authentication and encryption, load-balancing, codec negotiation, session management, and many other features.  4 current fuzz drivers only reach a few of the modules and about 13% of the code.
+Valijson is a C++ library for JSON Schema validation, with support for many popular parsers.  It has a single fuzz driver reaching 72% of the code.
 
-This is a large project with many different independent modules, each with their own readme and functionality. https://github.com/OpenSIPS/opensips/tree/master/modules   A majority of these modules have 0% code coverage.
+The validation_visitor.hpp shows many sections of code that are not be exercised. These include date and time matching, integer and double constraint checking, and other regex functions.

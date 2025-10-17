@@ -2,15 +2,13 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
-OPENJPEG - complex 22939 loc 5%--%-4% - 2 min
+XZ - simple 3414 loc 69%-71%-12% - 2 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=openjpeg
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xz
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/openjpeg/inspector-report/20240911/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/xz/inspector-report/20250411/fuzz_report.html
 
-https://storage.googleapis.com/oss-fuzz-introspector/openjpeg/inspector-report/20250411/fuzz_report.html
+XZ is a file compression library aiming to maximize compression ratios. It supports the .xz and .lzma  formats. 4 different fuzz drivers reach 75% of the project code.
 
-OpenJPEG is an open-source JPEG 2000 codec written in C language.  It consists of two libraries, one for implementing JPEG 2000 files and also a client/server architecture for remote browsing of JPEG 2000 images known as jpip.  The project reached 52% code coverage in 2024 with 2 fuzz drivers, one fuzz driver for each library, however a more recent change has broken the code coverage details of the project.
-
-This project is highly dependent on corpus data to exercise functionality.   Important functions in j2k.c and jp2.c are not currently being covered, such as comparisons and encoding functions. A tests folder contains many operations that are not currently implemented as fuzz drivers.
+Many of the legacy lzma functions are not fuzzed, and streaming functions similarly have unreached sections.

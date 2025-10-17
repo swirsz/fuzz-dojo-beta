@@ -2,13 +2,13 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
-KAMAILIO - simple 83091 loc 4%-10%-11% (no FI) - 5 min
+ARGS - simple 1796 loc 22%-22%-47% - 3 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=kamailio
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=args
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/kamailio/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/args/inspector-report/20250515/fuzz_report.html
 
-Kamailio is used by large Internet Service Providers to provide public telephony service as a SIP Server.
+Args is a simple, small, flexible, single-header C++11 argument parsing library.  It is similar to Python's argparse, but in C++.
 
-It currently uses 2 fairly simple fuzz drivers with 10% total code coverage.   There are many unfuzzed functions with huge unreached code complexity such as "main2" & "yyparse"
+A single fuzz driver hits just about half of the project code, but many features in this single-file project are not addressed. These include Validation, Match, GetDescription, Arg Parsing, etc.

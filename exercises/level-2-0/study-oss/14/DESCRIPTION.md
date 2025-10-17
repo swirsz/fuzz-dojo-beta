@@ -1,14 +1,14 @@
 ###
-### Welcome to a OSS-Fuzz Challenge
+### Welcome to a Fuzz Dojo Challenge
 ###
 
-APACHE-HTTPD - medium 48312 loc 12%-14%-6% - 5.5 min
+XZ - simple 3414 loc 69%-71%-12% - 2 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=apache-httpd
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xz
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/apache-httpd/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/xz/inspector-report/20250411/fuzz_report.html
 
-Apache Httpd is one of the most popular and powerful web servers.  It is known for its high compatibility and stability.
+XZ is a file compression library aiming to maximize compression ratios. It supports the .xz and .lzma  formats. 4 different fuzz drivers reach 75% of the project code.
 
-Seven different fuzz drivers execute different areas of the code, but the overall code coverage seems very low.  In order to fuzz the sockets directly or to fuzz the modules, additional tools or code changes are usually required. Many online articles have been written about fuzzing Web servers, but it does not look like many of those implementations have made it into OSS-Fuzz.
+Many of the legacy lzma functions are not fuzzed, and streaming functions similarly have unreached sections.

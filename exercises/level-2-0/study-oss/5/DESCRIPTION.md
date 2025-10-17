@@ -2,12 +2,13 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
-UNRAR - medium 13209 loc 8%-58%-86% - 1.5 min
+LIBSODIUM - simple 8403 loc 18%-19%-12% - 2 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
-
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
+       
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/unrar/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/libsodium/inspector-report/20250411/fuzz_report.html
 
-Unrar is a free library for extracting rar files.  A single fuzz driver reaches 58% of the code.  A very recent change has broken coverage reports for this project, but older reports are still available.  Browsing the full calltree shows that many commandline functions of this tool are not tested by the fuzz driver.
+LibSodium is an easy-to-use software library for encryption, decryption, signatures, password hashing, and more. 
 
+This library has roughly 20% code coverage with only 2 fuzz drivers, exercising the encryption, decryption, and maybe hashing functions and very little else.  Just implementing ED25519 key signatures as a fuzz driver should greatly increase the code coverage of the project

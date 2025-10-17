@@ -1,14 +1,8 @@
-###
-### Welcome to a Fuzz Dojo Challenge
-###
-
-VALIJSON - simple 3566 loc 68%-72%-52% - 1.5 min (slow FI)
-
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=valijson
-
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
+       
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/valijson/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/libsodium/inspector-report/20250411/fuzz_report.html
 
-Valijson is a C++ library for JSON Schema validation, with support for many popular parsers.  It has a single fuzz driver reaching 72% of the code.
+LibSodium is an easy-to-use software library for encryption, decryption, signatures, password hashing, and more. 
 
-The validation_visitor.hpp shows many sections of code that are not be exercised. These include date and time matching, integer and double constraint checking, and other regex functions.
+This library has roughly 20% code coverage with only 2 fuzz drivers, exercising the encryption, decryption, and maybe hashing functions and very little else.  Just implementing ED25519 key signatures as a fuzz driver should greatly increase the code coverage of the project

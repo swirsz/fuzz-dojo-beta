@@ -2,13 +2,13 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
-EXIV2 - simple 34282 loc 10%-54%-1% - 1 min
+ASTC-ENCODER - simple 2941 loc - 50%-50%-74% - 1.5 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=exiv2
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=astc-encoder
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/exiv2/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/astc-encoder/inspector-report/20250520/fuzz_report.html
 
-Exiv2 is a command line utility to manage image metadata - roughly 60% coverage from a single fuzz driver that does the basic functionality of opening reading and printing image metadata. Lots of source code files appear to have low code coverage. Documentation on https://exiv2.org/doc/index.html gives examples of many features beyond the basic "read exif data" that probably are not implemented by fuzz drivers such as:
+The arm astc-encoder or Adaptive Scalable Texture Compression (ASTC) Encoder, astcenc, is a command-line tool for compressing and decompressing images using the ASTC texture compression standard.
 
-Iptcprint is a similar example to print IPTC data. Addmoddel shows how to add, modify and delete Exif metadata. Exifcomment shows how to set the exif comment of an image. Xmpsample.cpp contains examples of how to set various types of XMP properties. For more real-world code have a look at the implementation of the different actions of the Exiv2 utility (actions.cpp).
+The encoder has 1 fuzz driver that covers symbolic_to_physical and reaches 50% of the project coverage. A second single function symbolic_to_physical  should reach the majority of the remaining code.

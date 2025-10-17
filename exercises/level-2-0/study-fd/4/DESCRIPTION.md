@@ -1,14 +1,8 @@
-###
-### Welcome to a Fuzz Dojo Challenge
-###
-
-LIGHTTPD - simple 1310 loc 36%-35%-47% - 2 min
-
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpng
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/lighttpd/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/libpng/inspector-report/20250411/fuzz_report.html
 
-Lighttpd is a high-performance Web server.
+LIBPNG is the official library for the PNG, Portable Network Graphics, image format.  For a detailed description on using libpng, read `libpng-manual.txt`.  For examples of libpng in a program, see `example.c` and `pngtest.c`.
 
-A single fuzz driver submits urls with random input to the Web server, but many other methods of fuzzing the code are possible.  Access or authentication methods could be used to access the buffer functions that have uncovered complexity for example.
+A single fuzz driver calls png_read_info and performs several transforms, but only reaches 50% of the code.  Lots of example code in `example.c` and `pngtest.c` could be turned into new fuzz drivers.

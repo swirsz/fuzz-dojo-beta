@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=unrar
+export PROJECT_NAME=libsodium
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,16 +13,16 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && apt-get install -y make build-essential
+    #rm -rf $SRC/$PROJECT_NAME
+    #apt-get update && apt-get install -y make
+    #git clone --depth 1 https://github.com/jedisct1/libsodium.git --branch stable libsodium
+    cp -r /downloads/libsodium $SRC
 
-    #git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
-    rm -rf  $SRC/unrar
-    cp -r /downloads/unrar $SRC/
-
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.h $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.cc $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-
-    chmod 755 $SRC/build.sh
+    
+    #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi
@@ -50,7 +50,7 @@ else
             mv /src /src-$LABEL
             exit 1
         fi
-        fuzzlog_oss $SRC/$PROJECT_NAME/*.cc
+        fuzzlog_oss $SRC/$PROJECT_NAME/contrib/oss-fuzz/*.cc
         compile
         drivers > /dev/null
     fi

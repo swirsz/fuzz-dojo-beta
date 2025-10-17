@@ -1,14 +1,8 @@
-###
-### Welcome to a OSS-Fuzz Challenge
-###
-
-GUETZLI - simple 5648 loc 79%-80%-72% - 1 min
-
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=guetzli
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/guetzli/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/casync/inspector-report/20250411/fuzz_report.html
 
-Guetzli is a JPEG encoder/image compression - 80% coverage, the single fuzz driver has large missing functionality for downsampling images.
+casync is a Content Addressable Data Synchronizer, a tool that combines the rsync algorithm with content addressable storage.
 
-preprocess_downsample.cc has a 0% coverage.  It also does not look like it does JPEG encoding as jpeg_data_encoder.cc also has 0% coverage.  Compare, heat map, and many miscellaneous functions are not covered.
+This projects has a single fuzz driver that compresses and decomposes a stream of random data, but only hits 10% of the project code. Many different compression options, such as XZ and LibZ are not called, and none of the utility functions are executed.  The github project page lists a number of operations that could be implemented in fuzz drivers.  https://github.com/systemd/casync

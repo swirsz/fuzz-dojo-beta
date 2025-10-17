@@ -1,14 +1,8 @@
-###
-### Welcome to a Fuzz Dojo Challenge
-###
-
-LIBSASS - simple 19723 loc 29%-26%-4% (no FI) - 1 min
-
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsass
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=casync
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/libsass/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/casync/inspector-report/20250411/fuzz_report.html
 
-Libsaas is a C++ port of the original Ruby Sass CSS compiler with a C API.  
+casync is a Content Addressable Data Synchronizer, a tool that combines the rsync algorithm with content addressable storage.
 
-This project has 30% total code coverage.  Currently has a single partially broken fuzz driver. There are lots of parsing functions with no code coverage. Likely to need a good CSS dictionary/corpus for effective fuzzing.
+This projects has a single fuzz driver that compresses and decomposes a stream of random data, but only hits 10% of the project code. Many different compression options, such as XZ and LibZ are not called, and none of the utility functions are executed.  The github project page lists a number of operations that could be implemented in fuzz drivers.  https://github.com/systemd/casync

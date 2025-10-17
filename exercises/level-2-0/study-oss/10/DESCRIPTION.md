@@ -2,11 +2,12 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
-MINIZIP - medium 3639 loc 75%-76%-64% - 45 sec
+UNRAR - medium 13209 loc 8%-58%-86% - 1.5 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=minizip
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/minizip/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/unrar/inspector-report/20250411/fuzz_report.html
 
-Minizip-ng is a zip manipulation library written in C.  It has a zipping and unzipping fuzz drivers reaching 71% code coverage.  Stream functioning and encryption functionality is not well fuzzed.
+Unrar is a free library for extracting rar files.  A single fuzz driver reaches 58% of the code.  A very recent change has broken coverage reports for this project, but older reports are still available.  Browsing the full calltree shows that many commandline functions of this tool are not tested by the fuzz driver.
+

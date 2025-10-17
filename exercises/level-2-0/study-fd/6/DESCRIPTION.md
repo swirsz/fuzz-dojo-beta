@@ -2,13 +2,13 @@
 ### Welcome to a Fuzz Dojo Challenge
 ###
 
-W3M - simple 6400 loc 66%-70%-30% - 1 min
+LIGHTTPD - simple 1310 loc 36%-35%-47% - 2 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=w3m
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/w3m/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/lighttpd/inspector-report/20250411/fuzz_report.html
 
-w3m converts www to text, can also be used as a textmode web browser.  It has a single fuzz driver reaching 70% of the project code.  
+Lighttpd is a high-performance Web server.
 
-Several conversion functions, such as from iso2022 and utf8 have significant uncovered code.
+A single fuzz driver submits urls with random input to the Web server, but many other methods of fuzzing the code are possible.  Access or authentication methods could be used to access the buffer functions that have uncovered complexity for example.

@@ -1,14 +1,7 @@
-###
-### Welcome to a Fuzz Dojo Challenge
-###
-
-LIBPNG - medium 13217 loc 40%-43%-57% - 1.5 min
-
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpng
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=unrar
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/libpng/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/unrar/inspector-report/20250411/fuzz_report.html
 
-LIBPNG is the official library for the PNG, Portable Network Graphics, image format.  For a detailed description on using libpng, read `libpng-manual.txt`.  For examples of libpng in a program, see `example.c` and `pngtest.c`.
+Unrar is a free library for extracting rar files.  A single fuzz driver reaches 58% of the code.  A very recent change has broken coverage reports for this project, but older reports are still available.  Browsing the full calltree shows that many commandline functions of this tool are not tested by the fuzz driver.
 
-A single fuzz driver calls png_read_info and performs several transforms, but only reaches 50% of the code.  Lots of example code in `example.c` and `pngtest.c` could be turned into new fuzz drivers.

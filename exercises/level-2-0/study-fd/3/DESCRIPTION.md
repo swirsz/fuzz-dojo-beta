@@ -1,12 +1,8 @@
-###
-### Welcome to a Fuzz Dojo Challenge
-###
-
-LIBVPX - medium 32885 loc 54%-60%-0% - 2.5 min
-
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libvpx
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=guetzli
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/libvpx/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/guetzli/inspector-report/20250411/fuzz_report.html
 
-Libvpx is a free software video codec library that serves as the reference software implementation for the VP8 and VP9 video coding formats, and for AV1.  It has 2 decoding fuzz drivers, one for VP8 and another for VP9 that reaches 60% of the code.  The source code includes hundreds of unit tests in /test and additional code under /examples that could be turned into new fuzz drivers.
+Guetzli is a JPEG encoder/image compression - 80% coverage, the single fuzz driver has large missing functionality for downsampling images.
+
+preprocess_downsample.cc has a 0% coverage.  It also does not look like it does JPEG encoding as jpeg_data_encoder.cc also has 0% coverage.  Compare, heat map, and many miscellaneous functions are not covered.

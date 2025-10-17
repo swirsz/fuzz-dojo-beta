@@ -4,7 +4,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=openjpeg
+export PROJECT_NAME=xz
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -13,33 +13,28 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    echo Please wait, initial copy
-    #apt-get update && apt-get install -y make cmake g++
-    rm -rf $SRC/openjpeg/data
-    rm -rf $SRC/openjpeg/build
-    #git clone --depth 1 https://github.com/uclouvain/openjpeg
-    cp -r /downloads/openjpeg $SRC
-    cp -r /downloads/data $SRC
+    #apt-get install -y make autoconf autopoint libtool zip
+    #git clone https://git.tukaani.org/xz.git $SRC/xz
+    cp -r /downloads/xz $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-    cp $SRC/$PROJECT_NAME/tests/fuzzers/opj_decompress_fuzzer_J2K.cpp $SRC/$PROJECT_NAME/tests/fuzzers/newfuzzer.cpp
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    patch -tuN $SRC/openjpeg/tests/fuzzers/build_seed_corpus.sh -i /challenge/.build_seed_corpus.patch -r -
+    cp $SRC/$PROJECT_NAME/tests/ossfuzz/fuzz_encode_stream.c $SRC/$PROJECT_NAME/tests/ossfuzz/newfuzzer.c
+
+    #patch -tuN $SRC/xz/tests/ossfuzz/Makefile -i /challenge/.Makefile.patch -r -
 #----------------------------------------------------------------------
     build-cleanup
 fi
 build-srcfolders
 mv /src-$LABEL /src
-rm -rf $SRC/$PROJECT_NAME/build
 
 cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/tests/fuzzers/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/ossfuzz/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/tests/fuzzers
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/ossfuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
@@ -53,4 +48,3 @@ else
     drivers
 fi
 mv /src /src-$LABEL
-

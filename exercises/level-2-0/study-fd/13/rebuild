@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 export LABEL=$1
-export PROJECT_NAME=xz
+export PROJECT_NAME=wasm3
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
@@ -28,11 +28,11 @@ fi
 set -x
 #----------------------------------------------------------------------
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/$PROJECT_NAME/tests/ossfuzz
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC/wasm3/platforms/app_fuzz
 
-cd $SRC/$PROJECT_NAME/tests/ossfuzz
+cd $SRC/$PROJECT_NAME
 
-clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -c newfuzzer.c -I ../../src/liblzma/api/
+clang -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -c $SRC/wasm3/platforms/app_fuzz/newfuzzer.c -o newfuzzer.o -I$SRC/wasm3/source
 
 #----------------------------------------------------------------------
 drivers

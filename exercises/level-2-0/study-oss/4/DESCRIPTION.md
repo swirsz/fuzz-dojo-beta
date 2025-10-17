@@ -1,12 +1,8 @@
-###
-### Welcome to a OSS-Fuzz Challenge
-###
-
-TMUX - medium 48752 loc 12%-12%-31% - 1.5 min
-
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=tmux
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libpng
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/tmux/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/libpng/inspector-report/20250411/fuzz_report.html
 
-Tmux is a terminal multiplexer written in C.  A single fuzz driver reaches only 14% of the code by fuzzing the input_parse_buffer.  The fuzz blockers highlighted by Fuzz Introspector show large sections of code that could be targetted by new fuzz drivers.  For example: window layout, cmdq_new_state (creates a new state object that represents the context in which commands are executed within tmux), args_parse (string arguments sent to tmux's command system)
+LIBPNG is the official library for the PNG, Portable Network Graphics, image format.  For a detailed description on using libpng, read `libpng-manual.txt`.  For examples of libpng in a program, see `example.c` and `pngtest.c`.
+
+A single fuzz driver calls png_read_info and performs several transforms, but only reaches 50% of the code.  Lots of example code in `example.c` and `pngtest.c` could be turned into new fuzz drivers.

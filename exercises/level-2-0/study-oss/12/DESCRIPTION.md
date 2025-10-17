@@ -1,14 +1,14 @@
 ###
-### Welcome to a OSS-Fuzz Challenge
+### Welcome to a Fuzz Dojo Challenge
 ###
 
-XVID - medium 13782 loc 10%-33%-- - 1.5 min
+W3M - simple 6400 loc 66%-70%-30% - 1 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=xvid
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=w3m
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/xvid/inspector-report/20240921/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/w3m/inspector-report/20250411/fuzz_report.html
 
-XVid is a video codec life for the mpeg-4 standard.  The source code repository is no longer accessible online so it is broken on oss-fuzz, but the source code files are still available here and the project compiles and works properly.  A single fuzz driver reaches 33% of the project code.
+w3m converts www to text, can also be used as a textmode web browser.  It has a single fuzz driver reaching 70% of the project code.  
 
-One approach would be to simply repair this project implementation in OSS-Fuzz by determining what happened in 2024 to break the project's build.   The single fuzz driver only tests decoding functionality and covers up code very completely as shown by the green section in the call graph. Additional fuzz drivers could be written to  address encoding features of the library, or general functionality such as metadata handling, stream management, and bitstream handling functionality.
+Several conversion functions, such as from iso2022 and utf8 have significant uncovered code.

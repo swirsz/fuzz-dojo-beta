@@ -1,11 +1,10 @@
---- build.sho	2025-09-25 20:42:03.172849474 +0000
-+++ build.sh	2025-09-25 20:57:42.377605960 +0000
-@@ -1,7 +1,7 @@
- #!/bin/bash -eu
- 
- pushd $SRC
--mv people.xiph.org/*.ogg decode_corpus/
-+cp people.xiph.org/*.ogg decode_corpus/
- zip -r "$OUT/decode_fuzzer_seed_corpus.zip" decode_corpus/
- popd
- 
+--- build.sho	2023-09-17 16:59:44.155099906 +0000
++++ build.sh	2023-09-17 17:01:16.167356808 +0000
+@@ -21,3 +21,7 @@
+ cd src
+ $CC $CFLAGS -c $SRC/fuzz_burl.c -I. -I../include
+ $CXX $CXXFLAGS $LIB_FUZZING_ENGINE fuzz_burl.o lighttpd-burl.o lighttpd-buffer.o lighttpd-base64.o lighttpd-ck.o -o $OUT/fuzz_burl
++
++$CC $CFLAGS -c $SRC/fuzz_new.c -I. -I../include
++$CXX $CXXFLAGS $LIB_FUZZING_ENGINE fuzz_new.o lighttpd-burl.o lighttpd-buffer.o lighttpd-base64.o lighttpd-ck.o -o $OUT/fuzz_new
++

@@ -1,14 +1,14 @@
 ###
-### Welcome to a OSS-Fuzz Challenge
+### Welcome to a Fuzz Dojo Challenge
 ###
 
-ASTC-ENCODER - simple 2941 loc - 50%-50%-74% - 1.5 min
+ARGS - simple 1796 loc 22%-22%-47% - 3 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=astc-encoder
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=args
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/astc-encoder/inspector-report/20250520/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/args/inspector-report/20250515/fuzz_report.html
 
-The arm astc-encoder or Adaptive Scalable Texture Compression (ASTC) Encoder, astcenc, is a command-line tool for compressing and decompressing images using the ASTC texture compression standard.
+Args is a simple, small, flexible, single-header C++11 argument parsing library.  It is similar to Python's argparse, but in C++.
 
-The encoder has 1 fuzz driver that covers symbolic_to_physical and reaches 50% of the project coverage. A second single function symbolic_to_physical  should reach the majority of the remaining code.
+A single fuzz driver hits just about half of the project code, but many features in this single-file project are not addressed. These include Validation, Match, GetDescription, Arg Parsing, etc.

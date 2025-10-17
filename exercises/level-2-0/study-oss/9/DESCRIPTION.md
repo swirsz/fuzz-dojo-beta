@@ -2,13 +2,13 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
-LIBSODIUM - simple 8403 loc 18%-19%-12% - 2 min
+SNAPPY - simple 1502 loc 67%-67%-61% - 1 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=libsodium
-       
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=snappy
+
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/libsodium/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/snappy/inspector-report/20250411/fuzz_report.html
 
-LibSodium is an easy-to-use software library for encryption, decryption, signatures, password hashing, and more. 
+Snappy is a compression tool optimized for high speeds and reasonable compression rates.  2 existing fuzz drivers for compression and decompression currently reach about 67% of the code.
 
-This library has roughly 20% code coverage with only 2 fuzz drivers, exercising the encryption, decryption, and maybe hashing functions and very little else.  Just implementing ED25519 key signatures as a fuzz driver should greatly increase the code coverage of the project
+Many IOVec fuctions (a collection of memory regions) are not covered.

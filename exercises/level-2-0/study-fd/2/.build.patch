@@ -1,9 +1,10 @@
---- build.sho	2024-05-29 02:05:56.038141946 +0000
-+++ build.sh	2024-05-29 02:08:05.870234426 +0000
-@@ -24,3 +24,6 @@
+--- /src/casync/test/fuzz/meson.build	2023-09-08 21:50:46.943977497 +0000
++++ meson.build	2023-09-08 21:53:10.084900915 +0000
+@@ -2,6 +2,7 @@
  
- $CXX $CXXFLAGS -I${INSTALL_DIR}/include data_context_fuzzer.cc \
-   $LIB_FUZZING_ENGINE -o $OUT/data_context_fuzzer ${INSTALL_DIR}/lib/libsass.a
-+
-+$CXX $CXXFLAGS -I${INSTALL_DIR}/include new_fuzzer.cc \
-+  $LIB_FUZZING_ENGINE -o $OUT/new_fuzzer ${INSTALL_DIR}/lib/libsass.a
+ fuzzers = [
+         [['test/fuzz/fuzz-compress.c']],
++        [['test/fuzz/fuzz-new.c']],
+ ]
+ 
+ fuzz_main_c = files('fuzz-main.c')

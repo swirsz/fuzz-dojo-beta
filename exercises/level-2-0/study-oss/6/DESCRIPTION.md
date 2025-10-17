@@ -1,14 +1,14 @@
 ###
-### Welcome to a OSS-Fuzz Challenge
+### Welcome to a Fuzz Dojo Challenge
 ###
 
-VORBIS - simple 8745 loc 31%-35%-36% - 2.5 min
+LIGHTTPD - simple 1310 loc 36%-35%-47% - 2 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=vorbis
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=lighttpd
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/vorbis/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/lighttpd/inspector-report/20250411/fuzz_report.html
 
-Vorbis is a C++ library for audio compression.   It has a single fuzz driver reaching 35% of the code.
+Lighttpd is a high-performance Web server.
 
-Example code is provided by the project that might be useful to turn into additional fuzz drivers.
+A single fuzz driver submits urls with random input to the Web server, but many other methods of fuzzing the code are possible.  Access or authentication methods could be used to access the buffer functions that have uncovered complexity for example.

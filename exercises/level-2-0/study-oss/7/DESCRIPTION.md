@@ -1,14 +1,14 @@
 ###
-### Welcome to a OSS-Fuzz Challenge
+### Welcome to a Fuzz Dojo Challenge
 ###
 
-ALEMBIC - medium 12569 loc 1%-9%-0% - 1 min (slow FI)
+MINIZ - medium 5423 loc 56%-60%-74% - 1 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=alembic
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=miniz
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/alembic/inspector-report/20250514/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/miniz/inspector-report/20250411/fuzz_report.html
 
-Alembic is an open framework for storing and sharing scene data that includes a C++ library, a file format, and client plugins and applications.
+Miniz is a lossless, high performance data compression library in a single source file that implements the zlib (RFC 1950) and Deflate (RFC 1951) compressed data format specification standards.  Miniz also contains simple to use functions for writing .PNG format image files and reading/writing/appending .ZIP format archives.  It has 9 different fuzz drivers reaching 60% of the code.
 
-Alembic has only a single fuzz driver that is shown as blocked by static analysis, reaching almost no code at all.  Dynamic analysis shows 10% coverage, with lots of potential for new fuzz drivers.
+A number of validation functions, validating file archives, validating archives in memory, and archive appending features are not currently tested.  This project has an examples folder which might provide additional functionality not currently implemented into fuzz drivers.
