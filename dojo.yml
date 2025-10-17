@@ -9,8 +9,6 @@ image: stevenwirsz/fuzz-dojo:latest
 
 description: |
 
-        Level 2.0 & 2.1 Projects are temporarily down for updates
-
         Forum link: https://discord.com/channels/750635557666816031/1409993436328759328
 
         Fuzzing is a powerful technique used in both academia and industry to automate software testing.  It has also become the standard approach for discovering zero-day vulnerabilities.  Google considers fuzzing to be their first line of defense, and has built an open source version of their fuzzing platform, known as OSS-Fuzz, to continually test popular open source software.  OSS-Fuzz has been used successfully in over a thousand projects.  However, due to its limitations, only about 30% of the code typically gets tested, leaving 70% unevaluated.
@@ -24,6 +22,8 @@ description: |
         The first 30 participants to complete the module and the surveys will be rewarded with a $50 Amazon gift card upon completion of the study.  Valid contact information required.  Limit 1 submission per person.
         
         The Bash (Bourne Again SHell) is required for some of these challenges.  This is the default shell unless you change it.
+        
+        In the interest of this study's integrity, please refrain from exploiting any bugs or vulnerabilities discovered during testing.
 
 modules:
 
