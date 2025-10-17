@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=libpng
+export PROJECT_NAME=unrar
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,18 +13,16 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && \
-    #    apt-get install -y make autoconf automake libtool zlib1g-dev
+    #apt-get update && apt-get install -y make build-essential
 
-    #git clone --depth 1 https://github.com/madler/zlib.git
-    #git clone --depth 1 https://github.com/pnggroup/libpng.git
+    #git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
+    rm -rf  $SRC/unrar
+    cp -r /downloads/unrar $SRC/
 
-    cp -r /downloads/zlib $SRC
-    cp -r /downloads/libpng $SRC
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-    cp $SRC/libpng/contrib/oss-fuzz/build.sh $SRC
-
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    chmod 755 $SRC/build.sh
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi

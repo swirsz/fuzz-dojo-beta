@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=args
+export PROJECT_NAME=casync
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,18 +13,14 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #RUN apt-get update && \
-    #    apt-get install -y \
-    #    make \
-    #    cmake
+    #apt-get update && apt-get install -y python3-pip pkg-config wget \
+    #        liblzma-dev libzstd-dev libcurl4-openssl-dev libssl-dev libudev-dev \
+    #        zlib1g-dev libacl1-dev libfuse-dev rsync udev 
+    #    pip3 install meson ninja
+    #git clone --depth 1 https://github.com/systemd/casync casync
+    cp -r /downloads/casync $SRC
 
-    #RUN git clone --depth 1 https://github.com/Taywee/args.git $SRC/args/
-
-    #COPY build.sh $SRC/
-    #WORKDIR $SRC/args/
-    cp -r /downloads/args $SRC
-
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC
 #----------------------------------------------------------------------
     build-cleanup-oss
 fi

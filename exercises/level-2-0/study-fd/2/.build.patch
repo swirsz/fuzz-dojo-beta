@@ -1,10 +1,11 @@
---- /src/casync/test/fuzz/meson.build	2023-09-08 21:50:46.943977497 +0000
-+++ meson.build	2023-09-08 21:53:10.084900915 +0000
-@@ -2,6 +2,7 @@
+--- build.sho	2025-10-09 16:38:33.763438127 +0000
++++ build.sh	2025-10-09 16:39:45.289556172 +0000
+@@ -17,7 +17,7 @@
  
- fuzzers = [
-         [['test/fuzz/fuzz-compress.c']],
-+        [['test/fuzz/fuzz-new.c']],
- ]
+ # Get data. We do this here to resolve CIFuzz issues
+ # CC https://github.com/uclouvain/openjpeg/pull/1386
+-git clone --depth 1 https://github.com/uclouvain/openjpeg-data data
++#git clone --depth 1 https://github.com/uclouvain/openjpeg-data data
+ export OPJ_DATA_ROOT=$PWD/data
  
- fuzz_main_c = files('fuzz-main.c')
+ mkdir build

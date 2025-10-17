@@ -2,13 +2,13 @@
 ### Welcome to a OSS-Fuzz Challenge
 ###
 
-GUETZLI - simple 5648 loc 79%-80%-72% - 1 min
+SNAPPY - simple 1502 loc 67%-67%-61% - 1 min
 
-Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=guetzli
+Use (Report link) to browse the source code and fuzz introspector report https://introspector.oss-fuzz.com/project-profile?project=snappy
 
 Fuzz Introspector
-https://storage.googleapis.com/oss-fuzz-introspector/guetzli/inspector-report/20250411/fuzz_report.html
+https://storage.googleapis.com/oss-fuzz-introspector/snappy/inspector-report/20250411/fuzz_report.html
 
-Guetzli is a JPEG encoder/image compression - 80% coverage, the single fuzz driver has large missing functionality for downsampling images.
+Snappy is a compression tool optimized for high speeds and reasonable compression rates.  2 existing fuzz drivers for compression and decompression currently reach about 67% of the code.
 
-preprocess_downsample.cc has a 0% coverage.  It also does not look like it does JPEG encoding as jpeg_data_encoder.cc also has 0% coverage.  Compare, heat map, and many miscellaneous functions are not covered.
+Many IOVec fuctions (a collection of memory regions) are not covered.

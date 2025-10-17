@@ -3,7 +3,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=guetzli
+export PROJECT_NAME=snappy
 export SANITIZER=$1
 . /usr/local/sbin/e
 if [ -z "$SANITIZER" ]; then
@@ -13,21 +13,11 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    echo
-    echo Installing pre-reqs for $PROJECT_NAME
-    echo
-    #apt-get update && apt-get install -y make autoconf automake libtool libpng-dev pkg-config curl
+    #rm -rf $SRC/$PROJECT_NAME
+    #apt-get update && apt-get install -y make autoconf automake libtool gettext pkg-config build-essential
+    #git clone --recurse-submodules https://github.com/google/snappy
+    cp -r /downloads/snappy $SRC
 
-    #mkdir afl-testcases
-    #cd afl-testcases/ && curl https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz | tar -xz
-    cd $SRC
-    cp -r /downloads/afl-testcases $SRC
-
-    zip guetzli_fuzzer_seed_corpus.zip afl-testcases/jpeg/full/images/* afl-testcases/jpeg_turbo/full/images/*
-
-    #git clone --depth=1 https://github.com/google/guetzli 
-    cp -r /downloads/guetzli $SRC
-    cd /
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 #----------------------------------------------------------------------
     build-cleanup-oss

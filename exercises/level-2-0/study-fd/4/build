@@ -4,7 +4,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=libpng
+export PROJECT_NAME=unrar
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -13,18 +13,17 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && \
-    #    apt-get install -y make autoconf automake libtool zlib1g-dev
+    #apt-get update && apt-get install -y make build-essential
 
-    #git clone --depth 1 https://github.com/madler/zlib.git
-    #git clone --depth 1 https://github.com/pnggroup/libpng.git
+    #git clone -b oss_fuzz --depth 1 https://github.com/aawc/unrar.git
+    rm -rf  $SRC/unrar
+    cp -r /downloads/unrar $SRC/
 
-    cp -r /downloads/zlib $SRC
-    cp -r /downloads/libpng $SRC
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME 
+    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-    cp $SRC/libpng/contrib/oss-fuzz/build.sh $SRC
-
-    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/libpng_read_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/libpng_new_fuzzer.cc
+    cp $SRC/$PROJECT_NAME/unrar_fuzzer.cc $SRC/$PROJECT_NAME/new_fuzzer.cc
+    chmod 755 $SRC/build.sh
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
     build-cleanup
@@ -36,10 +35,10 @@ cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------

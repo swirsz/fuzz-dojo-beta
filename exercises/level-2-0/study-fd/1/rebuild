@@ -1,7 +1,7 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
 export LABEL=$1
-export PROJECT_NAME=astc-encoder
+export PROJECT_NAME=guetzli
 SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     SANITIZER='none'
@@ -15,32 +15,25 @@ if [ -z "$(find /out -mindepth 1 -maxdepth 1)" ] || [ ! -d "$SRC" ]; then
 else 
 
 if [ "$LABEL" = "none" ]; then
-    export FLAGS=""
+    FLAGS=""
 elif [ "$LABEL" = "address" ]; then
-    export FLAGS=$SANITIZER_FLAGS_address
+    FLAGS=$SANITIZER_FLAGS_address
 elif [ "$LABEL" = "memory" ]; then
-    export FLAGS=$SANITIZER_FLAGS_memory
+    FLAGS=$SANITIZER_FLAGS_memory
 elif [ "$LABEL" = "undefined" ]; then
-    export FLAGS=$SANITIZER_FLAGS_undefined
+    FLAGS=$SANITIZER_FLAGS_undefined
 elif [ "$LABEL" = "thread" ]; then
-    export FLAGS=$SANITIZER_FLAGS_thread
+    FLAGS=$SANITIZER_FLAGS_thread
 fi
 set -x
 #----------------------------------------------------------------------
 
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/Source/Fuzzers
-cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME
 
-cd $SRC/$PROJECT_NAME/Source
+cd $SRC/$PROJECT_NAME
 
-for fuzzer in ./Fuzzers/fuzz_*.cpp; do
-  $CXX $CXXFLAGS \
-      -DASTCENC_SSE=0 \
-      -DASTCENC_AVX=0 \
-      -DASTCENC_POPCNT=0 \
-      -I. -std=c++14  -pthread $fuzzer $LIB_FUZZING_ENGINE ./libastcenc.a \
-      -o $OUT/$(basename -s .cpp $fuzzer)
-done  
+clang++ -O1 -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION $FLAGS -fsanitize=fuzzer-no-link -stdlib=libc++ -std=c++11 -I. fuzz_newfuzzer.cc -fsanitize=fuzzer -o /out/fuzz_newfuzzer bin/Release/libguetzli_static.a
+
 #----------------------------------------------------------------------
 drivers
 fi
