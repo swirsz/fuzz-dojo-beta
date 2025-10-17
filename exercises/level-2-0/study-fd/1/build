@@ -12,11 +12,14 @@ if [ -z "$SANITIZER" ]; then
 fi
 
 if [ ! -d "/src-orig" ]; then
-#----------------------------------------------------------------------
+#---------------------------------------------------------------------- 
     #apt-get update && apt-get install -y make autoconf automake libtool libpng-dev pkg-config curl
 
     #mkdir afl-testcases
     #cd afl-testcases/ && curl https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz | tar -xz
+    echo
+    echo Installing pre-reqs for $PROJECT_NAME
+    echo
     cd $SRC
     cp -r /downloads/afl-testcases $SRC
 
