@@ -29,7 +29,7 @@ count = sum(1 for item in os.listdir(path) if item.isdigit() and (path / item).i
 
 subdir = path / str(random.randint(0, count-1))
 
-subdir = path / str("5")
+subdir = path / str("0")
 
 for file in subdir.iterdir():
     shutil.move(str(file), f"/challenge/{file.name}")
