@@ -145,7 +145,6 @@ modules:
         description: Go through the steps to add a new fuzz driver to an existing OSS-Fuzz project
 
   - id: exercises
-    progression_locked: true
     name: Real World Fuzzing
     
     challenges:
@@ -154,10 +153,13 @@ modules:
         name: Level 1.0 Practice
 
       - id: level-1-1
+        progression_locked: true
         name: Level 1.1 Practice
 
       - id: level-2-0
+        progression_locked: true
         name: Level 2.0 Project
 
       - id: level-2-1
+        progression_locked: true
         name: Level 2.1 Project
