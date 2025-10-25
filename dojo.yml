@@ -145,6 +145,7 @@ modules:
         description: Go through the steps to add a new fuzz driver to an existing OSS-Fuzz project
 
   - id: exercises
+    progression_locked: true
     name: Real World Fuzzing
     
     challenges:
