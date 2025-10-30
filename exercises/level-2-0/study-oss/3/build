@@ -46,7 +46,7 @@ else
             mv /src /src-$LABEL
             exit 1
         fi
-        fuzzlog_oss $SRC/$PROJECT_NAME/*.cc
+        fuzzlog_oss $SRC/$PROJECT_NAME/*.c* $5/*.c*
         compile
         drivers > /dev/null
     fi
