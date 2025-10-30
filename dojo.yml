@@ -146,7 +146,8 @@ modules:
 
   - id: exercises
     name: Real World Fuzzing
-    
+    description: Challenges in this module MUST be completed in order.  Challenges are locked unless the previous challenge is completed.
+
     challenges:
 
       - id: level-1-0
