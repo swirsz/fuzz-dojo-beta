@@ -33,7 +33,7 @@ available = [i for i in range(count) if i != exclude]
 newrandom = random.choice(available)
 
 subdir = path / str(newrandom)
-subdir = path / str("1")
+subdir = path / str("2")
 
 for file in subdir.iterdir():
     shutil.move(str(file), f"/challenge/{file.name}")
