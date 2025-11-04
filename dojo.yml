@@ -21,7 +21,7 @@ description: |
         
         The first 30 participants to complete the module and the surveys will be rewarded with a $50 Amazon gift card upon completion of the study.  Valid contact information required.  Limit 1 submission per person.
         
-        The Bash (Bourne Again SHell) is required for some of these challenges.  This is the default shell unless you change it.
+        The Bash (Bourne Again SHell) is required for OSS-Fuzz challenges, and OSS-Fuzz specific commands unfortunately do not work in scripts.  Bash is the default shell unless you change it.
         
         In the interest of this study's integrity, please refrain from exploiting any bugs or vulnerabilities discovered during testing.
 
@@ -142,7 +142,7 @@ modules:
 
       - id: 11-add-newfuzzer
         name: OSS-Fuzz - Add new_fuzzer
-        description: Go through the steps to add a new fuzz driver to an existing OSS-Fuzz project
+        description: Go through the steps to add a new fuzz driver to an existing OSS-Fuzz project aspell-fuzz
 
   - id: exercises
     name: Real World Fuzzing
