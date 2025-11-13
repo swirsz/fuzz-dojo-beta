@@ -26,8 +26,6 @@ study = 'fd' if Dojo_User_Id % 2 == 1 else 'oss'
 #U 4
 
 
-#path = Path(f'/challenge/study-{study}-{difficulty}')
-path = Path(f'/challenge/study-{study}')
 count = sum(1 for item in os.listdir(path) if item.isdigit() and (path / item).is_dir())
 
 exclude = random.randint(0, count-1)
@@ -44,6 +42,9 @@ if exclude in [3, 4]:
 elif exclude == 2:
     study = 'oss'
 
+
+#path = Path(f'/challenge/study-{study}-{difficulty}')
+path = Path(f'/challenge/study-{study}')
 
 if study == 'oss':
     #random.seed(Dojo_User_Id*7331)
