@@ -32,6 +32,9 @@ count = sum(1 for item in os.listdir(path) if item.isdigit() and (path / item).i
 
 exclude = random.randint(0, count-1)
 
+#testing
+exclude = 2
+
 #no more snappy oss=only fd
 #no more unrar oss=only fd
 #no more openjpeg fd-only oss
@@ -49,9 +52,6 @@ if study == 'oss':
 
 
 subdir = path / str(exclude)
-
-#testing
-#subdir = path / str("0")
 
 for file in subdir.iterdir():
     shutil.move(str(file), f"/challenge/{file.name}")
