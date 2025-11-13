@@ -26,6 +26,7 @@ study = 'fd' if Dojo_User_Id % 2 == 1 else 'oss'
 #U 4
 
 
+path = Path(f'/challenge/study-{study}')
 count = sum(1 for item in os.listdir(path) if item.isdigit() and (path / item).is_dir())
 
 exclude = random.randint(0, count-1)
