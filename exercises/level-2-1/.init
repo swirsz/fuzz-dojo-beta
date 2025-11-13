@@ -32,7 +32,7 @@ exclude = random.randint(0, count-1) #level
 #no more openjpeg fd-only oss
 
 #testing
-exclude = 3
+exclude = 4
 
 
 if exclude in [3, 4]:
