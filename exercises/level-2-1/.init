@@ -31,6 +31,10 @@ exclude = random.randint(0, count-1) #level
 #no more unrar oss=only fd
 #no more openjpeg fd-only oss
 
+#testing
+exclude = 2
+
+
 if exclude in [3, 4]:
     study = 'oss'
 elif exclude == 2:
