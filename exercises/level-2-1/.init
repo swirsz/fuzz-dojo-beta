@@ -32,14 +32,14 @@ exclude = random.randint(0, count-1) #level
 #no more openjpeg fd-only oss
 
 #testing
-exclude = 4
+#exclude = 4
 
 
-if exclude in [3, 4]:
+
+if exclude in [0, 3, 4]:
     study = 'oss'
-elif exclude == 2:
+elif exclude in [1, 2]:
     study = 'fd'
-
 
 #path = Path(f'/challenge/study-{study}-{difficulty}')
 path = Path(f'/challenge/study-{study}')
