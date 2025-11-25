@@ -30,8 +30,6 @@ description: |
         3) Completion of all (4) Real-World Fuzzing Challenges (2 demo, 2 real)
         4) Exit Survey https://forms.gle/uG8yik8pXFRXQHSGA  
         
-        The Introduction to Fuzzing module is optional but highly recommended for training videos, training slides, and training exercises.        
-        
         In the interest of this study's integrity, please refrain from exploiting any bugs or vulnerabilities discovered during testing.
 
 modules:
