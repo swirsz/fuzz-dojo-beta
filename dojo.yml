@@ -17,9 +17,9 @@ description: |
 
         This is a programming challenge. Fuzz drivers for these real-world challenges are typically between 30 to 200 LOC.  The main “study” module consists of four challenges:
         
-        Two practice tasks (with full coding solutions included in the provided slides)
+        * Two practice tasks (with full coding solutions included in the provided slides)
         
-        Two real-world-style tasks where you’ll write fuzz drivers and aim for ~5% improvement in code coverage on a target.
+        * Two real-world-style tasks where you’ll write fuzz drivers and aim for ~5% improvement in code coverage on a target.
 
         The first 30 participants to complete the module and the surveys will be rewarded with a $50 Amazon gift card upon completion of the study.  To see how many people have completed the study, open the "Real World Fuzzing" module below and check how many people have a score of 4.  Valid contact information required.  Limit 1 submission per person.
         
