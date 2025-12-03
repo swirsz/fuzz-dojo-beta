@@ -1,5 +1,5 @@
 ###
-### Welcome to a OSS-Fuzz Challenge
+### Welcome to an OSS-Fuzz Challenge
 ###
 
 SNAPPY - simple 1502 loc 67%-67%-61% - 1 min

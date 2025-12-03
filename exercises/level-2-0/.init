@@ -38,11 +38,11 @@ exclude = random.randint(0, count-1)
 #no more unrar oss=only fd
 #no more openjpeg fd-only oss
 
-if exclude in [0, 3, 4]:
-    study = 'fd'
-elif exclude in [1, 2]:
-    study = 'oss'
 
+if exclude in [3, 2]:
+    study = 'oss'
+elif exclude in [0, 1, 4]:
+    study = 'fd'
 
 #path = Path(f'/challenge/study-{study}-{difficulty}')
 path = Path(f'/challenge/study-{study}')
