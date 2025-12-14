@@ -102,7 +102,7 @@ for file in subdir.iterdir():
 
 patch -tuN /downloads/openjpeg/tests/fuzzers/build_seed_corpus.sh -i /challenge/.build_seed_corpus.patch -r -
 
-Path(/challenge/.build_seed_corpus.patch).unlink()
-Path(__file__).unlink()
+#Path(/challenge/.build_seed_corpus.patch).unlink()
+#Path(__file__).unlink()
 shutil.rmtree(f'/challenge/study-fd', ignore_errors=True)
 shutil.rmtree(f'/challenge/study-oss', ignore_errors=True)
