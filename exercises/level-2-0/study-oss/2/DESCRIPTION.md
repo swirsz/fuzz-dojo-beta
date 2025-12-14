@@ -1,5 +1,5 @@
 ###
-### Welcome to a Fuzz Dojo Challenge
+### Welcome to an OSS-Fuzz Challenge
 ###
 
 OPENJPEG - complex 22939 loc 5%--%-4% - 2 min
