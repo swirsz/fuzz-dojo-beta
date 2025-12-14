@@ -26,7 +26,7 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp $SRC/$PROJECT_NAME/tests/fuzzers/opj_decompress_fuzzer_J2K.cpp $SRC/$PROJECT_NAME/tests/fuzzers/newfuzzer.cpp
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-    patch -tuN $SRC/openjpeg/tests/fuzzers/build_seed_corpus.sh -i /challenge/.build_seed_corpus.patch -r -
+    #patch -tuN $SRC/openjpeg/tests/fuzzers/build_seed_corpus.sh -i /challenge/.build_seed_corpus.patch -r -
 #----------------------------------------------------------------------
     build-cleanup
 fi
