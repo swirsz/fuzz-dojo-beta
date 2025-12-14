@@ -100,9 +100,6 @@ subdir = path / str(newrandom)
 for file in subdir.iterdir():
     shutil.move(str(file), f"/challenge/{file.name}")
 
-patch -tuN /downloads/openjpeg/tests/fuzzers/build_seed_corpus.sh -i /challenge/.build_seed_corpus.patch -r -
-
-#Path(/challenge/.build_seed_corpus.patch).unlink()
-#Path(__file__).unlink()
+Path(__file__).unlink()
 shutil.rmtree(f'/challenge/study-fd', ignore_errors=True)
 shutil.rmtree(f'/challenge/study-oss', ignore_errors=True)
