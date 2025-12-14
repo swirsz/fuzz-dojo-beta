@@ -24,7 +24,10 @@ study = 'fd' if random.randint(0,1) == 1 else 'oss'
 #O 2
 #S 3
 #U 4
-
+filename = f"/tmp/{Dojo_User_Id}.txt"
+with open(filename, "w") as f:
+    f.write("File created successfully.")
+    
 
 path = Path(f'/challenge/study-{study}')
 count = sum(1 for item in os.listdir(path) if item.isdigit() and (path / item).is_dir())
