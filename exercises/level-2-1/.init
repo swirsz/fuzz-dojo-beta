@@ -71,7 +71,7 @@ if study == 'oss':
 
 # Mapping: exclude -> newrandom
 mapping = {
-    0: 2,
+    0: 4,
     1: 3,
     2: 4,
     3: 1,
