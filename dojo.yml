@@ -182,6 +182,57 @@ modules:
     
     challenges:
 
+      - id: binutils - 627928 loc - 37% - 26 drivers
+        name: BINUTILS
+
+      - id: c-blosc2 - 62162 loc - 35% - 4 drivers
+        name: C-BLOSC2
+
+      - id: cpython3 - 273224 loc - 25% - 11 drivers
+        name: CPYTHON3
+
+      - id: grok - 74856 loc - 29% - 2 drivers
+        name: GROK
+
+      - id: h2o - N/A loc - N/A - 9 drivers
+        name: H2O
+
+      - id: libavc - 135862 loc - 73% - 5 drivers
+        name: LIBAVC
+
+      - id: libhevc - 149366 loc - 47% - 2 drivers
+        name: LIBHEVC
+
+      - id: libraw - 38061 loc - 80% - 4 drivers
+        name: LIBRAW
+
+      - id: libyaml - 6679 loc - 90% - 9 drivers
+        name: LIBYAML
+
+      - id: monero - 115986 loc - 23% - 17 drivers
+        name: MONERO
+
+      - id: opus - 27860 loc - 87% - 24 drivers
+        name: OPUS
+
+      - id: php - 458754 loc - 46% - 8 drivers
+        name: PHP
+
+      - id: solidity - 136104 loc - 60% - 13 drivers
+        name: SOLIDITY
+
+      - id: spdlog
+        name: SPDLOG - 6009 loc - 48% - 5 drivers
+
+      - id: tremor
+        name: TREMOR - 4953 loc - 74% - 3 drivers
+
+      - id: yara
+        name: YARA - simple 30443 loc 49%-63%-43% - 3 min
+
+      - id: zlib
+        name: ZLIB - complex 5055 loc 78%-79%-87% - 1 min
+
       - id: casync
         name: CASYNC - medium 1678 loc 11%-10%-14% - 1 min
 
@@ -365,12 +416,6 @@ modules:
         
       - id: xz
         name: XZ - simple 3414 loc 69%-71%-12% - 2 min
-
-      - id: yara
-        name: YARA - simple 30443 loc 49%-63%-43% - 3 min
-
-      - id: zlib
-        name: ZLIB - complex 5055 loc 78%-79%-87% - 1 min
 
       - id: zopfli
         name: (D) ZOPFLI - simple 2221 loc 77%-94%-99% - 1 min

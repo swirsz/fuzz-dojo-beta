@@ -1,0 +1,68 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+if [ "$?" -gt 0 ]; then
+    exit 1
+fi
+export LABEL=$1
+export PROJECT_NAME=tremor
+export SANITIZER=$1
+if [ -z "$SANITIZER" ]; then
+    export SANITIZER='none'
+    export LABEL='none'$LABEL
+fi
+
+if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
+#RUN apt-get update && apt-get install -y make autoconf automake ffmpeg libogg-dev libtool pkg-config wget
+#RUN python3 -m pip install --upgrade pip && python3 -m pip install corpus-replicator
+#RUN git clone --depth 1 https://gitlab.xiph.org/xiph/ogg.git
+#RUN git clone --depth 1 https://gitlab.xiph.org/xiph/tremor.git
+#RUN corpus-replicator -o decode_corpus audio_vorbis_ogg_libvorbis.yml audio
+#WORKDIR tremor
+#COPY decode_fuzzer.cc vorbis_synthesis_fuzzer.cc ogg_fuzzer.cc $SRC/tremor/
+#COPY build.sh $SRC/
+
+
+
+    cp -r /downloads/ogg $SRC
+    cp -r /downloads/tremor $SRC
+    corpus-replicator -o decode_corpus audio_vorbis_ogg_libvorbis.yml audio
+    
+    #cp /downloads/aspell*.bz2 /tmp
+
+    cp /opt/oss-fuzz/projects/tremor/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/tremor/decode_fuzzer.cc $SRC/tremor/
+    cp /opt/oss-fuzz/projects/tremor/vorbis_synthesis_fuzzer.cc $SRC/tremor/
+    cp /opt/oss-fuzz/projects/tremor/ogg_fuzzer.cc $SRC/tremor/
+    #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
+    #patch -tuN $SRC/$PROJECT_NAME/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    #patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
+        
+    #cp $SRC/$PROJECT_NAME/aspell_fuzzer.cpp $SRC/$PROJECT_NAME/new_fuzzer.cpp
+#----------------------------------------------------------------------
+    build-cleanup
+fi
+build-srcfolders
+mv /src-$LABEL /src
+
+cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+else
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+fi
+#----------------------------------------------------------------------
+if [ "$4" = "understanding" ]; then
+    understanding $2 $3
+elif [ "$4" = "planning" ]; then
+    planning $2 $3
+else
+    fuzzlog
+    compile
+    drivers
+fi
+mv /src /src-$LABEL
