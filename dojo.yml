@@ -182,44 +182,44 @@ modules:
     
     challenges:
 
-      - id: binutils - 627928 loc - 37% - 26 drivers
-        name: BINUTILS
+      - id: binutils
+        name: BINUTILS - 627928 loc - 37% - 26 drivers
 
-      - id: c-blosc2 - 62162 loc - 35% - 4 drivers
-        name: C-BLOSC2
+      - id: c-blosc2
+        name: C-BLOSC2 - 62162 loc - 35% - 4 drivers
 
-      - id: cpython3 - 273224 loc - 25% - 11 drivers
-        name: CPYTHON3
+      - id: cpython3
+        name: CPYTHON3 - 273224 loc - 25% - 11 drivers
 
-      - id: grok - 74856 loc - 29% - 2 drivers
-        name: GROK
+      - id: grok
+        name: GROK - 74856 loc - 29% - 2 drivers
 
-      - id: h2o - N/A loc - N/A - 9 drivers
-        name: H2O
+      - id: h2o
+        name: H2O - N/A loc - N/A - 9 drivers
 
-      - id: libavc - 135862 loc - 73% - 5 drivers
-        name: LIBAVC
+      - id: libavc
+        name: LIBAVC - 135862 loc - 73% - 5 drivers
 
-      - id: libhevc - 149366 loc - 47% - 2 drivers
-        name: LIBHEVC
+      - id: libhevc
+        name: LIBHEVC - 149366 loc - 47% - 2 drivers
 
-      - id: libraw - 38061 loc - 80% - 4 drivers
-        name: LIBRAW
+      - id: libraw
+        name: LIBRAW - 38061 loc - 80% - 4 drivers
 
-      - id: libyaml - 6679 loc - 90% - 9 drivers
-        name: LIBYAML
+      - id: libyaml
+        name: LIBYAML - 6679 loc - 90% - 9 drivers
 
-      - id: monero - 115986 loc - 23% - 17 drivers
-        name: MONERO
+      - id: monero
+        name: MONERO - 115986 loc - 23% - 17 drivers
 
-      - id: opus - 27860 loc - 87% - 24 drivers
-        name: OPUS
+      - id: opus
+        name: OPUS - 27860 loc - 87% - 24 drivers
 
-      - id: php - 458754 loc - 46% - 8 drivers
-        name: PHP
+      - id: php
+        name: PHP - 458754 loc - 46% - 8 drivers
 
-      - id: solidity - 136104 loc - 60% - 13 drivers
-        name: SOLIDITY
+      - id: solidity
+        name: SOLIDITY - 136104 loc - 60% - 13 drivers
 
       - id: spdlog
         name: SPDLOG - 6009 loc - 48% - 5 drivers
@@ -338,7 +338,7 @@ modules:
 
       - id: liblouis
         name: (D) LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min (broken on OSS-Fuzz)
-        
+
       - id: libpng
         name: LIBPNG - medium 13217 loc 40%-43%-57% - 1.5 min
 
@@ -365,7 +365,7 @@ modules:
 
       - id: minizip
         name: MINIZIP - medium 3639 loc 75%-76%-64% - 45 sec
-        
+
       - id: mpg123
         name: MPG123 - medium 9826 loc 39%-52%-43% - 2 min
 
