@@ -22,7 +22,9 @@ if [ ! -d "/src-orig" ]; then
 #COPY build.sh $SRC/
 #COPY fuzz_*.c $SRC/
 
+    echo Please wait, initial copy samples
     cp -r /downloads/binary-samples $SRC
+    echo Please wait, initial copy gdb
     cp -r /downloads/binutils-gdb $SRC
 
     cp /opt/oss-fuzz/projects/binutils/build.sh $SRC/
@@ -38,7 +40,7 @@ fi
 build-srcfolders
 mv /src-$LABEL /src
 
-cd $SRC/$PROJECT_NAME
+cd /src/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
