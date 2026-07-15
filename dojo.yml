@@ -182,11 +182,20 @@ modules:
     
     challenges:
 
+      - id: avahi
+        name: AVAHI - simple 2566 loc 73%-76%-81% - 2 min
+
       - id: binutils
         name: BINUTILS - 627928 loc - 37% - 26 drivers
 
+      - id: c-ares
+        name: C-ARES - medium 5676 loc 35%-39%-72% - 2.5 min
+
       - id: c-blosc2
         name: C-BLOSC2 - 62162 loc - 35% - 4 drivers
+
+      - id: cjson
+        name: (D) CJSON - simple 2304 loc 43%-43%-46% - 1 min
 
       - id: cpython3
         name: CPYTHON3 - 273224 loc - 25% - 11 drivers
@@ -197,6 +206,9 @@ modules:
       - id: h2o
         name: H2O - N/A loc - N/A - 9 drivers
 
+      - id: kamailio
+        name: KAMAILIO - simple 83091 loc 4%-10%-11% (no FI) - 5 min
+
       - id: libavc
         name: LIBAVC - 135862 loc - 73% - 5 drivers
 
@@ -205,6 +217,9 @@ modules:
 
       - id: libraw
         name: LIBRAW - 38061 loc - 80% - 4 drivers
+
+      - id: libssh2
+        name: LIBSSH2 - medium 12632 loc 9%-20%-26% - 2 min
 
       - id: libyaml
         name: LIBYAML - 6679 loc - 90% - 9 drivers
@@ -223,6 +238,9 @@ modules:
 
       - id: spdlog
         name: SPDLOG - 6009 loc - 48% - 5 drivers
+
+      - id: sqlite3
+        name: (D) SQLITE3 - complex 80385 loc 33%-75%-76% - 5 min (slow FI)  (broken on OSS-Fuzz)
 
       - id: tremor
         name: TREMOR - 4953 loc - 74% - 3 drivers
@@ -281,20 +299,11 @@ modules:
       - id: astc-encoder
         name: ASTC-ENCODER - simple 2941 loc - 50%-50%-74% - 1.5 min
 
-      - id: avahi
-        name: (D) AVAHI - simple 2566 loc 73%-76%-81% - 2 min
-
       - id: boost
         name: BOOST - medium 11995 loc 43%-57%--% - 10 min (no FI)
 
       - id: bzip2
         name: (D) BZIP2 - medium 2661 loc 74%-92%-99% - 1 min
-
-      - id: c-ares
-        name: C-ARES - medium 5676 loc 35%-39%-72% - 2.5 min
-
-      - id: cjson
-        name: (D) CJSON - simple 2304 loc 43%-43%-46% - 1 min
 
       - id: cmark
         name: (D) CMARK - medium 14688 loc 81%-95%-82% - 1 min
@@ -330,9 +339,6 @@ modules:
       - id: json
         name: JSON - simple 8008 loc 68%-74%-94% - 1 min
 
-      - id: kamailio
-        name: KAMAILIO - simple 83091 loc 4%-10%-11% (no FI) - 5 min
-
       - id: lame
         name: (D) LAME - complex 23539 loc 40% (broken on OSS-Fuzz)
 
@@ -347,9 +353,6 @@ modules:
 
       - id: libsodium
         name: LIBSODIUM - simple 8403 loc 18%-19%-12% - 2 min
-
-      - id: libssh2
-        name: LIBSSH2 - medium 12632 loc 9%-20%-26% - 2 min
 
       - id: libvnc
         name: LIBVNC - medium 10793 loc 16%-19%-22% - 3.5 min
@@ -383,9 +386,6 @@ modules:
 
       - id: speex
         name: (D) SPEEX - complex 5867 loc 80%--%--% - 4.5 min
-
-      - id: sqlite3
-        name: (D) SQLITE3 - complex 80385 loc 33%-75%-76% - 5 min (slow FI)  (broken on OSS-Fuzz)
 
       - id: tmux
         name: TMUX - medium 48752 loc 12%-12%-31% - 1.5 min
