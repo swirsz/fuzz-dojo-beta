@@ -105,8 +105,8 @@ END_COMMENT
     cp -r /downloads/solidity-fuzzing-corpus $SRC
     echo Please wait, initial copy of libprotobuf
     cp -r /downloads/libprotobuf-mutator $SRC
-    echo Please wait, initial copy of evmone
-    cp -r /downloads/evmone $SRC
+    #echo Please wait, initial copy of evmone
+    #cp -r /downloads/evmone $SRC
                 
 # Install statically built dependencies in "/usr" directory
 # Install boost
@@ -137,25 +137,6 @@ cd $SRC/libprotobuf-mutator; \
     ninja install; \
     cd external.protobuf; \
     cp -Rf bin lib include /usr;
-
-# Install evmone
-cd "$SRC/evmone"; \
-    rm -rf build; \
-    mkdir -p build; \
-    cd build; \
-    EVMONE_CFLAGS="$(printf '%s' "${CFLAGS:-}" | sed 's/-stdlib=libc++//g')" ; \
-    EVMONE_CXXFLAGS="$(printf '%s' "${CXXFLAGS:-}" | sed 's/-stdlib=libc++/-stdlib=libstdc++/g')" ; \
-    CC=clang CXX=clang++ \
-    CFLAGS="$EVMONE_CFLAGS" \
-    CXXFLAGS="$EVMONE_CXXFLAGS" \
-    cmake .. -G Ninja \
-      -DBUILD_SHARED_LIBS=OFF \
-      -DCMAKE_INSTALL_PREFIX="/usr" \
-      -DCMAKE_C_COMPILER=clang \
-      -DCMAKE_CXX_COMPILER=clang++ \
-      -DCMAKE_CXX_FLAGS="$EVMONE_CXXFLAGS" ; \
-    ninja; \
-    ninja install/strip;
 
 # gmp
 cd $SRC; \
