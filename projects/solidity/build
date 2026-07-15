@@ -99,15 +99,15 @@ COPY build.sh $SRC/
 END_COMMENT
 #-----------------
 
-    echo Please wait, initial copy of solidity
-    cp -r /downloads/solidity $SRC
-    echo Please wait, initial copy of solidity corpus
-    cp -r /downloads/solidity-fuzzing-corpus $SRC
-    echo Please wait, initial copy of libprotobuf
-    cp -r /downloads/libprotobuf-mutator $SRC
-    #echo Please wait, initial copy of evmone
-    #cp -r /downloads/evmone $SRC
-                
+echo Please wait, initial copy of solidity
+cp -r /downloads/solidity $SRC
+echo Please wait, initial copy of solidity corpus
+cp -r /downloads/solidity-fuzzing-corpus $SRC
+echo Please wait, initial copy of libprotobuf
+cp -r /downloads/libprotobuf-mutator $SRC
+#echo Please wait, initial copy of evmone
+#cp -r /downloads/evmone $SRC
+
 # Install statically built dependencies in "/usr" directory
 # Install boost
 cd $SRC && \
@@ -116,9 +116,9 @@ cd $SRC && \
     tar -xf boost.tar.bz2 && \
     rm boost.tar.bz2 && \
     cd boost_1_83_0 && \
-    CXXFLAGS="-stdlib=libc++ -pthread" LDFLAGS="-stdlib=libc++" ./bootstrap.sh --with-toolset=clang --prefix=/usr && \
-    ./b2 toolset=clang cxxflags="-stdlib=libc++ -pthread" linkflags="-stdlib=libc++ -pthread" headers && \
-    ./b2 toolset=clang cxxflags="-stdlib=libc++ -pthread" linkflags="-stdlib=libc++ -pthread" \
+    CXXFLAGS="-pthread" LDFLAGS="-pthread" ./bootstrap.sh --with-toolset=clang --prefix=/usr && \
+    ./b2 toolset=clang cxxflags="-pthread" linkflags="-pthread" headers && \
+    ./b2 toolset=clang cxxflags="-pthread" linkflags="-pthread" \
         link=static variant=release runtime-link=static \
         system filesystem unit_test_framework program_options \
         install -j $(($(nproc)/2)) && \
@@ -147,15 +147,14 @@ cd $SRC; \
     test \
         "$(tar --create gmp/ --sort=name --mtime=1970-01-01Z --owner=0 --group=0 --numeric-owner | sha256sum)" = \
         "d606ff6a4ce98692f9920031e85ea8fcf4a65ce1426f6f0048b8794aefed174b  -"; \
-    # NOTE: This removes also libgmp.so, which git depends on
-    rm -f /usr/lib/x86_64-linux-gnu/libgmp.*; \
-    rm -f /usr/include/x86_64-linux-gnu/gmp.h; \
     cd gmp; \
     autoreconf -i; \
     ./configure --prefix=/usr --enable-static=yes --enable-maintainer-mode; \
     make -j; \
     make check; \
     make install; \
+    # keep the system shared libgmp.so.* in place; only replace static artifacts if needed
+    rm -f /usr/lib/x86_64-linux-gnu/libgmp.a; \
     rm -rf $SRC/gmp;
 
 # libabicoder
@@ -164,11 +163,10 @@ set -ex; \
     cp -r /downloads/Yul-Isabelle /usr/src; \
     cd Yul-Isabelle; \
     cd libabicoder; \
-    CXX=clang++ CXXFLAGS="-stdlib=libc++ -pthread" make; \
+    CXX=clang++ CXXFLAGS="-pthread" make; \
     cp libabicoder.a /usr/lib; \
     cp abicoder.hpp /usr/include; \
     rm -rf /usr/src/Yul-Isabelle
-
 
     #cp /downloads/aspell*.bz2 /tmp
 
