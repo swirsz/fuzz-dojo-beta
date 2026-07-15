@@ -99,9 +99,13 @@ COPY build.sh $SRC/
 END_COMMENT
 #-----------------
 
+    echo Please wait, initial copy of solidity
     cp -r /downloads/solidity $SRC
+    echo Please wait, initial copy of solidity corpus
     cp -r /downloads/solidity-fuzzing-corpus $SRC
+    echo Please wait, initial copy of libprotobuf
     cp -r /downloads/libprotobuf-mutator $SRC
+    echo Please wait, initial copy of evmone
     cp -r /downloads/evmone $SRC
                 
 # Install statically built dependencies in "/usr" directory

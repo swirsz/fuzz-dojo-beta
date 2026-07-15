@@ -136,6 +136,8 @@ END_COMMENT
 export CFLAGS="${CFLAGS} -fPIC -pthread"
 export CXXFLAGS="${CXXFLAGS} -fPIC -pthread"
 
+cd $SRC
+
 ## Workaround for boost build issue
 cp /usr/local/include/x86_64-unknown-linux-gnu/c++/v1/__config_site /usr/local/include/c++/v1/
 
@@ -144,7 +146,7 @@ BOOST_VERSION=1_84_0
 BOOST_VERSION_DOT=1.84.0
 BOOST_HASH=a5800f405508f5df8114558ca9855d2640a2de8f0445f051fa1c7c3383045724
 set -ex \
-    && cp -r /downloads/boost_${BOOST_VERSION}.tar.gz $SRC \
+    && cp /downloads/boost_${BOOST_VERSION}.tar.gz $SRC \
     && echo "${BOOST_HASH}  boost_${BOOST_VERSION}.tar.gz" | sha256sum -c \
     && tar -xf boost_${BOOST_VERSION}.tar.gz \
     && cd boost_${BOOST_VERSION} \

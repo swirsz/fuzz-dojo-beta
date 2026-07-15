@@ -28,8 +28,8 @@ if [ ! -d "/src-orig" ]; then
 
     cp /opt/oss-fuzz/projects/opus/run_tests.sh $SRC
     cp /opt/oss-fuzz/projects/opus/build.sh $SRC
-    cp /opt/oss-fuzz/projects/opus/*.cc $SRC
-    cp /opt/oss-fuzz/projects/opus/*.h $SRC
+    cp /opt/oss-fuzz/projects/opus/*.cc $SRC/$PROJECT_NAME/tests
+    cp /opt/oss-fuzz/projects/opus/*.h $SRC/$PROJECT_NAME/tests
     #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
     #patch -tuN $SRC/$PROJECT_NAME/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     #patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
@@ -45,10 +45,10 @@ cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cc $SRC/$PROJECT_NAME/tests
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------

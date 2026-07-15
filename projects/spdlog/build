@@ -22,7 +22,7 @@ if [ ! -d "/src-orig" ]; then
 
 
 
-    cp -r /spdlog/aspell $SRC
+    cp -r /downloads/spdlog $SRC
     #cp -r /downloads/aspell-fuzz $SRC
 
     zip $SRC/spdlog_fuzzer_seed_corpus.zip $SRC/spdlog/example/*
