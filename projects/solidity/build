@@ -139,10 +139,14 @@ cd $SRC/libprotobuf-mutator; \
     cp -Rf bin lib include /usr;
 
 # Install evmone
-cd $SRC/evmone; \
+cd "$SRC/evmone"; \
     mkdir -p build; \
     cd build; \
-    cmake .. -G Ninja -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr"; \
+    cmake .. -G Ninja \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DCMAKE_INSTALL_PREFIX="/usr" \
+      -DCMAKE_C_COMPILER=gcc \
+      -DCMAKE_CXX_COMPILER=g++ ; \
     ninja; \
     ninja install/strip;
 
