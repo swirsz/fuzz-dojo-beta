@@ -39,6 +39,7 @@ if [ ! -d "/src-orig" ]; then
 fi
 build-srcfolders
 mv /src-$LABEL /src
+rm -rf /src/binutils-gdb/fuzz
 
 cd /src
 #----------------------------------------------------------------------

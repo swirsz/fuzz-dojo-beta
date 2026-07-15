@@ -169,7 +169,7 @@ cd $SRC; \
 # libabicoder
 set -ex; \
     cd /usr/src; \
-    cp -r /downloads/Yul-Isabelle $SRC; \
+    cp -r /downloads/Yul-Isabelle /usr/src; \
     cd Yul-Isabelle; \
     cd libabicoder; \
     CXX=clang++ CXXFLAGS="-stdlib=libc++ -pthread" make; \
