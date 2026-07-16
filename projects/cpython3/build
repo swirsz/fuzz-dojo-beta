@@ -31,6 +31,8 @@ if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
     build-cleanup
 fi
+unset COVERAGE_FLAGS
+unset COVERAGE_FLAGS_coverage
 build-srcfolders
 mv /src-$LABEL /src
 
