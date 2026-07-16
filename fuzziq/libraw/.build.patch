@@ -1,5 +1,5 @@
---- /opt/oss-fuzz/projects/libraw/build.sh      2026-05-27 19:03:37.384068154 +0000
-+++ build.sh    2026-07-16 20:08:06.129630623 +0000
+--- /opt/oss-fuzz/projects/libraw/build.sh	2026-05-27 19:03:37.384068154 +0000
++++ build.sh	2026-07-16 20:08:06.129630623 +0000
 @@ -16,30 +16,33 @@
  ################################################################################
  
@@ -47,3 +47,4 @@
 -    $LIB_FUZZING_ENGINE -lz lib/.libs/libraw.a
 +    "$SRC/libraw_fuzzer.cc" -o "$OUT/libraw_raf_fuzzer" \
 +    $LIB_FUZZING_ENGINE lib/.libs/libraw.a -ljpeg -lz
++
