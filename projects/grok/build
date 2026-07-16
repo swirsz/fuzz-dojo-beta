@@ -33,11 +33,11 @@ if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
     build-cleanup
 fi
-rm -rf build/
 build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+rm -rf build/
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
