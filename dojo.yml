@@ -185,9 +185,6 @@ modules:
       - id: avahi
         name: AVAHI - simple 2566 loc 73%-76%-81% - 2 min
 
-      - id: binutils
-        name: BINUTILS - 627928 loc - 37% - 26 drivers
-
       - id: c-ares
         name: C-ARES - medium 5676 loc 35%-39%-72% - 2.5 min
 

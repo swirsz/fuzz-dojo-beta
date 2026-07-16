@@ -33,6 +33,7 @@ if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
     build-cleanup
 fi
+rm -rf build/
 build-srcfolders
 mv /src-$LABEL /src
 
