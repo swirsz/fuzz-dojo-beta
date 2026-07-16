@@ -177,7 +177,7 @@ modules:
         name: GROK - 74856 loc - 29% - 2 drivers
 
       - id: h2o
-        name: H2O - N/A loc - N/A - 9 drivers
+        name: H2O - 58245 loc - 19% - 9 drivers
 
       - id: kamailio
         name: KAMAILIO - simple 83091 loc 4%-10%-11% (no FI) - 5 min
