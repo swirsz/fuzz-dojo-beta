@@ -47,4 +47,3 @@
 -    $LIB_FUZZING_ENGINE -lz lib/.libs/libraw.a
 +    "$SRC/libraw_fuzzer.cc" -o "$OUT/libraw_raf_fuzzer" \
 +    $LIB_FUZZING_ENGINE lib/.libs/libraw.a -ljpeg -lz
-+
