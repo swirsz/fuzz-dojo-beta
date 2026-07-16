@@ -1,0 +1,65 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+if [ "$?" -gt 0 ]; then
+    exit 1
+fi
+export LABEL=$1
+export PROJECT_NAME=binutils-gdb
+export SANITIZER=$1
+if [ -z "$SANITIZER" ]; then
+    export SANITIZER='none'
+    export LABEL='none'$LABEL
+fi
+
+if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
+#FROM gcr.io/oss-fuzz-base/base-builder
+#RUN apt-get update && apt-get install -y make texinfo libgmp-dev libmpfr-dev
+#RUN apt-get install -y flex bison
+#RUN git clone --depth=1 https://github.com/DavidKorczynski/binary-samples binary-samples
+#RUN git clone --recursive --depth 1 git://sourceware.org/git/binutils-gdb.git binutils-gdb
+#WORKDIR $SRC
+#COPY build.sh $SRC/
+#COPY fuzz_*.c $SRC/
+
+    echo Please wait, initial copy samples
+    cp -r /downloads/binary-samples $SRC
+    echo Please wait, initial copy gdb
+    cp -r /downloads/binutils-gdb $SRC
+
+    cp /opt/oss-fuzz/projects/binutils/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/binutils/fuzz_*.c $SRC/
+    #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
+    #patch -tuN $SRC/$PROJECT_NAME/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    #patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
+        
+    #cp $SRC/$PROJECT_NAME/aspell_fuzzer.cpp $SRC/$PROJECT_NAME/new_fuzzer.cpp
+#----------------------------------------------------------------------
+    build-cleanup
+fi
+export COVERAGE_FLAGS=""
+build-srcfolders
+mv /src-$LABEL /src
+rm -rf /src/binutils-gdb/fuzz
+
+cd /src
+#----------------------------------------------------------------------
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+else
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.c $SRC
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+fi
+#----------------------------------------------------------------------
+if [ "$4" = "understanding" ]; then
+    understanding $2 $3
+elif [ "$4" = "planning" ]; then
+    planning $2 $3
+else
+    fuzzlog
+    compile
+    drivers
+fi
+mv /src /src-$LABEL

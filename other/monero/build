@@ -1,0 +1,254 @@
+#!/opt/pwn.college/bash
+. /usr/local/sbin/e
+if [ "$?" -gt 0 ]; then
+    exit 1
+fi
+export LABEL=$1
+export PROJECT_NAME=monero
+export SANITIZER=$1
+if [ -z "$SANITIZER" ]; then
+    export SANITIZER='none'
+    export LABEL='none'$LABEL
+fi
+
+if [ ! -d "/src-orig" ]; then
+#----------------------------------------------------------------------
+: <<'END_COMMENT'
+
+RUN set -ex && \
+    apt-get update && \
+    apt-get --no-install-recommends --yes install \
+        ca-certificates \
+        cmake \
+        g++ \
+        make \
+        pkg-config \
+        graphviz \
+        doxygen \
+        git \
+        curl \
+        libtool \
+        libtool-bin \
+        flex \
+        bison \
+        autoconf \
+        automake \
+        bzip2 \
+        xsltproc \
+        gperf \
+        unzip \
+        cmake \
+        ccache \
+        libsodium-dev \
+        libreadline-dev \
+        libudev-dev \
+        libprotobuf-dev \
+        protobuf-compiler \
+        libexpat-dev
+
+WORKDIR monero
+
+ENV CFLAGS="${CFLAGS} -fPIC -pthread"
+ENV CXXFLAGS="${CXXFLAGS} -fPIC -pthread"
+
+## Workaround for boost build issue
+RUN cp /usr/local/include/x86_64-unknown-linux-gnu/c++/v1/__config_site /usr/local/include/c++/v1/
+
+## Boost
+ARG BOOST_VERSION=1_84_0
+ARG BOOST_VERSION_DOT=1.84.0
+ARG BOOST_HASH=a5800f405508f5df8114558ca9855d2640a2de8f0445f051fa1c7c3383045724
+RUN set -ex \
+    && curl -s -L -o  boost_${BOOST_VERSION}.tar.gz https://archives.boost.io/release/${BOOST_VERSION_DOT}/source/boost_${BOOST_VERSION}.tar.gz \
+    && echo "${BOOST_HASH}  boost_${BOOST_VERSION}.tar.gz" | sha256sum -c \
+    && tar -xf boost_${BOOST_VERSION}.tar.gz \
+    && cd boost_${BOOST_VERSION} \
+    && ./bootstrap.sh --with-toolset=clang \
+    && ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --with-locale threading=multi threadapi=pthread cflags="$CFLAGS" cxxflags="$CXXFLAGS" install
+ENV BOOST_ROOT /usr/local/boost_${BOOST_VERSION}
+
+# OpenSSL
+ARG OPENSSL_VERSION=1.1.1g
+ARG OPENSSL_HASH=ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46
+RUN set -ex \
+    && curl -s -O -L https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz \
+    && echo "${OPENSSL_HASH}  openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum -c \
+    && tar -xzf openssl-${OPENSSL_VERSION}.tar.gz \
+    && cd openssl-${OPENSSL_VERSION} \
+    && ./Configure linux-x86_64 no-shared --static "$CFLAGS" \
+    && make build_generated \
+    && make -j$(nproc) libcrypto.a \
+    && make install
+ENV OPENSSL_ROOT_DIR=/usr/local/openssl-${OPENSSL_VERSION}
+
+# ZMQ
+ARG ZMQ_VERSION=v4.3.2
+ARG ZMQ_HASH=a84ffa12b2eb3569ced199660bac5ad128bff1f0
+RUN set -ex \
+    && git clone --depth=1 https://github.com/zeromq/libzmq.git -b ${ZMQ_VERSION} \
+    && cd libzmq \
+    && test `git rev-parse HEAD` = ${ZMQ_HASH} || exit 1 \
+    && sed -i -e 's/::~generic_mtrie_t /::~generic_mtrie_t<T> /' src/generic_mtrie_impl.hpp \
+    && ./autogen.sh \
+    && ./configure --enable-static --disable-shared --with-libsodium \
+    && make -j$(nproc) \
+    && make install \
+    && ldconfig
+
+# Libusb
+ARG USB_VERSION=v1.0.22
+ARG USB_HASH=0034b2afdcdb1614e78edaa2a9e22d5936aeae5d
+RUN set -ex \
+    && git clone --depth=1 https://github.com/libusb/libusb.git -b ${USB_VERSION} \
+    && cd libusb \
+    && test `git rev-parse HEAD` = ${USB_HASH} || exit 1 \
+    && ./autogen.sh \
+    && ./configure --disable-shared \
+    && make -j$(nproc) \
+    && make install
+
+# Hidapi
+ARG HIDAPI_VERSION=hidapi-0.8.0-rc1
+ARG HIDAPI_HASH=40cf516139b5b61e30d9403a48db23d8f915f52c
+RUN set -ex \
+    && git clone --depth=1 https://github.com/signal11/hidapi -b ${HIDAPI_VERSION} \
+    && cd hidapi \
+    && test `git rev-parse HEAD` = ${HIDAPI_HASH} || exit 1 \
+    && ./bootstrap \
+    && ./configure --enable-static --disable-shared \
+    && make -j$(nproc) \
+    && make install
+
+RUN git clone https://github.com/NLnetLabs/unbound && \
+    cd unbound && ./configure && \
+    make libunbound.la && \
+    cp .libs/libunbound.a /usr/local/lib/ && \
+    cp .libs/libunbound.so* /usr/local/lib/ && \
+    find . -name 'unbound.h' -exec cp {} /usr/local/include/ \; && \
+    ldconfig
+
+RUN git clone --depth 1 https://github.com/monero-project/monero.git monero
+COPY build.sh *.options $SRC/
+
+END_COMMENT
+#--------------------
+
+export CFLAGS="${CFLAGS} -fPIC -pthread"
+export CXXFLAGS="${CXXFLAGS} -fPIC -pthread"
+
+cd $SRC
+
+## Workaround for boost build issue
+cp /usr/local/include/x86_64-unknown-linux-gnu/c++/v1/__config_site /usr/local/include/c++/v1/
+
+## Boost
+BOOST_VERSION=1_84_0
+BOOST_VERSION_DOT=1.84.0
+BOOST_HASH=a5800f405508f5df8114558ca9855d2640a2de8f0445f051fa1c7c3383045724
+set -ex \
+    && cp /downloads/boost_${BOOST_VERSION}.tar.gz $SRC \
+    && echo "${BOOST_HASH}  boost_${BOOST_VERSION}.tar.gz" | sha256sum -c \
+    && tar -xf boost_${BOOST_VERSION}.tar.gz \
+    && cd boost_${BOOST_VERSION} \
+    && ./bootstrap.sh --with-toolset=clang \
+    && ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --with-locale threading=multi threadapi=pthread cflags="$CFLAGS" cxxflags="$CXXFLAGS" install
+export BOOST_ROOT /usr/local/boost_${BOOST_VERSION}
+
+# OpenSSL
+OPENSSL_VERSION=1.1.1g
+OPENSSL_HASH=ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46
+set -ex \
+    && cp -r /downloads/openssl-${OPENSSL_VERSION}.tar.gz $SRC \
+    && echo "${OPENSSL_HASH}  openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum -c \
+    && tar -xzf openssl-${OPENSSL_VERSION}.tar.gz \
+    && cd openssl-${OPENSSL_VERSION} \
+    && ./Configure linux-x86_64 no-shared --static "$CFLAGS" \
+    && make build_generated \
+    && make -j$(nproc) libcrypto.a \
+    && make install
+ENV OPENSSL_ROOT_DIR=/usr/local/openssl-${OPENSSL_VERSION}
+
+# ZMQ
+ZMQ_VERSION=v4.3.2
+ZMQ_HASH=a84ffa12b2eb3569ced199660bac5ad128bff1f0
+set -ex \
+    && cp -r /downloads/libzmq $SRC \
+    && cd libzmq \
+    && test `git rev-parse HEAD` = ${ZMQ_HASH} || exit 1 \
+    && sed -i -e 's/::~generic_mtrie_t /::~generic_mtrie_t<T> /' src/generic_mtrie_impl.hpp \
+    && ./autogen.sh \
+    && ./configure --enable-static --disable-shared --with-libsodium \
+    && make -j$(nproc) \
+    && make install \
+    && ldconfig
+
+# Libusb
+USB_VERSION=v1.0.22
+USB_HASH=0034b2afdcdb1614e78edaa2a9e22d5936aeae5d
+set -ex \
+    && cp -r /downloads/libusb $SRC \
+    && cd libusb \
+    && test `git rev-parse HEAD` = ${USB_HASH} || exit 1 \
+    && ./autogen.sh \
+    && ./configure --disable-shared \
+    && make -j$(nproc) \
+    && make install
+
+# Hidapi
+HIDAPI_VERSION=hidapi-0.8.0-rc1
+HIDAPI_HASH=40cf516139b5b61e30d9403a48db23d8f915f52c
+set -ex \
+    && cp -r /downloads/hidapi $SRC \
+    && cd hidapi \
+    && test `git rev-parse HEAD` = ${HIDAPI_HASH} || exit 1 \
+    && ./bootstrap \
+    && ./configure --enable-static --disable-shared \
+    && make -j$(nproc) \
+    && make install
+
+    cp -r /downloads/unbound $SRC && \
+    cd unbound && ./configure && \
+    make libunbound.la && \
+    cp .libs/libunbound.a /usr/local/lib/ && \
+    cp .libs/libunbound.so* /usr/local/lib/ && \
+    find . -name 'unbound.h' -exec cp {} /usr/local/include/ \; && \
+    ldconfig
+
+    cp -r /downloads/monero $SRC
+
+    #cp /downloads/aspell*.bz2 /tmp
+
+    cp /opt/oss-fuzz/projects/monero/build.sh $SRC/
+    cp /opt/oss-fuzz/projects/monero/*.options $SRC/
+    #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
+    #patch -tuN $SRC/$PROJECT_NAME/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    #patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
+        
+    #cp $SRC/$PROJECT_NAME/aspell_fuzzer.cpp $SRC/$PROJECT_NAME/new_fuzzer.cpp
+#----------------------------------------------------------------------
+    build-cleanup
+fi
+build-srcfolders
+mv /src-$LABEL /src
+
+cd $SRC/$PROJECT_NAME
+#----------------------------------------------------------------------
+if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
+   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+else
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+fi
+#----------------------------------------------------------------------
+if [ "$4" = "understanding" ]; then
+    understanding $2 $3
+elif [ "$4" = "planning" ]; then
+    planning $2 $3
+else
+    fuzzlog
+    compile
+    drivers
+fi
+mv /src /src-$LABEL

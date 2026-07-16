@@ -177,10 +177,10 @@ modules:
         name: Level 2.1 Project
 
 
-  - id: projects
-    name: All Projects
+  - id: fuzziq
+    name: Fuzz IQ Projects
     
-    FuzzIQ:
+    challenges:
 
       - id: avahi
         name: AVAHI - simple 2566 loc 73%-76%-81% - 2 min
@@ -248,7 +248,12 @@ modules:
       - id: zlib
         name: ZLIB - complex 5055 loc 78%-79%-87% - 1 min
 
-    UserStudy:
+
+  - id: userstudy
+    name:  Fuzz Dojo user study
+    
+    challenges:
+
 
       - id: casync
         name: CASYNC - medium 1678 loc 11%-10%-14% - 1 min
@@ -280,7 +285,11 @@ modules:
       - id: 0ss-unrar
         name: OSS-UNRAR - medium 13209 loc 8%-58%-86% - 1.5 min
 
-   OtherChallenges:
+
+  - id: other
+    name: Other Projects
+    
+    challenges:
 
       - id: alembic
         name: ALEMBIC - medium 12569 loc 1%-9%-0% - 1 min (slow FI)
