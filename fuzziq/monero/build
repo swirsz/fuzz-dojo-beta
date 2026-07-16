@@ -152,7 +152,7 @@ set -ex \
     && cd boost_${BOOST_VERSION} \
     && ./bootstrap.sh --with-toolset=clang \
     && ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --with-locale threading=multi threadapi=pthread cflags="$CFLAGS" cxxflags="$CXXFLAGS" install
-export BOOST_ROOT /usr/local/boost_${BOOST_VERSION}
+export BOOST_ROOT="/usr/local/boost_${BOOST_VERSION}"
 
 # OpenSSL
 OPENSSL_VERSION=1.1.1g
