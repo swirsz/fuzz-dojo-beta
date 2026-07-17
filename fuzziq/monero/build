@@ -214,7 +214,7 @@ set -ex \
     ldconfig
 
     
-    cp -r /downloads/monero $SRC
+    cp -a /downloads/monero $SRC
 
     #cp /downloads/aspell*.bz2 /tmp
 
