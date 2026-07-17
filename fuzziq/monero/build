@@ -173,6 +173,7 @@ OPENSSL_ROOT_DIR=/usr/local/openssl-${OPENSSL_VERSION}
 ZMQ_VERSION=v4.3.2
 ZMQ_HASH=a84ffa12b2eb3569ced199660bac5ad128bff1f0
 set -ex \
+    && cd $SRC \
     && cp -r /downloads/libzmq $SRC \
     && cd libzmq \
     && test `git rev-parse HEAD` = ${ZMQ_HASH} || exit 1 \
@@ -187,6 +188,7 @@ set -ex \
 USB_VERSION=v1.0.22
 USB_HASH=0034b2afdcdb1614e78edaa2a9e22d5936aeae5d
 set -ex \
+    && cd $SRC \
     && cp -r /downloads/libusb $SRC \
     && cd libusb \
     && test `git rev-parse HEAD` = ${USB_HASH} || exit 1 \
@@ -199,6 +201,7 @@ set -ex \
 HIDAPI_VERSION=hidapi-0.8.0-rc1
 HIDAPI_HASH=40cf516139b5b61e30d9403a48db23d8f915f52c
 set -ex \
+    && cd $SRC \
     && cp -r /downloads/hidapi $SRC \
     && cd hidapi \
     && test `git rev-parse HEAD` = ${HIDAPI_HASH} || exit 1 \
