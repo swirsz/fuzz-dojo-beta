@@ -290,6 +290,7 @@ END_COMMENT
 #----------------------------------------------------------------------
     build-cleanup
 fi
+git config --global --add safe.directory "$SRC/monero"
 
 cd / || exit 1
 build-srcfolders
