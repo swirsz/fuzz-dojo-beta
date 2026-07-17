@@ -171,12 +171,10 @@ OPENSSL_ROOT_DIR=/usr/local/openssl-${OPENSSL_VERSION}
 
 # ZMQ
 ZMQ_VERSION=v4.3.2
-ZMQ_HASH=a84ffa12b2eb3569ced199660bac5ad128bff1f0
 set -ex \
     && cd $SRC \
     && cp -r /downloads/libzmq $SRC \
     && cd libzmq \
-    && test `git rev-parse HEAD` = ${ZMQ_HASH} || exit 1 \
     && sed -i -e 's/::~generic_mtrie_t /::~generic_mtrie_t<T> /' src/generic_mtrie_impl.hpp \
     && ./autogen.sh \
     && ./configure --enable-static --disable-shared --with-libsodium \
