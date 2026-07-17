@@ -1,14 +1,17 @@
 #!/opt/pwn.college/bash
+
 . /usr/local/sbin/e
 if [ "$?" -gt 0 ]; then
     exit 1
 fi
-export LABEL=$1
+
+export LABEL="$1"
 export PROJECT_NAME=monero
-export SANITIZER=$1
+export SANITIZER="$1"
+
 if [ -z "$SANITIZER" ]; then
-    export SANITIZER='none'
-    export LABEL='none'$LABEL
+    export SANITIZER=none
+    export LABEL="none${LABEL}"
 fi
 
 if [ ! -d "/src-orig" ]; then
@@ -37,7 +40,6 @@ RUN set -ex && \
         xsltproc \
         gperf \
         unzip \
-        cmake \
         ccache \
         libsodium-dev \
         libreadline-dev \
@@ -59,13 +61,33 @@ ARG BOOST_VERSION=1_84_0
 ARG BOOST_VERSION_DOT=1.84.0
 ARG BOOST_HASH=a5800f405508f5df8114558ca9855d2640a2de8f0445f051fa1c7c3383045724
 RUN set -ex \
-    && curl -s -L -o  boost_${BOOST_VERSION}.tar.gz https://archives.boost.io/release/${BOOST_VERSION_DOT}/source/boost_${BOOST_VERSION}.tar.gz \
+    && curl -s -L -o boost_${BOOST_VERSION}.tar.gz https://archives.boost.io/release/${BOOST_VERSION_DOT}/source/boost_${BOOST_VERSION}.tar.gz \
     && echo "${BOOST_HASH}  boost_${BOOST_VERSION}.tar.gz" | sha256sum -c \
     && tar -xf boost_${BOOST_VERSION}.tar.gz \
     && cd boost_${BOOST_VERSION} \
-    && ./bootstrap.sh --with-toolset=clang \
-    && ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --with-locale threading=multi threadapi=pthread cflags="$CFLAGS" cxxflags="$CXXFLAGS" install
-ENV BOOST_ROOT /usr/local/boost_${BOOST_VERSION}
+    && ./bootstrap.sh --with-toolset=clang --prefix=/usr/local/boost_${BOOST_VERSION} \
+    && ./b2 \
+        --build-type=minimal \
+        link=static \
+        runtime-link=static \
+        threading=multi \
+        threadapi=pthread \
+        --with-chrono \
+        --with-date_time \
+        --with-filesystem \
+        --with-program_options \
+        --with-regex \
+        --with-serialization \
+        --with-system \
+        --with-thread \
+        --with-locale \
+        cflags="$CFLAGS" \
+        cxxflags="$CXXFLAGS" \
+        install
+ENV BOOST_ROOT=/usr/local/boost_${BOOST_VERSION}
+ENV Boost_ROOT=/usr/local/boost_${BOOST_VERSION}
+ENV BOOST_INCLUDEDIR=/usr/local/boost_${BOOST_VERSION}/include
+ENV BOOST_LIBRARYDIR=/usr/local/boost_${BOOST_VERSION}/lib
 
 # OpenSSL
 ARG OPENSSL_VERSION=1.1.1g
@@ -75,7 +97,7 @@ RUN set -ex \
     && echo "${OPENSSL_HASH}  openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum -c \
     && tar -xzf openssl-${OPENSSL_VERSION}.tar.gz \
     && cd openssl-${OPENSSL_VERSION} \
-    && ./Configure linux-x86_64 no-shared --static "$CFLAGS" \
+    && ./Configure linux-x86_64 no-shared --static --prefix=/usr/local/openssl-${OPENSSL_VERSION} "$CFLAGS" \
     && make build_generated \
     && make -j$(nproc) libcrypto.a \
     && make install
@@ -131,126 +153,184 @@ RUN git clone --depth 1 https://github.com/monero-project/monero.git monero
 COPY build.sh *.options $SRC/
 
 END_COMMENT
-#--------------------
+#----------------------------------------------------------------------
 
-export CFLAGS="${CFLAGS} -fPIC -pthread"
-export CXXFLAGS="${CXXFLAGS} -fPIC -pthread"
+    export CFLAGS="${CFLAGS} -fPIC -pthread"
+    export CXXFLAGS="${CXXFLAGS} -fPIC -pthread"
 
-cd $SRC
+    cd "$SRC" || exit 1
 
-## Workaround for boost build issue
-cp /usr/local/include/x86_64-unknown-linux-gnu/c++/v1/__config_site /usr/local/include/c++/v1/
+    ## Workaround for boost build issue
+    cp /usr/local/include/x86_64-unknown-linux-gnu/c++/v1/__config_site /usr/local/include/c++/v1/
 
-## Boost
-BOOST_VERSION=1_84_0
-BOOST_VERSION_DOT=1.84.0
-BOOST_HASH=a5800f405508f5df8114558ca9855d2640a2de8f0445f051fa1c7c3383045724
-set -ex \
-    && cp /downloads/boost_${BOOST_VERSION}.tar.gz $SRC \
-    && echo "${BOOST_HASH}  boost_${BOOST_VERSION}.tar.gz" | sha256sum -c \
-    && tar -xf boost_${BOOST_VERSION}.tar.gz \
-    && cd boost_${BOOST_VERSION} \
-    && ./bootstrap.sh --with-toolset=clang \
-    && ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --with-locale threading=multi threadapi=pthread cflags="$CFLAGS" cxxflags="$CXXFLAGS" install
-export BOOST_ROOT="/usr/local/boost_${BOOST_VERSION}"
+    ## Boost
+    BOOST_VERSION=1_84_0
+    BOOST_VERSION_DOT=1.84.0
+    BOOST_HASH=a5800f405508f5df8114558ca9855d2640a2de8f0445f051fa1c7c3383045724
 
-# OpenSSL
-OPENSSL_VERSION=1.1.1g
-OPENSSL_HASH=ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46
-set -ex \
-    && cd $SRC \
-    && cp -r /downloads/openssl-${OPENSSL_VERSION}.tar.gz $SRC \
-    && echo "${OPENSSL_HASH}  openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum -c \
-    && tar -xzf openssl-${OPENSSL_VERSION}.tar.gz \
-    && cd openssl-${OPENSSL_VERSION} \
-    && ./Configure linux-x86_64 no-shared --static "$CFLAGS" \
-    && make build_generated \
-    && make -j$(nproc) libcrypto.a \
-    && make install
-OPENSSL_ROOT_DIR=/usr/local/openssl-${OPENSSL_VERSION}
+    set -ex \
+        && cd "$SRC" \
+        && cp "/downloads/boost_${BOOST_VERSION}.tar.gz" "$SRC" \
+        && echo "${BOOST_HASH}  boost_${BOOST_VERSION}.tar.gz" | sha256sum -c \
+        && tar -xf "boost_${BOOST_VERSION}.tar.gz" \
+        && cd "boost_${BOOST_VERSION}" \
+        && ./bootstrap.sh --with-toolset=clang --prefix="/usr/local/boost_${BOOST_VERSION}" \
+        && ./b2 \
+            --build-type=minimal \
+            link=static \
+            runtime-link=static \
+            threading=multi \
+            threadapi=pthread \
+            --with-chrono \
+            --with-date_time \
+            --with-filesystem \
+            --with-program_options \
+            --with-regex \
+            --with-serialization \
+            --with-system \
+            --with-thread \
+            --with-locale \
+            cflags="$CFLAGS" \
+            cxxflags="$CXXFLAGS" \
+            install
 
-# ZMQ
-ZMQ_VERSION=v4.3.2
-set -ex \
-    && cd $SRC \
-    && cp -r /downloads/libzmq $SRC \
-    && cd libzmq \
-    && sed -i -e 's/::~generic_mtrie_t /::~generic_mtrie_t<T> /' src/generic_mtrie_impl.hpp \
-    && ./autogen.sh \
-    && ./configure --enable-static --disable-shared --with-libsodium \
-    && make -j$(nproc) \
-    && make install \
-    && ldconfig
+    export BOOST_ROOT="/usr/local/boost_${BOOST_VERSION}"
+    export Boost_ROOT="$BOOST_ROOT"
+    export BOOST_INCLUDEDIR="$BOOST_ROOT/include"
+    export BOOST_LIBRARYDIR="$BOOST_ROOT/lib"
 
-# Libusb
-USB_VERSION=v1.0.22
-set -ex \
-    && cd $SRC \
-    && cp -r /downloads/libusb $SRC \
-    && cd libusb \
-    && ./autogen.sh \
-    && ./configure --disable-shared \
-    && make -j$(nproc) \
-    && make install
+    export CMAKE_PREFIX_PATH="$BOOST_ROOT:${CMAKE_PREFIX_PATH:-}"
+    export CMAKE_INCLUDE_PATH="$BOOST_INCLUDEDIR:${CMAKE_INCLUDE_PATH:-}"
+    export CMAKE_LIBRARY_PATH="$BOOST_LIBRARYDIR:${CMAKE_LIBRARY_PATH:-}"
 
-# Hidapi
-HIDAPI_VERSION=hidapi-0.8.0-rc1
-set -ex \
-    && cd $SRC \
-    && cp -r /downloads/hidapi $SRC \
-    && cd hidapi \
-    && ./bootstrap \
-    && ./configure --enable-static --disable-shared \
-    && make -j$(nproc) \
-    && make install
+    export CMAKE_FLAGS="${CMAKE_FLAGS:-} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_STATIC_RUNTIME=ON -DBoost_NO_SYSTEM_PATHS=ON -DBOOST_ROOT=$BOOST_ROOT -DBoost_ROOT=$Boost_ROOT -DBOOST_INCLUDEDIR=$BOOST_INCLUDEDIR -DBOOST_LIBRARYDIR=$BOOST_LIBRARYDIR"
 
-    cp -r /downloads/unbound $SRC && \
-    cd $SRC && \
-    cd unbound && ./configure && \
-    make libunbound.la && \
-    cp .libs/libunbound.a /usr/local/lib/ && \
-    cp .libs/libunbound.so* /usr/local/lib/ && \
-    find . -name 'unbound.h' -exec cp {} /usr/local/include/ \; && \
-    ldconfig
+    # OpenSSL
+    OPENSSL_VERSION=1.1.1g
+    OPENSSL_HASH=ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46
 
-    cd $SRC
+    set -ex \
+        && cd "$SRC" \
+        && cp "/downloads/openssl-${OPENSSL_VERSION}.tar.gz" "$SRC" \
+        && echo "${OPENSSL_HASH}  openssl-${OPENSSL_VERSION}.tar.gz" | sha256sum -c \
+        && tar -xzf "openssl-${OPENSSL_VERSION}.tar.gz" \
+        && cd "openssl-${OPENSSL_VERSION}" \
+        && ./Configure linux-x86_64 no-shared --static --prefix="/usr/local/openssl-${OPENSSL_VERSION}" "$CFLAGS" \
+        && make build_generated \
+        && make -j"$(nproc)" libcrypto.a \
+        && make install
+
+    export OPENSSL_ROOT_DIR="/usr/local/openssl-${OPENSSL_VERSION}"
+    export CMAKE_PREFIX_PATH="$OPENSSL_ROOT_DIR:${CMAKE_PREFIX_PATH:-}"
+
+    # ZMQ
+    ZMQ_VERSION=v4.3.2
+
+    set -ex \
+        && cd "$SRC" \
+        && cp -r /downloads/libzmq "$SRC" \
+        && cd libzmq \
+        && sed -i -e 's/::~generic_mtrie_t /::~generic_mtrie_t<T> /' src/generic_mtrie_impl.hpp \
+        && ./autogen.sh \
+        && ./configure --enable-static --disable-shared --with-libsodium \
+        && make -j"$(nproc)" \
+        && make install \
+        && ldconfig
+
+    # Libusb
+    USB_VERSION=v1.0.22
+
+    set -ex \
+        && cd "$SRC" \
+        && cp -r /downloads/libusb "$SRC" \
+        && cd libusb \
+        && ./autogen.sh \
+        && ./configure --disable-shared \
+        && make -j"$(nproc)" \
+        && make install
+
+    # Hidapi
+    HIDAPI_VERSION=hidapi-0.8.0-rc1
+
+    set -ex \
+        && cd "$SRC" \
+        && cp -r /downloads/hidapi "$SRC" \
+        && cd hidapi \
+        && ./bootstrap \
+        && ./configure --enable-static --disable-shared \
+        && make -j"$(nproc)" \
+        && make install
+
+    set -ex \
+        && cd "$SRC" \
+        && cp -r /downloads/unbound "$SRC" \
+        && cd unbound \
+        && ./configure \
+        && make libunbound.la \
+        && cp .libs/libunbound.a /usr/local/lib/ \
+        && cp .libs/libunbound.so* /usr/local/lib/ \
+        && find . -name 'unbound.h' -exec cp {} /usr/local/include/ \; \
+        && ldconfig
+
+    cd "$SRC" || exit 1
+
     git clone --depth 1 https://github.com/monero-project/monero.git monero
-    #cp -a /downloads/monero $SRC
 
-    #cp /downloads/aspell*.bz2 /tmp
+    cp /opt/oss-fuzz/projects/monero/build.sh "$SRC/"
+    cp /opt/oss-fuzz/projects/monero/*.options "$SRC/"
 
-    cp /opt/oss-fuzz/projects/monero/build.sh $SRC/
-    cp /opt/oss-fuzz/projects/monero/*.options $SRC/
-    #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
-    #patch -tuN $SRC/$PROJECT_NAME/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
-    #patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
-        
-    #cp $SRC/$PROJECT_NAME/aspell_fuzzer.cpp $SRC/$PROJECT_NAME/new_fuzzer.cpp
+    # cp -a /downloads/monero "$SRC"
+    # cp /downloads/aspell*.bz2 /tmp
+    # cp /challenge/.fuzz-packet_seed_corpus.zip "$OUT/fuzz-packet_seed_corpus.zip"
+    # patch -tuN "$SRC/$PROJECT_NAME/ossfuzz.sh" -i /challenge/.ossfuzz.patch -r -
+    # patch -tuN "$SRC/$PROJECT_NAME/Makefile.am" -i /challenge/.Makefile.patch -r -
+    # cp "$SRC/$PROJECT_NAME/aspell_fuzzer.cpp" "$SRC/$PROJECT_NAME/new_fuzzer.cpp"
+
 #----------------------------------------------------------------------
     build-cleanup
 fi
-cd /
-build-srcfolders
-mv /src-$LABEL /src
 
-cd $SRC
+cd / || exit 1
+build-srcfolders
+mv "/src-$LABEL" /src
+
+cd "$SRC" || exit 1
+
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
-   mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/tests/fuzz/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+    mkdir -p "/home/hacker/fuzz-dojo/$PROJECT_NAME"
+    cp "$SRC/$PROJECT_NAME"/tests/fuzz/*.cpp "/home/hacker/fuzz-dojo/$PROJECT_NAME"
+    cp "$SRC/build.sh" "/home/hacker/fuzz-dojo/$PROJECT_NAME"
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/tests/fuzz/
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+    cp "/home/hacker/fuzz-dojo/$PROJECT_NAME"/*.cpp "$SRC/$PROJECT_NAME/tests/fuzz/"
+    cp "/home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh" "$SRC"
 fi
 #----------------------------------------------------------------------
+
 if [ "$4" = "understanding" ]; then
-    understanding $2 $3
+    understanding "$2" "$3"
 elif [ "$4" = "planning" ]; then
-    planning $2 $3
+    planning "$2" "$3"
 else
     fuzzlog
+
+    export BOOST_VERSION=1_84_0
+    export BOOST_ROOT="/usr/local/boost_${BOOST_VERSION}"
+    export Boost_ROOT="$BOOST_ROOT"
+    export BOOST_INCLUDEDIR="$BOOST_ROOT/include"
+    export BOOST_LIBRARYDIR="$BOOST_ROOT/lib"
+
+    export OPENSSL_VERSION=1.1.1g
+    export OPENSSL_ROOT_DIR="/usr/local/openssl-${OPENSSL_VERSION}"
+
+    export CMAKE_PREFIX_PATH="$BOOST_ROOT:$OPENSSL_ROOT_DIR:${CMAKE_PREFIX_PATH:-}"
+    export CMAKE_INCLUDE_PATH="$BOOST_INCLUDEDIR:${CMAKE_INCLUDE_PATH:-}"
+    export CMAKE_LIBRARY_PATH="$BOOST_LIBRARYDIR:${CMAKE_LIBRARY_PATH:-}"
+
+    export CMAKE_FLAGS="${CMAKE_FLAGS:-} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_STATIC_RUNTIME=ON -DBoost_NO_SYSTEM_PATHS=ON -DBOOST_ROOT=$BOOST_ROOT -DBoost_ROOT=$Boost_ROOT -DBOOST_INCLUDEDIR=$BOOST_INCLUDEDIR -DBOOST_LIBRARYDIR=$BOOST_LIBRARYDIR -DOPENSSL_ROOT_DIR=$OPENSSL_ROOT_DIR"
+
     compile
     drivers
 fi
-mv /src /src-$LABEL
+
+mv /src "/src-$LABEL"
