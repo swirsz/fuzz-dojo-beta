@@ -274,13 +274,13 @@ END_COMMENT
 
     cd "$SRC" || exit 1
 
-    git clone --depth 1 https://github.com/monero-project/monero.git monero
+    #git clone --depth 1 https://github.com/monero-project/monero.git monero
 
     cp /opt/oss-fuzz/projects/monero/build.sh "$SRC/"
     cp /opt/oss-fuzz/projects/monero/*.options "$SRC/"
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
-    # cp -a /downloads/monero "$SRC"
+    cp -a /downloads/monero "$SRC"
     # cp /downloads/aspell*.bz2 /tmp
     # cp /challenge/.fuzz-packet_seed_corpus.zip "$OUT/fuzz-packet_seed_corpus.zip"
     # patch -tuN "$SRC/$PROJECT_NAME/ossfuzz.sh" -i /challenge/.ossfuzz.patch -r -
@@ -294,7 +294,6 @@ fi
 cd / || exit 1
 build-srcfolders
 mv "/src-$LABEL" /src
-#git config --global --add safe.directory "$SRC/monero"
 
 cd "$SRC" || exit 1
 
