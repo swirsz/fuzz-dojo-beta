@@ -300,12 +300,12 @@ cd "$SRC" || exit 1
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
     mkdir -p "/home/hacker/fuzz-dojo/$PROJECT_NAME/fuzz_rpc"
-    cp "$SRC/$PROJECT_NAME"/tests/fuzz/* "/home/hacker/fuzz-dojo/$PROJECT_NAME"
-    cp "$SRC/$PROJECT_NAME"/tests/fuzz/fuzz_rpc/* "/home/hacker/fuzz-dojo/$PROJECT_NAME"
+    cp -r "$SRC/$PROJECT_NAME/tests/fuzz/." \
+      "/home/hacker/fuzz-dojo/$PROJECT_NAME/"
     cp "$SRC/build.sh" "/home/hacker/fuzz-dojo/$PROJECT_NAME"
 else
-    cp "/home/hacker/fuzz-dojo/$PROJECT_NAME"/* "$SRC/$PROJECT_NAME/tests/fuzz/"
-    cp "/home/hacker/fuzz-dojo/$PROJECT_NAME"/fuzz_rpc/* "$SRC/$PROJECT_NAME/tests/fuzz/fuzz_rpc"
+    cp -r "/home/hacker/fuzz-dojo/$PROJECT_NAME/." \
+      "$SRC/$PROJECT_NAME/tests/fuzz/"
     cp "/home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh" "$SRC"
 fi
 #----------------------------------------------------------------------
