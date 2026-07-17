@@ -205,6 +205,7 @@ set -ex \
     && make install
 
     cp -r /downloads/unbound $SRC && \
+    cd $SRC && \
     cd unbound && ./configure && \
     make libunbound.la && \
     cp .libs/libunbound.a /usr/local/lib/ && \
@@ -212,6 +213,8 @@ set -ex \
     find . -name 'unbound.h' -exec cp {} /usr/local/include/ \; && \
     ldconfig
 
+    
+    cd $SRC
     cp -r /downloads/monero $SRC
 
     #cp /downloads/aspell*.bz2 /tmp
