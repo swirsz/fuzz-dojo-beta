@@ -294,7 +294,7 @@ fi
 cd / || exit 1
 build-srcfolders
 mv "/src-$LABEL" /src
-git config --global --add safe.directory "$SRC/monero"
+#git config --global --add safe.directory "$SRC/monero"
 
 cd "$SRC" || exit 1
 
