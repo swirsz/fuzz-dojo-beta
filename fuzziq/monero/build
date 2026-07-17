@@ -213,8 +213,9 @@ set -ex \
     find . -name 'unbound.h' -exec cp {} /usr/local/include/ \; && \
     ldconfig
 
-    
-    cp -a /downloads/monero $SRC
+    cd $SRC
+    git clone --depth 1 https://github.com/monero-project/monero.git monero
+    #cp -a /downloads/monero $SRC
 
     #cp /downloads/aspell*.bz2 /tmp
 
