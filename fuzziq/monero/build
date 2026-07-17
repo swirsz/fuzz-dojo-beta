@@ -214,7 +214,6 @@ set -ex \
     ldconfig
 
     
-    cd $SRC
     cp -r /downloads/monero $SRC
 
     #cp /downloads/aspell*.bz2 /tmp
@@ -229,6 +228,7 @@ set -ex \
 #----------------------------------------------------------------------
     build-cleanup
 fi
+cd $SRC
 build-srcfolders
 mv /src-$LABEL /src
 
@@ -236,10 +236,10 @@ cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/tests/fuzz/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/*.cpp $SRC/$PROJECT_NAME/tests/fuzz/
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
