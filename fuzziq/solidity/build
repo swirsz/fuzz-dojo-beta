@@ -166,6 +166,7 @@ set -ex; \
     CXX=clang++ CXXFLAGS="-pthread" make; \
     cp libabicoder.a /usr/lib; \
     cp abicoder.hpp /usr/include; \
+    cd /; \
     rm -rf /usr/src/Yul-Isabelle
 
     #cp /downloads/aspell*.bz2 /tmp
@@ -176,7 +177,7 @@ set -ex; \
     #patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
         
     #cp $SRC/$PROJECT_NAME/aspell_fuzzer.cpp $SRC/$PROJECT_NAME/new_fuzzer.cpp
-    git rev-parse --short=8 HEAD > /src/solidity/commit_hash.txt
+    git /src/solidity rev-parse --short=8 HEAD > /src/solidity/commit_hash.txt
     cd /
 #----------------------------------------------------------------------
     build-cleanup
