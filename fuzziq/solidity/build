@@ -133,8 +133,8 @@ echo Please wait, initial copy of solidity corpus
 cp -r /downloads/solidity-fuzzing-corpus $SRC
 echo Please wait, initial copy of libprotobuf
 cp -r /downloads/libprotobuf-mutator $SRC
-#echo Please wait, initial copy of evmone
-#cp -r /downloads/evmone $SRC
+echo Please wait, initial copy of evmone
+cp -r /downloads/evmone $SRC
 
 # Install statically built dependencies in "/usr" directory
 # Install boost
@@ -205,17 +205,6 @@ cd $SRC/libprotobuf-mutator; \
     done; \
     nm -C /lib/libprotobuf-mutator.a | grep -q 'google::protobuf::Reflection::FieldSize';
 
-# Install evmone with the same Clang/libc++ ABI used by Solidity.
-# The challenge image normally provides a source checkout in /downloads/evmone.
-if [ ! -d "$SRC/evmone" ]; then
-    if [ -d /downloads/evmone ]; then
-        echo Please wait, initial copy of evmone
-        cp -r /downloads/evmone "$SRC/evmone"
-    else
-        echo "Missing evmone source: expected /downloads/evmone" >&2
-        exit 1
-    fi
-fi
 rm -rf "$SRC/evmone/build"
 mkdir -p "$SRC/evmone/build"
 cd "$SRC/evmone/build"
@@ -230,7 +219,7 @@ CC=clang CXX=clang++ cmake .. -G Ninja \
     -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread" \
     -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"
 ninja
-ninja install
+ninja install/strip
 # Solidity v0.8.37 links the historical target name evmone-standalone.
 # Some evmone releases only produce libevmone.a, so install a compatible
 # static archive name explicitly instead of relying on a CMake target alias.
