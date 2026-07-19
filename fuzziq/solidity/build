@@ -71,7 +71,17 @@ RUN cd $SRC/libprotobuf-mutator; \
     cp -f /usr/lib/libprotobuf-mutator*.a /lib/ 2>/dev/null || true; \
     ! nm -C /usr/lib/libprotobuf.a | grep -qE 'std::__cxx11|std::_V2'; \
     nm -C /usr/lib/libprotobuf.a | grep -q 'std::__1'; \
-    nm -C /lib/libprotobuf.a | grep -q 'google::protobuf::Reflection::FieldSize';
+    nm -C /lib/libprotobuf.a | grep -q 'google::protobuf::Reflection::FieldSize'; \
+    for mutator_archive in /usr/lib/libprotobuf-mutator.a /usr/lib/libprotobuf-mutator-libfuzzer.a; do \
+        test -f "$mutator_archive" || continue; \
+        merged_archive="${mutator_archive}.merged"; \
+        printf 'CREATE %s\nADDLIB %s\nADDLIB /usr/lib/libprotobuf.a\nSAVE\nEND\n' \
+            "$merged_archive" "$mutator_archive" | ar -M; \
+        mv -f "$merged_archive" "$mutator_archive"; \
+        ranlib "$mutator_archive"; \
+        cp -f "$mutator_archive" /lib/; \
+    done; \
+    nm -C /lib/libprotobuf-mutator.a | grep -q 'google::protobuf::Reflection::FieldSize';
 
 # Install evmone
 RUN cd $SRC/evmone; \
@@ -183,7 +193,17 @@ cd $SRC/libprotobuf-mutator; \
     cp -f /usr/lib/libprotobuf-mutator*.a /lib/ 2>/dev/null || true; \
     ! nm -C /usr/lib/libprotobuf.a | grep -qE 'std::__cxx11|std::_V2'; \
     nm -C /usr/lib/libprotobuf.a | grep -q 'std::__1'; \
-    nm -C /lib/libprotobuf.a | grep -q 'google::protobuf::Reflection::FieldSize';
+    nm -C /lib/libprotobuf.a | grep -q 'google::protobuf::Reflection::FieldSize'; \
+    for mutator_archive in /usr/lib/libprotobuf-mutator.a /usr/lib/libprotobuf-mutator-libfuzzer.a; do \
+        test -f "$mutator_archive" || continue; \
+        merged_archive="${mutator_archive}.merged"; \
+        printf 'CREATE %s\nADDLIB %s\nADDLIB /usr/lib/libprotobuf.a\nSAVE\nEND\n' \
+            "$merged_archive" "$mutator_archive" | ar -M; \
+        mv -f "$merged_archive" "$mutator_archive"; \
+        ranlib "$mutator_archive"; \
+        cp -f "$mutator_archive" /lib/; \
+    done; \
+    nm -C /lib/libprotobuf-mutator.a | grep -q 'google::protobuf::Reflection::FieldSize';
 
 # Install evmone with the same Clang/libc++ ABI used by Solidity.
 # The challenge image normally provides a source checkout in /downloads/evmone.
@@ -211,6 +231,21 @@ CC=clang CXX=clang++ cmake .. -G Ninja \
     -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"
 ninja
 ninja install
+# Solidity v0.8.37 links the historical target name evmone-standalone.
+# Some evmone releases only produce libevmone.a, so install a compatible
+# static archive name explicitly instead of relying on a CMake target alias.
+evmone_archive="$(find "$SRC/evmone/build" /usr/lib /usr/local/lib \
+    -type f \
+    \( -name 'libevmone-standalone.a' -o -name 'libevmone.a' \) \
+    -print 2>/dev/null | head -n 1)"
+if [ -z "$evmone_archive" ]; then
+    echo "Unable to locate a static evmone archive" >&2
+    exit 1
+fi
+cp -f "$evmone_archive" /usr/lib/libevmone-standalone.a
+ranlib /usr/lib/libevmone-standalone.a
+cp -f /usr/lib/libevmone-standalone.a /lib/libevmone-standalone.a
+test -s /usr/lib/libevmone-standalone.a
 # Older evmone releases do not always install the public headers.
 if [ ! -f /usr/include/evmone/evmone.h ]; then
     mkdir -p /usr/include/evmone
