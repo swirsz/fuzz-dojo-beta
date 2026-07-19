@@ -1,0 +1,11 @@
+--- /opt/oss-fuzz/projects/solidity/build.sh	2026-07-16 16:34:37.488912489 +0000
++++ build.sh	2026-07-19 17:06:23.179350203 +0000
+@@ -53,7 +53,7 @@
+ {
+   rm -f "${OUT}"/*.zip
+   cd "${SRC}"/solidity-fuzzing-corpus
+-  git pull origin master
++  #git pull origin master
+   for dir in "${SRC}"/solidity-fuzzing-corpus/*;
+   do
+     name=$(basename $dir)

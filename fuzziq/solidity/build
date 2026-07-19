@@ -434,7 +434,7 @@ set -ex; \
 
     cp /opt/oss-fuzz/projects/solidity/build.sh $SRC/
     #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
-    #patch -tuN $SRC/$PROJECT_NAME/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     #patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
         
     #cp $SRC/$PROJECT_NAME/aspell_fuzzer.cpp $SRC/$PROJECT_NAME/new_fuzzer.cpp
