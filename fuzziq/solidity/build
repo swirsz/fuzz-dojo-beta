@@ -57,7 +57,7 @@ RUN cd $SRC/libprotobuf-mutator; \
     -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread" \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread -D_LIBCPP_ENABLE_CXX20_REMOVED_CHAR_TRAITS" \
     -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread" \
     -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"; \
     ninja; \
@@ -87,7 +87,14 @@ RUN cd $SRC/libprotobuf-mutator; \
 RUN cd $SRC/evmone; \
     mkdir -p build; \
     cd build; \
-    cmake .. -G Ninja -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr"; \
+    # evmone 0.11/EVMC uses basic_string<unsigned char>. New libc++ releases
+# hide the generic char_traits specialization unless this compatibility macro is set.
+CC=clang CXX=clang++ cmake .. -G Ninja \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DEVMONE_TESTING=OFF \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread -D_LIBCPP_ENABLE_CXX20_REMOVED_CHAR_TRAITS" \
+    -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread"; \
     ninja; \
     ninja install/strip;
 
@@ -133,8 +140,8 @@ echo Please wait, initial copy of solidity corpus
 cp -r /downloads/solidity-fuzzing-corpus $SRC
 echo Please wait, initial copy of libprotobuf
 cp -r /downloads/libprotobuf-mutator $SRC
-echo Please wait, initial copy of evmone
-cp -r /downloads/evmone $SRC
+#echo Please wait, initial copy of evmone
+#cp -r /downloads/evmone $SRC
 
 # Install statically built dependencies in "/usr" directory
 # Install boost
@@ -179,7 +186,7 @@ cd $SRC/libprotobuf-mutator; \
     -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread" \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread -D_LIBCPP_ENABLE_CXX20_REMOVED_CHAR_TRAITS" \
     -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread" \
     -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"; \
     ninja; \
@@ -205,6 +212,17 @@ cd $SRC/libprotobuf-mutator; \
     done; \
     nm -C /lib/libprotobuf-mutator.a | grep -q 'google::protobuf::Reflection::FieldSize';
 
+# Install evmone with the same Clang/libc++ ABI used by Solidity.
+# The challenge image normally provides a source checkout in /downloads/evmone.
+if [ ! -d "$SRC/evmone" ]; then
+    if [ -d /downloads/evmone ]; then
+        echo Please wait, initial copy of evmone
+        cp -r /downloads/evmone "$SRC/evmone"
+    else
+        echo "Missing evmone source: expected /downloads/evmone" >&2
+        exit 1
+    fi
+fi
 rm -rf "$SRC/evmone/build"
 mkdir -p "$SRC/evmone/build"
 cd "$SRC/evmone/build"
@@ -215,11 +233,11 @@ CC=clang CXX=clang++ cmake .. -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread" \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread -D_LIBCPP_ENABLE_CXX20_REMOVED_CHAR_TRAITS" \
     -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread" \
     -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"
 ninja
-ninja install/strip
+ninja install
 # Solidity v0.8.37 links the historical target name evmone-standalone.
 # Some evmone releases only produce libevmone.a, so install a compatible
 # static archive name explicitly instead of relying on a CMake target alias.
