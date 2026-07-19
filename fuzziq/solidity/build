@@ -33,9 +33,10 @@ RUN cd $SRC && \
     tar -xf boost.tar.bz2 && \
     rm boost.tar.bz2 && \
     cd boost_1_83_0 && \
-    CXXFLAGS="-stdlib=libc++ -pthread" LDFLAGS="-stdlib=libc++" ./bootstrap.sh --with-toolset=clang --prefix=/usr && \
-    ./b2 toolset=clang cxxflags="-stdlib=libc++ -pthread" linkflags="-stdlib=libc++ -pthread" headers && \
-    ./b2 toolset=clang cxxflags="-stdlib=libc++ -pthread" linkflags="-stdlib=libc++ -pthread" \
+    LIBCXX_CONFIG_INC="-I/usr/local/include/$(clang -dumpmachine)/c++/v1" && \
+    CXXFLAGS="-stdlib=libc++ -pthread ${LIBCXX_CONFIG_INC}" LDFLAGS="-stdlib=libc++" ./bootstrap.sh --with-toolset=clang --prefix=/usr && \
+    ./b2 toolset=clang cxxflags="-stdlib=libc++ -pthread ${LIBCXX_CONFIG_INC}" linkflags="-stdlib=libc++ -pthread" headers && \
+    ./b2 toolset=clang cxxflags="-stdlib=libc++ -pthread ${LIBCXX_CONFIG_INC}" linkflags="-stdlib=libc++ -pthread" \
         link=static variant=release runtime-link=static \
         system filesystem unit_test_framework program_options \
         install -j $(($(nproc)/2)) && \
@@ -93,6 +94,7 @@ RUN set -ex; \
     CXX=clang++ CXXFLAGS="-stdlib=libc++ -pthread" make; \
     cp libabicoder.a /usr/lib; \
     cp abicoder.hpp /usr/include; \
+    cd /; \
     rm -rf /usr/src/Yul-Isabelle
 
 COPY build.sh $SRC/
@@ -111,14 +113,23 @@ cp -r /downloads/libprotobuf-mutator $SRC
 # Install statically built dependencies in "/usr" directory
 # Install boost
 cd $SRC && \
+    rm -f /usr/lib/libboost_*.a && \
     cp -r /downloads/boost.tar.bz2 $SRC && \
     test "$(sha256sum boost.tar.bz2)" = "6478edfe2f3305127cffe8caf73ea0176c53769f4bf1585be237eb30798c3b8e  boost.tar.bz2" && \
     tar -xf boost.tar.bz2 && \
     rm boost.tar.bz2 && \
     cd boost_1_83_0 && \
-    CXXFLAGS="-pthread" LDFLAGS="-pthread" ./bootstrap.sh --with-toolset=clang --prefix=/usr && \
-    ./b2 toolset=clang cxxflags="-pthread" linkflags="-pthread" headers && \
-    ./b2 toolset=clang cxxflags="-pthread" linkflags="-pthread" \
+    LIBCXX_CONFIG_INC="-I/usr/local/include/$(clang -dumpmachine)/c++/v1" && \
+    CXXFLAGS="-stdlib=libc++ -pthread ${LIBCXX_CONFIG_INC}" \
+    LDFLAGS="-stdlib=libc++" \
+        ./bootstrap.sh --with-toolset=clang --prefix=/usr && \
+    ./b2 toolset=clang \
+        cxxflags="-stdlib=libc++ -pthread ${LIBCXX_CONFIG_INC}" \
+        linkflags="-stdlib=libc++ -pthread" \
+        headers && \
+    ./b2 toolset=clang \
+        cxxflags="-stdlib=libc++ -pthread ${LIBCXX_CONFIG_INC}" \
+        linkflags="-stdlib=libc++ -pthread" \
         link=static variant=release runtime-link=static \
         system filesystem unit_test_framework program_options \
         install -j $(($(nproc)/2)) && \
@@ -163,7 +174,7 @@ set -ex; \
     cp -r /downloads/Yul-Isabelle /usr/src; \
     cd Yul-Isabelle; \
     cd libabicoder; \
-    CXX=clang++ CXXFLAGS="-pthread" make; \
+    CXX=clang++ CXXFLAGS="-stdlib=libc++ -pthread" make; \
     cp libabicoder.a /usr/lib; \
     cp abicoder.hpp /usr/include; \
     cd /; \
@@ -177,9 +188,19 @@ set -ex; \
     #patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
         
     #cp $SRC/$PROJECT_NAME/aspell_fuzzer.cpp $SRC/$PROJECT_NAME/new_fuzzer.cpp
-    #git rev-parse --short=8 HEAD > /src/solidity/commit_hash.txt
-    echo 11179a2f > /src/solidity/commit_hash.txt
-    
+    # Solidity's CMake build requires an eight-character lowercase commit hash.
+    # Prefer repository metadata, then an explicit source revision, and finally
+    # retain the pinned revision used by this challenge image.
+    if git -C /src/solidity rev-parse --verify HEAD >/dev/null 2>&1; then
+        git -C /src/solidity rev-parse --short=8 HEAD \
+            | tr 'A-F' 'a-f' > /src/solidity/commit_hash.txt
+    elif [[ "${SOLIDITY_COMMIT:-}" =~ ^[0-9a-fA-F]{8,40}$ ]]; then
+        printf '%s\n' "${SOLIDITY_COMMIT:0:8}" \
+            | tr 'A-F' 'a-f' > /src/solidity/commit_hash.txt
+    else
+        printf '%s\n' 11179a2f > /src/solidity/commit_hash.txt
+    fi
+
     cd /
 #----------------------------------------------------------------------
     build-cleanup
