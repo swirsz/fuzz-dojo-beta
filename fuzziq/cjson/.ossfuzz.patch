@@ -7,13 +7,8 @@
 -    $LIB_FUZZING_ENGINE $SRC/cjson/build/libcjson.a
 +    $LIB_FUZZING_ENGINE $SRC/cjson/build/libcjson.a -pthreads
 +
-+$CXX $CXXFLAGS $SRC/cjson/fuzzing/newfuzzer.c -I. \
-+    -o $OUT/newfuzzer \
-+    $LIB_FUZZING_ENGINE $SRC/cjson/build/libcjson.a -pthreads
- 
+
  find $SRC/cjson/fuzzing/inputs -name "*" | \
       xargs zip $OUT/cjson_read_fuzzer_seed_corpus.zip
  
  cp $SRC/cjson/fuzzing/json.dict $OUT/cjson_read_fuzzer.dict
-+
-+cp $SRC/cjson/fuzzing/json.dict $OUT/newfuzzer.dict

@@ -37,11 +37,11 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-    cp $SRC/sqlite3/test/ossfuzz.c $SRC/sqlite3/test/newfuzzer.c
-    cp $SRC/sqlite3/test/ossfuzz.options $SRC/sqlite3/test/newfuzzer.options
-    cp $SRC/sqlite3/test/ossfuzz_seed_corpus.zip $SRC/sqlite3/test/newfuzzer_seed_corpus.zip
+    #cp $SRC/sqlite3/test/ossfuzz.c $SRC/sqlite3/test/newfuzzer.c
+    #cp $SRC/sqlite3/test/ossfuzz.options $SRC/sqlite3/test/newfuzzer.options
+    #cp $SRC/sqlite3/test/ossfuzz_seed_corpus.zip $SRC/sqlite3/test/newfuzzer_seed_corpus.zip
 
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
     build-cleanup
 fi
