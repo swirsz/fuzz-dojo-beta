@@ -57,7 +57,7 @@ RUN cd $SRC/libprotobuf-mutator; \
     -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread -D_LIBCPP_ENABLE_CXX20_REMOVED_CHAR_TRAITS" \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread" \
     -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread" \
     -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"; \
     ninja; \
@@ -84,7 +84,77 @@ RUN cd $SRC/libprotobuf-mutator; \
     nm -C /lib/libprotobuf-mutator.a | grep -q 'google::protobuf::Reflection::FieldSize';
 
 # Install evmone
-RUN cd $SRC/evmone; \
+RUN # libc++ 22 no longer provides char_traits<unsigned char>, while evmone 0.11; \
+# and its bundled EVMC still use basic_string<unsigned char>. Inject a narrow,; \
+# evmone-only specialization before any libc++ string header is parsed.; \
+cat > /tmp/evmone_unsigned_char_traits.hpp <<'EOF_EVMONE_CHAR_TRAITS'; \
+#pragma once; \
+#include <cstddef>; \
+#include <cstdint>; \
+#include <cstring>; \
+#include <cwchar>; \
+#include <iosfwd>; \
+; \
+namespace std; \
+{; \
+template <>; \
+struct char_traits<unsigned char>; \
+{; \
+    using char_type = unsigned char;; \
+    using int_type = unsigned int;; \
+    using off_type = streamoff;; \
+    using pos_type = fpos<mbstate_t>;; \
+    using state_type = mbstate_t;; \
+; \
+    static constexpr void assign(char_type& dst, const char_type& src) noexcept { dst = src; }; \
+    static constexpr bool eq(char_type a, char_type b) noexcept { return a == b; }; \
+    static constexpr bool lt(char_type a, char_type b) noexcept { return a < b; }; \
+; \
+    static int compare(const char_type* a, const char_type* b, size_t n) noexcept; \
+    {; \
+        return n == 0 ? 0 : std::memcmp(a, b, n);; \
+    }; \
+; \
+    static size_t length(const char_type* s) noexcept; \
+    {; \
+        size_t n = 0;; \
+        while (s[n] != 0); \
+            ++n;; \
+        return n;; \
+    }; \
+; \
+    static const char_type* find(const char_type* s, size_t n, const char_type& c) noexcept; \
+    {; \
+        for (size_t i = 0; i < n; ++i); \
+            if (s[i] == c); \
+                return s + i;; \
+        return nullptr;; \
+    }; \
+; \
+    static char_type* move(char_type* dst, const char_type* src, size_t n) noexcept; \
+    {; \
+        return static_cast<char_type*>(std::memmove(dst, src, n));; \
+    }; \
+; \
+    static char_type* copy(char_type* dst, const char_type* src, size_t n) noexcept; \
+    {; \
+        return static_cast<char_type*>(std::memcpy(dst, src, n));; \
+    }; \
+; \
+    static char_type* assign(char_type* dst, size_t n, char_type c) noexcept; \
+    {; \
+        return static_cast<char_type*>(std::memset(dst, c, n));; \
+    }; \
+; \
+    static constexpr int_type not_eof(int_type c) noexcept { return eq_int_type(c, eof()) ? 0 : c; }; \
+    static constexpr char_type to_char_type(int_type c) noexcept { return static_cast<char_type>(c); }; \
+    static constexpr int_type to_int_type(char_type c) noexcept { return static_cast<int_type>(c); }; \
+    static constexpr bool eq_int_type(int_type a, int_type b) noexcept { return a == b; }; \
+    static constexpr int_type eof() noexcept { return static_cast<int_type>(-1); }; \
+};; \
+}; \
+EOF_EVMONE_CHAR_TRAITS; \
+    cd $SRC/evmone; \
     mkdir -p build; \
     cd build; \
     # evmone 0.11/EVMC uses basic_string<unsigned char>. New libc++ releases
@@ -93,7 +163,7 @@ CC=clang CXX=clang++ cmake .. -G Ninja \
     -DBUILD_SHARED_LIBS=OFF \
     -DEVMONE_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread -D_LIBCPP_ENABLE_CXX20_REMOVED_CHAR_TRAITS" \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread -include /tmp/evmone_unsigned_char_traits.hpp" \
     -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread"; \
     ninja; \
     ninja install/strip;
@@ -186,7 +256,7 @@ cd $SRC/libprotobuf-mutator; \
     -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread -D_LIBCPP_ENABLE_CXX20_REMOVED_CHAR_TRAITS" \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread" \
     -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread" \
     -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"; \
     ninja; \
@@ -213,6 +283,76 @@ cd $SRC/libprotobuf-mutator; \
     nm -C /lib/libprotobuf-mutator.a | grep -q 'google::protobuf::Reflection::FieldSize';
 
 # Install evmone with the same Clang/libc++ ABI used by Solidity.
+# libc++ 22 no longer provides char_traits<unsigned char>, while evmone 0.11
+# and its bundled EVMC still use basic_string<unsigned char>. Inject a narrow,
+# evmone-only specialization before any libc++ string header is parsed.
+cat > /tmp/evmone_unsigned_char_traits.hpp <<'EOF_EVMONE_CHAR_TRAITS'
+#pragma once
+#include <cstddef>
+#include <cstdint>
+#include <cstring>
+#include <cwchar>
+#include <iosfwd>
+
+namespace std
+{
+template <>
+struct char_traits<unsigned char>
+{
+    using char_type = unsigned char;
+    using int_type = unsigned int;
+    using off_type = streamoff;
+    using pos_type = fpos<mbstate_t>;
+    using state_type = mbstate_t;
+
+    static constexpr void assign(char_type& dst, const char_type& src) noexcept { dst = src; }
+    static constexpr bool eq(char_type a, char_type b) noexcept { return a == b; }
+    static constexpr bool lt(char_type a, char_type b) noexcept { return a < b; }
+
+    static int compare(const char_type* a, const char_type* b, size_t n) noexcept
+    {
+        return n == 0 ? 0 : std::memcmp(a, b, n);
+    }
+
+    static size_t length(const char_type* s) noexcept
+    {
+        size_t n = 0;
+        while (s[n] != 0)
+            ++n;
+        return n;
+    }
+
+    static const char_type* find(const char_type* s, size_t n, const char_type& c) noexcept
+    {
+        for (size_t i = 0; i < n; ++i)
+            if (s[i] == c)
+                return s + i;
+        return nullptr;
+    }
+
+    static char_type* move(char_type* dst, const char_type* src, size_t n) noexcept
+    {
+        return static_cast<char_type*>(std::memmove(dst, src, n));
+    }
+
+    static char_type* copy(char_type* dst, const char_type* src, size_t n) noexcept
+    {
+        return static_cast<char_type*>(std::memcpy(dst, src, n));
+    }
+
+    static char_type* assign(char_type* dst, size_t n, char_type c) noexcept
+    {
+        return static_cast<char_type*>(std::memset(dst, c, n));
+    }
+
+    static constexpr int_type not_eof(int_type c) noexcept { return eq_int_type(c, eof()) ? 0 : c; }
+    static constexpr char_type to_char_type(int_type c) noexcept { return static_cast<char_type>(c); }
+    static constexpr int_type to_int_type(char_type c) noexcept { return static_cast<int_type>(c); }
+    static constexpr bool eq_int_type(int_type a, int_type b) noexcept { return a == b; }
+    static constexpr int_type eof() noexcept { return static_cast<int_type>(-1); }
+};
+}
+EOF_EVMONE_CHAR_TRAITS
 # The challenge image normally provides a source checkout in /downloads/evmone.
 if [ ! -d "$SRC/evmone" ]; then
     if [ -d /downloads/evmone ]; then
@@ -233,7 +373,7 @@ CC=clang CXX=clang++ cmake .. -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread -D_LIBCPP_ENABLE_CXX20_REMOVED_CHAR_TRAITS" \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread -include /tmp/evmone_unsigned_char_traits.hpp" \
     -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread" \
     -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"
 ninja
