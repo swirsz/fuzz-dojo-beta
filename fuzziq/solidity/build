@@ -47,15 +47,25 @@ RUN cd $SRC && \
 # See https://github.com/google/oss-fuzz/issues/10237
 RUN cd $SRC/libprotobuf-mutator; \
     git reset --hard 212a7be1eb08e7f9c79732d2aab9b2097085d936; \
-    mkdir $SRC/LPM; \
+    rm -rf $SRC/LPM; \
+    mkdir -p $SRC/LPM; \
     cd $SRC/LPM; \
+    export CC=clang CXX=clang++; \
+    export CXXFLAGS="-stdlib=libc++ -pthread"; \
+    export LDFLAGS="-stdlib=libc++ -pthread"; \
     cmake $SRC/libprotobuf-mutator -GNinja \
     -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF \
-    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"; \
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread" \
+    -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"; \
     ninja; \
     ninja install; \
     cd external.protobuf; \
-    cp -Rf bin lib include /usr;
+    cp -Rf bin lib include /usr; \
+    ! nm -C /usr/lib/libprotobuf.a | grep -qE 'std::__cxx11|std::_V2'; \
+    nm -C /usr/lib/libprotobuf.a | grep -q 'std::__1';
 
 # Install evmone
 RUN cd $SRC/evmone; \
@@ -139,15 +149,29 @@ cd $SRC && \
 # Use commit prior to libprotobuf upgrade that broke solidity build
 # See https://github.com/google/oss-fuzz/issues/10237
 cd $SRC/libprotobuf-mutator; \
-    mkdir $SRC/LPM; \
+    git reset --hard 212a7be1eb08e7f9c79732d2aab9b2097085d936; \
+    rm -rf $SRC/LPM; \
+    mkdir -p $SRC/LPM; \
+    rm -f /usr/lib/libprotobuf*.a /usr/lib/libprotoc*.a \
+          /usr/lib/libprotobuf-mutator*.a /lib/libprotobuf*.a \
+          /lib/libprotoc*.a /lib/libprotobuf-mutator*.a; \
     cd $SRC/LPM; \
+    export CC=clang CXX=clang++; \
+    export CXXFLAGS="-stdlib=libc++ -pthread"; \
+    export LDFLAGS="-stdlib=libc++ -pthread"; \
     cmake $SRC/libprotobuf-mutator -GNinja \
     -DLIB_PROTO_MUTATOR_DOWNLOAD_PROTOBUF=ON -DLIB_PROTO_MUTATOR_TESTING=OFF \
-    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"; \
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread" \
+    -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"; \
     ninja; \
     ninja install; \
     cd external.protobuf; \
-    cp -Rf bin lib include /usr;
+    cp -Rf bin lib include /usr; \
+    ! nm -C /usr/lib/libprotobuf.a | grep -qE 'std::__cxx11|std::_V2'; \
+    nm -C /usr/lib/libprotobuf.a | grep -q 'std::__1';
 
 # gmp
 cd $SRC; \
