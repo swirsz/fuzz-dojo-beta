@@ -6,7 +6,7 @@
    fuzzer_name=$(basename -s ".cc" $f)
    echo "Building $fuzzer_name"
 -  $CXX $CXXFLAGS -std=c++11 -I. $f -o $OUT/$fuzzer_name \
-+  $CXX $CXXFLAGS -std=c++11 -I. -I./libyara \
++  $CXX $CXXFLAGS -std=c++11 -I. -I"$SRC/yara/libyara/include" \
 +    $f -o $OUT/$fuzzer_name \
      ./.libs/libyara.a \
      $LIB_FUZZING_ENGINE
