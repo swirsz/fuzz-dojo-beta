@@ -63,9 +63,15 @@ RUN cd $SRC/libprotobuf-mutator; \
     ninja; \
     ninja install; \
     cd external.protobuf; \
-    cp -Rf bin lib include /usr; \
+    cp -Rf bin include /usr; \
+    find lib -maxdepth 1 -type f -name 'libprotobuf*.a' -exec cp -f {} /usr/lib/ \;; \
+    find lib -maxdepth 1 -type f -name 'libprotoc*.a' -exec cp -f {} /usr/lib/ \;; \
+    cp -f /usr/lib/libprotobuf*.a /lib/; \
+    cp -f /usr/lib/libprotoc*.a /lib/ 2>/dev/null || true; \
+    cp -f /usr/lib/libprotobuf-mutator*.a /lib/ 2>/dev/null || true; \
     ! nm -C /usr/lib/libprotobuf.a | grep -qE 'std::__cxx11|std::_V2'; \
-    nm -C /usr/lib/libprotobuf.a | grep -q 'std::__1';
+    nm -C /usr/lib/libprotobuf.a | grep -q 'std::__1'; \
+    nm -C /lib/libprotobuf.a | grep -q 'google::protobuf::Reflection::FieldSize';
 
 # Install evmone
 RUN cd $SRC/evmone; \
@@ -169,9 +175,47 @@ cd $SRC/libprotobuf-mutator; \
     ninja; \
     ninja install; \
     cd external.protobuf; \
-    cp -Rf bin lib include /usr; \
+    cp -Rf bin include /usr; \
+    find lib -maxdepth 1 -type f -name 'libprotobuf*.a' -exec cp -f {} /usr/lib/ \;; \
+    find lib -maxdepth 1 -type f -name 'libprotoc*.a' -exec cp -f {} /usr/lib/ \;; \
+    cp -f /usr/lib/libprotobuf*.a /lib/; \
+    cp -f /usr/lib/libprotoc*.a /lib/ 2>/dev/null || true; \
+    cp -f /usr/lib/libprotobuf-mutator*.a /lib/ 2>/dev/null || true; \
     ! nm -C /usr/lib/libprotobuf.a | grep -qE 'std::__cxx11|std::_V2'; \
-    nm -C /usr/lib/libprotobuf.a | grep -q 'std::__1';
+    nm -C /usr/lib/libprotobuf.a | grep -q 'std::__1'; \
+    nm -C /lib/libprotobuf.a | grep -q 'google::protobuf::Reflection::FieldSize';
+
+# Install evmone with the same Clang/libc++ ABI used by Solidity.
+# The challenge image normally provides a source checkout in /downloads/evmone.
+if [ ! -d "$SRC/evmone" ]; then
+    if [ -d /downloads/evmone ]; then
+        echo Please wait, initial copy of evmone
+        cp -r /downloads/evmone "$SRC/evmone"
+    else
+        echo "Missing evmone source: expected /downloads/evmone" >&2
+        exit 1
+    fi
+fi
+rm -rf "$SRC/evmone/build"
+mkdir -p "$SRC/evmone/build"
+cd "$SRC/evmone/build"
+CC=clang CXX=clang++ cmake .. -G Ninja \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DEVMONE_TESTING=OFF \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_CXX_FLAGS="-stdlib=libc++ -pthread" \
+    -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++ -pthread" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++ -pthread"
+ninja
+ninja install
+# Older evmone releases do not always install the public headers.
+if [ ! -f /usr/include/evmone/evmone.h ]; then
+    mkdir -p /usr/include/evmone
+    cp -f "$SRC/evmone/include/evmone/evmone.h" /usr/include/evmone/
+fi
 
 # gmp
 cd $SRC; \
