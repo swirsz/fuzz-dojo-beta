@@ -11,6 +11,7 @@ if [ -z "$SANITIZER" ]; then
     export LABEL='none'$LABEL
 fi
 
+export MAKE=make
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
     #apt-get update && \

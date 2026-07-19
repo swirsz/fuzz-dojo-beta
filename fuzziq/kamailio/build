@@ -19,8 +19,8 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/kamailio $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-    cp $SRC/$PROJECT_NAME/misc/fuzz/fuzz_uri.c $SRC/$PROJECT_NAME/misc/fuzz/newfuzzer.c
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    #cp $SRC/$PROJECT_NAME/misc/fuzz/fuzz_uri.c $SRC/$PROJECT_NAME/misc/fuzz/newfuzzer.c
+    #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
 #----------------------------------------------------------------------
     build-cleanup
