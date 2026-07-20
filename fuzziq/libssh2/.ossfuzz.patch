@@ -9,8 +9,3 @@
  
  # Compile the fuzzer.
  ./buildconf
-@@ -31,3 +31,4 @@
- 
- # Copy the fuzzer to the output directory.
- cp -v tests/ossfuzz/ssh2_client_fuzzer "$OUT/"
-+cp -v tests/ossfuzz/new_fuzzer "$OUT/"
