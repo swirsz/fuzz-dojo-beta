@@ -197,9 +197,6 @@ modules:
       - id: libyaml
         name: LIBYAML - 6679 loc - 90% - 9 drivers
 
-      - id: monero
-        name: MONERO - 115986 loc - 23% - 17 drivers
-
       - id: opus
         name: OPUS - 27860 loc - 87% - 24 drivers
 
