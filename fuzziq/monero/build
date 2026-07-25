@@ -286,6 +286,15 @@ END_COMMENT
 
     git config --global --add safe.directory /src/monero
     git config --global --add safe.directory /src/monero/external/gtest
+    git config --global --add safe.directory /src/monero/external/randomx
+    git config --global --add safe.directory /src/monero/external/boost/
+    git config --global --add safe.directory /src/monero/external/db_drivers/
+    git config --global --add safe.directory /src/monero/external/easylogging++/
+    git config --global --add safe.directory /src/monero/external/gtest/
+    git config --global --add safe.directory /src/monero/external/qrcodegen/
+    git config --global --add safe.directory /src/monero/external/randomx/
+    git config --global --add safe.directory /src/monero/external/rapidjson/
+    git config --global --add safe.directory /src/monero/external/supercop/
 
     cd /src/monero
     git submodule sync --recursive
