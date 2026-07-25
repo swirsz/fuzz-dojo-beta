@@ -303,14 +303,18 @@ patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 git config --global --add safe.directory /src/monero
 git config --global --add safe.directory /src/monero/external/gtest
 git config --global --add safe.directory /src/monero/external/randomx
-git config --global --add safe.directory /src/monero/external/boost/
-git config --global --add safe.directory /src/monero/external/db_drivers/
-git config --global --add safe.directory /src/monero/external/easylogging++/
-git config --global --add safe.directory /src/monero/external/gtest/
-git config --global --add safe.directory /src/monero/external/qrcodegen/
-git config --global --add safe.directory /src/monero/external/randomx/
-git config --global --add safe.directory /src/monero/external/rapidjson/
-git config --global --add safe.directory /src/monero/external/supercop/
+git config --global --add safe.directory /src/monero/external/boost
+git config --global --add safe.directory /src/monero/external/db_drivers
+git config --global --add safe.directory /src/monero/external/easylogging++
+git config --global --add safe.directory /src/monero/external/gtest
+git config --global --add safe.directory /src/monero/external/qrcodegen
+git config --global --add safe.directory /src/monero/external/randomx
+git config --global --add safe.directory /src/monero/external/rapidjson
+git config --global --add safe.directory /src/monero/external/supercop
+git config --global --add safe.directory /src/monero
+while IFS= read -r git_marker; do
+    git config --global --add safe.directory "$(dirname "$git_marker")"
+done < <(find /src/monero -name .git -print)
 
 cd /src/monero
 git submodule sync --recursive
