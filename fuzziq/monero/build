@@ -159,6 +159,9 @@ END_COMMENT
     export CFLAGS="${CFLAGS} -fPIC -pthread"
     export CXXFLAGS="${CXXFLAGS} -fPIC -pthread"
 
+    export CFLAGS="${CFLAGS} -gdwarf-4"
+    export CXXFLAGS="${CXXFLAGS} -gdwarf-4"
+
     cd "$SRC" || exit 1
 
     ## Workaround for boost build issue
