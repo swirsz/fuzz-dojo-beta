@@ -284,6 +284,13 @@ END_COMMENT
     cp /opt/oss-fuzz/projects/monero/*.options "$SRC/"
     patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 
+    git config --global --add safe.directory /src/monero
+    git config --global --add safe.directory /src/monero/external/gtest
+
+    cd /src/monero
+    git submodule sync --recursive
+    git submodule update --init --recursive
+
     #cp -a /downloads/monero "$SRC"
     # cp /downloads/aspell*.bz2 /tmp
     # cp /challenge/.fuzz-packet_seed_corpus.zip "$OUT/fuzz-packet_seed_corpus.zip"
