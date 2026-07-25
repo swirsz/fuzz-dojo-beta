@@ -201,7 +201,7 @@ modules:
         name: OPUS - 27860 loc - 87% - 24 drivers
 
       - id: monero
-        name: MONERO
+        name: MONERO - 116507 loc - 23% - 17 drivers
 
       - id: php
         name: PHP - 458754 loc - 46% - 8 drivers

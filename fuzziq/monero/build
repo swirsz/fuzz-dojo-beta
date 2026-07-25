@@ -276,29 +276,6 @@ END_COMMENT
         && find . -name 'unbound.h' -exec cp {} /usr/local/include/ \; \
         && ldconfig
 
-    cd "$SRC" || exit 1
-
-    git clone --depth 1 https://github.com/monero-project/monero.git monero
-
-    cp /opt/oss-fuzz/projects/monero/build.sh "$SRC/"
-    cp /opt/oss-fuzz/projects/monero/*.options "$SRC/"
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
-
-    git config --global --add safe.directory /src/monero
-    git config --global --add safe.directory /src/monero/external/gtest
-    git config --global --add safe.directory /src/monero/external/randomx
-    git config --global --add safe.directory /src/monero/external/boost/
-    git config --global --add safe.directory /src/monero/external/db_drivers/
-    git config --global --add safe.directory /src/monero/external/easylogging++/
-    git config --global --add safe.directory /src/monero/external/gtest/
-    git config --global --add safe.directory /src/monero/external/qrcodegen/
-    git config --global --add safe.directory /src/monero/external/randomx/
-    git config --global --add safe.directory /src/monero/external/rapidjson/
-    git config --global --add safe.directory /src/monero/external/supercop/
-
-    cd /src/monero
-    git submodule sync --recursive
-    git submodule update --init --recursive
 
     #cp -a /downloads/monero "$SRC"
     # cp /downloads/aspell*.bz2 /tmp
@@ -314,6 +291,30 @@ fi
 cd / || exit 1
 build-srcfolders
 mv "/src-$LABEL" /src
+
+cd "$SRC" || exit 1
+
+git clone --depth 1 https://github.com/monero-project/monero.git monero
+
+cp /opt/oss-fuzz/projects/monero/build.sh "$SRC/"
+cp /opt/oss-fuzz/projects/monero/*.options "$SRC/"
+patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+
+git config --global --add safe.directory /src/monero
+git config --global --add safe.directory /src/monero/external/gtest
+git config --global --add safe.directory /src/monero/external/randomx
+git config --global --add safe.directory /src/monero/external/boost/
+git config --global --add safe.directory /src/monero/external/db_drivers/
+git config --global --add safe.directory /src/monero/external/easylogging++/
+git config --global --add safe.directory /src/monero/external/gtest/
+git config --global --add safe.directory /src/monero/external/qrcodegen/
+git config --global --add safe.directory /src/monero/external/randomx/
+git config --global --add safe.directory /src/monero/external/rapidjson/
+git config --global --add safe.directory /src/monero/external/supercop/
+
+cd /src/monero
+git submodule sync --recursive
+git submodule update --init --recursive
 
 cd "$SRC" || exit 1
 
