@@ -161,10 +161,10 @@ modules:
       - id: avahi
         name: AVAHI - simple 2566 loc 73%-76%-81% - 2 min
 
-      - id: c-ares
+      - id: cares
         name: C-ARES - medium 5676 loc 35%-39%-72% - 2.5 min
 
-      - id: c-blosc2
+      - id: cblosc2
         name: C-BLOSC2 - 62162 loc - 35% - 4 drivers
 
       - id: cjson
