@@ -463,7 +463,7 @@ cd $SRC/$PROJECT_NAME
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/test/tools/ossfuzz/*.cpp /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/$PROJECT_NAME/test/tools/ossfuzz/* /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/test/tools/ossfuzz
