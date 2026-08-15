@@ -159,16 +159,16 @@ modules:
     challenges:
 
       - id: avahi
-        name: AVAHI - simple 2566 loc 73%-76%-81% - 2 min
+        name: AVAHI - 2566 loc 73%-76%-81% - 2 min
 
       - id: cares
-        name: C_ARES - medium 5676 loc 35%-39%-72% - 3 min
+        name: C_ARES - 5676 loc 35%-39%-72% - 3 min
 
       - id: cblosc2
         name: C_BLOSC2 - 62162 loc - 35% - 4 drivers
 
       - id: cjson
-        name: CJSON - simple 2304 loc 43%-43%-46% - 1 min
+        name: CJSON - 2304 loc 43%-43%-46% - 1 min
 
       - id: cpython3
         name: CPYTHON3 - 273224 loc - 25% - 11 drivers
@@ -180,7 +180,7 @@ modules:
         name: H2O - 58245 loc - 19% - 9 drivers
 
       - id: kamailio
-        name: KAMAILIO - simple 83091 loc 4%-10%-11% (no FI) - 5 min
+        name: KAMAILIO - 83091 loc 4%-10%-11% (no FI) - 5 min
 
       - id: libavc
         name: LIBAVC - 135862 loc - 73% - 5 drivers
@@ -192,7 +192,7 @@ modules:
         name: LIBRAW - 38061 loc - 80% - 4 drivers
 
       - id: libssh2
-        name: LIBSSH2 - medium 12632 loc 9%-20%-26% - 2 min
+        name: LIBSSH2 - 12632 loc 9%-20%-26% - 2 min
 
       - id: libyaml
         name: LIBYAML - 6679 loc - 90% - 9 drivers
@@ -213,23 +213,68 @@ modules:
         name: SPDLOG - 6009 loc - 48% - 5 drivers
 
       - id: sqlite3
-        name: SQLITE3 - complex 80385 loc 33%-75%-76% - 5 min (slow FI) 
+        name: SQLITE3 - 80385 loc 33%-75%-76% - 5 min (slow FI) 
 
       - id: tremor
         name: TREMOR - 4953 loc - 74% - 3 drivers
 
       - id: yara
-        name: YARA - simple 30443 loc 49%-63%-43% - 3 min
+        name: YARA - 30443 loc 49%-63%-43% - 3 min
 
       - id: zlib
-        name: ZLIB - complex 5055 loc 78%-79%-87% - 1 min
+        name: ZLIB - 5055 loc 78%-79%-87% - 1 min
+
+
+
+  - id: fuzziq2
+    name: Fuzz IQ New Projects
+    
+    challenges:
+
+      - id: rsync
+        name: RSYNC
+
+      - id: less
+        name: LESS
+
+      - id: fail2ban
+        name: FAIL2BAN
+
+      - id: tig
+        name: TIG
+
+      - id: git-crypt
+        name: GIT-CRYPT
+
+      - id: autojump
+        name: AUTOJUMP
+
+      - id: ccache
+        name: CCACHE
+
+      - id: unison
+        name: UNISON
+
+      - id: wrk
+        name: WRK
+
+      - id: tree
+        name: TREE
+
+      - id: nethogs
+        name: NETHOGS
+
+      - id: calcurse
+        name: CALCURSE
+
+      - id: rlwrap 
+        name: RLWRAP
 
 
   - id: userstudy
     name:  Fuzz Dojo user study
     
     challenges:
-
 
       - id: casync
         name: CASYNC - medium 1678 loc 11%-10%-14% - 1 min
