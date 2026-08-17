@@ -26,7 +26,9 @@ CC="$CC" CFLAGS="$CFLAGS" ./configure \
     --disable-xxhash \
     --disable-zstd \
     --disable-lz4 \
-    --disable-openssl
+    --disable-openssl \
+    --disable-md2man \
+    --disable-xxhash
 
 # --- Build rsync's object files with instrumentation ------------------------
 # We build the whole tree rather than hand-picking objects: recv_file_entry()
