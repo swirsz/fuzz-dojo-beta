@@ -5,7 +5,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=xxxxxxxxxx
+export PROJECT_NAME=rsync
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -14,14 +14,18 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #RUN apt-get update && apt-get install -y cmake
-    #rm -rf $PROJECT_NAME
-    #git clone --depth 1 -b develop https://github.com/nlohmann/json.git
-    cp -r /downloads/cjson $SRC
+    #FROM gcr.io/oss-fuzz-base/base-builder
+    #RUN apt-get update && apt-get install -y autoconf automake libtool pkg-config zlib1g-dev libpopt-dev
+    #RUN git clone --depth 1 https://github.com/WayneD/rsync.git rsync
+    #WORKDIR rsync
+    #COPY build.sh $SRC/
+    #COPY *fuzzer*.c $SRC/
+    cp -r /downloads/rsync $SRC
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /challenge/.build.sh $SRC/build.sh
+    cp /challenge/.rsync_flist_fuzzer.c  $SRC/rsync_flist_fuzzer.c
 
-    patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    #patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/newfuzzer.c
 #----------------------------------------------------------------------
     build-cleanup
@@ -35,10 +39,10 @@ rm -rf $SRC/$PROJECT_NAME/build
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp -r $SRC/$PROJECT_NAME/fuzzing/* /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp -r $SRC/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
+   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
