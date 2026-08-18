@@ -59,10 +59,8 @@ $CXX $CXXFLAGS $LIB_FUZZING_ENGINE \
     util1.o \
     util2.o \
     checksum.o \
-    uidlist.o \
     exclude.o \
     hashtable.o \
-    compat.o \
     lib/pool_alloc.o \
     lib/wildmatch.o \
     -o "$OUT"/rsync_flist_fuzzer
