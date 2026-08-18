@@ -5,7 +5,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=xxxxxxxxxx
+export PROJECT_NAME=ccache
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -14,15 +14,25 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #RUN apt-get update && apt-get install -y cmake
-    #rm -rf $PROJECT_NAME
-    #git clone --depth 1 -b develop https://github.com/nlohmann/json.git
-    cp -r /downloads/cjson $SRC
+# Use the official OSS-Fuzz C/C++ base builder
+#FROM gcr.io/oss-fuzz-base/base-builder-c
+# Install build dependencies required by ccache
+#RUN apt-get update && apt-get install -y \
+#    cmake \
+#    zlib1g-dev \
+#    liblz4-dev \
+#    libzstd-dev \
+#    && rm -rf /var/lib/apt/lists/*
+# Set compiler to clang (required by OSS-Fuzz)
+#ENV CC=clang CXX=clang++
+# ccache uses CMake. Ensure we use the system CMake, not a bundled one.
+#ENV CMAKE_PREFIX_PATH=/usr/local:/usr
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp -r /downloads/ccache $SRC
 
-    patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
-    #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/newfuzzer.c
+    cp /challenge/.build.sh $SRC/build.sh
+    cp /challenge/.ccache_fuzzer.cc  $SRC/ccache_fuzzer.cc
+
 #----------------------------------------------------------------------
     build-cleanup
 fi
@@ -35,10 +45,10 @@ rm -rf $SRC/$PROJECT_NAME/build
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp -r $SRC/$PROJECT_NAME/fuzzing/* /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp -r $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
+   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
