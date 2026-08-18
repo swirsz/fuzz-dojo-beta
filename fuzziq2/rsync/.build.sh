@@ -34,9 +34,10 @@ CC="$CC" CFLAGS="$CFLAGS" ./configure \
 # lookups) that hand-listing objects is brittle across upstream changes.
 # main.o is excluded at link time below, not here, since some of its
 # helper statics are unrelated to main() and safer to just leave alone.
-make -j"$(nproc)" \
-    CC="$CC" \
-    CFLAGS="$CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION"
+make -j"$(nproc)"
+# \
+#    CC="$CC" \
+#    CFLAGS="$CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION"
 
 # --- Build the fuzz target itself -------------------------------------------
 # -DHAVE_CONFIG_H matches the flag used for the main `make` build above --
@@ -59,7 +60,6 @@ FLIST_OBJS=$(find . -maxdepth 1 -name '*.o' \
 $CXX $CXXFLAGS $LIB_FUZZING_ENGINE \
     "$SRC"/rsync/rsync_flist_fuzzer.o \
     $FLIST_OBJS \
-    zlib/libz.a \
     -o "$OUT"/rsync_flist_fuzzer
 
 # --- Seed corpus (optional but recommended) ----------------------------------
