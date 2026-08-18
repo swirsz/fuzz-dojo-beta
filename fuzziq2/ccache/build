@@ -46,10 +46,10 @@ rm -rf $SRC/$PROJECT_NAME/build
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp -r $SRC/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp -r $SRC/$PROJECT_NAME/fuzz/*.cc /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC
+   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------

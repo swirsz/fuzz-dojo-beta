@@ -13,8 +13,7 @@ rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 
 # ccache uses C++20 facilities such as std::span. Verify that the compiler and
-# its selected standard library actually provide <span>. Some Clang images
-# default to an older libstdc++; libc++ may be available as an alternative.
+# its selected standard library actually provide <span>.
 check_span() {
     local extra_flag="$1"
     printf '#include <span>\nint main() { std::span<int> s; return (int)s.size(); }\n' \
@@ -39,8 +38,8 @@ fi
 BASE_C_FLAGS="${CFLAGS:-} -fsanitize=fuzzer-no-link -g -O1"
 BASE_CXX_FLAGS="${CXXFLAGS:-} ${STDLIB_FLAG} -fsanitize=fuzzer-no-link -g -O1"
 
-# Build the ccache framework with the same compiler and C++ standard library
-# that will be used for the final libFuzzer executable.
+# Build the ccache framework. All bundled dependencies are statically linked
+# into libccache_framework.a when BUILD_SHARED_LIBS=OFF.
 cmake -S "$PROJECT_DIR" -B "$BUILD_DIR" \
     -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_C_COMPILER="$CC_BIN" \
@@ -62,21 +61,12 @@ FRAMEWORK_LIB="$BUILD_DIR/src/ccache/libccache_framework.a"
 [[ -f "$FUZZER_SRC" ]] || { echo "error: missing fuzzer source: $FUZZER_SRC" >&2; exit 1; }
 [[ -f "$FRAMEWORK_LIB" ]] || { echo "error: missing framework library: $FRAMEWORK_LIB" >&2; exit 1; }
 
-# Keep the final link on the exact same compiler/STL combination as CMake.
+# Link the fuzzer. The framework library already contains all bundled deps.
+# We only need to link system libraries and the fuzzer runtime.
 "$CXX_BIN" "$FUZZER_SRC" \
     -I"$PROJECT_DIR/src" \
     -I"$BUILD_DIR/src" \
     "$FRAMEWORK_LIB" \
-    -L"$BUILD_DIR/src/third_party/fmt" \
-    -L"$BUILD_DIR/src/third_party/blake3" \
-    -L"$BUILD_DIR/src/third_party/cxxurl" \
-    -L"$BUILD_DIR/_deps/hiredis-build" \
-    -L"$BUILD_DIR/_deps/xxhash-build" \
-    -ldep_fmt \
-    -ldep_blake3 \
-    -ldep_cxxurl \
-    -ldep_hiredis \
-    -ldep_xxhash \
     -lz -llz4 -lzstd -lpthread \
     $STDLIB_FLAG \
     ${CXXFLAGS:-} \
