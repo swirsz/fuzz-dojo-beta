@@ -55,7 +55,6 @@ FLIST_OBJS=$(find . -name '*.o' \
 $CXX $CXXFLAGS $LIB_FUZZING_ENGINE \
     "$SRC"/rsync/rsync_flist_fuzzer.o \
     $FLIST_OBJS \
-    zlib/libz.a \
     -o "$OUT"/rsync_flist_fuzzer
 
 # --- Seed corpus (optional but recommended) ----------------------------------
