@@ -21,6 +21,10 @@ cd "$SRC"/rsync
 # backends we don't need for flist parsing, and removes their libs from
 # the dependency graph so the linker step stays simple. Drop these flags
 # later if you want to fuzz code paths that touch those libraries.
+# --disable-acl-support: acls.c/lib/sysacls.o call into the system's
+# libacl (acl_get_entry, acl_set_file, ...), which we're not linking
+# against. ACL handling isn't relevant to file-list parsing, so it's
+# simpler to compile it out than to add -lacl to the link step.
 CC="$CC" CFLAGS="$CFLAGS" ./configure \
     --disable-shared \
     --disable-xxhash \
@@ -28,17 +32,35 @@ CC="$CC" CFLAGS="$CFLAGS" ./configure \
     --disable-lz4 \
     --disable-openssl \
     --disable-md2man \
+    --disable-acl-support \
     --with-included-popt
 
 # --- Build rsync's object files with instrumentation ------------------------
 # We build the whole tree rather than hand-picking objects: recv_file_entry()
 # transitively pulls in enough of rsync (filters, io, checksums, uid/gid
 # lookups) that hand-listing objects is brittle across upstream changes.
-# main.o is excluded at link time below, not here, since some of its
-# helper statics are unrelated to main() and safer to just leave alone.
 make -j"$(nproc)" 
 #    CC="$CC" \
 #    CFLAGS="$CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION"
+
+# --- Post-process objects so they're linkable into the fuzzer ---------------
+# recv_file_entry() is declared 'static' in flist.c upstream, so flist.o
+# has the code but doesn't export the symbol -- the fuzzer's
+# LLVMFuzzerTestOneInput() can't call it. Promote it to a global symbol
+# rather than patching and recompiling flist.c.
+objcopy --globalize-symbol=recv_file_entry "$SRC"/rsync/flist.o
+
+# main.c isn't just main() -- it also owns a chunk of process-global
+# state that recv_file_entry()'s call graph reaches into (our_uid,
+# our_gid, orig_umask, am_generator, am_receiver, local_server,
+# daemon_connection, receive_sigusr2, sender_keeps_checksum, raw_argv/
+# raw_argc, cooked_argv/cooked_argc, shell_exec, wait_process,
+# client_run, start_server, remember_children, read/write_del_stats,
+# batch_gen_fd, ...). We can't leave main.o out of the link, but its
+# main() collides with the one $LIB_FUZZING_ENGINE supplies. Rename
+# main() out of the way so the rest of the object stays linkable and
+# the real main() is simply dead code in the fuzzer binary.
+objcopy --redefine-sym main=rsync_main_unused "$SRC"/rsync/main.o
 
 # --- Build the fuzz target itself -------------------------------------------
 $CC $CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION \
@@ -49,14 +71,16 @@ $CC $CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION \
 # recv_file_entry() transitively touches globals/functions scattered across
 # most of rsync's .c files (log.c's rprintf/rsyserr, options.c's am_server/
 # who_am_i/protocol_version/..., cleanup.c's _exit_cleanup, syscall.c's
-# do_stat/do_mkdir_at/..., lib/compat.c's strlcpy, etc). Hand-picking a
-# subset of .o files is brittle -- it works until upstream adds a call
-# path through a file you didn't list, then you get a wall of "undefined
-# reference" errors instead of a helpful failure. So we link *every*
-# object make produced, and exclude only the ones that define their own
-# main() (main.o, plus any standalone test/support tools like wildtest.o
-# or getgroups.o that some rsync versions build) since those would
-# conflict with the main() supplied by $LIB_FUZZING_ENGINE.
+# do_stat/do_mkdir_at/..., lib/compat.c's strlcpy, main.c's process-global
+# state, etc). Hand-picking a subset of .o files is brittle -- it works
+# until upstream adds a call path through a file you didn't list, then
+# you get a wall of "undefined reference" errors instead of a helpful
+# failure. So we link *every* object make produced (main.o included --
+# it was patched above to no longer define main()) and only fall back to
+# excluding an object here if it *still* defines a global main() after
+# that patch, which would mean some other standalone test/support tool
+# (e.g. wildtest.o, getgroups.o in some rsync versions) got built too and
+# would otherwise collide with the main() supplied by $LIB_FUZZING_ENGINE.
 RSYNC_OBJS=()
 while IFS= read -r -d '' obj; do
     if nm "$obj" 2>/dev/null | grep -Eq '^[0-9a-f]+ T main$'; then
