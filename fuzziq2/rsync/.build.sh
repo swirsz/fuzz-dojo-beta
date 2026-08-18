@@ -27,7 +27,9 @@ CC="$CC" CFLAGS="$CFLAGS" ./configure \
     --disable-zstd \
     --disable-lz4 \
     --disable-openssl \
-    --disable-md2man 
+    --disable-md2man \
+    --with-included-popt
+
 # --- Build rsync's object files with instrumentation ------------------------
 # We build the whole tree rather than hand-picking objects: recv_file_entry()
 # transitively pulls in enough of rsync (filters, io, checksums, uid/gid
@@ -48,13 +50,21 @@ $CC $CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION \
 # top-level client/server loop we don't want) and the standalone test/
 # support tool objects (getgroups.o, getfsdev.o, etc. if present -- those
 # have their own main()s in some rsync versions).
-FLIST_OBJS=$(find . -name '*.o' \
-    ! -name 'main.o' \
-    ! -name 'rsync_flist_fuzzer.o')
 
 $CXX $CXXFLAGS $LIB_FUZZING_ENGINE \
     "$SRC"/rsync/rsync_flist_fuzzer.o \
-    $FLIST_OBJS \
+    rsync_flist_fuzzer.o \
+    flist.o \
+    io.o \
+    util1.o \
+    util2.o \
+    checksum.o \
+    uidlist.o \
+    exclude.o \
+    hashtable.o \
+    compat.o \
+    lib/pool_alloc.o \
+    lib/wildmatch.o \
     -o "$OUT"/rsync_flist_fuzzer
 
 # --- Seed corpus (optional but recommended) ----------------------------------
