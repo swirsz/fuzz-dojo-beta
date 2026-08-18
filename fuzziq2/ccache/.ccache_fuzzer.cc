@@ -4,7 +4,7 @@
 #include <optional>
 
 // Matches ccache's src/ccache/util/path.hpp via the -I/src/ccache/src flag in .build.sh
-#include "../util/path.hpp"
+#include "util/path.hpp"
 
 namespace {
     // Prevent optimizer from discarding path processing work
