@@ -46,23 +46,29 @@ $CC $CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION \
     -c "$SRC"/rsync_flist_fuzzer.c -o "$SRC"/rsync/rsync_flist_fuzzer.o
 
 # --- Link --------------------------------------------------------------------
-# Pull in every .o except main.o (defines main(), argv parsing, and the
-# top-level client/server loop we don't want) and the standalone test/
-# support tool objects (getgroups.o, getfsdev.o, etc. if present -- those
-# have their own main()s in some rsync versions).
+# recv_file_entry() transitively touches globals/functions scattered across
+# most of rsync's .c files (log.c's rprintf/rsyserr, options.c's am_server/
+# who_am_i/protocol_version/..., cleanup.c's _exit_cleanup, syscall.c's
+# do_stat/do_mkdir_at/..., lib/compat.c's strlcpy, etc). Hand-picking a
+# subset of .o files is brittle -- it works until upstream adds a call
+# path through a file you didn't list, then you get a wall of "undefined
+# reference" errors instead of a helpful failure. So we link *every*
+# object make produced, and exclude only the ones that define their own
+# main() (main.o, plus any standalone test/support tools like wildtest.o
+# or getgroups.o that some rsync versions build) since those would
+# conflict with the main() supplied by $LIB_FUZZING_ENGINE.
+RSYNC_OBJS=()
+while IFS= read -r -d '' obj; do
+    if nm "$obj" 2>/dev/null | grep -Eq '^[0-9a-f]+ T main$'; then
+        continue
+    fi
+    RSYNC_OBJS+=("$obj")
+done < <(find "$SRC"/rsync -maxdepth 2 -name '*.o' \
+             ! -name 'rsync_flist_fuzzer.o' -print0)
 
 $CXX $CXXFLAGS $LIB_FUZZING_ENGINE \
     "$SRC"/rsync/rsync_flist_fuzzer.o \
-    rsync_flist_fuzzer.o \
-    flist.o \
-    io.o \
-    util1.o \
-    util2.o \
-    checksum.o \
-    exclude.o \
-    hashtable.o \
-    lib/pool_alloc.o \
-    lib/wildmatch.o \
+    "${RSYNC_OBJS[@]}" \
     -o "$OUT"/rsync_flist_fuzzer
 
 # --- Seed corpus (optional but recommended) ----------------------------------
