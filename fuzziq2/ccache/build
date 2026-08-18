@@ -31,7 +31,8 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/ccache $SRC
 
     cp /challenge/.build.sh $SRC/build.sh
-    cp /challenge/.ccache_fuzzer.cc  $SRC/ccache_fuzzer.cc
+    mkdir -p $SRC/$PROJECT_NAME/fuzz
+    cp /challenge/.ccache_fuzzer.cc  $SRC/$PROJECT_NAME/fuzz/ccache_fuzzer.cc
 
 #----------------------------------------------------------------------
     build-cleanup
