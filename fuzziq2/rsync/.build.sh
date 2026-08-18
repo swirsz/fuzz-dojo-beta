@@ -35,6 +35,26 @@ CC="$CC" CFLAGS="$CFLAGS" ./configure \
     --disable-acl-support \
     --with-included-popt
 
+# --- Expose recv_file_entry() for the harness --------------------------------
+# recv_file_entry() is 'static' in flist.c upstream, giving it internal
+# linkage. At -O1, with a single call site inside recv_file_list()'s loop,
+# clang is free to inline it away completely and never emit an out-of-line
+# body at all -- there's then no symbol in flist.o for a post-build
+# `objcopy --globalize-symbol` to promote (verified: a single-call-site
+# static function can vanish entirely at -O1). Dropping 'static' before
+# compiling is the only way to guarantee an externally-linkable definition
+# survives regardless of what the inliner decides to do at the call site.
+cp flist.c flist.c.orig
+perl -0777 -pi -e 's/\bstatic(\s+struct\s+file_struct\s*\*\s*recv_file_entry\s*\()/$1/s' flist.c
+if diff -q flist.c.orig flist.c > /dev/null; then
+    echo "ERROR: failed to strip 'static' from recv_file_entry() in flist.c." >&2
+    echo "The signature in this rsync checkout doesn't match the expected" >&2
+    echo "pattern -- check 'grep -n recv_file_entry flist.c' and update the" >&2
+    echo "perl substitution above in build.sh." >&2
+    exit 1
+fi
+rm flist.c.orig
+
 # --- Build rsync's object files with instrumentation ------------------------
 # We build the whole tree rather than hand-picking objects: recv_file_entry()
 # transitively pulls in enough of rsync (filters, io, checksums, uid/gid
@@ -44,12 +64,6 @@ make -j"$(nproc)"
 #    CFLAGS="$CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION"
 
 # --- Post-process objects so they're linkable into the fuzzer ---------------
-# recv_file_entry() is declared 'static' in flist.c upstream, so flist.o
-# has the code but doesn't export the symbol -- the fuzzer's
-# LLVMFuzzerTestOneInput() can't call it. Promote it to a global symbol
-# rather than patching and recompiling flist.c.
-objcopy --globalize-symbol=recv_file_entry "$SRC"/rsync/flist.o
-
 # main.c isn't just main() -- it also owns a chunk of process-global
 # state that recv_file_entry()'s call graph reaches into (our_uid,
 # our_gid, orig_umask, am_generator, am_receiver, local_server,
