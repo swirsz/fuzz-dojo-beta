@@ -27,9 +27,7 @@ CC="$CC" CFLAGS="$CFLAGS" ./configure \
     --disable-zstd \
     --disable-lz4 \
     --disable-openssl \
-    --disable-md2man \
-    --with-included-popt
-
+    --disable-md2man 
 # --- Build rsync's object files with instrumentation ------------------------
 # We build the whole tree rather than hand-picking objects: recv_file_entry()
 # transitively pulls in enough of rsync (filters, io, checksums, uid/gid

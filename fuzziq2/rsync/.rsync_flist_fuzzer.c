@@ -28,6 +28,13 @@
  *     unless you specifically want to fuzz older protocol paths too.
  */
 
+/* memfd_create() is glibc-specific and gated behind _GNU_SOURCE; this
+ * must be defined before any system header is pulled in (including
+ * transitively via rsync.h), so it goes first in the file. */
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE
+#endif
+
 #include <stdint.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -40,6 +47,14 @@
 #ifdef FUZZ_DOJO_TRACE
 #include "fuzz_dojo_trace.h"
 #endif
+
+/* rsync.h does NOT centrally declare these as extern -- every .c file
+ * in the tree (io.c, rsync.c, compat.c, clientserver.c, ...) repeats
+ * its own local `extern int am_server;` etc. rather than relying on a
+ * shared declaration, so the harness follows the same convention. */
+extern int am_server;
+extern int am_sender;
+extern int protocol_version;
 
 /* recv_file_entry() is declared 'static' in flist.c upstream. If your
  * instrumented copy hasn't had that relaxed, add a small shim in
