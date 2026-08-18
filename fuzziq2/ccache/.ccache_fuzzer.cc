@@ -1,21 +1,18 @@
 #include <cstddef>
 #include <cstdint>
-#include <filesystem>
 #include <string>
+#include <optional>
 
-namespace fs = std::filesystem;
+// Matches ccache's src/ccache/util/path.hpp via the -I/src/ccache/src flag in .build.sh
+#include "path.hpp"
 
 namespace {
+    // Prevent optimizer from discarding path processing work
+    volatile std::size_t g_sink = 0;
 
-// Consume parsed values so the optimizer cannot trivially discard all of the
-// filename/path processing performed by the fuzz target.
-volatile std::size_t g_sink = 0;
-
-void consume(const fs::path& path)
-{
-    g_sink ^= path.native().size();
-}
-
+    void consume(const std::string& s) { g_sink ^= s.size(); }
+    void consume(std::size_t n)        { g_sink ^= n; }
+    void consume(bool b)               { g_sink ^= static_cast<std::size_t>(b); }
 } // namespace
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, std::size_t size)
@@ -24,42 +21,31 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, std::size_t size)
         return 0;
     }
 
-    // Preserve the complete fuzz input, including embedded NUL bytes. All
-    // operations below are lexical only; they do not access the filesystem.
+    // Preserve the complete fuzz input, including embedded NUL bytes.
     const std::string input(reinterpret_cast<const char*>(data), size);
-    const fs::path path(input);
 
-    // Exercise common filename/path parsing operations.
-    consume(path.filename());
-    consume(path.parent_path());
-    consume(path.stem());
-    consume(path.extension());
-    consume(path.root_name());
-    consume(path.root_directory());
-    consume(path.relative_path());
+    // -----------------------------------------------------------------------
+    // Directly exercise the public API from src/ccache/util/path.cpp
+    // -----------------------------------------------------------------------
 
-    // Exercise normalization and path-component iteration as well. These are
-    // useful for inputs containing repeated separators, '.', '..', unusual
-    // extensions, or very deeply nested path strings.
-    consume(path.lexically_normal());
+    // 1. Tilde expansion: handles ~, ~/file, ~user, ~user/file patterns
+    // Triggers internal string parsing and HOME/userdb lookups (userdb safely fails)
+    auto expanded = expand_tilde(input);
+    if (expanded) consume(*expanded);
 
-    for (const auto& component : path) {
-        consume(component);
-    }
+    // 2. Path component counting: /, /a, a/b/c, trailing slashes, etc.
+    const size_t n_components = count_path_components(input);
+    consume(n_components);
 
-    // Simple filename classification commonly needed by cache/compiler tools.
-    // No assumptions are made about encoding; fuzz bytes are handled as an
-    // opaque byte string by fs::path on POSIX systems.
-    const fs::path filename = path.filename();
-    const bool has_extension = filename.has_extension();
-    const bool has_stem = filename.has_stem();
-    const bool is_absolute = path.is_absolute();
-    const bool is_relative = path.is_relative();
+    // 3. Realpath resolution: normalizes path components and resolves symlinks
+    // Returns std::nullopt on non-existent files, keeping the fuzzer stable
+    auto resolved = realpath_str(input);
+    if (resolved) consume(*resolved);
 
-    g_sink ^= static_cast<std::size_t>(has_extension);
-    g_sink ^= static_cast<std::size_t>(has_stem) << 1;
-    g_sink ^= static_cast<std::size_t>(is_absolute) << 2;
-    g_sink ^= static_cast<std::size_t>(is_relative) << 3;
+    // 4. Additional path utilities (add if exposed in your ccache version)
+    // Example: auto joined = path_join(input, input); if (joined) consume(*joined);
 
+    // Sink to ensure the compiler cannot trivially optimize away the calls
+    g_sink ^= input.size();
     return 0;
 }
