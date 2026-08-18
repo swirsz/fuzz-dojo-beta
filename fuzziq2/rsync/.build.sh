@@ -28,7 +28,7 @@ CC="$CC" CFLAGS="$CFLAGS" ./configure \
     --disable-lz4 \
     --disable-openssl \
     --disable-md2man \
-    --disable-xxhash
+    --with-included-popt
 
 # --- Build rsync's object files with instrumentation ------------------------
 # We build the whole tree rather than hand-picking objects: recv_file_entry()
@@ -36,9 +36,9 @@ CC="$CC" CFLAGS="$CFLAGS" ./configure \
 # lookups) that hand-listing objects is brittle across upstream changes.
 # main.o is excluded at link time below, not here, since some of its
 # helper statics are unrelated to main() and safer to just leave alone.
-make -j"$(nproc)" \
-    CC="$CC" \
-    CFLAGS="$CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION"
+make -j"$(nproc)" 
+#    CC="$CC" \
+#    CFLAGS="$CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION"
 
 # --- Build the fuzz target itself -------------------------------------------
 $CC $CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION \
@@ -50,7 +50,7 @@ $CC $CFLAGS -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION \
 # top-level client/server loop we don't want) and the standalone test/
 # support tool objects (getgroups.o, getfsdev.o, etc. if present -- those
 # have their own main()s in some rsync versions).
-FLIST_OBJS=$(find . -maxdepth 1 -name '*.o' \
+FLIST_OBJS=$(find . -name '*.o' \
     ! -name 'main.o' \
     ! -name 'rsync_flist_fuzzer.o')
 
