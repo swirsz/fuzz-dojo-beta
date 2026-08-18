@@ -40,7 +40,7 @@
  * must be defined before any system header is pulled in (including
  * transitively via rsync.h), so it goes first in the file. */
 #ifndef _GNU_SOURCE
-#define _GNU_SOURCE
+#define _GNU_SOURCE 1
 #endif
 
 #include <stdint.h>
@@ -108,8 +108,10 @@ static int make_input_fd(const uint8_t *data, size_t size) {
  * this needs to become thread-local. */
 static jmp_buf fuzz_exit_jmp;
 
-__attribute__((noreturn)) void _exit_cleanup(int code) {
+__attribute__((noreturn)) void _exit_cleanup(int code, const char *file, int line) {
     (void)code;
+    (void)file;
+    (void)line;
     longjmp(fuzz_exit_jmp, 1);
 }
 
