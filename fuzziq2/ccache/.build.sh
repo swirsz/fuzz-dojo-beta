@@ -61,12 +61,19 @@ FRAMEWORK_LIB="$BUILD_DIR/src/ccache/libccache_framework.a"
 [[ -f "$FUZZER_SRC" ]] || { echo "error: missing fuzzer source: $FUZZER_SRC" >&2; exit 1; }
 [[ -f "$FRAMEWORK_LIB" ]] || { echo "error: missing framework library: $FRAMEWORK_LIB" >&2; exit 1; }
 
-# Link the fuzzer. The framework library already contains all bundled deps.
-# We only need to link system libraries and the fuzzer runtime.
+# 🔍 Locate the bundled fmt library (required by ccache's internal logging/formatting)
+FMT_LIB=$(find "$BUILD_DIR" -name "libdep_fmt.a" -type f | head -n1)
+if [[ -z "$FMT_LIB" ]]; then
+    echo "error: could not find bundled fmt library in $BUILD_DIR" >&2
+    exit 1
+fi
+
+# Link the fuzzer. Explicitly include fmt to resolve v12:: symbol references.
 "$CXX_BIN" "$FUZZER_SRC" \
     -I"$PROJECT_DIR/src" \
     -I"$BUILD_DIR/src" \
     "$FRAMEWORK_LIB" \
+    "$FMT_LIB" \
     -lz -llz4 -lzstd -lpthread \
     $STDLIB_FLAG \
     ${CXXFLAGS:-} \
@@ -76,3 +83,4 @@ FRAMEWORK_LIB="$BUILD_DIR/src/ccache/libccache_framework.a"
     -o "$OUT_DIR/$FUZZER_NAME"
 
 echo "Fuzz build completed successfully: $OUT_DIR/$FUZZER_NAME"
+
