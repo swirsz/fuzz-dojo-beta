@@ -46,7 +46,7 @@ fi
 #    never touches).
 DEPS="syscall.o util1.o util2.o \
       lib/wildmatch.o lib/compat.o lib/snprintf.o lib/permstring.o \
-      lib/sysxattrs.o lib/pool_alloc.o lib/sysacls.o lib/acl.o \
+      lib/sysxattrs.o lib/pool_alloc.o \
       lib/mdfour.o lib/md5.o lib/md5-asm-x86_64.o"
 
 make exclude.o $DEPS
