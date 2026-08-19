@@ -232,43 +232,43 @@ modules:
     challenges:
 
       - id: rsync
-        name: RSYNC
+        name: RSYNC (C) - 67686 loc - 2 drivers - 2% 
 
       - id: less
-        name: LESS
+        name: LESS (C) - 30000 loc 
 
       - id: fail2ban
-        name: FAIL2BAN
+        name: FAIL2BAN (Python) - 10000 loc
 
       - id: tig
-        name: TIG
+        name: TIG (C) - 45000 loc
 
       - id: git-crypt
-        name: GIT-CRYPT
+        name: GIT-CRYPT (C++) - 15000 loc
 
       - id: autojump
-        name: AUTOJUMP
+        name: AUTOJUMP (Python) - 20000 loc
 
       - id: ccache
-        name: CCACHE
+        name: CCACHE (C++) - 88617 loc - 1 driver - 10%
 
       - id: unison
-        name: UNISON
+        name: UNISON (OCaml, C) - 75000 loc
 
       - id: wrk
-        name: WRK
+        name: WRK (C) - 20000 loc
 
       - id: tree
-        name: TREE
+        name: TREE (C) - 15000 loc
 
       - id: nethogs
-        name: NETHOGS
+        name: NETHOGS (C++) - 20000 loc
 
       - id: calcurse
-        name: CALCURSE
+        name: CALCURSE (C) - 45000 loc
 
       - id: rlwrap 
-        name: RLWRAP
+        name: RLWRAP (C) - 20000 loc
 
 
   - id: userstudy
