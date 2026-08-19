@@ -58,9 +58,13 @@ cp "$FUZZ_SRC_DIR/fuzz_stub.c" .
 $CC $CFLAGS -I. -I./popt -I./zlib -DHAVE_CONFIG_H -c fuzz_parse_rule.c -o fuzz_parse_rule.o
 $CC $CFLAGS -I. -I./popt -I./zlib -DHAVE_CONFIG_H -c fuzz_stub.c -o fuzz_stub.o
 
-# 4. Link. $LIB_FUZZING_ENGINE is set by the OSS-Fuzz build environment;
-#    -fsanitize=fuzzer in CFLAGS covers it for a plain local libFuzzer build.
-${LIB_FUZZING_ENGINE:-} $CC $CFLAGS -o "${OUT:-.}/fuzz_parse_rule" \
+# 4. Link. $LIB_FUZZING_ENGINE is a set of compiler/linker ARGUMENTS
+#    supplied by the OSS-Fuzz build environment (e.g. "-fsanitize=fuzzer",
+#    or a path to libFuzzingEngine.a) -- it goes on the command line, not
+#    in front of it as if it were a program to exec. Outside OSS-Fuzz
+#    (plain local libFuzzer build) it's unset, so fall back to
+#    -fsanitize=fuzzer explicitly.
+$CC $CFLAGS ${LIB_FUZZING_ENGINE:--fsanitize=fuzzer} -o "${OUT:-.}/fuzz_parse_rule" \
     fuzz_parse_rule.o fuzz_stub.o exclude.o $DEPS
 
 echo "Built ${OUT:-.}/fuzz_parse_rule"
