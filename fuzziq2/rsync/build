@@ -23,8 +23,9 @@ if [ ! -d "/src-orig" ]; then
     cp -r /downloads/rsync $SRC
 
     cp /challenge/.build.sh $SRC/build.sh
-    cp /challenge/.fuzz_stub.c  $SRC/fuzz_stub.c
+    #cp /challenge/.fuzz_stub.c  $SRC/fuzz_stub.c
     cp /challenge/.fuzz_parse_rule.c  $SRC/fuzz_parse_rule.c
+    cp /challenge/.rsync_flist_fuzzer.c  $SRC/rsync_flist_fuzzer.c
 
     #patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/newfuzzer.c
