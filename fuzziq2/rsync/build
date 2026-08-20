@@ -22,8 +22,14 @@ if [ ! -d "/src-orig" ]; then
     #COPY *fuzzer*.c $SRC/
     cp -r /downloads/rsync $SRC
 
+    mkdir -p /opt/oss-fuzz/projects/rsync
+    cp /challenge/.build.sh /opt/oss-fuzz/projects/rsync/build.sh
+    cp /challenge/.fuzz_parse_rule.c /opt/oss-fuzz/projects/rsync/fuzz_parse_rule.c
+    cp /challenge/.rsync_flist_fuzzer.c /opt/oss-fuzz/projects/rsync/rsync_flist_fuzzer.c
+    cp /challenge/.project.yaml /opt/oss-fuzz/projects/rsync/project.yaml
+
+
     cp /challenge/.build.sh $SRC/build.sh
-    #cp /challenge/.fuzz_stub.c  $SRC/fuzz_stub.c
     cp /challenge/.fuzz_parse_rule.c  $SRC/fuzz_parse_rule.c
     cp /challenge/.rsync_flist_fuzzer.c  $SRC/rsync_flist_fuzzer.c
 

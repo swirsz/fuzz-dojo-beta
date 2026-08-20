@@ -30,6 +30,12 @@ if [ ! -d "/src-orig" ]; then
 
     cp -r /downloads/ccache $SRC
 
+
+    mkdir -p /opt/oss-fuzz/projects/ccache
+    cp /challenge/.build.sh /opt/oss-fuzz/projects/ccache/build.sh
+    cp /challenge/.ccache_fuzzer.cc /opt/oss-fuzz/projects/ccache/ccache_fuzzer.cc
+    cp /challenge/.project.yaml /opt/oss-fuzz/projects/ccache/project.yaml
+
     cp /challenge/.build.sh $SRC/build.sh
     mkdir -p $SRC/$PROJECT_NAME/fuzz
     cp /challenge/.ccache_fuzzer.cc  $SRC/$PROJECT_NAME/fuzz/ccache_fuzzer.cc
