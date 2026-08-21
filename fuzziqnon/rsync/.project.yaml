@@ -1,0 +1,17 @@
+homepage: "https://rsync.samba.org/"
+language: c
+primary_contact: "swirsz@asu.edu" 
+main_repo: "https://github.com/WayneD/rsync"
+
+sanitizers:
+  - address
+  - undefined
+
+architectures:
+  - x86_64
+
+fuzzing_engines:
+  - libfuzzer
+  - afl
+  - honggfuzz
+

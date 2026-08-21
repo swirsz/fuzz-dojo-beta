@@ -224,10 +224,37 @@ modules:
       - id: zlib
         name: ZLIB - 5055 loc 78%-79%-87% - 1 min
 
+  - id: fuzziqllm
+    name: Fuzz IQ OSS-Fuzz-Gen Projects
+    
+    challenges:
 
+      - id: cares
+        name: C_ARES - 5676 loc 35%-39%-72% - 3 min
 
-  - id: fuzziq2
-    name: Fuzz IQ New Projects
+      - id: cjson
+        name: CJSON - 2304 loc 43%-43%-46% - 1 min
+
+      - id: sqlite3
+        name: SQLITE3 - 80385 loc 33%-75%-76% - 5 min (slow FI) 
+
+      - id: zlib
+        name: ZLIB - 5055 loc 78%-79%-87% - 1 min
+
+      - id: exiv2
+        name: EXIV2 - simple 34282 loc 10%-54%-1% - 1 min
+ 
+      - id: liblouis
+        name: (D) LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min (broken on OSS-Fuzz)
+
+      - id: libpng
+        name: LIBPNG - medium 13217 loc 40%-43%-57% - 1.5 min
+
+      - id: libvpx
+        name: LIBVPX - medium 32885 loc 54%-60%-0% - 2.5 min
+ 
+  - id: fuzziqnon
+    name: Fuzz IQ Non-OSS-Fuzz Projects
     
     challenges:
 
