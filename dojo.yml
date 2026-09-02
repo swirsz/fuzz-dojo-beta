@@ -154,7 +154,7 @@ modules:
 
 
   - id: fuzziq
-    name: Fuzz IQ Projects
+    name: Fuzz IQ Training Projects
     
     challenges:
 
@@ -245,7 +245,7 @@ modules:
         name: EXIV2 - simple 34282 loc 10%-54%-1% - 1 min
  
       - id: liblouis
-        name: (D) LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min (broken on OSS-Fuzz)
+        name: LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min
 
       - id: libpng
         name: LIBPNG - medium 13217 loc 40%-43%-57% - 1.5 min
