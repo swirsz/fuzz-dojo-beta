@@ -17,10 +17,10 @@ if [ ! -d "/src-orig" ]; then
     #    apt-get install -y make autoconf automake libtool zlib1g-dev
 
     #git clone --depth 1 https://github.com/madler/zlib.git
-    #git clone --depth 1 https://github.com/pnggroup/libpng.git
+    git clone -b master --depth 1 https://github.com/pnggroup/libpng.git $SRC
 
     cp -r /downloads/zlib $SRC
-    cp -r /downloads/libpng $SRC
+    #cp -r /downloads/libpng $SRC
 
     cp $SRC/libpng/contrib/oss-fuzz/build.sh $SRC
 
