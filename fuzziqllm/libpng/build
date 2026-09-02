@@ -17,7 +17,7 @@ if [ ! -d "/src-orig" ]; then
     #    apt-get install -y make autoconf automake libtool zlib1g-dev
 
     #git clone --depth 1 https://github.com/madler/zlib.git
-    git clone -b master --depth 1 https://github.com/pnggroup/libpng.git $SRC
+    git clone -b master --depth 1 https://github.com/pnggroup/libpng.git $SRC/libpng
 
     cp -r /downloads/zlib $SRC
     #cp -r /downloads/libpng $SRC
