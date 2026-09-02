@@ -16,16 +16,16 @@ if [ ! -d "/src-orig" ]; then
     #apt-get update && apt-get install -y yasm wget gcc
 
     #git clone https://chromium.googlesource.com/webm/libvpx
-    #wget https://storage.googleapis.com/downloads.webmproject.org/test_data/fuzzer/vpx_fuzzer_seed_corpus.zip
+    wget https://storage.googleapis.com/downloads.webmproject.org/test_data/fuzzer/vpx_fuzzer_seed_corpus.zip
 
     cp -r /downloads/libvpx $SRC
-    cp -r /downloads/vpx_fuzzer_seed_corpus.zip $SRC
+    #cp -r /downloads/vpx_fuzzer_seed_corpus.zip $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/vpx_dec_fuzzer.dict $SRC/
-    cp $SRC/$PROJECT_NAME/examples/vpx_dec_fuzzer.cc $SRC/$PROJECT_NAME/examples/newfuzzer.cc
+    #cp $SRC/$PROJECT_NAME/examples/vpx_dec_fuzzer.cc $SRC/$PROJECT_NAME/examples/newfuzzer.cc
 
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
     build-cleanup
 fi

@@ -24,8 +24,8 @@ if [ ! -d "/src-orig" ]; then
 
     cp $SRC/libpng/contrib/oss-fuzz/build.sh $SRC
 
-    cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/libpng_read_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/libpng_new_fuzzer.cc
-    patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
+    #cp $SRC/$PROJECT_NAME/contrib/oss-fuzz/libpng_read_fuzzer.cc $SRC/$PROJECT_NAME/contrib/oss-fuzz/libpng_new_fuzzer.cc
+    #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
 #----------------------------------------------------------------------
     build-cleanup
 fi
