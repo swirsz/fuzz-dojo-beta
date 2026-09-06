@@ -1,10 +1,11 @@
 #!/opt/pwn.college/bash
 . /usr/local/sbin/e
+cp /home/hacker/fuzz-dojo/bounded_resource.h /usr/local/include/
 if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=liblouis
+export PROJECT_NAME=cjson
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -13,16 +14,15 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-    #apt-get update && apt-get install -y make autoconf automake libtool \
-    #  pkg-config zlib1g-dev libpci-dev
-    #git clone --depth 1 https://github.com/liblouis/liblouis
-
-    cp -r /downloads/liblouis $SRC
+    #RUN apt-get update && apt-get install -y cmake
+    #rm -rf $PROJECT_NAME
+    #git clone --depth 1 -b develop https://github.com/nlohmann/json.git
+    cp -r /downloads/cjson $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-    #patch -tuN $SRC/liblouis/tests/fuzzing/build.sh -i /challenge/.build.patch -r -
 
-    #cp $SRC/$PROJECT_NAME/tests/fuzzing/fuzz_backtranslate.c $SRC/$PROJECT_NAME/tests/fuzzing/fuzz_newfuzzer.c
+    patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/newfuzzer.c
 #----------------------------------------------------------------------
     build-cleanup
 fi
@@ -30,14 +30,16 @@ build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
+rm -rf $SRC/$PROJECT_NAME/build
+
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/$PROJECT_NAME/tests/fuzzing/*.c /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/liblouis/tests/fuzzing/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp -r $SRC/$PROJECT_NAME/fuzzing/* /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/tests/fuzzing
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC/liblouis/tests/fuzzing
+   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
+   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
 if [ "$4" = "understanding" ]; then
