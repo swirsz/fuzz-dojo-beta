@@ -23,7 +23,7 @@ if [ ! -d "/src-orig" ]; then
 
     #patch -tuN $SRC/build.sh -i /challenge/.build.patch -r -
     #patch -tuN $SRC/$PROJECT_NAME/fuzz/CMakeLists.txt -i /challenge/.CMakeLists.patch -r -
-    #cp $SRC/$PROJECT_NAME/fuzz/fuzz-read-print-write.cpp $SRC/$PROJECT_NAME/fuzz/fuzz-newfuzzer.cpp
+    #cp $SRC/$PROJECT_NAME/fuzz/fuzz-read-print-write.cpp $SRC/$PROJECT_NAME/fuzz/fuzz-ewfuzzer.cpp
 
 #----------------------------------------------------------------------
     build-cleanup

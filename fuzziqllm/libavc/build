@@ -31,7 +31,7 @@ if [ ! -d "/src-orig" ]; then
     #patch -tuN $SRC/$PROJECT_NAME/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     #patch -tuN $SRC/$PROJECT_NAME/Makefile.am -i /challenge/.Makefile.patch -r -
         
-    #cp $SRC/$PROJECT_NAME/aspell_fuzzer.cpp $SRC/$PROJECT_NAME/new_fuzzer.cpp
+    #cp $SRC/$PROJECT_NAME/aspell_fuzzer.cpp $SRC/$PROJECT_NAME/ew_fuzzer.cpp
 #----------------------------------------------------------------------
     build-cleanup
 fi
