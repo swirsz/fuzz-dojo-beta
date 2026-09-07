@@ -70,7 +70,7 @@ else
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/libjpeg-turbo.3.0.x/fuzz
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/libjpeg-turbo.3.1.x/fuzz
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/libjpeg-turbo.main/fuzz
-   cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
+   #cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
 if [ "$4" = "understanding" ]; then
