@@ -27,12 +27,14 @@ if [ ! -d "/src-orig" ]; then
     cd $SRC
     git clone --depth 1 https://github.com/libjpeg-turbo/seed-corpora
     cd seed-corpora && zip -r ../decompress_fuzzer_seed_corpus.zip afl-testcases/jpeg* bugs/decompress*
+    cd $SRC
     cat fuzz/branches.txt | while read branch; do \
       zip -r decompress_fuzzer_seed_corpus.zip libjpeg-turbo.$branch/testimages/*.jpg; \
     done
     
     cd $SRC
     cd seed-corpora && zip -r ../compress_fuzzer_seed_corpus.zip afl-testcases/bmp afl-testcases/gif* afl-testcases/targa bugs/compress*
+    cd $SRC
     cat fuzz/branches.txt | while read branch; do \
       zip -r compress_fuzzer_seed_corpus.zip libjpeg-turbo.$branch/testimages/*.bmp libjpeg-turbo.$branch/testimages/*.ppm libjpeg-turbo.$branch/testimages/*.pgm; \
     done
@@ -50,6 +52,7 @@ if [ ! -d "/src-orig" ]; then
     #patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/ewfuzzer.c
 #----------------------------------------------------------------------
+    cd /
     build-cleanup
 fi
 build-srcfolders
