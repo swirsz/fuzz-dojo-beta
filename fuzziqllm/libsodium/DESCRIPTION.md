@@ -5,4 +5,4 @@ https://storage.googleapis.com/oss-fuzz-introspector/libsodium/inspector-report/
 
 LibSodium is an easy-to-use software library for encryption, decryption, signatures, password hashing, and more. 
 
-This library has roughly 20% code coverage with only 2 fuzz drivers, exercising the encryption, decryption, and maybe hashing functions and very little else.  Just implementing ED25519 key signatures as a fuzz driver should greatly increase the code coverage of the project
+This library has roughly 20% code coverage with only 2 fuzz drivers, exercising the encryption, decryption, and maybe hashing functions.
