@@ -14,9 +14,12 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
+    set -x
     cd $SRC
     apt-get update && apt-get install -y make yasm cmake
-    git clone --depth 1 https://github.com/libjpeg-turbo/fuzz && \
+    git clone --depth 1 https://github.com/libjpeg-turbo/fuzz
+    
+    cd $SRC
     cat fuzz/branches.txt | while read branch; do \
       git clone --depth 1 https://github.com/libjpeg-turbo/libjpeg-turbo -b $branch libjpeg-turbo.$branch; \
     done
