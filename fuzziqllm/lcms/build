@@ -16,7 +16,8 @@ if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
 
 apt-get update && apt-get install -y make autoconf automake libtool
-git clone --depth 1 https://github.com/mm2/Little-CMS.git /src/lcms
+cp -r /downloads/lcms $SRC
+#git clone --depth 1 https://github.com/mm2/Little-CMS.git /src/lcms
 mkdir $SRC/seeds && \
     cd $SRC/seeds && \
     cp $SRC/lcms/testbed/bad.icc . && \

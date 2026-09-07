@@ -17,15 +17,18 @@ if [ ! -d "/src-orig" ]; then
     set -x
     cd $SRC
     apt-get update && apt-get install -y make yasm cmake
-    git clone --depth 1 https://github.com/libjpeg-turbo/fuzz
+    cp -r /downloads/fuzz $SRC
+    #git clone --depth 1 https://github.com/libjpeg-turbo/fuzz
     
     cd $SRC
     cat fuzz/branches.txt | while read branch; do \
+      #cp -r /downloads/libjpeg-turbo $SRC
       git clone --depth 1 https://github.com/libjpeg-turbo/libjpeg-turbo -b $branch libjpeg-turbo.$branch; \
     done
 
     cd $SRC
-    git clone --depth 1 https://github.com/libjpeg-turbo/seed-corpora
+    cp -r /downloads/seed-corpora $SRC
+    #git clone --depth 1 https://github.com/libjpeg-turbo/seed-corpora
     cd seed-corpora && zip -r ../decompress_fuzzer_seed_corpus.zip afl-testcases/jpeg* bugs/decompress*
     cd $SRC
     cat fuzz/branches.txt | while read branch; do \
@@ -47,7 +50,8 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 -b develop https://github.com/nlohmann/json.git
     #cp -r /downloads/cjson $SRC
 
-    cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    #cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
+    cp /challenge/.build.sh $SRC/
 
     #patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/ewfuzzer.c
@@ -65,7 +69,7 @@ cd $SRC
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp -r $SRC/libjpeg-turbo.main/fuzz/* /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
+   #cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/libjpeg-turbo.3.0.x/fuzz
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/libjpeg-turbo.3.1.x/fuzz

@@ -16,9 +16,12 @@ if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
     cd $SRC
     apt-get update && apt-get install -y make cmake flex bison
-    git clone --depth 1 https://github.com/the-tcpdump-group/libpcap.git libpcap
+    cp -r /downloads/libpcap $SRC
+    #git clone --depth 1 https://github.com/the-tcpdump-group/libpcap.git libpcap
     # for corpus as wireshark
-    git clone --depth=1 https://github.com/the-tcpdump-group/tcpdump.git tcpdump
+
+    cp -r /downloads/tcpdump $SRC
+    #git clone --depth=1 https://github.com/the-tcpdump-group/tcpdump.git tcpdump
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cd /
