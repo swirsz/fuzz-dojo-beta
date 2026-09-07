@@ -5,7 +5,7 @@ if [ "$?" -gt 0 ]; then
     exit 1
 fi
 export LABEL=$1
-export PROJECT_NAME=cjson
+export PROJECT_NAME=libjpeg-turbo
 export SANITIZER=$1
 if [ -z "$SANITIZER" ]; then
     export SANITIZER='none'
@@ -14,14 +14,31 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
+    apt-get update && apt-get install -y make yasm cmake
+    git clone --depth 1 https://github.com/libjpeg-turbo/fuzz && \
+    cat fuzz/branches.txt | while read branch; do \
+      git clone --depth 1 https://github.com/libjpeg-turbo/libjpeg-turbo -b $branch libjpeg-turbo.$branch; \
+    done
+
+    git clone --depth 1 https://github.com/libjpeg-turbo/seed-corpora
+    cd seed-corpora && zip -r ../decompress_fuzzer_seed_corpus.zip afl-testcases/jpeg* bugs/decompress*
+    cat fuzz/branches.txt | while read branch; do \
+      zip -r decompress_fuzzer_seed_corpus.zip libjpeg-turbo.$branch/testimages/*.jpg; \
+    done
+    cd seed-corpora && zip -r ../compress_fuzzer_seed_corpus.zip afl-testcases/bmp afl-testcases/gif* afl-testcases/targa bugs/compress*
+    cat fuzz/branches.txt | while read branch; do \
+      zip -r compress_fuzzer_seed_corpus.zip libjpeg-turbo.$branch/testimages/*.bmp libjpeg-turbo.$branch/testimages/*.ppm libjpeg-turbo.$branch/testimages/*.pgm; \
+    done
+    rm -rf seed-corpora
+
     #RUN apt-get update && apt-get install -y cmake
     #rm -rf $PROJECT_NAME
     #git clone --depth 1 -b develop https://github.com/nlohmann/json.git
-    cp -r /downloads/cjson $SRC
+    #cp -r /downloads/cjson $SRC
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
 
-    patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    #patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/ewfuzzer.c
 #----------------------------------------------------------------------
     build-cleanup
@@ -30,12 +47,12 @@ build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC/$PROJECT_NAME
-rm -rf $SRC/$PROJECT_NAME/build
+#rm -rf $SRC/$PROJECT_NAME/build
 
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp -r $SRC/$PROJECT_NAME/fuzzing/* /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp -r $SRC/$PROJECT_NAME/fuzz/* /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
    cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
