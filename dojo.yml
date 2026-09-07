@@ -230,40 +230,40 @@ modules:
     challenges:
 
       - id: cjson
-        name: CJSON - 2304 loc 43%-43%-46% - 1 min
+        name: CJSON - 2304 loc 44% - 1 min - 1 driver
 
       - id: curl
-        name: CURL
+        name: CURL - 78897 loc 69% - 34 drivers
 
       - id: exiv2
-        name: EXIV2 - simple 34282 loc 10%-54%-1% - 1 min
+        name: EXIV2 - 34282 loc 69% - 1 min - 3 drivers
 
       - id: lcms
-        name: LCMS
+        name: LCMS - 20705 loc - 63% - 15 drivers
  
       - id: libavc
         name: LIBAVC - 135862 loc - 73% - 5 drivers
 
       - id: libjpeg-turbo
-        name: LIBJPEG-TURBO
+        name: LIBJPEG-TURBO - 83123 loc 67% - 32 drivers
  
       - id: libpcap
-        name: LIBPCAP
+        name: LIBPCAP - 16092 loc 57% - 3 drivers
  
       - id: libpng
-        name: LIBPNG - medium 13217 loc 40%-43%-57% - 1.5 min
+        name: LIBPNG - 13217 loc 62% - 1.5 min - 5 drivers
 
       - id: libsodium
-        name: LIBSODIUM - simple 8403 loc 18%-19%-12% - 2 min
+        name: LIBSODIUM - 10986 loc 51% - 2 min - 8 drivers
 
       - id: libtiff
-        name: LIBTIFF
+        name: LIBTIFF - 51601 loc 4% - 4 drivers
 
       - id: libvpx
-        name: LIBVPX - medium 32885 loc 54%-60%-0% - 2.5 min
+        name: LIBVPX - 98256 loc 50% - 2.5 min - 8 drivers
 
       - id: zlib
-        name: ZLIB - 5055 loc 78%-79%-87% - 1 min
+        name: ZLIB - 5426 loc 80% - 1 min - 11 drivers
  
   - id: fuzziqnon
     name: Fuzz IQ Non-OSS-Fuzz Projects
