@@ -14,17 +14,16 @@ fi
 
 if [ ! -d "/src-orig" ]; then
 #----------------------------------------------------------------------
-#RUN apt-get update && apt-get install -y wget cmake
-#RUN git clone https://github.com/ittiam-systems/libavc.git
-#ADD https://storage.googleapis.com/android_media/external/libavc/fuzzer/avc_dec_fuzzer_seed_corpus.zip $SRC/
-#COPY build.sh $SRC/
-#WORKDIR libavc
-
-
+    cd $SRC
+    #RUN apt-get update && apt-get install -y wget cmake
+    #RUN git clone https://github.com/ittiam-systems/libavc.git
+    wget https://storage.googleapis.com/android_media/external/libavc/fuzzer/avc_dec_fuzzer_seed_corpus.zip
+    #COPY build.sh $SRC/
+    #WORKDIR libavc
 
     cp -r /downloads/libavc $SRC
 
-    cp /downloads/avc_dec_fuzzer_seed_corpus.zip $SRC
+    #cp /downloads/avc_dec_fuzzer_seed_corpus.zip $SRC
 
     cp /opt/oss-fuzz/projects/libavc/build.sh $SRC
     #cp /challenge/.fuzz-packet_seed_corpus.zip $OUT/fuzz-packet_seed_corpus.zip
