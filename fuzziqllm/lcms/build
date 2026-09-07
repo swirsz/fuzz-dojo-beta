@@ -26,7 +26,6 @@ mkdir $SRC/seeds && \
     cp $SRC/lcms/testbed/ibm-t61.icc . && \
     #add more seeds from the testbed dir
     cp $SRC/lcms/testbed/bad_mpe.icc . && \
-    cp $SRC/lcms/testbed/new.icc . && \
     cp $SRC/lcms/testbed/test2.icc . && \
     cp $SRC/lcms/testbed/test3.icc . && \
     cp $SRC/lcms/testbed/test4.icc . && \
@@ -38,7 +37,7 @@ mkdir $SRC/seeds && \
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.c $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.options $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/*.dict $SRC/
-
+    cd /
     #patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/ewfuzzer.c
 #----------------------------------------------------------------------
