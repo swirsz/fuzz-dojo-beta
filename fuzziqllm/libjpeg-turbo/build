@@ -64,10 +64,12 @@ cd $SRC
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
    mkdir -p /home/hacker/fuzz-dojo/$PROJECT_NAME
-   cp -r $SRC/$PROJECT_NAME/fuzz/* /home/hacker/fuzz-dojo/$PROJECT_NAME
+   cp -r $SRC/libjpeg-turbo.main/fuzz/* /home/hacker/fuzz-dojo/$PROJECT_NAME
    cp $SRC/build.sh /home/hacker/fuzz-dojo/$PROJECT_NAME
 else
-   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/$PROJECT_NAME/fuzzing
+   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/libjpeg-turbo.3.0.x/fuzz
+   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/libjpeg-turbo.3.1.x/fuzz
+   cp -r /home/hacker/fuzz-dojo/$PROJECT_NAME/* $SRC/libjpeg-turbo.main/fuzz
    cp /home/hacker/fuzz-dojo/$PROJECT_NAME/build.sh $SRC
 fi
 #----------------------------------------------------------------------
