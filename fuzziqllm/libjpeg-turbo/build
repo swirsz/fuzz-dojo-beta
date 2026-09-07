@@ -51,7 +51,7 @@ if [ ! -d "/src-orig" ]; then
     #cp -r /downloads/cjson $SRC
 
     #cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
-    cp /challenge/.build.sh $SRC/
+    cp /challenge/.build.sh $SRC/build.sh
 
     #patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/ewfuzzer.c
