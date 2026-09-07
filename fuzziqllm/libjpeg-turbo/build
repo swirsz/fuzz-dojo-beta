@@ -21,15 +21,20 @@ if [ ! -d "/src-orig" ]; then
       git clone --depth 1 https://github.com/libjpeg-turbo/libjpeg-turbo -b $branch libjpeg-turbo.$branch; \
     done
 
+    cd $SRC
     git clone --depth 1 https://github.com/libjpeg-turbo/seed-corpora
     cd seed-corpora && zip -r ../decompress_fuzzer_seed_corpus.zip afl-testcases/jpeg* bugs/decompress*
     cat fuzz/branches.txt | while read branch; do \
       zip -r decompress_fuzzer_seed_corpus.zip libjpeg-turbo.$branch/testimages/*.jpg; \
     done
+    
+    cd $SRC
     cd seed-corpora && zip -r ../compress_fuzzer_seed_corpus.zip afl-testcases/bmp afl-testcases/gif* afl-testcases/targa bugs/compress*
     cat fuzz/branches.txt | while read branch; do \
       zip -r compress_fuzzer_seed_corpus.zip libjpeg-turbo.$branch/testimages/*.bmp libjpeg-turbo.$branch/testimages/*.ppm libjpeg-turbo.$branch/testimages/*.pgm; \
     done
+    
+    cd $SRC
     rm -rf seed-corpora
 
     #RUN apt-get update && apt-get install -y cmake
