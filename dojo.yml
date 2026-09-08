@@ -244,9 +244,6 @@ modules:
       - id: libavc
         name: LIBAVC - 135862 loc - 73% - 5 drivers
 
-      - id: libjpeg-turbo
-        name: LIBJPEG-TURBO - 83123 loc 67% - 32 drivers
- 
       - id: libpcap
         name: LIBPCAP - 16092 loc 57% - 3 drivers
  
@@ -412,6 +409,9 @@ modules:
       - id: lame
         name: (D) LAME - complex 23539 loc 40% (broken on OSS-Fuzz)
 
+      - id: libjpeg-turbo
+        name: LIBJPEG-TURBO - 83123 loc 67% - 32 drivers
+ 
       - id: liblouis
         name: (D) LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min (broken on OSS-Fuzz)
 
