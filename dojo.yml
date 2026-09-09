@@ -212,9 +212,6 @@ modules:
       - id: spdlog
         name: SPDLOG - 6009 loc - 48% - 5 drivers
 
-      - id: sqlite3
-        name: SQLITE3 - 80385 loc 33%-75%-76% - 5 min (slow FI) 
-
       - id: tremor
         name: TREMOR - 4953 loc - 74% - 3 drivers
 
@@ -258,6 +255,9 @@ modules:
 
       - id: libvpx
         name: LIBVPX - 98256 loc 50% - 2.5 min - 8 drivers
+
+      - id: sqlite3
+        name: SQLITE3 - 80385 loc 33%-75%-76% - 5 min (slow FI) 
 
       - id: zlib
         name: ZLIB - 5426 loc 80% - 1 min - 11 drivers
