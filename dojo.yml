@@ -257,7 +257,7 @@ modules:
         name: LIBVPX - 98256 loc 50% - 2.5 min - 8 drivers
 
       - id: sqlite3
-        name: SQLITE3 - 80385 loc 33%-75%-76% - 5 min (slow FI) 
+        name: SQLITE3 - 80385 loc 33%-75%-76% - 5 min - 1 driver
 
       - id: zlib
         name: ZLIB - 5426 loc 80% - 1 min - 11 drivers
