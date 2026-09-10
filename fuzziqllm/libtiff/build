@@ -22,8 +22,8 @@ if [ ! -d "/src-orig" ]; then
     #git clone --depth 1 https://github.com/madler/zlib
     cp -r /downloads/libjpeg-turbo $SRC
     #git clone --depth 1 https://github.com/libjpeg-turbo/libjpeg-turbo
-    cp -r /downloads/jbigkit $SRC
-    #git clone https://www.cl.cam.ac.uk/~mgk25/git/jbigkit
+    #cp -r /downloads/jbigkit $SRC
+    git clone https://www.cl.cam.ac.uk/~mgk25/git/jbigkit
     wget https://lcamtuf.coredump.cx/afl/demo/afl_testcases.tgz
     wget https://raw.githubusercontent.com/google/AFL/debe27037b9444bbf090a0ffbd5d24889bb887ae/dictionaries/tiff.dict
     #WORKDIR libtiff
