@@ -262,6 +262,8 @@ modules:
       - id: sqlite3
         name: SQLITE3 - 80385 loc 33%-75%-76% - 5 min - 1 driver
 
+      - id: zlib
+        name: ZLIB - 5426 loc 80% - 1 min - 11 drivers
  
   - id: fuzziqnon
     name: Fuzz IQ Non-OSS-Fuzz Projects
