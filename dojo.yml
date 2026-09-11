@@ -219,7 +219,7 @@ modules:
         name: YARA - 30443 loc 49%-63%-43% - 3 min
 
       - id: zlib
-        name: ZLIB - 5055 loc 78%-79%-87% - 1 min
+        name: ZLIB - 5426 loc 80% - 1 min - 11 drivers
 
   - id: fuzziqllm
     name: Fuzz IQ OSS-Fuzz-Gen Projects
@@ -240,6 +240,9 @@ modules:
  
       - id: libavc
         name: LIBAVC - 135862 loc - 73% - 5 drivers
+        
+      - id: liblouis
+        name: LIBLOUIS - 10478 loc 49% - 3 drivers
 
       - id: libpcap
         name: LIBPCAP - 16092 loc 57% - 3 drivers
@@ -259,8 +262,6 @@ modules:
       - id: sqlite3
         name: SQLITE3 - 80385 loc 33%-75%-76% - 5 min - 1 driver
 
-      - id: zlib
-        name: ZLIB - 5426 loc 80% - 1 min - 11 drivers
  
   - id: fuzziqnon
     name: Fuzz IQ Non-OSS-Fuzz Projects
@@ -411,9 +412,6 @@ modules:
 
       - id: libjpeg-turbo
         name: LIBJPEG-TURBO - 83123 loc 67% - 32 drivers
- 
-      - id: liblouis
-        name: (D) LIBLOUIS - medium 10478 loc 36%-60%-92% - 4 min (broken on OSS-Fuzz)
 
       - id: libpng
         name: LIBPNG - medium 13217 loc 40%-43%-57% - 1.5 min
