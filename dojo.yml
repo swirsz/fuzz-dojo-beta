@@ -246,7 +246,7 @@ modules:
 
       - id: libpcap
         name: LIBPCAP - 16092 loc 57% - 3 drivers
- 
+
       - id: libpng
         name: LIBPNG - 13217 loc 62% - 1.5 min - 5 drivers
 
