@@ -21,6 +21,7 @@ if [ ! -d "/src-orig" ]; then
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     #patch -tuN $SRC/liblouis/tests/fuzzing/build.sh -i /challenge/.build.patch -r -
+    cp /challenge/fuzz_backtranslate.c /challenge/fuzz_translate_generic.c $SRC/$PROJECT_NAME/tests/fuzzing
 
     #cp $SRC/$PROJECT_NAME/tests/fuzzing/fuzz_backtranslate.c $SRC/$PROJECT_NAME/tests/fuzzing/fuzz_newfuzzer.c
 #----------------------------------------------------------------------
