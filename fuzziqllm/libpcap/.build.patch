@@ -1,0 +1,12 @@
+--- build.shh	2026-11-23 00:04:07.521523647 +0000
++++ build.sh	2026-11-23 00:06:31.050929198 +0000
+@@ -19,7 +19,8 @@
+ # build project
+ mkdir build
+ cd build
+-cmake ..
++cmake -DDISABLE_DBUS=ON -DDISABLE_BLUETOOTH=ON -DDISABLE_RDMA=ON -DDISABLE_DAG=ON \
++      -DDISABLE_SEPTEL=ON -DDISABLE_SNF=ON -DDISABLE_TC=ON -DDISABLE_NETMAP=ON ..
+ make
+ 
+ 

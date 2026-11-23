@@ -25,7 +25,7 @@ if [ ! -d "/src-orig" ]; then
 
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cd /
-    patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    patch -tuN $SRC/$PROJECT_NAME/build.sh -i /challenge/.build.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/ewfuzzer.c
 #----------------------------------------------------------------------
     build-cleanup
@@ -34,7 +34,7 @@ build-srcfolders
 mv /src-$LABEL /src
 
 cd $SRC
-#rm -rf $SRC/$PROJECT_NAME/build
+rm -rf $SRC/$PROJECT_NAME/build
 
 #----------------------------------------------------------------------
 if [ ! -d "/home/hacker/fuzz-dojo/$PROJECT_NAME" ]; then
