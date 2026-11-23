@@ -1,11 +1,11 @@
 --- build.sh	2026-11-23 21:43:40.290459293 +0000
-+++ build.s	2026-11-23 22:44:57.494995774 +0000
++++ build.s	2026-11-23 22:51:03.088163971 +0000
 @@ -54,7 +54,7 @@
      apt-get install -y liblzma-dev
  fi
  
 -cmake . -DCMAKE_INSTALL_PREFIX=$WORK -DBUILD_SHARED_LIBS=off
-+cmake . -DCMAKE_INSTALL_PREFIX=$WORK -DBUILD_SHARED_LIBS=off -Dzstd=OFF
++cmake . -DCMAKE_INSTALL_PREFIX=$WORK -DBUILD_SHARED_LIBS=off -Dzstd=OFF -Dlzma=OFF
  make -j$(nproc)
  make install
  
