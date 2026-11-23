@@ -1,5 +1,5 @@
 --- build.sh	2026-11-23 21:43:40.290459293 +0000
-+++ build.s	2026-11-23 22:59:07.656099940 +0000
++++ build.s	2026-11-23 23:03:24.700244396 +0000
 @@ -46,15 +46,16 @@
      make lib
  fi
@@ -20,7 +20,7 @@
  make -j$(nproc)
  make install
  
-@@ -71,7 +72,7 @@
+@@ -71,13 +72,13 @@
          $CXX $CXXFLAGS -std=c++17 -I$WORK/include \
              $SRC/libtiff/contrib/oss-fuzz/$name.cc -o $OUT/$name \
              $LIB_FUZZING_ENGINE $WORK/lib/libtiffxx.a $WORK/lib/libtiff.a $WORK/lib/libz.a $WORK/lib/libjpeg.a \
@@ -29,3 +29,11 @@
      fi
  done
  
+-mkdir afl_testcases
++mkdir -p afl_testcases
+ (cd afl_testcases; tar xf "$SRC/afl_testcases.tgz")
+-mkdir tif
++mkdir -p tif
+ find afl_testcases -type f -name '*.tif' -exec mv -n {} tif/ \;
+ zip -rj tif.zip tif/
+ cp tif.zip "$OUT/tiff_read_rgba_fuzzer_seed_corpus.zip"
