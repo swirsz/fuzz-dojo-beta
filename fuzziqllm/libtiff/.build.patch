@@ -1,6 +1,17 @@
 --- build.sh	2026-11-23 21:43:40.290459293 +0000
-+++ build.s	2026-11-23 22:51:03.088163971 +0000
-@@ -54,7 +54,7 @@
++++ build.s	2026-11-23 22:59:07.656099940 +0000
+@@ -46,15 +46,16 @@
+     make lib
+ fi
+ 
+-mv "$SRC"/jbigkit/libjbig/*.a "$WORK/lib/"
+-mv "$SRC"/jbigkit/libjbig/*.h "$WORK/include/"
++mkdir -p afl_testcases tif
++cp "$SRC"/jbigkit/libjbig/*.a "$WORK/lib/"
++cp "$SRC"/jbigkit/libjbig/*.h "$WORK/include/"
+ popd
+ 
+ if [ "$ARCHITECTURE" != "i386" ]; then
      apt-get install -y liblzma-dev
  fi
  
@@ -9,7 +20,7 @@
  make -j$(nproc)
  make install
  
-@@ -71,7 +71,7 @@
+@@ -71,7 +72,7 @@
          $CXX $CXXFLAGS -std=c++17 -I$WORK/include \
              $SRC/libtiff/contrib/oss-fuzz/$name.cc -o $OUT/$name \
              $LIB_FUZZING_ENGINE $WORK/lib/libtiffxx.a $WORK/lib/libtiff.a $WORK/lib/libz.a $WORK/lib/libjpeg.a \
