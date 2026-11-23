@@ -32,7 +32,7 @@ if [ ! -d "/src-orig" ]; then
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/build.sh $SRC/
     cp /opt/oss-fuzz/projects/$PROJECT_NAME/run_tests.sh $SRC/
     cd /
-    #patch -tuN $SRC/$PROJECT_NAME/fuzzing/ossfuzz.sh -i /challenge/.ossfuzz.patch -r -
+    patch -tuN $SRC/$PROJECT_NAME/contrib/oss-fuzz/build.sh -i /challenge/.build.patch -r -
     #cp $SRC/$PROJECT_NAME/fuzzing/cjson_read_fuzzer.c $SRC/$PROJECT_NAME/fuzzing/ewfuzzer.c
 #----------------------------------------------------------------------
     build-cleanup

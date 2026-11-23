@@ -1,0 +1,11 @@
+--- build.sh	2026-11-23 21:43:40.290459293 +0000
++++ build.s	2026-11-23 21:46:17.681044342 +0000
+@@ -66,7 +66,7 @@
+         $CXX $CXXFLAGS -std=c++17 -I$WORK/include \
+             $SRC/libtiff/contrib/oss-fuzz/$name.cc -o $OUT/$name \
+             $LIB_FUZZING_ENGINE $WORK/lib/libtiffxx.a $WORK/lib/libtiff.a $WORK/lib/libz.a $WORK/lib/libjpeg.a \
+-            $WORK/lib/libjbig.a $WORK/lib/libjbig85.a
++            $WORK/lib/libjbig.a $WORK/lib/libjbig85.a  -Wl,-Bstatic -llzma -lzstd -Wl,-Bdynamic
+     else
+         $CXX $CXXFLAGS -std=c++17 -I$WORK/include \
+             $SRC/libtiff/contrib/oss-fuzz/$name.cc -o $OUT/$name \
