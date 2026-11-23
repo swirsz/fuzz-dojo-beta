@@ -1,14 +1,17 @@
---- build.sho	2024-05-28 04:03:10.371282170 +0000
-+++ build.sh	2024-05-28 04:05:48.457003408 +0000
-@@ -26,3 +26,11 @@
- # Copy out dictionary
- cp $SRC/liblouis/tests/fuzzing/fuzz_translate_generic.dict $OUT/fuzz_translate_generic.dict
- cp $SRC/liblouis/tests/fuzzing/fuzz_translate_generic.dict $OUT/fuzz_backtranslate.dict
-+
-+
-+$CC $CFLAGS -c fuzz_newfuzzer.c -o fuzz_newfuzzer.o \
-+    -I$SRC/liblouis -I$SRC/liblouis/liblouis
-+$CXX $CXXFLAGS $LIB_FUZZING_ENGINE fuzz_newfuzzer.o \
-+    -o $OUT/fuzz_newfuzzer fuzz_lib.a
-+
-+cp $SRC/liblouis/tests/fuzzing/fuzz_translate_generic.dict $OUT/fuzz_newfuzzer.dict
+--- build.sh	2026-11-23 20:16:37.867985181 +0000
++++ build.s	2026-11-23 20:48:48.734114120 +0000
+@@ -12,12 +12,12 @@
+ 
+ $CC $CFLAGS -c fuzz_translate_generic.c -o fuzz_translate_generic.o \
+     -I$SRC/liblouis -I$SRC/liblouis/liblouis
+-$CXX $CXXFLAGS $LIB_FUZZING_ENGINE fuzz_translate_generic.o \
++$CXX $CXXFLAGS -fsanitize=fuzzer-no-main fuzz_translate_generic.o \
+     -o $OUT/fuzz_translate_generic fuzz_lib.a
+ 
+ $CC $CFLAGS -c fuzz_backtranslate.c -o fuzz_backtranslate.o \
+     -I$SRC/liblouis -I$SRC/liblouis/liblouis
+-$CXX $CXXFLAGS $LIB_FUZZING_ENGINE fuzz_backtranslate.o \
++$CXX $CXXFLAGS -fsanitize=fuzzer-no-main fuzz_backtranslate.o \
+     -o $OUT/fuzz_backtranslate fuzz_lib.a
+ 
+ # Build corpus
